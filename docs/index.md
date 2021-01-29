@@ -52,10 +52,10 @@ While we cover the basics of deep learning (backpropagation, convolutional neura
 
 ![](images/everyone.jpg)
 
-## Course Offerings
+## Previous Course Offerings
 
 - [Spring 2021](https://bit.ly/berkeleyfsdl) CSE 194-080 - UC Berkeley Undergraduate course
 - [Spring 2020](https://bit.ly/uwfsdl) CSEP 590C - University of Washington Professional Master's Program course
-- [November 2019](https://course.fullstackdeeplearning.com) bootcamp and online course - edited videos and notes available
-- [March 2019](https://fullstackdeeplearning.com/march2019) bootcamp - raw videos available
-- [August 2018](https://fullstackdeeplearning.com/august2018) bootcamp
+- [✨Fall 2019✨](https://fall2019.fullstackdeeplearning.com) nicely formatted videos and notes from our weekend bootcamp
+- [March 2019](/march2019) raw videos from our bootcamp
+- [August 2018](/august2018) bootcamp
