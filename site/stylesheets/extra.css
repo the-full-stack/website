@@ -1,0 +1,22 @@
+h1.title {
+  margin-bottom: 0.5em;
+  color: black;
+}
+
+.subtitle {
+  color: gray;
+  font-size: 1.3em;
+  line-height: 1.3em;
+}
+
+.md-typeset a {
+  font-weight: bold;
+}
+
+.md-announce__inner {
+  text-align: center;
+}
+
+.md-announce__inner a {
+  color: white;
+}

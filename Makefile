@@ -3,3 +3,6 @@ setup:
 
 serve:
 	mkdocs serve
+
+deploy:
+	mkdocs gh-deploy --force
