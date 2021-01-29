@@ -1,0 +1,11 @@
+# Lab 2: CNNs and Synthetic Data
+
+## Video
+
+<iframe width="560" height="315" src="https://www.youtube.com/embed/G70sKcMz_JI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+No slides.
+
+## Follow Along
+
+[GitHub Readme](https://www.google.com/url?q=https://github.com/full-stack-deep-learning/fsdl-text-recognizer-2021-labs/blob/main/lab2/readme.md)
