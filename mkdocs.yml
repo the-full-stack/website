@@ -1,0 +1,41 @@
+site_name: Full Stack Deep Learning
+
+theme:
+  name: material
+  custom_dir: overrides
+  logo: images/favicon.png
+  favicon: images/favicon.png
+  features:
+    - navigation.tabs
+    - navigation.sections
+
+extra_css:
+  - stylesheets/extra.css
+
+markdown_extensions:
+  - attr_list
+  - admonition
+  - pymdownx.superfences
+
+plugins:
+  - search
+
+extra:
+  social:
+    - icon: fontawesome/brands/twitter
+      link: https://twitter.com/full_stack_dl
+    - icon: fontawesome/brands/youtube
+      link: https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ
+    - icon: fontawesome/brands/linkedin
+      link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
+
+nav:
+  - 'Home': 'index.md'
+  - 'Current Course':
+    - 'Spring 2021 Content': 'spring2021/index.md'
+    - 'Lectures':
+      - 'spring2021/lecture-1.md'
+    - 'Labs':
+      - 'spring2021/lab-1.md'
+    - 'Synchronous Online Course': 'spring2021/synchronous.md'
+  - 'Previous Version of the Course': 'https://course.fullstackdeeplearning.com'

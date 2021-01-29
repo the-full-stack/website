@@ -1,0 +1,50 @@
+# Synchronous Online Course
+
+For those of you who signed up, in addition to the lecture and lab materials released publicly, there are some major extras:
+
+- Slack workspace for learners, instructors, and teaching assistants
+- Weekly graded assignment
+- Capstone project reviewed by peers and staff
+- Certificate of completion
+
+## How do I know if I am in this course?
+
+If you registered and received an email receipt from Stripe, you're in!
+
+We will add you to our Slack workspace on February 1.
+
+## Schedule
+
+While we post lectures once a week starting February 1, the first four weeks are review lectures -- stuff you should already know from other courses.
+
+On March 1, we get to the Full Stack content, and you will begin doing weekly assignments, discussing in Slack, and thinking about their course project.
+
+## Logistics
+
+All learners, instructors, and TAs will be part of a Slack workspace. The Slack community is a crucial part of the course: a place to meet each other, post helpful links, share experiences, ask and answer questions.
+
+On Monday, we post the lecture and lab videos for you to watch. Post questions, ideas, articles in Slack as you view the materials.
+
+On Thursday, we go live on Zoom to discuss the posted questions and ideas.
+We have two 30-min slots: 9am and 6pm Pacific Time.
+We will send everyone a Google Calendar invite with the Zoom meeting information.
+
+You have until Friday night to finish the assignment via Gradescope, which will be graded by next Tuesday, so that you have prompt feedback.
+
+Labs are not graded and can be done on your own.
+
+## Projects
+
+The final project is the most important as well as the most fun part of the course. You can pair up or work individually. The project can involve any part of the full stack of deep learning, and should take you roughly 40 hours per person, over 5 weeks.
+
+Projects will be presented as five-minute videos and associated reports, and open sourcing the code is highly encouraged. All projects will be posted for peer and staff review.
+
+The best projects will be awarded and publicized by Full Stack Deep Learning.
+
+## Certificate
+
+Those who complete the assignments and project will receive a certificate that can, for example, be displayed on LinkedIn.
+
+## Time Commitment
+
+On average, expect to spend 5-10 hours per week on the course.
