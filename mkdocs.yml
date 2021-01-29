@@ -1,12 +1,12 @@
 site_name: Full Stack Deep Learning
-site_url: https://fullstackaischool.com
-repo_url: https://github.com/full-stack-deep-learning/full-stack-deep-learning.github.io
+site_url: https://fullstackdeeplearning.com
+repo_url: https://github.com/full-stack-deep-learning/website
 repo_name: GitHub
 
 site_description: Our mission is to help you go from a promising ML experiment to a shipped product, with real-world impact.
 site_author: Full Stack Deep Learning
 copyright: Full Stack Deep Learning, LLC. 2021
-google_analytics: ['UA-118687450-1', 'fullstackaischool.com']
+google_analytics: ['UA-118687450-1', 'fullstackdeeplearning.com']
 
 theme:
   name: material
@@ -36,6 +36,8 @@ extra:
       link: https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
+    - icon: fontawesome/brands/facebook
+      link: https://www.facebook.com/fullstackdl/
 
 nav:
   - 'Home': 'index.md'
@@ -44,10 +46,10 @@ nav:
     - 'Lectures':
       - 'spring2021/lecture-1.md'
       - 'spring2021/notebook-1.md'
-      - 'spring2021/lecture-2a.md'
-      - 'spring2021/lecture-2b.md'
+      # - 'spring2021/lecture-2a.md'
+      # - 'spring2021/lecture-2b.md'
     - 'Labs':
       - 'spring2021/lab-1.md'
-      - 'spring2021/lab-2.md'
+      # - 'spring2021/lab-2.md'
     - 'Synchronous Online Course': 'spring2021/synchronous.md'
   - 'Fall 2019': 'https://fall2019.fullstackdeeplearning.com'
