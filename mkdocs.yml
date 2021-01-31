@@ -6,7 +6,9 @@ repo_name: GitHub
 site_description: Our mission is to help you go from a promising ML experiment to a shipped product, with real-world impact.
 site_author: Full Stack Deep Learning
 copyright: Full Stack Deep Learning, LLC. 2021
-google_analytics: ['UA-118687450-1', 'fullstackdeeplearning.com']
+google_analytics:
+  - UA-118687450-1
+  - auto
 
 theme:
   name: material
@@ -33,7 +35,7 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/full_stack_dl
     - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ
+      link: https://www.youtube.com/c/FullStackDeepLearning
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
     - icon: fontawesome/brands/facebook
