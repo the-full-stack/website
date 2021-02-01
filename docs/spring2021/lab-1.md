@@ -15,6 +15,8 @@ In this video, we introduce the lab throughout the course. We formulate the prob
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/jr7isvbRYvOyRy" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
+[PDF Download](https://www.google.com/url?q=https://drive.google.com/file/d/1mMIra-gpCN4b9AunghxWLLkSY-jAiYct/view?usp%3Dsharing&sa=D&source=editors&ust=1612217432583000&usg=AOvVaw2fx1qojwD2N1YP2a3Y7ECV)
+
 ## Follow Along
 
 [GitHub Readme](https://www.google.com/url?q=https://github.com/full-stack-deep-learning/fsdl-text-recognizer-2021-labs/blob/main/lab1/readme.md)

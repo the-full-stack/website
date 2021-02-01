@@ -8,6 +8,8 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/36tseqKjcKlQwg" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
+[PDF Download](https://www.google.com/url?q=https://drive.google.com/file/d/1_xFGuN3dcyh-6HAoqWrEJ2dEI4MI2h5P/view?usp%3Dsharing&sa=D&source=editors&ust=1612217432581000&usg=AOvVaw3aJTmhOyJTlGs_6HcNqoIU)
+
 ## Notes
 
 In this video, we discuss the fundamentals of deep learning. We will cover artificial neural networks, the universal approximation theorem, three major types of learning problems, the empirical risk minimization problem, the idea behind gradient descent, the practice of back-propagation, the core neural architectures, and the rise of GPUs.
