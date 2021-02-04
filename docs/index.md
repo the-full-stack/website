@@ -23,7 +23,8 @@ There are many great courses to learn how to train deep neural networks.
 However, training the model is just one part of shipping a deep learning project.
 This course teaches full-stack production deep learning:
 
-![](images/positioning_v3.png)
+<img src="images/positioning_v3.png" width="430px" />
+
 
 - Formulating the problem and estimating project cost
 - Finding, cleaning, labeling, and augmenting data
@@ -50,7 +51,10 @@ While we cover the basics of deep learning (backpropagation, convolutional neura
 
 **[Pieter Abbeel](https://twitter.com/pabbeel)** is Professor at UC Berkeley. He co-founded Covariant.ai, Berkeley Open Arms, and Gradescope.
 
-![](images/everyone.jpg)
+<figure>
+  <img src="images/group.jpg" />
+  <figcaption>Our March 2019 Bootcamp</figcaption>
+</figure>
 
 ## Previous Course Offerings
 

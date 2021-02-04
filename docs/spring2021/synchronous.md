@@ -9,9 +9,17 @@ For those of you who signed up, in addition to the lecture and lab materials rel
 
 ## How do I know if I am in this course?
 
-If you registered and received an email receipt from Stripe, you're in!
+If you registered and received an email receipt from Stripe, you're in, and should have been added to our Slack workspace on February 1.
 
-We will add you to our Slack workspace on February 1.
+Please [email us](mailto:team@fullstackdeeplearning.com) if you have a Stripe receipt but aren't in our Slack.
+
+## Teaching Assistants
+
+This course is only possible with the support of our amazing TAs:
+
+- [James Le](https://twitter.com/le_james94) runs Data Relations for Superb AI and contributes Data Journalism for Snorkel AI, after getting an MS in Recommendation Systems at RIT.
+- [Daniel Cooper](https://www.linkedin.com/in/dcooper01/) is a machine learning engineer at QuantumWork, a SaaS for recruiters.
+- [Han Lee](https://twitter.com/hanchunglee) is a Senior Data Scientist at WalletHub. Prior to that, he worked on various DS, MLE, and quant roles. Before he joined the dark side, he co-managed [TEFQX](https://www.morningstar.com/funds/xnas/tefqx/people).
 
 ## Schedule
 
