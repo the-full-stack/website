@@ -2,7 +2,7 @@
 
 We've updated and improved our materials and can't wait to share them with you!
 
-Every Monday, we will post videos of our lectures and lab sessions every Monday.
+Every Monday, we will post videos of our lectures and lab sessions.
 You can follow along on our [Twitter](https://twitter.com/full_stack_dl) or [YouTube](https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ), or sign up via email below.
 
 <!-- Begin Mailchimp Signup Form -->
