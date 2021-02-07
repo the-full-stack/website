@@ -141,3 +141,17 @@ Those in the synchronous online course will submit 5-minute videos of their proj
 The week of May 3, we watch the best course project videos together, and give out awards.
 
 There are rumors of a fun conference in the air, too...
+
+## Other Resources
+
+[Fast.ai](https://course.fast.ai) is a great free two-course sequence aimed at first getting hackers to train state-of-the-art models as quickly as possible, and only afterward delving into how things work under the hood. Highly recommended for anyone.
+
+[Dive Into Deep Learning](https://d2l.ai) is a great free textbook with Jupyter notebooks for every part of deep learning.
+
+[NYU’s Deep Learning](https://atcold.github.io/pytorch-Deep-Learning/) course has excellent PyTorch breakdowns of everything important going on in deep learning.
+
+Stanford’s [ML Systems Design](https://stanford-cs329s.github.io/syllabus.html) course has lectures that parallel those in this course.
+
+[The Batch](https://www.deeplearning.ai/thebatch/) by Andrew Ng is a great weekly update on progress in the deep learning world.
+
+[/r/MachineLearning/](https://www.reddit.com/r/MachineLearning/) is the best community for staying up to date with the latest developments.

@@ -12,4 +12,14 @@
 
 ## Notes
 
-TODO
+In this video, we first review convolution operation, the most basic property of Convolutional Neural Networks. Then, we look at other important operations for ConvNets. Finally, we transition to looking at a classic ConvNet architecture called LeNet.
+
+00:00 - Introduction
+01:08 - Convolutional Filters
+07:10 - Filter Stacks and ConvNets
+11:25 - Strides and Padding
+14:35 - Filter Math
+21:44 - Convolution Implementation Notes
+24:04 - Increasing the Receptive Field with Dilated Convolutions
+27:30 - Decreasing the Tensor Size with Pooling and 1x1-Convolutions
+30:54 - LeNet Architecture
