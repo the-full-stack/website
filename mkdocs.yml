@@ -48,10 +48,10 @@ nav:
     - 'Lectures':
       - 'spring2021/lecture-1.md'
       - 'spring2021/notebook-1.md'
-      # - 'spring2021/lecture-2a.md'
-      # - 'spring2021/lecture-2b.md'
+      - 'spring2021/lecture-2a.md'
+      - 'spring2021/lecture-2b.md'
     - 'Labs':
       - 'spring2021/lab-1.md'
-      # - 'spring2021/lab-2.md'
+      - 'spring2021/lab-2.md'
     - 'Synchronous Online Course': 'spring2021/synchronous.md'
   - 'Fall 2019': 'https://fall2019.fullstackdeeplearning.com'

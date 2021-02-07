@@ -38,9 +38,9 @@ The week of February 1, we do a blitz review of the fundamentals of deep learnin
 
 The week of February 8, we cover CNNs and Computer Vision Applications, and introduce a CNN in lab.
 
-- Lecture 2A: CNNs
-- Lecture 2B: Computer Vision Applications
-- Lab 2: CNNs
+- [Lecture 2A: CNNs](./lecture-2a.md)
+- [Lecture 2B: Computer Vision Applications](./lecture-2b.md)
+- [Lab 2: CNNs](./lab-2.md)
 
 ## Week 3: RNNs
 
