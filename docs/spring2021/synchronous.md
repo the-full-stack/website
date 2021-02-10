@@ -17,11 +17,13 @@ Please [email us](mailto:team@fullstackdeeplearning.com) if you have a Stripe re
 
 This course is only possible with the support of our amazing TAs:
 
-- Head TA [James Le](https://twitter.com/le_james94) runs Data Relations for Superb AI and contributes Data Journalism for Snorkel AI, after getting an MS in Recommendation Systems at RIT.
-- [Daniel Cooper](https://www.linkedin.com/in/dcooper01/) is a machine learning engineer at QuantumWork, a SaaS for recruiters.
-- [Han Lee](https://twitter.com/hanchunglee) is a Senior Data Scientist at WalletHub. Prior to that, he worked on various DS, MLE, and quant roles. Before he joined the dark side, he co-managed [TEFQX](https://www.morningstar.com/funds/xnas/tefqx/people).
+- Head TA [James Le](https://twitter.com/le_james94) runs Data Relations for Superb AI and contributes to Data Journalism for Snorkel AI, after getting an MS in Recommendation Systems at RIT.
+- [Daniel Cooper](https://www.linkedin.com/in/dcooper01/) is a machine learning engineer at QuantumWork, SaaS for recruiters.
+- [Han Lee](https://twitter.com/hanchunglee) is a Senior Data Scientist at WalletHub. Prior to that, he worked on various DS, MLE, and quant roles. Previously, he co-managed [TEFQX](https://www.morningstar.com/funds/xnas/tefqx/people).
 - [Nadia Ahmed](https://www.linkedin.com/in/nadia-a/) is a machine learning researcher with The Frontier Development Lab and Trillium Technologies in remote sensing for severe weather and flood events.
 - [Andrew Mendez](https://twitter.com/AndrewMendez19) is a Senior Machine Learning Engineer at Clarifai, developing large scale computer vision and machine learning systems for the public sector. Previously he was a ML Engineer at CACI.
+- [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/) is a Machine Learning Engineer at Tesseract Health, a retinal imaging company, where he builds machine learning models for workflow augmentation and diagnostics in on-device and cloud use cases.
+- [Chester Chen](https://www.linkedin.com/in/chester-chen-3205992/) is the Director of Data Science Engineering at GoPro. He also founded the SF Big Analytics Meetup.
 
 ## Schedule
 
