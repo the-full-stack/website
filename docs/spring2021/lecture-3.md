@@ -11,3 +11,13 @@
 [PDF Download](https://drive.google.com/file/d/1SvdwVu0tI3zT8Di2JSouqt3-BejqTTCJ/)
 
 ## Notes
+
+- 00:00 - Introduction
+- 01:34 - Sequence Problems
+- 06:28 - Review of RNNs
+- 22:00 - Vanishing Gradient Issue
+- 27:52 - LSTMs and Its Variants
+- 34:10 - Bidirectionality and Attention from Google's Neural Machine Translation
+- 46:38 - CTC Loss
+- 52:12 - Pros and Cons of Encoder-Decoder LSTM Architectures
+- 54:55 - WaveNet

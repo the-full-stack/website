@@ -46,8 +46,8 @@ The week of February 8, we cover CNNs and Computer Vision Applications, and intr
 
 The week of February 15, we cover RNNs and applications in Natural Language Processing, and start doing sequence processing in lab.
 
-- Lecture 3: RNNs and NLP Applications
-- Lab 3: RNNs
+- [Lecture 3: RNNs](./lecture-3.md)
+- [Lab 3: RNNs](./lab-3.md)
 
 ## Week 4: Transformers
 
