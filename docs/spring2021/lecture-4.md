@@ -11,3 +11,15 @@
 [PDF Download](https://drive.google.com/file/d/1F9jYJc9uqYs2UswKJALC4nzKR6cD5jCW/view)
 
 ## Notes
+
+In this video, you will learn about the origin of transfer learning in computer vision, its application in NLP in the form of embedding, NLP's ImageNet moment, and the Transformers model families.
+
+00:00 - Introduction
+00:42 - Transfer Learning in Computer Vision
+04:00 - Embeddings and Language Models
+10:09 - NLP's ImageNet moment: ELMO and ULMFit on datasets like SQuAD, SNLI, and GLUE
+16:49 - Rise of Transformers
+18:20 - Attention in Detail: (Masked) Self-Attention, Positional Encoding, and Layer Normalization
+27:33 - Transformers Variants: BERT, GPT/GPT-2/GPT-3, DistillBERT, T5, etc.
+36:20 - GPT3 Demos
+42:53 - Future Directions
