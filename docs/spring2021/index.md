@@ -55,12 +55,15 @@ The week of February 22, we talk about the successes of transfer learning and th
 
 - Lecture 4: Transfer Learning and Transformers
 - Lab 4: Transformers
+<!-- - [Lecture 4: Transfer Learning and Transformers](./lecture-4.md)
+- [Lab 4: Transformers](./lab-4.md) -->
 
 ## Week 5: ML Projects
 
 The week of March 1, our synchronous online course begins with the first "Full Stack" lecture: Setting up ML Projects.
 
 - Lecture 5: Setting up ML Projects
+<!-- - [Lecture 5: Setting up ML Projects](./lecture-5.md) -->
 
 Those in the syncronous online course will have their first weekly assignment: Assignment 1, available on Gradescope.
 
