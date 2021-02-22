@@ -11,3 +11,15 @@
 [PDF Download](https://drive.google.com/file/d/1p2XC0RScBt56s5Q38Cr7EkBD9Q2FPxOY/view)
 
 ## Notes
+
+In this video, you will learn how to set up Machine Learning projects like a pro. This includes an understanding of the ML lifecycle, an acute mind of the feasibility and impact, an awareness of the project archetypes, and an obsession with metrics and baselines.
+
+- 00:00 - Introduction
+- 01:45 - Why Do ML Projects Fail?
+- 02:53 - Lecture Overview and Running Case Study
+- 06:14 - Lifecycle (Thinking about the activities in an ML project)
+- 12:53 - Prioritizing Projects (Assessing the feasibility and impact of the projects)
+- 36:51 - Archetypes (Knowing the main categories of projects and implications for project management)
+- 49:06 - Metrics (Picking a single number to optimize)
+- 01:02:36 - Baselines (Figuring out if your model is performing well)
+- 01:10:21 - Conclusion
