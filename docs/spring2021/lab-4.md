@@ -14,8 +14,8 @@ No slides
 
 In this lab, you use the LineCNN + LSTM model with CTC loss from lab 3 as an "encoder" of the image, and then send it through Transformer decoder layers.
 
-00:00 - Introduction
-01:43 - LineCNNTransformer class
-04:50 - TransformerLitModel
-06:51 - Code to make predictions
-08:50 - Training guidelines
+- 00:00 - Introduction
+- 01:43 - LineCNNTransformer class
+- 04:50 - TransformerLitModel
+- 06:51 - Code to make predictions
+- 08:50 - Training guidelines
