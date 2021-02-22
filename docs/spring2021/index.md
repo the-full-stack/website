@@ -53,10 +53,8 @@ The week of February 15, we cover RNNs and applications in Natural Language Proc
 
 The week of February 22, we talk about the successes of transfer learning and the Transformer architecture, and start using it in lab.
 
-- Lecture 4: Transfer Learning and Transformers
-- Lab 4: Transformers
-<!-- - [Lecture 4: Transfer Learning and Transformers](./lecture-4.md)
-- [Lab 4: Transformers](./lab-4.md) -->
+- [Lecture 4: Transfer Learning and Transformers](./lecture-4.md)
+- [Lab 4: Transformers](./lab-4.md)
 
 ## Week 5: ML Projects
 
