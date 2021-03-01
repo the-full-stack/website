@@ -53,6 +53,12 @@ Projects will be presented as five-minute videos and associated reports, and ope
 
 The best projects will be awarded and publicized by Full Stack Deep Learning.
 
+If you want to find a partner, please post in the #spring2021-projects Slack channel with your idea or just that you're available to pair up.
+
+Project proposals are due on Gradescope a few weeks into the course.
+
+<!-- Please read [more information about the projects](./projects). -->
+
 ## Certificate
 
 Those who complete the assignments and project will receive a certificate that can, for example, be displayed on LinkedIn.

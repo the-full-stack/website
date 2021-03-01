@@ -52,7 +52,7 @@ nav:
       - 'spring2021/lecture-2b.md'
       - 'spring2021/lecture-3.md'
       - 'spring2021/lecture-4.md'
-      #- 'spring2021/lecture-5.md'
+      - 'spring2021/lecture-5.md'
     - 'Labs':
       - 'spring2021/lab-1.md'
       - 'spring2021/lab-2.md'

@@ -9,12 +9,10 @@ hide:
 
 ## Current Course
 
-We are teaching a major update of the course Spring 2021 as an official UC Berkeley course and as an online course.
-
-As always, we are posting all materials online.
+We are teaching a major update of the course Spring 2021 as an official UC Berkeley course and as an online course, with all lectures and labs available for free.
 
 <div style="text-align: center; margin-top: 1em;">
-  <a class="md-button md-button--primary" href="/spring2021">Go to Course</a>
+  <a class="md-button md-button--primary" href="/spring2021">🚀Spring 2021 Online Course🚀</a>
 </div>
 
 ## About this course
@@ -24,7 +22,6 @@ However, training the model is just one part of shipping a deep learning project
 This course teaches full-stack production deep learning:
 
 <img src="images/positioning_v3.png" width="430px" />
-
 
 - Formulating the problem and estimating project cost
 - Finding, cleaning, labeling, and augmenting data
@@ -56,8 +53,9 @@ While we cover the basics of deep learning (backpropagation, convolutional neura
   <figcaption>Our March 2019 Bootcamp</figcaption>
 </figure>
 
-## Previous Course Offerings
+## Course Offerings
 
+- [🚀Spring 2021🚀](/spring2021) Online Course
 - [Spring 2021](https://bit.ly/berkeleyfsdl) CSE 194-080 - UC Berkeley Undergraduate course
 - [Spring 2020](https://bit.ly/uwfsdl) CSEP 590C - University of Washington Professional Master's Program course
 - [✨Fall 2019✨](https://fall2019.fullstackdeeplearning.com) nicely formatted videos and notes from our weekend bootcamp

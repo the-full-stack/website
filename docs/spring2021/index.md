@@ -34,6 +34,10 @@ The week of February 1, we do a blitz review of the fundamentals of deep learnin
 - [Notebook: Coding a neural net from scratch](./notebook-1.md)
 - [Lab 1: Setup and Intro](./lab-1.md)
 
+Reading:
+
+[How the backpropagation algorithm works](http://neuralnetworksanddeeplearning.com/chap2.html)
+
 ## Week 2: CNNs
 
 The week of February 8, we cover CNNs and Computer Vision Applications, and introduce a CNN in lab.
@@ -42,12 +46,24 @@ The week of February 8, we cover CNNs and Computer Vision Applications, and intr
 - [Lecture 2B: Computer Vision Applications](./lecture-2b.md)
 - [Lab 2: CNNs](./lab-2.md)
 
+Reading:
+
+[A brief introduction to Neural Style Transfer](https://towardsdatascience.com/a-brief-introduction-to-neural-style-transfer-d05d0403901d)
+
+[Improving the way neural networks learn](http://neuralnetworksanddeeplearning.com/chap3.html)
+
 ## Week 3: RNNs
 
 The week of February 15, we cover RNNs and applications in Natural Language Processing, and start doing sequence processing in lab.
 
 - [Lecture 3: RNNs](./lecture-3.md)
 - [Lab 3: RNNs](./lab-3.md)
+
+Reading:
+
+[The Unreasonable Effectiveness of Recurrent Neural Networks](http://karpathy.github.io/2015/05/21/rnn-effectiveness/)
+
+[Attention Craving RNNS: Building Up To Transformer Networks](https://towardsdatascience.com/attention-craving-rnns-a-journey-into-attention-mechanisms-eec840fbc26f)
 
 ## Week 4: Transformers
 
@@ -56,51 +72,70 @@ The week of February 22, we talk about the successes of transfer learning and th
 - [Lecture 4: Transfer Learning and Transformers](./lecture-4.md)
 - [Lab 4: Transformers](./lab-4.md)
 
+Reading:
+
+[Transformers from Scratch](http://peterbloem.nl/blog/transformers)
+
 ## Week 5: ML Projects
 
 The week of March 1, our synchronous online course begins with the first "Full Stack" lecture: Setting up ML Projects.
 
-- Lecture 5: Setting up ML Projects
-<!-- - [Lecture 5: Setting up ML Projects](./lecture-5.md) -->
+- [Lecture 5: Setting up ML Projects](./lecture-5.md)
 
-Those in the syncronous online course will have their first weekly assignment: Assignment 1, available on Gradescope.
+Reading:
+
+[Rules of Machine Learning](https://developers.google.com/machine-learning/guides/rules-of-ml)
+
+Those in the syncronous online course will have their first weekly assignment: **Assignment 1**, available on Gradescope.
 
 ## Week 6: Infra & Tooling
 
 The week of March 7, we tour the landscape of infrastructure and tooling for deep learning.
-In lab, we learn to manage experiments.
 
 - Lecture 6: Infrastructure & Tooling
-- Lab 5: Experiment Management
 
-Those in the syncronous online course will have to work on Assignment 2.
+Reading:
+
+[Machine Learning: The High-Interest Credit Card of Technical Debt](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
+
+Those in the syncronous online course will have to work on **Assignment 2**.
 
 ## Week 7: Troubleshooting
 
 The week of March 14, we talk about how to best troubleshoot training.
-In lab, we move from lines to paragraphs.
+In lab, we learn to manage experiments.
 
 - Lecture 7: Troubleshooting DNNs
-- Lab 6: Line Detection or Paragraph Recognition
+- Lab 5: Experiment Management
 
-Those in the syncronous online course will have to work on Assignment 3.
+Reading:
+
+[Why is machine learning hard?](http://ai.stanford.edu/~zayd/why-is-machine-learning-hard.html)
+
+Those in the syncronous online course will have to work on **Assignment 3**.
 
 ## Week 8: Data
 
-The week of March 21, we talk about Data Management.
+The week of March 21, we talk about Data Management, and label some data in lab.
 
 - Lecture 8: Data Management
-- Lab 7: Data Management
+- Lab 6: Data Management
 
-Those in the syncronous online course will have to work on Assignment 4.
+Reading:
+
+[Emerging architectures for modern data infrastructure](https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/)
+
+Those in the syncronous online course will have to work on **Assignment 4**.
 
 ## Week 9: Ethics
 
 The week of March 28, we discuss ethical considerations.
+In lab, we move from lines to paragraphs.
 
 - Lecture 9: AI Ethics
+- Lab 7: Line Detection or Paragraph Recognition
 
-Those in the synchronous online course will have to submit their project proposals.
+Those in the synchronous online course will have to submit their **project proposals**.
 
 ## Week 10: Testing
 
