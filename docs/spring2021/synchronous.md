@@ -57,7 +57,7 @@ If you want to find a partner, please post in the #spring2021-projects Slack cha
 
 Project proposals are due on Gradescope a few weeks into the course.
 
-<!-- Please read [more information about the projects](./projects). -->
+Please read [more information about the projects](https://docs.google.com/document/d/1wyDSJsunIlheSRXiGCVEnrqYU7RPyvAX2mkAwmMKlMk/).
 
 ## Certificate
 
