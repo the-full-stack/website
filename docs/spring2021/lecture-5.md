@@ -1,5 +1,7 @@
 # Lecture 5: ML Projects
 
+Learn how to set up Machine Learning projects like a pro. This includes an understanding of the ML lifecycle, an acute mind of the feasibility and impact, an awareness of the project archetypes, and an obsession with metrics and baselines.
+
 ## Video
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/pxisK6RMn1s" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -12,11 +14,9 @@
 
 ## Detailed Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
+*By [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/)*
 
-## 1 - Why Do ML Projects Fail?
+### 1 - Why Do ML Projects Fail?
 
 Based on [<u>a report from
 TechRepublic</u>](https://www.techrepublic.com/article/why-85-of-ai-projects-fail/)
@@ -40,7 +40,7 @@ cause any AI project to crash and burn.
 -   Many ML projects are poorly managed because of a lack of interest
  from leadership.
 
-## 2 - Lifecycle
+### 2 - Lifecycle
 
 It’s essential to understand what constitutes all of the activities in a
 machine learning project. Typically speaking, there are four major
@@ -66,7 +66,7 @@ Additionally, it might be useful to understand state-of-the-art results
 in your application domain so that you know what’s possible and what to
 try next.
 
-## 3 - Prioritizing Projects
+### 3 - Prioritizing Projects
 
 To prioritize projects to work on, you want to find high-impact problems
 and assess the potential costs associated with them. The picture below
@@ -75,7 +75,7 @@ high impact and high feasibility.
 
 <img src="/spring2021/lecture-5-notes-media/image2.png" style="width:6.5in;height:3.55556in" />
 
-### High Impact
+#### High Impact
 
 There are no silver bullets to find high-impact ML problems to work on,
 but here are a few useful mental models:
@@ -88,7 +88,7 @@ but here are a few useful mental models:
 
 -   What are other people doing?
 
-### Cheap Prediction
+#### Cheap Prediction
 
  In the book “[<u>Prediction
 Machines</u>](https://www.amazon.com/Prediction-Machines-Economics-Artificial-Intelligence/dp/1633695670),”
@@ -99,7 +99,7 @@ decision making, cheap predictions would be universal for problems
 across business domains*. Therefore, you should look for projects where
 cheap predictions will have a huge business impact.
 
-### Product Needs
+#### Product Needs
 
 Another lens is to think about what your product needs. In the article
 “[<u>Three Principles for Designing ML-Powered
@@ -109,7 +109,7 @@ product perspective and looking for *parts of the product experience
 with high friction*. Automating those parts is exactly where there is a
 lot of impact for ML to make your business better.
 
-### ML Strength
+#### ML Strength
 
 In his popular blog post “[<u>Software
 2.0</u>](https://medium.com/@karpathy/software-2-0-a64152b37c35),”
@@ -122,7 +122,7 @@ computationally expensive. Therefore, you should look for *complicated
 rule-based software* where we can learn the rules instead of programming
 them.
 
-### Inspiration From Others
+#### Inspiration From Others
 
 Instead of reinventing the wheel, you can look at what other companies
 are doing. In particular, check out papers from large frontier
@@ -182,14 +182,14 @@ Note</u>](https://docs.google.com/document/d/15vCMf7SbDuxST9Q-rWtx8o7qHJQN2pE5ur
  music</u>](https://hackernoon.com/spotifys-discover-weekly-how-machine-learning-finds-your-new-music-19a41ab76efe)
  (Sophia Ciocca, 2017)
 
-### High Feasibility
+#### High Feasibility
 
 The three primary cost drivers of ML projects in order of importance are
 data availability, accuracy requirement, and problem difficulty.
 
 <img src="/spring2021/lecture-5-notes-media/image6.png" style="width:6.5in;height:3.02778in" />
 
-### Data Availability
+#### Data Availability
 
 Here are the questions you need to ask concerning the data availability:
 
@@ -203,7 +203,7 @@ Here are the questions you need to ask concerning the data availability:
 
 -   What are the data security requirements?
 
-### Accuracy Requirement
+#### Accuracy Requirement
 
 Here are the questions you need to ask concerning the accuracy
 requirement:
@@ -219,7 +219,7 @@ super-linearly** in the accuracy requirement. The fundamental reason is
 that you typically need a lot more data and more high-quality labels to
 achieve high accuracy numbers.
 
-### Problem Difficulty
+#### Problem Difficulty
 
 Here are the questions you need to ask concerning the problem
 difficulty:
@@ -275,7 +275,7 @@ assessment:
 
 -   Are you “really sure” that you need ML at all?
 
-## 4 - Archetypes
+### 4 - Archetypes
 
 So far, we’ve talked about the lifecycle and the impact of all machine
 learning projects. Ultimately, we generally want these projects, or
@@ -329,7 +329,7 @@ questions. We’ll dive deeper into each.
 </tbody>
 </table>
 
-## Software 2.0
+### Software 2.0
 
 Software 2.0, which we previously alluded to from [<u>the Karpathy
 article</u>](https://medium.com/@karpathy/software-2-0-a64152b37c35), is
@@ -361,7 +361,7 @@ making the product better. Ideally, you should have a quantitative
 assessment of what makes your product “better” and map model improvement
 to it.
 
-### Human-in-the-Loop (HIL)
+#### Human-in-the-Loop (HIL)
 
 HIL systems are defined as **machine learning systems where the output
 of your model will be reviewed by a human before being executed in the
@@ -371,13 +371,13 @@ particular slide design. Every output of the ML model is considered and
 executed upon by a human, who ultimately has to decide on the slide’s
 design.
 
-### Autonomous Systems
+#### Autonomous Systems
 
 Autonomous systems are defined as **machine learning systems where the
 system itself makes decisions or engages in outputs that are almost
 never reviewed by a human**. Canonically, consider the self-driving car!
 
-### Feasibility
+#### Feasibility
 
 <img src="/spring2021/lecture-5-notes-media/image5.png" style="width:6.5in;height:3.97222in" />
 
@@ -435,7 +435,7 @@ approach of constraining the problem for the autonomous system: they
 only run self-driving cars in senior living communities, a narrow subset
 of the broader self-driving problem.
 
-## 5 - Metrics
+### 5 - Metrics
 
 So far, we’ve talked about the overall ideas around picking projects and
 structuring them based on their archetypes and the specific
@@ -443,7 +443,7 @@ considerations that go into them. Now, we’ll shift gears and be a little
 more tactical to focus on metrics and baselines, which will help you
 execute projects more effectively.
 
-### Choosing a Metric
+#### Choosing a Metric
 
 **Metrics help us evaluate models**. There’s a delicate balance between
 the real world (which is always messy and multifaceted) and the machine
@@ -461,7 +461,7 @@ together a formula that combines all the metrics you care about. Note
 that it’s important to be flexible and regularly update this formula as
 your models or the requirements for the product change.
 
-### Combining Metrics
+#### Combining Metrics
 
 Two simple ways of combining metrics into a formula are **averaging**
 and **thresholding**.
@@ -482,7 +482,7 @@ metrics (how good/bad they might be).
 
 <img src="/spring2021/lecture-5-notes-media/image7.png" style="width:6.5in;height:3.43056in" />
 
-## 6 - Baselines
+### 6 - Baselines
 
 In any product development process, setting expectations properly is
 vital. For machine learning products, **baselines help us set
@@ -534,7 +534,7 @@ Concentrating data collection strategically, ideally in classes where
 the model is least performant, is a simple way of improving the quality
 of the baseline.
 
-## TLDR
+### TLDR
 
 1.  Machine learning projects are iterative. Deploy something fast to
  begin the cycle.
@@ -549,7 +549,7 @@ of the baseline.
 
 5.  Good baselines help you invest your effort the right way.
 
-## Further Resources
+### Further Resources
 
 -   Andrew Ng’s “[<u>Machine Learning
  Yearning</u>](https://d2wvfoqc9gyqzf.cloudfront.net/content/uploads/2018/09/Ng-MLY01-13.pdf)”
