@@ -1,7 +1,7 @@
 # Lecture 6: Infrastructure & Tooling
 
-<!-- !!! info "Detailed Notes"
-    [Detailed notes](https://docs.google.com/document/d/1AA-QEMxsPTygvBhrrrm_0KTYGBZ-dtHlyGY-00iN65s/) are available thanks to James Le and Vishnu Rachakonda. -->
+!!! info "Detailed Notes"
+    [Detailed notes](https://docs.google.com/document/d/1AA-QEMxsPTygvBhrrrm_0KTYGBZ-dtHlyGY-00iN65s/) are available thanks to James Le and Vishnu Rachakonda.
 
 ## Video
 
