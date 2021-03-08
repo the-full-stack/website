@@ -92,7 +92,7 @@ Those in the syncronous online course will have their first weekly assignment: *
 
 The week of March 7, we tour the landscape of infrastructure and tooling for deep learning.
 
-- Lecture 6: Infrastructure & Tooling
+- [Lecture 6: Infrastructure & Tooling](./lecture-6.md)
 
 Reading:
 
