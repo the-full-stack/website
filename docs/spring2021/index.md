@@ -82,6 +82,9 @@ The week of March 1, our synchronous online course begins with the first "Full S
 
 - [Lecture 5: Setting up ML Projects](./lecture-5.md)
 
+!!! info ""
+    ☝️With detailed notes!
+
 Reading:
 
 [Rules of Machine Learning](https://developers.google.com/machine-learning/guides/rules-of-ml)
