@@ -1,7 +1,4 @@
-# Lecture 6: Infrastructure & Tooling
-
-!!! info "Detailed Notes"
-    [Detailed notes](https://docs.google.com/document/d/1AA-QEMxsPTygvBhrrrm_0KTYGBZ-dtHlyGY-00iN65s/) are available thanks to James Le and Vishnu Rachakonda.
+# ✨Lecture 6: Infrastructure & Tooling✨
 
 ## Video
 
@@ -29,18 +26,18 @@ The **reality** is that you will have to:
 - Deploy the model when you are happy
 - Monitor the predictions that the model makes on production data so that you can gather some good examples and feed them back to the initial data flywheel loop
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling1.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling1.png" />
 
 For example, the slide above is from [Andrej Karpathy’s talk](https://www.youtube.com/watch?v=oBklltKXtDE) at PyTorch Devcon 2019 discussing Tesla’s self-driving system. Their dream is to build a system that goes from the data gathered through their training, evaluation, and inference processes and gets deployed on the cars. As people drive, more data will be collected and added back to the training set. As this process repeats, Tesla’s ML engineers can all go on vacation :)
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling2.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling2.png" />
 
 
 The picture above (from the famous Google paper “[Machine Learning: The High-Interest Credit Card of Technical Debt](https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf)”) shows that **the ML code portion in a real-world ML system is a lot smaller than the infrastructure needed for its support**. As ML projects move from small-scale research experiments to large-scale industry deployments, your organization most likely will require a massive amount of infrastructure to support large inferences, distributed training, data processing pipelines, reproducible experiments, model monitoring, etc.
 
 ### 2 - Three Buckets of Tooling Landscape
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling3.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling3.png" />
 
 We can break down the landscape of all this necessary infrastructure into three buckets: data, training/evaluation, and deployment.
 
@@ -66,7 +63,7 @@ However, **there are many problems with using notebooks as a last resort when wo
 - Notebooks have **out-of-order execution artifacts**, meaning that you can easily destroy your current working state when jumping between cells of notebooks.
 - It is also difficult to **run long or distributed tasks**. If you want to handle big datasets, better pull your code out of notebooks, start a Python folder, create fixtures, write tests, and then deploy your application to a cluster.
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling4.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling4.png" />
 
 Recently, a new application framework called [Streamlit](https://streamlit.io/) was introduced. The creators of the framework wanted machine learning engineers to be able to create beautiful apps without needing a tools team; in other words, these internal tools should arise as a natural byproduct of the machine learning workflow. According to [the launch blog post](https://towardsdatascience.com/coding-ml-tools-like-you-code-ml-models-ddba3357eace), here are the core principles of Streamlit:
 
@@ -99,7 +96,7 @@ GPUs have a different amount of RAM. You can only compute on the data that is on
 
 For deep learning, you use 32-bit precision. In fact, starting with the Volta architecture, NVIDIA developed **tensor cores** that are specifically designed for deep learning operations (mixed-precision between 32 and 16 bit). Tensor Cores reduce the used cycles needed for calculating multiply and addition operations and the reliance on repetitive shared memory access, thus saving additional cycles for memory access. This is very useful for the convolutional/Transformer models that are prevalent nowadays.
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling5.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling5.png" />
 
 Let’s go through different GPU architectures:
 
@@ -145,7 +142,7 @@ For this challenge of allocating resources to experimenting users, there are som
 
 If you’ve built a deep learning model in the last few years, you’ve probably used a deep learning framework. Frameworks like TensorFlow have crucially shaped the development of the deep learning revolution. The reality is that deep learning frameworks have existed for a while. Projects like [Theano](https://pypi.org/project/Theano/) and [Torch](http://torch.ch/) have been around for 10+ years. In contemporary use, there are three main frameworks we’ll focus on - [TensorFlow](https://www.tensorflow.org/), [Keras](https://keras.io/), and [PyTorch](https://pytorch.org/). We evaluate frameworks based on their utility for **production** and **development**.
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling6.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling6.png" />
 
 
 When TensorFlow came out in 2015, it was billed heavily as a production-optimized DL framework with an underlying static optimized graph that could be deployed across compute environments. However, TF 1.0 had a pretty unpleasant development experience; in addition to developing your models, you had to consider the underlying execution graph you were describing. This kind of “meta-development” posed a challenge for newcomers. The Keras project solved many of these issues by offering a simpler way to define models, and eventually became a part of TensorFlow. PyTorch, when it was introduced in 2017, offered a polar opposite to TensorFlow. It made development super easy by consisting almost exclusively of simple Python commands, but was not designed to be fast at scale.
@@ -202,6 +199,6 @@ One of the earliest examples of such a system is Facebook’s [FBLearner](https:
 
 In conclusion, take a look at the below table to compare a select number of MLOps platform vendors. Pricing is quite variable.
 
-<img src="/spring2021/lecture-6-notes-media/Infra-Tooling7.png" style="width:4.42708in;height:4.12966in" />
+<img src="/spring2021/lecture-6-notes-media/Infra-Tooling7.png" />
 
 *Staying up to date across all the tooling can be a real challenge, but check out FSDL’s Tooling Tuesdays on [Twitter](https://twitter.com/full_stack_dl) as a starting point!*

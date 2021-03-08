@@ -97,6 +97,9 @@ The week of March 7, we tour the landscape of infrastructure and tooling for dee
 
 - [Lecture 6: Infrastructure & Tooling](./lecture-6.md)
 
+!!! info ""
+    ☝️With detailed notes!
+
 Reading:
 
 [Machine Learning: The High-Interest Credit Card of Technical Debt](https://storage.googleapis.com/pub-tools-public-publication-data/pdf/43146.pdf)
