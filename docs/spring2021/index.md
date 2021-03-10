@@ -80,10 +80,7 @@ Reading:
 
 The week of March 1, our synchronous online course begins with the first "Full Stack" lecture: Setting up ML Projects.
 
-- [Lecture 5: Setting up ML Projects](./lecture-5.md)
-
-!!! info ""
-    ☝️With detailed notes!
+- [Lecture 5: Setting up ML Projects](./lecture-5.md) (👈 with detailed notes)
 
 Reading:
 
@@ -95,10 +92,7 @@ Those in the syncronous online course will have their first weekly assignment: *
 
 The week of March 7, we tour the landscape of infrastructure and tooling for deep learning.
 
-- [Lecture 6: Infrastructure & Tooling](./lecture-6.md)
-
-!!! info ""
-    ☝️With detailed notes!
+- [Lecture 6: Infrastructure & Tooling](./lecture-6.md) (👈 with detailed notes)
 
 Reading:
 
@@ -114,6 +108,9 @@ In lab, we learn to manage experiments.
 - Lecture 7: Troubleshooting DNNs
 - Lab 5: Experiment Management
 
+<!-- - [Lecture 7: Troubleshooting DNNs](./lecture-7.md) (👈 with detailed notes) -->
+<!-- - [Lab 5: Experiment Management](./lab-5.md) -->
+
 Reading:
 
 [Why is machine learning hard?](http://ai.stanford.edu/~zayd/why-is-machine-learning-hard.html)
@@ -125,7 +122,10 @@ Those in the syncronous online course will have to work on **Assignment 3**.
 The week of March 21, we talk about Data Management, and label some data in lab.
 
 - Lecture 8: Data Management
-- Lab 6: Data Management
+- Lab 6: Data Labeling
+
+<!-- - [Lecture 8: Data Management](./lecture-8.md) (👈 with detailed notes) -->
+<!-- - [Lab 6: Data Labeling](./lab-6.md) -->
 
 Reading:
 
@@ -141,6 +141,9 @@ In lab, we move from lines to paragraphs.
 - Lecture 9: AI Ethics
 - Lab 7: Line Detection or Paragraph Recognition
 
+<!-- - [Lecture 9: AI Ethics](./lecture-9.md) (👈 with detailed notes) -->
+<!-- - [Lab 7: Line Detection or Paragraph Recognition](./lab-7.md) -->
+
 Those in the synchronous online course will have to submit their **project proposals**.
 
 ## Week 10: Testing
@@ -149,6 +152,9 @@ The week of April 5, we talk about Testing and Explainability, and set up Contin
 
 - Lecture 10: Testing & Explainability
 - Lab 8: Testing & CI
+
+<!-- - [Lecture 10: Testing & Explainability](./lecture-10.md) (👈 with detailed notes) -->
+<!-- - [Lab 8: Testing & CI](./lab-8.md) -->
 
 Those in the synchronous online course will work on their projects.
 
@@ -159,6 +165,9 @@ The week of April 12, we cover Deployment and Monitoring, and deploy our model t
 - Lecture 11: Deployment & Monitoring
 - Lab 9: Web Deployment
 
+<!-- - [Lecture 11: Deployment & Monitoring](./lecture-11.md) (👈 with detailed notes) -->
+<!-- - [Lab 9: Web Deployment](./lab-9.md) -->
+
 Those in the synchronous online course will work on their projects.
 
 ## Week 12: Research
@@ -168,6 +177,9 @@ The week of April 19, we talk research, and set up robust monitoring for our mod
 - Lecture 12: Research Directions
 - Lab 10: Monitoring
 
+<!-- - [Lecture 12: Research Directions](./lecture-12.md) (👈 with detailed notes) -->
+<!-- - [Lab 10: Monitoring](./lab-10.md) -->
+
 Those in the synchronous online course will work on their projects.
 
 ## Week 13: Teams
@@ -175,6 +187,8 @@ Those in the synchronous online course will work on their projects.
 The week of April 26, we discuss ML roles and team structures, as well as big companies vs startups.
 
 - Lecture 13: ML Teams & Startups
+
+<!-- - [Lecture 13: ML Teams & Startups](./lecture-13.md) -->
 
 Those in the synchronous online course will submit 5-minute videos of their projects and associated write-ups.
 
