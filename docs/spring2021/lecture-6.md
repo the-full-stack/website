@@ -1,4 +1,4 @@
-# ✨Lecture 6: Infrastructure & Tooling✨
+# Lecture 6: Infrastructure & Tooling
 
 ## Video
 

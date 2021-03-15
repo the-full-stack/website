@@ -105,11 +105,9 @@ Those in the syncronous online course will have to work on **Assignment 2**.
 The week of March 14, we talk about how to best troubleshoot training.
 In lab, we learn to manage experiments.
 
-- Lecture 7: Troubleshooting DNNs
-- Lab 5: Experiment Management
-
-<!-- - [Lecture 7: Troubleshooting DNNs](./lecture-7.md) (👈 with detailed notes) -->
-<!-- - [Lab 5: Experiment Management](./lab-5.md) -->
+ <!-- (👈 with detailed notes) -->
+- [Lecture 7: Troubleshooting DNNs](./lecture-7.md)
+- [Lab 5: Experiment Management](./lab-5.md)
 
 Reading:
 

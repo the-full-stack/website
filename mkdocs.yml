@@ -54,19 +54,19 @@ nav:
       - 'spring2021/lecture-4.md'
       - 'spring2021/lecture-5.md'
       - 'spring2021/lecture-6.md'
-      # - 'spring2021/lecture-7.md'
-      # - 'spring2021/lecture-8.md'
-      # - 'spring2021/lecture-9.md'
-      # - 'spring2021/lecture-10.md'
-      # - 'spring2021/lecture-11.md'
-      # - 'spring2021/lecture-12.md'
-      # - 'spring2021/lecture-13.md'
+      - 'spring2021/lecture-7.md'
+      # - 'spring2021/lecture-8.md'  # March 22
+      # - 'spring2021/lecture-9.md'  # March 29
+      # - 'spring2021/lecture-10.md' # April 5
+      # - 'spring2021/lecture-11.md' # April 12
+      # - 'spring2021/lecture-12.md' # April 19
+      # - 'spring2021/lecture-13.md' # April 26
     - 'Labs':
       - 'spring2021/lab-1.md'
       - 'spring2021/lab-2.md'
       - 'spring2021/lab-3.md'
       - 'spring2021/lab-4.md'
-      # - 'spring2021/lab-5.md'
+      - 'spring2021/lab-5.md'
       # - 'spring2021/lab-6.md'
       # - 'spring2021/lab-7.md'
       # - 'spring2021/lab-8.md'
