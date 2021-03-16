@@ -423,7 +423,7 @@ the art), tuning hyperparameters, or adding features. Some notes:
     learn features of its own accord. If all else fails, it can be
     beneficial in a practical setting.
 
-<img src="/spring2021/lecture-7-notes-media/image15.png" />
+<img src="/spring2021/lecture-7-notes-media/image13.png" />
 
 Step 2: Address Overfitting
 ---------------------------
@@ -441,7 +441,7 @@ early stopping, removing features, and reducing model size. Early
 stopping is a personal choice; the fast.ai community is a strong
 proponent.
 
-<img src="/spring2021/lecture-7-notes-media/image13.png" />
+<img src="/spring2021/lecture-7-notes-media/image15.png" />
 
 Step 3: Address Distribution Shift
 ----------------------------------
