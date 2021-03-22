@@ -25,8 +25,7 @@ learning practitioners.
 
 <img src="/spring2021/lecture-8-notes-media/image3.png" />
 
-1 - Data Management Overview
-============================
+### 1 - Data Management Overview
 
 When we think about what data management for deep learning entails,
 there might be many different data sources: images on S3, text files on
@@ -64,8 +63,7 @@ existing dataset will often be the best bang to your buck.
 terms, but it’s important to not over-complicate things and make
 data management a rocket science.
 
-2 - Data Sources
-================
+### 2 - Data Sources
 
 So, where do the training data come from? **Most deep learning
 applications require lots of labeled data** (with exceptions in
@@ -74,8 +72,7 @@ publicly available datasets that can serve as a starting point, but
 there is no competitive advantage of using them. In fact, most companies
 usually spend a lot of money and time labeling their own data.
 
-Data Flywheel
--------------
+#### Data Flywheel
 
 <img src="/spring2021/lecture-8-notes-media/image13.png" />
 
@@ -85,8 +82,7 @@ users contribute good data back to you and improve the model
 predictions. This can enable rapid improvement after you get that v1
 model out into the real world.
 
-Semi-Supervised Learning
-------------------------
+#### Semi-Supervised Learning
 
 Semi-supervised learning is a relatively recent learning technique where
 the training data is autonomously (or automatically) labeled. It is
@@ -133,8 +129,7 @@ post
 -   Facebook AI’s [<u>VISSL library</u>](https://vissl.ai/) for the SEER
 algorithm
 
-Data Augmentation
------------------
+#### Data Augmentation
 
 Recent advances in deep learning models have been largely attributed to
 the quantity and diversity of data gathered in recent years. Data
@@ -172,8 +167,7 @@ post
 -   Edward Ma’s “[<u>nlpaug</u>](https://github.com/makcedward/nlpaug)”
 repository
 
-Synthetic Data
---------------
+#### Synthetic Data
 
 Related to the concept of data augmentation is synthetic data, an
 underrated idea that is almost always worth starting with. Synthetic
@@ -221,8 +215,7 @@ simulator
 Research</u>](https://openai.com/blog/ingredients-for-robotics-research/)”
 post
 
-3 - Data Storage
-================
+### 3 - Data Storage
 
 Data storage requirements for AI vary widely according to the
 application and the source material. Datasets in intelligence, defense,
@@ -241,8 +234,7 @@ There are four building blocks in a data storage system:
 
 4.  The data lake or data warehouse
 
-Filesystem
-----------
+##### Filesystem
 
 The filesystem is the foundational layer of storage.
 
@@ -293,8 +285,7 @@ interfaces
 [<u>PyTorch
 DataLoader</u>](https://pytorch.org/docs/stable/data.html)).
 
-Object Storage
---------------
+#### Object Storage
 
 Object storage is an API over the filesystem that allows users to use a
 command on files (GET, PUT, DELETE) to a service without worrying where
@@ -308,8 +299,7 @@ into the API.
 
 -   It is not as fast as local files but fast enough within the cloud.
 
-Database
---------
+#### Database
 
 A database is a persistent, fast, scalable storage and retrieval of
 structured data.
@@ -341,8 +331,7 @@ issues frequently.
 -   [<u>Redis</u>](https://redis.io/) is handy when you need a simple
 key-value store.
 
-Data Warehouse
---------------
+#### Data Warehouse
 
 A data warehouse is a structured aggregation of data for analysis, known
 as **online analytical processing** (OLAP).
@@ -359,16 +348,14 @@ BigQuery</u>](https://cloud.google.com/bigquery), [<u>Amazon
 Redshift</u>](https://aws.amazon.com/redshift/), and
 [<u>Snowflake</u>](https://www.snowflake.com/).
 
-SQL and DataFrames
-------------------
+#### SQL and DataFrames
 
 Most data solutions use **SQL** as the interface to the data, except for
 some (like Databricks) that use **DataFrames**. SQL is the standard
 interface for structured data. But in the Python ecosystem, Pandas is
 the main DataFrame. Our advice is to become fluent in both.
 
-Data Lake
----------
+#### Data Lake
 
 A data lake is the unstructured aggregation of data from multiple
 sources (databases, logs, expensive data transformations). It operates
@@ -378,8 +365,7 @@ later.
 
 <img src="/spring2021/lecture-8-notes-media/image4.jpg" />
 
-Data “Lakehouse”
-----------------
+#### Data “Lakehouse”
 
 The current trend in the field is to combine data warehouses and data
 lakes in the same suite. The [<u>Databricks Lakehouse
@@ -389,8 +375,7 @@ warehouse and a lake, operated as an open-source project called
 and unstructured data in the platform and use them for analytics
 workloads and machine learning engines.
 
-What Goes Where?
-----------------
+#### What Goes Where?
 
 -   **Binary data** (images, sound files, compressed texts) are stored
 as **objects**.
@@ -417,11 +402,9 @@ Data-Intensive Applications</u>](https://dataintensive.net/),”   which
 provides excellent coverage of tools and approaches to build reliable,
 scalable, and maintainable data storage systems.
 
-4 - Data Processing
-===================
+### 4 - Data Processing
 
-Data Dependencies
------------------
+#### Data Dependencies
 
 Let’s look at a motivational example of training a photo popularity
 predictor every night. For each photo, the training data must include
@@ -454,8 +437,7 @@ databases?
 -   What if many dependency graphs are executing all at once, with
 shared dependencies?
 
-MapReduce
----------
+#### MapReduce
 
 <img src="/spring2021/lecture-8-notes-media/image10.jpg" />
 
@@ -472,8 +454,7 @@ TensorFlow) as part of running a Spark job (unless that model itself is
 programmed in Spark). That’s when you need a workflow management system
 like [<u>Apache Airflow</u>](https://airflow.apache.org/).
 
-DAG
----
+#### DAG
 
 In Airflow, a workflow is defined as a collection of tasks with
 directional dependencies, basically **a directed acyclic graph** (DAG).
@@ -510,8 +491,7 @@ processing ability in SQL (called “analytics engineering.”)
 orchestrator for ML, analytics, and ETL. You can test locally and
 run anywhere with a unified view of data pipelines and assets.
 
-5 - Feature Store
-=================
+### 5 - Feature Store
 
 Feature stores were first popularized by the ML team at Uber as part of
 their
@@ -558,8 +538,7 @@ this, look at how “[<u>command-line tools can be 235x faster than your
 Hadoop
 cluster</u>](https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html)”.
 
-6 - Data Exploration
-====================
+### 6 - Data Exploration
 
 The objective of data exploration is to understand and visualize the
 nature of the data you’re modeling.
@@ -575,8 +554,7 @@ through parallelization.
 -   Similarly, [<u>RAPIDS</u>](https://rapids.ai/) speeds up large
 dataset processing, though it does through the use of GPUs.
 
-7 - Data Labeling
-=================
+### 7 - Data Labeling
 
 Effective data labeling is a core ingredient of production machine
 learning systems. Most data labeling platforms have a standard set of
@@ -594,8 +572,7 @@ reliable than others.
 
 To develop an annotator base, there are a few options.
 
-Sources of Labor
-----------------
+#### Sources of Labor
 
 -   One option is to **hire your own annotators**, which can help with
 the speed and quality of annotations. This, however, can be
@@ -607,8 +584,7 @@ which the quality can be poorer.
 
 -   …or full-service **data labeling companies**.
 
-Service Companies
------------------
+#### Service Companies
 
 There are entire service companies that focus on data labeling that you
 can hire. Hiring such a company makes a great deal of sense, considering
@@ -622,8 +598,7 @@ this space are
 [<u>Labelbox</u>](https://labelbox.com/), and
 [<u>Supervisely</u>](https://supervise.ly/).
 
-Software
---------
+#### Software
 
 If the costs of a full-service data labeling company are prohibitive,
 pure-play labeling software can be an option.
@@ -645,8 +620,7 @@ company to take care of it. Failing that, try to use existing software
 and a part-time annotator base work (in lieu of a crowdsourced
 workforce).
 
-8 - Data Versioning
-===================
+### 8 - Data Versioning
 
 Data versioning is important because machine learning models are part
 code and part data. If the data isn’t versioned, the system isn’t fully
@@ -687,16 +661,15 @@ Level 3: **Specialized solutions for version data**.
 -   You should avoid them until you can identify their unique value add
 to your project.
 
--   Some options here are [<u>DVC</u>](https://dvc.org/),
-[<u>Pachyderm</u>](https://www.pachyderm.com/), and Quill. DVC has
+-   Some options here are [<u>DVC</u>](https://dvc.org/) are
+[<u>Pachyderm</u>](https://www.pachyderm.com/). DVC has
 a Git-like workflow worth taking a closer look at.
 [<u>Dolt</u>](https://www.dolthub.com/) versions databases, if
 that’s your need.
 
 <img src="/spring2021/lecture-8-notes-media/image8.png" />
 
-9 - Data Privacy
-================
+### 9 - Data Privacy
 
 <img src="/spring2021/lecture-8-notes-media/image7.png" />
 
