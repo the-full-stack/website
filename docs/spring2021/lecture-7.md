@@ -1,4 +1,4 @@
-# ✨Lecture 7: Troubleshooting Deep Neural Networks✨
+# Lecture 7: Troubleshooting Deep Neural Networks
 
 ## Video
 
