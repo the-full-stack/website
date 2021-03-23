@@ -1,4 +1,4 @@
-# ✨Lab 5: Experiment Management✨
+# Lab 5: Experiment Management
 
 ## Video
 

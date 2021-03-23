@@ -119,7 +119,7 @@ Those in the syncronous online course will have to work on **Assignment 3**.
 The week of March 21, we talk about Data Management, and label some data in lab.
 
 - [Lecture 8: Data Management](./lecture-8.md) (👈 with detailed notes)
-<!-- - [Lab 6: Data Labeling](./lab-6.md) -->
+- [Lab 6: Data Labeling](./lab-6.md)
 
 Reading:
 
