@@ -132,11 +132,8 @@ Those in the syncronous online course will have to work on **Assignment 4**.
 The week of March 28, we discuss ethical considerations.
 In lab, we move from lines to paragraphs.
 
-- Lecture 9: AI Ethics
-- Lab 7: Line Detection or Paragraph Recognition
-
-<!-- - [Lecture 9: AI Ethics](./lecture-9.md) (👈 with detailed notes) -->
-<!-- - [Lab 7: Paragraph Recognition](./lab-7.md) -->
+- [Lecture 9: AI Ethics](./lecture-9.md) (👈 with detailed notes)
+- Lab 8: Testing & CI
 
 Those in the synchronous online course will have to submit their **project proposals**.
 
@@ -148,6 +145,7 @@ The week of April 5, we talk about Testing and Explainability, and set up Contin
 - Lab 8: Testing & CI
 
 <!-- - [Lecture 10: Testing & Explainability](./lecture-10.md) (👈 with detailed notes) -->
+<!-- - [Lab 7: Paragraph Recognition](./lab-7.md) -->
 <!-- - [Lab 8: Testing & CI](./lab-8.md) -->
 
 Those in the synchronous online course will work on their projects.

@@ -1,4 +1,4 @@
-# ✨Lecture 8: Data Management✨
+# Lecture 8: Data Management
 
 ## Video
 
