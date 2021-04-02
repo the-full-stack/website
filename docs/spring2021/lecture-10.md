@@ -6,8 +6,8 @@
 
 ## Slides
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/TODO" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/pPv1Ww1ao3IrJZ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/TODO/view)
+[PDF Download](https://drive.google.com/file/d/1Aa4SFU6DsP0Sohyrzo_IWgJ3HZj9UT8m/view)
 
 ## Notes

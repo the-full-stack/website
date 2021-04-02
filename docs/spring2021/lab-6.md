@@ -1,4 +1,4 @@
-# ✨Lab 6: Data Labeling✨
+# Lab 6: Data Labeling
 
 ## Video
 

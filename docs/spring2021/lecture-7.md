@@ -31,8 +31,7 @@ math equations and implementing things. This is confirmed by Andrej
 Kaparthy, [<u>as seen in this
 tweet</u>](https://twitter.com/karpathy/status/423990618289733632).
 
-1 - Why Is Deep Learning Troubleshooting Hard?
-==============================================
+### 1 - Why Is Deep Learning Troubleshooting Hard?
 
 Suppose you are trying to reproduce a research paper result for your
 work, but your results are worse. You might wonder why your model’s
@@ -61,8 +60,7 @@ Many different things can cause this:
     classes, splitting train and test set with different
     distributions.
 
-2 - Strategy to Debug Neural Networks
-=====================================
+### 2 - Strategy to Debug Neural Networks
 
 The key idea of deep learning troubleshooting is: *Since it is hard to
 disambiguate errors, it’s best to start simple and gradually ramp up
@@ -76,13 +74,11 @@ previous baselines, etc.
 
 <img src="/spring2021/lecture-7-notes-media/image4.png" />
 
-3 - Start Simple
-================
+### 3 - Start Simple
 
 The first step is the troubleshooting workflow is **starting simple**.
 
-Choose A Simple Architecture
-----------------------------
+#### Choose A Simple Architecture
 
 There are a few things to consider when you want to start simple. The
 first is how to **choose a simple architecture**. These are
@@ -129,8 +125,7 @@ network? Here is the 3-step strategy that we recommend:
 -   Finally, we pass them through some fully-connected layers to an
     output.
 
-Use Sensible Defaults
----------------------
+#### Use Sensible Defaults
 
 After choosing a simple architecture, the next thing to do is to
 **select sensible hyper-parameter defaults** to start with. Here are the
@@ -150,15 +145,13 @@ defaults that we recommend:
 
 -   No regularization and data normalization.
 
-Normalize Inputs
-----------------
+#### Normalize Inputs
 
 The next step is to **normalize the input data**, subtracting the mean
 and dividing by the variance. Note that for images, it’s fine to scale
 values to \[0, 1\] or \[-0.5, 0.5\] (for example, by dividing by 255).
 
-Simplify The Problem
---------------------
+#### Simplify The Problem
 
 The final thing you should do is consider **simplifying the problem**
 itself. If you have a complicated problem with massive data and tons of
@@ -178,8 +171,7 @@ The diagram below neatly summarizes how to start simple:
 
 <img src="/spring2021/lecture-7-notes-media/image6.png" />
 
-4 - Implement and Debug
-=======================
+### 4 - Implement and Debug
 
 To give you a preview, below are the five most common bugs in deep
 learning models that we recognize:
@@ -225,8 +217,7 @@ Here are three pieces of general advice for implementing your model:
 
 <img src="/spring2021/lecture-7-notes-media/image11.png" />
 
-Get Your Model To Run
----------------------
+#### Get Your Model To Run
 
 The first step of implementing bug-free deep learning models is
 **getting your model to run at all**. There are a few things that can
@@ -264,8 +255,7 @@ debugger and talk about **debuggers for deep learning code**:
 
 <img src="/spring2021/lecture-7-notes-media/image14.png" />
 
-Overfit A Single Batch
-----------------------
+#### Overfit A Single Batch
 
 After getting your model to run, the next thing you need to do is to
 **overfit a single batch of data**. This is a heuristic that can catch
@@ -290,8 +280,7 @@ batch and it fails:
 
 <img src="/spring2021/lecture-7-notes-media/image10.png" />
 
-Compare To A Known Result
--------------------------
+#### Compare To A Known Result
 
 Once your model overfits in a single batch, there can still be some
 other issues that cause bugs. The last step here is to **compare your
@@ -331,11 +320,9 @@ neural networks:
 
 <img src="/spring2021/lecture-7-notes-media/image8.png" />
 
-5 - Evaluate
-============
+### 5 - Evaluate
 
-Bias-Variance Decomposition
----------------------------
+#### Bias-Variance Decomposition
 
 To evaluate models and prioritize the next steps in model development,
 we will apply the bias-variance decomposition. The [<u>bias-variance
@@ -371,8 +358,7 @@ preventing overfitting, like regularization.
 
 <img src="/spring2021/lecture-7-notes-media/image12.png" />
 
-Distribution Shift
-------------------
+#### Distribution Shift
 
 Clearly, the application of the bias-variance decomposition to the test
 error has already helped prioritize our next steps for model
@@ -395,8 +381,7 @@ new term, let’s update our test error formula of bias and variance:
 *Test error = irreducible error + bias + variance + distribution shift +
 validation overfitting*
 
-6 - Improve Model and Data
-==========================
+### 6 - Improve Model and Data
 
 Using the updated formula from the last section, we’ll be able to decide
 on and prioritize the right next steps for each iteration of a model. In
@@ -404,8 +389,7 @@ particular, we’ll follow a specific process (shown below).
 
 <img src="/spring2021/lecture-7-notes-media/image1.png" />
 
-Step 1: Address Underfitting
-----------------------------
+#### Step 1: Address Underfitting
 
 We’ll start by addressing underfitting (i.e., reducing bias). The first
 thing to try in this case is to make your model bigger (e.g., add
@@ -425,8 +409,7 @@ the art), tuning hyperparameters, or adding features. Some notes:
 
 <img src="/spring2021/lecture-7-notes-media/image13.png" />
 
-Step 2: Address Overfitting
----------------------------
+#### Step 2: Address Overfitting
 
 After addressing underfitting, move on to solving overfitting.
 Similarly, there’s a recommended series of methods to try in order.
@@ -443,8 +426,7 @@ proponent.
 
 <img src="/spring2021/lecture-7-notes-media/image15.png" />
 
-Step 3: Address Distribution Shift
-----------------------------------
+#### Step 3: Address Distribution Shift
 
 After addressing underfitting and overfitting, If there’s a difference
 between the error on our training validation set vs. our test validation
@@ -463,7 +445,7 @@ adaptation</u>](https://ece.engin.umich.edu/wp-content/uploads/2019/09/4142.pdf)
 
 <img src="/spring2021/lecture-7-notes-media/image9.png" />
 
-### Error Analysis
+##### Error Analysis
 
 Manually evaluating errors to understand model performance is generally
 a high-yield way of figuring out how to improve the model.
@@ -478,7 +460,7 @@ can be effectively structured.
 
 <img src="/spring2021/lecture-7-notes-media/image5.png" />
 
-### Domain Adaptation
+##### Domain Adaptation
 
 Domain adaptation is a class of techniques that train on a “source”
 distribution and generalize to another “target” using only unlabeled
@@ -500,8 +482,7 @@ There are a few different types of domain adaptation:
 Practically speaking, supervised domain adaptation can work really well!
 Unsupervised domain adaptation has a little bit further to go.
 
-Step 4: Rebalance datasets
---------------------------
+#### Step 4: Rebalance datasets
 
 If the test-validation set performance starts to look considerably
 better than the test performance, you may have overfit the validation
@@ -509,8 +490,7 @@ set. This commonly occurs with small validation sets or lots of
 hyperparameter training. If this occurs, resample the validation set
 from the test distribution and get a fresh estimate of the performance.
 
-7 - Tune Hyperparameters
-========================
+### 7 - Tune Hyperparameters
 
 One of the core challenges in hyperparameter optimization is very basic:
 **which hyperparameters should you tune?** As we consider this
@@ -533,8 +513,7 @@ impact on the model:
 
 <img src="/spring2021/lecture-7-notes-media/image2.png" />
 
-Techniques for Tuning Hyperparameter Optimization
--------------------------------------------------
+#### Techniques for Tuning Hyperparameter Optimization
 
 Now that we know which hyperparameters make the most sense to tune
 (using rules of thumb), let’s consider the various methods of actually
@@ -602,8 +581,7 @@ In summary, you should probably start with coarse-to-fine random
 searches and move to Bayesian methods as your codebase matures and
 you’re more certain of your model.
 
-8 - Conclusion
-==============
+### 8 - Conclusion
 
 To wrap up this lecture, deep learning troubleshooting and debugging is
 really hard. It’s difficult to tell if you have a bug because there are

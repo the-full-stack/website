@@ -86,6 +86,8 @@ Reading:
 
 [Rules of Machine Learning](https://developers.google.com/machine-learning/guides/rules-of-ml)
 
+[ML Yearning](https://d2wvfoqc9gyqzf.cloudfront.net/content/uploads/2018/09/Ng-MLY01-13.pdf) (and subscribe to Andrew Ng's [newsletter](https://www.deeplearning.ai/the-batch/))
+
 Those in the syncronous online course will have their first weekly assignment: **Assignment 1**, available on Gradescope.
 
 ## Week 6: Infra & Tooling
@@ -133,7 +135,7 @@ The week of March 28, we discuss ethical considerations.
 In lab, we move from lines to paragraphs.
 
 - [Lecture 9: AI Ethics](./lecture-9.md) (👈 with detailed notes)
-- Lab 8: Testing & CI
+- [Lab 7: Paragraph Recognition](./lab-7.md)
 
 Those in the synchronous online course will have to submit their **project proposals**.
 
@@ -145,7 +147,6 @@ The week of April 5, we talk about Testing and Explainability, and set up Contin
 - Lab 8: Testing & CI
 
 <!-- - [Lecture 10: Testing & Explainability](./lecture-10.md) (👈 with detailed notes) -->
-<!-- - [Lab 7: Paragraph Recognition](./lab-7.md) -->
 <!-- - [Lab 8: Testing & CI](./lab-8.md) -->
 
 Those in the synchronous online course will work on their projects.

@@ -10,7 +10,7 @@
 
 [PDF Download](https://drive.google.com/file/d/13PVjq7hEbdnwV31fNElxDR8eyYIB3H8L/view)
 
-## Notes
+## Detailed Notes
 
 *Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
 and [<u>Vishnu
