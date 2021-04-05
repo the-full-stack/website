@@ -143,11 +143,8 @@ Those in the synchronous online course will have to submit their **project propo
 
 The week of April 5, we talk about Testing and Explainability, and set up Continuous Integration in lab.
 
-- Lecture 10: Testing & Explainability
-- Lab 8: Testing & CI
-
-<!-- - [Lecture 10: Testing & Explainability](./lecture-10.md) (👈 with detailed notes) -->
-<!-- - [Lab 8: Testing & CI](./lab-8.md) -->
+- [Lecture 10: Testing & Explainability](./lecture-10.md) (👈 with detailed notes)
+- [Lab 8: Testing & CI](./lab-8.md)
 
 Those in the synchronous online course will work on their projects.
 

@@ -1,4 +1,4 @@
-# ✨Lecture 9: AI Ethics✨
+# Lecture 9: AI Ethics
 
 ## Video
 
@@ -71,7 +71,7 @@ that: **You see a trolley that is about to run over five people. But you
 can divert it to run over only one person. Would you do it?** It
 actually leads to a lot of good memes. 🤣
 
-<img src="/spring2021/lecture-9-notes-media/image5.png" style="width:5.76772in;height:3.02778in" />
+<img src="/spring2021/lecture-9-notes-media/image5.png" />
 
 Another prominent ethical theory is John Rawl’s [<u>theory of
 justice</u>](https://en.wikipedia.org/wiki/A_Theory_of_Justice). Rawls
@@ -157,7 +157,7 @@ Berkeley</u>](https://humancompatible.ai/)). As a matter of fact, this
 alignment lens is useful for near-term problems as well, as discussed in
 the rest of the lecture.
 
-<img src="/spring2021/lecture-9-notes-media/image7.png" style="width:5.76772in;height:4.69444in" />
+<img src="/spring2021/lecture-9-notes-media/image7.png" />
 
 ### 3 - Hiring
 
@@ -188,7 +188,7 @@ In the last case, that action will amplify existing biases.
 **Amplifying existing biases is not aligned with our goals and
 values!**😠
 
-<img src="/spring2021/lecture-9-notes-media/image3.png" style="width:5.76772in;height:2.19444in" />
+<img src="/spring2021/lecture-9-notes-media/image3.png" />
 
 ### 4 - Fairness
 
@@ -231,7 +231,7 @@ arrests (the data-generating process).
 fairness criterion? **Is this criterion aligned with human
 values?**
 
-<img src="/spring2021/lecture-9-notes-media/image2.png" style="width:5.76772in;height:2.52778in" />
+<img src="/spring2021/lecture-9-notes-media/image2.png" />
 
 Taking a step back and look at the classic binary classification problem
 setup, we have the confusion matrix as seen above. The interesting
@@ -288,7 +288,7 @@ disparate impact, which is another deep subject.
 
 #### Seeing The Water
 
-<img src="/spring2021/lecture-9-notes-media/image6.png" style="width:4.37135in;height:6.12651in" />
+<img src="/spring2021/lecture-9-notes-media/image6.png" />
 
 In order to see the water, it would be noteworthy to think about the
 differences between [<u>environmental equity and environmental
@@ -349,7 +349,7 @@ and “programmer” were associated with men, while “homemaker” and “nurs
 were associated with women. Translating our existing biases like these
 into the ML domain is undesirable, to say the least! 😩
 
-<img src="/spring2021/lecture-9-notes-media/image4.png" style="width:4.51718in;height:6.97477in" />
+<img src="/spring2021/lecture-9-notes-media/image4.png" />
 
 One potential solution to address this problem is **to de-bias at
 training time with carefully screened data**. With newer models like
@@ -442,7 +442,7 @@ it is. Other methods like bias audits are also useful, as the
 [<u>Aequitas</u>](http://www.datasciencepublicpolicy.org/projects/aequitas/)
 team at UChicago shows.
 
-<img src="/spring2021/lecture-9-notes-media/image1.png" style="width:5.76772in;height:3.36111in" />
+<img src="/spring2021/lecture-9-notes-media/image1.png" />
 
 #### A Code of Ethics?
 

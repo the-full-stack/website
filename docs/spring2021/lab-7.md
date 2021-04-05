@@ -1,4 +1,4 @@
-# ✨Lab 7: Paragraph Recognition✨
+# Lab 7: Paragraph Recognition
 
 ## Video
 
