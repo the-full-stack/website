@@ -139,7 +139,7 @@ In lab, we move from lines to paragraphs.
 
 Those in the synchronous online course will have to submit their **project proposals**.
 
-## Week 10: Testing
+## ✨Week 10: Testing✨
 
 The week of April 5, we talk about Testing and Explainability, and set up Continuous Integration in lab.
 
