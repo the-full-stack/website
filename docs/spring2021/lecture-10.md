@@ -8,13 +8,15 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/pPv1Ww1ao3IrJZ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1Aa4SFU6DsP0Sohyrzo_IWgJ3HZj9UT8m/view)
+[Download slides as PDF](https://drive.google.com/file/d/1Aa4SFU6DsP0Sohyrzo_IWgJ3HZj9UT8m/view)
 
 ## Notes
 
 *Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
 and [<u>Vishnu
 Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
+
+[Download notes as PDF](/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - ML Testing and Explainability.pdf)
 
 ### 1 - What’s Wrong With Black-Box Predictions?
 
