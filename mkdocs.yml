@@ -58,7 +58,7 @@ nav:
       - 'spring2021/lecture-8.md'
       - 'spring2021/lecture-9.md'
       - 'spring2021/lecture-10.md'
-      # - 'spring2021/lecture-11.md' # April 12
+      - 'spring2021/lecture-11.md'
       # - 'spring2021/lecture-12.md' # April 19
       # - 'spring2021/lecture-13.md' # April 26
     - 'Labs':
@@ -70,7 +70,7 @@ nav:
       - 'spring2021/lab-6.md'
       - 'spring2021/lab-7.md'
       - 'spring2021/lab-8.md'
-      # - 'spring2021/lab-9.md'
+      - 'spring2021/lab-9.md'
       # - 'spring2021/lab-10.md'
     - 'Synchronous Online Course': 'spring2021/synchronous.md'
   - 'Fall 2019': 'https://fall2019.fullstackdeeplearning.com'

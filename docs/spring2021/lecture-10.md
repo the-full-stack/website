@@ -1,4 +1,4 @@
-# ✨Lecture 10: Testing & Explainability✨
+# Lecture 10: Testing & Explainability
 
 ## Video
 

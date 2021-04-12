@@ -139,7 +139,7 @@ In lab, we move from lines to paragraphs.
 
 Those in the synchronous online course will have to submit their **project proposals**.
 
-## ✨Week 10: Testing✨
+## Week 10: Testing
 
 The week of April 5, we talk about Testing and Explainability, and set up Continuous Integration in lab.
 
@@ -148,15 +148,12 @@ The week of April 5, we talk about Testing and Explainability, and set up Contin
 
 Those in the synchronous online course will work on their projects.
 
-## Week 11: Deployment
+## ✨Week 11: Deployment✨
 
 The week of April 12, we cover Deployment and Monitoring, and deploy our model to AWS Lambda in lab.
 
-- Lecture 11: Deployment & Monitoring
-- Lab 9: Web Deployment
-
-<!-- - [Lecture 11: Deployment & Monitoring](./lecture-11.md) (👈 with detailed notes) -->
-<!-- - [Lab 9: Web Deployment](./lab-9.md) -->
+- [Lecture 11: Deployment & Monitoring](./lecture-11.md) (👈 with detailed notes)
+- [Lab 9: Web Deployment](./lab-9.md)
 
 Those in the synchronous online course will work on their projects.
 

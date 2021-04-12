@@ -1,4 +1,4 @@
-# ✨Lab 8: Testing & CI✨
+# Lab 8: Testing & CI
 
 ## Video
 
