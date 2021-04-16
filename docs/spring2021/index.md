@@ -174,16 +174,13 @@ Those in the synchronous online course will work on their projects.
 The week of April 26, we discuss ML roles and team structures, as well as big companies vs startups.
 
 - Lecture 13: ML Teams & Startups
-
 <!-- - [Lecture 13: ML Teams & Startups](./lecture-13.md) -->
 
-Those in the synchronous online course will submit 5-minute videos of their projects and associated write-ups.
+## Week 14-16: Projects
 
-## Week 14: Projects
+Those in the synchronous online course will submit 5-minute videos of their projects and associated write-ups by May 15.
 
-The week of May 3, we watch the best course project videos together, and give out awards.
-
-There are rumors of a fun conference in the air, too...
+The week of May 17, we will award the best projects and host them on this site.
 
 ## Other Resources
 
