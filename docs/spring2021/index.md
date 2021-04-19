@@ -148,7 +148,7 @@ The week of April 5, we talk about Testing and Explainability, and set up Contin
 
 Those in the synchronous online course will work on their projects.
 
-## ✨Week 11: Deployment✨
+## Week 11: Deployment
 
 The week of April 12, we cover Deployment and Monitoring, and deploy our model to AWS Lambda in lab.
 
@@ -157,14 +157,12 @@ The week of April 12, we cover Deployment and Monitoring, and deploy our model t
 
 Those in the synchronous online course will work on their projects.
 
-## Week 12: Research
+## ✨Week 12: Research✨
 
 The week of April 19, we talk research, and set up robust monitoring for our model.
 
-- Lecture 12: Research Directions
+- [Lecture 12: Research Directions](./lecture-12.md) (👈 with detailed notes)
 - Lab 10: Monitoring
-
-<!-- - [Lecture 12: Research Directions](./lecture-12.md) (👈 with detailed notes) -->
 <!-- - [Lab 10: Monitoring](./lab-10.md) -->
 
 Those in the synchronous online course will work on their projects.

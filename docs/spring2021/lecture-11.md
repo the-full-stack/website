@@ -1,4 +1,4 @@
-# ✨Lecture 11: Deployment & Monitoring✨
+# Lecture 11: Deployment & Monitoring
 
 ## Video
 
