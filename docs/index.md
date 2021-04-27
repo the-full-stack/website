@@ -21,7 +21,7 @@ There are many great courses to learn how to train deep neural networks.
 However, training the model is just one part of shipping a deep learning project.
 This course teaches full-stack production deep learning:
 
-<img src="images/positioning_v3.png" width="430px" />
+<img src="images/positioning_v3.png" height="822px" width="430px" />
 
 - Formulating the problem and estimating project cost
 - Finding, cleaning, labeling, and augmenting data
