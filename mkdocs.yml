@@ -60,7 +60,8 @@ nav:
       - 'spring2021/lecture-10.md'
       - 'spring2021/lecture-11.md'
       - 'spring2021/lecture-12.md'
-      # - 'spring2021/lecture-13.md' # April 26
+      - 'spring2021/lecture-13.md'
+      - 'spring2021/panel.md'
     - 'Labs':
       - 'spring2021/lab-1.md'
       - 'spring2021/lab-2.md'

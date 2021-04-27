@@ -157,7 +157,7 @@ The week of April 12, we cover Deployment and Monitoring, and deploy our model t
 
 Those in the synchronous online course will work on their projects.
 
-## ✨Week 12: Research✨
+## Week 12: Research
 
 The week of April 19, we talk research, and set up robust monitoring for our model.
 
@@ -167,12 +167,12 @@ The week of April 19, we talk research, and set up robust monitoring for our mod
 
 Those in the synchronous online course will work on their projects.
 
-## Week 13: Teams
+## ✨Week 13: Teams✨
 
 The week of April 26, we discuss ML roles and team structures, as well as big companies vs startups.
 
-- Lecture 13: ML Teams & Startups
-<!-- - [Lecture 13: ML Teams & Startups](./lecture-13.md) -->
+- [Lecture 13: ML Teams & Startups](./lecture-13.md) (👈 with detailed notes)
+- [Panel Discussion: Do I need a PhD to work in ML?](./panel.md)
 
 ## Week 14-16: Projects
 

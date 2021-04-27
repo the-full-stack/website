@@ -1,4 +1,4 @@
-# ✨Lecture 12: Research Directions✨
+# Lecture 12: Research Directions
 
 ## Video
 
