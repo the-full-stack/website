@@ -10,7 +10,7 @@ Learn how to set up Machine Learning projects like a pro. This includes an under
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/jGIcGsyNmqY3KA" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1p2XC0RScBt56s5Q38Cr7EkBD9Q2FPxOY/view)
+[PDF Download](https://drive.google.com/file/d/1btKp1aGQzdvn2QCCPFVAUN1aTsl3B0j_/view?usp=sharing)
 
 ## Detailed Notes
 

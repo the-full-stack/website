@@ -8,7 +8,7 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/pI7CE3Mkiwjt7a" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/18xf6XzHC1TOJ7pF_TFLKX1xZSNZsIu6W/view)
+[PDF Download](https://drive.google.com/file/d/1yXQCnGGp3wWdoCf6nSP5b758cXF92rtg/view?usp=sharing)
 
 ## Detailed Notes
 
