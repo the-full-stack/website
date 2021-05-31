@@ -38,13 +38,12 @@ extra:
       link: https://www.youtube.com/c/FullStackDeepLearning
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
-    - icon: fontawesome/brands/facebook
-      link: https://www.facebook.com/fullstackdl/
 
 nav:
   - 'Home': 'index.md'
   - 'Spring 2021':
     - 'Spring 2021 Schedule': 'spring2021/index.md'
+    - 'spring2021/projects.md'
     - 'Lectures':
       - 'spring2021/lecture-1.md'
       - 'spring2021/notebook-1.md'

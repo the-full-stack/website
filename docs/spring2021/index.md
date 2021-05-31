@@ -1,9 +1,13 @@
 # Full Stack Deep Learning - Spring 2021
 
-We've updated and improved our materials and can't wait to share them with you!
+We've updated and improved our materials for our 2021 course taught at UC Berkeley and online.
 
-Every Monday, we will post videos of our lectures and lab sessions.
-You can follow along on our [Twitter](https://twitter.com/full_stack_dl) or [YouTube](https://www.youtube.com/channel/UCVchfoB65aVtQiDITbGq2LQ), or sign up via email below.
+!!! info "Synchronous Online Course"
+    We offered a [paid synchronous option](./synchronous) for those who wanted weekly assignments, capstone project, Slack discussion, and certificate of completion.
+
+    Enter your email below or follow us on [Twitter](https://twitter.com/full_stack_dl) to be the first to hear about future offerings of this option.
+
+    And check out the [course projects showcase](./projects.md).
 
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
@@ -19,12 +23,6 @@ You can follow along on our [Twitter](https://twitter.com/full_stack_dl) or [You
 </form>
 </div>
 <!--End Mailchimp Signup Form -->
-
-!!! info "Synchronous Online Course"
-    We also offered a paid option for those who wanted weekly assignments, capstone project, Slack discussion, and certificate of completion.
-    **This synchronous option is now full,** but you can enter your email above to be the first to hear about future offerings.
-
-    Those who are enrolled, please [see details](./synchronous).
 
 ## Week 1: Fundamentals
 
@@ -167,18 +165,18 @@ The week of April 19, we talk research, and set up robust monitoring for our mod
 
 Those in the synchronous online course will work on their projects.
 
-## ✨Week 13: Teams✨
+## Week 13: Teams
 
 The week of April 26, we discuss ML roles and team structures, as well as big companies vs startups.
 
 - [Lecture 13: ML Teams & Startups](./lecture-13.md) (👈 with detailed notes)
 - [Panel Discussion: Do I need a PhD to work in ML?](./panel.md)
 
-## Week 14-16: Projects
+## ✨Week 14-16: Projects✨
 
 Those in the synchronous online course will submit 5-minute videos of their projects and associated write-ups by May 15.
 
-The week of May 17, we will award the best projects and host them on this site.
+Check out the [course projects showcase](./projects.md).
 
 ## Other Resources
 

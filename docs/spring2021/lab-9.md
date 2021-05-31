@@ -1,4 +1,4 @@
-# ✨Lab 9: Web Deployment✨
+# Lab 9: Web Deployment
 
 ## Video
 

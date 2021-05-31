@@ -1,4 +1,4 @@
-# ✨Lecture 13: ML Teams and Startups✨
+# Lecture 13: ML Teams and Startups
 
 ## Video
 
