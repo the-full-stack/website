@@ -13,7 +13,7 @@ The details of these and other projects are below
 - By Aasim Sani
 - [GitHub Page](https://aasimsani.github.io/artificial_manga_panel_dataset/)
 - [Project Report](https://github.com/aasimsani/artificial_manga_panel_dataset/)
-- Video Presentations]([Part 1](https://www.loom.com/share/6836ea54eeee4772ae8f20465d329c3f) and [Part 2](https://www.loom.com/share/cf0bd5d5db6d461f9bb0e3b051a32842)
+- Video Presentations: [Part 1](https://www.loom.com/share/6836ea54eeee4772ae8f20465d329c3f) and [Part 2](https://www.loom.com/share/cf0bd5d5db6d461f9bb0e3b051a32842)
 
 ## Breast Cancer Detection Assistant
 - By Harish Narayanan and Daniel Hen
