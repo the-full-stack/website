@@ -62,8 +62,9 @@ The details of these and other projects are below
 - [Video Presentation](https://vimeo.com/549610959)
 
 ## Intel Scene Classification
-- By Thomas Paula and Jonathan Salfity
+- By [Thomas Paula](https://www.linkedin.com/in/thomas-paula/) and [Jonathan Salfity](https://www.linkedin.com/in/jsalfity/)
 - [Source Code](https://github.com/tspthomas/fsdl2021_project)
+- [Report](https://github.com/tspthomas/fsdl2021_project/blob/main/docs/project_report.pdf)
 - [Video Presentation](https://www.youtube.com/watch?v=IRCdqQslQbU)
 
 ## Bird Song Classifier
