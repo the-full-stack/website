@@ -10,7 +10,7 @@ The Top 10 projects, as selected by our course TAs, we viewed together with ever
 The details of these and other projects are below
 
 ## Artificial Manga Panel Dataset
-- By Aasim Sani
+- By [Aasim Sani](https://www.linkedin.com/in/aasimsani/)
 - [GitHub Page](https://aasimsani.github.io/artificial_manga_panel_dataset/)
 - [Project Report](https://github.com/aasimsani/artificial_manga_panel_dataset/)
 - Video Presentations: [Part 1](https://www.loom.com/share/6836ea54eeee4772ae8f20465d329c3f) and [Part 2](https://www.loom.com/share/cf0bd5d5db6d461f9bb0e3b051a32842)
