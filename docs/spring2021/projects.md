@@ -16,10 +16,11 @@ The details of these and other projects are below
 - Video Presentations: [Part 1](https://www.loom.com/share/6836ea54eeee4772ae8f20465d329c3f) and [Part 2](https://www.loom.com/share/cf0bd5d5db6d461f9bb0e3b051a32842)
 
 ## Breast Cancer Detection Assistant
-- By Harish Narayanan and Daniel Hen
+- By Harish Narayanan and [Daniel Hen](https://www.linkedin.com/in/daniel-hen/)
 - [Project Report](http://scancer.org/about/)
 - [Source Code](https://github.com/scancer-org)
 - [Video Presentation](https://www.youtube.com/watch?v=PWFhQx7qzsc)
+- [ML Video Presentation](https://www.loom.com/share/6644a3f2bd784001877cf25deb159296)
 
 ## Human Protein Atlas Single Cell Classification
 - By Dariusz Kleczek
