@@ -7,7 +7,7 @@ The panelists:
 - [Pieter Abbeel](http://www.cs.berkeley.edu/~pabbeel/) - Professor at UC Berkeley
 - [Georgia Gkioxari](https://gkioxari.github.io) - Research Scientist at Facebook, formerly PhD Berkeley
 - [Peter Gao](https://www.linkedin.com/in/pgaooo/) - Co-founder and CEO of Aquarium Learning, formerly Cruise Automation
-- [Anil Jason](https://www.linkedin.com/in/aniljason/) - Co-foudner and CTO of Quillbot
+- [Anil Jason](https://www.linkedin.com/in/aniljason/) - Co-founder and CTO of Quillbot
 
 ## Video
 

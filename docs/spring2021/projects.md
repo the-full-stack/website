@@ -10,16 +10,17 @@ The Top 10 projects, as selected by our course TAs, we viewed together with ever
 The details of these and other projects are below
 
 ## Artificial Manga Panel Dataset
-- By Aasim Sani
+- By [Aasim Sani](https://www.linkedin.com/in/aasimsani/)
 - [GitHub Page](https://aasimsani.github.io/artificial_manga_panel_dataset/)
 - [Project Report](https://github.com/aasimsani/artificial_manga_panel_dataset/)
 - Video Presentations: [Part 1](https://www.loom.com/share/6836ea54eeee4772ae8f20465d329c3f) and [Part 2](https://www.loom.com/share/cf0bd5d5db6d461f9bb0e3b051a32842)
 
 ## Breast Cancer Detection Assistant
-- By Harish Narayanan and Daniel Hen
+- By [Harish Narayanan](https://harishnarayanan.org) and [Daniel Hen](https://www.linkedin.com/in/daniel-hen/)
 - [Project Report](http://scancer.org/about/)
 - [Source Code](https://github.com/scancer-org)
 - [Video Presentation](https://www.youtube.com/watch?v=PWFhQx7qzsc)
+- [ML Video Presentation](https://www.loom.com/share/6644a3f2bd784001877cf25deb159296)
 
 ## Human Protein Atlas Single Cell Classification
 - By Dariusz Kleczek
@@ -61,8 +62,9 @@ The details of these and other projects are below
 - [Video Presentation](https://vimeo.com/549610959)
 
 ## Intel Scene Classification
-- By Thomas Paula and Jonathan Salfity
+- By [Thomas Paula](https://www.linkedin.com/in/thomas-paula/) and [Jonathan Salfity](https://www.linkedin.com/in/jsalfity/)
 - [Source Code](https://github.com/tspthomas/fsdl2021_project)
+- [Report](https://github.com/tspthomas/fsdl2021_project/blob/main/docs/project_report.pdf)
 - [Video Presentation](https://www.youtube.com/watch?v=IRCdqQslQbU)
 
 ## Bird Song Classifier
