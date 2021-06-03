@@ -69,3 +69,21 @@ The details of these and other projects are below
 - By Wendy Mak
 - [Report](https://www.notion.so/wwymak/Bird-song-classifier-report-65e8d55f5b384d648216084c699e623c)
 - [Streamlit App](https://share.streamlit.io/wwymak/birdsong_recognition/main/deploy/audio_app.py)
+
+## Detecting Deforestation from Satellite Images
+- By [Andre Ferreira](https://andrecnf.com) and [Karthik Bhaskar](https://www.kbhaskar.com/)
+- [Video](https://www.loom.com/share/365d412db3a0474ba46d4fdd7f4c5494)
+- [Report](https://towardsdatascience.com/detecting-deforestation-from-satellite-images-7aa6dfbd9f61)
+- [Code](https://github.com/karthikraja95/fsdl_deforestation_detection)
+
+## Active Learning: A Systematic Investigation
+- By [Matthias Pfenninger](https://www.linkedin.com/in/matthiaspfenninger/), [Stefan Josef](https://www.linkedin.com/in/stefan-j-7a5a6b120/), and [Ravindra Bharathi](https://www.linkedin.com/in/sravindrabharathi/)
+- [Video](https://www.loom.com/share/05847811503343618f6d93b70e4ef285)
+- [Report](https://docs.google.com/document/d/1NwMoBVkpCjE30-w7Y2Qt5ATAwVxJVEjJJ_trMBg8q7U/)
+- [Code](https://github.com/ravindrabharathi/fsdl-active-learning2)
+
+## Drought Watch
+- By [Sambhavi Dhanabalan](https://www.linkedin.com/in/sambhavi-dhanabalan/)
+- Video: [Part 1](https://www.loom.com/share/f23cfa1734c843d4bea68fd8112b19f9) and [Part 2](https://www.loom.com/share/1e73c9bf4d1a46a19dbcc793693947f2)
+- [Report](https://share.streamlit.io/sambhavipd/droughtwatch/droughtwatch.py)
+- [Code](https://github.com/SambhaviPD/droughtwatch)

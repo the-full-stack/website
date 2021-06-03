@@ -11,13 +11,14 @@ google_analytics:
   - auto
 
 theme:
-  name: material
   custom_dir: overrides
-  logo: images/favicon.png
   favicon: images/favicon.png
   features:
     - navigation.tabs
     - navigation.sections
+  font: false
+  logo: images/favicon.png
+  name: material
 
 extra_css:
   - stylesheets/extra.css
