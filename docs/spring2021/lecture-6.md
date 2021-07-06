@@ -1,4 +1,4 @@
-# Lecture 6: Infrastructure & Tooling
+# Lecture 6: MLOps Infrastructure & Tooling
 
 ## Video
 
@@ -8,9 +8,13 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/cAFXYLKpENUWjl" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1uX5VsrTmKPyDUaVLnQnYhqRstJ4D20uz/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1uX5VsrTmKPyDUaVLnQnYhqRstJ4D20uz/view?usp=sharing)
 
-## Detailed Notes
+## Notes
+
+*Lecture by [Sergey Karayev](https://sergeykarayev.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 ### 1 - Dream vs. Reality for ML Practitioners
 

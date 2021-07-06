@@ -26,7 +26,7 @@ We've updated and improved our materials for our 2021 course taught at UC Berkel
 
 ## Week 1: Fundamentals
 
-The week of February 1, we do a blitz review of the fundamentals of deep learning, and introduce the codebase we will be working on in labs for the remainder of the class.
+We do a blitz review of the fundamentals of deep learning, and introduce the codebase we will be working on in labs for the remainder of the class.
 
 - [Lecture 1: DL Fundamentals](./lecture-1.md)
 - [Notebook: Coding a neural net from scratch](./notebook-1.md)
@@ -38,7 +38,7 @@ Reading:
 
 ## Week 2: CNNs
 
-The week of February 8, we cover CNNs and Computer Vision Applications, and introduce a CNN in lab.
+We cover CNNs and Computer Vision Applications, and introduce a CNN in lab.
 
 - [Lecture 2A: CNNs](./lecture-2a.md)
 - [Lecture 2B: Computer Vision Applications](./lecture-2b.md)
@@ -52,7 +52,7 @@ Reading:
 
 ## Week 3: RNNs
 
-The week of February 15, we cover RNNs and applications in Natural Language Processing, and start doing sequence processing in lab.
+We cover RNNs and applications in Natural Language Processing, and start doing sequence processing in lab.
 
 - [Lecture 3: RNNs](./lecture-3.md)
 - [Lab 3: RNNs](./lab-3.md)
@@ -65,7 +65,7 @@ Reading:
 
 ## Week 4: Transformers
 
-The week of February 22, we talk about the successes of transfer learning and the Transformer architecture, and start using it in lab.
+We talk about the successes of transfer learning and the Transformer architecture, and start using it in lab.
 
 - [Lecture 4: Transfer Learning and Transformers](./lecture-4.md)
 - [Lab 4: Transformers](./lab-4.md)
@@ -76,7 +76,7 @@ Reading:
 
 ## Week 5: ML Projects
 
-The week of March 1, our synchronous online course begins with the first "Full Stack" lecture: Setting up ML Projects.
+Our synchronous online course begins with the first "Full Stack" lecture: Setting up ML Projects.
 
 - [Lecture 5: Setting up ML Projects](./lecture-5.md) (👈 with detailed notes)
 
@@ -90,7 +90,7 @@ Those in the syncronous online course will have their first weekly assignment: *
 
 ## Week 6: Infra & Tooling
 
-The week of March 7, we tour the landscape of infrastructure and tooling for deep learning.
+We tour the landscape of infrastructure and tooling for deep learning.
 
 - [Lecture 6: Infrastructure & Tooling](./lecture-6.md) (👈 with detailed notes)
 
@@ -102,7 +102,7 @@ Those in the syncronous online course will have to work on **Assignment 2**.
 
 ## Week 7: Troubleshooting
 
-The week of March 14, we talk about how to best troubleshoot training.
+We talk about how to best troubleshoot training.
 In lab, we learn to manage experiments.
 
 - [Lecture 7: Troubleshooting DNNs](./lecture-7.md) (👈 with detailed notes)
@@ -116,7 +116,7 @@ Those in the syncronous online course will have to work on **Assignment 3**.
 
 ## Week 8: Data
 
-The week of March 21, we talk about Data Management, and label some data in lab.
+We talk about Data Management, and label some data in lab.
 
 - [Lecture 8: Data Management](./lecture-8.md) (👈 with detailed notes)
 - [Lab 6: Data Labeling](./lab-6.md)
@@ -129,7 +129,7 @@ Those in the syncronous online course will have to work on **Assignment 4**.
 
 ## Week 9: Ethics
 
-The week of March 28, we discuss ethical considerations.
+We discuss ethical considerations.
 In lab, we move from lines to paragraphs.
 
 - [Lecture 9: AI Ethics](./lecture-9.md) (👈 with detailed notes)
@@ -139,7 +139,7 @@ Those in the synchronous online course will have to submit their **project propo
 
 ## Week 10: Testing
 
-The week of April 5, we talk about Testing and Explainability, and set up Continuous Integration in lab.
+We talk about Testing and Explainability, and set up Continuous Integration in lab.
 
 - [Lecture 10: Testing & Explainability](./lecture-10.md) (👈 with detailed notes)
 - [Lab 8: Testing & CI](./lab-8.md)
@@ -148,7 +148,7 @@ Those in the synchronous online course will work on their projects.
 
 ## Week 11: Deployment
 
-The week of April 12, we cover Deployment and Monitoring, and deploy our model to AWS Lambda in lab.
+We cover Deployment and Monitoring, and package up our model for deployment in lab.
 
 - [Lecture 11: Deployment & Monitoring](./lecture-11.md) (👈 with detailed notes)
 - [Lab 9: Web Deployment](./lab-9.md)
@@ -157,7 +157,7 @@ Those in the synchronous online course will work on their projects.
 
 ## Week 12: Research
 
-The week of April 19, we talk research, and set up robust monitoring for our model.
+We talk research, and set up robust monitoring for our model.
 
 - [Lecture 12: Research Directions](./lecture-12.md) (👈 with detailed notes)
 - Lab 10: Monitoring
@@ -167,7 +167,7 @@ Those in the synchronous online course will work on their projects.
 
 ## Week 13: Teams
 
-The week of April 26, we discuss ML roles and team structures, as well as big companies vs startups.
+We discuss ML roles and team structures, as well as big companies vs startups.
 
 - [Lecture 13: ML Teams & Startups](./lecture-13.md) (👈 with detailed notes)
 - [Panel Discussion: Do I need a PhD to work in ML?](./panel.md)

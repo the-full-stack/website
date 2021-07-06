@@ -8,9 +8,11 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/36tseqKjcKlQwg" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1Cc3oN9gQSTYPmT7HC7UDaeFXiyJuQwq_/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1Cc3oN9gQSTYPmT7HC7UDaeFXiyJuQwq_/view?usp=sharing)
 
 ## Notes
+
+*Lecture by [Sergey Karayev](https://sergeykarayev.com).*
 
 In this video, we discuss the fundamentals of deep learning. We will cover artificial neural networks, the universal approximation theorem, three major types of learning problems, the empirical risk minimization problem, the idea behind gradient descent, the practice of back-propagation, the core neural architectures, and the rise of GPUs.
 

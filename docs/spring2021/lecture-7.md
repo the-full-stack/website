@@ -8,13 +8,12 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/pI7CE3Mkiwjt7a" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1yXQCnGGp3wWdoCf6nSP5b758cXF92rtg/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1yXQCnGGp3wWdoCf6nSP5b758cXF92rtg/view?usp=sharing)
 
-## Detailed Notes
+## Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
+*Lecture by [Josh Tobin](http://josh-tobin.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 In traditional software engineering, a bug usually leads to the program
 crashing. While this is annoying for the user, it is critical for the

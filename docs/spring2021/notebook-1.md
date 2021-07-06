@@ -4,6 +4,8 @@
 
 <iframe width="560" height="315" src="https://www.youtube.com/embed/MDABnmb17lQ" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+*Notebook by [Sergey Karayev](https://sergeykarayev.com).*
+
 In this video, we code a neural network from scratch. You'll get familiar with the Google Colab environment, create a simple linear regression model using only Numpy, and build a multi-layer perception regression model using NumPy, PyTorch, and Keras.
 
 - 0:30​ - Colab Notebook 101

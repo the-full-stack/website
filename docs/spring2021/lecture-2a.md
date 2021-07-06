@@ -8,9 +8,11 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/CNyWxsSbn0Wgn3" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1Q1T2P6Jzvo1_Z3hGvRmXPYAvwg_bvwPB/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1Q1T2P6Jzvo1_Z3hGvRmXPYAvwg_bvwPB/view?usp=sharing)
 
 ## Notes
+
+*Lecture by [Sergey Karayev](https://sergeykarayev.com).*
 
 In this video, we first review convolution operation, the most basic property of Convolutional Neural Networks. Then, we look at other important operations for ConvNets. Finally, we transition to looking at a classic ConvNet architecture called LeNet.
 

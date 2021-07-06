@@ -8,9 +8,11 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/2D1fmoVN0GigVZ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1cnDRkRqNwZJtlJLZB-JwDQcm4Yybw6a3/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1cnDRkRqNwZJtlJLZB-JwDQcm4Yybw6a3/view?usp=sharing)
 
 ## Notes
+
+*Lecture by [Sergey Karayev](https://sergeykarayev.com).*
 
 In this video, we will review notable applications of deep learning in computer vision. First, we will tour some ConvNet architectures. Then, we will talk about localization, detection, and segmentation problems. We will conclude with more advanced methods.
 

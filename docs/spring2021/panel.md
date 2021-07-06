@@ -2,6 +2,8 @@
 
 We gathered a few people to offer different perspectives on whether grad school is required to work on interesting ML problems.
 
+Moderated by [Sergey Karayev](https://sergeykarayev.com).
+
 The panelists:
 
 - [Pieter Abbeel](http://www.cs.berkeley.edu/~pabbeel/) - Professor at UC Berkeley

@@ -16,11 +16,11 @@ Monitoring:
 
 ## Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
-
 [Download notes as PDF](/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - Deploying and Monitoring ML Models.pdf)
+
+*Lecture by [Josh Tobin](http://josh-tobin.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 ML in production scales to meet users’ demands by delivering thousands
 to millions of predictions per second. On the other hand, models in

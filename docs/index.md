@@ -9,10 +9,10 @@ hide:
 
 ## Current Course
 
-We are teaching a major update of the course Spring 2021 as an official UC Berkeley course and as an online course, with all lectures and labs available for free.
+We have released a major update of the course in Spring 2021 as an official UC Berkeley course and as an online course, with all lectures and labs available for free.
 
 <div style="text-align: center; margin-top: 1em;">
-  <a class="md-button md-button--primary" href="/spring2021">🚀Spring 2021 Online Course🚀</a>
+  <a class="md-button md-button--primary" href="/spring2021/">🚀Spring 2021 Online Course🚀</a>
 </div>
 
 ## About this course

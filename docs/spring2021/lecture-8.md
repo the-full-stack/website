@@ -8,13 +8,13 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/Ikym7b8XhthxW9" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1R4QnniBO61TJYBuwrmLhtuZnXULFkxu6/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1R4QnniBO61TJYBuwrmLhtuZnXULFkxu6/view?usp=sharing)
 
-## Detailed Notes
+## Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
+*Lecture by [Sergey Karayev](https://sergeykarayev.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 One of the best data science articles written in 2019 is “[<u>Data
 science is different

@@ -8,13 +8,13 @@
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/q4Gje2wnQKZTqq" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1qgCNk0sLm6vGAy-d4OU3Rc9TWIXNQmhP/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1qgCNk0sLm6vGAy-d4OU3Rc9TWIXNQmhP/view?usp=sharing)
 
-## Detailed Notes
+## Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
+*Lecture by [Sergey Karayev](https://sergeykarayev.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 **A preamble**: Ethics is a vast subject spanning many disciplines and
 addressing many real different problems. As ML practitioners, we need to

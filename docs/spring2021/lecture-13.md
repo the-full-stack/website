@@ -6,17 +6,17 @@
 
 ## Slides
 
-<iframe src="//www.slideshare.net/slideshow/embed_code/key/kIWXObtE01kAI2" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/kIWXObtE01kAI2" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen></iframe>
 
-[PDF Download](https://drive.google.com/file/d/1s4s8H56T2jCa6-kRKbp2rRLD95n1WGJb/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1s4s8H56T2jCa6-kRKbp2rRLD95n1WGJb/view?usp=sharing)
 
 ## Notes
 
 [Download notes as PDF](/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - Machine-Learning-Teams.pdf)
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
+*Lecture by [Josh Tobin](http://josh-tobin.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 Over the past few years, machine learning (ML) has grown tremendously.
 But as young as ML is as a discipline, the craft of managing an ML team

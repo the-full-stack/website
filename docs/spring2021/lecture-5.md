@@ -10,11 +10,12 @@ Learn how to set up Machine Learning projects like a pro. This includes an under
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/jGIcGsyNmqY3KA" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
 
-[PDF Download](https://drive.google.com/file/d/1btKp1aGQzdvn2QCCPFVAUN1aTsl3B0j_/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1btKp1aGQzdvn2QCCPFVAUN1aTsl3B0j_/view?usp=sharing)
 
-## Detailed Notes
+## Notes
 
-*By [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/)*
+*Lecture by [Josh Tobin](http://josh-tobin.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 ### 1 - Why Do ML Projects Fail?
 

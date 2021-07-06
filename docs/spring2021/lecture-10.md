@@ -12,11 +12,11 @@
 
 ## Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
-
 [Download notes as PDF](/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - ML Testing and Explainability.pdf)
+
+*Lecture by [Josh Tobin](http://josh-tobin.com).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 ### 1 - What’s Wrong With Black-Box Predictions?
 

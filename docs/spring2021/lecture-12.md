@@ -12,11 +12,11 @@
 
 ## Notes
 
-*Notes were taken by [<u>James Le</u>](https://twitter.com/le_james94)
-and [<u>Vishnu
-Rachakonda</u>](https://www.linkedin.com/in/vrachakonda/)*
-
 [Download notes as PDF](/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - Research Directions.pdf)
+
+*Lecture by [Pieter Abbeel](https://people.eecs.berkeley.edu/~pabbeel/).
+Notes transcribed by [James Le](https://twitter.com/le_james94)
+and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).*
 
 Of all disciplines, **deep learning is probably the one where research
 and practice are closest together**. Often, something gets invented in
