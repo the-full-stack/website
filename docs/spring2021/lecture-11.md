@@ -12,7 +12,7 @@ Monitoring:
 
 <iframe src="//www.slideshare.net/slideshow/embed_code/key/q4EHbnTRVtGH5Q" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
 
-[Download slides as PDF](https://drive.google.com/file/d/170GyCKwpoKcX8PfJ-1WCLqlr9iDmmuGM/view?usp=sharing)
+[Download slides as PDF](https://drive.google.com/file/d/1m7O37ih1KpbzVrdQgQ1EFgeHRaTj5nka/view?usp=sharing)
 
 ## Notes
 
