@@ -380,7 +380,7 @@ never reviewed by a human**. Canonically, consider the self-driving car!
 
 #### Feasibility
 
-<img src="/spring2021/lecture-5-notes-media/image5.png" style="width:6.5in;height:3.97222in" />
+<img src="/spring2021/lecture-5-notes-media/image7.png" style="width:6.5in;height:3.97222in" />
 
 Let’s discuss how the product archetypes relate back to project
 **priority.** In terms of feasibility and impact, the two axes on which
@@ -481,7 +481,7 @@ metrics to threshold and what to set their threshold values to, make
 sure to consider domain-specific needs and the actual values of the
 metrics (how good/bad they might be).
 
-<img src="/spring2021/lecture-5-notes-media/image7.png" style="width:6.5in;height:3.43056in" />
+<img src="/spring2021/lecture-5-notes-media/image5.png" style="width:6.5in;height:3.43056in" />
 
 ### 6 - Baselines
 
