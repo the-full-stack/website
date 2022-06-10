@@ -3,61 +3,52 @@ hide:
   - navigation
 ---
 
-<h1 class="title">Full Stack Deep Learning</h1>
+<h1 class="title">{{ config.site_name }}</h1>
 
-<div class="subtitle">Our mission is to help you go from a promising ML experiment to a shipped product, with real-world impact.</div>
+<div class="subtitle">{{ config.site_description }}</div>
 
-## Current Course
+Building ML-powered products is much more than just training a model.
 
-We have released a major update of the course in Spring 2021 as an official UC Berkeley course and as an online course, with all lectures and labs available for free.
+!!! info "FSDL brings people together to learn and shape best practices for the full stack"
+    - Formulating the problem and estimating project cost
+    - Finding, cleaning, labeling, and augmenting data
+    - Picking the right framework and compute infrastructure
+    - Troubleshooting training and ensuring reproducibility
+    - Deploying the model at scale
 
-<div style="text-align: center; margin-top: 1em;">
-  <a class="md-button md-button--primary" href="/spring2021/">🚀Spring 2021 Online Course🚀</a>
+## Course
+
+<div class="row" markdown>
+  <div markdown>
+  Every year, we put together a [course](/course/).
+  Several hundred people take it synchronously, participating in lectures, doing labs, and showing their own project at the end.
+  Thousands more watch the videos that we post online, for free.
+
+  We have taught the course online in [2021](/spring2021), as official [Berkeley](https://bit.ly/berkeleyfsdl) (2021) and [UW](https://bit.ly/uwfsdl) (2020) courses, and as weekend bootcamps in [2019](/march2019) and [2018](/august2018).
+  </div>
+
+  <img src="images/positioning.png" height="822px" width="430px" />
 </div>
 
-## About this course
+<div style="text-align: center; margin-top: 2rem;">
+  <a class="md-button md-button--primary" href="/course/">🚀 Check out the 2022 course🚀</a>
+</div>
 
-There are many great courses to learn how to train deep neural networks.
-However, training the model is just one part of shipping a deep learning project.
-This course teaches full-stack production deep learning:
+## Conference
 
-<img src="images/positioning_v3.png" height="822px" width="430px" />
+There's nothing better than people coming together in-person to learn, share, and form lasting connections.
 
-- Formulating the problem and estimating project cost
-- Finding, cleaning, labeling, and augmenting data
-- Picking the right framework and compute infrastructure
-- Troubleshooting training and ensuring reproducibility
-- Deploying the model at scale
+**✨We have something exciting planned for Fall 2022. [Follow us on Twitter](https://twitter.com/full_stack_dl) to be the first to hear! ✨**
 
-## Who is this for
+<img src="images/august2018.jpg" />
+<img src="images/nov2019.jpg" />
+<img src="images/march2019.jpg" />
 
-The course is aimed at people who already know the basics of deep learning and want to understand the rest of the process of creating production deep learning systems.
-You will get the most out of this course if you have:
+## Online Community
 
-- At least one-year experience programming in Python.
-- At least one deep learning course (at a university or online).
-- Experience with code versioning, Unix environments, and software engineering.
+Everyone who participates in our course is forever a member of our online community.
+We share best practices, job opportunities, and cool projects.
 
-While we cover the basics of deep learning (backpropagation, convolutional neural networks, recurrent neural networks, transformers, etc), we expect these lectures to be mostly review.
-
-## Instructors
-
-**[Sergey Karayev](https://twitter.com/sergeykarayev)** is Head of STEM AI at Turnitin. He co-founded Gradescope after getting a PhD in Computer Vision at UC Berkeley.
-
-**[Josh Tobin](https://twitter.com/josh_tobin_)** is Founder and CEO of a stealth startup. He worked as a Research Scientist at OpenAI after getting a PhD in Robotics at UC Berkeley.
-
-**[Pieter Abbeel](https://twitter.com/pabbeel)** is Professor at UC Berkeley. He co-founded Covariant.ai, Berkeley Open Arms, and Gradescope.
-
-<figure>
-  <img src="images/group.jpg" />
-  <figcaption>Our March 2019 Bootcamp</figcaption>
-</figure>
-
-## Course Offerings
-
-- [🚀Spring 2021🚀](/spring2021) Online Course
-- [Spring 2021](https://bit.ly/berkeleyfsdl) CSE 194-080 - UC Berkeley Undergraduate course
-- [Spring 2020](https://bit.ly/uwfsdl) CSEP 590C - University of Washington Professional Master's Program course
-- [✨Fall 2019✨](https://fall2019.fullstackdeeplearning.com) nicely formatted videos and notes from our weekend bootcamp
-- [March 2019](/march2019) raw videos from our bootcamp
-- [August 2018](/august2018) bootcamp
+<div style="text-align: center; margin-top: 1em;">
+  <a class="md-button md-button--primary" href="/course/">🚀 Check out the 2022 course🚀</a>
+</div>

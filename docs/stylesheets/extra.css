@@ -1,10 +1,8 @@
 h1.title {
   margin-bottom: 0.5em;
-  color: black;
 }
 
 .subtitle {
-  color: gray;
   font-size: 1.3em;
   line-height: 1.3em;
 }
@@ -13,10 +11,17 @@ h1.title {
   font-weight: bold;
 }
 
-.md-announce__inner {
+.md-banner__inner {
   text-align: center;
 }
 
-.md-announce__inner a {
+.md-banner__inner a {
   color: white;
+}
+
+.row {
+  display: grid;
+  grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
+  grid-gap: 1rem;
+  align-items: flex-start;
 }

@@ -1,22 +1,22 @@
 {% extends "base.html" %}
 
 {% block extrahead %}
-<meta property="og:title" content="Full Stack Deep Learning">
-<meta property="og:description" content="Hands-on program for software developers familiar with the basics of deep learning seeking to expand their skills.">
+<meta property="og:title" content="{{ config.site_name }}">
+<meta property="og:description" content="{{ config.site_description }}">
 <meta property="og:type" content="website">
-<meta property="og:url" content="https://fullstackdeeplearning.com">
-<meta property="og:image" content="https://s3-us-west-2.amazonaws.com/fsdl-public-assets/positioning_v3.png">
-<meta property="og:image:alt" content="Training the model is just one part of shipping a Deep Learning project. In this course, we teach the full stack of production Deep Learning.">
+<meta property="og:url" content="{{ config.site_url }}">
+<meta property="og:image" content="{{ config.site_image }}">
+<meta property="og:image:alt" content="{{ config.site_image_alt }}">
+
 <meta name="twitter:card" content="summary">
 <meta name="twitter:site" content="full_stack_dl">
-<meta name="twitter:title" content="Full Stack Deep Learning">
-<meta name="twitter:description" content="Hands-on program for software developers familiar with the basics of deep learning seeking to expand their skills.">
-<meta name="twitter:image" content="https://s3-us-west-2.amazonaws.com/fsdl-public-assets/positioning_v3.png">
-<meta name="twitter:image:alt" content="Training the model is just one part of shipping a Deep Learning project. In this course, we teach the full stack of production Deep Learning.">
+<meta name="twitter:title" content="{{ config.site_name }}">
+<meta name="twitter:description" content="{{ config.site_description }}">
+<meta name="twitter:image" content="{{ config.site_image }}">
+<meta name="twitter:image:alt" content="{{ config.site_image_alt }}">
 {% endblock %}
 
 {% block announce %}
-<!-- Code snippet from Goku Mohandas https://madewithml.com -->
     Follow us on
     <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
         <span class="twemoji twitter" style="color: #1DA1F2">
