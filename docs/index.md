@@ -5,7 +5,7 @@ hide:
 
 <h1 class="title">{{ config.site_name }}</h1>
 
-<div class="subtitle">{{ config.site_description }}</div>
+<h2 class="subtitle">{{ config.site_description }}</h2>
 
 Building ML-powered products is much more than just training a model.
 
@@ -31,12 +31,14 @@ Building ML-powered products is much more than just training a model.
   We have taught the course online in [2021](/spring2021), as official [Berkeley](https://bit.ly/berkeleyfsdl) (2021) and [UW](https://bit.ly/uwfsdl) (2020) courses, and as weekend bootcamps in [2019](/march2019) and [2018](/august2018).
   </div>
 
-  <img src="images/positioning.png" height="822px" width="430px" />
+  <img src="images/positioning.png" height="822px" width="430px">
 </div>
 
 ## Conference
 
 There's nothing better than people coming together in-person to learn, share, and form lasting connections.
+
+Test paragraph
 
 **✨We have something exciting planned for Fall 2022. [Follow us on Twitter](https://twitter.com/full_stack_dl) to be the first to hear! ✨**
 
@@ -49,7 +51,7 @@ There's nothing better than people coming together in-person to learn, share, an
 </figure>
 
 <figure markdown>
-  ![Photo of attendees of March 2019 bootcamp](/images/nov2019.jpg)
+  ![Photo of attendees of March 2019 bootcamp](/images/march2019.jpg)
 </figure>
 
 ## Online Community

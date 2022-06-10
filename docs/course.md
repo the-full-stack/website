@@ -1,52 +1,46 @@
 # Full Stack Deep Learning - 2022
 
-**🚀 New course starting August 8, 2022! 🚀**
+<div style="text-align: center;" markdown>
+  **🚀 We are excited to announce our 2022 course, starting August 8, 2022! 🚀**
 
-!!! paid-tier
-    - Lecture and lab videos
-    - Weekly "flipped classroom" discussions on Zoom
-    - Compute credits
-    - Private Discord with peers, instructors, and teaching assistants
-    - Capstone project reviewed by peers and staff
-    - Certificate of completion
-
-    [Sign Up :fontawesome-solid-paper-plane:](#){ .md-button .md-button--primary }
-
-#### An interactive 10-week course
-
-Weekly lectures and live Q&A sessions, ongoing discussion on Discord, and capstone project reviewed by peers and staff.
-
-#### Polished by experience
-
-We have taught hundreds of learners in person and thousands online. We constantly update and improve based on student feedback.
-
-#### Best practices as of 2022
-
-- Construct an ML-powered app with guided labs
-- Apply CI/CD principles for clean, fast-moving ML
-- Hypermodern training: PyTorch + Lightning + W&B
-- Hypermodern deployment: Streamlit + Docker + AWS Lambda + FastAPI
+  [Register](#register){ .md-button .md-button--primary }
+</div>
 
 ## What you will learn
 
-All materials are thoroughly updated for 2022.
+We have taught hundreds of learners in person and thousands online.
+We constantly update and improve based on student feedback.
+
+In particular, we've updated all materials with best practices as of 2022, and added brand some brand new topics.
 
 - Formulating the problem and estimating project cost
 - Sourcing, cleaning, processing, labeling, and augmenting data
 - Picking the right framework and compute infrastructure
 - Troubleshooting training and ensuring reproducibility
 - Deploying the model at scale
-- **✨NEW✨** Monitoring and continually improving the deployed model
-- **✨NEW✨** How ML teams work and how to manage ML projects
-- **✨NEW✨** Building on Large Language Models and other Foundation Models
+- **✨ Monitoring and continually improving the deployed model ✨**
+- **✨ How ML teams work and how to manage ML projects ✨**
+- **✨ Building on Large Language Models and other Foundation Models ✨**
 
 <img src="/images/positioning.png" height="822px" width="430px" />
+
+## Labs
+
+Through the first few weeks of the course, you will construct an end-to-end ML system, with best practices as of 2022.
+
+- Apply CI/CD principles for clean, fast-moving ML
+- Hypermodern training: PyTorch + Lightning + W&B
+- Hypermodern deployment: Streamlit + Docker + AWS Lambda + FastAPI
+
+## Project
+
+TODO
 
 ## Who is this for
 
 The course is aimed at people who already understand the basics of deep learning and want to get to know the rest of the stack.
 
-Currently working ML Research and Engineers, Master’s Students, Software Engineers looking to get into ML, and PMs on ML teams will all benefit from materials in our course.
+ML Research and Engineers, MS students, software engineers looking to get into ML, and PMs on ML teams will all benefit from materials in our course.
 
 You will get the most out of this course if you have:
 
@@ -79,13 +73,52 @@ We cover the basics of deep learning (backprop, MLPs, CNNs, RNNs, Transformers) 
   </div>
 </div>
 
-## Past Offerings
+## Register
 
-We always put all materials online for the good of the community.
+The course officially starts August 8, 2022.
+Register now at a discounted price.
+We immediately honor all refund requests.
 
-- [Spring 2021](/spring2021) Online Course
-- [Spring 2021](https://bit.ly/berkeleyfsdl) Berkeley CSE 194-080
-- [Spring 2020](https://bit.ly/uwfsdl) UW CSEP 590C
-- [Autumn 2019](https://fall2019.fullstackdeeplearning.com) videos and notes from our weekend bootcamp
-- [Spring 2019](/march2019) videos from our bootcamp
-- [Summer 2018](/august2018) bootcamp
+<div class="pricing">
+  <div class="tier">
+    <div class="tier--header">Basic</div>
+    <div class="tier--price">
+      $0
+    </div>
+    <div class="tier--priceCaption" style="visibility: hidden;">
+      <div class="highlight">Special early bird rate until July 5</div>
+      <div>50% discount for students</div>
+    </div>
+
+    <ul class="tier--features">
+      <li>Lecture and lab videos
+    </ul>
+
+    <div style="margin-top: auto;">
+      <a href="http://eepurl.com/dxYwXj" style="width: 100%" class="md-button">Sign Up for Mailing List</a>
+    </div>
+  </div>
+  <div class="tier">
+    <div class="tier--header">Premium Remote Class</div>
+    <div class="tier--price">
+      <span style="text-decoration: line-through;">$495</span> <span class="highlight">$350</span>
+    </div>
+    <div class="tier--priceCaption">
+      <div class="highlight">Special early bird rate until July 5</div>
+      <div>50% discount for students</div>
+    </div>
+
+    <ul class="tier--features">
+      <li>Lecture and lab videos
+      <li>Weekly live Q&A
+      <li>Compute credits
+      <li>Private Discord with instructors and TA's
+      <li>Capstone project reviewed by peers and staff
+      <li>Certificate of completion
+    </ul>
+
+    <div style="margin-top: auto">
+      <a href="#" style="width: 100%" class="md-button md-button--primary">Register</a>
+    </div>
+  </div>
+</div>

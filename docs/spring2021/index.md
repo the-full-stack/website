@@ -7,8 +7,6 @@ We've updated and improved our materials for our 2021 course taught at UC Berkel
 
     Enter your email below or follow us on [Twitter](https://twitter.com/full_stack_dl) to be the first to hear about future offerings of this option.
 
-    And check out the ✨[course projects showcase](./projects.md)✨.
-
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
 <div id="mc_embed_signup">

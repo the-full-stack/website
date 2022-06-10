@@ -1,13 +1,12 @@
 h1.title {
-  margin-bottom: 0.5rem;
   color: white;
   font-weight: bold;
 }
 
-.subtitle {
-  font-size: 1.3rem;
-  line-height: 1.3rem;
-  margin-bottom: 0.5rem;
+h2.subtitle {
+  font-size: 1.5em;
+  line-height: 1.5em;
+  margin-bottom: 1em;
 }
 
 .md-typeset a {
@@ -22,6 +21,10 @@ h1.title {
   color: white;
 }
 
+#mc_embed_signup input.email {
+  width: auto !important;
+}
+
 .row {
   display: grid;
   grid-template-columns: repeat(auto-fit, minmax(360px, 1fr));
@@ -31,28 +34,64 @@ h1.title {
 
 .pricing {
   display: grid;
-  grid-template-columns: 33% 33% 33%;
+  grid-template-columns: repeat(1, minmax(0, 1fr));
   grid-gap: 1rem;
-  align-items: flex-start;
+}
+
+@media (min-width: 768px) {
+  .pricing {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 .tier {
-  color: black;
-  background-color: white;
-  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+  grid-column: span 1 / span 1;
+  margin-top: 0.5rem;
+  margin-bottom: 0.5rem;
+  display: flex;
+  flex-direction: column;
+  border-radius: 0.375rem;
+  border-width: 1px;
+  border-color: rgb(203 213 225);
+  border-style: solid;
+  padding: 1rem;
+  text-align: center;
 }
 
 .tier--header {
   font-weight: bold;
-  font-size: large;
+  font-size: 1.25rem;
+  line-height: 1.75rem;
+  margin-bottom: 0.5rem;
 }
 
+.tier--price {
+  font-size: 1.125rem;
+  line-height: 1.75rem;
+  margin-bottom: 0.5rem;
+}
 
+.tier--priceCaption {
+  font-size: 0.75rem;
+  line-height: 1rem;
+}
+
+.tier--priceCaption div {
+  margin-bottom: 0.25rem;
+}
+
+.tier--features {
+  text-align: left;
+  margin-bottom: 0.5rem;
+}
+
+.highlight {
+  color: rgb(59 130 246);
+}
 
 .person {
   display: grid;
   align-items: center;
   grid-template-columns: 100px 1fr;
   grid-column-gap: 1rem;
-  margin-bottom: 1rem;
 }

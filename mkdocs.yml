@@ -13,7 +13,6 @@ copyright: Full Stack Deep Learning, LLC. 2022
 google_analytics:
   - UA-118687450-1
   - auto
-
 theme:
   custom_dir: overrides
   favicon: images/favicon.png
@@ -24,9 +23,6 @@ theme:
   font: false
   logo: images/favicon.png
   name: material
-  # icon:
-  #   admonition:
-  #     tier: fontawesome-solid-people-group
   palette:
     scheme: slate
     primary: indigo
@@ -39,9 +35,6 @@ markdown_extensions:
   - admonition
   - md_in_html
   - pymdownx.superfences
-  - pymdownx.emoji:
-      emoji_index: !!python/name:materialx.emoji.twemoji
-      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   - search
