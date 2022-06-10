@@ -25,3 +25,31 @@ h1.title {
   grid-gap: 1rem;
   align-items: flex-start;
 }
+
+.pricing {
+  display: grid;
+  grid-template-columns: 33% 33% 33%;
+  grid-gap: 1rem;
+  align-items: flex-start;
+}
+
+.tier {
+  color: black;
+  background-color: white;
+  box-shadow: 1px 1px 1px rgba(0, 0, 0, 0.1);
+}
+
+.tier--header {
+  font-weight: bold;
+  font-size: large;
+}
+
+
+
+.person {
+  display: grid;
+  align-items: center;
+  grid-template-columns: 100px 1fr;
+  grid-column-gap: 1rem;
+  margin-bottom: 1rem;
+}

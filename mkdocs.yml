@@ -24,6 +24,9 @@ theme:
   font: false
   logo: images/favicon.png
   name: material
+  # icon:
+  #   admonition:
+  #     tier: fontawesome-solid-people-group
   palette:
     scheme: slate
     primary: indigo
@@ -36,6 +39,9 @@ markdown_extensions:
   - admonition
   - md_in_html
   - pymdownx.superfences
+  - pymdownx.emoji:
+      emoji_index: !!python/name:materialx.emoji.twemoji
+      emoji_generator: !!python/name:materialx.emoji.to_svg
 
 plugins:
   - search
@@ -86,6 +92,7 @@ nav:
         - 'spring2021/lab-9.md'
       - 'Synchronous Online Course': 'spring2021/synchronous.md'
     - 'Older':
+      - 'FSDL 2021 (Berkeley)': https://bit.ly/berkeleyfsdl
       - 'FSDL 2020 (UW)': https://bit.ly/uwfsdl
       - 'FSDL 2019 (Online)': https://fall2019.fullstackdeeplearning.com
       - 'FSDL 2019 (Bootcamp)': '/march2019.html'
