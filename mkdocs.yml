@@ -19,8 +19,8 @@ theme:
   favicon: images/favicon.png
   features:
     - navigation.tabs
-    - navigation.tabs.sticky
-    - navigation.sections
+    # - navigation.tabs.sticky
+    # - navigation.sections
   font: false
   logo: images/favicon.png
   name: material
@@ -53,10 +53,10 @@ extra:
 nav:
   - 'Home': 'index.md'
   - 'Course':
-    - '2022': 'course.md'
-    - 'Spring 2021':
-      - 'Spring 2021 Schedule': 'spring2021/index.md'
-      - 'spring2021/projects.md'
+    - 'FSDL 2022': 'course.md'
+    - 'FSDL 2021':
+      - 'Overview': 'spring2021/index.md'
+      - 'Projects': 'spring2021/projects.md'
       - 'Lectures':
         - 'spring2021/lecture-1.md'
         - 'spring2021/notebook-1.md'
@@ -85,3 +85,8 @@ nav:
         - 'spring2021/lab-8.md'
         - 'spring2021/lab-9.md'
       - 'Synchronous Online Course': 'spring2021/synchronous.md'
+    - 'Older':
+      - 'FSDL 2020 (UW)': https://bit.ly/uwfsdl
+      - 'FSDL 2019 (Online)': https://fall2019.fullstackdeeplearning.com
+      - 'FSDL 2019 (Bootcamp)': '/march2019.html'
+      - 'FSDL 2018 (Bootcamp)': '/august2018.html'

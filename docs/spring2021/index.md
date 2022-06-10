@@ -172,7 +172,7 @@ We discuss ML roles and team structures, as well as big companies vs startups.
 - [Lecture 13: ML Teams & Startups](./lecture-13.md) (👈 with detailed notes)
 - [Panel Discussion: Do I need a PhD to work in ML?](./panel.md)
 
-## ✨Week 14-16: Projects✨
+## Week 14-16: Projects
 
 Those in the synchronous online course will submit 5-minute videos of their projects and associated write-ups by May 15.
 

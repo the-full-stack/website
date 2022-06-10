@@ -1,4 +1,4 @@
-# ✨Course Projects Showcase✨
+# Course Projects Showcase
 
 The final project is the most important as well as the most fun part of the course.
 Students worked individually or in pairs over the duration of the course to complete a project involving any part of the full stack of deep learning.

@@ -1,5 +1,20 @@
 # Course
 
+!!! info "2022 Course"
+    STUFF HERE
+
+## What you will learn
+
+All materials are thoroughly updated for 2022.
+
+- Formulating the problem and estimating project cost
+- Sourcing, cleaning, processing, labeling, and augmenting data
+- Picking the right framework and compute infrastructure
+- Troubleshooting training and ensuring reproducibility
+- Deploying the model at scale
+- **✨NEW✨** Monitoring and continually improving the deployed model
+- **✨NEW✨** How ML teams work and how to manage ML projects
+- **✨NEW✨** Building on Large Language Models and other Foundation Models
 
 ## Who is this for
 
@@ -22,9 +37,9 @@ While we cover the basics of deep learning (backpropagation, convolutional neura
 
 ## Past Offerings
 
-- [🚀Spring 2021🚀](/spring2021) Online Course
+- [Spring 2021](/spring2021) Online Course
 - [Spring 2021](https://bit.ly/berkeleyfsdl) CSE 194-080 - UC Berkeley Undergraduate course
 - [Spring 2020](https://bit.ly/uwfsdl) CSEP 590C - University of Washington Professional Master's Program course
-- [✨Fall 2019✨](https://fall2019.fullstackdeeplearning.com) nicely formatted videos and notes from our weekend bootcamp
+- [Fall 2019](https://fall2019.fullstackdeeplearning.com) nicely formatted videos and notes from our weekend bootcamp
 - [March 2019](/march2019) raw videos from our bootcamp
 - [August 2018](/august2018) bootcamp
