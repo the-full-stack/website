@@ -1,6 +1,6 @@
 # Full Stack Deep Learning - 2022
 
-<div style="text-align: center;" markdown>
+<div class="md-banner" style="text-align: center; background-color: ; padding: 1em;" markdown>
   **🚀 We are excited to announce our 2022 course, starting August 8, 2022! 🚀**
 
   [Register](#register){ .md-button .md-button--primary }
@@ -50,24 +50,33 @@ You will get the most out of this course if you have:
 
 We cover the basics of deep learning (backprop, MLPs, CNNs, RNNs, Transformers) in review lectures released before the start of the course — but you should not expect to learn this material for the first time from these.
 
+## Testimonials
+
+<img src="/images/tweet1.png" />
+<img src="/images/tweet2.jpg" />
+<img src="/images/tweet3.png" />
+<img src="/images/tweet4.png" />
+<img src="/images/tweet5.png" />
+<img src="/images/tweet6.png" />
+
 ## Instructors
 
 <div class="person" markdown>
-  <img src="/old/assets/sergey.jpeg" style="border-radius: 50%;">
+  <img src="/images/sergey.jpeg" style="border-radius: 50%;">
   <div markdown>
   **[Sergey Karayev](https://twitter.com/sergeykarayev)** is Head of STEM AI at Turnitin. He co-founded Gradescope after getting a PhD in Computer Vision at UC Berkeley.
   </div>
 </div>
 
 <div class="person" markdown>
-  <img src="/old/assets/josh.jpeg" style="border-radius: 50%;">
+  <img src="/images/josh.jpeg" style="border-radius: 50%;">
   <div markdown>
   **[Josh Tobin](https://twitter.com/josh_tobin_)** is Founder and CEO of a stealth startup. He worked as a Research Scientist at OpenAI after getting a PhD in Robotics at UC Berkeley.
   </div>
 </div>
 
 <div class="person" markdown>
-  <img src="/old/assets/pieter.jpeg" style="border-radius: 50%;">
+  <img src="/images/pieter.jpeg" style="border-radius: 50%;">
   <div markdown>
   **[Pieter Abbeel](https://twitter.com/pabbeel)** is Professor at UC Berkeley. He co-founded Covariant.ai, Berkeley Open Arms, and Gradescope.
   </div>

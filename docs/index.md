@@ -42,17 +42,11 @@ Test paragraph
 
 **✨We have something exciting planned for Fall 2022. [Follow us on Twitter](https://twitter.com/full_stack_dl) to be the first to hear! ✨**
 
-<figure markdown>
-  ![Photo of attendees of August 2018 bootcamp](/images/august2018.jpg)
-</figure>
+![Photo of attendees of August 2018 bootcamp](/images/august2018.jpg)
 
-<figure markdown>
-  ![Photo of attendees of November 2019 bootcamp](/images/nov2019.jpg)
-</figure>
+![Photo of attendees of November 2019 bootcamp](/images/nov2019.jpg)
 
-<figure markdown>
-  ![Photo of attendees of March 2019 bootcamp](/images/march2019.jpg)
-</figure>
+![Photo of attendees of March 2019 bootcamp](/images/march2019.jpg)
 
 ## Online Community
 
