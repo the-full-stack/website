@@ -16,9 +16,11 @@ Building ML-powered products is much more than just training a model.
     - Deploying and monitoring the model and its application at scale
     - Using best practices in software engineering throughout so that development is fast and robust
 
+<!--
 <div style="text-align: center; margin-top: 2rem;">
   <a class="md-button md-button--primary" href="/course/">🚀 Check out the 2022 course 🚀</a>
 </div>
+-->
 
 ## Course
 
@@ -38,8 +40,6 @@ Building ML-powered products is much more than just training a model.
 
 There's nothing better than people coming together in-person to learn, share, and form lasting connections.
 
-Test paragraph
-
 **✨ We have something exciting planned for Fall 2022. [Follow us on Twitter](https://twitter.com/full_stack_dl) to be the first to hear! ✨**
 
 ![Photo of attendees of August 2018 bootcamp](/images/august2018.jpg)
@@ -53,6 +53,8 @@ Test paragraph
 Everyone who participates in our course is forever a member of our online community.
 We share best practices, job opportunities, and cool projects.
 
+<!--
 <div style="text-align: center; margin-top: 1em;">
-  <a class="md-button md-button--primary" href="/course/">🚀 Check out the 2022 course 🚀</a>
+<a class="md-button md-button--primary" href="/course/">🚀 Check out the 2022 course 🚀</a>
 </div>
+-->
