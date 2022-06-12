@@ -5,8 +5,8 @@ site_name: Full Stack Deep Learning
 site_url: https://fullstackdeeplearning.com
 site_description: The community for people building ML-powered products.
 site_author: Full Stack Deep Learning
-site_image: https://fullstackdeeplearning.com/images/positioning.png
-site_image_alt: Image explaining positioning of FSDL relative to other machine learning communities and courses.
+site_image: https://fullstackdeeplearning.com/images/full_stack_description.jpeg
+site_image_alt: Image explaining what FSDL covers.
 
 copyright: Full Stack Deep Learning, LLC. 2022
 
@@ -24,11 +24,14 @@ theme:
   logo: images/favicon.png
   name: material
   palette:
-    scheme: slate
+    scheme: default
     primary: indigo
     accent: indigo
+  icon:
+    repo: fontawesome/brands/git-alt
 extra_css:
   - stylesheets/extra.css
+edit_uri: ""
 
 markdown_extensions:
   - attr_list
