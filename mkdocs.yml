@@ -55,7 +55,7 @@ extra:
 nav:
   - 'Home': 'index.md'
   - 'Course':
-    - 'FSDL 2022': 'course.md'
+    # - 'FSDL 2022': 'course.md'
     - 'FSDL 2021':
       - 'Overview': 'spring2021/index.md'
       - 'Projects': 'spring2021/projects.md'
