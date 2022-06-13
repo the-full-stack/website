@@ -8,7 +8,7 @@ Lectures, Q&A, private Discord, coding labs, and a final project,<br>
 all on making awesome ML products that work IRL<br>
 over 10 weeks from August to October.<br>
 
-[Register Now!](#register){ .md-button .md-button--primary }
+[Registration opens soon](#register){ .md-button .md-button--primary }
 
 </div>
 
