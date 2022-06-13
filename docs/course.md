@@ -147,7 +147,7 @@ Register now at a discounted price.
     </ul>
 
     <div style="margin-top: auto">
-      <a href="#" style="width: 100%" class="md-button md-button--primary">Register</a>
+      <a href="#" style="width: 100%" class="md-button md-button--primary">Registration opens soon</a>
     </div>
 
   </div>
