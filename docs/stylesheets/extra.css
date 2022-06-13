@@ -1,12 +1,11 @@
 h1.title {
-  color: white;
+  /* color: white; */
   font-weight: bold;
 }
 
-h2.subtitle {
-  font-size: 1.5em;
-  line-height: 1.5em;
-  margin-bottom: 1em;
+h2 {
+  font-size: 1.5rem;
+  font-weight: normal;
 }
 
 .md-typeset a {
@@ -94,4 +93,42 @@ h2.subtitle {
   align-items: center;
   grid-template-columns: 100px 1fr;
   grid-column-gap: 1rem;
+}
+
+.tx-hero h1 {
+  font-size: 2.4rem !important;
+}
+
+.tx-hero h2 {
+  font-size: 1.4rem !important;
+  margin-top: 1rem;
+}
+
+.tx-hero h3 {
+  font-size: 1.0rem !important;
+}
+
+.announce {
+  text-align: center;
+  background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%,#fff 99%);
+  padding: 1em;
+}
+
+.announce .md-button {
+  margin-top: .5rem;
+  margin-right: .5rem;
+  color: var(--md-primary-bg-color)
+}
+
+.announce .md-button--primary {
+  background-color: var(--md-primary-bg-color);
+  color: #D47C2B;
+  border-color: var(--md-primary-bg-color)
+}
+
+.announce .md-button:focus,
+.announce .md-button:hover {
+    background-color: #D47C2B;
+    color: var(--md-default-bg-color);
+    border-color: #D47C2B
 }

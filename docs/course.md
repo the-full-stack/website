@@ -1,23 +1,21 @@
 # Full Stack Deep Learning - 2022
 
-<div class="md-banner" style="text-align: center; background-color: ; padding: 1em;" markdown>
-<big>
-🚀  We are excited to announce our 2022 course, starting August 8! 🚀
-<br><br>
+<div class="md-banner announce"  markdown>
+### 🚀  We are excited to announce our 2022 course, starting August 8! 🚀
+<br>
 
 Lectures, Q&A, private Discord, coding labs, and a final project,<br>
 all on making awesome ML products that work IRL<br>
 over 10 weeks from August to October.<br>
-</big>
 
-  [Register Now!](#register){ .md-button .md-button--primary }
+[Registration opens soon](#register){ .md-button .md-button--primary }
+
 </div>
-
 
 ## What you will learn
 
-We have taught hundreds of learners in person and thousands online.
-We constantly update and improve based on student feedback.
+Our course incorporates feedback from thousands of learners over 4 years of
+teaching students about production machine learning.
 
 In particular, we've updated all materials with best practices as of 2022, and added some brand new topics.
 
@@ -68,9 +66,9 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 ## Testimonials
 
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">This was probably the most comprehensive and interesting class I ever attended! Learnt about so many useful techniques and tools!<br><br>You can now access it for free (and you should definitely do it!) <a href="https://t.co/CSnO3PhLwR">https://t.co/CSnO3PhLwR</a></p>&mdash; Boris Dayma 🥑 (@borisdayma) <a href="https://twitter.com/borisdayma/status/1281281082604871681?ref_src=twsrc%5Etfw">July 9, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">Most courses only teach you how to train your models. This is only one I&#39;ve seen that shows you how to design, train, &amp; deploy models. All videos are available. Great resource for those struggling with the ML system design Qs in interviews too.<a href="https://t.co/grkcBbL76U">https://t.co/grkcBbL76U</a></p>&mdash; Chip Huyen (@chipro) <a href="https://twitter.com/chipro/status/1156416625400172544?ref_src=twsrc%5Etfw">July 31, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" data-theme="dark"><p lang="en" dir="ltr">The FSDL community is awesome, full of great people and world-class Engineers. <br>This is one of the best investments in your career in AI. <br>You will learn the superpower of applying AI to the real-world! <a href="https://t.co/auKBoY70iB">https://t.co/auKBoY70iB</a></p>&mdash; Danielh Carranza (@carranzadanielh) <a href="https://twitter.com/carranzadanielh/status/1329521631216144385?ref_src=twsrc%5Etfw">November 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">This was probably the most comprehensive and interesting class I ever attended! Learnt about so many useful techniques and tools!<br><br>You can now access it for free (and you should definitely do it!) <a href="https://t.co/CSnO3PhLwR">https://t.co/CSnO3PhLwR</a></p>&mdash; Boris Dayma 🥑 (@borisdayma) <a href="https://twitter.com/borisdayma/status/1281281082604871681?ref_src=twsrc%5Etfw">July 9, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">Most courses only teach you how to train your models. This is only one I&#39;ve seen that shows you how to design, train, &amp; deploy models. All videos are available. Great resource for those struggling with the ML system design Qs in interviews too.<a href="https://t.co/grkcBbL76U">https://t.co/grkcBbL76U</a></p>&mdash; Chip Huyen (@chipro) <a href="https://twitter.com/chipro/status/1156416625400172544?ref_src=twsrc%5Etfw">July 31, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">The FSDL community is awesome, full of great people and world-class Engineers. <br>This is one of the best investments in your career in AI. <br>You will learn the superpower of applying AI to the real-world! <a href="https://t.co/auKBoY70iB">https://t.co/auKBoY70iB</a></p>&mdash; Danielh Carranza (@carranzadanielh) <a href="https://twitter.com/carranzadanielh/status/1329521631216144385?ref_src=twsrc%5Etfw">November 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
 <!--
 [![tweet by @borisdayma](/images/tweet4.png)](https://twitter.com/borisdayma)
 [![tweet by @chipro](/images/tweet2.jpg)](https://twitter.com/chipro)
@@ -92,7 +90,7 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 <div class="person" markdown>
   <img src="/images/josh.png" style="border-radius: 50%;">
   <div markdown>
-  **[Josh Tobin](https://twitter.com/josh_tobin_)** is Co-founder and CEO of [Gantry](https://gantry.io). He worked as a Research Scientist at OpenAI after getting a PhD in Robotics at UC Berkeley.
+  **[Josh Tobin](https://twitter.com/josh_tobin_)** is Co-founder and CEO of [Gantry](https://gantry.io). He worked as a Research Scientist at OpenAI and received a PhD in AI at UC Berkeley.
   </div>
 </div>
 
@@ -107,7 +105,6 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 The course officially starts August 8, 2022.
 Register now at a discounted price.
-We immediately honor all refund requests.
 
 <div class="pricing">
   <div class="tier">
@@ -116,7 +113,7 @@ We immediately honor all refund requests.
       $0
     </div>
     <div class="tier--priceCaption" style="visibility: hidden;">
-      <div class="highlight">Special early bird rate until July 5</div>
+      <div class="highlight">Early bird rate until July 5</div>
       <div>50% discount for students</div>
     </div>
 
@@ -128,14 +125,15 @@ We immediately honor all refund requests.
     <div style="margin-top: auto;">
       <a href="http://eepurl.com/dxYwXj" style="width: 100%" class="md-button">Sign Up for Mailing List</a>
     </div>
+
   </div>
   <div class="tier">
-    <div class="tier--header">Premium Remote Class</div>
+    <div class="tier--header">Synchronous Cohort</div>
     <div class="tier--price">
       <span style="text-decoration: line-through;">$495</span> <span class="highlight">$350</span>
     </div>
     <div class="tier--priceCaption">
-      <div class="highlight">Special early bird rate until July 5</div>
+      <div class="highlight">Early bird rate until July 5</div>
       <div>60% discount for students</div>
     </div>
 
@@ -149,7 +147,8 @@ We immediately honor all refund requests.
     </ul>
 
     <div style="margin-top: auto">
-      <a href="#" style="width: 100%" class="md-button md-button--primary">Register</a>
+      <a href="#" style="width: 100%" class="md-button md-button--primary">Registration opens soon</a>
     </div>
+
   </div>
 </div>

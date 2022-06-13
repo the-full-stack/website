@@ -1,0 +1,386 @@
+<!-- Custom HTML site displayed as the Home chapter -->
+
+{% extends "main.html" %}
+{% block tabs %}
+{{ super() }}
+<style>
+
+    /* To make the page title disappear for home */
+    .md-typeset h1 {
+        font-size: 0px;
+    }
+
+    .md-main {
+        flex-grow: 0
+    }
+
+    .md-main__inner {
+        display: flex;
+        height: 100%;
+    }
+
+    .tx-container {
+        padding-top: .0rem;
+        background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%,#fff 99%);
+        color: var(--md-primary-bg-color);
+    }
+
+    .tx-container-light {
+        padding: 0rem;
+        background-color: white;
+        margin-bottom: 0px;
+        color: black;
+    }
+
+    .tx-container-secondary {
+        padding: 0rem;
+        background-color: #CAD2DA;
+    }
+
+    .tx-container-light-bg {
+        padding: 0rem;
+        background-color: white;
+    }
+
+    .tx-container-light h3 {
+        color: var(--md-primary-fg-color);
+        font-weight: bold;
+    }
+
+    .tx-hero {
+        margin: 32px 2.8rem;
+        justify-content: center;
+    }
+
+    .tx-hero h1 {
+        margin-bottom: 1rem;
+        color: currentColor;
+        font-weight: 700
+    }
+
+    .tx-hero__content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+    }
+
+    .tx-hero__right_content {
+        padding-bottom: 1rem;
+        margin: 0 auto;
+    }
+
+    .tx-hero__light_content {
+        padding-bottom: 1rem;
+        /* width: 60rem; */
+        margin: 0 auto;
+    }
+
+    .tx-hero__image{
+        width:17rem;
+        height:17rem;
+        order:1;
+        padding-right: 2.5rem;
+    }
+
+    .tx-hero__med_image{
+        /* width: 20rem; */
+        width: 100%;
+        max-width: 20rem;
+        order: 1;
+    }
+
+    .tx-hero__med_image_left{
+        width: 100%;
+        max-width: 20rem;
+        order: 0;
+    }
+
+    .tx-hero__large_image{
+        width: 100%;
+        max-width: 60rem;
+        order:0;
+    }
+
+    .tx-hero .md-button {
+        margin-top: .5rem;
+        margin-right: .5rem;
+        color: var(--md-primary-bg-color)
+    }
+
+    .tx-hero .md-button--primary {
+        background-color: var(--md-primary-bg-color);
+        color: #D47C2B;
+        border-color: var(--md-primary-bg-color)
+    }
+
+    .tx-hero .md-button--secondary {
+        background-color: var(--md-primary-fg-color);
+        color: white;
+        border-color: var(--md-primary-fg-color)
+    }
+    .tx-hero .md-button:focus,
+    .tx-hero .md-button:hover {
+        background-color: #D47C2B;
+        color: var(--md-default-bg-color);
+        border-color: #D47C2B
+    }
+
+    .feature-item h2 svg {
+        height: 30px;
+        float: left;
+        margin-right: 10px;
+        transform: translateY(10%);
+    }
+
+    .top-hr {
+        margin-top: 42px;
+    }
+
+    .feature-item {
+        font-family: 'Lato', sans-serif;
+        font-weight: 300;
+        box-sizing: border-box;
+        padding: 0 15px;
+        word-break: break-word
+    }
+
+    .feature-item h2 {
+        color: #333;
+        font-weight: 300;
+        font-size: 25px;
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+        line-height: normal;
+        margin-top: 20px;
+        margin-bottom: 10px;
+        font-family: inherit;
+    }
+
+    .feature-item p {
+        font-size: 16px;
+        line-height: 1.8em;
+        text-rendering: optimizeLegibility;
+        -webkit-font-smoothing: antialiased;
+        color: #111;
+        margin: 0 0 10px;
+        display: block;
+    }
+
+    @media screen and (max-width:30em) {
+        .tx-hero h1 {
+            font-size: 1.4rem
+        }
+    }
+
+    @media screen and (min-width:60em) {
+        .md-sidebar--secondary {
+            display: none
+        }
+
+        .tx-hero {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+        }
+
+        .tx-hero__content {
+            max-width: 22rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3.5rem;
+            margin-left: 1.0rem;
+            margin-right: 4.0rem;
+            align-items: center;
+        }
+
+        .tx-hero__right_content {
+            max-width: 22rem;
+            margin-top: 3.5rem;
+            margin-bottom: 3.5rem;
+            margin-left: 4.0rem;
+            margin-right: 1.0rem;
+            align-items: center; 
+        }
+
+        .tx-hero__light_content {
+            margin-left: 2.0rem;
+        }
+
+    }
+
+    @media screen and (min-width:76.25em) {
+        .md-sidebar--primary {
+            display: none
+        }
+
+        .top-hr {
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .bottom-hr {
+            margin-top: 10px;
+            width: 100%;
+            display: flex;
+            max-width: 61rem;
+            margin-right: auto;
+            margin-left: auto;
+            padding: 0 .2rem;
+        }
+
+        .feature-item {
+            flex: 1;
+            min-width: 0;
+        }
+
+        .feature-item:hover {
+            background-color: #526cfe47;
+            border-radius: 3px;
+        }
+    }
+
+    .hr {
+        border-bottom: 1px solid #eee;
+        width: 100%;
+        margin: 20px 0;
+    }
+
+    .text-center {
+        text-align: center;
+        padding-right: 15px;
+        padding-left: 15px;
+        margin-right: auto;
+        margin-left: auto;
+        margin-top: 15px;
+        font-family: 'Lato', sans-serif;
+        font-size: 23px;
+        font-weight: 300;
+        padding-bottom: 10px;
+    }
+
+    .logos {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        flex-flow: row wrap;
+        margin: 0 auto;
+    }
+
+    .logos img {
+        flex: 1 1 auto;
+        padding: 25px;
+        max-height: 130px;
+        vertical-align: middle;
+    }
+
+    .hr-logos {
+        margin-top: 0;
+        margin-bottom: 30px;
+    }
+
+</style>
+
+<!-- Main site Entry button descriptions -->
+<section class="tx-container">
+    <div class="md-grid md-typeset">
+      <div class="tx-hero">
+        <div class="tx-hero__image">
+          <img src="images/pancakes.svg" draggable="false">
+        </div>
+        <div class="tx-hero__content">
+          <h1> {{ config.site_name }} </h1>
+          <h2>{{ config.site_description }}</h2>
+          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
+            Join the course
+          </a>
+          <a href="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" title="Mailing list signup" class="md-button">
+            Mailing list
+          </a>
+        </div>
+      </div>
+    </div>
+</section>
+
+<!-- Main site box descriptions -->
+<section class="tx-container-light">
+    <div class="md-grid md-typeset">
+        <div class="tx-hero">
+            <div class="tx-hero__large_image" draggable="false">
+                <img src="images/full_stack_description.jpeg">
+            </div>
+            <div class="tx-hero__content">
+                <h2>Building an ML-powered product is much more than just training a model.</h2>
+                <p>FSDL brings people together to learn and share best practices for the full stack,
+                    from problem selection to deployment, monitoring, and retraining.
+                </p>
+            </div>
+
+        </div>
+</section>
+
+<section class="tx-container-secondary">
+    <div class="md-grid md-typeset">
+        <div class="tx-hero">
+            <div class="tx-hero__med_image" draggable="false">
+                <img src="images/positioning.png">
+            </div>
+            <div class="tx-hero__content">
+                <h2>Course</h2>
+                <p>
+                Join thousands of learners from <a href="https://bit.ly/berkeleyfsdl">UC Berkeley</a>,
+                <a href="https://bit.ly/uwfsdl">University of Washington</a>, and <a href="https://youtube.com/c/FullStackDeepLearning">online</a>
+                to learn how to build ML-powered products from scratch.
+                </p>
+                <p>
+                <a href="/course/">Join a synchronous cohort</a> to participate in lectures, code interactive labs, 
+                and create your own ML-powered application as a final project, or just <a href="/spring2021/">follow along</a>
+                on your own time for free.
+                </p>
+            </div>
+
+        </div>
+
+</section>
+<section class="tx-container-light-bg">
+    <div class="md-grid md-typeset">
+        <div class="tx-hero">
+            <div class="tx-hero__med_image_left" draggable="false">
+                <img src="images/august2018.jpg">
+            </div>
+            <div class="tx-hero__right_content">
+                <h2>Summits</h2>
+                <p>
+                    There's nothing better than people coming together in-person to learn, share, and form lasting connections.
+                </p>
+                <p>
+                    Follow us on <a href="https://twitter.com/full_stack_dl">Twitter</a> to be the first
+                    to hear about the next FSDL summit!
+                </p> 
+            </div>
+        </div>
+    </div>
+</section>
+<section>
+    <div class="md-grid md-typeset">
+        <div class="tx-hero">
+        <div class="tx-container-light">
+            <h2>
+                Online community
+            </h2>
+            <p>
+                Everyone who participates in our course is forever a member of our online community.
+                We share best practices, job opportunities, and cool projects.
+            </p>
+            <div style="text-align: center; margin-top: 1em;">
+                <a class="md-button md-button--secondary" href="/course/">🚀 Check out the 2022 course 🚀</a>
+              </div>
+    </div>
+</div>
+</div>
+    
+</section>
+
+{% endblock %}
