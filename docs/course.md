@@ -1,14 +1,12 @@
 # Full Stack Deep Learning - 2022
 
 <div class="md-banner announce"  markdown>
-<big>
-🚀  We are excited to announce our 2022 course, starting August 8! 🚀
-<br><br>
+### 🚀  We are excited to announce our 2022 course, starting August 8! 🚀
+<br>
 
 Lectures, Q&A, private Discord, coding labs, and a final project,<br>
 all on making awesome ML products that work IRL<br>
 over 10 weeks from August to October.<br>
-</big>
 
 [Register Now!](#register){ .md-button .md-button--primary }
 
