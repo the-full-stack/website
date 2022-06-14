@@ -112,6 +112,10 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 The course starts **August 8, 2022**.
 Register now at a discounted price!
 
+!!! note "Questions about registration or the class?"
+
+    Tweet at us [@full_stack_dl](https://twitter.com/full_stack_dl) or email `admin@fullstackdeeplearning.com`.
+
 <div class="pricing">
   <div class="tier">
     <div class="tier--header">On-Your-Own</div>
