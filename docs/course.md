@@ -2,6 +2,7 @@
 hide:
   - toc
 ---
+
 # Full Stack Deep Learning - 2022
 
 <div class="md-banner announce"  markdown>
@@ -9,7 +10,7 @@ hide:
 
 10 weeks of lectures, private Discord, Q&A, coding labs, and a portfolio project, all on building awesome ML-powered products, starting August 8.
 
-[Registration opens soon](#register){ .md-button .md-button--primary }
+[Register now!](#register){ .md-button .md-button--primary }
 
 </div>
 
@@ -108,8 +109,8 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 ## Register
 
-The course officially starts **August 8, 2022**.
-Register early at a discounted price!
+The course starts **August 8, 2022**.
+Register now at a discounted price!
 
 <div class="pricing">
   <div class="tier">
@@ -118,7 +119,7 @@ Register early at a discounted price!
       $0.00
     </div>
     <div class="tier--priceCaption" style="visibility: hidden;">
-    <!-- hidden but present to align these two sections -->
+    <!-- hidden but present to align the two tiers -->
       <div class="highlight">Early bird rate until July 5</div>
       <div>50% discount for students</div>
     </div>
@@ -153,8 +154,7 @@ Register early at a discounted price!
     </ul>
 
     <div style="margin-top: auto">
-      <a href="#" style="width: 100%" class="md-button md-button--primary">Registration opens soon</a>
-      <!-- <a href="https://launchpass.com/full-stack-deep-learning1/students" style="width: 100%" class="md-button md-button--primary">Register here</a> -->
+      <a href="https://launchpass.com/full-stack-deep-learning1/students" style="width: 100%" class="md-button md-button--primary">Register here</a>
     </div>
 
   </div>
