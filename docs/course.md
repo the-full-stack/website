@@ -31,8 +31,8 @@ We've updated all materials with best practices as of 2022 and added some brand 
 - **✨ How ML teams work and how to manage ML projects ✨**
 - **✨ Building on Large Language Models and other Foundation Models ✨**
 
-<p align="center">
-  <img src="/images/positioning.png" height="822px" width="430px" />
+<p align="center" style="margin-top: 2rem;">
+  <img src="/images/positioning.png" height="450px" width="860px" style="max-width: 430px" />
 </p>
 
 ## Labs
@@ -70,28 +70,39 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 ## Testimonials
 
-<a href="https://twitter.com/borisdayma/status/1281281082604871681"><img src="/images/testimonial-00.png"></a>
-<a href="https://twitter.com/chipro/status/1156416625400172544"><img src = "/images/testimonial-01.png"></a>
-<a href="https://twitter.com/carranzadanielh/status/1329521631216144385"><img src ="/images/testimonial-02.png"></a>
+<div class="testimonials">
+  <a href="https://twitter.com/borisdayma/status/1281281082604871681">
+    <img style="border: 1px solid gray;" src="/images/testimonial-00.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+  <a href="https://twitter.com/chipro/status/1156416625400172544">
+    <img style="border: 1px solid gray;" src="/images/testimonial-01.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+  <a href="https://twitter.com/carranzadanielh/status/1329521631216144385">
+    <img style="border: 1px solid gray;" src="/images/testimonial-02.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+  <a href="https://twitter.com/blissfulchar/status/1281413848205889537">
+    <img style="border: 1px solid gray;" src="/images/testimonial-03.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+</div>
 
 ## Instructors
 
 <div class="person" markdown>
-  <img src="/images/charles.png" style="border-radius: 50%;">
+  <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
   <div markdown>
   **[Charles Frye](https://twitter.com/charles_irl)** teaches people on the internet. He worked in education and growth at Weights & Biases after getting a PhD in Neuroscience at UC Berkeley.
   </div>
 </div>
 
 <div class="person" markdown>
-  <img src="/images/sergey.png" style="border-radius: 50%;">
+  <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
   <div markdown>
   **[Sergey Karayev](https://twitter.com/sergeykarayev)** is Co-founder of Volition. He co-founded Gradescope after getting a PhD in Computer Vision at UC Berkeley.
   </div>
 </div>
 
 <div class="person" markdown>
-  <img src="/images/josh.png" style="border-radius: 50%;">
+  <img src="/images/josh.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Josh Tobin">
   <div markdown>
   **[Josh Tobin](https://twitter.com/josh_tobin_)** is Co-founder and CEO of [Gantry](https://gantry.io). He worked as a Research Scientist at OpenAI and received a PhD in AI at UC Berkeley.
   </div>
@@ -99,7 +110,7 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 ## Register
 
-The course officially starts August 8, 2022.
+The course officially starts **August 8, 2022**.
 Register early at a discounted price!
 
 <div class="pricing">
@@ -129,7 +140,7 @@ Register early at a discounted price!
       <span style="text-decoration: line-through;">$495</span> <span class="highlight">$350</span>
     </div>
     <div class="tier--priceCaption">
-      <div class="highlight">Early bird rate until July 5</div>
+      <div class="highlight">Early bird rate until July 8</div>
       <div>50% discount for students</div>
     </div>
 
