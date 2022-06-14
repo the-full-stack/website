@@ -1,0 +1,20 @@
+<!-- Custom HTML site for 404 response -->
+
+{% extends "main.html" %}
+{% block content %}
+  <div align="center">
+    <figure>
+      <img draggable=false height=512rem width=512rem id=robot-img>
+      <figcaption>A robot eating a stack of pancakes, by DALL·E.</figcaption>
+    </figure>
+  </div>
+  <script type="text/javascript">
+    const directory = "images/robots-eating-pancakes/"
+    const indices = [...Array(111).keys()]
+    const names = indices.map((ii) =>`${ii}`.padStart(4, '0'))
+    const images = names.map((name) => directory + name + ".png")
+    const image = images[(Math.random() * images.length) | 0]
+    document.getElementById("robot-img").src = image
+  </script>
+  <h1> 404 - Page not found.</h1>
+{% endblock %}
