@@ -5,11 +5,9 @@ hide:
 # Full Stack Deep Learning - 2022
 
 <div class="md-banner announce"  markdown>
-<h2 style="margin: 16px 10px;"> 🚀  We are excited to announce our 2022 course, starting August 8! 🚀 </h2>
+<h2 style="margin: 16px 10px;"> 🚀  We are excited to announce FSDL 2022 🚀 </h2>
 
-Lectures, Q&A, private Discord, coding labs, and a portfolio project,<br>
-all on making awesome ML products that work IRL<br>
-over 10 weeks from August to October.<br>
+10 weeks of lectures, private Discord, Q&A, coding labs, and a portfolio project, all on building awesome ML-powered products, starting August 8.
 
 [Registration opens soon](#register){ .md-button .md-button--primary }
 
