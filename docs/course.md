@@ -70,9 +70,9 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 ## Testimonials
 
-<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">This was probably the most comprehensive and interesting class I ever attended! Learnt about so many useful techniques and tools!<br><br>You can now access it for free (and you should definitely do it!) <a href="https://t.co/CSnO3PhLwR">https://t.co/CSnO3PhLwR</a></p>&mdash; Boris Dayma 🥑 (@borisdayma) <a href="https://twitter.com/borisdayma/status/1281281082604871681?ref_src=twsrc%5Etfw">July 9, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">Most courses only teach you how to train your models. This is only one I&#39;ve seen that shows you how to design, train, &amp; deploy models. All videos are available. Great resource for those struggling with the ML system design Qs in interviews too.<a href="https://t.co/grkcBbL76U">https://t.co/grkcBbL76U</a></p>&mdash; Chip Huyen (@chipro) <a href="https://twitter.com/chipro/status/1156416625400172544?ref_src=twsrc%5Etfw">July 31, 2019</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
-<blockquote class="twitter-tweet" data-theme="light"><p lang="en" dir="ltr">The FSDL community is awesome, full of great people and world-class Engineers. <br>This is one of the best investments in your career in AI. <br>You will learn the superpower of applying AI to the real-world! <a href="https://t.co/auKBoY70iB">https://t.co/auKBoY70iB</a></p>&mdash; Danielh Carranza (@carranzadanielh) <a href="https://twitter.com/carranzadanielh/status/1329521631216144385?ref_src=twsrc%5Etfw">November 19, 2020</a></blockquote> <script async src="https://platform.twitter.com/widgets.js" charset="utf-8"></script>
+<a href="https://twitter.com/borisdayma/status/1281281082604871681"><img src="/images/testimonial-00.png"></a>
+<a href="https://twitter.com/chipro/status/1156416625400172544"><img src = "/images/testimonial-01.png"></a>
+<a href="https://twitter.com/carranzadanielh/status/1329521631216144385"><img src ="/images/testimonial-02.png"></a>
 
 ## Instructors
 
