@@ -109,12 +109,9 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 ## Register
 
-The course starts **August 8, 2022**.
+The course starts **August 8, 2022**
+ands runs until **October 14, 2022**.
 Register now at a discounted price!
-
-!!! note "Questions about registration or the class?"
-
-    Tweet at us [@full_stack_dl](https://twitter.com/full_stack_dl) or email `admin@fullstackdeeplearning.com`.
 
 <div class="pricing">
   <div class="tier">
@@ -152,7 +149,7 @@ Register now at a discounted price!
       <li> 🗣 &nbsp; Private Discord with instructors
       <li> ❓ &nbsp; Weekly live online Q&A
       <li> 💲 &nbsp; Compute credits
-      <li> 🎨 &nbsp; Portfolio project with feedback
+      <li> 🎨 &nbsp; Team-based portfolio project with feedback
       <li> 🏆 &nbsp; Certificate of completion
       <li> 🔜 &nbsp; Starts August 8th, 2022
     </ul>
@@ -163,3 +160,40 @@ Register now at a discounted price!
 
   </div>
 </div>
+
+## Cohort-Based Course FAQs
+
+!!! note "Questions about registration or the class that aren't answered here?"
+
+    Tweet at us [@full_stack_dl](https://twitter.com/full_stack_dl) or email `admin@fullstackdeeplearning.com`.
+
+### How long is the course? How much time do I need to devote to it?
+
+The course is 10 weeks long, from August 8, 2022 to October 14, 2022.
+During that time, you should expect to spend about four hours a week on the course.
+In the last four weeks, during which you'll be working on the project,
+devoting more time will result in a final project that you can be even more proud to put in your portfolio.
+
+### Which components of the course are synchronous? What days and times will synchronous events occur?
+
+The Q&A sessions are synchronous. Their timing will be set based on student availability.
+
+Lectures are pre-recorded, with the Q&A session serving as a live
+["flipped classroom"](https://bokcenter.harvard.edu/flipped-classrooms)
+for discussing the lecture content.
+
+Labs are available online, with a pre-recorded walkthrough video.
+We encourage students to form study groups, via the Discord server,
+for working on the lab material.
+
+### How do the projects work?
+
+Teams of five will work for four weeks to build an ML-powered application
+of their choosing: a chatbot, an image editor, a natural language speech interface,
+or anything else you can imagine building with ML.
+
+At the end, they will present their work to the rest of the class.
+
+Project proposals and final projects will be reviewed by course staff.
+We'll provide detailed feedback, but grading will be done based on completion.
+The best projects will be featured by FSDL on YouTube, Twitter, and at our summits.
