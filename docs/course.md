@@ -110,10 +110,8 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 ## Register
 
 The course starts **August 8, 2022**
-ands runs until **October 14, 2022**.
+and runs until **October 14, 2022**.
 Register now at a discounted price!
-
-!!! note Scholarships available
 
 <div class="pricing">
   <div class="tier">
