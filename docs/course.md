@@ -113,6 +113,8 @@ The course starts **August 8, 2022**
 ands runs until **October 14, 2022**.
 Register now at a discounted price!
 
+!!! note Scholarships available
+
 <div class="pricing">
   <div class="tier">
     <div class="tier--header">On-Your-Own</div>
@@ -161,11 +163,11 @@ Register now at a discounted price!
   </div>
 </div>
 
+!!! note "Interested in attending but unable to afford it?"
+
+    Accessibility is important to us, so we're offering a limited number of seats at $50, targeted at folks in low- and middle-income countries. Fill out [this form](https://forms.gle/DYoG87tP39efU1KPA) to indicate your interest.
+
 ## Cohort-Based Course FAQs
-
-!!! note "Questions about registration or the class that aren't answered here?"
-
-    Tweet at us [@full_stack_dl](https://twitter.com/full_stack_dl) or email `admin@fullstackdeeplearning.com`.
 
 ### How long is the course? How much time do I need to devote to it?
 
@@ -197,3 +199,7 @@ At the end, they will present their work to the rest of the class.
 Project proposals and final projects will be reviewed by course staff.
 We'll provide detailed feedback, but grading will be done based on completion.
 The best projects will be featured by FSDL on YouTube, Twitter, and at our summits.
+
+!!! note "Questions about registration or the class that aren't answered here?"
+
+    Tweet at us [@full_stack_dl](https://twitter.com/full_stack_dl) or email `admin@fullstackdeeplearning.com`.
