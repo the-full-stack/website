@@ -121,7 +121,6 @@ Register now at a discounted price!
     </div>
     <div class="tier--priceCaption" style="visibility: hidden;">
     <!-- hidden but present to align the two tiers -->
-      <div class="highlight">Early bird rate until July 5</div>
       <div>50% discount for students</div>
     </div>
 
@@ -137,11 +136,10 @@ Register now at a discounted price!
   <div class="tier">
     <div class="tier--header">Cohort-Based</div>
     <div class="tier--price">
-      <span style="text-decoration: line-through;">$495</span> <span class="highlight">$350</span>
+      <span>$495</span>
     </div>
     <div class="tier--priceCaption">
-      <div class="highlight">Early bird rate until July 8</div>
-      <div>50% discount for students</div>
+      <div>50% discount for students and academics</div>
     </div>
 
     <ul class="tier--features">
@@ -160,10 +158,6 @@ Register now at a discounted price!
 
   </div>
 </div>
-
-!!! note "Interested in attending but unable to afford it?"
-
-    Accessibility is important to us, so we're offering a limited number of seats at $50, targeted at folks in low- and middle-income countries. Fill out [this form](https://forms.gle/DYoG87tP39efU1KPA) to indicate your interest.
 
 ## Cohort-Based Course FAQs
 
