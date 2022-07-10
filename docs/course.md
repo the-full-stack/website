@@ -40,7 +40,7 @@ Through the first few weeks of the course, you will construct an end-to-end ML s
 
 - Applying CI/CD principles for clean, fast-moving ML
 - Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https:/pytorchlightning.ai) + [W&B](https://wandb.ai)
-- Hypermodern deployment: [Docker](https://docker.com) + [AWS Lambda](https://aws.amazon.com/lambda) + [FastAPI](https://fastapi.tiangolo.com)
+- Hypermodern deployment: [Docker](https://docker.com) + [AWS Lambda](https://aws.amazon.com/lambda) + [Gradio](https://gradio.app/)
 
 ## Project
 
