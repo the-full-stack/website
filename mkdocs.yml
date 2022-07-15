@@ -56,8 +56,8 @@ nav:
   - 'Home': 'index.md'
   - 'Course':
     - 'FSDL 2022':
-      - 'Overview': 'course.md'
-      - 'Lecture 1: Introduction': '2022/lecture-1-introduction.md'
+      - 'Overview': 'course/2022/index.md'
+      - 'Lecture 1: Infrastructure & Tooling': 'course/2022/lecture-1-infrastructure-and-tooling.md'
     - 'FSDL 2021':
       - 'Overview': 'spring2021/index.md'
       - 'Projects': 'spring2021/projects.md'
