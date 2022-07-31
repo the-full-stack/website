@@ -5,14 +5,8 @@ hide:
 
 # Full Stack Deep Learning - 2022
 
-<div class="md-banner announce"  markdown>
-<h2 style="margin: 16px 10px;"> 🚀  We are excited to announce FSDL 2022 🚀 </h2>
-
-10 weeks of lectures, private Discord, Q&A, coding labs, and a portfolio project, all on building awesome ML-powered products, starting August 8.
-
-[Register by August 1st!](#register){ .md-button .md-button--primary }
-
-</div>
+The course starts **August 8, 2022**
+and runs until **October 14, 2022**.
 
 ## What you will learn
 
@@ -107,57 +101,7 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
   </div>
 </div>
 
-## Register
-
-The course starts **August 8, 2022**
-and runs until **October 14, 2022**.
 Registration closes on **August 1, 2022**.
-
-<div class="pricing">
-  <div class="tier">
-    <div class="tier--header">On-Your-Own</div>
-    <div class="tier--price">
-      $0.00
-    </div>
-    <div class="tier--priceCaption" style="visibility: hidden;">
-    <!-- hidden but present to align the two tiers -->
-      <div>50% discount for students</div>
-    </div>
-
-    <ul class="tier--features">
-      <li> 📹 &nbsp; Lecture and lab videos
-    </ul>
-
-    <div style="margin-top: auto;">
-      <a href="http://eepurl.com/dxYwXj" style="width: 100%" class="md-button">Sign Up for Mailing List</a>
-    </div>
-
-  </div>
-  <div class="tier">
-    <div class="tier--header">Cohort-Based</div>
-    <div class="tier--price">
-      <span>$495</span>
-    </div>
-    <div class="tier--priceCaption">
-      <div>50% discount for students and academics</div>
-    </div>
-
-    <ul class="tier--features">
-      <li> 📹 &nbsp; Lecture and lab videos
-      <li> 🗣 &nbsp; Private Discord with instructors
-      <li> ❓ &nbsp; Weekly live online Q&A
-      <li> 💲 &nbsp; Compute credits
-      <li> 🎨 &nbsp; Team-based portfolio project with feedback
-      <li> 🏆 &nbsp; Certificate of completion
-      <li> 🔜 &nbsp; Starts August 8th, 2022
-    </ul>
-
-    <div style="margin-top: auto">
-      <a href="https://launchpass.com/full-stack-deep-learning1/students" style="width: 100%" class="md-button md-button--primary">Register here</a>
-    </div>
-
-  </div>
-</div>
 
 ## Cohort-Based Course FAQs
 

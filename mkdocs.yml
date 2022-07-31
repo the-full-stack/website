@@ -95,6 +95,7 @@ nav:
       - 'FSDL 2019 (Online)': https://fall2019.fullstackdeeplearning.com
       - 'FSDL 2019 (Bootcamp)': '/march2019.html'
       - 'FSDL 2018 (Bootcamp)': '/august2018.html'
+  - 'Summit': 'summit.md'
 
 watch:
 - docs

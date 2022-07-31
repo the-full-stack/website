@@ -4,7 +4,6 @@
 {% block tabs %}
 {{ super() }}
 <style>
-
     /* To make the page title disappear for home */
     .md-typeset h1 {
         font-size: 0px;
@@ -21,7 +20,7 @@
 
     .tx-container {
         padding-top: .0rem;
-        background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%,#fff 99%);
+        background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%, #fff 99%);
         color: var(--md-primary-bg-color);
     }
 
@@ -74,30 +73,30 @@
         margin: 0 auto;
     }
 
-    .tx-hero__image{
-        width:17rem;
-        height:17rem;
-        order:1;
+    .tx-hero__image {
+        width: 17rem;
+        height: 17rem;
+        order: 1;
         padding-right: 2.5rem;
     }
 
-    .tx-hero__med_image{
+    .tx-hero__med_image {
         /* width: 20rem; */
         width: 100%;
         max-width: 20rem;
         order: 1;
     }
 
-    .tx-hero__med_image_left{
+    .tx-hero__med_image_left {
         width: 100%;
         max-width: 20rem;
         order: 0;
     }
 
-    .tx-hero__large_image{
+    .tx-hero__large_image {
         width: 100%;
         max-width: 60rem;
-        order:0;
+        order: 0;
     }
 
     .tx-hero .md-button {
@@ -117,6 +116,7 @@
         color: white;
         border-color: var(--md-primary-fg-color)
     }
+
     .tx-hero .md-button:focus,
     .tx-hero .md-button:hover {
         background-color: #D47C2B;
@@ -198,7 +198,7 @@
             margin-bottom: 3.5rem;
             margin-left: 4.0rem;
             margin-right: 1.0rem;
-            align-items: center; 
+            align-items: center;
         }
 
         .tx-hero__light_content {
@@ -280,27 +280,26 @@
         margin-top: 0;
         margin-bottom: 30px;
     }
-
 </style>
 
 <!-- Main site Entry button descriptions -->
 <section class="tx-container">
     <div class="md-grid md-typeset">
-      <div class="tx-hero">
-        <div class="tx-hero__image">
-          <img src="images/pancakes.svg" draggable="false">
+        <div class="tx-hero">
+            <div class="tx-hero__image">
+                <img src="images/pancakes.svg" draggable="false">
+            </div>
+            <div class="tx-hero__content">
+                <h1> {{ config.site_name }} </h1>
+                <h2>{{ config.site_description }}</h2>
+                <a href="/summit" class="md-button md-button--primary">
+                    Attend the summit
+                </a>
+                <a href="/course" class="md-button">
+                    Follow the course
+                </a>
+            </div>
         </div>
-        <div class="tx-hero__content">
-          <h1> {{ config.site_name }} </h1>
-          <h2>{{ config.site_description }}</h2>
-          <a href="{{ page.next_page.url | url }}" title="{{ page.next_page.title | striptags }}" class="md-button md-button--primary">
-            Join the course
-          </a>
-          <a href="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" title="Mailing list signup" class="md-button">
-            Mailing list
-          </a>
-        </div>
-      </div>
     </div>
 </section>
 
@@ -314,7 +313,8 @@
             <div class="tx-hero__content">
                 <h2>Building an ML-powered product is much more than just training a model.</h2>
                 <p>FSDL brings people together to learn and share best practices for the full stack:
-                    from problem selection, data management, and picking a GPU to web deployment, monitoring, and retraining.
+                    from problem selection, data management, and picking a GPU to web deployment, monitoring, and
+                    retraining.
                 </p>
             </div>
 
@@ -330,14 +330,16 @@
             <div class="tx-hero__content">
                 <h2>Course</h2>
                 <p>
-                Join thousands of learners from <a href="https://bit.ly/berkeleyfsdl">UC Berkeley</a>,
-                <a href="https://bit.ly/uwfsdl">University of Washington</a>, and <a href="https://youtube.com/c/FullStackDeepLearning">all over the world</a>
-                to learn how best practices for building ML-powered products.
+                    Join thousands of learners from <a href="https://bit.ly/berkeleyfsdl">UC Berkeley</a>,
+                    <a href="https://bit.ly/uwfsdl">University of Washington</a>, and <a
+                        href="https://youtube.com/c/FullStackDeepLearning">all over the world</a>
+                    to learn how best practices for building ML-powered products.
                 </p>
                 <p>
-                <a href="/course/">Join a synchronous cohort</a> to participate in lectures, code interactive labs,
-                and create your own ML-powered application as a final project, or just <a href="/spring2021/">follow along</a>
-                on your own time for free.
+                    <a href="/course/">Join a synchronous cohort</a> to participate in lectures, code interactive labs,
+                    and create your own ML-powered application as a final project, or just <a href="/spring2021/">follow
+                        along</a>
+                    on your own time for free.
                 </p>
             </div>
 
@@ -353,7 +355,8 @@
             <div class="tx-hero__right_content">
                 <h2>Summits</h2>
                 <p>
-                    There's nothing better than people coming together in-person to learn, share, and form lasting connections.
+                    There's nothing better than people coming together in-person to learn, share, and form lasting
+                    connections.
                 </p>
                 <p>
                     Follow us on <a href="https://twitter.com/full_stack_dl">Twitter</a> to be the first
@@ -366,20 +369,20 @@
 <section>
     <div class="md-grid md-typeset">
         <div class="tx-hero">
-        <div class="tx-container-light">
-            <h2>
-                Online community
-            </h2>
-            <p>
-                Everyone who participates in our course is forever a member of our online community.
-                We share best practices, job opportunities, and cool projects.
-            </p>
-            <div style="text-align: center; margin-top: 1em;">
-                <a class="md-button md-button--secondary" href="/course/">🚀 Check out the 2022 course 🚀</a>
-              </div>
+            <div class="tx-container-light">
+                <h2>
+                    Online community
+                </h2>
+                <p>
+                    Everyone who participates in our course is forever a member of our online community.
+                    We share best practices, job opportunities, and cool projects.
+                </p>
+                <div style="text-align: center; margin-top: 1em;">
+                    <a class="md-button md-button--secondary" href="/course/">🚀 Check out the 2022 course 🚀</a>
+                </div>
+            </div>
+        </div>
     </div>
-</div>
-</div>
 
 </section>
 
