@@ -10,7 +10,7 @@ hide:
 
 10 weeks of lectures, private Discord, Q&A, coding labs, and a portfolio project, all on building awesome ML-powered products, starting August 8.
 
-[Register by August 1st!](#register){ .md-button .md-button--primary }
+[Register now!](#register){ .md-button .md-button--primary }
 
 </div>
 
@@ -111,7 +111,6 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 
 The course starts **August 8, 2022**
 and runs until **October 14, 2022**.
-Registration closes on **August 1, 2022**.
 
 <div class="pricing">
   <div class="tier">
