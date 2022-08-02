@@ -3,10 +3,10 @@ hide:
   - toc
 ---
 
-# Course Description
+# FSDL Course
 
 !!! info 
-    The course is now in progress. See [course materials](index.md).
+    The [2022 course](2022/index.md) is now in progress!
 
 ## What you will learn
 
