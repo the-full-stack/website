@@ -1,5 +1,6 @@
 ---
 title: Course 2022
+description: Full Stack Deep Learning course covers the full stack of building ML-powered products.
 hide:
   - toc
 ---

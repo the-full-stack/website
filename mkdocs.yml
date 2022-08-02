@@ -1,14 +1,14 @@
-repo_url: https://github.com/full-stack-deep-learning/fsdl-text-recognizer-project
-repo_name: GitHub
+repo_url: https://github.com/full-stack-deep-learning/website
+repo_name: FSDL Website
 
 site_name: Full Stack Deep Learning
 site_url: https://fullstackdeeplearning.com
 site_description: The community for people building ML-powered products.
 site_author: Full Stack Deep Learning
-site_image: https://fullstackdeeplearning.com/images/pancakes.png
-site_image_alt: Image explaining what FSDL covers.
+site_image: https://staging.fullstackdeeplearning.com/images/fsdl_og_image.jpg
+site_image_alt: Image explaining what Full Stack Deep learning covers.
 
-copyright: Full Stack Deep Learning, LLC. 2022
+copyright: Full Stack Deep Learning, 2022
 
 google_analytics:
   - UA-118687450-1
@@ -24,19 +24,29 @@ theme:
   logo: images/favicon.png
   name: material
   palette:
-    scheme: default
-    primary: indigo
-    accent: indigo
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   icon:
     repo: fontawesome/brands/git-alt
 extra_css:
   - stylesheets/extra.css
-edit_uri: ""
+# edit_uri: ""
 
 markdown_extensions:
   - attr_list
   - admonition
   - md_in_html
+  - meta
   - pymdownx.emoji:
       emoji_index: !!python/name:materialx.emoji.twemoji
       emoji_generator: !!python/name:materialx.emoji.to_svg
@@ -57,11 +67,11 @@ extra:
       link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
 
 nav:
-  - 'Home': 'index.md'
-  - 'Course':
+  - Home: index.md
+  - Course:
+    - course/index.md
     - 'FSDL 2022':
       - course/2022/index.md
-      - course/2022/description.md
       - course/2022/cohort.md
       - course/2022/lecture-1-introduction.md
       # - course/2022/lecture-2-development-infrastructure.md
@@ -107,7 +117,7 @@ nav:
       - spring2021/lecture-12.md
       - spring2021/lecture-13.md
       - spring2021/panel.md
-    - 'Older':
+    - Older:
       - older_courses.md
       - 'FSDL 2021 (Berkeley)': https://bit.ly/berkeleyfsdl
       - 'FSDL 2020 (UW)': https://bit.ly/uwfsdl
