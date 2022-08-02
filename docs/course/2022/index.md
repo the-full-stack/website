@@ -46,7 +46,7 @@ We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos 
 ## Detailed Contents
 
 [[Labs 1-3: CNNs, Transformers, PyTorch Lightning]]<br />
-Convnets, Transformers, PyTorch Lightning<br />
+Review of deep learning architectures and basic model training with PyTorch + Lightning.<br />
 *Released July 25, 2022.*
 
 [[Lecture 1: Introduction]]<br />
