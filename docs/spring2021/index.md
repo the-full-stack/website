@@ -1,4 +1,8 @@
-# Full Stack Deep Learning - Spring 2021
+---
+title: Course 2021
+---
+
+# Full Stack Deep Learning - Course Spring 2021
 
 We've updated and improved our materials for our 2021 course taught at UC Berkeley and online.
 

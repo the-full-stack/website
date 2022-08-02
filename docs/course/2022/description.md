@@ -101,7 +101,52 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
   </div>
 </div>
 
-Registration closes on **August 1, 2022**.
+# Registration
+
+<div class="pricing">
+  <div class="tier">
+    <div class="tier--header">On-Your-Own</div>
+    <div class="tier--price">
+      $0.00
+    </div>
+    <div class="tier--priceCaption" style="visibility: hidden;">
+    <!-- hidden but present to align the two tiers -->
+      <div>50% discount for students</div>
+    </div>
+
+    <ul class="tier--features">
+      <li> 📹 &nbsp; Lecture and lab videos
+    </ul>
+
+    <div style="margin-top: auto;">
+      <a href="http://eepurl.com/dxYwXj" style="width: 100%" class="md-button">Sign Up for Mailing List</a>
+    </div>
+
+  </div>
+  <div class="tier">
+    <div class="tier--header">Cohort-Based</div>
+    <div class="tier--price">
+      <span>$495</span>
+    </div>
+    <div class="tier--priceCaption">
+      <div>50% discount for students and academics</div>
+    </div>
+
+    <ul class="tier--features">
+      <li> 📹 &nbsp; Lecture and lab videos
+      <li> 🗣 &nbsp; Private Discord with instructors
+      <li> ❓ &nbsp; Weekly live online Q&A
+      <li> 💲 &nbsp; Compute credits
+      <li> 🎨 &nbsp; Team-based portfolio project with feedback
+      <li> 🏆 &nbsp; Certificate of completion
+      <li> 🔜 &nbsp; Starts August 8th, 2022
+    </ul>
+
+    <div style="margin-top: auto">
+      <a href="https://launchpass.com/full-stack-deep-learning1/students" style="width: 100%" class="md-button md-button--primary">Register here</a>
+    </div>
+  </div>
+</div>
 
 ## Cohort-Based Course FAQs
 

@@ -1,1 +1,1 @@
-# Lecture 3: Troubleshooting & TEsting
+# Lecture 3: Troubleshooting & Testing
