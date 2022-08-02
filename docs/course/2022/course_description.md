@@ -5,8 +5,11 @@ hide:
 
 # Full Stack Deep Learning - 2022
 
-The course starts **August 8, 2022**
-and runs until **October 14, 2022**.
+!!! info 
+    The course is now in progress. See [course materials](index.md).
+
+
+The course starts **August 8, 2022** and runs until **October 14, 2022**.
 
 ## What you will learn
 
