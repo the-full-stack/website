@@ -40,8 +40,9 @@ markdown_extensions:
   - pymdownx.superfences
 
 plugins:
+  - ezlinks  # Enables links like [[Lecture 1: Introduction]] 
   - search
-  - macros
+  - section-index  # Make top-level nav sections that contain an index.md clickable
 
 extra:
   social:
@@ -56,50 +57,49 @@ nav:
   - 'Home': 'index.md'
   - 'Course':
     - 'FSDL 2022':
-      - 'Main': 'course/2022/index.md'
-      - 'Labs': 'course/2022/labs.md'
-      - 'Lecture 1: Introduction': 'course/2022/lecture-1-introduction.md'
-      # - 'Lecture 2: Development Infrastructure': 'course/2022/lecture-2-development-infrastructure.md'
-      # - 'Lecture 3: Troubleshooting & Testing': 'course/2022/lecture-3-troubleshooting-and-testing.md'
-      # - 'Lecture 4: Data Management': 'course/2022/lecture-4-data-management.md'
-      # - 'Lecture 5: Deployment': 'course/2022/lecture-5-deployment.md'
-      # - 'Lecture 6: Continual Learning': 'course/2022/lecture-6-continual-learning.md'
-      # - 'Lecture 7: Foundation Models': 'course/2022/lecture-7-foundation-models.md'
-      # - 'Lecture 8: Project Management': 'course/2022/lecture-8-project-management.md'
-      # - 'Lecture 9: Ethics': 'course/2022/lecture-9-ethics.md'
-      - 'Course Description': 'course/2022/description.md' 
+      - course/2022/index.md
+      - course/2022/description.md
+      - course/2022/labs.md
+      - course/2022/lecture-1-introduction.md
+      - course/2022/lecture-2-development-infrastructure.md
+      - course/2022/lecture-3-troubleshooting-and-testing.md
+      - course/2022/lecture-4-data-management.md
+      - course/2022/lecture-5-deployment.md
+      - course/2022/lecture-6-continual-learning-and-monitoring.md
+      - course/2022/lecture-7-foundation-models.md
+      - course/2022/lecture-8-ml-project-management.md
+      - course/2022/lecture-9-ethics.md
     - 'FSDL 2021':
-      - 'Overview': 'spring2021/index.md'
-      - 'Projects': 'spring2021/projects.md'
-      - 'Lectures':
-        - 'spring2021/lecture-1.md'
-        - 'spring2021/notebook-1.md'
-        - 'spring2021/lecture-2a.md'
-        - 'spring2021/lecture-2b.md'
-        - 'spring2021/lecture-3.md'
-        - 'spring2021/lecture-4.md'
-        - 'spring2021/lecture-5.md'
-        - 'spring2021/lecture-6.md'
-        - 'spring2021/lecture-7.md'
-        - 'spring2021/lecture-8.md'
-        - 'spring2021/lecture-9.md'
-        - 'spring2021/lecture-10.md'
-        - 'spring2021/lecture-11.md'
-        - 'spring2021/lecture-12.md'
-        - 'spring2021/lecture-13.md'
-        - 'spring2021/panel.md'
-      - 'Labs':
-        - 'spring2021/lab-1.md'
-        - 'spring2021/lab-2.md'
-        - 'spring2021/lab-3.md'
-        - 'spring2021/lab-4.md'
-        - 'spring2021/lab-5.md'
-        - 'spring2021/lab-6.md'
-        - 'spring2021/lab-7.md'
-        - 'spring2021/lab-8.md'
-        - 'spring2021/lab-9.md'
+      - spring2021/index.md
       - 'Synchronous Online Course': 'spring2021/synchronous.md'
+      - 'spring2021/projects.md'
+      - 'spring2021/lecture-1.md'
+      - 'spring2021/lab-1.md'
+      - 'spring2021/notebook-1.md'
+      - 'spring2021/lecture-2a.md'
+      - 'spring2021/lecture-2b.md'
+      - 'spring2021/lab-2.md'
+      - 'spring2021/lecture-3.md'
+      - 'spring2021/lab-3.md'
+      - 'spring2021/lecture-4.md'
+      - 'spring2021/lab-4.md'
+      - 'spring2021/lecture-5.md'
+      - 'spring2021/lecture-6.md'
+      - 'spring2021/lab-5.md'
+      - 'spring2021/lecture-7.md'
+      - 'spring2021/lecture-8.md'
+      - 'spring2021/lab-6.md'
+      - 'spring2021/lecture-9.md'
+      - 'spring2021/lab-7.md'
+      - 'spring2021/lecture-10.md'
+      - 'spring2021/lab-8.md'
+      - 'spring2021/lecture-11.md'
+      - 'spring2021/lab-9.md'
+      - 'spring2021/lecture-12.md'
+      - 'spring2021/lecture-13.md'
+      - 'spring2021/panel.md'
     - 'Older':
+      - older_courses.md
       - 'FSDL 2021 (Berkeley)': https://bit.ly/berkeleyfsdl
       - 'FSDL 2020 (UW)': https://bit.ly/uwfsdl
       - 'FSDL 2019 (Online)': https://fall2019.fullstackdeeplearning.com

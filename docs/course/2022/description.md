@@ -3,7 +3,7 @@ hide:
   - toc
 ---
 
-# Full Stack Deep Learning - 2022
+# Course Description
 
 !!! info 
     The course is now in progress. See [course materials](index.md).
