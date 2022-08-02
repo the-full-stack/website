@@ -8,7 +8,9 @@ site_author: Full Stack Deep Learning
 site_image: https://fullstackdeeplearning.com/images/pancakes.png
 site_image_alt: Image explaining what FSDL covers.
 
-copyright: Full Stack Deep Learning, LLC. 2022
+copyright: Full Stack Deep Learning, 2022
+
+
 
 google_analytics:
   - UA-118687450-1
@@ -24,9 +26,18 @@ theme:
   logo: images/favicon.png
   name: material
   palette:
-    scheme: default
-    primary: indigo
-    accent: indigo
+    - scheme: default
+      primary: indigo
+      accent: indigo
+      toggle:
+        icon: material/brightness-7 
+        name: Switch to dark mode
+    - scheme: slate
+      primary: indigo
+      accent: orange
+      toggle:
+        icon: material/brightness-4
+        name: Switch to light mode
   icon:
     repo: fontawesome/brands/git-alt
 extra_css:
