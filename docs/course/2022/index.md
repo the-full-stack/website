@@ -5,7 +5,7 @@ hide:
 
 # Full Stack Deep Learning Course 2022
 
-For description and testimonials of the course, see [this page](course_description).
+For description and testimonials of the course, see [this page](description).
 
 ## Schedule
 
