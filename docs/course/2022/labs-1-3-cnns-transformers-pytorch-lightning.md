@@ -1,3 +1,8 @@
+---
+description: Review of architectures and training with PyTorch + Lightning
+hide:
+    - toc
+---
 # Labs 1-3: CNNs, Transformers, PyTorch Lightning
 
 As part of Full Stack Deep Learning 2022,
