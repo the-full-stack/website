@@ -9,7 +9,7 @@ hide:
 !!! info "Course in Progress"
     Those who registered for the paid cohort option, please [see here](cohort) for details.
 
-    And everyone else – all the material is free! Simply enter your email below, follow us on [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank}, or [:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank} to follow along week-by-week.
+    And everyone else – all the material is free! Simply enter your email below, follow us on [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank}, or subscribe to our [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning){target=_blank} to get updates week-by-week.
 
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
@@ -27,7 +27,7 @@ hide:
 
 ## Schedule { style="margin-top: 1rem" }
 
-We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time, on our [:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}.
+We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time on [:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}.
 
 | Week           | Lecture                                    | Lab                                                 | Project              |
 | -------------- | ------------------------------------------ | --------------------------------------------------- | -------------------- |
