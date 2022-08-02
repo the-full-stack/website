@@ -5,7 +5,7 @@ hide:
 
 # Course Description
 
-!!! info 
+!!! info
     The course is now in progress. See [course materials](index.md).
 
 ## What you will learn
@@ -33,7 +33,7 @@ We've updated all materials with best practices as of 2022 and added some brand 
 Through the first few weeks of the course, you will construct an end-to-end ML system, with best practices as of 2022.
 
 - Applying CI/CD principles for clean, fast-moving ML
-- Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https:/pytorchlightning.ai) + [W&B](https://wandb.ai)
+- Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https://pytorchlightning.ai) + [W&B](https://wandb.ai)
 - Hypermodern deployment: [Docker](https://docker.com) + [AWS Lambda](https://aws.amazon.com/lambda) + [Gradio](https://gradio.app/)
 
 ## Project
@@ -160,12 +160,14 @@ devoting more time will result in a final project that you can be even more prou
 ### Which components of the course are synchronous? What days and times will synchronous events occur?
 
 The Q&A sessions are synchronous. Their timing will be set based on student availability.
+If you are a member of the cohort, you can read about the schedule [here](https://discord.com/channels/984525101678612540/999034075853623346/1003856556925927444).
 
 Lectures are pre-recorded, with the Q&A session serving as a live
 ["flipped classroom"](https://bokcenter.harvard.edu/flipped-classrooms)
 for discussing the lecture content.
 
-Labs are available online, with a pre-recorded walkthrough video.
+Labs are available online, with a pre-recorded walkthrough video
+and a live Q&A session.
 We encourage students to form study groups, via the Discord server,
 for working on the lab material.
 
