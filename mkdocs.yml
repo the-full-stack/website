@@ -63,7 +63,6 @@ nav:
       - course/2022/index.md
       - course/2022/description.md
       - course/2022/cohort.md
-      - course/2022/labs-1-3-cnns-transformers-pytorch-lightning.md
       - course/2022/lecture-1-introduction.md
       # - course/2022/lecture-2-development-infrastructure.md
       # - course/2022/lecture-3-troubleshooting-and-testing.md
@@ -73,6 +72,12 @@ nav:
       # - course/2022/lecture-7-foundation-models.md
       # - course/2022/lecture-8-ml-project-management.md
       # - course/2022/lecture-9-ethics.md
+      - course/2022/labs-1-3-cnns-transformers-pytorch-lightning.md
+      # - course/2022/lab-4-experiment-management.md
+      # - course/2022/lab-5-troubleshooting.md
+      # - course/2022/lab-6-data-labeling.md
+      # - course/2022/lab-7-web-deployment.md
+      # - course/2022/lab-8-model-monitoring.md
     - 'FSDL 2021':
       - spring2021/index.md
       - spring2021/synchronous.md
