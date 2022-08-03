@@ -53,7 +53,7 @@ markdown_extensions:
   - pymdownx.superfences
 
 plugins:
-  - ezlinks  # Enables links like [[Lecture 1: Introduction]] 
+  # - ezlinks  # Enables links like [[Lecture 1: Introduction]] 
   - search
   - section-index  # Make top-level nav sections that contain an index.md clickable
 

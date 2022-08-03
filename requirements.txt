@@ -1,5 +1,4 @@
 mkdocs
-mkdocs-ezlinks-plugin
 mkdocs-material
 mkdocs-macros-plugin
 mkdocs-section-index
