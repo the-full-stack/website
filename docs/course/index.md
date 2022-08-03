@@ -5,7 +5,7 @@ hide:
 
 # FSDL Course
 
-!!! info 
+!!! info
     The [2022 course](2022/index.md) is now in progress!
 
 ## What you will learn
@@ -33,7 +33,7 @@ We've updated all materials with best practices as of 2022 and added some brand 
 Through the first few weeks of the course, you will construct an end-to-end ML system, with best practices as of 2022.
 
 - Applying CI/CD principles for clean, fast-moving ML
-- Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https:/pytorchlightning.ai) + [W&B](https://wandb.ai)
+- Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https://pytorchlightning.ai) + [W&B](https://wandb.ai)
 - Hypermodern deployment: [Docker](https://docker.com) + [AWS Lambda](https://aws.amazon.com/lambda) + [Gradio](https://gradio.app/)
 
 ## Project
