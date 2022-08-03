@@ -7,8 +7,8 @@ check out [this short guide](https://fsdl.me/2022-discord-tips).
 ## How do I know if I'm fully registered?
 
 If you completed your registration for the course,
-you should be able to access the
-[`#course-announcements` channel here](https://discord.com/channels/984525101678612540/999034075853623346).
+you should be able to access the `#course-announcements` channel
+[here](https://discord.com/channels/984525101678612540/999034075853623346).
 
 Please email us at `registration@fullstackdeeplearning.com`
 if you registered for the course but cannot access the Discord.
@@ -16,8 +16,10 @@ if you registered for the course but cannot access the Discord.
 ## I've registered and I'm in the Discord. How do I follow along?
 
 Check out the top-level posts in the
-[`#course-announcements` channel](https://discord.com/channels/984525101678612540/999034075853623346)
-for information on content and schedule.
+`#course-announcements` channel
+[here](https://discord.com/channels/984525101678612540/999034075853623346)
+for information on content and schedule,
+including a calendar link.
 
 ## Teaching Assistants
 
