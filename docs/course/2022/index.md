@@ -10,7 +10,11 @@ hide:
 !!! info "Course in Progress"
     Those who registered for the paid cohort option, please [see here](cohort) for details.
 
-    And everyone else – all the material is free! Simply enter your email below, follow us on [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank}, or subscribe to our [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning){target=_blank} to get updates week-by-week.
+    And everyone else – all the material is free!
+    Simply enter your email below, follow us on
+    [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank},
+    or subscribe to our
+    [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning){target=_blank} to get updates week-by-week.
 
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
@@ -28,11 +32,12 @@ hide:
 
 ## Schedule { style="margin-top: 1rem" }
 
-We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time on [:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}.
+We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time on
+[:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}.
 
 | Week           | Lecture                                    | Lab                                                 | Project              |
 | -------------- | ------------------------------------------ | --------------------------------------------------- | -------------------- |
-| **2022-08-08** | [[Lecture 1: Introduction]]                | [[Labs 1-3: CNNs, Transformers, PyTorch Lightning]] | -                    |
+| **2022-08-08** | Lecture 1: Introduction                    | [[Labs 1-3: CNNs, Transformers, PyTorch Lightning]] | -                    |
 | 2022-08-15     | Lecture 2: Development Infrastructure      | Lab 4: Experiment Management                        | -                    |
 | 2022-08-22     | Lecture 3: Troubleshooting & Testing       | Lab 5: Troubleshooting                              | -                    |
 | 2022-08-29     | Lecture 4: Data Management                 | Lab 6: Data Annotation                              | Start forming groups |
@@ -45,18 +50,17 @@ We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos 
 
 ## Detailed Contents
 
-[[Labs 1-3: CNNs, Transformers, PyTorch Lightning]]<br />
-Review of deep learning architectures and basic model training with PyTorch + Lightning.<br />
+### [[Labs 1-3: CNNs, Transformers, PyTorch Lightning]]
+We review deep learning architectures and introduce basic model training with PyTorch + Lightning.<br />
 *Released July 25, 2022.*
 
-[[Lecture 1: Introduction]]<br />
-TODO<br />
+### Lecture 1: Introduction
 *Released August 8, 2022.*
-
-<!-- Lab 4: Experiment Management<br />
-TODO<br />
-*Released August 10, 2022.* -->
 
 <!-- Lecture 2: Development Infastructure<br />
 We tour the landscape of infrastructure and tooling for developing deep learning models.<br />
 *Released August 15, 2022.* -->
+
+<!-- Lab 4: Experiment Management<br />
+We learn how to track and manage model development experiments with PyTorch Lightning and W&B. <br />
+*Released August 17, 2022.* -->
