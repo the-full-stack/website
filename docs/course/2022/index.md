@@ -50,6 +50,11 @@ We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos 
 
 ## Detailed Contents
 
+<!-- _TEMPLATE
+### {TYPE} {IDX}: {TITLE}
+We use the second-person plural, referring to both students and instructors, to describe what is covered in the content.<br />
+*Released MONTH DATE, 2022.* -->
+
 ### [[Labs 1-3: CNNs, Transformers, PyTorch Lightning]]
 We review deep learning architectures and introduce basic model training with PyTorch + Lightning.<br />
 *Released July 25, 2022.*
@@ -64,3 +69,4 @@ We tour the landscape of infrastructure and tooling for developing deep learning
 <!-- Lab 4: Experiment Management<br />
 We learn how to track and manage model development experiments with PyTorch Lightning and W&B. <br />
 *Released August 17, 2022.* -->
+
