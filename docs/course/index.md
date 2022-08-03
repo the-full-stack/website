@@ -3,16 +3,10 @@ hide:
   - toc
 ---
 
-# Full Stack Deep Learning - 2022
+# FSDL Course
 
-<div class="md-banner announce"  markdown>
-<h2 style="margin: 16px 10px;"> 🚀  We are excited to announce FSDL 2022 🚀 </h2>
-
-10 weeks of lectures, private Discord, Q&A, coding labs, and a portfolio project, all on building awesome ML-powered products, starting August 8.
-
-[Register now!](#register){ .md-button .md-button--primary }
-
-</div>
+!!! info
+    The [2022 course](2022/index.md) is now in progress!
 
 ## What you will learn
 
@@ -39,7 +33,7 @@ We've updated all materials with best practices as of 2022 and added some brand 
 Through the first few weeks of the course, you will construct an end-to-end ML system, with best practices as of 2022.
 
 - Applying CI/CD principles for clean, fast-moving ML
-- Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https:/pytorchlightning.ai) + [W&B](https://wandb.ai)
+- Hypermodern training: [PyTorch](https://pytorch.org) + [Lightning](https://pytorchlightning.ai) + [W&B](https://wandb.ai)
 - Hypermodern deployment: [Docker](https://docker.com) + [AWS Lambda](https://aws.amazon.com/lambda) + [Gradio](https://gradio.app/)
 
 ## Project
@@ -107,10 +101,7 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
   </div>
 </div>
 
-## Register
-
-The course starts **August 8, 2022**
-and runs until **October 14, 2022**.
+# Registration
 
 <div class="pricing">
   <div class="tier">
@@ -154,7 +145,6 @@ and runs until **October 14, 2022**.
     <div style="margin-top: auto">
       <a href="https://launchpass.com/full-stack-deep-learning1/students" style="width: 100%" class="md-button md-button--primary">Register here</a>
     </div>
-
   </div>
 </div>
 

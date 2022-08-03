@@ -1,3 +1,11 @@
+.twitter {
+  color: #1DA1F2;
+}
+
+.youtube {
+  color: #FF0000;
+}
+
 h1.title {
   /* color: white; */
   font-weight: bold;
@@ -128,7 +136,7 @@ h2 {
 
 .announce {
   text-align: center;
-  background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%,#fff 99%);
+  background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%, #fff 99%);
   padding: 1em;
 }
 
@@ -146,7 +154,7 @@ h2 {
 
 .announce .md-button:focus,
 .announce .md-button:hover {
-    background-color: #D47C2B;
-    color: var(--md-default-bg-color);
-    border-color: #D47C2B
+  background-color: #D47C2B;
+  color: var(--md-default-bg-color);
+  border-color: #D47C2B
 }
