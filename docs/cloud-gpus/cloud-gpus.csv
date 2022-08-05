@@ -8,6 +8,19 @@ AWS,V100 (32 GB),Volta,8,256,96,768,$31.21,$3.90,$9.36,p3dn.24xlarge
 AWS,A10G (24 GB),Ampere,1,24,16,64,$1.62,$1.62,$0.49,g5.4xlarge
 AWS,A10G (24 GB),Ampere,4,96,48,192,$5.67,$1.42,$1.74,g5.12xlarge
 AWS,A10G (24 GB),Ampere,8,192,192,768,$16.29,$2.04,$4.89,g5.48xlarge
+AWS,A10G (24 GB),Ampere,4,96,96,384,$8.14,$2.04,$2.44,g5.24xlarge
+AWS,A10G (24 GB),Ampere,1,24,4,16,$1.01,$1.01,$0.30,g5.xlarge
+AWS,A10G (24 GB),Ampere,1,24,8,32,$1.21,$1.21,$0.39,g5.2xlarge
+AWS,A10G (24 GB),Ampere,1,24,32,128,$2.45,$2.45,$0.76,g5.8xlarge
+AWS,A10G (24 GB),Ampere,1,24,64,256,$4.10,$4.10,$1.23,g5.16xlarge
+AWS,T4 (16),Turing,1,16,16,64,$1.20,$1.20,$0.36,g4dn.4xlarge
+AWS,T4 (16),Turing,1,16,4,16,$0.53,$0.53,$0.16,g4dn.xlarge
+AWS,T4 (16),Turing,1,16,8,32,$0.75,$0.75,$0.23,g4dn.2xlarge
+AWS,T4 (16),Turing,1,16,16,64,$1.20,$1.20,$0.36,g4dn.4xlarge
+AWS,T4 (16),Turing,1,16,32,128,$2.18,$2.18,$0.65,g4dn.8xlarge
+AWS,T4 (16),Turing,1,16,64,256,$4.35,$4.35,$1.21,g4dn.16xlarge
+AWS,T4 (16),Turing,4,64,48,192,$3.91,$0.98,$1.31,g4dn.12xlarge
+AWS,T4 (16),Turing,8,128,96,384,$7.82,$0.98,$2.35,g4dn.metal
 AWS,T4 (16 GB),Turing,1,16,16,64,$1.20,$1.20,$0.36,g4dn.4xlarge
 AWS,K80 (12 GB),Kepler,1,12,4,61,$0.90,$0.90,$0.27,p2.xlarge
 AWS,K80 (12 GB),Kepler,8,96,32,488,$7.20,$0.90,$2.16,p2.8xlarge

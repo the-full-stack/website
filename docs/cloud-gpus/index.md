@@ -27,7 +27,6 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 
 - GCP does not have GPU "instances" in the same way that AWS and Azure do. Instead, any suitable machine can be connected to a configuration of GPUs. We have selected machines that are roughly equivalent to AWS options.
 - Regions were set to be the west or central parts of the United States. GPU availability depends on the region.
-- AWS has more A10G instances available with different numbers of vCPUs and amounts of RAM.
 - Raw data can be found in a [Google sheet](https://docs.google.com/spreadsheets/d/1nyMIbl0FzJfKpx6BjnDrX2ABIbgaSXQHBwBL5Us0KRw/edit?usp=sharing).
 
 ## GPUs
