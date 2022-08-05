@@ -16,9 +16,10 @@ By [Sergey Karayev](https://twitter.com/sergeykarayev). Updated August 5, 2022.
 
 We have assembled cloud GPU vendor pricing all in one table, sortable and filterable to your liking!
 
-**We welcome your help in adding more cloud GPU providers and keeping the pricing info current!**
+**We welcome your help in adding more cloud GPU providers and keeping the pricing info current.**
 
-Please make a pull request to this repo, editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md) and/or [cloud-gpus.csv](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv).
+Please [file an issue](https://github.com/full-stack-deep-learning/website/issues/new?assignees=sergeyk&labels=cloud-gpu&template=gpu-cloud-pricing-update.md&title=update+GPU+Cloud+Pricing) or make a pull request to [this repo](https://github.com/full-stack-deep-learning/website/), editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md) to update the text on this page and/or [cloud-gpus.csv](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) to update the data.
+
 
 <div id="cloud-gpus-table"></div>
 
