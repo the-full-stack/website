@@ -20,6 +20,7 @@ We have assembled cloud GPU vendor pricing all in one table, sortable and filter
 
 Please [file an issue](https://github.com/full-stack-deep-learning/website/issues/new?assignees=sergeyk&labels=cloud-gpu&template=gpu-cloud-pricing-update.md&title=update+GPU+Cloud+Pricing) or make a pull request to [this repo](https://github.com/full-stack-deep-learning/website/), editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md) to update the text on this page and/or [cloud-gpus.csv](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) to update the data.
 
+<center>*All prices are in $/hr.*</center>
 
 <div id="cloud-gpus-table"></div>
 
@@ -27,7 +28,6 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 
 - GCP does not have GPU "instances" in the same way that AWS and Azure do. Instead, any suitable machine can be connected to a configuration of GPUs. We have selected machines that are roughly equivalent to AWS options.
 - Regions were set to be the west or central parts of the United States. GPU availability depends on the region.
-- AWS has more A10G instances available with different numbers of vCPUs and amounts of RAM.
 - Raw data can be found in a [Google sheet](https://docs.google.com/spreadsheets/d/1nyMIbl0FzJfKpx6BjnDrX2ABIbgaSXQHBwBL5Us0KRw/edit?usp=sharing).
 
 ## GPUs
