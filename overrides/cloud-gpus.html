@@ -1,0 +1,29 @@
+{% extends "main.html" %}
+
+{% block extrahead %}
+<script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+
+<style>
+    .handsontable .htDimmed {
+        color: #000;
+    }
+</style>
+
+<meta property="og:title" content="Cloud GPUs Comparison Table">
+<meta property="og:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.canonical_url }}">
+<meta property="og:image" content="https://fullstackdeeplearning.com/images/cloud-gpu-og.jpg">
+<meta property="og:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="full_stack_dl">
+<meta name="twitter:title" content="Cloud GPUs Comparison Table">
+<meta name="twitter:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
+<meta name="twitter:image" content="https://fullstackdeeplearning.com/images/cloud-gpu-og.jpg">
+<meta name="twitter:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
+{% endblock %}

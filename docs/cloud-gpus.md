@@ -1,8 +1,9 @@
 ---
-template: table.html
+template: cloud-gpus.html
 hide:
     - toc
     - navigation
+description: Detailed comparison table of all cloud GPU providers.
 ---
 
 # Cloud GPUs
