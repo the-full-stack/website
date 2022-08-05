@@ -20,6 +20,7 @@ We have assembled cloud GPU vendor pricing all in one table, sortable and filter
 
 Please [file an issue](https://github.com/full-stack-deep-learning/website/issues/new?assignees=sergeyk&labels=cloud-gpu&template=gpu-cloud-pricing-update.md&title=update+GPU+Cloud+Pricing) or make a pull request to [this repo](https://github.com/full-stack-deep-learning/website/), editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md) to update the text on this page and/or [cloud-gpus.csv](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) to update the data.
 
+<center>*All prices are in $/hr.*</center>
 
 <div id="cloud-gpus-table"></div>
 
