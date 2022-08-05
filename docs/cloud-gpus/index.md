@@ -13,7 +13,7 @@ description: Detailed comparison table of all cloud GPU providers.
 
 We have assembled cloud GPU vendor pricing all in one table, sortable and filterable to your liking!
 
-Please make pull requests to this repository, and provide a copy of the [Google Sheet](https://docs.google.com/spreadsheets/d/1nyMIbl0FzJfKpx6BjnDrX2ABIbgaSXQHBwBL5Us0KRw/edit?usp=sharing) that originated this data with your new data.
+Please make pull requests to the source files [cloud-gpus.csv](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) and [gpus.csv](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/gpus.csv).
 
 <div id="cloud-gpus-table"></div>
 
@@ -56,6 +56,7 @@ fetch("./cloud-gpus.csv").then((res) => res.text()).then((text) => {
     height: 'auto',
     hiddenColumns: true,
     manualColumnResize: true,
+    readOnly: true,
   });
 });
 fetch("./gpus.csv").then((res) => res.text()).then((text) => {
@@ -64,13 +65,14 @@ fetch("./gpus.csv").then((res) => res.text()).then((text) => {
     data: data,
     licenseKey: "non-commercial-and-evaluation",
     colHeaders: Object.keys(data[0]),
-    dropdownMenu: true,
-    multiColumnSorting: true,
-    filters: true,
+    // dropdownMenu: true,
+    // multiColumnSorting: true,
+    // filters: true,
     width: 'auto',
     height: 'auto',
     hiddenColumns: true,
     manualColumnResize: true,
+    readOnly: true,
   });
 });
 </script>
