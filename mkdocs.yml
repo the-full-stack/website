@@ -1,5 +1,6 @@
 repo_url: https://github.com/full-stack-deep-learning/website
 repo_name: FSDL Website
+edit_uri: edit/main/docs
 
 site_name: Full Stack Deep Learning
 site_url: https://fullstackdeeplearning.com
