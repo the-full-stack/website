@@ -151,14 +151,11 @@ h2 {
 }
 
 .announce .md-button--primary {
-  background-color: var(--md-primary-bg-color);
+  background-color: var(--md-primary-bg-color)
   color: #D47C2B;
   border-color: var(--md-primary-bg-color)
 }
 
-.announce .md-button:focus,
-.announce .md-button:hover {
-  background-color: #D47C2B;
-  color: var(--md-default-bg-color);
-  border-color: #D47C2B
+.disabled-button {
+  pointer-events: none;
 }

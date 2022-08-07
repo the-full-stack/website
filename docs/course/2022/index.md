@@ -69,4 +69,3 @@ We tour the landscape of infrastructure and tooling for developing deep learning
 <!-- Lab 4: Experiment Management<br />
 We learn how to track and manage model development experiments with PyTorch Lightning and W&B. <br />
 *Released August 17, 2022.* -->
-

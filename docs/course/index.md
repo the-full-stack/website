@@ -143,12 +143,15 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
     </ul>
 
     <div style="margin-top: auto">
-      <a href="https://launchpass.com/full-stack-deep-learning1/students" style="width: 100%" class="md-button md-button--primary">Register here</a>
+      <div style="width: 100%" class="md-button disabled-button">Registration Closed</div>
     </div>
   </div>
 </div>
 
 ## Cohort-Based Course FAQs
+
+Read more about the 2022 synchronous cohort
+[here](./2022/cohort).
 
 ### How long is the course? How much time do I need to devote to it?
 
