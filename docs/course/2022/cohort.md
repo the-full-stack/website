@@ -32,8 +32,7 @@ To stay apprised of updates without getting overwhelmed, we suggest these notifi
 You can find them here in the Discord web client:
 ![notification-menu](https://fsdl.me/notification-menu)
 
-#### Only course staff can use the remaining notification stream,
-@mentions.
+#### Only course staff can use the remaining notification stream, @mentions.
 
 If you turn off `@role`/`@everyone`/`@here`, you won't see announcements about live events and changes of schedule.
 
