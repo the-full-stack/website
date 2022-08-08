@@ -74,7 +74,7 @@ nav:
     - 'FSDL 2022':
       - course/2022/index.md
       - course/2022/cohort.md
-      # - course/2022/lecture-1-introduction.md
+      - course/2022/lecture-1-introduction.md
       # - course/2022/lecture-2-development-infrastructure.md
       # - course/2022/lecture-3-troubleshooting-and-testing.md
       # - course/2022/lecture-4-data-management.md

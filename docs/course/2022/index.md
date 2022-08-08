@@ -35,31 +35,32 @@ hide:
 We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time on
 [:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}.
 
-| Week           | Lecture                                    | Lab                                                                                                | Project              |
-| -------------- | ------------------------------------------ | -------------------------------------------------------------------------------------------------- | -------------------- |
-| **2022-08-08** | Lecture 1: Introduction                    | [Labs 1-3: CNNs, Transformers, PyTorch Lightning](labs-1-3-cnns-transformers-pytorch-lightning.md) | -                    |
-| 2022-08-15     | Lecture 2: Development Infrastructure      | Lab 4: Experiment Management                                                                       | -                    |
-| 2022-08-22     | Lecture 3: Troubleshooting & Testing       | Lab 5: Troubleshooting                                                                             | -                    |
-| 2022-08-29     | Lecture 4: Data Management                 | Lab 6: Data Annotation                                                                             | Start forming groups |
-| 2022-09-05     | Lecture 5: Deployment                      | Lab 7: Web Deployment                                                                              | Group proposals due  |
-| 2022-09-12     | Lecture 6: Continual Learning & Monitoring | Lab 8: Model Monitoring                                                                            | Work on project      |
-| 2022-09-19     | Lecture 7: Foundation Models               |                                                                                                    | Work on project      |
-| 2022-09-26     | Lecture 8: ML Project Management           |                                                                                                    | Work on project      |
-| 2022-10-03     | Lecture 9: Ethics                          |                                                                                                    | Work on project      |
-| 2022-10-10     | Project Presentations                      |                                                                                                    | Project due          |
+| Week           | Lecture                                                                  | Lab                                                                                                | Project              |
+| -------------- | ------------------------------------------                               | -------------------------------------------------------------------------------------------------- | -------------------- |
+| **2022-08-08** | [Lecture 1: Course Vision and When to Use ML](lecture-1-introduction.md) | [Labs 1-3: CNNs, Transformers, PyTorch Lightning](labs-1-3-cnns-transformers-pytorch-lightning.md) | -                    |
+| 2022-08-15     | Lecture 2: Development Infrastructure                                    | Lab 4: Experiment Management                                                                       | -                    |
+| 2022-08-22     | Lecture 3: Troubleshooting & Testing                                     | Lab 5: Troubleshooting                                                                             | -                    |
+| 2022-08-29     | Lecture 4: Data Management                                               | Lab 6: Data Annotation                                                                             | Start forming groups |
+| 2022-09-05     | Lecture 5: Deployment                                                    | Lab 7: Web Deployment                                                                              | Group proposals due  |
+| 2022-09-12     | Lecture 6: Continual Learning & Monitoring                               | Lab 8: Model Monitoring                                                                            | Work on project      |
+| 2022-09-19     | Lecture 7: Foundation Models                                             |                                                                                                    | Work on project      |
+| 2022-09-26     | Lecture 8: ML Project Management                                         |                                                                                                    | Work on project      |
+| 2022-10-03     | Lecture 9: Ethics                                                        |                                                                                                    | Work on project      |
+| 2022-10-10     | Project Presentations                                                    |                                                                                                    | Project due          |
 
 ## Detailed Contents
 
 <!-- _TEMPLATE
 ### {TYPE} {IDX}: {TITLE}
-We use the second-person plural, referring to both students and instructors, to describe what is covered in the content.<br />
+We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.<br />
 *Released MONTH DATE, 2022.* -->
 
 ### [Labs 1-3: CNNs, Transformers, PyTorch Lightning](labs-1-3-cnns-transformers-pytorch-lightning.md)
-We review deep learning architectures and introduce basic model training with PyTorch + Lightning.<br />
+We review deep learning architectures and work through basic model training with PyTorch + Lightning.<br />
 *Released July 25, 2022.*
 
-### Lecture 1: Introduction
+### [Lecture 1: Course Vision and When to Use ML](lecture-1-introduction.md)
+We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
 *Released August 8, 2022.*
 
 <!-- Lecture 2: Development Infastructure<br />
