@@ -101,3 +101,13 @@ Jarvislabs,RTX5000 (16GB),Turing,1,16,7,32,0.49,0.49,0.19,
 Jarvislabs,RTX5000 (16GB),Turing,2,32,14,64,0.98,0.49,0.38,
 Jarvislabs,RTX5000 (16GB),Turing,4,64,28,128,1.96,0.49,0.76,
 Jarvislabs,RTX5000 (16GB),Turing,8,128,56,256,3.92,0.49,1.52,
+Datacrunch,A100 (80 GB),Ampere,1,80,22,120,2.25,2.25,,1A100.22V
+Datacrunch,A100 (80 GB),Ampere,2,160,44,240,4.50,2.25,,2A100.44V
+Datacrunch,A100 (80 GB),Ampere,4,320,88,480,9.00,2.25,,4A100.88V
+Datacrunch,A100 (80 GB),Ampere,8,640,176,960,18.00,2.25,,8A100.176V
+Datacrunch,A6000 (48 GB),Ampere,1,48,10,60,1.25,1.25,,1A6000.10V
+Datacrunch,A6000 (48 GB),Ampere,8,384,80,480,10.00,1.25,,8A6000.80V
+Datacrunch,V100 (16 GB),Volta,1,16,6,23,1.00,1.00,,1V100.6V
+Datacrunch,V100 (16 GB),Volta,2,32,10,45,2.00,1.00,,2V100.10V
+Datacrunch,V100 (16 GB),Volta,4,64,20,90,4.00,1.00,,4V100.20V
+Datacrunch,V100 (16 GB),Volta,8,128,48,180,8.00,1.00,,8V100.48V
