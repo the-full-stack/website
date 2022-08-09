@@ -12,36 +12,37 @@ description: Introduction to planning, developing, and shipping ML-powered produ
 
 **Full Stack Deep Learning (FSDL) is the course and community for people
 who are building products that are powered by machine learning (ML).**
-It's an exciting time to talk about ML-powered products, because ML is
+It's an exciting time to talk about ML-powered products because ML is
 rapidly becoming a mainstream technology - as you can see in startup
 funding, job postings, and continued investments of large companies.
 
-FSDL was originally started in 2018, when the most exciting ML-powered
+FSDL was originally started in 2018 when the most exciting ML-powered
 products were built by the biggest companies. However, the broader
-narrative in the field was that very few companies were able to get
-value out of this technology.
+narrative in the field was that very few companies could get value out
+of this technology.
 
 Now in 2022, there's a proliferation of powerful products that are
 powered by ML. The narrative has shifted as well: There's
 standardization that has emerged around the tech stack - with
 transformers and NLP starting to seep their way into more use cases, as
 well as practices around how to apply ML technologies in the world. One
-of the biggest changes in the field in the past 4 years has been the
+of the biggest changes in the field in the past four years has been the
 emergence of the term **MLOps**.
 
 Why has the change been so rapid, you might ask? In addition to the
-field being more mature and research continues to progress, a big reason
-is that **the training of models is starting to commoditized**.
+field being more mature and research continuing to progress, a big
+reason is that **the training of models is starting to become
+commoditized**.
 
 -   With tools like HuggingFace, you can deploy a state-of-the-art NLP
 or CV model in one or two lines of code.
 
 -   AutoML is starting to work for a lot of applications.
 
--   Companies are starting to provide models as a service, where you
-don't even have to download open-source packages to use it. You
-can just make a network call to get predictions from a
-state-of-the-art model.
+-   Companies are starting to provide models as a service where you
+don't even have to download open-source packages to use them. You
+can make a network call to get predictions from a state-of-the-art
+model.
 
 -   Many frameworks are starting to standardize around Keras and PyTorch
 Lightning.
@@ -54,20 +55,20 @@ winters that happened over the history of the field - where the
 technology didn't live up to its hype. If you project forward a few
 years, what will happen to ML?
 
-![](./lecture-1-media/image2.png)
+![](./lecture-1-media/image6.png)
 
 
-*Source: [[5 Things You Should Know About
-AI]{.underline}](https://www.cambridgewireless.co.uk/lecture-1-media/uploads/resources/AI%20Group/AIMobility-11.05.17-Cambridge_Consultants-Monty_Barlow.pdf)
+*Source: [5 Things You Should Know About
+AI](https://www.cambridgewireless.co.uk/lecture-1-media/uploads/resources/AI%20Group/AIMobility-11.05.17-Cambridge_Consultants-Monty_Barlow.pdf)
 (Cambridge Consultants, May 2017)*
 
 There would be a few outcomes:
 
-1.  The prospect of a true AI winter, where people become skeptical
-about AI as a technology, may be less likely.
+1.  The prospect of a true AI winter may be less likely, where people
+become skeptical about AI as a technology.
 
 2.  A slightly more likely outcome is that the overall luster of the
-technology starts to wear off, but certain applications are
+technology starts to wear off, but specific applications are
 getting a ton of value out of it.
 
 3.  The upside outcome for the field is that AI continues to accelerate
@@ -82,7 +83,7 @@ we avoid repeating what has happened in the past.
 Building ML-powered products requires a fundamentally different process
 in many ways than developing ML models in an academic setting.
 
-![](./lecture-1-media/image4.png)
+![](./lecture-1-media/image7.png)
 
 
 In academia, you build **"flat-earth" ML** - selecting a problem,
@@ -90,7 +91,7 @@ collecting data, cleaning and labeling the data, iterating on model
 development until you have a model that performs well on the dataset
 collected, evaluating that model, and writing a report at the end.
 
-![](./lecture-1-media/image13.png)
+![](./lecture-1-media/image5.png)
 
 
 But ML-powered products require **an outer loop** where after you deploy
@@ -100,12 +101,12 @@ flywheel and continue this as part of an outer loop.
 
 ### This Course
 
-![](./lecture-1-media/image1.png)
+![](./lecture-1-media/image2.png)
 
 
-This class is about the unique aspects that you need to know beyond
-training models to build great ML-powered products. Here are some
-concrete goals for us:
+This class is about the unique aspects you need to know beyond training
+models to build great ML-powered products. Here are some concrete goals
+for us:
 
 1.  Teaching you generalist skills and an understanding of the
 components of ML-powered products (and ML projects more
@@ -135,14 +136,14 @@ If you feel rusty on your pre-requisites but want to get started with
 FDSL, here are our recommendations to get up to speed with the
 fundamentals:
 
--   Andrew Ng's [[Machine Learning Coursera
-course]{.underline}](https://www.coursera.org/collections/machine-learning)
+-   Andrew Ng's [Machine Learning Coursera
+course](https://www.coursera.org/collections/machine-learning)
 
--   Google's [[crash course on Machine
-Learning]{.underline}](https://developers.google.com/machine-learning/crash-course)
+-   Google's [crash course on Machine
+Learning](https://developers.google.com/machine-learning/crash-course)
 
--   MIT's [[The Missing
-Semester]{.underline}](https://missing.csail.mit.edu/) on software
+-   MIT's [The Missing
+Semester](https://missing.csail.mit.edu/) on software
 engineering
 
 ### ML-Powered Products vs MLOps
@@ -159,7 +160,7 @@ setting?
 
 -   How can we collaborate on these systems as a team?
 
-![](./lecture-1-media/image10.png)
+![](./lecture-1-media/image1.png)
 
 
 ML-powered product is a distinct but overlapping discipline. A lot of
@@ -217,8 +218,8 @@ big enough problem to be worth the complexity.
 The bar for your ML projects should be that **their value must outweigh
 not just the cost of developing them but also the additional complexity
 that these ML systems introduce to your software** (as introduced in the
-classic paper "[[The High-Interest Credit Card of Technical
-Debt]{.underline}](https://research.google/pubs/pub43146/)"). In brief,
+classic paper "[The High-Interest Credit Card of Technical
+Debt](https://research.google/pubs/pub43146/)"). In brief,
 ML systems erode the boundaries between other systems, rely on expensive
 data dependencies, are commonly plagued by system design anti-patterns,
 and are subject to the instability of the external world.
@@ -249,7 +250,7 @@ industry are doing.
 2.  Low-cost projects are those with available data, where bad
 predictions are not too harmful.
 
-![](./lecture-1-media/image9.png)
+![](./lecture-1-media/image11.png)
 
 
 #### High-Impact Projects
@@ -258,23 +259,23 @@ Zooming into the mental models that you can use to find high-impact ML
 projects:
 
 1.  **Find problems where ML makes it economically feasible to solve
-them**: A good resource here is the book "[[Prediction Machines:
+them**: A good resource here is the book "[Prediction Machines:
 The Simple Economics of
-AI]{.underline}](https://www.amazon.com/Prediction-Machines-Economics-Artificial-Intelligence/dp/1633695670)."
-The central thesis of the book is that AI reduces the cost of
+AI](https://www.amazon.com/Prediction-Machines-Economics-Artificial-Intelligence/dp/1633695670)."
+The book\'s central thesis is that AI reduces the cost of
 prediction, which is central to decision-making. Therefore, look
 for projects where cheap prediction will have a huge impact.
 
-2.  **Think about what your product needs**: [[This article from the ML
+2.  **Think about what your product needs**: [This article from the ML
 team at
-Spotify]{.underline}](https://spotify.design/article/three-principles-for-designing-ml-powered-products)
+Spotify](https://spotify.design/article/three-principles-for-designing-ml-powered-products)
 talks about the three principles for designing Discover Weekly,
 one of Spotify's most powerful features.
 
 3.  **Think about what types of problems that ML is particularly good
 at**: An exploration of this mental model is the concept of
-[[Software
-2.0]{.underline}](https://karpathy.medium.com/software-2-0-a64152b37c35)
+[Software
+2.0](https://karpathy.medium.com/software-2-0-a64152b37c35)
 coined by Andrej Kaparthy. Essentially, if you have a part of your
 system that is complex and manually defined, then that's
 potentially a good candidate to be automated with ML.
@@ -285,7 +286,7 @@ earlier-stage companies.
 
 #### Low-Cost Projects
 
-![](./lecture-1-media/image14.png)
+![](./lecture-1-media/image12.png)
 
 
 There are three main drivers for how much a project will cost:
@@ -302,12 +303,12 @@ super-linearly in the accuracy requirement**.
 
 3.  **Problem difficulty**: Is the problem well-defined enough to be
 solved with ML? Is there good published work on similar problems?
-How much compute does it take to solve the problem? Generally,
-it's hard to reason about what's feasible in ML.
+How much compute does it take to solve the problem? **Generally,
+it's hard to reason about what's feasible in ML**.
 
 #### What's Hard in ML?
 
-![](./lecture-1-media/image11.png)
+![](./lecture-1-media/image8.png)
 
 
 Here are the three types of hard problems:
@@ -315,9 +316,9 @@ Here are the three types of hard problems:
 1.  **Output is complex**: The model predictions are ambiguous or in a
 high-dimensional structure.
 
-2.  **Reliability is required**: ML systems tend to fail in all kinds of
-unexpected ways, so anywhere where you need high precision or high
-robustness is going to be more difficult to solve with ML.
+2.  **Reliability is required**: ML systems tend to fail in unexpected
+ways, so anywhere you need high precision or high robustness is
+going to be more difficult to solve with ML.
 
 3.  **Generalization is required**: These problems tend to be more in
 the research domain. They can deal with out-of-distribution data
@@ -351,56 +352,58 @@ Not all ML projects have the same characteristics; therefore, they
 shouldn't be planned the same way. Understanding different archetypes of
 ML projects can help select the right approach.
 
+#### ML Product Archetypes
+
 The three archetypes offered here are defined by how they interact with
 real-world use cases:
 
 1.  **Software 2.0 use cases**: Broadly speaking, this means taking
 something that software or a product does in an automated fashion
-today and augmenting its automation with machine learning.
+today and augmenting its automation with machine learning. An
+example of this would be improving code completion in the IDE
+(like [Github
+Copilot](https://github.com/features/copilot)).
 
-    a.  An example of this would be improving code completion in the IDE
-(like Github Copilot).
-
-2.  **Human in the loop systems:** Machine learning can be applied for
-tasks where automation is not currently deployed, but where humans
-could have their judgment or efficiency augmented. Simply put,
-helping humans do their jobs better by complementing them with
-ML-based tools.
-
-    a.  An example of this would be turning sketches into slides, a
-process will usually involve humans approving the output of a
-machine learning model that made the slides.
+2.  **Human-in-the-loop systems:** Machine learning can be applied for
+tasks where automation is not currently deployed - but where
+humans could have their judgment or efficiency augmented. Simply
+put, helping humans do their jobs better by complementing them
+with ML-based tools. An example of this would be turning sketches
+into slides, a process will usually involve humans approving the
+output of a machine learning model that made the slides.
 
 3.  **Autonomous systems:** Systems that apply machine learning to
-augment existing or implement new processes with no human input.
+augment existing or implement new processes without human input.
+An example of this would be full self-driving, where there is no
+opportunity for a driver to intervene in the functioning of the
+car.
 
-    a.  An example of this would be full self-driving, where there is no
-opportunity for a driver to intervene in the functioning of
-the car.
+For each archetype, some key considerations inform how you should go
+about planning projects.
 
-For each archetype, there are some key considerations inform how you
-should go about planning projects.
+![](./lecture-1-media/image10.png)
 
-![](./lecture-1-media/image7.png)
 
-In the case of Software 2.0 projects, you should focus more on
-understanding how impactful the performance of the new model. Is the
-model truly much better? How can the performance continue to increase
-across iterations?
+1.  In the case of Software 2.0 projects, you should focus more on
+understanding **how impactful the performance of the new model
+is**. Is the model truly much better? How can the performance
+continue to increase across iterations?
 
-In the case of human-in-the-loop systems, consider more the context of
-the human user and what their needs might be. How good does the system
-actually have to be to improve the life of a human reviewing its output?
-In some cases, a model that does even 10% better with accuracy
-(nominally a small increase) might have outsize impacts for human users
-in the loop.
+2.  In the case of human-in-the-loop systems, consider more **the
+context of the human user and what their needs might be**. How
+good does the system actually have to be to improve the life of a
+human reviewing its output? In some cases, a model that does even
+10% better with accuracy (nominally a small increase) might have
+outsize impacts on human users in the loop.
 
-For autonomous systems, focus heavily on the failure rate and its
-consequences. When there is no opportunity for human intervention, as is
-the case with autonomous systems, failures need to be carefully
-monitored to ensure outsize harm doesn't occur. Self-driving cars are an
-excellent example of an autonomous system where failure rates are
-carefully monitored.
+3.  For autonomous systems, focus heavily on t**he failure rate and its
+consequences**. When there is no opportunity for human
+intervention, as is the case with autonomous systems, failures
+need to be carefully monitored to ensure outsize harm doesn't
+occur. Self-driving cars are an excellent example of an autonomous
+system where failure rates are carefully monitored.
+
+#### Data Flywheels
 
 As you build a software 2.0 project, strongly consider the concept of
 the **data flywheel**. For certain ML projects, as you improve your
@@ -409,15 +412,16 @@ product, thereby generating more data for the model to get even better.
 It's a classic virtuous cycle and truly the gold standard for ML
 projects.
 
-![](./lecture-1-media/image3.png)
+![](./lecture-1-media/image4.png)
+
 
 As you consider implementing data flywheels, remember to know the answer
 to these three questions:
 
 1.  **Do you have a data loop?** To build a data flywheel, you crucially
 need to be able to get labeled data from users in a scalable
-fashion. This increasing access to quality data defines a data
-loop.
+fashion. This helps increase access to high-quality data and
+define a data loop.
 
 2.  **Can you turn more data into a better model?** This somewhat falls
 onto you as the modeling expert, but it may also not be the case
@@ -429,26 +433,29 @@ performance.
 need to verify that improvements with models are actually tied to
 users enjoying the product more and benefiting from it!
 
-Going back to our impact v. feasibility matrix, our three product
+#### Impact and Feasibility of ML Product Archetypes
+
+Let's visit our impact vs. feasibility matrix. Our three product
 archetypes differ across the spectrum.
 
-![](./lecture-1-media/image5.png)
+![](./lecture-1-media/image9.png)
+
 
 This is a pretty intuitive evaluation you can apply to all your ML
-projects; if it's harder to build (like autonomous systems), it's likely
-to have greater impact! There are ways, however, to change this matrix
-in the context of specific projects.
+projects: **If it's harder to build (like autonomous systems), it's
+likely to have a greater impact**! There are ways, however, to change
+this matrix in the context of specific projects.
 
--   For Software 2.0, data flywheels can magnify impact by allowing
+1.  For **Software 2.0**, data flywheels can magnify impact by allowing
 models to get much better and increase customer delight over time.
 
--   For human-in-the-loop systems, you can increase feasibility by
+2.  For **human-in-the-loop systems**, you can increase feasibility by
 leveraging good product design. Thoughtful design can help reduce
 expectations and accuracy requirements. Alternatively, a "good
 enough" mindset that prioritizes incremental delivery over time
 can make such systems more feasible.
 
--   For autonomous systems, leveraging humans in the loop can make
+3.  For **autonomous systems**, leveraging humans in the loop can make
 development more feasible by adding guardrails and reducing the
 potential impact of failures.
 
@@ -460,21 +467,25 @@ building**! Dive in and get started. Start solving problems and iterate
 on solutions.
 
 One common area practitioners trip up in is **tool fetishization.** As
-MLOps and production machine learning has flourished, so too has the
-number of tools and platforms that address various aspects of the ML
-process. You don't need to be perfect with your tooling before getting
-started with driving value from machine learning. Just because Google
-and Uber are doing things in a very structured, at-scale way doesn't
-mean you need to as well!
-
-![](./lecture-1-media/image6.png)
+MLOps and production ML have flourished, so too has the number of tools
+and platforms that address various aspects of the ML process. You don't
+need to be perfect with your tooling before driving value from machine
+learning. Just because Google and Uber are doing things in a very
+structured, at-scale way doesn't mean you need to as well!
 
 In this course, we will primarily focus on how to set things up the
-right way to do machine learning in production, without overcomplicating
+right way to do machine learning in production without overcomplicating
 it. This is an ML products-focused class, not an MLOps class! Check out
-this talk by Jacopo Tagliabue describing [[MLOps at Reasonable
-Scale]{.underline}](https://www.youtube.com/watch?v=Ndxpo4PeEms) for a
+this talk by Jacopo Tagliabue describing [MLOps at Reasonable
+Scale](https://www.youtube.com/watch?v=Ndxpo4PeEms) for a
 great exposition of this mindset.
+
+### Chapter Summary
+
+1.  ML adds complexity. Consider whether you really need it.
+
+2.  Make sure what you're working on is high impact, or else it might
+get killed.
 
 ## 3 - Lifecycle
 
@@ -483,52 +494,57 @@ know, however, that it's the right addition to your project, what does
 the actual lifecycle look like? What steps do we embark upon as we
 execute?
 
-In this course, the common running example we use is of a pose
-estimation problem. We'll use this as a case study to demonstrate the
+In this course, the common running example we use is of **a pose
+estimation problem**. We'll use this as a case study to demonstrate the
 lifecycle and illustrate various points about ML-powered products.
 
-![](./lecture-1-media/image12.png)
+![](./lecture-1-media/image13.png)
 
 
 Here's a graphic that visualizes the lifecycle of ML projects:
 
-![](./lecture-1-media/image8.png)
+![](./lecture-1-media/image3.png)
+
 
 It provides a very helpful structure. Watch from 48:00 to 54:00 to dive
 deeper into how this lifecycle occurs in the context of a real machine
 learning problem around pose estimation that Josh worked on at OpenAI.
+
 Let's comment on some specific nuances:
 
--   Machine learning projects tend to be very iterative. Each of these
-phases can feed back into any of the phases before, as you learn
-more about the problem that you\'re working on.
+-   **Machine learning projects tend to be very iterative**. Each of
+these phases can feed back into any of the phases that go before
+it, as you learn more about the problem that you\'re working on.
 
     -   For example, you might realize that "Actually, it\'s way too
-hard for us to get data in order to solve this problem!", or
+hard for us to get data in order to solve this problem!" or
 "It\'s really difficult for us to label the pose of these
 objects in 3D space".
 
     -   A solution might actually be to go back a step in the lifecycle
-and setup the problem differently. For example, what if it
+and set up the problem differently. For example, what if it
 were cheaper to annotate per pixel?
 
-    -   This could repeat itself multiple times, as you progress through
+    -   This could repeat itself multiple times as you progress through
 a project. It's a normal and expected part of the machine
 learning product development process.
 
--   In addition to iteration during execution, there's cross-project
-"platform" work that matters too! Hiring and infrastructure
-development are crucial to the long-term health of your project.
+-   In addition to iteration during execution, there's also
+cross-project "platform" work that matters! **Hiring and
+infrastructure development are crucial to the long-term health of
+your project**.
 
 -   Going through this lifecycle and winning each step is what we'll
 cover in this class!
+
+## Lecture Summary
 
 In summary, here's what we covered in this lecture:
 
 1.  ML is NOT a cure-all. It's a complex technology that needs to be
 used thoughtfully.
 
-2.  You DON'T a perfect start up to get going. Start building and
+2.  You DON'T need a perfect setup to get going. Start building and
 iterate!
 
 3.  The lifecycle of machine learning is purposefully iterative and
