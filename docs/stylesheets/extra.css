@@ -151,8 +151,7 @@ h2 {
 }
 
 .announce .md-button--primary {
-  background-color: var(--md-primary-bg-color)
-  color: #D47C2B;
+  background-color: var(--md-primary-bg-color) color: #D47C2B;
   border-color: var(--md-primary-bg-color)
 }
 

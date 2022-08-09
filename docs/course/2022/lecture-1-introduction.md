@@ -6,6 +6,11 @@ description: Introduction to planning, developing, and shipping ML-powered produ
 
 <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/-Iob-FW5jVM" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
+Lecture by [Josh Tobin](https://twitter.com/josh_tobin_).
+Notes by [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).<br />
+Published August 8, 2022.
+[Download slides](https://drive.google.com/file/d/18EVuJpnJ9z5Pz7oRYcgax_IzRVhbuAMC/view?usp=sharing).
+
 ## 1 - Course Vision
 
 ### History of FSDL
