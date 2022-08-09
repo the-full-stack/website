@@ -10,7 +10,8 @@ To deploy, push `main` branch to github and it will deploy via github action, or
 
 ## Processing lecture notes
 
-- Download Google Doc as `input.docx`
+Download Google Doc as `input.docx`, then run:
+
 ```
 pandoc --extract-media=. input.docx -o output.md
 cat output.md | sed 's/^#/##/' | sed 's/^ *> //g' | sed 's/{width=.*}//g' | sed 's/{width=.*"$//' | sed 's/^height=.*"}//' | sed 's/\/media\//\/lecture-1-media\//' > output.md 
