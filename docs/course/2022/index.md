@@ -55,11 +55,11 @@ We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos 
 We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.<br />
 *Published MONTH DATE, 2022.* -->
 
-### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][lec1]
+### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3]
 We review deep learning architectures and work through basic model training with PyTorch + Lightning.<br />
 *Published July 25, 2022.*
 
-### [Lecture 1: Course Vision and When to Use ML][labs1-3]
+### [Lecture 1: Course Vision and When to Use ML][lec1]
 We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
 *Published August 8, 2022.*
 
