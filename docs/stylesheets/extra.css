@@ -1,3 +1,7 @@
+.whitespace-nowrap {
+  white-space: nowrap;
+}
+
 h1.h1-with-author {
   margin: 0;
 }

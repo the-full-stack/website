@@ -33,40 +33,45 @@ hide:
 ## Schedule { style="margin-top: 1rem" }
 
 We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time on
-[:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}.
+<span class="whitespace-nowrap">[:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}</span>.
 
-| Week           | Lecture                                                                  | Lab                                                                                                | Project              |
-| -------------- | ------------------------------------------                               | -------------------------------------------------------------------------------------------------- | -------------------- |
-| **2022-08-08** | [Lecture 1: Course Vision and When to Use ML](lecture-1-introduction.md) | [Labs 1-3: CNNs, Transformers, PyTorch Lightning](labs-1-3-cnns-transformers-pytorch-lightning.md) | -                    |
-| 2022-08-15     | Lecture 2: Development Infrastructure                                    | Lab 4: Experiment Management                                                                       | -                    |
-| 2022-08-22     | Lecture 3: Troubleshooting & Testing                                     | Lab 5: Troubleshooting                                                                             | -                    |
-| 2022-08-29     | Lecture 4: Data Management                                               | Lab 6: Data Annotation                                                                             | Start forming groups |
-| 2022-09-05     | Lecture 5: Deployment                                                    | Lab 7: Web Deployment                                                                              | Group proposals due  |
-| 2022-09-12     | Lecture 6: Continual Learning & Monitoring                               | Lab 8: Model Monitoring                                                                            | Work on project      |
-| 2022-09-19     | Lecture 7: Foundation Models                                             |                                                                                                    | Work on project      |
-| 2022-09-26     | Lecture 8: ML Project Management                                         |                                                                                                    | Work on project      |
-| 2022-10-03     | Lecture 9: Ethics                                                        |                                                                                                    | Work on project      |
-| 2022-10-10     | Project Presentations                                                    |                                                                                                    | Project due          |
+| Week           | Lecture                                             | Lab                                                        | Project              |
+| -------------- | --------------------------------------------------- | ---------------------------------------------------------- | -------------------- |
+| **2022-08-08** | [Lecture 1: Course Vision and When to Use ML][lec1] | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
+| 2022-08-15     | Lecture 2: Development Infrastructure & Tooling     | Lab 4: Experiment Management                               | -                    |
+| 2022-08-22     | Lecture 3: Troubleshooting & Testing                | Lab 5: Troubleshooting                                     | -                    |
+| 2022-08-29     | Lecture 4: Data Management                          | Lab 6: Data Annotation                                     | Start forming groups |
+| 2022-09-05     | Lecture 5: Deployment                               | Lab 7: Web Deployment                                      | Group proposals due  |
+| 2022-09-12     | Lecture 6: Continual Learning & Monitoring          | Lab 8: Model Monitoring                                    | Work on project      |
+| 2022-09-19     | Lecture 7: Foundation Models                        |                                                            | Work on project      |
+| 2022-09-26     | Lecture 8: ML Project Management                    |                                                            | Work on project      |
+| 2022-10-03     | Lecture 9: Ethics                                   |                                                            | Work on project      |
+| 2022-10-10     | Project Presentations                               |                                                            | Project due          |
 
 ## Detailed Contents
 
 <!-- _TEMPLATE
 ### {TYPE} {IDX}: {TITLE}
 We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.<br />
-*Released MONTH DATE, 2022.* -->
+*Published MONTH DATE, 2022.* -->
 
-### [Labs 1-3: CNNs, Transformers, PyTorch Lightning](labs-1-3-cnns-transformers-pytorch-lightning.md)
+### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][lec1]
 We review deep learning architectures and work through basic model training with PyTorch + Lightning.<br />
-*Released July 25, 2022.*
+*Published July 25, 2022.*
 
-### [Lecture 1: Course Vision and When to Use ML](lecture-1-introduction.md)
+### [Lecture 1: Course Vision and When to Use ML][labs1-3]
 We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
-*Released August 8, 2022.*
+*Published August 8, 2022.*
 
-<!-- Lecture 2: Development Infastructure<br />
+<!-- ### [Lecture 2: Development Infastructure & Tooling][lec2]
 We tour the landscape of infrastructure and tooling for developing deep learning models.<br />
-*Released August 15, 2022.* -->
+*Published August 15, 2022.* -->
 
-<!-- Lab 4: Experiment Management<br />
+<!-- ### [Lab 4: Experiment Management][lab4]
 We learn how to track and manage model development experiments with PyTorch Lightning and W&B. <br />
-*Released August 17, 2022.* -->
+*Published August 17, 2022.* -->
+
+[lec1]: lecture-1-course-vision-and-when-to-use-ml/index.md
+[labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
+[lec2]: lecture-2-development-infrastructure-and-tooling/index.md
+[lab4]: lab-4-experiment-management/index.md

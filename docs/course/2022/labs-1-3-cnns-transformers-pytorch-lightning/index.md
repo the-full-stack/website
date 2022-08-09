@@ -6,7 +6,7 @@ hide:
 # Labs 1-3: CNNs, Transformers, PyTorch Lightning
 
 <div class="author" markdown>
-By [Charles Frye](https://twitter.com/charles_irl). Published August 1, 2022.
+By [Charles Frye](https://twitter.com/charles_irl). Published July 25, 2022.
 </div>
 
 As part of Full Stack Deep Learning 2022,

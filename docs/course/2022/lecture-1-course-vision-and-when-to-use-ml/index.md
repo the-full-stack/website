@@ -60,11 +60,11 @@ winters that happened over the history of the field - where the
 technology didn't live up to its hype. If you project forward a few
 years, what will happen to ML?
 
-![](./lecture-1-media/image6.png)
+![](./media/image6.png)
 
 
 *Source: [5 Things You Should Know About
-AI](https://www.cambridgewireless.co.uk/lecture-1-media/uploads/resources/AI%20Group/AIMobility-11.05.17-Cambridge_Consultants-Monty_Barlow.pdf)
+AI](https://www.cambridgewireless.co.uk/media/uploads/resources/AI%20Group/AIMobility-11.05.17-Cambridge_Consultants-Monty_Barlow.pdf)
 (Cambridge Consultants, May 2017)*
 
 There would be a few outcomes:
@@ -88,7 +88,7 @@ we avoid repeating what has happened in the past.
 Building ML-powered products requires a fundamentally different process
 in many ways than developing ML models in an academic setting.
 
-![](./lecture-1-media/image7.png)
+![](./media/image7.png)
 
 
 In academia, you build **"flat-earth" ML** - selecting a problem,
@@ -96,7 +96,7 @@ collecting data, cleaning and labeling the data, iterating on model
 development until you have a model that performs well on the dataset
 collected, evaluating that model, and writing a report at the end.
 
-![](./lecture-1-media/image5.png)
+![](./media/image5.png)
 
 
 But ML-powered products require **an outer loop** where after you deploy
@@ -106,7 +106,7 @@ flywheel and continue this as part of an outer loop.
 
 ### This Course
 
-![](./lecture-1-media/image2.png)
+![](./media/image2.png)
 
 
 This class is about the unique aspects you need to know beyond training
@@ -165,7 +165,7 @@ setting?
 
 -   How can we collaborate on these systems as a team?
 
-![](./lecture-1-media/image1.png)
+![](./media/image1.png)
 
 
 ML-powered product is a distinct but overlapping discipline. A lot of
@@ -255,7 +255,7 @@ industry are doing.
 2.  Low-cost projects are those with available data, where bad
 predictions are not too harmful.
 
-![](./lecture-1-media/image11.png)
+![](./media/image11.png)
 
 
 #### High-Impact Projects
@@ -291,7 +291,7 @@ earlier-stage companies.
 
 #### Low-Cost Projects
 
-![](./lecture-1-media/image12.png)
+![](./media/image12.png)
 
 
 There are three main drivers for how much a project will cost:
@@ -313,7 +313,7 @@ it's hard to reason about what's feasible in ML**.
 
 #### What's Hard in ML?
 
-![](./lecture-1-media/image8.png)
+![](./media/image8.png)
 
 
 Here are the three types of hard problems:
@@ -386,7 +386,7 @@ car.
 For each archetype, some key considerations inform how you should go
 about planning projects.
 
-![](./lecture-1-media/image10.png)
+![](./media/image10.png)
 
 
 1.  In the case of Software 2.0 projects, you should focus more on
@@ -417,7 +417,7 @@ product, thereby generating more data for the model to get even better.
 It's a classic virtuous cycle and truly the gold standard for ML
 projects.
 
-![](./lecture-1-media/image4.png)
+![](./media/image4.png)
 
 
 As you consider implementing data flywheels, remember to know the answer
@@ -443,7 +443,7 @@ users enjoying the product more and benefiting from it!
 Let's visit our impact vs. feasibility matrix. Our three product
 archetypes differ across the spectrum.
 
-![](./lecture-1-media/image9.png)
+![](./media/image9.png)
 
 
 This is a pretty intuitive evaluation you can apply to all your ML
@@ -503,12 +503,12 @@ In this course, the common running example we use is of **a pose
 estimation problem**. We'll use this as a case study to demonstrate the
 lifecycle and illustrate various points about ML-powered products.
 
-![](./lecture-1-media/image13.png)
+![](./media/image13.png)
 
 
 Here's a graphic that visualizes the lifecycle of ML projects:
 
-![](./lecture-1-media/image3.png)
+![](./media/image3.png)
 
 
 It provides a very helpful structure. Watch from 48:00 to 54:00 to dive
