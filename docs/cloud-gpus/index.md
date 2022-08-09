@@ -34,25 +34,27 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 
 Below are the TFLOPs of the different GPUs available from cloud providers.
 
-| Model | FP32 | Mixed-precision | FP16 | Source         |
-| ----- | ---- | --------------- | ---- | -------------- |
-| A100  | 19.5 | 156             | 312  | [Datasheet][1] |
-| A10G  | 35   | 35              | 70   | [Datasheet][2] |
-| A6000 | 38   | ?               | ?    | [Datasheet][3] |
-| V100  | 14   | 112             | 28   | [Datasheet][4] |
-| T4    | 8.1  | 65              | ?    | [Datasheet][5] |
-| P4    | 5.5  | N/A             | N/A  | [Datasheet][6] |
-| P100  | 9.3  | N/A             | 18.7 | [Datasheet][7] |
-| K80   | 8.73 | N/A             | N/A  | [Datasheet][8] |
+| Model | Arch   | FP32 | Mixed-precision | FP16 | Source             |
+| ----- | ------ | ---- | --------------- | ---- | ------------------ |
+| A100  | Ampere | 19.5 | 156             | 312  | [Datasheet][a100]  |
+| A10G  | Ampere | 35   | 35              | 70   | [Datasheet][a10g]  |
+| A6000 | Ampere | 38   | ?               | ?    | [Datasheet][a6000] |
+| V100  | Volta  | 14   | 112             | 28   | [Datasheet][v100]  |
+| T4    | Turing | 8.1  | 65              | ?    | [Datasheet][t4]    |
+| P4    | Pascal | 5.5  | N/A             | N/A  | [Datasheet][p4]    |
+| P100  | Pascal | 9.3  | N/A             | 18.7 | [Datasheet][p100]  |
+| K80   | Kepler | 8.73 | N/A             | N/A  | [Datasheet][k80]   |
+| A40   | Ampere | 37   | 150             | 150  | [Datasheet][a40]   |
 
-[1]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-us-nvidia-1758950-r4-web.pdf
-[2]: https://d1.awsstatic.com/product-marketing/ec2/NVIDIA_AWS_A10G_DataSheet_FINAL_02_17_2022.pdf
-[3]: https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/proviz-print-nvidia-rtx-a6000-datasheet-us-nvidia-1454980-r9-web%20(1).pdf
-[4]: https://images.nvidia.com/content/technologies/volta/pdf/tesla-volta-v100-datasheet-letter-fnl-web.pdf
-[5]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-t4/t4-tensor-core-datasheet-951643.pdf
-[6]: https://images.nvidia.com/content/pdf/tesla/184457-Tesla-P4-Datasheet-NV-Final-Letter-Web.pdf
-[7]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-p100/pdf/nvidia-tesla-p100-PCIe-datasheet.pdf
-[8]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf
+[a100]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/a100/pdf/nvidia-a100-datasheet-us-nvidia-1758950-r4-web.pdf
+[a10g]: https://d1.awsstatic.com/product-marketing/ec2/NVIDIA_AWS_A10G_DataSheet_FINAL_02_17_2022.pdf
+[a6000]: https://www.nvidia.com/content/dam/en-zz/Solutions/design-visualization/quadro-product-literature/proviz-print-nvidia-rtx-a6000-datasheet-us-nvidia-1454980-r9-web%20(1).pdf
+[v100]: https://images.nvidia.com/content/technologies/volta/pdf/tesla-volta-v100-datasheet-letter-fnl-web.pdf
+[t4]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-t4/t4-tensor-core-datasheet-951643.pdf
+[p4]: https://images.nvidia.com/content/pdf/tesla/184457-Tesla-P4-Datasheet-NV-Final-Letter-Web.pdf
+[p100]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-p100/pdf/nvidia-tesla-p100-PCIe-datasheet.pdf
+[k80]: https://www.nvidia.com/content/dam/en-zz/Solutions/Data-Center/tesla-product-literature/Tesla-K80-BoardSpec-07317-001-v05.pdf
+[a40]: https://images.nvidia.com/content/Solutions/data-center/a40/nvidia-a40-datasheet.pdf
 
 <figure markdown>
   ![Benchmark of different GPUs on a single ImageNet epoch, by AIME](aime_benchmarks.jpg)
