@@ -8,4 +8,11 @@ To develop locally, run `make serve` and edit the files.
 
 To deploy, push `main` branch to github and it will deploy via github action, or manually run `make deploy`.
 
+## Processing lecture notes
+
+- Download Google Doc as `input.docx`
+```
+pandoc --extract-media=. input.docx -o output.md
+cat output.md | sed 's/^#/##/' | sed 's/^ *> //g' | sed 's/{width=.*}//g' | sed 's/{width=.*"$//' | sed 's/^height=.*"}//' | sed 's/\/media\//\/lecture-1-media\//' > output.md 
+```
 
