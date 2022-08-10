@@ -56,7 +56,7 @@ We use the first-person plural, referring to both students and instructors, to d
 *Published MONTH DATE, 2022.* -->
 
 ### [Lab Overview][lab0]
-We walk through the entire architecture of the application we will be building.
+We walk through the entire architecture of the application we will be building, from soup to nuts.
 *Published July 25, 2022.*
 
 ### [Lecture 1: Course Vision and When to Use ML][lec1]
