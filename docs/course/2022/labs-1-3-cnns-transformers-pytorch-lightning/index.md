@@ -5,21 +5,12 @@ hide:
 ---
 # Labs 1-3: CNNs, Transformers, PyTorch Lightning
 
-<div class="author" markdown>
-By [Charles Frye](https://twitter.com/charles_irl). Published July 25, 2022.
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube.com/embed/hltjXcaxExY" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-As part of Full Stack Deep Learning 2022,
-we will incrementally develop a complete deep learning codebase
-to create and deploy a model that understands the content of hand-written paragraphs.
-
-![Overview of the architecture we will build in the FSDL labs.](labs_overview.jpg)
-
-For an overview of the Text Recognizer application architecture,
-click the badge below to open an interactive Jupyter notebook on Google Colab:
-
-<div align="center">
-  <a href="http://fsdl.me/2022-overview"> <img src=https://colab.research.google.com/assets/colab-badge.svg width=240> </a>
+<div class="author" markdown>
+By [Charles Frye](https://twitter.com/charles_irl). Published August 10, 2022.
 </div>
 
 This first set of "review" labs covers
@@ -30,11 +21,10 @@ While we recommend you read through all of these labs,
 we recommend only completing the exercises for the labs
 that are of most interest to you.
 
-## Click the badges below to access individual lab notebooks on Colab
+### Click the badges below to access individual lab notebooks on Colab:
 
 | Notebook                                              | Link                                                                                                      |
-| ----------------------------------------------------- | --------------------------------------------------------------------------------------------------------- |
-| Lab 00: Overview                                      | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://fsdl.me/lab00-colab)  |
+| :---------------------------------------------------- | :-------------------------------------------------------------------------------------------------------: |
 | Lab 01: Deep Neural Networks in PyTorch               | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://fsdl.me/lab01-colab)  |
 | Lab 02a: PyTorch Lightning                            | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://fsdl.me/lab02a-colab) |
 | Lab 02b: Training a CNN on Synthetic Handwriting Data | [![Open In Colab](https://colab.research.google.com/assets/colab-badge.svg)](http://fsdl.me/lab02b-colab) |
