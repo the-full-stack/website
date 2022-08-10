@@ -15,17 +15,17 @@ By [Charles Frye](https://twitter.com/charles_irl). Published July 25, 2022.
 
 As part of Full Stack Deep Learning 2022,
 we will incrementally develop a complete codebase
-to create a deep neural network that understands the content of hand-written paragraphs
-and deploy it as a simple text recognition application.
+to train a deep neural network to understand the content of hand-written paragraphs
+and deploy it inside a simple text recognition web application.
 
 Software architectures are inherently about trade-offs:
-decisions that make for better scaling trades might make for worse security or
-tools that encourage faster iteration reduce transparency.
+decisions that make for better scaling might make for worse security or
+tools that encourage faster iteration might reduce transparency.
 
 We design our architecture with _agility_ and _simplicity_ as the prime directives.
-We want to empower individuals to understand the "full stack" of the application,
+We choose simplicity in order to empower individuals to understand the "full stack" of the application,
 from GPUs in model development up to serverless cloud functions acting on requests in production.
-And we want that individual to be able to quickly iterate on the application,
+And we choose _agility_ so that individual is able to quickly iterate on the application,
 especially in response to user feedback.
 
 ## Architecture Diagram
