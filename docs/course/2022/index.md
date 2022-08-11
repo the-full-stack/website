@@ -55,13 +55,13 @@ We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wedne
 We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.
 *Published MONTH DATE, 2022.* -->
 
-### [Lab Overview][lab0]
-We walk through the entire architecture of the application we will be building, from soup to nuts.
-*Published July 25, 2022.*
-
 ### [Lecture 1: Course Vision and When to Use ML][lec1]
 We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
 *Published August 8, 2022.*
+
+### [Lab Overview][lab0]
+We walk through the entire architecture of the application we will be building, from soup to nuts.
+*Published July 25, 2022.*
 
 ### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3]
 We review deep learning architectures and work through basic model training with PyTorch + Lightning.
