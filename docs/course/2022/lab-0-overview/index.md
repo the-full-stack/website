@@ -11,6 +11,10 @@ description: Birds-Eye View of the Text Recognizer Architecture
 By [Charles Frye](https://twitter.com/charles_irl). Published July 25, 2022.
 </div>
 
+<div align="center">
+  <a href="https://fsdl.me/2022-overview"> <img src=https://colab.research.google.com/assets/colab-badge.svg width=240> </a>
+</div>
+
 ## What are these labs for?
 
 In the lab portion of Full Stack Deep Learning 2022,

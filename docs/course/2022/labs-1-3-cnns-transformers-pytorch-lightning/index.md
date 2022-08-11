@@ -74,7 +74,7 @@ should be enough to get you going.
 | **Lab 01: Deep Neural Networks in PyTorch**               | [![open-in-colab]](https://fsdl.me/lab01-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-01-video) |
 | **Lab 02a: PyTorch Lightning**                            | [![open-in-colab]](https://fsdl.me/lab02a-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
 | **Lab 02b: Training a CNN on Synthetic Handwriting Data** | [![open-in-colab]](https://fsdl.me/lab02b-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
-| **Lab 03: Transformers and Paragraphs**                   | [![open-in-colab]](https://fsdl.me/lab03-colab)  | [![yt-logo]](https://fsdl/me/2022-lab-03-video) |
+| **Lab 03: Transformers and Paragraphs**                   | [![open-in-colab]](https://fsdl.me/lab03-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-03-video) |
 
 [yt-logo]: https://fsdl.me/yt-logo-badge
 [open-in-colab]: https://colab.research.google.com/assets/colab-badge.svg
