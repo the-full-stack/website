@@ -32,7 +32,7 @@ hide:
 
 ## Schedule { style="margin-top: 1rem" }
 
-We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos on Wednesdays at 6:00pm Pacific Time on
+We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wednesdays at 6pm Pacific on
 <span class="whitespace-nowrap">[:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}</span>.
 
 | Week           | Lecture                                             | Lab                                                        | Project              |
@@ -52,25 +52,30 @@ We will release lecture videos on Mondays at 6:00pm Pacific Time and lab videos 
 
 <!-- _TEMPLATE
 ### {TYPE} {IDX}: {TITLE}
-We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.<br />
+We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.
 *Published MONTH DATE, 2022.* -->
-
-### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3]
-We review deep learning architectures and work through basic model training with PyTorch + Lightning.<br />
-*Published July 25, 2022.*
 
 ### [Lecture 1: Course Vision and When to Use ML][lec1]
 We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
 *Published August 8, 2022.*
 
+### [Lab Overview][lab0]
+We walk through the entire architecture of the application we will be building, from soup to nuts.
+*Published July 25, 2022.*
+
+### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3]
+We review deep learning architectures and work through basic model training with PyTorch + Lightning.
+*Published August 10, 2022.*
+
 <!-- ### [Lecture 2: Development Infastructure & Tooling][lec2]
-We tour the landscape of infrastructure and tooling for developing deep learning models.<br />
+We tour the landscape of infrastructure and tooling for developing deep learning models.
 *Published August 15, 2022.* -->
 
 <!-- ### [Lab 4: Experiment Management][lab4]
-We learn how to track and manage model development experiments with PyTorch Lightning and W&B. <br />
+We track and manage model development experiments with PyTorch Lightning and W&B.
 *Published August 17, 2022.* -->
 
+[lab0]: lab-0-overview/index.md
 [lec1]: lecture-1-course-vision-and-when-to-use-ml/index.md
 [labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
 [lec2]: lecture-2-development-infrastructure-and-tooling/index.md

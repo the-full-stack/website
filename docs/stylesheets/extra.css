@@ -151,12 +151,19 @@ h2 {
 .announce .md-button {
   margin-top: .5rem;
   margin-right: .5rem;
-  color: var(--md-primary-bg-color)
+  color: var(--md-primary-bg-color);
 }
 
+
+.md-typeset table:not([class]) td {
+  vertical-align: middle;
+}
+
+
 .announce .md-button--primary {
-  background-color: var(--md-primary-bg-color) color: #D47C2B;
-  border-color: var(--md-primary-bg-color)
+  background-color: var(--md-primary-bg-color);
+  color: #D47C2B;
+  border-color: var(--md-primary-bg-color);
 }
 
 .disabled-button {
