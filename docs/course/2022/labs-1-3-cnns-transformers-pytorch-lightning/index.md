@@ -56,7 +56,7 @@ If you have a Linux machine with an NVIDIA GPU and drivers,
 either locally or in the cloud,
 you can also run the labs there.
 The video above and text instructions
-[here]()
+[here](http://fsdl.me/2022-local-setup)
 should be enough to get you going.
 
 !!! info "Don't get stuck on setup!"
