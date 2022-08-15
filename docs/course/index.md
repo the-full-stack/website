@@ -90,7 +90,7 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 <div class="person" markdown>
   <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
   <div markdown>
-  **[Sergey Karayev](https://twitter.com/sergeykarayev)** is Co-founder of Volition. He co-founded Gradescope after getting a PhD in Computer Vision at UC Berkeley.
+  **[Sergey Karayev](https://twitter.com/sergeykarayev)** is Co-founder of [Volition](https://volition.co). He co-founded Gradescope after getting a PhD in Computer Vision at UC Berkeley.
   </div>
 </div>
 

@@ -35,25 +35,20 @@ hide:
 We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wednesdays at 6pm Pacific on
 <span class="whitespace-nowrap">[:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}</span>.
 
-| Week           | Lecture                                             | Lab                                                        | Project              |
-| -------------- | --------------------------------------------------- | ---------------------------------------------------------- | -------------------- |
-| **2022-08-08** | [Lecture 1: Course Vision and When to Use ML][lec1] | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
-| **2022-08-15** | Lecture 2: Development Infrastructure & Tooling     | Lab 4: Experiment Management                               | -                    |
-| 2022-08-22     | Lecture 3: Troubleshooting & Testing                | Lab 5: Troubleshooting                                     | -                    |
-| 2022-08-29     | Lecture 4: Data Management                          | Lab 6: Data Annotation                                     | Start forming groups |
-| 2022-09-05     | Lecture 5: Deployment                               | Lab 7: Web Deployment                                      | Group proposals due  |
-| 2022-09-12     | Lecture 6: Continual Learning & Monitoring          | Lab 8: Model Monitoring                                    | Work on project      |
-| 2022-09-19     | Lecture 7: Foundation Models                        |                                                            | Work on project      |
-| 2022-09-26     | Lecture 8: ML Project Management                    |                                                            | Work on project      |
-| 2022-10-03     | Lecture 9: Ethics                                   |                                                            | Work on project      |
-| 2022-10-10     | Project Presentations                               |                                                            | Project due          |
+| Week           | Lecture                                                 | Lab                                                        | Project              |
+| -------------- | ------------------------------------------------------- | ---------------------------------------------------------- | -------------------- |
+| **2022-08-08** | [Lecture 1: Course Vision and When to Use ML][lec1]     | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
+| **2022-08-15** | [Lecture 2: Development Infrastructure & Tooling][lec2] | Lab 4: Experiment Management                               | -                    |
+| 2022-08-22     | Lecture 3: Troubleshooting & Testing                    | Lab 5: Troubleshooting                                     | -                    |
+| 2022-08-29     | Lecture 4: Data Management                              | Lab 6: Data Annotation                                     | Start forming groups |
+| 2022-09-05     | Lecture 5: Deployment                                   | Lab 7: Web Deployment                                      | Group proposals due  |
+| 2022-09-12     | Lecture 6: Continual Learning & Monitoring              | Lab 8: Model Monitoring                                    | Work on project      |
+| 2022-09-19     | Lecture 7: Foundation Models                            |                                                            | Work on project      |
+| 2022-09-26     | Lecture 8: ML Project Management                        |                                                            | Work on project      |
+| 2022-10-03     | Lecture 9: Ethics                                       |                                                            | Work on project      |
+| 2022-10-10     | Project Presentations                                   |                                                            | Project due          |
 
 ## Detailed Contents
-
-<!-- _TEMPLATE
-### {TYPE} {IDX}: {TITLE}
-We use the first-person plural, referring to both students and instructors, to describe what is covered in the content.
-*Published MONTH DATE, 2022.* -->
 
 ### [Lecture 1: Course Vision and When to Use ML][lec1]
 We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
