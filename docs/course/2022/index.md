@@ -14,7 +14,7 @@ hide:
     Simply enter your email below, follow us on
     [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank},
     or subscribe to our
-    [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning){target=_blank} to get updates week-by-week.
+    [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning?sub_confirmation=1){target=_blank} to get updates week-by-week.
 
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
@@ -37,7 +37,7 @@ We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wedne
 
 | Week           | Lecture                                             | Lab                                                        | Project              |
 | -------------- | --------------------------------------------------- | ---------------------------------------------------------- | -------------------- |
-| **2022-08-08**     | [Lecture 1: Course Vision and When to Use ML][lec1] | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
+| **2022-08-08** | [Lecture 1: Course Vision and When to Use ML][lec1] | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
 | **2022-08-15** | Lecture 2: Development Infrastructure & Tooling     | Lab 4: Experiment Management                               | -                    |
 | 2022-08-22     | Lecture 3: Troubleshooting & Testing                | Lab 5: Troubleshooting                                     | -                    |
 | 2022-08-29     | Lecture 4: Data Management                          | Lab 6: Data Annotation                                     | Start forming groups |
