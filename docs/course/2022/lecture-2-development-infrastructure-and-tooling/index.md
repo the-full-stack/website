@@ -4,9 +4,7 @@ description: Software engineering, Deep learning frameworks, Distributed trainin
 
 # Lecture 2: Development Infrastructure & Tooling
 
-<div align="center">
-<iframe width="720" height="405" src="https://www.youtube.com/embed/BPYOsDCZbno?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/BPYOsDCZbno?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 Lecture by [Sergey Karayev](https://twitter.com/sergeykarayev).
 Notes by [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).<br />
@@ -37,17 +35,17 @@ debugging more code.
 close the data flywheel loop. Basically, your users generate fresh
 data for you, which needs to be added to the training set.
 
-![](./media/image1.png)
+![](./media/image3.png)
 
 
 This reality has roughly three components: data, development, and
 deployment. The tooling infrastructure landscape for them is large, so
-we'll have 3 lectures to cover it all. **This lecture focuses on the
+we'll have three lectures to cover it all. **This lecture focuses on the
 development component**.
 
 ## 2 - Software Engineering
 
-![](./media/image3.png)
+![](./media/image7.png)
 
 
 ### Language
@@ -59,9 +57,8 @@ but Python has really won out.
 
 ### Editors
 
-To write Python code, you need an **editor**. You have a wide range of
-options, such as Vim, Emacs, Jupyter Notebook/Lab, VS Code, PyCharm,
-etc.
+To write Python code, you need an **editor**. You have many options,
+such as Vim, Emacs, Jupyter Notebook/Lab, VS Code, PyCharm, etc.
 
 -   We recommend [VS Code](https://code.visualstudio.com/)
 because of its nice features such as built-in git version control,
@@ -70,11 +67,11 @@ hints to catch bugs, etc.
 
 -   Many practitioners develop in [Jupyter
 Notebooks](https://jupyter.org/), which is great as
-the "first draft" of a data science project. There's little
-thought you have to put in before you start coding and seeing the
-immediate output. However, notebooks have a variety of problems:
-primitive editor, out-of-order execution artifacts, and challenges
-to version and test them. A counterpoint to these problems is the
+the "first draft" of a data science project. You have to put in
+little thought before you start coding and seeing the immediate
+output. However, notebooks have a variety of problems: primitive
+editor, out-of-order execution artifacts, and challenges to
+version and test them. A counterpoint to these problems is the
 [nbdev package](https://nbdev.fast.ai/) that lets
 you write and test code all in one notebook environment.
 
@@ -83,11 +80,11 @@ notebooks** - where you can write code in modules imported into
 notebooks. It also enables awesome debugging.
 
 If you want to build something more interactive,
-[Streamlit](https://streamlit.io/) is a great choice. It
-lets you decorate Python code, get interactive applets, and publish them
-on the web to share with the world.
+[Streamlit](https://streamlit.io/) is an excellent choice.
+It lets you decorate Python code, get interactive applets, and publish
+them on the web to share with the world.
 
-![](./media/image5.png)
+![](./media/image10.png)
 
 
 For setting up the Python environment, we recommend you see [how we did
@@ -96,19 +93,19 @@ lab.](https://github.com/full-stack-deep-learning/conda-piptools)
 
 ## 3 - Deep Learning Frameworks
 
-![](./media/image8.png)
+![](./media/image15.png)
 
 
-Deep learning is not a code with a matrix math library such as Numpy.
-But when you have to deploy your code onto CUDA for GPU-powered deep
-learning, you want to consider deep learning frameworks as you might be
-writing weird layer types, optimizers, data interfaces, etc.
+Deep learning is not a lot of code with a matrix math library like
+Numpy. But when you have to deploy your code onto CUDA for GPU-powered
+deep learning, you want to consider deep learning frameworks as you
+might be writing weird layer types, optimizers, data interfaces, etc.
 
 ### Frameworks
 
 There are various frameworks, such as PyTorch, TensorFlow, and Jax. They
-are all similar in the sense that you first define your model by running
-Python code and then collect an optimized execution graph for different
+are all similar in that you first define your model by running Python
+code and then collect an optimized execution graph for different
 deployment patterns (CPU, GPU, TPU, mobile).
 
 1.  We prefer PyTorch because [it is absolutely
@@ -124,7 +121,7 @@ experience for easy model development).
 
 3.  Jax is a meta-framework for deep learning.
 
-![](./media/image7.png)
+![](./media/image12.png)
 
 
 [PyTorch](https://pytorch.org/) has excellent developer
@@ -155,8 +152,10 @@ still going to have a good time.
 [Jax](https://github.com/google/jax) is a more recent
 project from Google that is not specific to deep learning. It provides
 general vectorization, auto-differentiation, and compilation to GPU/TPU
-code. For deep learning, there are separate frameworks like Flax and
-Haiku. You should only use Jax for a specific need.
+code. For deep learning, there are separate frameworks like
+[Flax](https://github.com/google/flax) and
+[Haiku](https://github.com/deepmind/dm-haiku). You should
+only use Jax for a specific need.
 
 ### Meta-Frameworks and Model Zoos
 
@@ -184,14 +183,13 @@ related code that looks cool.
 
 ## 4 - Distributed Training
 
-![](./media/image6.png)
+![](./media/image9.png)
 
 
-Given the scenario that we have multiple machines represented by little
-squares above (with multiple GPUs in each machine). You are sending
-batches of data to be processed by a model with parameters. The data
-batch can fit on a single GPU or not. The model parameters can fit on a
-single GPU or not.
+Let's say we have multiple machines represented by little squares above
+(with multiple GPUs in each machine). You are sending batches of data to
+be processed by a model with parameters. The data batch can fit on a
+single GPU or not. The model parameters can fit on a single GPU or not.
 
 The best case is that both your data batch and model parameters fit on a
 single GPU. That's called **trivial parallelism**. You can either launch
@@ -204,12 +202,11 @@ If your model still fits on a single GPU, but your data no longer does,
 you have to try out **data parallelism** - which lets you distribute a
 single batch of data across GPUs and average gradients that are computed
 by the model across GPUs. A lot of model development work is cross-GPU,
-so you want to make sure that GPUs have fast interconnects.
+so you want to ensure that GPUs have fast interconnects.
 
-If you are using a server card, then expect [a linear
+If you are using a server card, expect [a linear
 speedup](https://lambdalabs.com/blog/best-gpu-2022-sofar/)
-in training time. If you are using a consumer card, then expect [a
-sublinear
+in training time. If you are using a consumer card, expect [a sublinear
 speedup](https://lambdalabs.com/blog/titan-v-deep-learning-benchmarks/)
 instead.
 
@@ -218,7 +215,7 @@ Data parallelism is implemented in PyTorch with the robust
 library](https://pytorch.org/tutorials/intermediate/ddp_tutorial.html).
 [Horovod](https://github.com/horovod/horovod) is another
 3rd-party library option. PyTorch Lightning makes it dead simple to use
-either one of these two libraries - where [speedup seems to be the
+either of these two libraries - where [speedup seems to be the
 same](https://www.reddit.com/r/MachineLearning/comments/hmgr9g/d_pytorch_distributeddataparallel_and_horovod/).
 
 A more advanced scenario is that you can't even fit your model on a
@@ -239,7 +236,7 @@ layers.
 
 -   Finally, you have to send a **batch of data** for model development.
 
-![](./media/image4.png)
+![](./media/image5.png)
 
 Sharding is a concept from databases where if you have one source of
 data, you actually break it into shards of data that live across your
@@ -292,7 +289,7 @@ Read [this article on the technology behind BLOOM
 training](https://huggingface.co/blog/bloom-megatron-deepspeed)
 for a taste.
 
-![](./media/image2.png)
+![](./media/image6.png)
 
 
 In conclusion:
@@ -305,28 +302,40 @@ DistributedDataParallel.
 -   If the model still doesn't fit, try ZeRO-3 or Full-Sharded Data
 Parallel.
 
-For more resources to speed up model training, take a look at [this
-list compiled by
-DeepSpeed](https://www.deepspeed.ai/training/),
+For more resources to speed up model training, look at [this list
+compiled by DeepSpeed](https://www.deepspeed.ai/training/),
 [MosaicML](https://www.mosaicml.com), and
 [FFCV](https://ffcv.io).
 
 ## 5 - Compute
 
-Compute is the next essential ingredient to developing machine learning
-models and products.
+![](./media/image14.png)
+
+
+**Compute** is the next essential ingredient to developing machine
+learning models and products.
 
 The compute-intensiveness of models has grown tremendously over the last
-10 years, as the below charts from OpenAI and HuggingFace show. (slide
-65) Recent developments, including models like GPT-3, have accelerated
-this trend. These models are extremely large and require a large number
-of petaflops to train.
+ten years, as the below charts from
+[OpenAI](https://openai.com/blog/ai-and-compute/) and
+[HuggingFace](https://huggingface.co/blog/large-language-models)
+show.
 
-To effectively train deep learning models, GPUs are required. NVIDIA has
-been the singular choice for GPU vendors, though Google has introduced
-TPUs (Tensor Processing Units) that are effective but are only available
-via Google Cloud. There are three main considerations when choosing
-GPUs:
+![](./media/image1.png)
+
+
+Recent developments, including models like
+[GPT-3](https://openai.com/blog/gpt-3-apps/), have
+accelerated this trend. These models are extremely large and require a
+large number of petaflops to train.
+
+### GPUs
+
+**To effectively train deep learning models**, **GPUs are required.**
+NVIDIA has been the superior choice for GPU vendors, though Google has
+introduced TPUs (Tensor Processing Units) that are effective but are
+only available via Google Cloud. There are three primary considerations
+when choosing GPUs:
 
 1.  How much data fits on the GPU?
 
@@ -336,61 +345,78 @@ data 16-bit or 32-bit? The latter is more resource intensive.
 3.  How fast can you communicate between the CPU and the GPU and between
 GPUs?
 
-In looking at recent NVIDIA GPUs, it becomes clear that a new
+Looking at recent NVIDIA GPUs, it becomes clear that a new
 high-performing architecture is introduced every few years. There's a
-difference for these chips in which ones are licensed for personal use
-as opposed to corporate use; businesses should only use **server**
-cards.
+difference between these chips, which are licensed for personal use as
+opposed to corporate use; businesses should only use **server**
+**cards**.
 
-(slide 69)
+![](./media/image8.png)
 
-Key factors to evaluate for GPUs are RAM and Tensor TFlops. The more
-RAM, the better the GPU is at containing large models and datasets.
+
+Two key factors in evaluating GPUs are **RAM** and **Tensor TFlops**.
+The more RAM, the better the GPU contains large models and datasets.
 Tensor TFlops are special tensor cores that NVIDIA includes specifically
-for deep learning operations and can handle more intensive mixed
-precision operations. A tip: leveraging 16 bit training can effectively
-double your RAM capacity!
+for deep learning operations and can handle more intensive
+mixed-precision operations. **A tip**: leveraging 16-bit training can
+effectively double your RAM capacity!
 
-While these theoretical benchmarks are userful, how do GPUs perform
-practically? Lambda Labs offers the best benchmarking. Their results
+While these theoretical benchmarks are useful, how do GPUs perform
+practically? Lambda Labs offers [the best benchmarks
+here](https://lambdalabs.com/gpu-benchmarks). Their results
 show that the most recent server-grade NVIDIA GPU (A100) is more than
 2.5 times faster than the classic V100 GPU. RTX chips also outperform
-the V100. AIME is also another source of GPU benchmarks.
+the V100. [AIME is also another source of GPU
+benchmarks](https://www.aime.info/en/blog/deep-learning-gpu-benchmarks-2021/).
 
 Cloud services such as Microsoft Azure, Google Cloud Platform, and
 Amazon Web Services are the default place to buy access to GPUs. Startup
-cloud providers like Paperspace, CoreWeave, and Lambda Labs also offer
-such services.
+cloud providers like
+[Paperspace](https://www.paperspace.com/),
+[CoreWeave](https://www.coreweave.com/), and [Lambda
+Labs](https://lambdalabs.com/) also offer such services.
+
+### TPUs
 
 Let's briefly discuss TPUs. There are four generations of TPUs, and the
-most recent v4 is the fastest possible accelerator for deep learning.
-The below charts compare TPUs to the fastest A100 NVIDIA chip. V4 TPUs
-are not generally available yet, but TPUs generally excel at scaling to
-larger and model sizes.
+most recent v4 is the fastest possible accelerator for deep learning. V4
+TPUs are not generally available yet, but **TPUs generally excel at
+scaling to larger and model sizes**. The below charts compare TPUs to
+the fastest A100 NVIDIA chip.
 
-(slide 73)
+![](./media/image11.png)
+
 
 It can be overwhelming to compare the cost of cloud access to GPUs, so
-we made a tool that solves this problem! Feel free to contribute to our
-repository of Cloud GPU cost metrics. The tool has all kinds of nifty
-features like enabling filters for only the most recent chip models,
-etc.
+[we made a tool that solves this
+problem](https://fullstackdeeplearning.com/cloud-gpus/)!
+Feel free to contribute to [our repository of Cloud GPU cost
+metrics](https://github.com/full-stack-deep-learning/website/).
+The tool has all kinds of nifty features like enabling filters for only
+the most recent chip models, etc.
 
-If we combine the cost metrics with performance metrics, we find that
-**the most expensive per hour chips are not the most expensive per
-experiment!** Case in point: running the same Transformers experiment on
-4 V100s costs \$1750 over 72 hours, whereas the same experiment on 4
-A100s costs \$250 over only 8 hours. Think carefully about cost and
-performance based on the model you're trying to train. Some helpful
-heuristics here are A) **use the most expensive per hour GPU in the
-least expensive cloud** and B) **startups (e.g. Paperspace) tend to be
-cheaper than major cloud providers.**
+If we [combine the cost metrics with performance
+metrics](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/benchmark-analysis.ipynb),
+we find that **the most expensive per hour chips are not the most
+expensive per experiment!** Case in point: running the same Transformers
+experiment on 4 V100s costs \$1750 over 72 hours, whereas the same
+experiment on 4 A100s costs \$250 over only 8 hours. Think carefully
+about cost and performance based on the model you're trying to train.
 
-For on-prem use cases, you can build your own pretty easily or opt for a
-pre-built computer from a company like NVIDIA. You can build a good,
-quiet PC with 128 GB RAM and 2 RTX 3909's for about \$7000 and have it
-set up in a day. Going beyond this can start to get far more expensive
-and difficult. Lambda Labs offers a \$60,000 machine with 8 A100's
+Some helpful heuristics here are:
+
+1.  Use the most expensive per-hour GPU in the least expensive cloud.
+
+2.  Startups (e.g., Paperspace) tend to be cheaper than major cloud
+providers.
+
+### On-Prem vs. Cloud
+
+For **on-prem** use cases, you can build your own pretty easily or opt
+for a pre-built computer from a company like NVIDIA. You can build a
+good, quiet PC with 128 GB RAM and 2 RTX 3909s for about \$7000 and set
+it up in a day. Going beyond this can start to get far more expensive
+and complicated. Lambda Labs offers a \$60,000 machine with 8 A100s
 (super fast!). Tim Dettmers offers a great (slightly outdated)
 perspective on building a machine
 [here](https://timdettmers.com/2020/09/07/which-gpu-for-deep-learning/).
@@ -400,7 +426,7 @@ Some tips on on-prem vs. cloud use:
 -   It can be useful to have your own GPU machine to shift your mindset
 from minimizing cost to maximizing utility.
 
--   To truly scale out experiments, you should probably just use the
+-   To truly scale-out experiments, you should probably just use the
 most expensive machines in the least expensive cloud.
 
 -   TPUs are worth experimenting with for large-scale training, given
@@ -411,56 +437,125 @@ for on-prem and cloud GPU use!
 
 ## 6 - Resource Management
 
-Now that we've talked about raw compute, let's talk abou options for how
-to manage our compute resources. Let's say we want to manage a set of
-experiments. Broadly speaking, we'll need hardware in the form of GPUs,
-software requirements (e.g. PyTorch version), and data to train on.
+![](./media/image2.png)
 
-Leveraging best practices for specifying dependencies (e.g. Poetry,
+
+Now that we've talked about raw compute, let's talk about options for
+**how to manage our compute resources**. Let's say we want to manage a
+set of experiments. Broadly speaking, we'll need hardware in the form of
+GPUs, software requirements (e.g., PyTorch version), and data to train
+on.
+
+### Solutions
+
+Leveraging best practices for specifying dependencies (e.g., Poetry,
 conda, pip-tools) makes the process of spinning up such experiments
-quick and easy on a single machine. If, however, you have a cluster of
-machines to run experiments on, SLURM is the tried and true solution for
-workload management that is still widely used. For more portability,
-Docker is a way to package up an entire dependency stack into a
-lighter-than-a-VM package. Kuberenetes is the most popular way to run
-many Docker containers on top of a cluster. The OSS Kubeflow project
-helps manage ML projects that rely on Kubernetes. These projects are
-useful, but they may not be the easiest or best choice. They're great if
-you already have a cluster up and running, but how do you actually set
-up a cluster or compute platform?
+quick and easy on a single machine.
 
-*A note before proceeding: FSDL prefers open source and/or transparently
-priced products. We discuss tools that fall into these categories, not
-SaaS with opaque pricing.*
+If, however, you have a cluster of machines to run experiments on,
+[SLURM](https://slurm.schedmd.com/documentation.html) is
+the tried and true solution for workload management that is still widely
+used.
 
-For practitioners all in on AWS, AWS Sagemaker offers a convenient end
-to end solution for building machine learning models, from labeling data
-to deploying models. Sagemaker has a ton of AWS-specific configuration,
-which can be a turn off, but it brings a lot of easy-to-use old school
-algorithms for training and allows you to BYO algorithms as well.
-They're increasing support for PyTorch as well, though the markup for
-PyTorch is about 15-20% more expensive.
+For more portability, [Docker](https://www.docker.com/) is
+a way to package up an entire dependency stack into a lighter-than-a-VM
+package. [Kubernetes](https://kubernetes.io/) is the most
+popular way to run many Docker containers on top of a cluster. The OSS
+[Kubeflow](https://www.kubeflow.org/) project helps manage
+ML projects that rely on Kubernetes.
 
-Anyscale is a company created by the makers of the Berkeley OSS project
-Ray. Anyscale recently launched Ray Train, which they claim is faster
-than Sagemaker with a similar value proposition. Anyscale makes it
-really easy to provision a compute cluster, but it's considerably more
-expensive than alternatives.
+These projects are useful, but they may not be the easiest or best
+choice. They're great if you already have a cluster up and running, but
+**how do you actually set up a cluster or compute platform?**
 
-Grid.ai is created by the PyTorch Lightning creators. Grid allows you to
-specify what compute parameters to use easily with "grid run" followed
-by the types of compute and options you want. You can use their
-instances or AWS under the hood. Grid has an uncertain future, as its
-future compatibility with Lightning (given their rebrand) has not been
-clarified.
+*Before proceeding, FSDL prefers open source and/or transparently priced
+products. We discuss tools that fall into these categories, not SaaS
+with opaque pricing.*
 
-There are a number of non-ML options for spinning up compute too!
-Writing your own scripts, using various libraries, or even Kubernetes
-are all options. This route is harder.
+### Tools
 
-Determined.AI is an OSS solution for managing on-prem and cloud
-clusters. They offer cluster management, distributed training, and more.
-It's quite easy to use and is in active development.
+For practitioners all in on AWS, [AWS
+Sagemaker](https://aws.amazon.com/sagemaker/) offers a
+convenient end-to-end solution for building machine learning models,
+from labeling data to deploying models. Sagemaker has a ton of
+AWS-specific configuration, which can be a turnoff, but it brings a lot
+of easy-to-use old school algorithms for training and allows you to BYO
+algorithms as well. They're also increasing support for PyTorch, though
+the markup for PyTorch is about 15-20% more expensive.
 
-With all this said, there is still room to improve the ease of
-experience for launching training on many cloud providers.
+[Anyscale](https://www.anyscale.com/) is a company created
+by the makers of the Berkeley OSS project
+[Ray](https://github.com/ray-project/ray). Anyscale
+recently launched [Ray
+Train](https://docs.ray.io/en/latest/train/train.html),
+which they claim is faster than Sagemaker with a similar value
+proposition. Anyscale makes it really easy to provision a compute
+cluster, but it's considerably more expensive than alternatives.
+
+[Grid.ai](https://www.grid.ai/) is created by the PyTorch
+Lightning creators. Grid allows you to specify what compute parameters
+to use easily with "grid run" followed by the types of compute and
+options you want. You can use their instances or AWS under the hood.
+Grid has an uncertain future, as its future compatibility with Lightning
+(given their rebrand) has not been clarified.
+
+There are several non-ML options for spinning up compute too! Writing
+your own scripts, using various libraries, or even Kubernetes are all
+options. This route is harder.
+
+[Determined.AI](https://determined.ai/) is an OSS solution
+for managing on-prem and cloud clusters. They offer cluster management,
+distributed training, and more. It's pretty easy to use and is in active
+development.
+
+With all this said, **there is still room to improve the ease of
+experience for launching training on many cloud providers**.
+
+## 7 - Experiment and Model Management
+
+![](./media/image4.png)
+
+
+In contrast to compute, **experiment management is quite close to being
+solved**. Experiment management refers to tools and processes that help
+us keep track of code, model parameters, and data sets that are iterated
+on during the model development lifecycle. Such tools are essential to
+effective model development. There are several solutions here:
+
+-   [TensorBoard](https://www.tensorflow.org/tensorboard):
+A non-exclusive Google solution effective at one-off experiment
+tracking. It is difficult to manage many experiments.
+
+-   [MLflow](https://mlflow.org/): A non-exclusive
+Databricks project that includes model packaging and more, in
+addition to experiment management. It must be self-hosted.
+
+-   [Weights and Biases](https://wandb.ai/site): An
+easy-to-use solution that is free for public projects! Logging
+starts simply with an "experiment config" command.
+
+-   Other options include [Neptune
+AI](https://neptune.ai/), [Comet
+ML](https://www.comet.ml/), and [Determined
+AI](https://determined.ai/), all of which have solid
+experiment tracking options.
+
+Many of these platforms also offer **intelligent hyperparameter
+optimization**, which allows us to control the cost of searching for the
+right parameters for a model. For example, Weights and Biases has a
+product called [Sweeps](https://wandb.ai/site/sweeps) that
+helps with hyperparameter optimization. It's best to have it as part of
+your regular ML training tool; there's no need for a dedicated tool.
+
+## 8 - "All-In-One"
+
+![](./media/image13.png)
+
+
+There are machine learning infrastructure solutions that offer
+everything\--training, experiment tracking, scaling out, deployment,
+etc. These "all-in-one" platforms simplify things but don't come cheap!
+Examples include [Gradient by
+Paperspace](https://www.paperspace.com/gradient), [Domino
+Data Lab](https://www.dominodatalab.com/), [AWS
+Sagemaker](https://aws.amazon.com/sagemaker/), etc.

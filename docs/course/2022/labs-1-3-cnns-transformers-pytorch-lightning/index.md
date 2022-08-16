@@ -3,9 +3,7 @@ description: Review of architectures and training with PyTorch + Lightning
 ---
 # Labs 1-3: CNNs, Transformers, PyTorch Lightning
 
-<div align="center">
-<iframe width="720" height="405" src="https://www.youtube.com/embed/9w8CVuHUk8U?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
-</div>
+<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9w8CVuHUk8U?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 
 <div class="author" markdown>
 By [Charles Frye](https://twitter.com/charles_irl). Published August 10, 2022.
@@ -69,8 +67,8 @@ should be enough to get you going.
 
 ## Click the badges below to access individual lab notebooks on Colab and videos on YouTube
 
-| Lab                                                       | Colab                                            | Video                                           |
-| :--                                                       | :---:                                            | :---:                                           |
+| Lab                                                       |                      Colab                       |                      Video                      |
+| :-------------------------------------------------------- | :----------------------------------------------: | :---------------------------------------------: |
 | **Lab 01: Deep Neural Networks in PyTorch**               | [![open-in-colab]](https://fsdl.me/lab01-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-01-video) |
 | **Lab 02a: PyTorch Lightning**                            | [![open-in-colab]](https://fsdl.me/lab02a-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
 | **Lab 02b: Training a CNN on Synthetic Handwriting Data** | [![open-in-colab]](https://fsdl.me/lab02b-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
