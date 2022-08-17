@@ -531,7 +531,7 @@ Databricks project that includes model packaging and more, in
 addition to experiment management. It must be self-hosted.
 
 -   [Weights and Biases](https://wandb.ai/site): An
-easy-to-use solution that is free for public projects! Logging
+easy-to-use solution that is free for personal and academic projects! Logging
 starts simply with an "experiment config" command.
 
 -   Other options include [Neptune
