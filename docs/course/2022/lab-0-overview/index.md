@@ -3,7 +3,9 @@ description: Birds-Eye View of the Text Recognizer Architecture
 ---
 # Lab Overview
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/hltjXcaxExY?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/hltjXcaxExY?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <div class="author" markdown>
 By [Charles Frye](https://twitter.com/charles_irl). Published July 25, 2022.

@@ -4,7 +4,9 @@ description: Introduction to planning, developing, and shipping ML-powered produ
 
 # Lecture 1: Course Vision and When to Use ML
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/-Iob-FW5jVM?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/-Iob-FW5jVM?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 Lecture by [Josh Tobin](https://twitter.com/josh_tobin_).
 Notes by [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).<br />

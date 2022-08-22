@@ -3,7 +3,9 @@ description: Review of architectures and training with PyTorch + Lightning
 ---
 # Labs 1-3: CNNs, Transformers, PyTorch Lightning
 
-<iframe width="560" height="315" src="https://www.youtube-nocookie.com/embed/9w8CVuHUk8U?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/9w8CVuHUk8U?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
 
 <div class="author" markdown>
 By [Charles Frye](https://twitter.com/charles_irl). Published August 10, 2022.
