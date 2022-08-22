@@ -79,7 +79,7 @@ nav:
       - course/2022/lecture-1-course-vision-and-when-to-use-ml/index.md
       - course/2022/lecture-2-development-infrastructure-and-tooling/index.md
       - course/2022/lab-4-experiment-management/index.md
-      # - course/2022/lecture-3-troubleshooting-and-testing/index.md
+      - course/2022/lecture-3-troubleshooting-and-testing/index.md
       # - course/2022/lecture-4-data-management/index.md
       # - course/2022/lecture-5-deployment/index.md
       # - course/2022/lecture-6-continual-learning-and-monitoring/index.md
