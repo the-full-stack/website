@@ -13,11 +13,10 @@ if you registered for the course but cannot access the Discord.
 
 ## I've registered and I'm in the Discord. How do I follow along?
 
-Check out the top-level posts in the
-`#course-announcements` channel
-[here](https://discord.com/channels/984525101678612540/999034075853623346)
-for information on content and schedule,
-including a calendar link.
+For a quick list of the most important links for cohort members, see
+[this Discord post](https://discord.com/channels/984525101678612540/996436414906515476/1009622489594331207).
+You can add the private course calendar linked there
+to your own so you never miss an event.
 
 For a tour of the Discord, plus some tips and tricks,
 check out the video below:
