@@ -39,8 +39,8 @@ We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wedne
 | -------------- | ------------------------------------------------------- | ---------------------------------------------------------- | -------------------- |
 | **2022.08.08** | [Lecture 1: Course Vision and When to Use ML][lec1]     | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
 | **2022.08.15** | [Lecture 2: Development Infrastructure & Tooling][lec2] | [Lab 4: Experiment Management][lab4]                       | -                    |
-| **2022.08.22** | [Lecture 3: Troubleshooting & Testing][lec3]            | [Lab 5: Troubleshooting & Testing][lab5]                             | -                    |
-| 2022.08.29     | Lecture 4: Data Management                              | Lab 6: Data Annotation                                     | Start forming groups |
+| **2022.08.22** | [Lecture 3: Troubleshooting & Testing][lec3]            | [Lab 5: Troubleshooting & Testing][lab5]                   | -                    |
+| **2022.08.29** | [Lecture 4: Data Management][lec4]                      | Lab 6: Data Annotation                                     | Start forming groups |
 | 2022.09.05     | Lecture 5: Deployment                                   | Lab 7: Web Deployment                                      | Group proposals due  |
 | 2022.09.12     | Lecture 6: Continual Learning & Monitoring              | Lab 8: Model Monitoring                                    | Work on project      |
 | 2022.09.19     | Lecture 7: Foundation Models                            |                                                            | Work on project      |
@@ -80,6 +80,10 @@ We try out some Python testing tools and dissect a PyTorch trace to
 learn performance troubleshooting techniques.
 *Published August 24, 2022.*
 
+### [Lecture 4: Data Management][lec4]
+We look at sourcing, storing, exploring, processing, labeling, and versioning data for deep learning.
+*Published August 29, 2022.*
+
 [lab0]: lab-0-overview/index.md
 [lec1]: lecture-1-course-vision-and-when-to-use-ml/index.md
 [labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
@@ -87,3 +91,4 @@ learn performance troubleshooting techniques.
 [lab4]: lab-4-experiment-management/index.md
 [lec3]: lecture-3-troubleshooting-and-testing/index.md
 [lab5]: lab-5-troubleshooting-and-testing/index.md
+[lec4]: lecture-4-data-management/index.md
