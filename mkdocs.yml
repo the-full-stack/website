@@ -83,13 +83,13 @@ nav:
       - course/2022/lab-5-troubleshooting-and-testing/index.md
       - course/2022/lecture-4-data-management/index.md
       - course/2022/lab-6-data-annotation/index.md
-      # - course/2022/lecture-5-deployment/index.md
+      # - course/2022/lab-7-web-deployment/index.md
+      - course/2022/lecture-5-deployment/index.md
       # - course/2022/lecture-6-continual-learning-and-monitoring/index.md
+      # - course/2022/lab-8-model-monitoring/index.md
       # - course/2022/lecture-7-foundation-models/index.md
       # - course/2022/lecture-8-ml-project-management/index.md
       # - course/2022/lecture-9-ethics/index.md
-      # - course/2022/lab-7-web-deployment/index.md
-      # - course/2022/lab-8-model-monitoring/index.md
     - 'FSDL 2021':
       - spring2021/index.md
       - spring2021/synchronous.md
