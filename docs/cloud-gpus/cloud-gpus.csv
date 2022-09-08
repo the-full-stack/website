@@ -25,6 +25,45 @@ AWS,T4 (16 GB),Turing,1,16,16,64,1.20,1.20,0.36,g4dn.4xlarge
 AWS,K80 (12 GB),Kepler,1,12,4,61,0.90,0.90,0.27,p2.xlarge
 AWS,K80 (12 GB),Kepler,8,96,32,488,7.20,0.90,2.16,p2.8xlarge
 AWS,K80 (12 GB),Kepler,16,192,64,732,14.40,0.90,4.32,p2.16xlarge
+Azure,A100 (80 GB),Ampere,1,80,24,220,3.67,3.67,1.47,NC24ads A100 v4
+Azure,A100 (80 GB),Ampere,2,160,48,440,7.35,3.67,2.94,NC48ads A100 v4
+Azure,A100 (80 GB),Ampere,4,320,96,880,14.69,3.67,5.88,NC96ads A100 v4
+Azure,A100 (80 GB),Ampere,8,640,96,1900,37.18,4.64,,ND96amsr A100 v4
+Azure,V100 (16 GB),Volta,1,16,6,112,3.06,3.06,1.35,NC6s v3
+Azure,V100 (16 GB),Volta,2,32,12,224,6.12,3.06,2.70,NC12s v3
+Azure,V100 (16 GB),Volta,4,64,24,448,12.24,3.06,5.40,NC24s v3
+Azure,P100 (16 GB),Pascal,1,16,6,112,2.07,2.07,0.22,NC6s v2
+Azure,P100 (16 GB),Pascal,2,32,12,224,4.14,2.07,0.43,NC12s v2
+Azure,P100 (16 GB),Pascal,4,64,24,448,8.28,2.07,0.87,NC24s v2
+Azure,T4 (16 GB),Turing,1,16,4,28,0.53,0.53,0.21,NC4as T4 v3
+Azure,T4 (16 GB),Turing,1,16,8,56,0.75,0.75,0.30,NC8as T4 v3
+Azure,T4 (16 GB),Turing,1,16,16,110,1.20,1.20,0.48,NC16as T4 v3
+Azure,T4 (16 GB),Turing,4,64,64,440,4.35,1.09,1.73,NC64as T4 v3
+Azure,K80 (12 GB),Kepler,1,12,6,56,0.90,0.90,0.09,NC6
+Azure,K80 (12 GB),Kepler,2,24,12,112,1.80,0.90,0.18,NC12
+Azure,K80 (12 GB),Kepler,4,48,24,224,3.60,0.90,0.36,NC24
+Datacrunch,A100 (80 GB),Ampere,1,80,22,120,1.85,1.85,,1A100.22V
+Datacrunch,A100 (80 GB),Ampere,2,160,44,240,3.70,1.85,,2A100.44V
+Datacrunch,A100 (80 GB),Ampere,4,320,88,480,7.40,1.85,,4A100.88V
+Datacrunch,A100 (80 GB),Ampere,8,640,176,960,14.80,1.85,,8A100.176V
+Datacrunch,A6000 (48 GB),Ampere,1,48,10,60,1.25,1.25,,1A6000.10V
+Datacrunch,A6000 (48 GB),Ampere,8,384,80,480,10.00,1.25,,8A6000.80V
+Datacrunch,V100 (16 GB),Volta,1,16,6,23,1.00,1.00,,1V100.6V
+Datacrunch,V100 (16 GB),Volta,2,32,10,45,2.00,1.00,,2V100.10V
+Datacrunch,V100 (16 GB),Volta,4,64,20,90,4.00,1.00,,4V100.20V
+Datacrunch,V100 (16 GB),Volta,8,128,48,180,8.00,1.00,,8V100.48V
+Exoscale,P100 (16 GB),Pascal,1,16,12,56,1.17,1.17,,GPU SMALL
+Exoscale,P100 (16 GB),Pascal,2,32,24,90,1.71,0.86,,GPU MEDIUM
+Exoscale,P100 (16 GB),Pascal,4,64,48,120,2.54,0.64,,GPU LARGE
+Exoscale,P100 (16 GB),Pascal,8,128,96,225,2.82,0.35,,GPU HUGE
+Exoscale,V100 (16 GB),Tesla,1,16,12,56,1.38,1.38,,GPU2 SMALL
+Exoscale,V100 (16 GB),Tesla,2,32,16,90,2.01,1.01,,GPU2 MEDIUM
+Exoscale,V100 (16 GB),Tesla,3,48,24,120,2.65,0.88,,GPU2 LARGE
+Exoscale,V100 (16 GB),Tesla,4,64,48,225,3.32,0.83,,GPU2 HUGE
+Exoscale,A40 (48 GB),Ampere,1,48,12,56,2.13,2.13,,GPU3 SMALL
+Exoscale,A40 (48 GB),Ampere,2,96,24,120,4.27,2.14,,GPU3 MEDIUM
+Exoscale,A40 (48 GB),Ampere,4,192,48,224,8.53,2.13,,GPU3 LARGE
+Exoscale,A40 (48 GB),Ampere,8,384,96,448,17.07,2.13,,GPU3 HUGE
 GCP,A100 (40 GB),Ampere,1,40,12,85,3.67,3.67,1.10,a2-highgpu-1g
 GCP,A100 (40 GB),Ampere,2,80,24,170,7.34,3.67,2.20,a2-highgpu-2g
 GCP,A100 (40 GB),Ampere,4,160,48,340,14.68,3.67,4.41,a2-highgpu-4g
@@ -47,23 +86,22 @@ GCP,T4 (16 GB),Turing,4,64,32,208,3.29,0.82,0.84,n1-highmem-32
 GCP,P4 (8 GB),Pascal,1,8,4,26,0.84,0.84,0.27,n1-highmem-4
 GCP,P4 (8 GB),Pascal,2,16,8,52,1.67,0.84,0.54,n1-highmem-8
 GCP,P4 (8 GB),Pascal,4,32,16,104,3.35,0.84,1.08,n1-highmem-16
-Azure,A100 (80 GB),Ampere,1,80,24,220,3.67,3.67,1.47,NC24ads A100 v4
-Azure,A100 (80 GB),Ampere,2,160,48,440,7.35,3.67,2.94,NC48ads A100 v4
-Azure,A100 (80 GB),Ampere,4,320,96,880,14.69,3.67,5.88,NC96ads A100 v4
-Azure,A100 (80 GB),Ampere,8,640,96,1900,37.18,4.64,,ND96amsr A100 v4
-Azure,V100 (16 GB),Volta,1,16,6,112,3.06,3.06,1.35,NC6s v3
-Azure,V100 (16 GB),Volta,2,32,12,224,6.12,3.06,2.70,NC12s v3
-Azure,V100 (16 GB),Volta,4,64,24,448,12.24,3.06,5.40,NC24s v3
-Azure,P100 (16 GB),Pascal,1,16,6,112,2.07,2.07,0.22,NC6s v2
-Azure,P100 (16 GB),Pascal,2,32,12,224,4.14,2.07,0.43,NC12s v2
-Azure,P100 (16 GB),Pascal,4,64,24,448,8.28,2.07,0.87,NC24s v2
-Azure,T4 (16 GB),Turing,1,16,4,28,0.53,0.53,0.21,NC4as T4 v3
-Azure,T4 (16 GB),Turing,1,16,8,56,0.75,0.75,0.30,NC8as T4 v3
-Azure,T4 (16 GB),Turing,1,16,16,110,1.20,1.20,0.48,NC16as T4 v3
-Azure,T4 (16 GB),Turing,4,64,64,440,4.35,1.09,1.73,NC64as T4 v3
-Azure,K80 (12 GB),Kepler,1,12,6,56,0.90,0.90,0.09,NC6
-Azure,K80 (12 GB),Kepler,2,24,12,112,1.80,0.90,0.18,NC12
-Azure,K80 (12 GB),Kepler,4,48,24,224,3.60,0.90,0.36,NC24
+Jarvislabs,A100 (40 GB),Ampere,1,40,7,32,1.1,1.1,0.69,
+Jarvislabs,A100 (40 GB),Ampere,2,80,14,64,2.2,1.1,1.38,
+Jarvislabs,A100 (40 GB),Ampere,4,160,28,128,4.4,1.1,2.76,
+Jarvislabs,A100 (40 GB),Ampere,8,320,56,256,8.8,1.1,5.52,
+Jarvislabs,A6000 (48 GB),Ampere,1,48,7,32,0.99,0.99,0.59,
+Jarvislabs,A6000 (48 GB),Ampere,2,96,14,64,1.98,0.99,1.18,
+Jarvislabs,A6000 (48 GB),Ampere,4,192,28,128,3.96,0.99,2.36,
+Jarvislabs,A6000 (48 GB),Ampere,8,384,56,256,7.92,0.99,4.72,
+Jarvislabs,A5000 (24 GB),Ampere,1,24,7,32,0.59,0.59,0.39,
+Jarvislabs,A5000 (24 GB),Ampere,2,48,14,64,1.18,0.59,0.78,
+Jarvislabs,A5000 (24 GB),Ampere,4,96,28,128,2.36,0.59,1.56,
+Jarvislabs,A5000 (24 GB),Ampere,8,192,56,256,4.72,0.59,3.12,
+Jarvislabs,RTX5000 (16GB),Turing,1,16,7,32,0.49,0.49,0.19,
+Jarvislabs,RTX5000 (16GB),Turing,2,32,14,64,0.98,0.49,0.38,
+Jarvislabs,RTX5000 (16GB),Turing,4,64,28,128,1.96,0.49,0.76,
+Jarvislabs,RTX5000 (16GB),Turing,8,128,56,256,3.92,0.49,1.52,
 Lambda,A100 (40 GB),Ampere,1,40,30,200,1.10,1.10,,
 Lambda,A100 (40 GB),Ampere,2,80,60,400,2.20,1.10,,
 Lambda,A100 (40 GB),Ampere,4,160,120,800,4.40,1.10,,
@@ -86,29 +124,3 @@ Paperspace,A100 (80 GB),Ampere,1,80,12,90,3.18,3.18,,
 Paperspace,A100 (80 GB),Ampere,2,160,24,180,6.36,3.18,,
 Paperspace,A100 (80 GB),Ampere,4,320,48,360,12.72,3.18,,
 Paperspace,A100 (80 GB),Ampere,8,640,96,720,25.44,3.18,,
-Jarvislabs,A100 (40 GB),Ampere,1,40,7,32,1.1,1.1,0.69,
-Jarvislabs,A100 (40 GB),Ampere,2,80,14,64,2.2,1.1,1.38,
-Jarvislabs,A100 (40 GB),Ampere,4,160,28,128,4.4,1.1,2.76,
-Jarvislabs,A100 (40 GB),Ampere,8,320,56,256,8.8,1.1,5.52,
-Jarvislabs,A6000 (48 GB),Ampere,1,48,7,32,0.99,0.99,0.59,
-Jarvislabs,A6000 (48 GB),Ampere,2,96,14,64,1.98,0.99,1.18,
-Jarvislabs,A6000 (48 GB),Ampere,4,192,28,128,3.96,0.99,2.36,
-Jarvislabs,A6000 (48 GB),Ampere,8,384,56,256,7.92,0.99,4.72,
-Jarvislabs,A5000 (24 GB),Ampere,1,24,7,32,0.59,0.59,0.39,
-Jarvislabs,A5000 (24 GB),Ampere,2,48,14,64,1.18,0.59,0.78,
-Jarvislabs,A5000 (24 GB),Ampere,4,96,28,128,2.36,0.59,1.56,
-Jarvislabs,A5000 (24 GB),Ampere,8,192,56,256,4.72,0.59,3.12,
-Jarvislabs,RTX5000 (16GB),Turing,1,16,7,32,0.49,0.49,0.19,
-Jarvislabs,RTX5000 (16GB),Turing,2,32,14,64,0.98,0.49,0.38,
-Jarvislabs,RTX5000 (16GB),Turing,4,64,28,128,1.96,0.49,0.76,
-Jarvislabs,RTX5000 (16GB),Turing,8,128,56,256,3.92,0.49,1.52,
-Datacrunch,A100 (80 GB),Ampere,1,80,22,120,1.85,1.85,,1A100.22V
-Datacrunch,A100 (80 GB),Ampere,2,160,44,240,3.70,1.85,,2A100.44V
-Datacrunch,A100 (80 GB),Ampere,4,320,88,480,7.40,1.85,,4A100.88V
-Datacrunch,A100 (80 GB),Ampere,8,640,176,960,14.80,1.85,,8A100.176V
-Datacrunch,A6000 (48 GB),Ampere,1,48,10,60,1.25,1.25,,1A6000.10V
-Datacrunch,A6000 (48 GB),Ampere,8,384,80,480,10.00,1.25,,8A6000.80V
-Datacrunch,V100 (16 GB),Volta,1,16,6,23,1.00,1.00,,1V100.6V
-Datacrunch,V100 (16 GB),Volta,2,32,10,45,2.00,1.00,,2V100.10V
-Datacrunch,V100 (16 GB),Volta,4,64,20,90,4.00,1.00,,4V100.20V
-Datacrunch,V100 (16 GB),Volta,8,128,48,180,8.00,1.00,,8V100.48V
