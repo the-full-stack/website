@@ -41,7 +41,7 @@ We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wedne
 | **2022.08.15** | [Lecture 2: Development Infrastructure & Tooling][lec2] | [Lab 4: Experiment Management][lab4]                       | -                    |
 | **2022.08.22** | [Lecture 3: Troubleshooting & Testing][lec3]            | [Lab 5: Troubleshooting & Testing][lab5]                   | -                    |
 | **2022.08.29** | [Lecture 4: Data Management][lec4]                      | [Lab 6: Data Annotation][lab6]                             | Start forming groups |
-| **2022.09.05** | [Lecture 5: Deployment][lec5]                           | Lab 7: Web Deployment                                      | Group proposals due  |
+| **2022.09.05** | [Lecture 5: Deployment][lec5]                           | [Lab 7: Web Deployment][lab7]                              | Group proposals due  |
 | 2022.09.12     | Lecture 6: Continual Learning & Monitoring              | Lab 8: Model Monitoring                                    | Work on project      |
 | 2022.09.19     | Lecture 7: Foundation Models                            |                                                            | Work on project      |
 | 2022.09.26     | Lecture 8: ML Project Management                        |                                                            | Work on project      |
@@ -94,6 +94,12 @@ We do a lightning tour of all the ways models are deployed
 and do a deep dive on running models as web services.
 *Published September 5, 2022.*
 
+### [Lab 7: Web Deployment][lab7]
+We create and deploy our ML-powered
+text recognition application
+with a simple web UI and a serverless model service.
+*Published September 7, 2022.*
+
 [lab0]: lab-0-overview/index.md
 [lec1]: lecture-1-course-vision-and-when-to-use-ml/index.md
 [labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
@@ -104,3 +110,4 @@ and do a deep dive on running models as web services.
 [lec4]: lecture-4-data-management/index.md
 [lab6]: lab-6-data-annotation/index.md
 [lec5]: lecture-5-deployment/index.md
+[lab7]: lab-7-web-deployment/index.md
