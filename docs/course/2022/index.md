@@ -106,9 +106,8 @@ continual learning system around
 an ML-powered application.
 *Published September 12, 2022.*
 
-### [Lab 8: Web Deployment][lab8]
-We add and review data logged by actual users
-of the
+### [Lab 8: Model Monitoring][lab8]
+We add and review data logged by actual users of the
 [FSDL Text Recognizer](https://fsdl-text-recognizer.ngrok.io).
 *Published September 14, 2022.*
 
