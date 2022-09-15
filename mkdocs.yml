@@ -29,7 +29,7 @@ theme:
       primary: indigo
       accent: indigo
       toggle:
-        icon: material/brightness-7 
+        icon: material/brightness-7
         name: Switch to dark mode
     - scheme: slate
       primary: indigo
@@ -86,7 +86,7 @@ nav:
       - course/2022/lecture-5-deployment/index.md
       - course/2022/lab-7-web-deployment/index.md
       - course/2022/lecture-6-continual-learning/index.md
-      # - course/2022/lab-8-model-monitoring/index.md
+      - course/2022/lab-8-model-monitoring/index.md
       # - course/2022/lecture-7-foundation-models/index.md
       # - course/2022/lecture-8-ml-project-management/index.md
       # - course/2022/lecture-9-ethics/index.md
