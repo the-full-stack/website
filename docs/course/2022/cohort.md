@@ -2,6 +2,11 @@
 
 We're organizing the synchronous cohort for the 2022 course via Discord.
 
+## It's project time! How do I access my free GPUs?
+
+Check out the instructions
+[here](https://fsdl.me/2022-get-gpus).
+
 ## How do I know if I'm fully registered?
 
 If you completed your registration for the course,
