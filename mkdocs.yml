@@ -89,7 +89,7 @@ nav:
       - course/2022/lab-8-model-monitoring/index.md
       - course/2022/lecture-7-foundation-models/index.md
       - course/2022/lecture-8-teams-and-pm/index.md
-      # - course/2022/lecture-9-ethics/index.md
+      - course/2022/lecture-9-ethics/index.md
     - 'FSDL 2021':
       - spring2021/index.md
       - spring2021/synchronous.md

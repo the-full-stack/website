@@ -44,8 +44,8 @@ We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wedne
 | **2022.09.05** | [Lecture 5: Deployment][lec5]                           | [Lab 7: Web Deployment][lab7]                              | Group proposals due  |
 | **2022.09.12** | [Lecture 6: Continual Learning][lec6]                   | [Lab 8: Model Monitoring][lab8]                            | Work on project      |
 | **2022.09.19** | [Lecture 7: Foundation Models][lec7]                    |                                                            | Work on project      |
-| **2022.09.26**     | [Lecture 8: ML Teams and Project Management][lec8]                        |                                                            | Work on project      |
-| 2022.10.03     | Lecture 9: Ethics                                       |                                                            | Work on project      |
+| **2022.09.26** | [Lecture 8: ML Teams and Project Management][lec8]      |                                                            | Work on project      |
+| 2022.10.03     | [Lecture 9: Ethics][lec9]                               |                                                            | Work on project      |
 | 2022.10.10     | Project Presentations                                   |                                                            | Project due          |
 
 ## Detailed Contents
@@ -122,6 +122,11 @@ including how to hire or get hired on an ML team
 and how to build an ML-first organization.
 *Published September 26, 2022.*
 
+### [Lecture 9: Ethics][lec9]
+We consider ethical concerns around buiding technlogy,
+building with machine learning, and building artificial intelligence.
+*Published October 3, 2022.*
+
 [lab0]: lab-0-overview/index.md
 [lec1]: lecture-1-course-vision-and-when-to-use-ml/index.md
 [labs1-3]: labs-1-3-cnns-transformers-pytorch-lightning/index.md
@@ -137,3 +142,4 @@ and how to build an ML-first organization.
 [lab8]: lab-8-model-monitoring/index.md
 [lec7]: lecture-7-foundation-models/index.md
 [lec8]: lecture-8-teams-and-pm/index.md
+[lec9]: lecture-9-ethics/index.md
