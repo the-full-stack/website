@@ -2,7 +2,7 @@
 description: Building ML for good while building good ML
 ---
 
-# Lecture 8: Ethics
+# Lecture 9: Ethics
 
 <div align="center">
 <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/7FQpbYTqjAA?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
