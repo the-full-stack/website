@@ -8,7 +8,7 @@ description: How to continuously improve models in production
 <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/nra0Tt3a-Oc?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
-Lecture by [Josh Tobin](https://twitter.com/josh_tobin_).<br />
+Lecture by [Josh Tobin](https://twitter.com/josh_tobin_).
 Notes by [James Le](https://twitter.com/le_james94) and [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/).<br />
 Published September 12, 2022.
 [Download slides](https://fsdl.me/2022-lecture-06-slides).
@@ -636,3 +636,174 @@ and observability: [Gantry](https://gantry.io/),
 [Arize](https://arize.com/),
 [Fiddler](https://www.fiddler.ai/),
 [Arthur](https://arthur.ai/), etc.
+
+
+## 5 - Retraining Strategy
+
+We’ve talked about monitoring and observability, which allow you to identify issues with your continual learning system. Now, we’ll talk about how we will fix the various stages of the continual learning process based on what we learn from monitoring and observability.
+
+
+### Logging
+
+The first stage of the continual learning loop is **logging**. As a reminder, the goal of logging is to get data from your model to a place where you can analyze it. The key question to answer here is: “**what data should I actually log?**”
+
+For most of us, the best answer is just to log all of the data. Storage is cheap. It's better to have data than not to have it. There are, however, some situations where you can't do that. For example, if you have too much traffic going through your model to the point where it's too expensive to log all of it, or if you have data privacy concerns, or if you're running your model at the edge, you simply may not be able to able to log all your data. 
+
+In these situations, there are two approaches that you can take. The first approach is **profiling**. With profiling, rather than sending all the data back to your cloud and then using that to monitor, you instead compute **statistical profiles** of your data on the edge that describe the data distribution that you're seeing. This is great from a data security perspective because it doesn't require you to send all the data back home. It minimizes your storage cost. Finally, you don't miss things that happen in the tails, which is an issue for the next approach. That'll describe the place to use. This approach is best used for security-critical applications. Computing statistical profiles is a pretty interesting topic in computer science and data summarization that is worth checking out if you’re interested in this approach. 
+
+![alt_text](./media/image22.png "image_tooltip")
+
+
+The other approach is **sampling**. With sampling, you'll just take certain data points and send those back to your monitoring and logging system. The advantage of sampling is that it has minimal impact on your inference resources. You don't have to actually spend the computational budget to compute profiles. You also get to have access to the raw data for debugging and retraining, albeit a smaller amount. This is the approach we recommend for any other kind of application.
+
+
+### Curation
+
+The next step in the continual learning loop is **curation**. The goal of curation is to take the infinite stream of production data, which is potentially unlabeled, and turn it into a finite reservoir of enriched data suitable for training. Here, we must answer, “**what data should be enriched?**”
+
+You could **sample and enrich data randomly**, but that may not prove helpful to your model. Importantly, you miss rare classes or events. A better approach can be to perform **stratified subsampling**, wherein you sample specific proportions of individuals from various subpopulations (e.g. race). The most advanced strategy for picking data to enrich is to **curate data points** that are somehow interesting for the purpose of improving your model. 
+
+There are a few different ways of doing this: **user-driven curation loops** via feedback loops, **manual curation** via error analysis, and **automatic curation** via active learning. 
+
+User-driven curation is a great approach that is easy to implement, assuming you have a clear way of gathering user feedback. If your user churns, clicks thumbs down, or performs some other similar activity on the model’s output, you have an easy way of understanding data that could be enriched for future training jobs.
+
+![alt_text](./media/image23.png "image_tooltip")
+
+If you don't have user feedback, or if you need even more ways of gathering interesting data from your system, the second most effective way is by doing **manual error analysis**. In this approach, we look at the errors that our model is making, reason about the different types of failure modes that we're seeing, and try to write functions or rules that help capture these error modes. We'll use those functions to gather more data that might represent those error cases. Some examples of these function-based approaches are **similarity-based curation**, which uses nearest neighbors, and **projection-based curation**, wherein we train a new function or model to recognize key data points.
+
+The last way to curate data is to do so automatically using a class of algorithms called **[active learning](https://lilianweng.github.io/posts/2022-02-20-active-learning/)**. The way active learning works is that, given a large amount of unlabeled data, we will try to determine which data points would improve model performance the most (if you were to label those data points next and train on them). These algorithms define **a sampling strategy**, rank all of your unlabeled examples using **a scoring function** that defines the sampling strategy, and mark the data points with the highest scores for future labeling. 
+
+There are a number of different scoring function approaches that are shown below.
+
+
+
+1. **Most uncertain**: sample low-confidence and high-entropy predictions or predictions that an ensemble disagrees on.
+2. **Highest predicted loss**: train a separate model that predicts loss on unlabeled points, then sample the highest predicted loss.
+3. **Most different from labels**: train a model to distinguish labeled and unlabeled data, then sample the easiest to distinguish.
+4. **Most representative**: choose points such that no data is too far away from anything we sampled.
+5. **Big impact on training**: choose points such that the expected gradient is large or points where the model changes its mind the most about its prediction during training.
+
+Uncertainty scoring tends to be the most commonly used method since it is simple and easy to implement. 
+
+You might have noticed that there's a lot of similarity between some of the ways that we do data curation and the way that we do monitoring. That's no coincidence--**monitoring and data curation are two sides of the same coin!** They're both interested in solving the problem of finding data points where the model may not be performing well or where we're uncertain about how the model is performing on those data points.
+
+![alt_text](./media/image24.png "image_tooltip")
+
+Some examples of people practically applying data curation are OpenAI’s DALL-E 2, which uses [active learning and manual curation](https://openai.com/blog/dall-e-2-pre-training-mitigations/), Tesla, which uses [feedback loops and manual curation](https://www.youtube.com/watch?v=hx7BXih7zx8), and Cruise, which uses feedback loops.
+
+Some tools that help with data curation are [Scale Nucleus](https://scale.com/nucleus), [Aquarium](https://www.aquariumlearning.com/), and [Gantry](https://gantry.io/). 
+
+To summarize then, here are our final set of recommendations for applying data curation.
+
+
+
+1. Random sampling is a fine starting point. If you want to avoid bias or have rare classes, do stratified sampling instead.
+2. If you have a feedback loop, then user-driven curation is a no-brainer. If not, confidence-based active learning is easy to implement.
+3. As your model performance increases, you’ll have to look harder for challenging training points. Manual techniques are unavoidable and should be embraced. Know your data!
+
+
+### Retraining Triggers
+
+After we've curated our infinite stream of unlabeled data down to a reservoir of labeled data that's ready to potentially train on, the next thing that we'll need to decide is “**what trigger are we gonna use to retrain?**”
+
+The main takeaway here is that moving to automated retraining is **not** always necessary. In many cases, just manually retraining is good enough. It can save you time and lead to better model performance. It's worth understanding when it makes sense to actually make the harder move to automated retraining.
+
+The main prerequisite for moving to automated retraining is being able to reproduce model performance when retraining in a fairly automated fashion. If you're able to do that and you are not really working on the model actively, it's probably worth implementing some automated retraining. As a rule of thumb, if you’re retraining the model more than once a month, automated retraining may make sense.
+
+When it's time to move to automated training, the main recommendation is to just keep it simple and **retrain periodically**, e.g. once a week. The main question though is, how do you pick the right training schedule? The recommendation here is to:
+
+
+
+1. Apply measurement to figure out a reasonable retraining schedule.
+2. Plot your model performance and degradation over time.
+3. Compare how retraining the model at various intervals would have resulted in improvements to its performance.
+
+As seen below, the area between the curves represents the opportunity cost, so always remember to balance the upside of retraining with the operational costs of retraining.
+
+![alt_text](./media/image25.png "image_tooltip")
+
+This is a great area for future academic research! More specifically, we can look at ways to automate determining the optimal retraining strategy based on performance decay, sensitivity to performance, operational costs, and retraining costs.
+
+An additional option for retraining, rather than time-based intervals, is **performance triggers** (e.g. retrain when the model accuracy dips below 90%). This helps react more quickly to unexpected changes and is more cost-optimal, but requires very good instrumentation to process these signals along with operational complexity.
+
+An idea that probably won't be relevant but is worth thinking about is **online learning**. In this paradigm, you train on every single data point as it comes in. It's not very commonly used in practice. 
+
+A version of this idea that is used fairly frequently in practice is **online adaptation**. This method operates not at the level of retraining the whole model itself but rather on the level of adapting the policy that sits on top of the model. What is a policy you ask? A policy is the set of rules that takes the raw prediction that the model made, like the score or the raw output of the model, and turns it into the output the user sees. In online adaptation, we use algorithms like multi-armed bandits to tune these policies. If your data changes very frequently, it is worth looking into this method.
+
+
+### Dataset Formation
+
+Imagine we've fired off a trigger to start a new training job. The next question we need to answer is, among all of the labeled data in our reservoir of data, **what specific data points should we train on for this particular new training job?**
+
+We have four options here. Most of the time in deep learning, we'll just use the first option and **train on all the data that we have available** to us. Remember to keep your data version controlled and your curation rules consistent.
+
+![alt_text](./media/image26.png "image_tooltip")
+
+If you have too much data to do that, you can use recency as a heuristic for a second option and **train on only a sliding window of the most recent data** (if recency is important) or **sample a smaller portion** (if recency isn’t). In the latter case, compare the aggregate statistics between the old and new windows to ensure there aren’t any bugs. It’s also important in both cases to compare the old and new datasets as they may not be related in straightforward ways. 
+
+![alt_text](./media/image27.png "image_tooltip")
+
+A useful third option is **online batch selection**, which can be used when recency doesn’t quite matter. In this method, we leverage label-aware selection functions to choose which items in mini-batches to train on. 
+
+![alt_text](./media/image28.png "image_tooltip")
+
+A more difficult fourth option that isn’t quite recommended is **continual fine-tuning**. Rather than retraining from scratch every single time, you train your existing model on just new data. The reason why you might wanna do this primarily is because it's much more cost-effective. The paper below shares some findings from GrubHub, where they found a 45x cost improvement by doing this technique relative to sliding windows.
+
+![alt_text](./media/image29.png "image_tooltip")
+
+The big challenge here is that unless you're very careful, it's easy for the model to forget what it learned in the past. The upshot is that you need to have mature evaluation practices to be very careful that your model is performing well on all the types of data that it needs to perform well on.
+
+
+### Offline Testing
+
+After the previous steps, we now have a new candidate model that we think is ready to go into production. The next step is to test that model. The goal of this stage is to produce a report that our team can sign off on that answers the question of whether this new model is good enough or whether it's better than the old model. The key question here is, “**what should go into that report?**”
+
+This is a place where there's not a whole lot of standardization, but the recommendation we have here is to compare your current model with the previous version of the model on all of the metrics that you care about, all of the subsets of data that you've flagged are important, and all the edge cases you’ve defined. Remember to adjust the comparison to account for any sampling bias.
+
+Below is a sample comparison report. Note how the validation set is broken out into concrete subgroups. Note also how there are specific validation sets assigned to common error cases.
+
+![alt_text](./media/image30.png "image_tooltip")
+
+In continual learning, evaluation sets are dynamically refined just as much as training sets are. Here are some guidelines for how to manage evaluation sets in a continual learning system:
+
+
+
+1. As you curate new data, add some of it to your evaluation sets. For example, if you change how you do sampling, add that newly sampled data to your evaluation set. Or if you encounter a new edge case, create a test case for it.
+2. Corollary 1: you should version control your evaluation sets as well.
+3. Corollary 2: if your data changes quickly, always hold out the most recent data for evaluation.
+
+Once you have the testing basics in place, a more advanced option that you can look into here is **expectation testing**. Expectation tests work by taking pairs of examples where you know the relationship between the two. These tests help a lot with understanding the generalizability of models.
+
+![alt_text](./media/image31.png "image_tooltip")
+
+Just like how data curation is highly analogous to monitoring, so is offline testing. We want to observe our metrics, not just in aggregate but also across all of our important subsets of data and across all of our edge cases. One difference between these two is that **you will have different metrics available in offline testing and online testing**. For example, you’re much more likely to have labels offline. Online, you’re much more likely to have feedback. We look forward to more research that can predict online metrics from offline ones.
+
+
+### Online Testing
+
+Much of this we covered in the last lecture, so we’ll keep it brief! Use shadow mode and A/B tests, roll out models gradually, and roll back models if you see issues during rollout. 
+
+
+## 6 - The Continual Improvement Workflow
+
+To tie it all together, we’ll conclude with an example. Monitoring and continual learning are two sides of the same coin. We should be using the signals that we monitor to very directly change our retraining strategy. This section describes the future state that comes as a result of investing in the steps laid out previously. 
+
+Start with a place to store and version your strategy. The components of your continual learning strategy should include the following:
+
+
+
+* Inputs, predictions, user feedback, and labels.
+* Metric definitions for monitoring, observability, and offline testing.
+* Projection definitions for monitoring and manual data curation.
+* Subgroups and cohorts of interest for monitoring and offline testing.
+* Data curation logic.
+* Datasets for training and evaluation.
+* Model comparison reports.
+
+Walk through this example to understand how changes to the retraining strategy occur as issues surface in our machine learning system.
+
+![alt_text](./media/image32.png "image_tooltip")
+
+## 7 - Takeaways
+
+To summarize, continual learning is a nascent, poorly understood topic that is worth continuing to pay attention to. Watch this space! In this lecture, we focused on all the steps and techniques that allow you to use retraining effectively. As MLEs, leverage monitoring to strategically improve your model. Always start simple, and get better!

@@ -45,8 +45,8 @@ We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wedne
 | **2022.09.12** | [Lecture 6: Continual Learning][lec6]                   | [Lab 8: Model Monitoring][lab8]                            | Work on project      |
 | **2022.09.19** | [Lecture 7: Foundation Models][lec7]                    |                                                            | Work on project      |
 | **2022.09.26** | [Lecture 8: ML Teams and Project Management][lec8]      |                                                            | Work on project      |
-| 2022.10.03     | [Lecture 9: Ethics][lec9]                               |                                                            | Work on project      |
-| 2022.10.10     | Project Presentations                                   |                                                            | Project due          |
+| **2022.10.03**     | [Lecture 9: Ethics][lec9]                               |                                                            | Work on project      |
+| **2022.10.10**     | Project Presentations                                   |                                                            | Project due          |
 
 ## Detailed Contents
 
