@@ -1,20 +1,20 @@
 ---
 title: Course 2022
-description: Full Stack Deep Learning course covers the full stack of building ML-powered products.
+description: Full Stack Deep Learning course covers the full stack for building ML-powered products.
 hide:
   - toc
 ---
 
 # Full Stack Deep Learning - Course 2022
 
-!!! info "Course in Progress"
-    Those who registered for the paid cohort option, please [see here](cohort) for details.
+!!! info "Course Completed"
+    All the lecture and lab material is free forever. Just check out the links below.
 
-    And everyone else – all the material is free!
-    Simply enter your email below, follow us on
+    To be among the first to hear about future iterations of the course,
+    simply enter your email below, follow us on
     [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank},
     or subscribe to our
-    [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning?sub_confirmation=1){target=_blank} to get updates week-by-week.
+    [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning?sub_confirmation=1){target=_blank}.
 
 <!-- Begin Mailchimp Signup Form -->
 <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
@@ -32,7 +32,7 @@ hide:
 
 ## Schedule { style="margin-top: 1rem" }
 
-We will release lecture videos on Mondays at 6pm Pacific and lab videos on Wednesdays at 6pm Pacific on
+We released lecture videos on Mondays at 6pm Pacific and lab videos on Wednesdays at 6pm Pacific on
 <span class="whitespace-nowrap">[:fontawesome-brands-youtube:{ .youtube } YouTube](https://www.youtube.com/c/FullStackDeepLearning){target=_blank}</span>.
 
 | Week           | Lecture                                                 | Lab                                                        | Project              |
@@ -126,6 +126,17 @@ and how to build an ML-first organization.
 We consider ethical concerns around buiding technlogy,
 building with machine learning, and building artificial intelligence.
 *Published October 3, 2022.*
+
+## Teaching Assistants
+
+This course was only possible with the support of our amazing TAs (in alphabetical order):
+
+- [Andrew Mendez](https://twitter.com/AndrewMendez19) is a Deep Learning Solutions Engineer at DeterminedAI, working on computer vision and NLP solutions for defense and autonomous vehicle companies. Previously Andrew worked as an ML Engineer at Clarifai and CACI.
+- [Daniel Hen](https://www.linkedin.com/in/daniel-hen/) is a Senior Data Scientist at Digital Turbine, working on Ad Tech and mobile solutions, as well as Big Data problems. Working with Spark, ML algorithms such as XGBoost, Computer Vision, and constantly learning new technology.
+- [James Le](https://twitter.com/le_james94) runs Data Relations and Partnerships at Superb AI, a data management platform for computer vision use cases. Outside work, he writes data-centric blog posts, hosts a data-focused podcast, and organizes in-person events for the data community.
+- [Saurabh Bipin Chandra](https://www.linkedin.com/in/srbhchandra/) is a Senior ML Scientist at Turnitin.
+- [Sayak Paul](https://sayak.dev) is as a Machine Learning Engineer at Carted on NLP and representation learning from HTML webpages. Besides work, he contributes to various open-source projects.
+- [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/) is a Data Scientist at firsthand.
 
 [lab0]: lab-0-overview/index.md
 [lec1]: lecture-1-course-vision-and-when-to-use-ml/index.md

@@ -1,6 +1,6 @@
 # Synchronous Cohort Option
 
-We're organizing the synchronous cohort for the 2022 course via Discord.
+We organized the synchronous cohort for the 2022 course via Discord.
 
 ## It's project time! How do I access my free GPUs?
 
@@ -47,14 +47,3 @@ You can also [mute individual channels](https://support.discord.com/hc/en-us/art
 #### Only instructors can post in the `#course-announcements` channel.
 
 If you furthermore [hide muted channels](https://support.discord.com/hc/en-us/articles/213599277-How-do-I-hide-muted-channels-), the Discord interface will only show that channel, but you'll miss out on the chance to discover discussions in other channels.
-
-## Teaching Assistants
-
-This course is only possible with the support of our amazing TAs (in alphabetical order):
-
-- [Andrew Mendez](https://twitter.com/AndrewMendez19) is a Deep Learning Solutions Engineer at DeterminedAI, working on computer vision and NLP solutions for defense and autonomous vehicle companies. Previously Andrew worked as an ML Engineer at Clarifai and CACI.
-- [Daniel Hen](https://www.linkedin.com/in/daniel-hen/) is a Senior Data Scientist at Digital Turbine, working on Ad Tech and mobile solutions, as well as Big Data problems. Working with Spark, ML algorithms such as XGBoost, Computer Vision, and constantly learning new technology.
-- [James Le](https://twitter.com/le_james94) runs Data Relations and Partnerships at Superb AI, a data management platform for computer vision use cases. Outside work, he writes data-centric blog posts, hosts a data-focused podcast, and organizes in-person events for the data community.
-- [Saurabh Bipin Chandra](https://www.linkedin.com/in/srbhchandra/) is a Senior ML Scientist at Turnitin.
-- [Sayak Paul](https://sayak.dev) is as a Machine Learning Engineer at Carted on NLP and representation learning from HTML webpages. Besides work, he contributes to various open-source projects.
-- [Vishnu Rachakonda](https://www.linkedin.com/in/vrachakonda/) is a Data Scientist at firsthand.
