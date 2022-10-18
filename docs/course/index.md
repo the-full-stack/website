@@ -6,11 +6,11 @@ hide:
 # FSDL Course
 
 !!! info
-    The [2022 course](2022/index.md) is now in progress!
+    Looking for the latest edition of the course? [Click here](2022/index.md).
 
 ## What you will learn
 
-Our course incorporates feedback from thousands of learners over 4 years of
+Our course incorporates feedback from thousands of learners over 5 years of
 teaching production machine learning.
 
 We've updated all materials with best practices as of 2022 and added some brand new topics:
@@ -83,7 +83,7 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
 <div class="person" markdown>
   <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
   <div markdown>
-  **[Charles Frye](https://twitter.com/charles_irl)** teaches people on the internet. He worked in education and growth at Weights & Biases after getting a PhD in Neuroscience at UC Berkeley.
+  **[Charles Frye](https://twitter.com/charles_irl)** teaches people on the internet. He worked in education and growth at Weights & Biases after getting a PhD in Neuroscience at UC Berkeley. He now works as a consultant, including for Gantry.
   </div>
 </div>
 
