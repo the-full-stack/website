@@ -73,7 +73,6 @@ nav:
     - course/index.md
     - 'FSDL 2022':
       - course/2022/index.md
-      - course/2022/cohort.md
       - course/2022/lab-0-overview/index.md
       - course/2022/labs-1-3-cnns-transformers-pytorch-lightning/index.md
       - course/2022/lecture-1-course-vision-and-when-to-use-ml/index.md
