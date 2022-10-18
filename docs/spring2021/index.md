@@ -4,6 +4,9 @@ title: Course 2021
 
 # Full Stack Deep Learning - Course Spring 2021
 
+!!! info
+    Looking for the latest edition of the course? [Click here](2022/index.md).
+
 We've updated and improved our materials for our 2021 course taught at UC Berkeley and online.
 
 !!! info "Synchronous Online Course"
