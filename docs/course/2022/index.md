@@ -46,7 +46,7 @@ We released lecture videos on Mondays at 6pm Pacific and lab videos on Wednesday
 | **2022.09.19** | [Lecture 7: Foundation Models][lec7]                    |                                                            | Work on project      |
 | **2022.09.26** | [Lecture 8: ML Teams and Project Management][lec8]      |                                                            | Work on project      |
 | **2022.10.03**     | [Lecture 9: Ethics][lec9]                               |                                                            | Work on project      |
-| **2022.10.10**     | Project Presentations                                   |                                                            | Project due          |
+| **2022.10.10**     | [Project Presentations][proj]                                   |                                                            | Project due          |
 
 ## Detailed Contents
 
@@ -154,3 +154,4 @@ This course was only possible with the support of our amazing TAs (in alphabetic
 [lec7]: lecture-7-foundation-models/index.md
 [lec8]: lecture-8-teams-and-pm/index.md
 [lec9]: lecture-9-ethics/index.md
+[proj]: project-showcase/index.md
