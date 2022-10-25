@@ -47,6 +47,10 @@ A full-stack ML-powered website that utilizes users’ webcam feeds to answer op
 <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/NU2mhIhLZRY?list=PL1T8fO7ArWle-HwX6SkoQ3j_ol19P7tGT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
 </div>
 
+An ML-powered app for adding (optionally Stable Diffusion-generated)
+virtual backgrounds to images that uses style transfer
+to match lighting anad composition.
+
 **Team**: [Nitin Kishore Sai Samala](https://twitter.com/Nitin_wysiwyg)</br>
 [Live Demo](https://huggingface.co/spaces/NikeZoldyck/green-screen-composition-transfer).
 [Poster](https://docs.google.com/presentation/d/1baE6sF1vvb-mRC0rIvLfCk4MlHwtXfodBqHEmr6wnwk/edit#slide=id.p).
