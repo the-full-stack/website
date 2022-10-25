@@ -166,8 +166,8 @@ An architecture for using multiple modalities of healthcare data to train deep l
 
 Measure the diameter of nanofibers in microscopy images.
 
-**Team**: [`@fcossio`](https://twitter.com/fcossio),
-[`@yaelsu`](https://twitter.com/yaelsu),
+**Team**: [`@f_cossio`](https://twitter.com/f_cossio),
+[`@yael_su`](https://twitter.com/yael_su),
 [`@__coszio`](https://twitter.com/__coszio),
 [`@aledelunap`](https://twitter.com/aledelunap)</br>
 [Live Demo](https://FiberDiameter.com).
