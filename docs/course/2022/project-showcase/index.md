@@ -296,3 +296,26 @@ OCR SemSearch allows you to perform semantic search on text within images from d
 
 **Team**: Sebastian Gonzalez Aseretto, Param Tapmewada</br>
 [Project Poster](https://drive.google.com/file/d/1bRLrJ4CjbvEIrOKHwPI_aGxaVmx8h3Zd/view?usp=sharing).
+
+## Live Art in Context
+
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/2EYpvHzvUPk?list=PL1T8fO7ArWle-HwX6SkoQ3j_ol19P7tGT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Draw on the creative power of modern ML models to create art responsive to events in text or video streams.
+
+Team: David Murphy, Angel Carvajal, Theresa Thoraldson, Chris Lonsberry</br>
+[Slide Deck](https://docs.google.com/presentation/d/16AsXpdyft2EPUz5lMBHu5IAkpSPMsuiS/edit?usp=sharing&ouid=111081315388936546147&rtpof=true&sd=true).
+
+## Plant ID
+
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/efxzQ6SK1ek?list=PL1T8fO7ArWle-HwX6SkoQ3j_ol19P7tGT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+A plant species identifier available as a web app and as a cross-platform mobile app.
+
+Team: Ben Michel, Nav, Stone Jiang, Shishir Valalla, Vibudh Singh</br>
+[Live Demo](https://huggingface.co/spaces/for876543/plant-id-3).
+[Slide Deck](https://docs.google.com/presentation/d/1zQfSfYma9VOdHCrfbTzfHeFNkwjSSKlygyYANlqA4D8/edit?usp=sharing).
