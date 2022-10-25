@@ -181,7 +181,11 @@ Measure the diameter of nanofibers in microscopy images.
 
 An app that guesses the location of an image, video, or video url.
 
-**Team**: David Hrachovy, Samhita Alla, Yiyi Xu, Winson Truong</br>
+**Team**: David Hrachovy, [Samhita Alla](https://twitter.com/samhita_alla),
+[Yiyi Xu](https://twitter.com/YiYiMarz),
+[Winson Truong](https://twitter.com/WinsonTruong)</br>
+[Live Demo](https://huggingface.co/spaces/Samhita/geolocator).
+[GitHub Repo](https://github.com/samhita-alla/geolocator).
 
 ## 👻 Image Anonymiser
 
