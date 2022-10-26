@@ -123,7 +123,7 @@ A semantic text search engine over images, along with monitoring.
 
 An image to recipe food classifier.
 
-**Team**: Carlo David, Chavo Kim, Nari Jeong, and Rina Buoy</br>
+**Team**: Carlo David, Chavo Kim, George Loh, Nari Jeong, and Rina Buoy</br>
 [Live Demo](https://fsdl-food-teller.vercel.app/).
 [Slide Deck](https://docs.google.com/presentation/d/16t1_b8JNFz0zU9rewhGxGL9XEgmhEneY-52uAXPcrzc/edit?usp=sharing).
 
