@@ -26,7 +26,7 @@ and post/ask around about group project work.
 
 An ML powered application for streamlining the process of creating chapter markers and lesson summaries for course content creators.
 
-**Team**: Kurian Benoy, Wayde Gilliam, Suvash Thapaliya</br>
+**Team**: [Kurian Benoy](https://twitter.com/kurianbenoy2), [Wayde Gilliam](https://twitter.com/waydegilliam), [Suvash Thapaliya](https://twitter.com/suvash)</br>
 [Live Demo](https://labs.suva.sh/).
 [Slide Deck](https://docs.google.com/presentation/d/1pgsIi7RS-q7Wcvfw3ZJGUSlmpd0wOkMD13QT52cVUZo/edit?usp=sharing).
 
