@@ -316,6 +316,6 @@ Team: David Murphy, Angel Carvajal, Theresa Thoraldson, Chris Lonsberry</br>
 
 A plant species identifier available as a web app and as a cross-platform mobile app.
 
-Team: Ben Michel, Nav, Stone Jiang, Shishir Valalla, Vibudh Singh</br>
+Team: Ben Michel, Navid Matin Moghaddam, Stone Jiang, Shishir Valalla, Vibudh Singh</br>
 [Live Demo](https://huggingface.co/spaces/for876543/plant-id-3).
 [Slide Deck](https://docs.google.com/presentation/d/1zQfSfYma9VOdHCrfbTzfHeFNkwjSSKlygyYANlqA4D8/edit?usp=sharing).
