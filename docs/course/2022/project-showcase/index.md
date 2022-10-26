@@ -63,7 +63,12 @@ to match lighting anad composition.
 
 An approach to minimise human labelling for text classification tasks.
 
-**Team**: Aleks Hiidenhovi, Bernardo García, Diego Quintana, Edoardo Abati, Juan Manuel, Kushal Ramaiya</br>
+**Team**: [Aleks Hiidenhovi](https://www.linkedin.com/in/hiidenhovi/),
+[Bernardo García](https://www.linkedin.com/in/bernardo-garc%C3%ADa-del-r%C3%ADo-b4a98873/),
+[Diego Quintana](https://www.linkedin.com/in/diego-quintana-valenzuela),
+[Edoardo Abati](https://github.com/EdAbati),
+[Juan Manuel](https://www.linkedin.com/in/juan-manuel-perero-codosero),
+[Kushal Ramaiya](https://www.linkedin.com/in/kushal-ramaiya-402504179)</br>
 [GitHub Repo](https://github.com/EdAbati/fsdl-2022-weak-supervision-project).
 [Slide Deck](https://docs.google.com/presentation/d/1aReCQu_FkpufARsQBKaOP6yh8_TTORNND-QgnHgzitQ/edit?usp=sharing).
 
