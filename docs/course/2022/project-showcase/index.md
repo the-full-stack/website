@@ -140,7 +140,7 @@ An image to recipe food classifier.
 
 A pragmatic approach to identifying illustrated pages in digitised historic books.
 
-**Team**: Frank Smitskamp, Zacharie Bouhnik, [Daniel van Strien](https://twitter.com/vanstriendaniel)</br>
+**Team**: Frank Smitskamp, [Zacharie Bouhnik](https://www.linkedin.com/in/zacharie-bouhnik/), [Daniel van Strien](https://twitter.com/vanstriendaniel)</br>
 [Live Demo](https://huggingface.co/spaces/ImageIN/iiif_book_manifest_illustration_detection).
 [GitHub Repo](https://github.com/davanstrien/ImageIN/).
 
