@@ -319,3 +319,14 @@ A plant species identifier available as a web app and as a cross-platform mobile
 Team: Ben Michel, Nav, Stone Jiang, Shishir Valalla, Vibudh Singh</br>
 [Live Demo](https://huggingface.co/spaces/for876543/plant-id-3).
 [Slide Deck](https://docs.google.com/presentation/d/1zQfSfYma9VOdHCrfbTzfHeFNkwjSSKlygyYANlqA4D8/edit?usp=sharing).
+
+## Landcover Segmentation
+
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/7u0yBfgNjQ0?list=PL1T8fO7ArWle-HwX6SkoQ3j_ol19P7tGT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+A data product for multi-class semantic segmentation of earth observation images using a UNet architecture.
+
+Team: Suzana, Roland Ritt, Sheebo</br>
+[Slide Deck](https://docs.google.com/presentation/d/1TDif9r3uiCZ04yxBxgruh5jySDqJFwEYxoMSaM8LB-U/edit?usp=sharing).
