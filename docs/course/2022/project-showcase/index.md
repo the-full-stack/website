@@ -26,7 +26,7 @@ and post/ask around about group project work.
 
 An ML powered application for streamlining the process of creating chapter markers and lesson summaries for course content creators.
 
-**Team**: Kurian Benoy, Wayde Gilliam, Suvash Thapaliya</br>
+**Team**: [Kurian Benoy](https://twitter.com/kurianbenoy2), [Wayde Gilliam](https://twitter.com/waydegilliam), [Suvash Thapaliya](https://twitter.com/suvash)</br>
 [Live Demo](https://labs.suva.sh/).
 [Slide Deck](https://docs.google.com/presentation/d/1pgsIi7RS-q7Wcvfw3ZJGUSlmpd0wOkMD13QT52cVUZo/edit?usp=sharing).
 
@@ -38,7 +38,7 @@ An ML powered application for streamlining the process of creating chapter marke
 
 A full-stack ML-powered website that utilizes users’ webcam feeds to answer open-ended questions requiring outside knowledge.
 
-**Team**: Andrew Hinh</br>
+**Team**: [Andrew Hinh](https://www.linkedin.com/in/andrew-hinh/)</br>
 [Live Demo](https://admirer.loca.lt/).
 
 ## Green-Screen Image Composition-Transfer
@@ -63,7 +63,12 @@ to match lighting anad composition.
 
 An approach to minimise human labelling for text classification tasks.
 
-**Team**: Aleks Hiidenhovi, Bernardo García, Diego Quintana, Edoardo Abati, Juan Manuel, Kushal Ramaiya</br>
+**Team**: [Aleks Hiidenhovi](https://www.linkedin.com/in/hiidenhovi/),
+[Bernardo García](https://www.linkedin.com/in/bernardo-garc%C3%ADa-del-r%C3%ADo-b4a98873/),
+[Diego Quintana](https://www.linkedin.com/in/diego-quintana-valenzuela),
+[Edoardo Abati](https://github.com/EdAbati),
+[Juan Manuel](https://www.linkedin.com/in/juan-manuel-perero-codosero),
+[Kushal Ramaiya](https://www.linkedin.com/in/kushal-ramaiya-402504179)</br>
 [GitHub Repo](https://github.com/EdAbati/fsdl-2022-weak-supervision-project).
 [Slide Deck](https://docs.google.com/presentation/d/1aReCQu_FkpufARsQBKaOP6yh8_TTORNND-QgnHgzitQ/edit?usp=sharing).
 
@@ -123,7 +128,7 @@ A semantic text search engine over images, along with monitoring.
 
 An image to recipe food classifier.
 
-**Team**: Carlo David, Chavo Kim, Nari Jeong, and Rina Buoy</br>
+**Team**: Carlo David, Chavo Kim, George Loh, Nari Jeong, and Rina Buoy</br>
 [Live Demo](https://fsdl-food-teller.vercel.app/).
 [Slide Deck](https://docs.google.com/presentation/d/16t1_b8JNFz0zU9rewhGxGL9XEgmhEneY-52uAXPcrzc/edit?usp=sharing).
 
@@ -316,7 +321,7 @@ Team: David Murphy, Angel Carvajal, Theresa Thoraldson, Chris Lonsberry</br>
 
 A plant species identifier available as a web app and as a cross-platform mobile app.
 
-Team: Ben Michel, Nav, Stone Jiang, Shishir Valalla, Vibudh Singh</br>
+Team: Ben Michel, Navid Matin Moghaddam, Stone Jiang, Shishir Valalla, Vibudh Singh</br>
 [Live Demo](https://huggingface.co/spaces/for876543/plant-id-3).
 [Slide Deck](https://docs.google.com/presentation/d/1zQfSfYma9VOdHCrfbTzfHeFNkwjSSKlygyYANlqA4D8/edit?usp=sharing).
 
