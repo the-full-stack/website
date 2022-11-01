@@ -227,6 +227,7 @@ An interface for red-teaming open source text generation models from the Hugging
 </div>
 
 A board game question-answering system to save players from having to check the rulebook.
+
 **Team**: [Rafal Wojcik](https://www.linkedin.com/in/rafal-jan-wojcik/), [Tim Jones](https://www.linkedin.com/in/tim-rob-jones/), [Issam Hammi](https://www.linkedin.com/in/issamhammi/), [Muriel Hol](https://www.linkedin.com/in/muriel-hol-49696a8a/)</br>
 [Live Demo](https://87b9-82-38-21-80.eu.ngrok.io/).
 [GitHub Repo](https://github.com/rafaljanwojcik/board-game-rules-explainer).
