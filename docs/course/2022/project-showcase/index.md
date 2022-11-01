@@ -231,6 +231,7 @@ A board game question-answering system to save players from having to check the 
 **Team**: [Rafal Wojcik](https://www.linkedin.com/in/rafal-jan-wojcik/), [Tim Jones](https://www.linkedin.com/in/tim-rob-jones/), [Issam Hammi](https://www.linkedin.com/in/issamhammi/), [Muriel Hol](https://www.linkedin.com/in/muriel-hol-49696a8a/)</br>
 [Live Demo](https://87b9-82-38-21-80.eu.ngrok.io/).
 [GitHub Repo](https://github.com/rafaljanwojcik/board-game-rules-explainer).
+[Slide Deck](https://docs.google.com/presentation/d/1CkBQa9E5Id5zUBW_zXxb4WnwfLJhqKw0aU0tbRD4txQ/edit?usp=sharing).
 
 ## Gesto AI - ASL Word Recognizer
 
