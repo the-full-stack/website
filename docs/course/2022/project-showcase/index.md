@@ -299,7 +299,7 @@ Animate a cartoon with facial expressions using only your voice.
 
 OCR SemSearch allows you to perform semantic search on text within images from different types of documents.
 
-**Team**: Sebastian Gonzalez Aseretto, Param Tapmewada</br>
+**Team**: Sebastian Gonzalez Aseretto, Paramtap Mewada</br>
 [Project Poster](https://drive.google.com/file/d/1bRLrJ4CjbvEIrOKHwPI_aGxaVmx8h3Zd/view?usp=sharing).
 
 ## Live Art in Context
