@@ -335,3 +335,14 @@ A data product for multi-class semantic segmentation of earth observation images
 
 Team: Suzana, Roland Ritt, Sheebo</br>
 [Slide Deck](https://docs.google.com/presentation/d/1TDif9r3uiCZ04yxBxgruh5jySDqJFwEYxoMSaM8LB-U/edit?usp=sharing).
+
+## Meeting Graph Generator
+
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/s3CDGH84muc?list=PL1T8fO7ArWle-HwX6SkoQ3j_ol19P7tGT" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+Team: [Soroush](https://twitter.com/SSirousBastank)
+[Bassam](https://www.linkedin.com/in/soroushb/)</br>
+[Slide Deck](https://docs.google.com/presentation/d/1-feA9OukSqMND-fQ7AlTtOxalxKzcePtJ_gijfQG-EI/edit?usp=sharing).
+[GitHub Repo](https://github.com/sbassam/nub-ai-meeting-tools).
