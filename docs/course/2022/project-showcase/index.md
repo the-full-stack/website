@@ -216,7 +216,7 @@ An ML-powered image anonymisation web app.
 
 An interface for red-teaming open source text generation models from the Hugging Face hub.
 
-**Team**: Sashank Pisupati, Sajenthan Vigneswaran, Kemp Bray, Jean-Antoine Zagato</br>
+**Team**: [Sashank Pisupati](https://spisupat.github.io/), [Sajenthan Vigneswaran](https://github.com/Sajenthan), Kemp Bray, Jean-Antoine Zagato</br>
 [Live Demo](https://huggingface.co/spaces/fsdlredteam/BuggingSpace).
 [Slide Deck](https://docs.google.com/presentation/d/1kROybpeP-9Izunp73PfK-tVk0v6RfJupOoE9iIQf_rc/edit#slide=id.g165a72fea4c_1_0).
 
