@@ -11,9 +11,7 @@ site_image_alt: Image explaining what Full Stack Deep learning covers.
 
 copyright: Full Stack Deep Learning, 2022
 
-google_analytics:
-  - UA-118687450-1
-  - auto
+
 theme:
   custom_dir: overrides
   favicon: images/favicon.png
@@ -66,7 +64,10 @@ extra:
       link: https://www.youtube.com/c/FullStackDeepLearning
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
-
+  analytics:
+    provider: google
+    property: UA-118687450-1
+    
 nav:
   - Home: index.md
   - Course:
