@@ -8,6 +8,26 @@ hide:
 !!! info
     Looking for the latest edition of the course? [Click here](2022/index.md).
 
+    Want to be among the first to hear about future iterations of the course?
+    Simply enter your email below, follow us on
+    [:fontawesome-brands-twitter:{ .twitter } Twitter](https://twitter.com/full_stack_dl){target=_blank},
+    or subscribe to our
+    [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning?sub_confirmation=1){target=_blank}.
+
+	<!-- Begin Mailchimp Signup Form -->
+	<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+	<div id="mc_embed_signup">
+	<form action="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	    <div id="mc_embed_signup_scroll">
+	    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+	    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_68cabce2e74766ca3d2c089d6_79e6eb0052" tabindex="-1" value=""></div>
+	    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+	    </div>
+	</form>
+	</div>
+	<!--End Mailchimp Signup Form -->
+
 ## What you will learn
 
 Our course incorporates feedback from thousands of learners over 5 years of
@@ -147,6 +167,25 @@ We review the fundamentals of deep learning (backprop, MLPs, CNNs, Transformers)
     </div>
   </div>
 </div>
+
+!!! info "Bummed that you missed registration for the 2022 course?"
+
+    To make sure you hear about the next iteration,
+    enter your email below to sign up for our mailing list.
+
+	<!-- Begin Mailchimp Signup Form -->
+	<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+	<div id="mc_embed_signup">
+	<form action="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	    <div id="mc_embed_signup_scroll">
+	    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+	    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_68cabce2e74766ca3d2c089d6_79e6eb0052" tabindex="-1" value=""></div>
+	    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+	    </div>
+	</form>
+	</div>
+	<!--End Mailchimp Signup Form -->
 
 ## Cohort-Based Course FAQs
 
