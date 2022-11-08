@@ -1,7 +1,7 @@
 ---
 description: Review of architectures and training with PyTorch + Lightning
 ---
-# Labs 1-3: CNNs, Transformers, PyTorch Lightning
+# Pre-Labs 1-3: CNNs, Transformers, PyTorch Lightning
 
 <div align="center">
 <iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/9w8CVuHUk8U?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
@@ -13,18 +13,33 @@ By [Charles Frye](https://twitter.com/charles_irl). Published August 10, 2022.
 
 This first set of "review" labs covers
 deep learning fundamentals and
-introduces some of the core libraries we will use.
+introduces two of the core libraries we will use for model training:
+PyTorch and PyTorch Lightning.
 
-The videos above give a high-level overview of each lab.
+These labs are optional -- it's possible to get most
+of the value out of the main set of labs
+without detailed knowledge of the material here.
 
-We recommend you at least watch the overview videos for all of the labs
-before starting any of the main labs in the course.
+But if you find yourself getting tripped up
+on PyTorch or Lightning details
+or on the model architecture, come back and review these labs.
+
+The videos above give a quick high-level overview of each lab.
 
 If you need a refresher or a deeper dive on any of the topics or libraries,
 then work through the notebooks as well.
 We recommend only completing the exercises for the labs
 that are of most interest to you.
 
+
+## Click the badges below to access individual lab notebooks on Colab and videos on YouTube
+
+| Lab                                                       |                      Colab                       |                      Video                      |
+| :-------------------------------------------------------- | :----------------------------------------------: | :---------------------------------------------: |
+| **Lab 01: Deep Neural Networks in PyTorch**               | [![open-in-colab]](https://fsdl.me/lab01-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-01-video) |
+| **Lab 02a: PyTorch Lightning**                            | [![open-in-colab]](https://fsdl.me/lab02a-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
+| **Lab 02b: Training a CNN on Synthetic Handwriting Data** | [![open-in-colab]](https://fsdl.me/lab02b-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
+| **Lab 03: Transformers and Paragraphs**                   | [![open-in-colab]](https://fsdl.me/lab03-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-03-video) |
 
 ## Running the labs
 
@@ -65,16 +80,6 @@ should be enough to get you going.
     Rather than getting frustrated with some obnoxious library linking or driver issue that's irrelevant
     to the material you are really trying to learn and getting stuck in an installation quagmire,
     just run the labs on Colab so you can get back to learning about machine learning!
-
-
-## Click the badges below to access individual lab notebooks on Colab and videos on YouTube
-
-| Lab                                                       |                      Colab                       |                      Video                      |
-| :-------------------------------------------------------- | :----------------------------------------------: | :---------------------------------------------: |
-| **Lab 01: Deep Neural Networks in PyTorch**               | [![open-in-colab]](https://fsdl.me/lab01-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-01-video) |
-| **Lab 02a: PyTorch Lightning**                            | [![open-in-colab]](https://fsdl.me/lab02a-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
-| **Lab 02b: Training a CNN on Synthetic Handwriting Data** | [![open-in-colab]](https://fsdl.me/lab02b-colab) | [![yt-logo]](https://fsdl.me/2022-lab-02-video) |
-| **Lab 03: Transformers and Paragraphs**                   | [![open-in-colab]](https://fsdl.me/lab03-colab)  | [![yt-logo]](https://fsdl.me/2022-lab-03-video) |
 
 [yt-logo]: https://fsdl.me/yt-logo-badge
 [open-in-colab]: https://colab.research.google.com/assets/colab-badge.svg
