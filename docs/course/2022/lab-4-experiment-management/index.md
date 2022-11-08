@@ -21,7 +21,6 @@ an entire experiment management workflow
 for model development,
 using a tool called Weights & Biases.
 
-
 ## Outline
 
 - 00:00 Why do we need experiment management?
@@ -35,3 +34,16 @@ using a tool called Weights & Biases.
 - 20:14 Collaboration tools in W&B
 - 25:00 Hyperparameter sweeps in W&B
 - 28:15 Overview of exercises
+
+!!! info "Wait, what happened to labs 1 through 3?"
+
+    The first three labs review some pre-requisites for the course --
+    DNN architectures and the basics of model training.
+
+    You can find them
+    [here](https://fullstackdeeplearning.com/course/2022/labs-1-3-cnns-transformers-pytorch-lightning).
+
+    If you're already basically familiar with training neural networks
+    in any framework, you really only need to review
+    [Lab 02a](https://fsdl.me/2022-lab-02-video),
+    on using PyTorch Lightning.
