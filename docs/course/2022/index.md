@@ -16,19 +16,19 @@ hide:
     or subscribe to our
     [:fontawesome-brands-youtube:{ .youtube } YouTube channel](https://www.youtube.com/c/FullStackDeepLearning?sub_confirmation=1){target=_blank}.
 
-<!-- Begin Mailchimp Signup Form -->
-<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
-<div id="mc_embed_signup">
-<form action="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
-    <div id="mc_embed_signup_scroll">
-    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
-    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
-    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_68cabce2e74766ca3d2c089d6_79e6eb0052" tabindex="-1" value=""></div>
-    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
-    </div>
-</form>
-</div>
-<!--End Mailchimp Signup Form -->
+	<!-- Begin Mailchimp Signup Form -->
+	<link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+	<div id="mc_embed_signup">
+	<form action="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+	    <div id="mc_embed_signup_scroll">
+	    <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+	    <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+	    <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_68cabce2e74766ca3d2c089d6_79e6eb0052" tabindex="-1" value=""></div>
+	    <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+	    </div>
+	</form>
+	</div>
+	<!--End Mailchimp Signup Form -->
 
 ## Schedule { style="margin-top: 1rem" }
 
@@ -37,7 +37,8 @@ We released lecture videos on Mondays at 6pm Pacific and lab videos on Wednesday
 
 | Week           | Lecture                                                 | Lab                                                        | Project              |
 | -------------- | ------------------------------------------------------- | ---------------------------------------------------------- | -------------------- |
-| **2022.08.08** | [Lecture 1: Course Vision and When to Use ML][lec1]     | [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3] | -                    |
+| **2022.07.25** |      | [Pre-Labs 1-3: CNNs, Transformers, and PyTorch+Lightning][labs1-3] | -                    |
+| **2022.08.08** | [Lecture 1: Course Vision and When to Use ML][lec1]     | [Lab Overview][lab0] | -                    |
 | **2022.08.15** | [Lecture 2: Development Infrastructure & Tooling][lec2] | [Lab 4: Experiment Management][lab4]                       | -                    |
 | **2022.08.22** | [Lecture 3: Troubleshooting & Testing][lec3]            | [Lab 5: Troubleshooting & Testing][lab5]                   | -                    |
 | **2022.08.29** | [Lecture 4: Data Management][lec4]                      | [Lab 6: Data Annotation][lab6]                             | Start forming groups |
@@ -50,6 +51,12 @@ We released lecture videos on Mondays at 6pm Pacific and lab videos on Wednesday
 
 ## Detailed Contents
 
+### [Pre-Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3]
+We review some prerequisites --
+the DNN architectures we'll be using and basic model training with PyTorch --
+and introduce PyTorch Lightning.
+*Published August 10, 2022.*
+
 ### [Lecture 1: Course Vision and When to Use ML][lec1]
 We review the purpose of the course and consider when it's a good (or bad!) idea to use ML.
 *Published August 8, 2022.*
@@ -57,10 +64,6 @@ We review the purpose of the course and consider when it's a good (or bad!) idea
 ### [Lab Overview][lab0]
 We walk through the entire architecture of the application we will be building, from soup to nuts.
 *Published July 25, 2022.*
-
-### [Labs 1-3: CNNs, Transformers, PyTorch Lightning][labs1-3]
-We review DNN architectures and work through basic model training with PyTorch + Lightning.
-*Published August 10, 2022.*
 
 ### [Lecture 2: Development Infrastructure & Tooling][lec2]
 We tour the landscape of infrastructure and tooling for developing deep learning models.
