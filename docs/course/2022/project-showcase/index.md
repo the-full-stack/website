@@ -333,8 +333,11 @@ Team: Ben Michel, Navid Matin Moghaddam, Stone Jiang, Shishir Valalla, Vibudh Si
 </div>
 
 A data product for multi-class semantic segmentation of earth observation images using a UNet architecture.
+</br>
+**Team**: Suzana,
+[Roland Ritt](https://www.linkedin.com/in/rolandritt/),
+Sheebo
 
-Team: Suzana, Roland Ritt, Sheebo</br>
 [Slide Deck](https://docs.google.com/presentation/d/1TDif9r3uiCZ04yxBxgruh5jySDqJFwEYxoMSaM8LB-U/edit?usp=sharing).
 
 ## Meeting Graph Generator
