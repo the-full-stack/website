@@ -109,6 +109,12 @@ Lambda,A6000 (48 GB),Ampere,1,48,14,100,0.80,0.80,,
 Lambda,A6000 (48 GB),Ampere,2,96,28,200,1.60,0.80,,
 Lambda,A6000 (48 GB),Ampere,4,192,56,400,3.20,0.80,,
 Lambda,V100 (16 GB),Volta,8,128,92,448,4.40,0.55,,
+OVHcloud,V100 (16 GB),Volta,1,16,8,45,1.97,1.97,,t1-45
+OVHcloud,V100 (16 GB),Volta,2,32,18,90,3.94,1.97,,t1-90
+OVHcloud,V100 (16 GB),Volta,4,64,36,180,7.89,1.97,,t1-180
+OVHcloud,V100 (32 GB),Volta,1,32,14,45,2.19,2.19,,t2-45
+OVHcloud,V100 (32 GB),Volta,2,64,28,90,4.38,2.19,,t2-90
+OVHcloud,V100 (32 GB),Volta,4,128,56,180,8.76,2.19,,t2-180
 Paperspace,V100 (16 GB),Volta,1,16,8,30,2.30,2.30,,
 Paperspace,V100 (32 GB),Volta,1,32,8,30,2.30,2.30,,
 Paperspace,V100 (32 GB),Volta,2,64,16,60,4.60,2.30,,
