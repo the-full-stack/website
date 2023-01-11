@@ -15,4 +15,4 @@ Put evidence for your proposed change here, like a screenshot of a pricing page 
 
 ### You can update the information yourself via PR!
 
-You can update the raw data by editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) and update the text on the page by editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md).
+You can update the raw data by editing [this file for GPU servers](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) or [this file for serverless options](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv). You can update the text on the page by editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md).
