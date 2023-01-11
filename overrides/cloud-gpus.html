@@ -38,6 +38,25 @@
             });
         });
     })();
+
+    (function () {
+        fetch("./serverless-gpus.csv").then((res) => res.text()).then((text) => {
+            const data = csvToArray(text);
+            const serverless = new Handsontable(document.getElementById('serverless-gpus-table'), {
+                data: data,
+                licenseKey: "non-commercial-and-evaluation",
+                colHeaders: Object.keys(data[0]),
+                dropdownMenu: true,
+                multiColumnSorting: true,
+                filters: true,
+                width: 'auto',
+                height: 'auto',
+                hiddenColumns: true,
+                manualColumnResize: true,
+                readOnly: true,
+            });
+        });
+    })();
 </script>
 
 <style>

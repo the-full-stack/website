@@ -1,0 +1,7 @@
+Vendor,GPU Type,GPU Arch,GPUs,GPU RAM,vCPUs,RAM,Per-Hour,Per-GPU
+Banana,A100 (40 GB),Ampere,1,40,16,256,1.87,1.87
+Modal,T4 (16GB),Turing,1,16,variable,variable,2.10,2.10
+Modal,A10G (24GB),Ampere,1,24,variable,variable,2.10,2.10
+Modal,A100 (40 GB),Ampere,1,40,variable,variable,2.10,2.10
+Replicate,T4 (16GB),Turing,1,16,4,8,1.98,1.98
+Replicate,A100 (40GB),Turing,1,40,8,40,8.28,8.28
