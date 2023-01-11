@@ -6,8 +6,6 @@ hide:
 description: Detailed comparison table of all cloud GPU providers.
 ---
 
-<h1 class="h1-with-author">Cloud GPUs</h1>
-
 <div class="author" markdown>
 By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated January 10, 2023.
 </div>
