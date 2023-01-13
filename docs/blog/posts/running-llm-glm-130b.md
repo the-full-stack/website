@@ -10,6 +10,9 @@ tags:
   - nlp
   - llms
 ---
+<div class="author" markdown>
+By [Charles Frye](https://twitter.com/charles_irl).
+</div>
 
 ## tl;dr ##
 
