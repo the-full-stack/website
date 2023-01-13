@@ -55,6 +55,7 @@ plugins:
   - blogging: # 3rd-party plugin for blog-style pages, https://github.com/liang2kl/mkdocs-blogging-plugin/
       dirs:
         - blog/posts
+      template: overrides/custom-blog.html
       features:
         tags: {}
   - search
