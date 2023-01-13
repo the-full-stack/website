@@ -11,7 +11,6 @@ site_image_alt: Image explaining what Full Stack Deep learning covers.
 
 copyright: Full Stack Deep Learning, 2022
 
-
 theme:
   custom_dir: overrides
   favicon: images/favicon.png
@@ -53,8 +52,13 @@ markdown_extensions:
 
 plugins:
   # - ezlinks  # Enables links like [[Lecture 1: Introduction]]
+  - blogging: # 3rd-party plugin for blog-style pages, https://github.com/liang2kl/mkdocs-blogging-plugin/
+      dirs:
+        - blog/posts
+      features:
+        tags: {}
   - search
-  - section-index  # Make top-level nav sections that contain an index.md clickable
+  - section-index # Make top-level nav sections that contain an index.md clickable
 
 extra:
   social:
@@ -67,70 +71,72 @@ extra:
   analytics:
     provider: google
     property: UA-118687450-1
-    
+
 nav:
   - Home: index.md
   - Course:
-    - course/index.md
-    - 'FSDL 2022':
-      - course/2022/index.md
-      - course/2022/lecture-1-course-vision-and-when-to-use-ml/index.md
-      - course/2022/lab-0-overview/index.md
-      - course/2022/lecture-2-development-infrastructure-and-tooling/index.md
-      - course/2022/lab-4-experiment-management/index.md
-      - course/2022/lecture-3-troubleshooting-and-testing/index.md
-      - course/2022/lab-5-troubleshooting-and-testing/index.md
-      - course/2022/lecture-4-data-management/index.md
-      - course/2022/lab-6-data-annotation/index.md
-      - course/2022/lecture-5-deployment/index.md
-      - course/2022/lab-7-web-deployment/index.md
-      - course/2022/lecture-6-continual-learning/index.md
-      - course/2022/lab-8-model-monitoring/index.md
-      - course/2022/lecture-7-foundation-models/index.md
-      - course/2022/lecture-8-teams-and-pm/index.md
-      - course/2022/lecture-9-ethics/index.md
-      - course/2022/project-showcase/index.md
-    - 'FSDL 2021':
-      - spring2021/index.md
-      - spring2021/synchronous.md
-      - spring2021/projects.md
-      - spring2021/lecture-1.md
-      - spring2021/lab-1.md
-      - spring2021/notebook-1.md
-      - spring2021/lecture-2a.md
-      - spring2021/lecture-2b.md
-      - spring2021/lab-2.md
-      - spring2021/lecture-3.md
-      - spring2021/lab-3.md
-      - spring2021/lecture-4.md
-      - spring2021/lab-4.md
-      - spring2021/lecture-5.md
-      - spring2021/lecture-6.md
-      - spring2021/lab-5.md
-      - spring2021/lecture-7.md
-      - spring2021/lecture-8.md
-      - spring2021/lab-6.md
-      - spring2021/lecture-9.md
-      - spring2021/lab-7.md
-      - spring2021/lecture-10.md
-      - spring2021/lab-8.md
-      - spring2021/lecture-11.md
-      - spring2021/lab-9.md
-      - spring2021/lecture-12.md
-      - spring2021/lecture-13.md
-      - spring2021/panel.md
-    - Older:
-      - older_courses.md
-      - 'FSDL 2021 (Berkeley)': https://bit.ly/berkeleyfsdl
-      - 'FSDL 2020 (UW)': https://bit.ly/uwfsdl
-      - 'FSDL 2019 (Online)': https://fall2019.fullstackdeeplearning.com
-      - 'FSDL 2019 (Bootcamp)': '/march2019.html'
-      - 'FSDL 2018 (Bootcamp)': '/august2018.html'
+      - course/index.md
+      - "FSDL 2022":
+          - course/2022/index.md
+          - course/2022/lecture-1-course-vision-and-when-to-use-ml/index.md
+          - course/2022/lab-0-overview/index.md
+          - course/2022/lecture-2-development-infrastructure-and-tooling/index.md
+          - course/2022/lab-4-experiment-management/index.md
+          - course/2022/lecture-3-troubleshooting-and-testing/index.md
+          - course/2022/lab-5-troubleshooting-and-testing/index.md
+          - course/2022/lecture-4-data-management/index.md
+          - course/2022/lab-6-data-annotation/index.md
+          - course/2022/lecture-5-deployment/index.md
+          - course/2022/lab-7-web-deployment/index.md
+          - course/2022/lecture-6-continual-learning/index.md
+          - course/2022/lab-8-model-monitoring/index.md
+          - course/2022/lecture-7-foundation-models/index.md
+          - course/2022/lecture-8-teams-and-pm/index.md
+          - course/2022/lecture-9-ethics/index.md
+          - course/2022/project-showcase/index.md
+      - "FSDL 2021":
+          - spring2021/index.md
+          - spring2021/synchronous.md
+          - spring2021/projects.md
+          - spring2021/lecture-1.md
+          - spring2021/lab-1.md
+          - spring2021/notebook-1.md
+          - spring2021/lecture-2a.md
+          - spring2021/lecture-2b.md
+          - spring2021/lab-2.md
+          - spring2021/lecture-3.md
+          - spring2021/lab-3.md
+          - spring2021/lecture-4.md
+          - spring2021/lab-4.md
+          - spring2021/lecture-5.md
+          - spring2021/lecture-6.md
+          - spring2021/lab-5.md
+          - spring2021/lecture-7.md
+          - spring2021/lecture-8.md
+          - spring2021/lab-6.md
+          - spring2021/lecture-9.md
+          - spring2021/lab-7.md
+          - spring2021/lecture-10.md
+          - spring2021/lab-8.md
+          - spring2021/lecture-11.md
+          - spring2021/lab-9.md
+          - spring2021/lecture-12.md
+          - spring2021/lecture-13.md
+          - spring2021/panel.md
+      - Older:
+          - older_courses.md
+          - "FSDL 2021 (Berkeley)": https://bit.ly/berkeleyfsdl
+          - "FSDL 2020 (UW)": https://bit.ly/uwfsdl
+          - "FSDL 2019 (Online)": https://fall2019.fullstackdeeplearning.com
+          - "FSDL 2019 (Bootcamp)": "/march2019.html"
+          - "FSDL 2018 (Bootcamp)": "/august2018.html"
+  - Blog:
+      - "blog/index.md"
+  - "Cloud GPUs": "cloud-gpus/index.md"
   # - 'Summit': 'summit.md'
-  - 'Cloud GPUs': 'cloud-gpus/index.md'
 
 watch:
-- docs
-- assets
-- mkdocs.yml
-- overrides
+  - docs
+  - assets
+  - mkdocs.yml
+  - overrides
