@@ -1,6 +1,6 @@
 ---
-title: "Running an LLM on one machine: GLM-130B"
-description: "Notes from deploying a GPT-3-scale language model"
+title: "Vanilla GPT-3 quality from an open source model on a single machine: GLM-130B"
+description: "Notes from deploying GLM-130B, a large language model from Tsinghua KEG"
 author: "Charles Frye"
 hide:
   - navigation
