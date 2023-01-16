@@ -380,6 +380,25 @@ learning Docker, it's worth checking out these three libraries.
 
 #### Performance Optimization
 
+!!! info "What about performance _monitoring_?"
+    In this section, we focus on ways to improve the performance of your
+    models, but we spend less time on how exactly that performance is monitored,
+    which is a challenge in its own right.
+
+    Luckily, one of the
+    [student projects](../project-showcase/) for the 2022 cohort,
+    [Full Stack Stable Diffusion](../project-showcase/#full-stack-stable-diffusion),
+    took up that challenge and combined
+    [NVIDIA's Triton Inference Server](https://developer.nvidia.com/nvidia-triton-inference-server),
+    the [Prometheus monitoring tool](https://en.wikipedia.org/wiki/Prometheus_(software)),
+    and
+    the [Grafana analytics dashboarding tool](https://en.wikipedia.org/wiki/Grafana)
+    to monitor a robust, scalable, and observable deployment of Stable Diffusion models.
+
+    Check out the repo on GitHub
+    [here](https://github.com/okanlv/fsdl-full-stack-stable-diffusion-2022)
+    if you want to see a worked example of a fully-monitored DL-powered application.
+
 To make model inference on your machine more efficient, we need to
 discuss GPU, concurrency, model distillation, quantization, caching,
 batching, sharing the GPU, and libraries that automate these tasks for
@@ -495,9 +514,9 @@ be an easier way to get started.
 
 #### Horizontal Scaling
 
-If you\'re going to scale up to a large number of users interacting with
-your model, it\'s not going to be enough to get the most efficiency out
-of one server. At some point, you\'ll need to scale horizontally to have
+If you're going to scale up to a large number of users interacting with
+your model, it's not going to be enough to get the most efficiency out
+of one server. At some point, you'll need to scale horizontally to have
 traffic going to multiple copies of your model running on different
 servers. This is called **horizontal scaling**. This technique involves
 taking traffic that would usually go to a single machine and splits
