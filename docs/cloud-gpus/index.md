@@ -45,7 +45,7 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 - Direct price comparisons are trickier for serverless offerings: cold boot time and autoscaling logic substantially impact cost-of-traffic.
 - Serverless GPUs are a newer technology, so there are fewer players, the details change quickly, and you can expect bugs/growing pains. Stay frosty!
 - If you know a bit about your anticipated traffic patterns, you can use [this tool](https://paylesstoaws.com/) to compare prices for AWS A100 GPU machines and Banana's serverless equivalent. Note that is is made by the developers of [Banana](https://banana.dev/), so may be biased.
-- [Modal](https://modal.com) allows configurable selection of CPU and RAM. [Pricing](https://modal.com/pricing) appears to be fixed.
+- [Modal](https://modal.com) allows configurable selection of CPU and RAM. [Pricing](https://modal.com/pricing) is, as of January 10 2023, the same for all GPU types and all CPU/RAM configurations. We've shown the default values.
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv).
 
 <div id="serverless-gpus-table"></div>
