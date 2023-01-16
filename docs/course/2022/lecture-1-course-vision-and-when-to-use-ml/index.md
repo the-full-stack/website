@@ -36,27 +36,27 @@ well as practices around how to apply ML technologies in the world. One
 of the biggest changes in the field in the past four years has been the
 emergence of the term **MLOps**.
 
-Why has the change been so rapid, you might ask? In addition to the
+In addition to the
 field being more mature and research continuing to progress, a big
-reason is that **the training of models is starting to become
+reason for this rapid change is that **the training of models is starting to become
 commoditized**.
 
--   With tools like HuggingFace, you can deploy a state-of-the-art NLP
+-   With tools like [HuggingFace](https://huggingface.co), you can deploy a state-of-the-art NLP
 or CV model in one or two lines of code.
 
 -   AutoML is starting to work for a lot of applications.
 
--   Companies are starting to provide models as a service where you
+-   Companies like [OpenAI](https://openai.com/api/) are starting to provide models as a service where you
 don't even have to download open-source packages to use them. You
 can make a network call to get predictions from a state-of-the-art
 model.
 
--   Many frameworks are starting to standardize around Keras and PyTorch
-Lightning.
+-   Many libraries are starting to standardize around frameworks like [Keras](https://keras.io/) and [PyTorch
+Lightning](https://www.pytorchlightning.ai/).
 
 ### AI Progress
 
-The history of ML is characterized by the rise and fall of the public
+The history of ML is characterized by stratospheric rises and meteoric falls of the public
 perception of the technology. These were driven by a few different AI
 winters that happened over the history of the field - where the
 technology didn't live up to its hype. If you project forward a few
@@ -69,10 +69,11 @@ years, what will happen to ML?
 AI](https://www.cambridgewireless.co.uk/media/uploads/resources/AI%20Group/AIMobility-11.05.17-Cambridge_Consultants-Monty_Barlow.pdf)
 (Cambridge Consultants, May 2017)*
 
-There would be a few outcomes:
+Here are the major categories of possible outcomes and our guess about their likelihoods:
 
-1.  The prospect of a true AI winter may be less likely, where people
+1.  A true AI winter, where people
 become skeptical about AI as a technology.
+We think this is less likely.
 
 2.  A slightly more likely outcome is that the overall luster of the
 technology starts to wear off, but specific applications are
@@ -103,8 +104,9 @@ collected, evaluating that model, and writing a report at the end.
 
 But ML-powered products require **an outer loop** where after you deploy
 the model into production, you measure how that model performs when it
-interacts with real users. Then, you use real-world data to build a data
-flywheel and continue this as part of an outer loop.
+interacts with real users. Then, you use real-world data to
+improve your model, setting up a data flywheel that enables
+continual improvement.
 
 ### This Course
 
@@ -115,17 +117,17 @@ This class is about the unique aspects you need to know beyond training
 models to build great ML-powered products. Here are some concrete goals
 for us:
 
-1.  Teaching you generalist skills and an understanding of the
-components of ML-powered products (and ML projects more
+1.  Teaching you **generalist skills** and an understanding of the
+**components of ML-powered products** (and ML projects more
 generally).
 
-2.  Teaching you enough MLOps to get things done.
+2.  Teaching you **enough MLOps to get things done**.
 
-3.  Sharing best practices and explaining the motivation behind them.
+3.  Sharing **best practices** and **explaining the motivation** behind them.
 
-4.  Learning things that might help you with ML engineer job interviews.
+4.  Learning things that might **help you with job interviews** for ML engineering roles.
 
-5.  Forming a community to learn together and from each other.
+5.  **Forming a community** to learn together and from each other.
 
 We do NOT try to:
 
@@ -140,7 +142,7 @@ We do NOT try to:
 5.  Cover the full spectrum of MLOps.
 
 If you feel rusty on your pre-requisites but want to get started with
-FDSL, here are our recommendations to get up to speed with the
+FSDL, here are our recommendations to get up to speed with the
 fundamentals:
 
 -   Andrew Ng's [Machine Learning Coursera
@@ -155,7 +157,7 @@ engineering
 
 ### ML-Powered Products vs MLOps
 
-MLOps is a discipline that has emerged in the last few years. It is
+MLOps, as a discipline, has emerged in just the last few years. It is
 about practices for deploying, maintaining, and operating ML systems
 that generate ML models in production. A lot of MLOps is about:
 
@@ -170,11 +172,12 @@ setting?
 ![](./media/image1.png)
 
 
-ML-powered product is a distinct but overlapping discipline. A lot of
+ML-powered product building is a distinct but overlapping discipline. A lot of
 what it takes to build a great ML-powered product goes beyond the
 infrastructure side of ML systems. It focuses on how to fit ML into the
-context of the product or the application that you're building. Other
-topics in the scope of this ML product discipline include:
+context of the product or the application that you're building.
+
+Other topics in the scope of the ML product discipline include:
 
 -   How do you understand how your users are interacting with your
 model?
@@ -193,13 +196,13 @@ that are most critical in order to do that.
 
 ### Chapter Summary
 
-1.  ML-powered products are going mainstream thanks to the
+1.  **ML-powered products are going mainstream** thanks to the
 democratization of modeling.
 
-2.  However, building great ML-powered products requires a different
-process from building models.
+2.  However, building **great ML-powered products requires a different
+process** from building models.
 
-3.  Full-Stack Deep Learning is here to help!
+3.  Full-Stack Deep Learning is **here to help**!
 
 ## 2 - When To Use Machine Learning
 
@@ -208,7 +211,9 @@ process from building models.
 **ML projects have a higher failure rate than software projects in
 general**. One reason that's worth acknowledging is that for many
 applications, ML is fundamentally still research. Therefore, we
-shouldn't aim for 100% success. Additionally, many ML projects are
+shouldn't aim for 100% success.
+
+Additionally, many ML projects are
 doomed to fail even before they are undertaken due to a variety of
 reasons:
 
@@ -220,13 +225,15 @@ reasons:
 would be considered success criteria for them.
 
 4.  They solve the problem that you set out to solve but do not solve a
-big enough problem to be worth the complexity.
+big enough problem to be worth their complexity.
 
 The bar for your ML projects should be that **their value must outweigh
 not just the cost of developing them but also the additional complexity
 that these ML systems introduce to your software** (as introduced in the
 classic paper "[The High-Interest Credit Card of Technical
-Debt](https://research.google/pubs/pub43146/)"). In brief,
+Debt](https://research.google/pubs/pub43146/)").
+
+In brief,
 ML systems erode the boundaries between other systems, rely on expensive
 data dependencies, are commonly plagued by system design anti-patterns,
 and are subject to the instability of the external world.
@@ -241,20 +248,20 @@ you have the right people?
 do you need to solve the problem at all? Have you tried using
 rules or simple statistics to solve the problem?
 
-3.  **Is it ethical to use ML to solve this problem?** We'll have a
-whole lecture about ethics!
+3.  **Is it ethical to use ML to solve this problem?** We have a
+[whole lecture about ethics](../lecture-9-ethics/)!
 
 ### How to Pick Problems to Solve with ML
 
 Just like any other project prioritization, you want to look for use
 cases that have **high impact** and **low cost**:
 
-1.  High-impact problems are likely to be those that address friction in
+1.  **High-impact problems** are likely to be those that address friction in
 your product, complex parts of your pipeline, places where cheap
 prediction is valuable, and generally what other people in your
 industry are doing.
 
-2.  Low-cost projects are those with available data, where bad
+2.  **Low-cost projects** are those with available data, where bad
 predictions are not too harmful.
 
 ![](./media/image11.png)
@@ -262,33 +269,31 @@ predictions are not too harmful.
 
 #### High-Impact Projects
 
-Zooming into the mental models that you can use to find high-impact ML
+Here are some heuristics that you can use to find high-impact ML
 projects:
 
-1.  **Find problems where ML makes it economically feasible to solve
-them**: A good resource here is the book "[Prediction Machines:
+1.  **Find problems that ML takes from economically infeasible to feasible**.
+A good resource here is the book "[Prediction Machines:
 The Simple Economics of
 AI](https://www.amazon.com/Prediction-Machines-Economics-Artificial-Intelligence/dp/1633695670)."
-The book\'s central thesis is that AI reduces the cost of
+The book's central thesis is that AI reduces the cost of
 prediction, which is central to decision-making. Therefore, look
-for projects where cheap prediction will have a huge impact.
+for projects where making prediction cheaper will have a huge impact.
 
-2.  **Think about what your product needs**: [This article from the ML
-team at
-Spotify](https://spotify.design/article/three-principles-for-designing-ml-powered-products)
+2.  **Think about what your product needs**.
+[This article from the ML team at Spotify](https://spotify.design/article/three-principles-for-designing-ml-powered-products)
 talks about the three principles for designing Discover Weekly,
-one of Spotify's most powerful features.
+one of Spotify's most powerful and popular ML-powered features.
 
-3.  **Think about what types of problems that ML is particularly good
-at**: An exploration of this mental model is the concept of
-[Software
-2.0](https://karpathy.medium.com/software-2-0-a64152b37c35)
-coined by Andrej Kaparthy. Essentially, if you have a part of your
+3.  **Think about the types of problems that ML is particularly good at**.
+One common class of problem that is overlooked is
+["Software 2.0"](https://karpathy.medium.com/software-2-0-a64152b37c35),
+as coined by Andrej Kaparthy. Essentially, if you have a part of your
 system that is complex and manually defined, then that's
 potentially a good candidate to be automated with ML.
 
-4.  **Look at what other people in the industry are doing**: Generally,
-you can read papers and blog posts from big tech and top
+4.  **Look at what other people in the industry are doing**.
+Generally, you can read papers and blog posts from both Big Tech and top
 earlier-stage companies.
 
 #### Low-Cost Projects
@@ -521,11 +526,11 @@ Let's comment on some specific nuances:
 
 -   **Machine learning projects tend to be very iterative**. Each of
 these phases can feed back into any of the phases that go before
-it, as you learn more about the problem that you\'re working on.
+it, as you learn more about the problem that you're working on.
 
-    -   For example, you might realize that "Actually, it\'s way too
+    -   For example, you might realize that "Actually, it's way too
 hard for us to get data in order to solve this problem!" or
-"It\'s really difficult for us to label the pose of these
+"It's really difficult for us to label the pose of these
 objects in 3D space".
 
     -   A solution might actually be to go back a step in the lifecycle
