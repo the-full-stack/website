@@ -61,7 +61,13 @@ we recommend
 
 The whole post is a tutorial and FAQ on GPUS for DNNs,
 but if you just want the resulting heuristics for decision-making, see the
-["GPU Recommendations" section](https://timdettmers.com/2023/01/16/which-gpu-for-deep-learning/#GPU_Recommendations).
+["GPU Recommendations" section](https://timdettmers.com/2023/01/16/which-gpu-for-deep-learning/#GPU_Recommendations),
+which is the source of the chart below.
+
+<figure markdown>
+  ![Flowchart for quickly selecting an appropriate GPU for your needs, by Tim Dettmers](dettmers_recs.png)
+  <figcaption markdown>Flowchart for quickly selecting an appropriate GPU for your needs, by [Tim Dettmers](https://timdettmers.com/2023/01/16/which-gpu-for-deep-learning/)</figcaption>
+</figure>
 
 ## GPU Raw Performance Numbers and Datasheets
 
