@@ -169,3 +169,8 @@ h2 {
 .disabled-button {
   pointer-events: none;
 }
+
+header.md-header {
+  z-index: 200;
+  /* put header above HandsonTable headers, which are ~150 */
+}
