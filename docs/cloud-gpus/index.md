@@ -50,7 +50,20 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 
 <div id="serverless-gpus-table"></div>
 
-## GPU Performance Numbers and Datasheets
+## How do I choose a GPU?
+
+This page is intended to track and make explorable
+the current state of pricing and hardware for cloud GPUs.
+
+If you want advice on which machines and cards are best for your use case,
+we recommend
+[Tim Dettmer's blog post on GPUs for deep learning](https://timdettmers.com/2023/01/16/which-gpu-for-deep-learning).
+
+The whole post is a tutorial and FAQ on GPUS for DNNs,
+but if you just want the resulting heuristics for decision-making, see the
+["GPU Recommendations" section](https://timdettmers.com/2023/01/16/which-gpu-for-deep-learning/#GPU_Recommendations).
+
+## GPU Raw Performance Numbers and Datasheets
 
 Below are the raw TFLOPs of the different GPUs available from cloud providers.
 
