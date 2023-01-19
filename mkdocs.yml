@@ -133,8 +133,8 @@ nav:
           - "FSDL 2018 (Bootcamp)": "/august2018.html"
   - Blog:
       - "blog/index.md"
+  # - "Conference": "conference/index.md"
   - "Cloud GPUs": "cloud-gpus/index.md"
-  # - 'Summit': 'summit.md'
 
 watch:
   - docs
