@@ -7,7 +7,7 @@ description: Detailed comparison table of all cloud GPU providers.
 ---
 
 <div class="author" markdown>
-By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated January 10, 2023.
+By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated February 1, 2023.
 </div>
 
 Training and running neural networks often requires hardware acceleration,
