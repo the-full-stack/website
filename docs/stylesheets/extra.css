@@ -129,19 +129,6 @@ h2 {
   border: 1px solid #4350af;
 }
 
-.tx-hero h1 {
-  font-size: 2.4rem !important;
-}
-
-.tx-hero h2 {
-  font-size: 1.4rem !important;
-  margin-top: 1rem;
-}
-
-.tx-hero h3 {
-  font-size: 1.0rem !important;
-}
-
 .announce {
   text-align: center;
   background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%, #fff 99%);
@@ -173,4 +160,54 @@ h2 {
 header.md-header {
   z-index: 200;
   /* put header above HandsonTable headers, which are ~150 */
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.dark-bg {
+  background-color: #4051b5;
+  color: white;
+  padding: 1.5rem;
+}
+
+.dark-bg .md-button {
+  margin-top: .5rem;
+  margin-right: .5rem;
+  color: var(--md-primary-bg-color)
+}
+
+.dark-bg .md-button--primary {
+  background-color: var(--md-primary-bg-color);
+  color: #D47C2B;
+  border-color: #D47C2B;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.dark-bg .md-button:focus,
+.dark-bg .md-button:hover {
+    background-color: #D47C2B;
+    color: var(--md-default-bg-color);
+    border-color: #D47C2B
 }
