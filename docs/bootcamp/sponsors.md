@@ -10,9 +10,9 @@ We offer three tiers of sponsorship for the FSDL 2023 LLM Bootcamp:
 
 1. **Vector Tier** sponsors receive the following benefits: logo displayed on website and during conference, and verbal acknowledgement. Vector Tier sponsorships are available for $1000.
 
-- **Matrix Tier** sponsors receive all the benefits of the Vector Tier, plus: logo displayed in between talks, 8' by 10' area for booth setup, and a conference registration. Matrix Tier sponsorships are available for $2500.
+- **Matrix Tier** sponsors receive all the benefits of the Vector Tier, plus: logo displayed in between talks, 6' by 2' table with two seats, and a conference registration. Matrix Tier sponsorships are available for $2500.
 
-- **Tensor Tier** sponsors receive all the benefits of the Matrix Tier, plus: logo displayed on a banner in the registration area, access to an opt-in database of attendees who are interested in tooling or recruitment, and two additional registrations (for a total of three). Tensor Tier sponsorships are available for $5000.
+- **Tensor Tier** sponsors receive all the benefits of the Matrix Tier, plus: logo displayed on a banner in the registration area, access to an opt-in database of attendees with information about job and job-seeking status, and two additional registrations (for a total of three). Tensor Tier sponsorships are available for $5000.
 
 Contact
 [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com)
