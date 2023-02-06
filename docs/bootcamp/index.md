@@ -63,7 +63,7 @@ to help you answer these questions and make the transition.
 Here are a few of the benefits of attendance:
 
 - **Cloud Credits**
-    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com) and [banana.dev](https://banana.dev).
+    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), and [LambdaLabs GPU Cloud](lambdalabs.com/cloud).
 
 - **The askFSDL Sample Project**
     - Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
@@ -192,6 +192,5 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
 | 1 pm  | **Learn to Spell: Effectively Using LLMs** (Charles + Sergey) | **Learning in Production** (Josh)        |
 | 2 pm  | **Search 2.0** (Josh + Sergey)                                | **Future Directions** (Sergey)           |
 | 3 pm  | Coffee and networking                                         | Coffee and demo garden                   |
-| 4 pm  | Invited Talk                                                  | **Harrison Chase**: Creator of LangChain |
-| 5 pm  | Invited Talk                                                  | Invited Talk                             |
-| 6 pm  | Reception (until 8pm)                                         |                                          |
+| 4 pm  | Hands-On Workshop: askFSDL Project                            | **Harrison Chase**: Creator of LangChain |
+| 5 pm  | Hands-On Workshop: askFSDL Project                            | Keynote                                   |
