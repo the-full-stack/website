@@ -10,8 +10,8 @@ hide:
 
 <div class="subtitle">🚀 Announcing FSDL Large Language Models Bootcamp  🚀</div>
 
-<div style="align:center; text-align:center" markdown>
-On **April 21-22** join **250 other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators and industry leaders** at an **in-person bootcamp** in **San Francisco**.
+<div style="align:center; text-align:center; width:50%" markdown>
+On **April 21-22** join **250 other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.
 </div>
 
 [Register now](#register){ .md-button .md-button--primary }
@@ -109,7 +109,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
 <div style="display:grid;grid-template-columns:47% 47%; row-gap: 2rem; column-gap:5%;">
   <div class="person" markdown>
     <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
-    <div><strong>Charles Frye</strong> educates people in AI. He has worked with tooling companies such as Weights & Biases and Gantry since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
+    <div><strong>Charles Frye</strong> educates people in AI. He has worked in the ML tooling space, including with companies such as Weights & Biases and Gantry, since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
   </div>
   <div class="person" markdown>
     <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
@@ -144,7 +144,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ### LOGOS OF CONFIRMED SPONSORS
 
-Interseted in sponsoring?
+Interested in sponsoring?
 You can read more about tiers and benefits [here](./sponsors).
 Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
 
@@ -194,4 +194,4 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
 | 3 pm  | Coffee and networking                                         | Coffee and demo garden                   |
 | 4 pm  | Invited Talk                                                  | **Harrison Chase**: Creator of LangChain |
 | 5 pm  | Invited Talk                                                  | Invited Talk                             |
-| 6 pm  | Reception                                                     |                                          |
+| 6 pm  | Reception (until 8pm)                                         |                                          |
