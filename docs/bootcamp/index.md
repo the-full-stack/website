@@ -11,7 +11,7 @@ hide:
 <div class="subtitle">🚀 Announcing FSDL Large Language Models Bootcamp  🚀</div>
 
 <div style="align:center; text-align:center; width:50%" markdown>
-On **April 21-22** join **250 other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.
+On **April 21-22** join several hundred **other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.
 </div>
 
 [Register now](#register){ .md-button .md-button--primary }
@@ -63,15 +63,11 @@ to help you answer these questions and make the transition.
 Here are a few of the benefits of attendance:
 
 - **Cloud Credits**
-    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), and [LambdaLabs GPU Cloud](lambdalabs.com/cloud).
+    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
 
 - **The askFSDL Sample Project**
     - Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
     - Use as starter code to save hours of boilerplate effort on your own project
-
-- **Demo Garden**
-    - Bring a demo of an LLM-powered product and get valuable feedback from fellow learners and builders
-    - Tour the demos to get inspiration for what's possible or see the next big project while it's still just a prototype
 
 - **Foundations of Foundation Models**
     - Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
@@ -109,7 +105,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
 <div style="display:grid;grid-template-columns:47% 47%; row-gap: 2rem; column-gap:5%;">
   <div class="person" markdown>
     <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
-    <div><strong>Charles Frye</strong> educates people in AI. He has worked in the ML tooling space, including with companies such as Weights & Biases and Gantry, since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
+    <div><strong>Charles Frye</strong> educates people in AI. He has worked in the AI/ML tooling space, including with companies such as Weights & Biases and Gantry, since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
   </div>
   <div class="person" markdown>
     <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
@@ -154,25 +150,18 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
   <div class="tier">
     <div class="tier--header">Academics</div>
     <div class="tier--price">
-      <span>$450</span>
+      <div><strike>$450</strike></div>
+      <div>$295</div>
     </div>
     <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-academic" style="width: 100%" class="md-button md-button--primary"> Apply for discount </a>
+      <a href="https://fsdl.me/2023-conf-academic" style="width: 100%" class="md-button md-button--primary"> Get discount code </a>
     </div>
   </div>
   <div class="tier">
     <div class="tier--header">Professionals</div>
     <div class="tier--price">
-      <span>$950</span>
-    </div>
-    <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
-    </div>
-  </div>
-  <div class="tier">
-    <div class="tier--header">Investors</div>
-    <div class="tier--price">
-      <span>$2450</span>
+      <div><strike>$1450</strike></div>
+      <div>$950</div>
     </div>
     <div style="margin-top: auto">
       <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
@@ -183,14 +172,14 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
 
 ## Tentative Schedule
 
-|       | Friday (April 21)                                             | Saturday (April 22)                      |
-|-------|---------------------------------------------------------------|------------------------------------------|
-| 9 am  | Registration & Breakfast                                      | Breakfast                                |
-| 10 am | **Launch an LLM App in 1 Hour** (Charles)                     | **UX for LLMs** (Charles)                |
-| 11 am | **Foundations of Foundation Models** (Charles)                | **Deploying LLM Apps** (Charles + Josh)  |
-| 12 pm | Lunch and networking                                          | Lunch and networking                     |
-| 1 pm  | **Learn to Spell: Effectively Using LLMs** (Charles + Sergey) | **Learning in Production** (Josh)        |
-| 2 pm  | **Search 2.0** (Josh + Sergey)                                | **Future Directions** (Sergey)           |
-| 3 pm  | Coffee and networking                                         | Coffee and demo garden                   |
-| 4 pm  | Hands-On Workshop: askFSDL Project                            | **Harrison Chase**: Creator of LangChain |
-| 5 pm  | Hands-On Workshop: askFSDL Project                            | Keynote                                   |
+|       | Friday (April 21)                          | Saturday (April 22)                      |
+|-------|--------------------------------------------|------------------------------------------|
+| 9 am  | Registration & Breakfast                   | Breakfast                                |
+| 10 am | **Launch an LLM App in 1 Hour**            | **UX for LLMs**                          |
+| 11 am | **Foundations of Foundation Models**       | **Deploying LLM Apps**                   |
+| 12 pm | Lunch and networking                       | Lunch and networking                     |
+| 1 pm  | **Learn to Spell: Effectively Using LLMs** | **Learning in Production**               |
+| 2 pm  | **Search 2.0**                             | **Future Directions**                    |
+| 3 pm  | Coffee and networking                      | Coffee and networking                    |
+| 4 pm  | Hands-On Workshop: **askFSDL Project**     | **Harrison Chase**: Creator of LangChain |
+| 5 pm  | Hands-On Workshop: **askFSDL Project**     | Keynote                                  |
