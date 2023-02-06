@@ -157,7 +157,7 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
       <span>$450</span>
     </div>
     <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register here</a>
+      <a href="https://fsdl.me/2023-conf-academic" style="width: 100%" class="md-button md-button--primary"> Apply for discount </a>
     </div>
   </div>
   <div class="tier">
@@ -166,7 +166,7 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
       <span>$950</span>
     </div>
     <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register here</a>
+      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
   <div class="tier">
@@ -175,7 +175,7 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
       <span>$2450</span>
     </div>
     <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register here</a>
+      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
 
