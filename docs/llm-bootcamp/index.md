@@ -15,6 +15,14 @@ embed_image: https://llm-bootcamp/opengraph.jpg
   .admonition.abstract .admonition-title::before {
     display: none;
   }
+
+  .md-typeset table:not([class]) {
+    font-size: inherit;
+    line-height: inherit;
+  }
+  .md-typeset table:not([class]) td {
+    vertical-align: top;
+  }
 </style>
 
 # LLM Bootcamp
@@ -75,72 +83,70 @@ to help you answer these questions and make the transition.
 
 ### Tentative Schedule
 
-<div class="md-typeset__scrollwrap">
-  <div class="md-typeset__table">
-    <table style="width: 85%">
-    <thead>
-      <tr>
-        <th></th>
-        <th><h2>Friday (April 21)</h2></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>9 am</td>
-        <td>Registration &amp; Breakfast</td>
-      </tr>
-      <tr>
-        <td>10 am</td>
-        <td>
-          <strong>🚀 Launch an LLM App in 1 Hour</strong>
-          <ul>
-          <li> We'll go from idea to user-ready website in one hour
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>11 am</td>
-        <td>
-          <strong>🗿 Foundations of Foundation Models</strong>
-          <br />
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><h3>Friday (April 21)</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9 am</td>
+      <td>Registration &amp; Breakfast</td>
+    </tr>
+    <tr>
+      <td>10 am</td>
+      <td>
+        <strong>🚀 Launch an LLM App in 1 Hour</strong>
         <ul>
-          <li>Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
-          <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
+        <li> We'll go from idea to user-ready website in one hour
         </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>12 pm</td>
-        <td>Lunch and networking</td>
-      </tr>
-      <tr>
-        <td>1 pm</td>
-        <td>
-          <strong>✨ Learn to Spell: Effectively Using LLMs</strong>
-          <ul>
-            <li>Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
-            <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
-            <li>Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
-            <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>2 pm</td>
-        <td>
-          <strong>👀 Search 2.0</strong>
-          <ul>
-            <li>How text embeddings enable semantic search everywhere
-            <li>Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
-            <li>Jointly embedding multiple types of data for multi-modal semantic search
-          </ul>
-        </td>
-      </tr>
-      <tr>
+      </td>
+    </tr>
+    <tr>
+      <td>11 am</td>
+      <td>
+        <strong>🗿 Foundations of Foundation Models</strong>
+        <br />
+      <ul>
+        <li>Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
+        <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
+      </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>12 pm</td>
+      <td>Lunch and networking</td>
+    </tr>
+    <tr>
+      <td>1 pm</td>
+      <td>
+        <strong>✨ Learn to Spell: Effectively Using LLMs</strong>
+        <ul>
+          <li>Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
+          <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
+          <li>Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
+          <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>2 pm</td>
+      <td>
+        <strong>👀 Search 2.0</strong>
+        <ul>
+          <li>How text embeddings enable semantic search everywhere
+          <li>Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
+          <li>Jointly embedding multiple types of data for multi-modal semantic search
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>3 pm</td>
       <td>Coffee and networking</td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
       <td>4 pm</td>
       <td>
         👷‍♂️ <strong>askFSDL Walkthrough</strong>
@@ -148,95 +154,89 @@ to help you answer these questions and make the transition.
           <li> Detailed breakdown of a well-documented sample project demonstrating use of LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
           </ul>
       </td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
       <td>5 pm</td>
       <td>Invited Talk</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+    </tr>
+  </tbody>
+</table>
 
-<div class="md-typeset__scrollwrap">
-  <div class="md-typeset__table">
-    <table style="width:85%">
-    <thead>
-      <tr>
-        <th></th>
-        <th><h2> Saturday (April 22) </h2></th>
-      </tr>
-    </thead>
-    <tbody>
-      <tr>
-        <td>9 am</td>
-        <td>Breakfast</td>
-      </tr>
-      <tr>
-        <td>10 am</td>
-                <td>
-          <strong>🌳 Demo Garden</strong>
-          <ul>
-            <li>Present your project
-            <li>Review other cool projects
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>11 am</td>
-        <td>
-          <strong>🤷 UX for LUIs</strong>
-          <ul>
-            <li>Review of the best AI-powered apps today
-            <li>Principles of successful design for AI-powered apps
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>12 pm</td>
-        <td>Lunch and networking</td>
-      </tr>
-      <tr>
-        <td>1 pm</td>
-        <td>
-          <strong>🏎️ Deploying and Learning in Production</strong>
-          <ul>
-            <li>Deploying on CPUs vs GPUs
-            <li>Why "learn in prod" is the new "test in prod"
-            <li>How to monitor models, trace chains, and record feedback
-            <li>Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
-          </ul>
-        </td>
-      </tr>
-      <tr>
-        <td>2 pm</td>
-        <td>
-          <strong>🔮 Future Directions</strong>
-          <ul>
-            <li>Lightning tour of things that are surprisingly possible today
-            <li>What you should expect to be possible within a couple of years
-            <li>What are still hard research problems
-          </ul>
-        </td>
-      </tr>
-      <tr>
+<table>
+  <thead>
+    <tr>
+      <th></th>
+      <th><h3>Saturday (April 22)</h3></th>
+    </tr>
+  </thead>
+  <tbody>
+    <tr>
+      <td>9 am</td>
+      <td>Breakfast</td>
+    </tr>
+    <tr>
+      <td>10 am</td>
+      <td>
+        <strong>🌳 Demo Garden</strong>
+        <ul>
+          <li>Present your project
+          <li>Review other cool projects
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>11 am</td>
+      <td>
+        <strong>🤷 UX for LUIs</strong>
+        <ul>
+          <li>Review of the best AI-powered apps today
+          <li>Principles of successful design for AI-powered apps
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>12 pm</td>
+      <td>Lunch and networking</td>
+    </tr>
+    <tr>
+      <td>1 pm</td>
+      <td>
+        <strong>🏎️ Deploying and Learning in Production</strong>
+        <ul>
+          <li>Deploying on CPUs vs GPUs
+          <li>Why "learn in prod" is the new "test in prod"
+          <li>How to monitor models, trace chains, and record feedback
+          <li>Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
+        </ul>
+      </td>
+    </tr>
+    <tr>
+      <td>2 pm</td>
+      <td>
+        <strong>🔮 Future Directions</strong>
+        <ul>
+          <li>Lightning tour of things that are surprisingly possible today
+          <li>What you should expect to be possible within a couple of years
+          <li>What are still hard research problems
+        </ul>
+      </td>
+    </tr>
+    <tr>
       <td>3 pm</td>
       <td>Coffee and networking</td>
-      </tr>
-      <tr>
-      <td>4 pm</td>
+    </tr>
+    <tr>
+    <td>4 pm</td>
       <td>
         🦜🔗 <strong>Harrison Chase</strong>: Creator of LangChain
       </td>
-      </tr>
-      <tr>
+    </tr>
+    <tr>
       <td>5 pm</td>
       <td>Invited Talk</td>
-      </tr>
-      </tbody>
-    </table>
-  </div>
-</div>
+    </tr>
+  </tbody>
+</table>
 
 ## Who
 
