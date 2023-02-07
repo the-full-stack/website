@@ -202,7 +202,7 @@ We're a team of UC Berkeley PhD alumni with years of industry experience who are
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
-We make sure that all of our materials becomes accessible for free, right here on this website -- please explore!
+We make sure that all of our materials becomes accessible for free, right here on [this website](../course/2022) -- please [explore](../cloud-gpus/)[!](../404)
 
 <div class="grid-3">
   <img src="/images/group-march2019.jpg" width="480px">
