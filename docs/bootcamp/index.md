@@ -1,7 +1,6 @@
 ---
 hide:
   - navigation
-  - toc
 ---
 
 # Large Language Models Bootcamp
@@ -60,34 +59,125 @@ We have put together a state-of-the-art program
 based on emerging conventions in the LLM community and the latest research results
 to help you answer these questions and make the transition.
 
-Here are a few of the benefits of attendance:
+<div class="md-typeset__scrollwrap">
+  <div class="md-typeset__table">
+    <table>
+    <thead>
+      <tr>
+        <th></th>
+        <th width="45%">Friday (April 21)</th>
+        <th width="45%">Saturday (April 22)</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9 am</td>
+        <td>Registration &amp; Breakfast</td>
+        <td>Breakfast</td>
+      </tr>
+      <tr>
+        <td>10 am</td>
+        <td>
+          <strong>🚀 Launch an LLM App in 1 Hour</strong>
+          <ul>
+          <li> Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
+          <li> Use as starter code to save hours of boilerplate effort on your own project
+          </ul>
+        </td>
+                <td>
+          <strong>🌳 Demo Garden</strong>
+          <ul>
+            <li>Present your project
+          </ul>
+        </td>
 
-- **Cloud Credits**
-    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
-
-- **The askFSDL Sample Project**
-    - Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
-    - Use as starter code to save hours of boilerplate effort on your own project
-
-- **Foundations of Foundation Models**
-    - Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
-    - Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
-
-- **Learn to Spell: Effectively Using LLMs**
-    - Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
-    - Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
-    - Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
-    - Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
-
-- **Search 2.0**
-    - How text embeddings enable semantic search everywhere
-    - Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
-    - Jointly embedding multiple types of data for multi-modal semantic search
-
-- **Learning in Production**
-    - Why "learn in prod" is the new "test in prod"
-    - How to monitor models, trace chains, and record feedback
-    - Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
+      </tr>
+      <tr>
+        <td>11 am</td>
+        <td>
+          <strong>🗿 Foundations of Foundation Models</strong>
+          <br />
+        <ul>
+          <li>Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
+          <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs 
+        </ul>
+        </td>
+        <td>
+          <strong>🤷 UX for LUIs</strong>
+          <ul>
+            <li>Review of the best AI-powered apps today
+            <li>Principles of successful design for AI-powered apps
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>12 pm</td>
+        <td>Lunch and networking</td>
+        <td>Lunch and networking</td>
+      </tr>
+      <tr>
+        <td>1 pm</td>
+        <td>
+          <strong>✨ Learn to Spell: Effectively Using LLMs</strong>
+          <ul>
+            <li>Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
+            <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
+            <li>Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
+            <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
+          </ul>
+        </td>
+        <td>
+          <strong>🏎️ Deploying and Learning in Production</strong>
+          <ul>
+            <li>Deploying on CPUs vs GPUs
+            <li>Why "learn in prod" is the new "test in prod"
+            <li>How to monitor models, trace chains, and record feedback
+            <li>Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>2 pm</td>
+        <td>
+          <strong>👀 Search 2.0</strong>
+          <ul>
+            <li>How text embeddings enable semantic search everywhere
+            <li>Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
+            <li>Jointly embedding multiple types of data for multi-modal semantic search
+          </ul>
+        </td>
+        <td>
+          <strong>🔮 Future Directions</strong>
+          <ul>
+            <li>Lightning tour of things that are surprisingly possible today
+            <li>What you should expect to be possible within a couple of years
+            <li>What are still hard research problems
+          </ul>
+        </td>
+      </tr>
+      <tr>
+      <td>3 pm</td>
+      <td>Coffee and networking</td>
+      <td>Coffee and networking</td>
+      </tr>
+      <tr>
+      <td>4 pm</td>
+      <td>
+        Hands-On Workshop: <strong>askFSDL Project</strong>
+      </td>
+      <td>
+        <strong>Harrison Chase</strong>: Creator of LangChain
+      </td>
+      </tr>
+      <tr>
+      <td>5 pm</td>
+      <td>Hands-On Workshop: <strong>askFSDL Project</strong></td>
+      <td>Keynote</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
 
 ## Who
 
@@ -140,18 +230,22 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ### LOGOS OF CONFIRMED SPONSORS
 
+- **Cloud Credits**
+    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
+
 Interested in sponsoring?
 You can read more about tiers and benefits [here](./sponsors).
 Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
 
 ## Register
 
+**🐣 Early Bird Discount**: until we're half full, tickets are 1/3 off full price.
+
 <div class="flex justify-center">
   <div class="tier">
     <div class="tier--header">Academics</div>
     <div class="tier--price">
-      <div><strike>$450</strike></div>
-      <div>$295</div>
+      <div><strike>$450</strike> 🐣$295</div>
     </div>
     <div style="margin-top: auto">
       <a href="https://fsdl.me/2023-conf-academic" style="width: 100%" class="md-button md-button--primary"> Get discount code </a>
@@ -160,26 +254,11 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
   <div class="tier">
     <div class="tier--header">Professionals</div>
     <div class="tier--price">
-      <div><strike>$1450</strike></div>
-      <div>$950</div>
+      <div><strike>$1450</strike> 🐣$950</div>
     </div>
     <div style="margin-top: auto">
       <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
-
 </div>
 
-## Tentative Schedule
-
-|       | Friday (April 21)                          | Saturday (April 22)                      |
-|-------|--------------------------------------------|------------------------------------------|
-| 9 am  | Registration & Breakfast                   | Breakfast                                |
-| 10 am | **Launch an LLM App in 1 Hour**            | **UX for LLMs**                          |
-| 11 am | **Foundations of Foundation Models**       | **Deploying LLM Apps**                   |
-| 12 pm | Lunch and networking                       | Lunch and networking                     |
-| 1 pm  | **Learn to Spell: Effectively Using LLMs** | **Learning in Production**               |
-| 2 pm  | **Search 2.0**                             | **Future Directions**                    |
-| 3 pm  | Coffee and networking                      | Coffee and networking                    |
-| 4 pm  | Hands-On Workshop: **askFSDL Project**     | **Harrison Chase**: Creator of LangChain |
-| 5 pm  | Hands-On Workshop: **askFSDL Project**     | Keynote                                  |
