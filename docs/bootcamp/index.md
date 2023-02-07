@@ -7,31 +7,29 @@ hide:
 
 <div class="flex flex-col items-center justify-center dark-bg" markdown>
 
-<div class="subtitle">🚀 Announcing FSDL Large Language Models Bootcamp  🚀</div>
+<h2> 🚀 Announcing 🚀</h2>
 
-<!--
-<div style="align:center; text-align:center; width:50%" markdown>
-On **April 21-22** join several hundred **other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.
-</div>
--->
+<h3>Full Stack Deep Learning LLM Bootcamp</h3>
+
 
 [Register now](#register){ .md-button .md-button--primary }
 
 </div>
 
-!!! tip "tl;dr"
-    <h2>
-    On **April 21-22** join several hundred **other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.</h2>
+<div class="admonition tip markdown">
+  <p class="admonition-title" style="font-size:large">tl;dr</p>
+    <p style="font-size:large">On <strong>April 21-22</strong> join several hundred <strong>other builders</strong> and learn <strong>best practices</strong> and tools for <strong>creating products with LLMs</strong> from <strong>expert educators</strong> and <strong>industry leaders</strong> at an <strong>in-person bootcamp</strong> in <strong>San Francisco</strong>.</p>
+</div>
 
-# Why
+## Why
 
-### We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
+<h3>We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.</h3>
 
 Large language models (LLMs) understand text both semantically and syntactically,
 fulfilling the promise of an old idea in artificial intelligence and human-computer interaction:
 _Natural Language User Interfaces_, or LUIs.
 
-### As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.
+<h3>As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.</h3>
 
 At the same time that LLMs have made LUIs possible,
 the process for developing an application around machine learning models has become easier.
@@ -41,25 +39,23 @@ would bottleneck on training models from scratch
 and then on deployment,
 now an MVP based on pretrained models and APIs can be configured and serving users in an hour.
 
-### With a gold rush come shovels and shovel-sellers.
-An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs.
+<h3>With a gold rush come new shovels and shovel-sellers.</h3>
+An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to the new possible and figure out the most productive new sets of techniques and tools.
 
-Even ML veterans are scrambling to orient themselves to the new possible and figure out the most productive new sets of techniques and tools.
+<h3>Engineers are asking themselves:</h3>
 
-### Engineers are asking themselves:
+- Should I be able to code a Transformer from scratch?
+- What is 'Prompt Engineering'? How legit is it?
+- What's the deal with linear-time attention mechanisms?
+- What will my moat be if I’m relying on OpenAI's model APIs?
+- Are there open-source alternatives to LLM vendors?
+- How do software engineering workflows like CI/CD and test-driven design transfer?
+- How do computer science principles like compositionality, data structures, and recursion transfer?
+- Jesus H. Christ, how am I supposed to test these things?
+- Do I need to buy a cluster of server-grade GPUs like NVIDIA A100s?
+- How can I ensure a seamless UX while still gathering user feedback to support a data flywheel?
 
-- "Should I be able to code a Transformer from scratch?"
-- "What is 'Prompt Engineering'? How legit is it?"
-- "What's the deal with linear-time attention mechanisms?"
-- "What will my moat be if I’m relying on OpenAI's model APIs?"
-- "Are there open-source alternatives to LLM vendors?"
-- "How do software engineering workflows like CI/CD and test-driven design transfer?"
-- "How do computer science principles like compositionality, data structures, and recursion transfer?"
-- "Jesus H. Christ, how am I supposed to test these things?"
-- "Do I need to buy a cluster of server-grade GPUs like NVIDIA A100s?"
-- "How can I ensure a seamless UX while still gathering user feedback to support a data flywheel?"
-
-# What
+## What
 
 We have put together a state-of-the-art program
 based on emerging conventions in the LLM community and the latest research results
@@ -68,9 +64,10 @@ to help you answer these questions and make the transition.
 !!! question "What do I need to know already?"
     We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
 
-    Exposure to at least one of machine learning, frontend, or backend is likely to be helpful.
+    Experience with at least one of machine learning, frontend, or backend will be helpful but not needed.
 
-Here are a few of the benefits of attendance:
+### Tentative Schedule
+
 <div class="md-typeset__scrollwrap">
   <div class="md-typeset__table">
     <table>
@@ -92,14 +89,14 @@ Here are a few of the benefits of attendance:
         <td>
           <strong>🚀 Launch an LLM App in 1 Hour</strong>
           <ul>
-          <li> Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
-          <li> Use as starter code to save hours of boilerplate effort on your own project
+          <li> We'll go from idea to user-ready website in one hour
           </ul>
         </td>
                 <td>
           <strong>🌳 Demo Garden</strong>
           <ul>
             <li>Present your project
+            <li>Review other cool projects
           </ul>
         </td>
 
@@ -175,48 +172,26 @@ Here are a few of the benefits of attendance:
       <tr>
       <td>4 pm</td>
       <td>
-        Hands-On Workshop: <strong>askFSDL Project</strong>
+        👷‍♂️ <strong>askFSDL Walkthrough</strong>
+          <ul>
+          <li> Detailed breakdown of a well-documented sample project demonstrating use of LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
+          </ul>
       </td>
       <td>
-        <strong>Harrison Chase</strong>: Creator of LangChain
+        🦜🔗 <strong>Harrison Chase</strong>: Creator of LangChain
       </td>
       </tr>
       <tr>
       <td>5 pm</td>
-      <td>Hands-On Workshop: <strong>askFSDL Project</strong></td>
-      <td>Keynote</td>
+      <td>Invited Talk</td>
+      <td>Invited Talk</td>
       </tr>
       </tbody>
     </table>
   </div>
 </div>
-- **The askFSDL Sample Project**
-    - Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
-    - Use as starter code to save hours of boilerplate effort on your own project
 
-- **Foundations of Foundation Models**
-    - Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
-    - Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
-
-- **Learn to Spell: Effectively Using LLMs**
-    - Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
-    - Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
-    - Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
-    - Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
-
-- **Search 2.0**
-    - How text embeddings enable semantic search everywhere
-    - Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
-    - Jointly embedding multiple types of data for multi-modal semantic search
-
-- **Learning in Production**
-    - Why "learn in prod" is the new "test in prod"
-    - How to monitor models, trace chains, and record feedback
-    - Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
-
-# Who
-
-## Who Are We
+## Who
 
 We are Full Stack Deep Learning.
 We're a team of UC Berkeley PhD alumni
@@ -263,36 +238,12 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 <iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d74597.27001002253!2d-122.39849142057383!3d37.69637486488224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f79b47d5d81ad%3A0xfd9c1f0af6155a3d!2sSouth%20San%20Francisco%20Conference%20Center!5e0!3m2!1sen!2sus!4v1674094089226!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
-## Sponsors
-
-We're grateful to a number of sponsors who are helping us make this event happen.
-
-### Compute Credit Sponsors
-
-<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
-  <div class="logo" markdown>
-    <img src="/images/modal-logo.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal">
-    </div>
-  <div class="logo" markdown>
-    <img src="/images/banana-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev">
-    </div>
-  <div class="logo" markdown>
-    <img src="/images/lambdalabs-logo.png" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs">
-    </div>
-</div>
-
-### Direct Sponsors
-
-- **Cloud Credits**
-    - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
-
-Interested in sponsoring?
-You can read more about tiers and benefits [here](./sponsors).
-Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
-
 ## Register
 
-**🐣 Early Bird Discount**: until we're half full, tickets are 1/3 off full price.
+<div class="admonition">
+  <p class="admonition-title" style="font-size:large">Discount for 🐣Early Birds🐣</p>
+  <p>Until we're half full, tickets are 1/3 off full price.</p>
+</div>
 
 <div class="flex justify-center">
   <div class="tier">
@@ -314,3 +265,29 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
     </div>
   </div>
 </div>
+
+## Sponsors
+
+We're grateful to a number of sponsors who are helping us make this event happen.
+
+### Compute Credit Sponsors
+
+<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <div class="logo" markdown>
+    <a href="https://modal.com"><img src="/images/modal-logo.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://banana.dev"><img src="/images/banana-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://lambdalabs.com/cloud"><img src="/images/lambdalabs-logo.png" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
+    </div>
+</div>
+
+We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
+
+### Direct Sponsors
+
+Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
+You can read more about tiers and benefits [here](./sponsors).
+Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
