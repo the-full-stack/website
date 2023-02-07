@@ -2,7 +2,7 @@
 hide:
   - navigation
 description: April 21-22, San Francisco -- Best practices and tools for building LLM-powered apps
-embed_image: https://llm-bootcamp/opengraph.jpg
+embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jpg
 ---
 
 <style>
