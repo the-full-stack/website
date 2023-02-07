@@ -1,6 +1,8 @@
 ---
 hide:
   - navigation
+description: April 21-22, San Francisco -- Best practices and tools for building LLM-powered apps
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.jpg
 ---
 
 <style>
@@ -202,7 +204,7 @@ We're a team of UC Berkeley PhD alumni with years of industry experience who are
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
-We make sure that all of our materials becomes accessible for free, right here on this website -- please explore!
+We always release our materials publicly, right here on this website -- for example, check out our [Fall 2022 course](course/2022/)!
 
 <div class="grid-3">
   <img src="/images/group-march2019.jpg" width="480px">

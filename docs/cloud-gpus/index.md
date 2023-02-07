@@ -3,8 +3,26 @@ template: cloud-gpus.html
 hide:
     - toc
     - navigation
-description: Detailed comparison table of all cloud GPU providers.
 ---
+
+{% block extrahead %}
+<meta property="og:title" content="Cloud GPUs Comparison Table">
+<meta property="og:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
+<meta property="og:type" content="website">
+<meta property="og:url" content="{{ page.canonical_url }}">
+<meta property="og:image" content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg">
+<meta property="og:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image">
+<meta name="twitter:site" content="full_stack_dl">
+<meta name="twitter:title" content="Cloud GPUs Comparison Table">
+<meta name="twitter:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
+<meta name="twitter:image" content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg">
+<meta name="twitter:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
+{% endblock %}
 
 <div class="author" markdown>
 By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated February 1, 2023.
