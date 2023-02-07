@@ -380,6 +380,12 @@ We're partnering with compute vendors to offer free cloud credits to all attende
 
 ### Direct Sponsors
 
+<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <div class="logo" markdown>
+    <a href="https://wandb.com"><img src="/images/wandb-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
+    </div>
+</div>
+
 Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
 You can read more about tiers and benefits [here](./sponsors).
 Contact [`sponsorships @ fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
