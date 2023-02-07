@@ -23,6 +23,10 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jp
   .md-typeset table:not([class]) td {
     vertical-align: top;
   }
+
+  .md-typeset h1 {
+
+  }
 </style>
 
 # LLM Bootcamp
@@ -240,12 +244,12 @@ to help you answer these questions and make the transition.
 
 ## Who
 
-We are Full Stack Deep Learning.
+We are <a href="https://fullstackdeeplearning.com">Full Stack Deep Learning</a>.
 We're a team of UC Berkeley PhD alumni with years of industry experience who are passionate about teaching people how to make deep neural networks work in the real world.
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
-We make sure that all of our materials becomes accessible for free, right here on [this website](../course/2022) -- please [explore](../cloud-gpus/)[!](../404)
+As former academics, we always make sure that all of our materials are accessible for free, right here on [this website](../course/2022).
 
 <div class="grid-3">
   <img src="/images/group-march2019.jpg" width="480px">
@@ -317,3 +321,30 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
     </div>
   </div>
+</div>
+
+## Sponsors
+
+We're grateful to a number of sponsors who are helping us make this event happen.
+
+### Compute Credit Sponsors
+
+<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <div class="logo" markdown>
+    <a href="https://modal.com"><img src="/images/modal-logo.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://banana.dev"><img src="/images/banana-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://lambdalabs.com/cloud"><img src="/images/lambdalabs-logo.png" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
+    </div>
+</div>
+
+We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
+
+### Direct Sponsors
+
+Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
+You can read more about tiers and benefits [here](./sponsors).
+Contact [`sponsorships @ fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
