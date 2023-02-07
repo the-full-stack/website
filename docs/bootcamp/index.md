@@ -252,7 +252,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$450</strike> 🐣$295</div>
     </div>
     <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-academic" style="width: 100%" class="md-button md-button--primary"> Get discount code </a>
+      <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--primary"> Get discount code </a>
     </div>
   </div>
   <div class="tier">
@@ -261,7 +261,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$1450</strike> 🐣$950</div>
     </div>
     <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-conf-irl-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
+      <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
 </div>
