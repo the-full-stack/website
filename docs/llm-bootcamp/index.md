@@ -2,7 +2,7 @@
 hide:
   - navigation
 description: April 21-22, San Francisco -- Best practices and tools for building LLM-powered apps
-embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.jpg
+embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jpg
 ---
 
 <style>
@@ -77,19 +77,17 @@ to help you answer these questions and make the transition.
 
 <div class="md-typeset__scrollwrap">
   <div class="md-typeset__table">
-    <table>
+    <table style="width: 85%">
     <thead>
       <tr>
         <th></th>
-        <th width="45%">Friday (April 21)</th>
-        <th width="45%">Saturday (April 22)</th>
+        <th><h2>Friday (April 21)</h2></th>
       </tr>
     </thead>
     <tbody>
       <tr>
         <td>9 am</td>
         <td>Registration &amp; Breakfast</td>
-        <td>Breakfast</td>
       </tr>
       <tr>
         <td>10 am</td>
@@ -97,13 +95,6 @@ to help you answer these questions and make the transition.
           <strong>🚀 Launch an LLM App in 1 Hour</strong>
           <ul>
           <li> We'll go from idea to user-ready website in one hour
-          </ul>
-        </td>
-                <td>
-          <strong>🌳 Demo Garden</strong>
-          <ul>
-            <li>Present your project
-            <li>Review other cool projects
           </ul>
         </td>
       </tr>
@@ -117,17 +108,9 @@ to help you answer these questions and make the transition.
           <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
         </ul>
         </td>
-        <td>
-          <strong>🤷 UX for LUIs</strong>
-          <ul>
-            <li>Review of the best AI-powered apps today
-            <li>Principles of successful design for AI-powered apps
-          </ul>
-        </td>
       </tr>
       <tr>
         <td>12 pm</td>
-        <td>Lunch and networking</td>
         <td>Lunch and networking</td>
       </tr>
       <tr>
@@ -141,6 +124,80 @@ to help you answer these questions and make the transition.
             <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
           </ul>
         </td>
+      </tr>
+      <tr>
+        <td>2 pm</td>
+        <td>
+          <strong>👀 Search 2.0</strong>
+          <ul>
+            <li>How text embeddings enable semantic search everywhere
+            <li>Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
+            <li>Jointly embedding multiple types of data for multi-modal semantic search
+          </ul>
+        </td>
+      </tr>
+      <tr>
+      <td>3 pm</td>
+      <td>Coffee and networking</td>
+      </tr>
+      <tr>
+      <td>4 pm</td>
+      <td>
+        👷‍♂️ <strong>askFSDL Walkthrough</strong>
+          <ul>
+          <li> Detailed breakdown of a well-documented sample project demonstrating use of LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
+          </ul>
+      </td>
+      </tr>
+      <tr>
+      <td>5 pm</td>
+      <td>Invited Talk</td>
+      </tr>
+      </tbody>
+    </table>
+  </div>
+</div>
+
+<div class="md-typeset__scrollwrap">
+  <div class="md-typeset__table">
+    <table style="width:85%">
+    <thead>
+      <tr>
+        <th></th>
+        <th><h2> Saturday (April 22) </h2></th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>9 am</td>
+        <td>Breakfast</td>
+      </tr>
+      <tr>
+        <td>10 am</td>
+                <td>
+          <strong>🌳 Demo Garden</strong>
+          <ul>
+            <li>Present your project
+            <li>Review other cool projects
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>11 am</td>
+        <td>
+          <strong>🤷 UX for LUIs</strong>
+          <ul>
+            <li>Review of the best AI-powered apps today
+            <li>Principles of successful design for AI-powered apps
+          </ul>
+        </td>
+      </tr>
+      <tr>
+        <td>12 pm</td>
+        <td>Lunch and networking</td>
+      </tr>
+      <tr>
+        <td>1 pm</td>
         <td>
           <strong>🏎️ Deploying and Learning in Production</strong>
           <ul>
@@ -154,14 +211,6 @@ to help you answer these questions and make the transition.
       <tr>
         <td>2 pm</td>
         <td>
-          <strong>👀 Search 2.0</strong>
-          <ul>
-            <li>How text embeddings enable semantic search everywhere
-            <li>Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
-            <li>Jointly embedding multiple types of data for multi-modal semantic search
-          </ul>
-        </td>
-        <td>
           <strong>🔮 Future Directions</strong>
           <ul>
             <li>Lightning tour of things that are surprisingly possible today
@@ -173,23 +222,15 @@ to help you answer these questions and make the transition.
       <tr>
       <td>3 pm</td>
       <td>Coffee and networking</td>
-      <td>Coffee and networking</td>
       </tr>
       <tr>
       <td>4 pm</td>
-      <td>
-        👷‍♂️ <strong>askFSDL Walkthrough</strong>
-          <ul>
-          <li> Detailed breakdown of a well-documented sample project demonstrating use of LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
-          </ul>
-      </td>
       <td>
         🦜🔗 <strong>Harrison Chase</strong>: Creator of LangChain
       </td>
       </tr>
       <tr>
       <td>5 pm</td>
-      <td>Invited Talk</td>
       <td>Invited Talk</td>
       </tr>
       </tbody>
@@ -276,31 +317,3 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
     </div>
   </div>
-
-</div>
-
-## Sponsors
-
-We're grateful to a number of sponsors who are helping us make this event happen.
-
-### Compute Credit Sponsors
-
-<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
-  <div class="logo" markdown>
-    <a href="https://modal.com"><img src="/images/modal-logo.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
-    </div>
-  <div class="logo" markdown>
-    <a href="https://banana.dev"><img src="/images/banana-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
-    </div>
-  <div class="logo" markdown>
-    <a href="https://lambdalabs.com/cloud"><img src="/images/lambdalabs-logo.png" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
-    </div>
-</div>
-
-We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
-
-### Direct Sponsors
-
-Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
-You can read more about tiers and benefits [here](./sponsors).
-Contact [`sponsorships @ fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
