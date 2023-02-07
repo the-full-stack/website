@@ -46,18 +46,19 @@ now an MVP based on pretrained models and APIs can be configured and serving use
 <h3>With a gold rush come new shovels and shovel-sellers.</h3>
 An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to the new possible and figure out the most productive new sets of techniques and tools.
 
-<h3>Engineers are asking themselves:</h3>
+Engineers are asking themselves:
 
+- Is *Prompt Engineering* a joke?
+- Are there good open-source LLMs?
+- Do I need to buy a cluster of NVIDIA A100s?
+- What is my moat if I’m relying on OpenAI APIs?
 - Should I be able to code a Transformer from scratch?
-- What is 'Prompt Engineering'? How legit is it?
-- What's the deal with linear-time attention mechanisms?
-- What will my moat be if I’m relying on OpenAI's model APIs?
-- Are there open-source alternatives to LLM vendors?
-- How do software engineering workflows like CI/CD and test-driven design transfer?
-- How do computer science principles like compositionality, data structures, and recursion transfer?
-- Jesus H. Christ, how am I supposed to test these things?
-- Do I need to buy a cluster of server-grade GPUs like NVIDIA A100s?
-- How can I ensure a seamless UX while still gathering user feedback to support a data flywheel?
+- How can I gather feedback from users and use it to improve AI?
+- Jesus H. Christ, how am I supposed to test these damng things?
+
+<!-- - How do principles like compositionality, data structures, and recursion transfer? -->
+<!-- - What's the deal with linear-time attention mechanisms? -->
+<!-- - How do software engineering workflows like CI/CD and test-driven design transfer? -->
 
 ## What
 
