@@ -233,7 +233,7 @@ We make sure that all of our materials becomes accessible for free, right here o
 
 ### Guest Talks
 
-<div style="display:grid;grid-template-columns:47% 47%; row-gap: 2rem; column-gap:5%;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(20rem, 1fr)); row-gap: 2rem; column-gap:5%;">
   <div class="person" markdown>
     <img src="/images/harrison.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
     <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
@@ -248,8 +248,10 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ## Register
 
-!!! abstract "Discount for 🐣Early Birds🐣"
+<div class="flex flex-col justify-center" style="align-items: flex-start" markdown>
+!!! abstract "🐣 Discount for Early Birds 🐣"
     Until we're ⅓ full, tickets are ⅓ off!
+</div>
 
 <div class="tiers">
   <div class="tier">
