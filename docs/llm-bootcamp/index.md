@@ -27,7 +27,7 @@ hide:
 </div>
 ## Why
 
-**We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.** 
+**We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.**
 
 Large language models (LLMs) understand text both semantically and syntactically,
 fulfilling the promise of an old idea in artificial intelligence and human-computer interaction:
@@ -54,7 +54,7 @@ Engineers are asking themselves:
 - What is my moat if I’m relying on OpenAI APIs?
 - Should I be able to code a Transformer from scratch?
 - How can I gather feedback from users and use it to improve AI?
-- Jesus H. Christ, how am I supposed to test these damng things?
+- Jesus H. Christ, how am I supposed to test these damn things?
 
 <!-- - How do principles like compositionality, data structures, and recursion transfer? -->
 <!-- - What's the deal with linear-time attention mechanisms? -->
@@ -62,7 +62,7 @@ Engineers are asking themselves:
 
 ## What
 
-We have put together a state-of-the-art program
+We have put together a two-day program
 based on emerging conventions in the LLM community and the latest research results
 to help you answer these questions and make the transition.
 
