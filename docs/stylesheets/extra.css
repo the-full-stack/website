@@ -163,14 +163,6 @@ header.md-header {
   flex-direction: column;
 }
 
-.grid-3 {
-  display: grid; 
-  grid-template-columns: repeat(3, 1fr); 
-  grid-template-rows: 1fr; 
-  grid-column-gap: 10px;
-  grid-row-gap: 0px; 
-}
-
 .items-center {
   align-items: center;
 }
@@ -181,6 +173,31 @@ header.md-header {
 
 .font-large {
   font-size: large;
+}
+
+.newsletter-signup {
+  display: flex;
+  align-items: center;
+}
+
+.newsletter-signup input[type="email"] {
+  width: 100%;
+  padding: 0.5rem;
+  border-radius: 0.25rem;
+  border-width: 1px;
+  border-color: rgb(203 213 225);
+  border-style: solid;
+  color: black;
+}
+
+.newsletter-signup #mc_embed_signup_scroll {
+  display: flex;
+}
+
+.newsletter-signup .mc-field-group {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
 }
 
 .subtitle {
