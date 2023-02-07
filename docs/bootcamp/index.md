@@ -3,33 +3,37 @@ hide:
   - navigation
 ---
 
-# Large Language Models Bootcamp
+<style>
+  .admonition.abstract p, .admonition.abstract ul {
+    font-size: large;
+  }
+   [dir=ltr] .md-typeset .admonition.abstract .admonition-title {
+    padding-left: 0.6rem;
+  }
+  .admonition.abstract .admonition-title::before {
+    display: none;
+  }
+</style>
 
-<div class="flex flex-col items-center justify-center dark-bg" markdown>
+# LLM Bootcamp
+<div class="flex flex-col items-center justify-center" markdown>
+!!! abstract "🚀 Announcing Full Stack Deep Learning LLM Bootcamp 🚀"
+    - In person in San Francisco on **April 21-22**
+    - Learn **best practices and tools** for building LLM-powered apps
+    - **Network** with a couple hundred other builders
+    - Get cloud credits from OpenAI and other [sponsors](#sponsors)
 
-<h2> 🚀 Announcing 🚀</h2>
-
-<h3>Full Stack Deep Learning LLM Bootcamp</h3>
-
-
-[Register now](#register){ .md-button .md-button--primary }
-
+  [Register now](#register){ .md-button .md-button--primary }
 </div>
-
-<div class="admonition tip markdown">
-  <p class="admonition-title" style="font-size:large">tl;dr</p>
-    <p style="font-size:large">On <strong>April 21-22</strong> join several hundred <strong>other builders</strong> and learn <strong>best practices</strong> and tools for <strong>creating products with LLMs</strong> from <strong>expert educators</strong> and <strong>industry leaders</strong> at an <strong>in-person bootcamp</strong> in <strong>San Francisco</strong>.</p>
-</div>
-
 ## Why
 
-<h3>We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.</h3>
+**We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.** 
 
 Large language models (LLMs) understand text both semantically and syntactically,
 fulfilling the promise of an old idea in artificial intelligence and human-computer interaction:
 _Natural Language User Interfaces_, or LUIs.
 
-<h3>As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.</h3>
+As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.
 
 At the same time that LLMs have made LUIs possible,
 the process for developing an application around machine learning models has become easier.
@@ -200,6 +204,8 @@ who are passionate about teaching people how to make deep neural networks work i
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
+We make sure that all of our materials becomes accessible for free, right here on this website -- please explore!
+
 <img src="/images/august2018.jpg" width="480px">
 
 ### Instructor Team
@@ -240,30 +246,31 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ## Register
 
-<div class="admonition">
-  <p class="admonition-title" style="font-size:large">Discount for 🐣Early Birds🐣</p>
-  <p style="font-size:large">Until we're half full, tickets are 1/3 off full price.</p>
-</div>
+!!! abstract "Discount for 🐣Early Birds🐣"
+    Until we're ⅓ full, tickets are ⅓ off!
 
-<div class="flex justify-center">
+<div class="tiers">
   <div class="tier">
-    <div class="tier--header">Academics</div>
-    <div class="tier--price">
-      <div><strike>$450</strike> 🐣$295</div>
-    </div>
-    <div style="margin-top: auto">
-      <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--primary"> Get discount code </a>
-    </div>
-  </div>
-  <div class="tier">
-    <div class="tier--header">Professionals</div>
+    <div class="tier--header">Regular</div>
     <div class="tier--price">
       <div><strike>$1450</strike> 🐣$950</div>
     </div>
-    <div style="margin-top: auto">
+    <div>
+    <p>We are not able to accomodate discount requests.</p>
       <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
+  <div class="tier">
+    <div class="tier--header">Academic</div>
+    <div class="tier--price">
+      <div><strike>$450</strike> 🐣$295</div>
+    </div>
+    <div>
+      <p>If you are a current full-time student or postdoc.</p>
+      <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
+    </div>
+  </div>
+
 </div>
 
 ## Sponsors
