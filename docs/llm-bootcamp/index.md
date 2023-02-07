@@ -23,10 +23,6 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jp
   .md-typeset table:not([class]) td {
     vertical-align: top;
   }
-
-  .md-typeset h1 {
-
-  }
 </style>
 
 # LLM Bootcamp
@@ -249,7 +245,7 @@ We're a team of UC Berkeley PhD alumni with years of industry experience who are
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
-As former academics, we always make sure that all of our materials are accessible for free, right here on [this website](../course/2022).
+As former academics, we always make sure that all of our materials become accessible for free, right here on [this website](../course/2022).
 
 <div class="grid-3">
   <img src="/images/group-march2019.jpg" width="480px">
