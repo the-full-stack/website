@@ -9,23 +9,29 @@ hide:
 
 <div class="subtitle">🚀 Announcing FSDL Large Language Models Bootcamp  🚀</div>
 
+<!--
 <div style="align:center; text-align:center; width:50%" markdown>
 On **April 21-22** join several hundred **other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.
 </div>
+-->
 
 [Register now](#register){ .md-button .md-button--primary }
 
 </div>
 
-## Why
+!!! tip "tl;dr"
+    <h2>
+    On **April 21-22** join several hundred **other builders** and learn **best practices** and tools for **creating products with LLMs** from **expert educators** and **industry leaders** at an **in-person bootcamp** in **San Francisco**.</h2>
 
-We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
+# Why
+
+### We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
 
 Large language models (LLMs) understand text both semantically and syntactically,
 fulfilling the promise of an old idea in artificial intelligence and human-computer interaction:
 _Natural Language User Interfaces_, or LUIs.
 
-As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.
+### As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.
 
 At the same time that LLMs have made LUIs possible,
 the process for developing an application around machine learning models has become easier.
@@ -35,12 +41,12 @@ would bottleneck on training models from scratch
 and then on deployment,
 now an MVP based on pretrained models and APIs can be configured and serving users in an hour.
 
-With a gold rush come shovels and shovel-sellers.
-An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs,
-and even ML veterans are scrambling to orient themselves to the new possible
-and figure out the most productive new sets of techniques and tools.
+### With a gold rush come shovels and shovel-sellers.
+An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs.
 
-They are asking themselves:
+Even ML veterans are scrambling to orient themselves to the new possible and figure out the most productive new sets of techniques and tools.
+
+### Engineers are asking themselves:
 
 - "Should I be able to code a Transformer from scratch?"
 - "What is 'Prompt Engineering'? How legit is it?"
@@ -53,12 +59,18 @@ They are asking themselves:
 - "Do I need to buy a cluster of server-grade GPUs like NVIDIA A100s?"
 - "How can I ensure a seamless UX while still gathering user feedback to support a data flywheel?"
 
-## What
+# What
 
 We have put together a state-of-the-art program
 based on emerging conventions in the LLM community and the latest research results
 to help you answer these questions and make the transition.
 
+!!! question "What do I need to know already?"
+    We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
+
+    Exposure to at least one of machine learning, frontend, or backend is likely to be helpful.
+
+Here are a few of the benefits of attendance:
 <div class="md-typeset__scrollwrap">
   <div class="md-typeset__table">
     <table>
@@ -99,7 +111,7 @@ to help you answer these questions and make the transition.
           <br />
         <ul>
           <li>Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
-          <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs 
+          <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
         </ul>
         </td>
         <td>
@@ -178,8 +190,33 @@ to help you answer these questions and make the transition.
     </table>
   </div>
 </div>
+- **The askFSDL Sample Project**
+    - Walk through a well-documented sample project using LLM APIs and frameworks, traditional and vector databases, and user feedback ingestion
+    - Use as starter code to save hours of boilerplate effort on your own project
 
-## Who
+- **Foundations of Foundation Models**
+    - Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
+    - Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
+
+- **Learn to Spell: Effectively Using LLMs**
+    - Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
+    - Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
+    - Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
+    - Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
+
+- **Search 2.0**
+    - How text embeddings enable semantic search everywhere
+    - Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
+    - Jointly embedding multiple types of data for multi-modal semantic search
+
+- **Learning in Production**
+    - Why "learn in prod" is the new "test in prod"
+    - How to monitor models, trace chains, and record feedback
+    - Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
+
+# Who
+
+## Who Are We
 
 We are Full Stack Deep Learning.
 We're a team of UC Berkeley PhD alumni
@@ -216,7 +253,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
 <div style="display:grid;grid-template-columns:47% 47%; row-gap: 2rem; column-gap:5%;">
   <div class="person" markdown>
     <img src="/images/harrison.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
-    <div><strong>Harrison Chase</strong> is the creator of LangChain</div>
+    <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
   </div>
 </div>
 
@@ -228,7 +265,23 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ## Sponsors
 
-### LOGOS OF CONFIRMED SPONSORS
+We're grateful to a number of sponsors who are helping us make this event happen.
+
+### Compute Credit Sponsors
+
+<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <div class="logo" markdown>
+    <img src="/images/modal-logo.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal">
+    </div>
+  <div class="logo" markdown>
+    <img src="/images/banana-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev">
+    </div>
+  <div class="logo" markdown>
+    <img src="/images/lambdalabs-logo.png" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs">
+    </div>
+</div>
+
+### Direct Sponsors
 
 - **Cloud Credits**
     - We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
@@ -261,4 +314,3 @@ Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstack
     </div>
   </div>
 </div>
-
