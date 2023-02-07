@@ -204,10 +204,10 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
 
 ### Instructor Team
 
-<div style="display:grid;grid-template-columns:47% 47%; row-gap: 2rem; column-gap:5%;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(20rem, 1fr));  row-gap: 2rem; column-gap:3%;">
   <div class="person" markdown>
     <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
-    <div><strong>Charles Frye</strong> educates people in AI. He has worked in the AI/ML tooling space, including with companies such as Weights & Biases and Gantry, since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
+    <div><strong>Charles Frye</strong> educates people in AI. He has worked on AI/ML tooling with Weights & Biases and Gantry since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
   </div>
   <div class="person" markdown>
     <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
@@ -242,7 +242,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 <div class="admonition">
   <p class="admonition-title" style="font-size:large">Discount for 🐣Early Birds🐣</p>
-  <p>Until we're half full, tickets are 1/3 off full price.</p>
+  <p style="font-size:large">Until we're half full, tickets are 1/3 off full price.</p>
 </div>
 
 <div class="flex justify-center">
@@ -290,4 +290,4 @@ We're partnering with compute vendors to offer free cloud credits to all attende
 
 Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
 You can read more about tiers and benefits [here](./sponsors).
-Contact [`sponsorships@fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
+Contact [`sponsorships @ fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
