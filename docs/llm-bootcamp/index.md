@@ -104,7 +104,6 @@ to help you answer these questions and make the transition.
             <li>Review other cool projects
           </ul>
         </td>
-
       </tr>
       <tr>
         <td>11 am</td>
@@ -199,15 +198,17 @@ to help you answer these questions and make the transition.
 ## Who
 
 We are Full Stack Deep Learning.
-We're a team of UC Berkeley PhD alumni
-with years of industry experience
-who are passionate about teaching people how to make deep neural networks work in the real world.
+We're a team of UC Berkeley PhD alumni with years of industry experience who are passionate about teaching people how to make deep neural networks work in the real world.
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
 We make sure that all of our materials becomes accessible for free, right here on this website -- please explore!
 
-<img src="/images/august2018.jpg" width="480px">
+<div class="grid-3">
+  <img src="/images/group-march2019.jpg" width="480px">
+  <img src="/images/group-august2018.jpg" width="480px">
+  <img src="/images/group-november2019.jpg" width="480px">
+</div>
 
 ### Instructor Team
 
