@@ -76,11 +76,6 @@ We have put together a two-day program
 based on emerging conventions in the LLM community and the latest research results
 to help you answer these questions and make the transition.
 
-!!! question "What do I need to know already?"
-    We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
-
-    Experience with at least one of machine learning, frontend, or backend will be helpful but not needed.
-
 ### Tentative Schedule
 
 <table>
@@ -124,7 +119,7 @@ to help you answer these questions and make the transition.
       <td>
         <strong>✨ Learn to Spell: Effectively Using LLMs</strong>
         <ul>
-          <li>Learn how vendors, like OpenAI, Cohere, and AI21, compare with each other and with open source options like FLAN-T5 and GLM.
+          <li>Learn how vendors like OpenAI, Cohere, and AI21 compare with each other and with OSS options like FLAN-T5 and GLM.
           <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
           <li>Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
           <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
@@ -291,29 +286,29 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ## Register
 
-<div class="flex flex-col justify-center" style="align-items: flex-start" markdown>
-!!! abstract "🐣 Discount for Early Birds 🐣"
-    Until we're ⅓ full, tickets are ⅓ off!
-</div>
+!!! question "What do I need to know already?"
+    We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
+
+    Experience with at least one of machine learning, frontend, or backend will be helpful but not needed.
 
 <div class="tiers">
   <div class="tier">
     <div class="tier--header">Regular</div>
     <div class="tier--price">
-      <div><strike>$1450</strike> 🐣$950</div>
+      <div><strike>$1450</strike> 🐣<span style="color: orange;">$950</span></div>
     </div>
     <div>
-    <p>We are not able to accomodate discount requests.</p>
+    <p>🐣 Early birds: Until we're ⅓ full, tickets are ⅓ off! 🐣<br />Sorry, we cannot accomodate any other discount requests.</p>
       <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
   <div class="tier">
     <div class="tier--header">Academic</div>
     <div class="tier--price">
-      <div><strike>$450</strike> 🐣$295</div>
+      <div><strike>$450</strike> 🐣<span style="color: orange;">$295</span></div>
     </div>
     <div>
-      <p>If you are a current full-time student or postdoc.</p>
+      <p>We know what it's like to be broke in school 😅.<br />If you are a <strong>current</strong> full-time student, enjoy a lower price.</p>
       <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
     </div>
   </div>
