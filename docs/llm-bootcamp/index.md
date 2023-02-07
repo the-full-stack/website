@@ -29,7 +29,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.jpg
 </div>
 ## Why
 
-**We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.** 
+**We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.**
 
 Large language models (LLMs) understand text both semantically and syntactically,
 fulfilling the promise of an old idea in artificial intelligence and human-computer interaction:
@@ -56,7 +56,7 @@ Engineers are asking themselves:
 - What is my moat if I’m relying on OpenAI APIs?
 - Should I be able to code a Transformer from scratch?
 - How can I gather feedback from users and use it to improve AI?
-- Jesus H. Christ, how am I supposed to test these damng things?
+- Jesus H. Christ, how am I supposed to test these damn things?
 
 <!-- - How do principles like compositionality, data structures, and recursion transfer? -->
 <!-- - What's the deal with linear-time attention mechanisms? -->
@@ -64,7 +64,7 @@ Engineers are asking themselves:
 
 ## What
 
-We have put together a state-of-the-art program
+We have put together a two-day program
 based on emerging conventions in the LLM community and the latest research results
 to help you answer these questions and make the transition.
 
@@ -204,7 +204,7 @@ We're a team of UC Berkeley PhD alumni with years of industry experience who are
 
 Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and official semester-long courses at top universities.
 
-We always release our materials publicly, right here on this website -- for example, check out our [Fall 2022 course](course/2022/)!
+We make sure that all of our materials becomes accessible for free, right here on [this website](../course/2022) -- please [explore](../cloud-gpus/)[!](../404)
 
 <div class="grid-3">
   <img src="/images/group-march2019.jpg" width="480px">
@@ -235,7 +235,7 @@ We always release our materials publicly, right here on this website -- for exam
 
 ### Guest Talks
 
-<div style="display:grid;grid-template-columns:47% 47%; row-gap: 2rem; column-gap:5%;">
+<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(20rem, 1fr)); row-gap: 2rem; column-gap:5%;">
   <div class="person" markdown>
     <img src="/images/harrison.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
     <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
@@ -250,8 +250,10 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ## Register
 
-!!! abstract "Discount for 🐣Early Birds🐣"
+<div class="flex flex-col justify-center" style="align-items: flex-start" markdown>
+!!! abstract "🐣 Discount for Early Birds 🐣"
     Until we're ⅓ full, tickets are ⅓ off!
+</div>
 
 <div class="tiers">
   <div class="tier">
