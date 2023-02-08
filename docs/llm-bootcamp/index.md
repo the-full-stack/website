@@ -79,11 +79,11 @@ An entirely new ecosystem of tools and tool vendors has formed around LLMs and L
 
 Engineers are asking themselves:
 
-- Is *Prompt Engineering* a sick joke?
 - Are there any good open-source LLMs?
 - What is my moat if I rely on OpenAI APIs?
 - Do I need to buy a cluster of NVIDIA A100s?
-• How can I gather and use feedback from users?
+- How can I gather and use feedback from users?
+- Is *Prompt Engineering* some kind of sick joke?
 - Should I be able to code a Transformer from scratch?
 - Jesus H. Christ, how am I supposed to test these damn things?
 
