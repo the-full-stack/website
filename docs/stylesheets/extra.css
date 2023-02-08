@@ -175,29 +175,18 @@ header.md-header {
   font-size: large;
 }
 
-.newsletter-signup {
-  display: flex;
-  align-items: center;
+/* 3 columns if on desktop, 1 column if on mobile */
+.grid-3 {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: 1fr; 
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem; 
 }
-
-.newsletter-signup input[type="email"] {
-  width: 100%;
-  padding: 0.5rem;
-  border-radius: 0.25rem;
-  border-width: 1px;
-  border-color: rgb(203 213 225);
-  border-style: solid;
-  color: black;
-}
-
-.newsletter-signup #mc_embed_signup_scroll {
-  display: flex;
-}
-
-.newsletter-signup .mc-field-group {
-  display: flex;
-  align-items: center;
-  gap: 0.5rem;
+@media (min-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
 }
 
 .subtitle {

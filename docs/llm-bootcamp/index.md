@@ -23,6 +23,35 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jp
   .md-typeset table:not([class]) td {
     vertical-align: top;
   }
+  .md-typeset table:not([class]) th {
+    white-space: nowrap;
+    min-width: 5rem;
+  }
+
+  .newsletter-signup {
+    display: flex;
+    align-items: center;
+  }
+
+  .newsletter-signup input[type="email"] {
+    width: 100%;
+    padding: 0.5rem;
+    border-radius: 0.25rem;
+    border-width: 1px;
+
+    border-style: solid;
+    color: black;
+  }
+
+  .newsletter-signup #mc_embed_signup_scroll {
+    display: flex;
+  }
+
+  .newsletter-signup .mc-field-group {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+  }
 </style>
 
 # LLM Bootcamp
@@ -37,44 +66,32 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jp
 </div>
 ## Why
 
-**We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.**
+We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
 
-Large language models (LLMs) understand text both semantically and syntactically,
-fulfilling the promise of an old idea in artificial intelligence and human-computer interaction:
-_Natural Language User Interfaces_, or LUIs.
+Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LUI*s), which will revolutionize software just as GUIs did in the 90's.
 
-As with GUIs, LUIs promise to revolutionize how we use and interface with computing systems and become the specialty of a new class of developer.
+The way AI-powered apps are built is also changing:
+ 
+- Before LLMs, an idea would bottleneck first on training models from scratch, and then on scalable deployment.
+- Now, an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
 
-At the same time that LLMs have made LUIs possible,
-the process for developing an application around machine learning models has become easier.
-
-Where once an idea for a useful, delightful, and intelligent technology
-would bottleneck on training models from scratch
-and then on deployment,
-now an MVP based on pretrained models and APIs can be configured and serving users in an hour.
-
-<h3>With a gold rush come new shovels and shovel-sellers.</h3>
-An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to the new possible and figure out the most productive new sets of techniques and tools.
+An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
 
 Engineers are asking themselves:
 
-- Is *Prompt Engineering* a joke?
-- Are there good open-source LLMs?
+- Is *Prompt Engineering* a sick joke?
+- Are there any good open-source LLMs?
+- What is my moat if I rely on OpenAI APIs?
 - Do I need to buy a cluster of NVIDIA A100s?
-- What is my moat if I’m relying on OpenAI APIs?
+• How can I gather and use feedback from users?
 - Should I be able to code a Transformer from scratch?
-- How can I gather feedback from users and use it to improve AI?
 - Jesus H. Christ, how am I supposed to test these damn things?
-
-<!-- - How do principles like compositionality, data structures, and recursion transfer? -->
-<!-- - What's the deal with linear-time attention mechanisms? -->
-<!-- - How do software engineering workflows like CI/CD and test-driven design transfer? -->
 
 ## What
 
-We have put together a two-day program
-based on emerging conventions in the LLM community and the latest research results
-to help you answer these questions and make the transition.
+We have put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you answer these questions and make the transition.
+
+**Our goal is to get you 100% ready to build and deploy LLM applications, and be caught up with state of the art in the field.**
 
 ### Tentative Schedule
 
@@ -82,7 +99,7 @@ to help you answer these questions and make the transition.
   <thead>
     <tr>
       <th></th>
-      <th><h3>Friday (April 21)</h3></th>
+      <th>Friday (April 21)</th>
     </tr>
   </thead>
   <tbody>
@@ -161,7 +178,7 @@ to help you answer these questions and make the transition.
   <thead>
     <tr>
       <th></th>
-      <th><h3>Saturday (April 22)</h3></th>
+      <th>Saturday (April 22)</th>
     </tr>
   </thead>
   <tbody>
@@ -314,7 +331,9 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
   </div>
 </div>
 
-Can't make it? Join 24K subscribers and we'll notify you when we eventually put the materials online.
+### Can't make it?
+
+Join 24K subscribers and we'll notify you when we eventually put the materials online.
 
 <!-- Begin Mailchimp Signup Form -->
 <div id="mc_embed_signup" class="newsletter-signup">
