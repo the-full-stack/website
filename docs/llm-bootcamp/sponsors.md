@@ -8,7 +8,7 @@ hide:
 
 We offer three tiers of sponsorship for the FSDL 2023 LLM Bootcamp:
 
-1. **Vector Tier** sponsors receive the following benefits: logo displayed on website and during conference, and verbal acknowledgement. Vector Tier sponsorships are available for $1000.
+1. **Vector Tier** sponsors receive the following benefits: logo displayed on website and during conference, verbal acknowledgement. Vector Tier sponsorships are available for $1000.
 
 - **Matrix Tier** sponsors receive all the benefits of the Vector Tier, plus: logo displayed in between talks, 6' table with two seats, and a conference registration. Matrix Tier sponsorships are available for $2500.
 
