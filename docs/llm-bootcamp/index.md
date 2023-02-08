@@ -88,12 +88,11 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
 ## Why
 
 We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
-
 Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LUI*s), which will revolutionize software just as GUIs did in the 90's.
 
-The way AI-powered apps are built is also changing:
+The way AI-powered apps are built is rapidly changing:
 
-- Before LLMs, an idea would bottleneck first on training models from scratch, then on scalable deployment.
+- Before LLMs, an idea would bottleneck on training models from scratch, and then bottleneck again on scalable deployment.
 - Now an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
 
 An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
@@ -102,9 +101,8 @@ Engineers are asking themselves:
 
 - Are there any good open-source LLMs?
 - What is my moat if I rely on OpenAI APIs?
-- Do I need to buy a cluster of NVIDIA A100s?
-- How can I gather and use feedback from users?
 - Is *Prompt Engineering* some kind of sick joke?
+- How can I gather and use feedback from users?
 - Should I be able to code a Transformer from scratch?
 - Jesus H. Christ, how am I supposed to test these damn things?
 
@@ -112,12 +110,14 @@ Engineers are asking themselves:
 
 We have put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you answer these questions and make the transition to building.
 
-**Our goal is to get you 100% ready to build and deploy LLM applications and caught up with the state of the art in the field.**
+**Our goal is to get you 100% ready to build and deploy LLM applications and 100% caught up with the state-of-the-art.**
 
 !!! question "What do I need to know already?"
     We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
 
-    Experience with at least one of machine learning, frontend, or backend will be helpful but not necessary.
+    Experience with at least one of machine learning, frontend, or backend will be very helpful.
+
+    And if none of the questions above resonate, this probably isn't for you.
 
 ### Tentative Schedule
 
@@ -164,8 +164,8 @@ We have put together a two-day program based on emerging best practices in the L
         <ul>
           <li>Learn how vendors like OpenAI, Cohere, and AI21 compare with each other and with OSS options like FLAN-T5 and GLM.
           <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
-          <li>Context engineering concepts: incorporating local information into LLM context, the wishlist-fulfillment architecture, long-term memory
-          <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt
+          <li>Context engineering concepts: incorporating local information, wishlist-fulfillment architecture, long-term memory
+          <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt, etc.
         </ul>
       </td>
     </tr>
@@ -174,9 +174,8 @@ We have put together a two-day program based on emerging best practices in the L
       <td>
         <strong>👀 Search 2.0</strong>
         <ul>
-          <li>How text embeddings enable semantic search everywhere
-          <li>Choosing between vector stores, like FAISS, Milvus, Pinecone, Weaviate, and Vespa
           <li>Jointly embedding multiple types of data for multi-modal semantic search
+          <li>Choosing between vector stores (e.g. FAISS, Milvus, Pinecone, Weaviate, Vespa)
         </ul>
       </td>
     </tr>
@@ -217,7 +216,7 @@ We have put together a two-day program based on emerging best practices in the L
       <td>
         <strong>🌳 Demo Garden</strong>
         <ul>
-          <li>Present your project
+          <li>Present your cool project
           <li>Review other cool projects
         </ul>
       </td>
@@ -241,10 +240,9 @@ We have put together a two-day program based on emerging best practices in the L
       <td>
         <strong>🏎️ Deploying and Learning in Production</strong>
         <ul>
-          <li>Deploying on CPUs vs GPUs
-          <li>Why "learn in prod" is the new "test in prod"
+          <li>Deploying on CPUs vs GPUs vs API-only
           <li>How to monitor models, trace chains, and record feedback
-          <li>Methods for learning from user data, like reinforcement learning from human feedback (RLHF), and from chains of LLMs, like Constitutional AI
+          <li>Methods for learning from users, like RLHF, and from chains of LLMs, like Constitutional AI
         </ul>
       </td>
     </tr>
@@ -254,7 +252,7 @@ We have put together a two-day program based on emerging best practices in the L
         <strong>🔮 Future Directions</strong>
         <ul>
           <li>Lightning tour of things that are surprisingly possible today
-          <li>What you should expect to be possible within a couple of years
+          <li>Building future-proof applications: what's around the corner
           <li>What are still hard research problems
         </ul>
       </td>
@@ -336,7 +334,9 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$1450</strike> 🐣<span style="color: orange;">$950</span></div>
     </div>
     <div>
-    <p style="height: 64px;">🐣 Early birds: Until we're ⅓ full, tickets are ⅓ off! 🐣 Sorry, we cannot accomodate any other discount requests.</p>
+      <p style="height: 3rem;">
+        🐣 Early birds: Until we're ⅓ full, tickets are ⅓ off! 🐣
+      </p>
       <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
@@ -346,7 +346,9 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$450</strike> 🐣<span style="color: orange;">$295</span></div>
     </div>
     <div>
-      <p style="height: 64px;">We know what it's like to be broke in school 😅. If you are a <strong>current</strong> full-time student or post-doc, enjoy this lower price.</p>
+      <p style="height: 3rem;">
+        If you are a <strong>current</strong> full-time student or post-doc, enjoy this lower price.
+      </p>
       <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
     </div>
   </div>

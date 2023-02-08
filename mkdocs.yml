@@ -75,6 +75,7 @@ extra:
 
 nav:
   - Home: index.md
+  - "LLM Bootcamp": "llm-bootcamp/index.md"
   - FSDL Course:
       - course/index.md
       - "FSDL 2022":
@@ -131,7 +132,6 @@ nav:
           - "FSDL 2019 (Online)": https://fall2019.fullstackdeeplearning.com
           - "FSDL 2019 (Bootcamp)": "/march2019.html"
           - "FSDL 2018 (Bootcamp)": "/august2018.html"
-  - "LLM Bootcamp": "llm-bootcamp/index.md"
   - Blog:
       - "blog/index.md"
   - "Cloud GPUs": "cloud-gpus/index.md"
