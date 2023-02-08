@@ -54,6 +54,11 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
     align-items: center;
     gap: 0.5rem;
   }
+
+  .logo--image {
+  border-radius: 50%;
+  border: 4px solid #4350af;
+}
 </style>
 
 # LLM Bootcamp
@@ -62,7 +67,7 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
     - In person in San Francisco on **April 21-22**
     - Learn **best practices and tools** for building LLM-powered apps
     - **Network** with a couple hundred other builders
-    - Get cloud credits from OpenAI and other [sponsors](#sponsors)
+    - Get **cloud credits** from OpenAI and other [sponsors](#sponsors)
 
   [Register now](#register){ .md-button .md-button--primary }
 </div>
@@ -73,9 +78,9 @@ We are at the cusp of a technology unlock of a magnitude not seen since the earl
 Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LUI*s), which will revolutionize software just as GUIs did in the 90's.
 
 The way AI-powered apps are built is also changing:
- 
-- Before LLMs, an idea would bottleneck first on training models from scratch, and then on scalable deployment.
-- Now, an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
+
+- Before LLMs, an idea would bottleneck first on training models from scratch, then on scalable deployment.
+- Now an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
 
 An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
 
@@ -91,14 +96,14 @@ Engineers are asking themselves:
 
 ## What
 
-We have put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you answer these questions and make the transition.
+We have put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you answer these questions and make the transition to building.
 
-**Our goal is to get you 100% ready to build and deploy LLM applications, and be caught up with state of the art in the field.**
+**Our goal is to get you 100% ready to build and deploy LLM applications and caught up with the state of the art in the field.**
 
 !!! question "What do I need to know already?"
     We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
 
-    Experience with at least one of machine learning, frontend, or backend will be helpful but not needed.
+    Experience with at least one of machine learning, frontend, or backend will be helpful but not necessary.
 
 ### Tentative Schedule
 
@@ -327,7 +332,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$450</strike> 🐣<span style="color: orange;">$295</span></div>
     </div>
     <div>
-      <p style="height: 64px;">We know what it's like to be broke in school 😅. If you are a <strong>current</strong> full-time student, enjoy this lower price.</p>
+      <p style="height: 64px;">We know what it's like to be broke in school 😅. If you are a <strong>current</strong> full-time student or post-doc, enjoy this lower price.</p>
       <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
     </div>
   </div>
@@ -391,23 +396,26 @@ We're grateful to a number of sponsors who are helping us make this event happen
 
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
   <div class="logo" markdown>
-    <a href="https://modal.com"><img src="/images/modal-logo.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
+    <a href="https://modal.com"><img src="/images/modal-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
     </div>
   <div class="logo" markdown>
-    <a href="https://banana.dev"><img src="/images/banana-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
+    <a href="https://banana.dev"><img src="/images/banana-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
     </div>
   <div class="logo" markdown>
-    <a href="https://lambdalabs.com/cloud"><img src="/images/lambdalabs-logo.png" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
+    <a href="https://lambdalabs.com/cloud"><img src="/images/lambdalabs-logo.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
     </div>
 </div>
 
-We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud) and the [OpenAI API](https://openai.com/api/).
+We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud), and the [OpenAI API](https://openai.com/api/).
 
 ### Direct Sponsors
 
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
   <div class="logo" markdown>
-    <a href="https://wandb.com"><img src="/images/wandb-logo.jpg" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
+    <a href="https://wandb.com"><img src="/images/wandb-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://gantry.io"><img src="/images/gantry-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
     </div>
 </div>
 
