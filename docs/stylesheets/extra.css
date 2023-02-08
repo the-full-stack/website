@@ -74,10 +74,15 @@ h2 {
 
 .tiers { 
   display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
+  grid-template-columns: repeat(1, 1fr); 
   grid-template-rows: 1fr; 
   grid-column-gap: 10px;
   grid-row-gap: 0px; 
+}
+@media (min-width: 768px) {
+  .tiers {
+    grid-template-columns: repeat(2, 1fr); 
+  }
 }
 
 .tier {

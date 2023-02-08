@@ -45,6 +45,8 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.jp
 
   .newsletter-signup #mc_embed_signup_scroll {
     display: flex;
+    flex-wrap: wrap;
+    gap: .5rem;
   }
 
   .newsletter-signup .mc-field-group {
@@ -92,6 +94,11 @@ Engineers are asking themselves:
 We have put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you answer these questions and make the transition.
 
 **Our goal is to get you 100% ready to build and deploy LLM applications, and be caught up with state of the art in the field.**
+
+!!! question "What do I need to know already?"
+    We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
+
+    Experience with at least one of machine learning, frontend, or backend will be helpful but not needed.
 
 ### Tentative Schedule
 
@@ -303,11 +310,6 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 ## Register
 
-!!! question "What do I need to know already?"
-    We aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
-
-    Experience with at least one of machine learning, frontend, or backend will be helpful but not needed.
-
 <div class="tiers">
   <div class="tier">
     <div class="tier--header">Regular</div>
@@ -315,7 +317,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$1450</strike> 🐣<span style="color: orange;">$950</span></div>
     </div>
     <div>
-    <p>🐣 Early birds: Until we're ⅓ full, tickets are ⅓ off! 🐣<br />Sorry, we cannot accomodate any other discount requests.</p>
+    <p style="height: 64px;">🐣 Early birds: Until we're ⅓ full, tickets are ⅓ off! 🐣 Sorry, we cannot accomodate any other discount requests.</p>
       <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
   </div>
@@ -325,13 +327,11 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <div><strike>$450</strike> 🐣<span style="color: orange;">$295</span></div>
     </div>
     <div>
-      <p>We know what it's like to be broke in school 😅.<br />If you are a <strong>current</strong> full-time student, enjoy a lower price.</p>
+      <p style="height: 64px;">We know what it's like to be broke in school 😅. If you are a <strong>current</strong> full-time student, enjoy this lower price.</p>
       <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
     </div>
   </div>
 </div>
-
-### Can't make it?
 
 <div class="admonition info">
   <p class="admonition-title">Can't make it?</p>
@@ -355,11 +355,11 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       </div>
     </form>
   </div>
-</div>
 
 
 <!--End mc_embed_signup-->
 
+<p>
 While you're at it, follow us on
 <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
     <span class="twemoji twitter" style="color: #1DA1F2">
@@ -380,6 +380,8 @@ While you're at it, follow us on
     </span>
     <strong>YouTube</strong>
 </a>!
+</p>
+</div>
 
 ## Sponsors
 
