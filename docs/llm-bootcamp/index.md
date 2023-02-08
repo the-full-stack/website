@@ -9,11 +9,15 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
   .admonition.abstract p, .admonition.abstract ul {
     font-size: large;
   }
-   [dir=ltr] .md-typeset .admonition.abstract .admonition-title {
+  [dir=ltr] .md-typeset .admonition.abstract .admonition-title {
     padding-left: 0.6rem;
+    text-align: center;
   }
   .admonition.abstract .admonition-title::before {
     display: none;
+  }
+  .md-typeset .admonition.abstract>:last-child {
+    margin-bottom: 1.25rem;
   }
 
   .md-typeset table:not([class]) {
@@ -62,15 +66,25 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
 </style>
 
 # LLM Bootcamp
-<div class="flex flex-col items-center justify-center" markdown>
-!!! abstract "🚀 Announcing Full Stack Deep Learning LLM Bootcamp 🚀"
-    - In person in San Francisco on **April 21-22**
-    - Learn **best practices and tools** for building LLM-powered apps
-    - **Network** with a couple hundred other builders
-    - Get **cloud credits** from OpenAI and other [sponsors](#sponsors)
 
-  [Register now](#register){ .md-button .md-button--primary }
+<div class="admonition abstract">
+  <p class="admonition-title">🚀 Announcing Full Stack Deep Learning LLM Bootcamp 🚀</p>
+  <div class="grid-2 items-center">
+    <ul>
+      <li>In person in San Francisco on <strong>April 21-22</strong></li>
+      <li>Learn <strong>best practices and tools</strong> for building LLM-powered apps</li>
+      <li><strong>Network</strong> with a couple hundred other builders</li>
+      <li>Get <strong>cloud credits</strong> from OpenAI and other <a href="#sponsors">sponsors</a></li>
+    </ul>
+    <div class="flex items-center justify-center">
+      <img src="/images/llm-bootcamp-overview.png" width="480px">
+    </div>
+  </div>
+  <div class="flex justify-center mb-2">
+    <a href="#register" class="md-button md-button--primary">Register now</a>
+  </div>
 </div>
+
 ## Why
 
 We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
@@ -413,10 +427,13 @@ We're partnering with compute vendors to offer free cloud credits to all attende
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
   <div class="logo" markdown>
     <a href="https://wandb.com"><img src="/images/wandb-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
-    </div>
+  </div>
   <div class="logo" markdown>
     <a href="https://gantry.io"><img src="/images/gantry-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
-    </div>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://volition.co"><img src="/images/volition-logo.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
+  </div>
 </div>
 
 Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?

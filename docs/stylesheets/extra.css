@@ -85,6 +85,10 @@ h2 {
   }
 }
 
+.md-typeset .admonition, .md-typeset details {
+  font-size: inherit;
+}
+
 .tier {
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
@@ -168,6 +172,10 @@ header.md-header {
   flex-direction: column;
 }
 
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
 .items-center {
   align-items: center;
 }
@@ -176,11 +184,28 @@ header.md-header {
   justify-content: center;
 }
 
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
 .font-large {
   font-size: large;
 }
 
-/* 3 columns if on desktop, 1 column if on mobile */
+.grid-2 {
+  display: grid; 
+  grid-template-columns: repeat(1, 1fr); 
+  grid-template-rows: 1fr; 
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem; 
+}
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 columns if on desktop, 2 column if on mobile */
 .grid-3 {
   display: grid; 
   grid-template-columns: repeat(2, 1fr); 
