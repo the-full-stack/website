@@ -77,7 +77,7 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
       <li>Get <strong>cloud credits</strong> from OpenAI and other <a href="#sponsors">sponsors</a></li>
     </ul>
     <div class="flex items-center justify-center">
-      <img src="/images/llm-bootcamp-overview.png" width="480px">
+      <img src="/images/fsdl-2023-overview.png" width="480px">
     </div>
   </div>
   <div class="flex justify-center mb-2">
@@ -291,20 +291,20 @@ As former academics, we always make sure that all of our materials become access
 
 ### Instructor Team
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(20rem, 1fr));  row-gap: 2rem; column-gap:3%;">
-  <div class="person" markdown>
+<div class="grid-2">
+  <div class="person">
     <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
     <div><strong>Charles Frye</strong> educates people in AI. He has worked on AI/ML tooling with Weights & Biases and Gantry since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
   </div>
-  <div class="person" markdown>
+  <div class="person">
     <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
-    <div markdown>
+    <div>
     <strong>Sergey Karayev</strong> builds AI-powered products as Co-founder of Volition. He co-founded Gradescope after getting a PhD in AI at UC Berkeley.
     </div>
   </div>
-  <div class="person" markdown>
+  <div class="person">
     <img src="/images/josh.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Josh Tobin">
-    <div markdown>
+    <div>
     <strong>Josh Tobin</strong> builds tooling for AI products as Co-founder and CEO of Gantry. He worked as a Research Scientist at OpenAI and received a PhD in AI at UC Berkeley.
     </div>
   </div>
@@ -312,8 +312,8 @@ As former academics, we always make sure that all of our materials become access
 
 ### Guest Talks
 
-<div style="display:grid;grid-template-columns:repeat(auto-fit, minmax(20rem, 1fr)); row-gap: 2rem; column-gap:5%;">
-  <div class="person" markdown>
+<div class="grid-2">
+  <div class="person">
     <img src="/images/harrison.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
     <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
   </div>
@@ -376,8 +376,6 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       </div>
     </form>
   </div>
-
-
 <!--End mc_embed_signup-->
 
 <p>
@@ -412,13 +410,13 @@ We're grateful to a number of sponsors who are helping us make this event happen
 
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
   <div class="logo" markdown>
-    <a href="https://modal.com"><img src="/images/modal-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
+    <a href="https://modal.com"><img src="/images/logo-modal.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
     </div>
   <div class="logo" markdown>
-    <a href="https://banana.dev"><img src="/images/banana-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
+    <a href="https://banana.dev"><img src="/images/logo-banana.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
     </div>
   <div class="logo" markdown>
-    <a href="https://lambdalabs.com/cloud"><img src="/images/lambdalabs-logo.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
+    <a href="https://lambdalabs.com/cloud"><img src="/images/logo-lambdalabs.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
     </div>
 </div>
 
@@ -428,13 +426,13 @@ We're partnering with compute vendors to offer free cloud credits to all attende
 
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
   <div class="logo" markdown>
-    <a href="https://wandb.com"><img src="/images/wandb-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
+    <a href="https://wandb.com"><img src="/images/logo-wandb.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
   </div>
   <div class="logo" markdown>
-    <a href="https://gantry.io"><img src="/images/gantry-logo.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
+    <a href="https://gantry.io"><img src="/images/logo-gantry.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
   </div>
   <div class="logo" markdown>
-    <a href="https://volition.co"><img src="/images/volition-logo.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
+    <a href="https://volition.co"><img src="/images/logo-volition.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
   </div>
 </div>
 
