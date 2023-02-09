@@ -92,7 +92,7 @@ Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LU
 
 The way AI-powered apps are built is rapidly changing:
 
-- Before LLMs, an idea would bottleneck on training models from scratch, and then bottleneck again on scalable deployment.
+- Before LLMs, an idea would bottleneck on training models from scratch, and then it'd bottleneck again on scalable deployment.
 - Now an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
 
 An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
@@ -317,13 +317,16 @@ As former academics, we always make sure that all of our materials become access
     <img src="/images/harrison.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
     <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
   </div>
+
+  <div class="person">
+    <img src="/images/unknown.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Placeholder" style="opacity:0.5">
+    <div>Follow us <a href="https://twitter.com/full_stack_dl">on Twitter</a> to catch the other speakers as they're revealed.</div>
+  </div>
 </div>
 
 ## When and Where
 
 The event will be **in-person** and run **all day** on **Friday, April 21, 2023** and **Saturday, April 22, 2023** at the [South San Francisco Conference Center](https://ssfconf.com/).
-
-<iframe src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d74597.27001002253!2d-122.39849142057383!3d37.69637486488224!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x808f79b47d5d81ad%3A0xfd9c1f0af6155a3d!2sSouth%20San%20Francisco%20Conference%20Center!5e0!3m2!1sen!2sus!4v1674094089226!5m2!1sen!2sus" width="600" height="450" style="border:0;" allowfullscreen="" loading="lazy" referrerpolicy="no-referrer-when-downgrade"></iframe>
 
 ## Register
 
@@ -353,6 +356,9 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
     </div>
   </div>
 </div>
+
+If you have any questions about the bootcamp, contact
+[`admin @ fullstackdeeplearning.com`](mailto:admin@fullstackdeeplearning.com).
 
 <div class="admonition info">
   <p class="admonition-title">Can't make it?</p>
