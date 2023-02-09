@@ -104,7 +104,7 @@ Engineers are asking themselves:
 - Is *Prompt Engineering* some kind of sick joke?
 - How can I gather and use feedback from users?
 - Should I be able to code a Transformer from scratch?
-- Jesus H. Christ, how am I supposed to test these damn things?
+- How exactly am I supposed to test these damn things?
 
 ## What
 
