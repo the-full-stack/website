@@ -77,10 +77,10 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
       <li>Get <strong>cloud credits</strong> from OpenAI and other <a href="#sponsors">sponsors</a></li>
     </ul>
     <div class="flex items-center justify-center">
-      <img src="/images/fsdl-2023-overview.png" width="480px">
+      <img alt="Venn diagram showing that FSDL is at the intersection of a course, a hackathon, and a conference." src="/images/fsdl-2023-overview.png" width="480px">
     </div>
   </div>
-  <div class="flex justify-center mb-2">
+  <div class="flex justify-center mt-8 mb-2">
     <a href="#register" class="md-button md-button--primary">Register now</a>
   </div>
 </div>
@@ -284,9 +284,9 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
 As former academics, we always make sure that all of our materials become accessible for free, right here on [this website](../course/2022).
 
 <div class="grid-3">
-  <img src="/images/group-march2019.jpg" width="480px">
-  <img src="/images/group-august2018.jpg" width="480px">
-  <img src="/images/group-november2019.jpg" width="480px">
+  <img alt="Group photo of the attendees of FSDL March 2019 bootcamp" src="/images/group-march2019.jpg" width="480px">
+  <img alt="Group photo of the attendees of FSDL August 2018 bootcamp" src="/images/group-august2018.jpg" width="480px">
+  <img alt="Group photo of the attendees of FSDL November 2019 bootcamp" src="/images/group-november2019.jpg" width="480px">
 </div>
 
 ### Instructor Team
@@ -443,5 +443,4 @@ We're partnering with compute vendors to offer free cloud credits to all attende
 </div>
 
 Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
-You can read more about tiers and benefits [here](./sponsors).
-Contact [`sponsorships @ fullstackdeeplearning.com`](mailto:sponsorships@fullstackdeeplearning.com) with inquiries.
+You can read more about [tiers and benefits of sponsorship](./sponsors).
