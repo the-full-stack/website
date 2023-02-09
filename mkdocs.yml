@@ -4,12 +4,12 @@ edit_uri: edit/main/docs
 
 site_name: Full Stack Deep Learning
 site_url: https://fullstackdeeplearning.com
-site_description: The community for people building ML-powered products.
+site_description: Community and courses for people building AI-powered products.
 site_author: Full Stack Deep Learning
 site_image: https://staging.fullstackdeeplearning.com/images/fsdl_og_image.jpg
 site_image_alt: Image explaining what Full Stack Deep learning covers.
 
-copyright: Full Stack Deep Learning, 2022
+copyright: Full Stack Deep Learning, 2023
 
 theme:
   custom_dir: overrides
@@ -75,7 +75,8 @@ extra:
 
 nav:
   - Home: index.md
-  - Course:
+  - "LLM Bootcamp": "llm-bootcamp/index.md"
+  - FSDL Course:
       - course/index.md
       - "FSDL 2022":
           - course/2022/index.md
@@ -133,7 +134,6 @@ nav:
           - "FSDL 2018 (Bootcamp)": "/august2018.html"
   - Blog:
       - "blog/index.md"
-  # - "Conference": "conference/index.md"
   - "Cloud GPUs": "cloud-gpus/index.md"
 
 watch:

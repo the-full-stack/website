@@ -4,20 +4,6 @@
 {% block tabs %}
 {{ super() }}
 <style>
-    /* To make the page title disappear for home */
-    .md-typeset h1 {
-        font-size: 0px;
-    }
-
-    .md-main {
-        flex-grow: 0
-    }
-
-    .md-main__inner {
-        display: flex;
-        height: 100%;
-    }
-
     .tx-container {
         padding-top: .0rem;
         background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%, #fff 99%);
@@ -54,7 +40,12 @@
     .tx-hero h1 {
         margin-bottom: 1rem;
         color: currentColor;
-        font-weight: 700
+        font-weight: 700;
+        font-size: 1.5rem;
+    }
+
+    .tx-hero h2 {
+        margin-top: 0;
     }
 
     .tx-hero__content {
@@ -108,7 +99,10 @@
     .tx-hero .md-button--primary {
         background-color: var(--md-primary-bg-color);
         color: #D47C2B;
-        border-color: var(--md-primary-bg-color)
+        border-color: #D47C2B;
+        border-width: 1px;
+        border-radius: 0.5rem;
+        padding: 0.75rem 1.5rem;
     }
 
     .tx-hero .md-button--secondary {
@@ -122,54 +116,6 @@
         background-color: #D47C2B;
         color: var(--md-default-bg-color);
         border-color: #D47C2B
-    }
-
-    .feature-item h2 svg {
-        height: 30px;
-        float: left;
-        margin-right: 10px;
-        transform: translateY(10%);
-    }
-
-    .top-hr {
-        margin-top: 42px;
-    }
-
-    .feature-item {
-        font-family: 'Lato', sans-serif;
-        font-weight: 300;
-        box-sizing: border-box;
-        padding: 0 15px;
-        word-break: break-word
-    }
-
-    .feature-item h2 {
-        color: #333;
-        font-weight: 300;
-        font-size: 25px;
-        white-space: nowrap;
-        overflow: hidden;
-        text-overflow: ellipsis;
-        line-height: normal;
-        margin-top: 20px;
-        margin-bottom: 10px;
-        font-family: inherit;
-    }
-
-    .feature-item p {
-        font-size: 16px;
-        line-height: 1.8em;
-        text-rendering: optimizeLegibility;
-        -webkit-font-smoothing: antialiased;
-        color: #111;
-        margin: 0 0 10px;
-        display: block;
-    }
-
-    @media screen and (max-width:30em) {
-        .tx-hero h1 {
-            font-size: 1.4rem
-        }
     }
 
     @media screen and (min-width:60em) {
@@ -204,81 +150,16 @@
         .tx-hero__light_content {
             margin-left: 2.0rem;
         }
-
     }
 
-    @media screen and (min-width:76.25em) {
-        .md-sidebar--primary {
-            display: none
-        }
-
-        .top-hr {
-            width: 100%;
-            display: flex;
-            max-width: 61rem;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0 .2rem;
-        }
-
-        .bottom-hr {
-            margin-top: 10px;
-            width: 100%;
-            display: flex;
-            max-width: 61rem;
-            margin-right: auto;
-            margin-left: auto;
-            padding: 0 .2rem;
-        }
-
-        .feature-item {
-            flex: 1;
-            min-width: 0;
-        }
-
-        .feature-item:hover {
-            background-color: #526cfe47;
-            border-radius: 3px;
-        }
+    .md-typeset .white-link {
+        color: white;
+        text-decoration: underline;
     }
 
-    .hr {
-        border-bottom: 1px solid #eee;
-        width: 100%;
-        margin: 20px 0;
-    }
-
-    .text-center {
-        text-align: center;
-        padding-right: 15px;
-        padding-left: 15px;
-        margin-right: auto;
-        margin-left: auto;
-        margin-top: 15px;
-        font-family: 'Lato', sans-serif;
-        font-size: 23px;
-        font-weight: 300;
-        padding-bottom: 10px;
-    }
-
-    .logos {
-        display: flex;
-        align-items: center;
-        justify-content: center;
-        flex-flow: row wrap;
-        margin: 0 auto;
-    }
-
-    .logos img {
-        flex: 1 1 auto;
-        padding: 25px;
-        max-height: 130px;
-        vertical-align: middle;
-    }
-
-    .hr-logos {
-        margin-top: 0;
-        margin-bottom: 30px;
+    .md-typeset .white-link:hover {
+        color: white;
+        text-decoration: underline;
     }
 </style>
 
@@ -292,11 +173,13 @@
             <div class="tx-hero__content">
                 <h1> {{ config.site_name }} </h1>
                 <h2>{{ config.site_description }}</h2>
-                <!-- <a href="/summit" class="md-button md-button--primary">
-                    Attend the summit
-                </a> -->
-                <a href="/course/2022" class="md-button">
-                    Check out the 2022 course
+                <a href="/llm-bootcamp" class="md-button md-button--primary">
+                    Register for LLM Bootcamp
+                </a>
+                <br />
+                <br />
+                Check out the <a href="/course/2022" class="white-link">
+                    2022 FSDL course
                 </a>
             </div>
         </div>
@@ -311,7 +194,7 @@
                 <img src="images/full_stack_description.png">
             </div>
             <div class="tx-hero__content">
-                <h2>Building an ML-powered product is much more than just training a model.</h2>
+                <h2>Building an AI-powered product is much more than just training a model.</h2>
                 <p>FSDL brings people together to learn and share best practices for the full stack:
                     from problem selection, data management, and picking a GPU to web deployment, monitoring, and
                     retraining.
@@ -349,7 +232,7 @@
     <div class="md-grid md-typeset">
         <div class="tx-hero">
             <div class="tx-hero__med_image_left" draggable="false">
-                <img src="images/august2018.jpg">
+                <img src="images/group-august2018.jpg">
             </div>
             <div class="tx-hero__right_content">
                 <h2>Summits</h2>
@@ -377,7 +260,8 @@
                     We share best practices, job opportunities, and cool projects.
                 </p>
                 <div style="text-align: center; margin-top: 1em;">
-                    <a class="md-button md-button--secondary" href="https://fsdl.me/join-discord">🚀 Join us on Discord 🚀</a>
+                    <a class="md-button md-button--secondary" href="https://fsdl.me/join-discord">🚀 Join us on Discord
+                        🚀</a>
                 </div>
             </div>
         </div>

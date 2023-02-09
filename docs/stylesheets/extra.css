@@ -72,8 +72,24 @@ h2 {
   }
 }
 
+.tiers { 
+  display: grid; 
+  grid-template-columns: repeat(1, 1fr); 
+  grid-template-rows: 1fr; 
+  grid-column-gap: 10px;
+  grid-row-gap: 0px; 
+}
+@media (min-width: 768px) {
+  .tiers {
+    grid-template-columns: repeat(2, 1fr); 
+  }
+}
+
+.md-typeset .admonition, .md-typeset details {
+  font-size: inherit;
+}
+
 .tier {
-  grid-column: span 1 / span 1;
   margin-top: 0.5rem;
   margin-bottom: 0.5rem;
   display: flex;
@@ -129,36 +145,9 @@ h2 {
   border: 1px solid #4350af;
 }
 
-.tx-hero h1 {
-  font-size: 2.4rem !important;
-}
-
-.tx-hero h2 {
-  font-size: 1.4rem !important;
-  margin-top: 1rem;
-}
-
-.tx-hero h3 {
-  font-size: 1.0rem !important;
-}
-
-.announce {
-  text-align: center;
-  background: var(--md-primary-fg-color)linear-gradient(to bottom, var(--md-primary-fg-color), var(--md-accent-fg-color) 99%, #fff 99%);
-  padding: 1em;
-}
-
-.announce .md-button {
-  margin-top: .5rem;
-  margin-right: .5rem;
-  color: var(--md-primary-bg-color);
-}
-
-
 .md-typeset table:not([class]) td {
   vertical-align: middle;
 }
-
 
 .announce .md-button--primary {
   background-color: var(--md-primary-bg-color);
@@ -173,4 +162,93 @@ h2 {
 header.md-header {
   z-index: 200;
   /* put header above HandsonTable headers, which are ~150 */
+}
+
+.flex {
+  display: flex;
+}
+
+.flex-col {
+  flex-direction: column;
+}
+
+.flex-wrap {
+  flex-wrap: wrap;
+}
+
+.items-center {
+  align-items: center;
+}
+
+.justify-center {
+  justify-content: center;
+}
+
+.mb-2 {
+  margin-bottom: 1rem;
+}
+
+.font-large {
+  font-size: large;
+}
+
+.grid-2 {
+  display: grid; 
+  grid-template-columns: repeat(1, 1fr); 
+  grid-template-rows: 1fr; 
+  grid-column-gap: 1rem;
+  grid-row-gap: 1rem; 
+}
+@media (min-width: 768px) {
+  .grid-2 {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+/* 3 columns if on desktop, 2 column if on mobile */
+.grid-3 {
+  display: grid; 
+  grid-template-columns: repeat(2, 1fr); 
+  grid-template-rows: 1fr; 
+  grid-column-gap: 0.5rem;
+  grid-row-gap: 0.5rem; 
+}
+@media (min-width: 768px) {
+  .grid-3 {
+    grid-template-columns: repeat(3, 1fr);
+  }
+}
+
+.subtitle {
+  font-size: 1.25rem;
+  font-weight: 500;
+  margin-bottom: 0.5rem;
+}
+
+.dark-bg {
+  background-color: #4051b5;
+  color: white;
+  padding: 1.5rem;
+}
+
+.dark-bg .md-button {
+  margin-top: .5rem;
+  margin-right: .5rem;
+  color: var(--md-primary-bg-color)
+}
+
+.dark-bg .md-button--primary {
+  background-color: var(--md-primary-bg-color);
+  color: #D47C2B;
+  border-color: #D47C2B;
+  border-width: 1px;
+  border-radius: 0.5rem;
+  padding: 0.75rem 1.5rem;
+}
+
+.dark-bg .md-button:focus,
+.dark-bg .md-button:hover {
+    background-color: #D47C2B;
+    color: var(--md-default-bg-color);
+    border-color: #D47C2B
 }
