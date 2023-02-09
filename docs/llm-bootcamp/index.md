@@ -346,7 +346,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
   <div class="tier">
     <div class="tier--header">Academic</div>
     <div class="tier--price">
-      <div><strike>$450</strike> 🐣<span style="color: orange;">$295</span></div>
+      <div>$450</div>
     </div>
     <div>
       <p style="height: 3rem;">
