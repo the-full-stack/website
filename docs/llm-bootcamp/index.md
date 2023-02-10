@@ -357,6 +357,10 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
   </div>
 </div>
 
+Need to expense the registration costs?
+Check out our [quick guide to reimbursement](./expense),
+including an LLM-generated email template for getting manager approval.
+
 If you have any questions about the bootcamp, contact
 [`admin @ fullstackdeeplearning.com`](mailto:admin@fullstackdeeplearning.com).
 We cannot honor requests for additional discounts.
