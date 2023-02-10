@@ -359,6 +359,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
 
 If you have any questions about the bootcamp, contact
 [`admin @ fullstackdeeplearning.com`](mailto:admin@fullstackdeeplearning.com).
+We cannot honor requests for additional discounts.
 
 <div class="admonition info">
   <p class="admonition-title">Can't make it?</p>
