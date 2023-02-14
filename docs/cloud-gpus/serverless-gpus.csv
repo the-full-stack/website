@@ -4,4 +4,5 @@ Modal,T4 (16GB),Turing,1,16,2,16,0.59,0.59
 Modal,A10G (24GB),Ampere,1,24,4,16,1.10,1.10
 Modal,A100 (40 GB),Ampere,1,40,85,12,1.90,1.90
 Replicate,T4 (16GB),Turing,1,16,4,8,1.98,1.98
-Replicate,A100 (40GB),Turing,1,40,8,40,8.28,8.28
+Replicate,A100 (40GB),Ampere,1,40,8,40,8.28,8.28
+DeepInfra,A100 (40GB),Ampere,1,40,8,40,1.80,1.80
