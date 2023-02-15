@@ -194,7 +194,10 @@ We have put together a two-day program based on emerging best practices in the L
     </tr>
     <tr>
       <td>5 pm</td>
-      <td>Invited Talk</td>
+      <td>
+        🎤 Invited Talk from<br/>
+        <strong>Peter Welinder</strong>: Director of Product at OpenAI
+      </td>
     </tr>
   </tbody>
 </table>
@@ -264,12 +267,17 @@ We have put together a two-day program based on emerging best practices in the L
     <tr>
     <td>4 pm</td>
       <td>
-        🦜🔗 <strong>Harrison Chase</strong>: Creator of LangChain
+        🎤 Invited Talk from<br />
+        <strong>Harrison Chase</strong>: Creator of LangChain
       </td>
     </tr>
     <tr>
-      <td>5 pm</td>
+      <td>4:45 pm</td>
       <td>Invited Talk</td>
+    </tr>
+    <tr>
+      <td>5:30 pm</td>
+      <td>Discussion Panel: Building a Defensible Business</td>
     </tr>
   </tbody>
 </table>
@@ -314,10 +322,13 @@ As former academics, we always make sure that all of our materials become access
 
 <div class="grid-2">
   <div class="person">
-    <img src="/images/harrison.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
+    <img src="/images/speaker-peter-welinder.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Peter Welinder">
+    <div><strong>Peter Welinder</strong> is VP of Product and Partnerships at OpenAI.</div>
+  </div>
+  <div class="person">
+    <img src="/images/speaker-harrison-chase.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
     <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
   </div>
-
   <div class="person">
     <img src="/images/unknown.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Placeholder" style="opacity:0.5">
     <div>Follow us <a href="https://twitter.com/full_stack_dl">on Twitter</a> to catch the other speakers as they're revealed.</div>
@@ -420,6 +431,9 @@ We're grateful to a number of sponsors who are helping us make this event happen
 ### Compute Credit Sponsors
 
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <!-- <div class="logo" markdown>
+    <a href="https://openai.com"><img src="/images/logo-openai.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of OpenAI"></a>
+  </div> -->
   <div class="logo" markdown>
     <a href="https://modal.com"><img src="/images/logo-modal.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
     </div>
@@ -431,7 +445,7 @@ We're grateful to a number of sponsors who are helping us make this event happen
     </div>
 </div>
 
-We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud), and the [OpenAI API](https://openai.com/api/).
+We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for and the [OpenAI API](https://openai.com/api/), [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud).
 
 ### Direct Sponsors
 
