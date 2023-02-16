@@ -432,6 +432,9 @@ We're grateful to a number of sponsors who are helping us make this event happen
 
 <div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
   <div class="logo" markdown>
+    <a href="https://openai.com"><img src="/images/logo-openai.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of OpenAI"></a>
+  </div>
+  <div class="logo" markdown>
     <a href="https://modal.com"><img src="/images/logo-modal.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
     </div>
   <div class="logo" markdown>
