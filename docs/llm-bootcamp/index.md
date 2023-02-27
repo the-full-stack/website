@@ -445,7 +445,7 @@ We're grateful to a number of sponsors who are helping us make this event happen
     </div>
 </div>
 
-We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for and the [OpenAI API](https://openai.com/api/), [Modal](https://modal.com), [banana.dev](https://banana.dev), the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud).
+We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for the [OpenAI API](https://openai.com/api/), [Modal](https://modal.com), [banana.dev](https://banana.dev), and the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud).
 
 ### Direct Sponsors
 
