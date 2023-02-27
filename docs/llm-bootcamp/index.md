@@ -160,7 +160,7 @@ We have put together a two-day program based on emerging best practices in the L
     <tr>
       <td>1 pm</td>
       <td>
-        <strong>✨ Learn to Spell: Effectively Using LLMs</strong>
+        <strong>✨ Learn to Spell: Prompt Engineering and Other Magic</strong>
         <ul>
           <li>Learn how vendors like OpenAI, Cohere, and AI21 compare with each other and with OSS options like FLAN-T5 and GLM.
           <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
@@ -184,7 +184,7 @@ We have put together a two-day program based on emerging best practices in the L
       <td>Coffee and networking</td>
     </tr>
     <tr>
-      <td>4 pm</td>
+      <td>345 pm</td>
       <td>
         👷‍♂️ <strong>askFSDL Walkthrough</strong>
           <ul>
@@ -193,7 +193,14 @@ We have put together a two-day program based on emerging best practices in the L
       </td>
     </tr>
     <tr>
-      <td>5 pm</td>
+      <td>430 pm</td>
+      <td>
+        🎤 Invited Talk from<br/>
+        <strong>Richard Socher</strong>: CEO and co-founder of you.com
+      </td>
+    </tr>
+    <tr>
+      <td>515 pm</td>
       <td>
         🎤 Invited Talk from<br/>
         <strong>Peter Welinder</strong>: Director of Product at OpenAI
@@ -277,7 +284,7 @@ We have put together a two-day program based on emerging best practices in the L
     </tr>
     <tr>
       <td>5:30 pm</td>
-      <td>Discussion Panel: Building a Defensible Business</td>
+      <td>Discussion Panel: <strong>Building a Defensible Business</strong></td>
     </tr>
   </tbody>
 </table>
@@ -318,7 +325,7 @@ As former academics, we always make sure that all of our materials become access
   </div>
 </div>
 
-### Guest Talks
+### Invited Talks
 
 <div class="grid-2">
   <div class="person">
@@ -330,8 +337,12 @@ As former academics, we always make sure that all of our materials become access
     <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
   </div>
   <div class="person">
+    <img src="/images/speaker-richard-socher.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Richard Socher">
+    <div><strong>Richard Socher</strong> is the co-founder and CEO of you.com.</div>
+  </div>
+  <div class="person">
     <img src="/images/unknown.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Placeholder" style="opacity:0.5">
-    <div>Follow us <a href="https://twitter.com/full_stack_dl">on Twitter</a> to catch the other speakers as they're revealed.</div>
+    <div>Follow us <a href="https://twitter.com/full_stack_dl">on Twitter</a> to catch other speakers as they're revealed.</div>
   </div>
 </div>
 
