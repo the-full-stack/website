@@ -356,11 +356,10 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
   <div class="tier">
     <div class="tier--header">Regular</div>
     <div class="tier--price">
-      <div><strike>$1450</strike> 🐣<span style="color: orange;">$950</span></div>
+      <div>$950</div>
     </div>
     <div>
       <p style="height: 3rem;">
-        🐣 Early birds: Until we're ⅓ full, tickets are ⅓ off! 🐣
       </p>
       <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
     </div>
