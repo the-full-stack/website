@@ -473,6 +473,9 @@ We're partnering with compute vendors to offer free cloud credits to all attende
     <a href="https://volition.co"><img src="/images/logo-volition.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
   </div>
   <div class="logo" markdown>
+    <a href="https://anyscale.com"><img src="/images/logo-anyscale.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
+  </div>
+  <div class="logo" markdown>
     <a href="https://distyl.ai"><img src="/images/logo-distyl.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Distyl AI"></a>
   </div>
 </div>
