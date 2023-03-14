@@ -453,9 +453,12 @@ We're grateful to a number of sponsors who are helping us make this event happen
   <div class="logo" markdown>
     <a href="https://lambdalabs.com/cloud"><img src="/images/logo-lambdalabs.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
     </div>
+  <div class="logo" markdown>
+    <a href="https://repl.it"><img src="/images/logo-replit.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Replit"></a>
+    </div>
 </div>
 
-We're partnering with compute vendors to offer free cloud credits to all attendees, including credits for the [OpenAI API](https://openai.com/api/), [Modal](https://modal.com), [banana.dev](https://banana.dev), and the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud).
+We're partnering with compute vendors to offer free cloud credits to all attendees, including $500 in credits for data-centric compute infrastructure on [Modal](https://modal.com), $50 in credits to query LLMs via the [OpenAI API](https://openai.com/api/),  $50 in credits for running serverless GPU jobs on [banana.dev](https://banana.dev), $50 in credits to run servers in the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud), and 1000 cycles on [repl.it](https://repl.it).
 
 ### Direct Sponsors
 
@@ -467,18 +470,32 @@ We're partnering with compute vendors to offer free cloud credits to all attende
     <a href="https://wandb.com"><img src="/images/logo-wandb.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
   </div>
   <div class="logo" markdown>
+    <a href="https://aws.amazon.com"><img src="/images/logo-aws.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Amazon Web Services"></a>
+  </div>
+  <div class="logo" markdown>
     <a href="https://gantry.io"><img src="/images/logo-gantry.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
   </div>
   <div class="logo" markdown>
     <a href="https://volition.co"><img src="/images/logo-volition.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
   </div>
   <div class="logo" markdown>
-    <a href="https://anyscale.com"><img src="/images/logo-anyscale.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
+    <a href="https://anyscale.com"><img src="/images/logo-anyscale.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Anyscale"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://twelvelabs.io"><img src="/images/logo-twelvelabs.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Twelve Labs"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://pinecone.io"><img src="/images/logo-pinecone.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Pinecone"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://you.com"><img src="/images/logo-you.com.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of you.com"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://banana.dev"><img src="/images/logo-banana.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Banana"></a>
   </div>
   <div class="logo" markdown>
     <a href="https://distyl.ai"><img src="/images/logo-distyl.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Distyl AI"></a>
   </div>
 </div>
 
-Interested in sponsoring this event so you can connect with the builders of the next generation of LLM-powered tech?
-You can read more about [tiers and benefits of sponsorship](./sponsors).
+We are deeply grateful to all of the sponsors who are helped us make this event more affordable for attendees.
