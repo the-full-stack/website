@@ -498,4 +498,4 @@ We're partnering with compute vendors to offer free cloud credits to all attende
   </div>
 </div>
 
-We are deeply grateful to all of the sponsors who are helped us make this event more affordable for attendees.
+We are deeply grateful to all of the sponsors who helped us make this event more affordable for attendees.
