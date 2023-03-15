@@ -280,7 +280,9 @@ We have put together a two-day program based on emerging best practices in the L
     </tr>
     <tr>
       <td>4:45 pm</td>
-      <td>Invited Talk</td>
+      <td>
+      🎤 Invited Talk from<br />
+      <strong>Reza Shabani</strong>: Training LLMs at repl.it</td>
     </tr>
     <tr>
       <td>5:30 pm</td>
@@ -341,8 +343,8 @@ As former academics, we always make sure that all of our materials become access
     <div><strong>Richard Socher</strong> is the co-founder and CEO of you.com.</div>
   </div>
   <div class="person">
-    <img src="/images/unknown.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Placeholder" style="opacity:0.5">
-    <div>Follow us <a href="https://twitter.com/full_stack_dl">on Twitter</a> to catch other speakers as they're revealed.</div>
+    <img src="/images/speaker-reza-shabani.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Reza Shabani">
+    <div><strong>Reza Shabani</strong> trains LLMs at repl.it.</div>
   </div>
 </div>
 
