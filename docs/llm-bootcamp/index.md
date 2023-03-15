@@ -473,6 +473,9 @@ We're partnering with compute vendors to offer free cloud credits to all attende
     <a href="https://aws.amazon.com"><img src="/images/logo-aws.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Amazon Web Services"></a>
   </div>
   <div class="logo" markdown>
+    <a href="https://bloombergbeta.com"><img src="/images/logo-bloomberg.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Bloomberg Beta"></a>
+  </div>
+  <div class="logo" markdown>
     <a href="https://gantry.io"><img src="/images/logo-gantry.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
   </div>
   <div class="logo" markdown>
