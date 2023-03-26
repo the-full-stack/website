@@ -5,25 +5,6 @@ hide:
     - navigation
 ---
 
-{% block extrahead %}
-<meta property="og:title" content="Cloud GPUs Comparison Table">
-<meta property="og:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ page.canonical_url }}">
-<meta property="og:image" content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg">
-<meta property="og:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
-<meta property="og:image:type" content="image/jpg" />
-<meta property="og:image:width" content="1200" />
-<meta property="og:image:height" content="630" />
-
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="full_stack_dl">
-<meta name="twitter:title" content="Cloud GPUs Comparison Table">
-<meta name="twitter:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
-<meta name="twitter:image" content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg">
-<meta name="twitter:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
-{% endblock %}
-
 <div class="author" markdown>
 By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated February 1, 2023.
 </div>
@@ -43,8 +24,6 @@ We have split the vendor offerings into two classes:
 
 Please [file an issue](https://github.com/full-stack-deep-learning/website/issues/new?assignees=sergeyk&labels=cloud-gpu&template=gpu-cloud-pricing-update.md&title=update+GPU+Cloud+Pricing) or make a pull request to [this repo](https://github.com/full-stack-deep-learning/website/), editing [this file](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/index.md) to update the text on this page or one of the CSV files to update the data: [`cloud-gpus.csv`](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv) for servers and [`serverless-gpus.csv`](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv) for serverless options.
 
-<center>*All prices are in $/hr.*</center>
-
 ## GPU Cloud Server Comparison
 
 ### Notes
@@ -52,6 +31,8 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 - GCP does not have GPU "instances" in the same way that AWS and Azure do. Instead, any suitable machine can be connected to a configuration of GPUs. We have selected machines that are roughly equivalent to AWS options.
 - Regions were set to be the west or central parts of the United States. GPU availability depends on the region.
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv).
+
+<center>*All prices are in $/hr.*</center>
 
 <div id="cloud-gpus-table"></div>
 

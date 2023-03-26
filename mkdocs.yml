@@ -76,7 +76,7 @@ extra:
 nav:
   - Home: index.md
   - "LLM Bootcamp": "llm-bootcamp/index.md"
-  - FSDL Course:
+  - Deep Learning Course:
       - course/index.md
       - "FSDL 2022":
           - course/2022/index.md
@@ -96,37 +96,37 @@ nav:
           - course/2022/lecture-8-teams-and-pm/index.md
           - course/2022/lecture-9-ethics/index.md
           - course/2022/project-showcase/index.md
-      - "FSDL 2021":
-          - spring2021/index.md
-          - spring2021/synchronous.md
-          - spring2021/projects.md
-          - spring2021/lecture-1.md
-          - spring2021/lab-1.md
-          - spring2021/notebook-1.md
-          - spring2021/lecture-2a.md
-          - spring2021/lecture-2b.md
-          - spring2021/lab-2.md
-          - spring2021/lecture-3.md
-          - spring2021/lab-3.md
-          - spring2021/lecture-4.md
-          - spring2021/lab-4.md
-          - spring2021/lecture-5.md
-          - spring2021/lecture-6.md
-          - spring2021/lab-5.md
-          - spring2021/lecture-7.md
-          - spring2021/lecture-8.md
-          - spring2021/lab-6.md
-          - spring2021/lecture-9.md
-          - spring2021/lab-7.md
-          - spring2021/lecture-10.md
-          - spring2021/lab-8.md
-          - spring2021/lecture-11.md
-          - spring2021/lab-9.md
-          - spring2021/lecture-12.md
-          - spring2021/lecture-13.md
-          - spring2021/panel.md
+          - course/2022/announcement.md
       - Older:
-          - older_courses.md
+          - "FSDL 2021":
+              - spring2021/index.md
+              - spring2021/synchronous.md
+              - spring2021/projects.md
+              - spring2021/lecture-1.md
+              - spring2021/lab-1.md
+              - spring2021/notebook-1.md
+              - spring2021/lecture-2a.md
+              - spring2021/lecture-2b.md
+              - spring2021/lab-2.md
+              - spring2021/lecture-3.md
+              - spring2021/lab-3.md
+              - spring2021/lecture-4.md
+              - spring2021/lab-4.md
+              - spring2021/lecture-5.md
+              - spring2021/lecture-6.md
+              - spring2021/lab-5.md
+              - spring2021/lecture-7.md
+              - spring2021/lecture-8.md
+              - spring2021/lab-6.md
+              - spring2021/lecture-9.md
+              - spring2021/lab-7.md
+              - spring2021/lecture-10.md
+              - spring2021/lab-8.md
+              - spring2021/lecture-11.md
+              - spring2021/lab-9.md
+              - spring2021/lecture-12.md
+              - spring2021/lecture-13.md
+              - spring2021/panel.md
           - "FSDL 2021 (Berkeley)": https://bit.ly/berkeleyfsdl
           - "FSDL 2020 (UW)": https://bit.ly/uwfsdl
           - "FSDL 2019 (Online)": https://fall2019.fullstackdeeplearning.com
