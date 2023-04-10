@@ -450,6 +450,9 @@ We're grateful to a number of sponsors who are helping us make this event happen
     <a href="https://modal.com"><img src="/images/logo-modal.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
     </div>
   <div class="logo" markdown>
+    <a href="https://replicate.com"><img src="/images/logo-replicate.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Replicate"></a>
+    </div>
+  <div class="logo" markdown>
     <a href="https://banana.dev"><img src="/images/logo-banana.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
     </div>
   <div class="logo" markdown>
@@ -460,7 +463,7 @@ We're grateful to a number of sponsors who are helping us make this event happen
     </div>
 </div>
 
-We're partnering with compute vendors to offer free cloud credits to all attendees, including $500 in credits for data-centric compute infrastructure on [Modal](https://modal.com), $50 in credits to query LLMs via the [OpenAI API](https://openai.com/api/),  $50 in credits for running serverless GPU jobs on [banana.dev](https://banana.dev), $50 in credits to run servers in the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud), and 1000 cycles on [repl.it](https://repl.it).
+We're partnering with compute vendors to offer free cloud credits to all attendees, including $1000 in credits for serverless model hosting on [Replicate](https://replicate.com), $500 in credits for data-centric compute infrastructure on [Modal](https://modal.com), $50 in credits to query LLMs via the [OpenAI API](https://openai.com/api/),  $50 in credits for running serverless GPU jobs on [banana.dev](https://banana.dev), $50 in credits to run servers in the [LambdaLabs GPU Cloud](https://lambdalabs.com/cloud), and 1000 cycles on [repl.it](https://repl.it).
 
 ### Direct Sponsors
 
