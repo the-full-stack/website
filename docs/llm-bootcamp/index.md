@@ -81,7 +81,7 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
     </div>
   </div>
   <div class="flex justify-center mt-8 mb-2">
-    <a href="#register" class="md-button md-button--primary">Register now</a>
+    <a href="#register" class="md-button">Sold Out</a>
   </div>
 </div>
 
@@ -363,7 +363,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
     <div>
       <p style="height: 3rem;">
       </p>
-      <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button md-button--primary">Register</a>
+      <a href="https://fsdl.me/2023-llmbc-reg" style="width: 100%" class="md-button">Sold Out</a>
     </div>
   </div>
   <div class="tier">
@@ -375,7 +375,7 @@ The event will be **in-person** and run **all day** on **Friday, April 21, 2023*
       <p style="height: 3rem;">
         If you are a <strong>current</strong> full-time student or post-doc, enjoy this lower price.
       </p>
-      <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Get discount code </a>
+      <a href="https://fsdl.me/2023-llmbc-academic" style="width: 100%" class="md-button md-button--secondary"> Sold Out </a>
     </div>
   </div>
 </div>
@@ -389,7 +389,7 @@ If you have any questions about the bootcamp, contact
 We cannot honor requests for additional discounts.
 
 <div class="admonition info">
-  <p class="admonition-title">Can't make it?</p>
+  <p class="admonition-title">Missed your chance to buy a ticket?</p>
   <p>Join 24K subscribers and we'll notify you when we eventually put the materials online.</p>
 
   <!-- Begin Mailchimp Signup Form -->
