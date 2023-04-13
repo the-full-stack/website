@@ -88,14 +88,14 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
 ## Why
 
 We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
-Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LUI*s), which will revolutionize software just as GUIs did in the 90's.
+Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LUI*s), which will revolutionize software just as GUIs did in the 90s.
 
 The way AI-powered apps are built is rapidly changing:
 
 - Before LLMs, an idea would bottleneck on training models from scratch, and then it'd bottleneck again on scalable deployment.
 - Now an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
 
-An entirely new ecosystem of tools and tool vendors has formed around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
+An entirely new ecosystem of techniques, tools, and tool vendors is forming around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
 
 Engineers are asking themselves:
 
@@ -119,7 +119,7 @@ We have put together a two-day program based on emerging best practices in the L
 
     And if none of the questions above resonate, this probably isn't for you.
 
-### Tentative Schedule
+### Schedule
 
 <table>
   <thead>
@@ -162,20 +162,19 @@ We have put together a two-day program based on emerging best practices in the L
       <td>
         <strong>✨ Learn to Spell: Prompt Engineering and Other Magic</strong>
         <ul>
-          <li>Learn how vendors like OpenAI, Cohere, and AI21 compare with each other and with OSS options like FLAN-T5 and GLM.
-          <li>Prompt engineering tips and tricks: few-shot examples, chain-of-thought, formatting
-          <li>Context engineering concepts: incorporating local information, wishlist-fulfillment architecture, long-term memory
-          <li>Software tools: LangChain, GPTIndex, Everyprompt, dust.tt, etc.
+          <li>Prompt techniques for language modeling, instruction, and agent simulation
+          <li>Arcana and curiosities from the world of prompt wizardry
+          <li>Heuristics for where LLMs can and cannot be effective
         </ul>
       </td>
     </tr>
     <tr>
       <td>2 pm</td>
       <td>
-        <strong>👀 Search 2.0</strong>
+        <strong>🔨 Augmented Language Models</strong>
         <ul>
-          <li>Jointly embedding multiple types of data for multi-modal semantic search
-          <li>Choosing between vector stores (e.g. FAISS, Milvus, Pinecone, Weaviate, Vespa)
+          <li>Moving beyond pure language modeling with tools and retrieval
+          <li>Choosing between vector stores/indices (e.g. FAISS, Milvus, Pinecone, Weaviate, Vespa) for long-term memory
         </ul>
       </td>
     </tr>
@@ -196,14 +195,14 @@ We have put together a two-day program based on emerging best practices in the L
       <td>430 pm</td>
       <td>
         🎤 Invited Talk from<br/>
-        <strong>Richard Socher</strong>: CEO and co-founder of you.com
+        <strong>Richard Socher</strong>: CEO and co-founder of You.com
       </td>
     </tr>
     <tr>
       <td>515 pm</td>
       <td>
         🎤 Invited Talk from<br/>
-        <strong>Peter Welinder</strong>: Director of Product at OpenAI
+        <strong>Peter Welinder</strong>: VP of Product at OpenAI
       </td>
     </tr>
   </tbody>
@@ -236,8 +235,9 @@ We have put together a two-day program based on emerging best practices in the L
       <td>
         <strong>🤷 UX for LUIs</strong>
         <ul>
-          <li>Review of the best AI-powered apps today
-          <li>Principles of successful design for AI-powered apps
+          <li>Emerging UX patterns in language user interfaces
+          <li>Principles of successful design, applied to AI-powered apps
+          <li>Case studies on the best AI-powered apps today
         </ul>
       </td>
     </tr>
@@ -248,10 +248,10 @@ We have put together a two-day program based on emerging best practices in the L
     <tr>
       <td>1 pm</td>
       <td>
-        <strong>🏎️ Deploying and Learning in Production</strong>
+        <strong>🏎️ LLMOps: Deployment and Learning in Production</strong>
         <ul>
-          <li>Deploying on CPUs vs GPUs vs API-only
-          <li>How to monitor models, trace chains, and record feedback
+          <li>How vendors like OpenAI, Anthropic, and Cohere compare with each other and with open-weights options like T5, Pythia, and LLaMA
+          <li>How to manage prompts and programs, monitor models, trace chains, and record feedback
           <li>Methods for learning from users, like RLHF, and from chains of LLMs, like Constitutional AI
         </ul>
       </td>
@@ -259,11 +259,12 @@ We have put together a two-day program based on emerging best practices in the L
     <tr>
       <td>2 pm</td>
       <td>
-        <strong>🔮 Future Directions</strong>
+        <strong>🔮 What's Next?</strong>
         <ul>
-          <li>Lightning tour of things that are surprisingly possible today
-          <li>Building future-proof applications: what's around the corner
-          <li>What are still hard research problems
+          <li> What are the limits of scale, large and small?
+          <li> Has multimodality unlocked general purpose robotics?
+          <li> Is AGI already here?
+          <li> Can we make it safe?
         </ul>
       </td>
     </tr>
@@ -390,7 +391,7 @@ We cannot honor requests for additional discounts.
 
 <div class="admonition info">
   <p class="admonition-title">Missed your chance to buy a ticket?</p>
-  <p>Join 24K subscribers and we'll notify you when we eventually put the materials online.</p>
+  <p>Join over 25K subscribers and we'll notify you when we eventually put the materials online.</p>
 
   <!-- Begin Mailchimp Signup Form -->
   <div id="mc_embed_signup" class="newsletter-signup">
