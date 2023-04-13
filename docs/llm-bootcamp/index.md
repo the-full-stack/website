@@ -145,7 +145,7 @@ We have put together a two-day program based on emerging best practices in the L
     <tr>
       <td>11 am</td>
       <td>
-        <strong>🗿 Foundations of Foundation Models</strong>
+        <strong>🗿 LLM Foundations</strong>
         <br />
       <ul>
         <li>Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
