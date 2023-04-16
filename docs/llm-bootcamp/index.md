@@ -183,7 +183,7 @@ We have put together a two-day program based on emerging best practices in the L
       <td>Coffee and networking</td>
     </tr>
     <tr>
-      <td>345 pm</td>
+      <td>3:45 pm</td>
       <td>
         👷‍♂️ <strong>askFSDL Walkthrough</strong>
           <ul>
@@ -192,14 +192,14 @@ We have put together a two-day program based on emerging best practices in the L
       </td>
     </tr>
     <tr>
-      <td>430 pm</td>
+      <td>4:30 pm</td>
       <td>
         🎤 Invited Talk from<br/>
         <strong>Richard Socher</strong>: CEO and co-founder of You.com
       </td>
     </tr>
     <tr>
-      <td>515 pm</td>
+      <td>5:15 pm</td>
       <td>
         🎤 Invited Talk from<br/>
         <strong>Peter Welinder</strong>: VP of Product at OpenAI
