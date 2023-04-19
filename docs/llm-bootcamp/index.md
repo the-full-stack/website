@@ -221,7 +221,7 @@ We have put together a two-day program based on emerging best practices in the L
       <td>Breakfast</td>
     </tr>
     <tr>
-      <td>10 am</td>
+      <td>9:30 - 10:45 am</td>
       <td>
         <strong>🌳 Demo Garden</strong>
         <ul>
