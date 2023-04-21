@@ -148,8 +148,9 @@ We have put together a two-day program based on emerging best practices in the L
         <strong>🗿 LLM Foundations</strong>
         <br />
       <ul>
-        <li>Learn the core concepts behind transformer architectures, self-supervised learning, and text generation
-        <li>Develop clear intuitions for model internals based on the latest work in "reverse engineering" LLMs
+        <li>Speed-run core ideas in ML
+        <li>Learn the core concepts behind Transformer architecture
+        <li>Get a tour of notable LLMs, their training data, and abilities
       </ul>
       </td>
     </tr>
@@ -201,7 +202,7 @@ We have put together a two-day program based on emerging best practices in the L
     <tr>
       <td>5:15 pm</td>
       <td>
-        🎤 Invited Talk from<br/>
+        🎤 A Fireside Chat with<br/>
         <strong>Peter Welinder</strong>: VP of Product at OpenAI
       </td>
     </tr>
@@ -235,8 +236,8 @@ We have put together a two-day program based on emerging best practices in the L
       <td>
         <strong>🤷 UX for LUIs</strong>
         <ul>
-          <li>Emerging UX patterns in language user interfaces
-          <li>Principles of successful design, applied to AI-powered apps
+          <li>Principles of successful UX design
+          <li>Emerging Language User Interface design patterns
           <li>Case studies on the best AI-powered apps today
         </ul>
       </td>
@@ -252,7 +253,7 @@ We have put together a two-day program based on emerging best practices in the L
         <ul>
           <li>How vendors like OpenAI, Anthropic, and Cohere compare with each other and with open-weights options like T5, Pythia, and LLaMA
           <li>How to manage prompts and programs, monitor models, trace chains, and record feedback
-          <li>Methods for learning from users, like RLHF, and from chains of LLMs, like Constitutional AI
+<!--           <li>Methods for learning from users, like RLHF, and from chains of LLMs, like Constitutional AI -->
         </ul>
       </td>
     </tr>
