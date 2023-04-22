@@ -288,7 +288,10 @@ We have put together a two-day program based on emerging best practices in the L
     </tr>
     <tr>
       <td>5:30 pm</td>
-      <td>Discussion Panel: <strong>Building a Defensible Business</strong></td>
+      <td>
+        Discussion Panel: <strong>Building a Defensible Business</strong><br />
+        With <strong>Sarah Catanzaro</strong> (Amplify Partners) and <strong>Matt Bornstein</strong> (a16z)
+      </td>
     </tr>
   </tbody>
 </table>
