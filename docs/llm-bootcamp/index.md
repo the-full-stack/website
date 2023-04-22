@@ -222,7 +222,7 @@ We have put together a two-day program based on emerging best practices in the L
       <td>Breakfast</td>
     </tr>
     <tr>
-      <td>9:30 - 10:45 am</td>
+      <td>9:30 - 10:30 am</td>
       <td>
         <strong>🌳 Demo Garden</strong>
         <ul>
@@ -232,7 +232,7 @@ We have put together a two-day program based on emerging best practices in the L
       </td>
     </tr>
     <tr>
-      <td>11 am</td>
+      <td>10:45 am</td>
       <td>
         <strong>🤷 UX for LUIs</strong>
         <ul>
