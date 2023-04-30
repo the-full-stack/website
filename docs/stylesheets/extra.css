@@ -72,20 +72,22 @@ h2 {
   }
 }
 
-.tiers { 
-  display: grid; 
-  grid-template-columns: repeat(1, 1fr); 
-  grid-template-rows: 1fr; 
+.tiers {
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 1fr;
   grid-column-gap: 10px;
-  grid-row-gap: 0px; 
+  grid-row-gap: 0px;
 }
+
 @media (min-width: 768px) {
   .tiers {
-    grid-template-columns: repeat(2, 1fr); 
+    grid-template-columns: repeat(2, 1fr);
   }
 }
 
-.md-typeset .admonition, .md-typeset details {
+.md-typeset .admonition,
+.md-typeset details {
   font-size: inherit;
 }
 
@@ -159,11 +161,6 @@ h2 {
   pointer-events: none;
 }
 
-header.md-header {
-  z-index: 200;
-  /* put header above HandsonTable headers, which are ~150 */
-}
-
 .flex {
   display: flex;
 }
@@ -193,12 +190,13 @@ header.md-header {
 }
 
 .grid-2 {
-  display: grid; 
-  grid-template-columns: repeat(1, 1fr); 
-  grid-template-rows: 1fr; 
+  display: grid;
+  grid-template-columns: repeat(1, 1fr);
+  grid-template-rows: 1fr;
   grid-column-gap: 1rem;
-  grid-row-gap: 1rem; 
+  grid-row-gap: 1rem;
 }
+
 @media (min-width: 768px) {
   .grid-2 {
     grid-template-columns: repeat(2, 1fr);
@@ -207,12 +205,13 @@ header.md-header {
 
 /* 3 columns if on desktop, 2 column if on mobile */
 .grid-3 {
-  display: grid; 
-  grid-template-columns: repeat(2, 1fr); 
-  grid-template-rows: 1fr; 
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  grid-template-rows: 1fr;
   grid-column-gap: 0.5rem;
-  grid-row-gap: 0.5rem; 
+  grid-row-gap: 0.5rem;
 }
+
 @media (min-width: 768px) {
   .grid-3 {
     grid-template-columns: repeat(3, 1fr);
@@ -248,7 +247,7 @@ header.md-header {
 
 .dark-bg .md-button:focus,
 .dark-bg .md-button:hover {
-    background-color: #D47C2B;
-    color: var(--md-default-bg-color);
-    border-color: #D47C2B
+  background-color: #D47C2B;
+  color: var(--md-default-bg-color);
+  border-color: #D47C2B
 }
