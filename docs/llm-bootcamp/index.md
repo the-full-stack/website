@@ -146,7 +146,7 @@ You'll get:
     you should either be comfortable with building the stack your project requires
     or willing to contribute your specific skills to a team.
 
-## Schedule
+## When
 
 | Date           | Lecture Release                    | Q&A Session     | Project              |
 |----------------|------------------------------------|-----------------|----------------------|
