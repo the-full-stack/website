@@ -226,7 +226,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
     </div>
     <ul class="tier--features emoji-bullets">
       <li><span class="emoji"> 📹 </span>Immediate access to lecture videos
-      <li><span class="emoji"> ❓ </span>Weekly Q&A, recorded live Monday mornings Pacific
+      <li><span class="emoji"> ❓ </span>Weekly Q&A, live Monday am Pacific & recorded
       <li><span class="emoji"> 🧑‍🏫 </span>Video conference office hours
       <li><span class="emoji"> 💲 </span>Compute credits
       <li><span class="emoji"> 🌐 </span>Private Discord forum with instructors and fellow builders
