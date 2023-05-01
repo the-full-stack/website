@@ -89,7 +89,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
       <li>Learn <strong>best practices and tools</strong> for building LLM-powered apps</li>
       <li>Lectures released via YouTube from <strong>May 22 - June 16</strong></li>
       <li>Join the <strong>project cohort</strong> and get feedback on your work</li>
-      <li>Get <strong>compute credits</strong> to help you build and run your LLM app</li>
+      <li>Get <strong>cloud credits</strong> from OpenAI and others to help you build and run your LLM app</li>
     </ul>
     <div class="flex items-center justify-center">
       <img alt="Venn diagram showing that FSDL is at the intersection of a course, a hackathon, and a conference." src="/images/fsdl-2023-overview.png" width="480px">
@@ -133,9 +133,9 @@ join our [project cohort](#register)!
 You'll get:
 
 - Immediate access to the lecture videos when the course starts
-- Compute credits to help you get your app off the ground
+- Compute credits, including $50 for the OpenAI API, to help you get your app off the ground
+- Developer access to ChatGPT plugins
 - Access to a private Discord, weekly Q&A sessions, and office hours
-
 
 !!! question "What do I need to know already?"
     The lectures aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
@@ -228,7 +228,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
       <li><span class="emoji"> 📹 </span>Immediate access to lecture videos
       <li><span class="emoji"> ❓ </span>Weekly Q&A, live Monday am Pacific & recorded
       <li><span class="emoji"> 🧑‍🏫 </span>Video conference office hours
-      <li><span class="emoji"> 💲 </span>Compute credits
+      <li><span class="emoji"> 💲 </span>Cloud credits and ChatGPT plugin access
       <li><span class="emoji"> 🌐 </span>Private Discord forum with instructors and fellow builders
       <li><span class="emoji"> 🎨 </span>Build a portfolio project and get feedback
       <li><span class="emoji"> 🏆 </span>Top projects featured on FSDL website and YouTube channel
