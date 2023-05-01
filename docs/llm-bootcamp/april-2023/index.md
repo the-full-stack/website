@@ -3,6 +3,7 @@ hide:
   - navigation
 description: April 21-22, San Francisco -- Best practices and tools for building LLM-powered apps
 embed_image: https://fullstackdeeplearning.com/llm-bootcamp/april-2023/opengraph.png
+title: April 2023 LLM Bootcamp
 ---
 
 <style>
@@ -65,7 +66,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/april-2023/opengraph
   }
 </style>
 
-# LLM Bootcamp
+# April 2023 LLM Bootcamp in San Francisco
 
 <div class="flex items-center justify-center">
   <img alt="Image of the instructors and attendees at the 2023 FSDL LLM Bootcamp" src="/images/llmbc-2023-audience.jpg" width="100%">
