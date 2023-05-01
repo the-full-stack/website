@@ -32,33 +32,6 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
     min-width: 5rem;
   }
 
-  .newsletter-signup {
-    display: flex;
-    align-items: center;
-  }
-
-  .newsletter-signup input[type="email"] {
-    width: 100%;
-    padding: 0.5rem;
-    border-radius: 0.25rem;
-    border-width: 1px;
-
-    border-style: solid;
-    color: black;
-  }
-
-  .newsletter-signup #mc_embed_signup_scroll {
-    display: flex;
-    flex-wrap: wrap;
-    gap: .5rem;
-  }
-
-  .newsletter-signup .mc-field-group {
-    display: flex;
-    align-items: center;
-    gap: 0.5rem;
-  }
-
   .emoji-bullets {
     list-style-type: none; /* Remove default bullet points */
     padding: 0; /* Remove default padding */
@@ -96,7 +69,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
     </div>
   </div>
   <div class="flex justify-center mt-8 mb-2">
-    <a href="#register" class="md-button">Register</a>
+    <a href="#register" class="md-button">Register Now!</a>
   </div>
 </div>
 
@@ -136,6 +109,12 @@ You'll get:
 - Compute credits, including $50 for the OpenAI API, to help you get your app off the ground
 - Developer access to ChatGPT plugins
 - Access to a private Discord, weekly Q&A sessions, and office hours
+
+We think the best software is built by teams,
+so we're encouraging cohort members to form groups to work on their projects.
+If you already have a team of three or more,
+[fill out this form](https://fsdl.me/llmbc-online-teams)
+for a 10% discount on registration!
 
 !!! question "What do I need to know already?"
     The lectures aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
@@ -207,6 +186,8 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
     <div class="tier--priceCaption" style="visibility: hidden;">
     <!-- hidden but present to align the two tiers -->
       <div><a href="https://fsdl.me/llmbc-online-academics">50% discount for students and post-docs</a></div>
+    <!-- hidden but present to align the two tiers -->
+      <div><a href="https://fsdl.me/llmbc-online-teams">10% discount for teams of three or more</a></div>
     </div>
     <ul class="tier--features emoji-bullets">
       <li><span class="emoji">📹</span> Lecture videos released on YouTube</li>
@@ -223,15 +204,16 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
     </div>
     <div class="tier--priceCaption">
       <div><a href="https://fsdl.me/llmbc-online-academics">50% discount for students and post-docs</a></div>
+      <div><a href="https://fsdl.me/llmbc-online-teams">10% discount for teams of three or more</a></div>
     </div>
     <ul class="tier--features emoji-bullets">
+      <li><span class="emoji"> 🎨 </span>Build a portfolio project and get feedback
+      <li><span class="emoji"> 🏆 </span>Top projects featured on FSDL website and YouTube channel
       <li><span class="emoji"> 📹 </span>Immediate access to lecture videos
       <li><span class="emoji"> ❓ </span>Weekly Q&A, live Monday am Pacific & recorded
       <li><span class="emoji"> 🧑‍🏫 </span>Video conference office hours
       <li><span class="emoji"> 💲 </span>Cloud credits and ChatGPT plugin access
       <li><span class="emoji"> 🌐 </span>Private Discord forum with instructors and fellow builders
-      <li><span class="emoji"> 🎨 </span>Build a portfolio project and get feedback
-      <li><span class="emoji"> 🏆 </span>Top projects featured on FSDL website and YouTube channel
       <li><span class="emoji"> 🔜 </span>Starts May 22nd, 2023
     </ul>
     <div style="margin-top: auto">
