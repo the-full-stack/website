@@ -67,8 +67,29 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
 
 # LLM Bootcamp
 
+!!! info "UPDATE"
+    ![Group photo of the bootcamp](/images/llm-bootcamp-group-photo.jpg)
+
+    We had a great time at the bootcamp with everyone!
+    We will be releasing the materials from the bootcamp soon -- stay tuned by signing up below.
+
+    <!-- Begin Mailchimp Signup Form -->
+    <link href="//cdn-images.mailchimp.com/embedcode/horizontal-slim-10_7.css" rel="stylesheet" type="text/css">
+    <div id="mc_embed_signup">
+    <form action="https://fullstackdeeplearning.us18.list-manage.com/subscribe/post?u=68cabce2e74766ca3d2c089d6&amp;id=79e6eb0052" method="post" id="mc-embedded-subscribe-form" name="mc-embedded-subscribe-form" class="validate" target="_blank" novalidate>
+        <div id="mc_embed_signup_scroll">
+        <input type="email" value="" name="EMAIL" class="email" id="mce-EMAIL" placeholder="email address" required>
+        <!-- real people should not fill this in and expect good things - do not remove this or risk form bot signups-->
+        <div style="position: absolute; left: -5000px;" aria-hidden="true"><input type="text" name="b_68cabce2e74766ca3d2c089d6_79e6eb0052" tabindex="-1" value=""></div>
+        <div class="clear"><input type="submit" value="Subscribe" name="subscribe" id="mc-embedded-subscribe" class="button"></div>
+        </div>
+    </form>
+    </div>
+    <!--End Mailchimp Signup Form -->
+
+
 <div class="admonition abstract">
-  <p class="admonition-title">🚀 Announcing Full Stack Deep Learning LLM Bootcamp 🚀</p>
+  <p class="admonition-title">🚀 Full Stack LLM Bootcamp 🚀</p>
   <div class="grid-2 items-center">
     <ul>
       <li>In person in San Francisco on <strong>April 21-22</strong></li>
@@ -81,9 +102,10 @@ embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.pn
     </div>
   </div>
   <div class="flex justify-center mt-8 mb-2">
-    <a href="#register" class="md-button">Sold Out</a>
+    <a href="#register" class="md-button">Sold Out!</a>
   </div>
 </div>
+
 
 ## Why
 
@@ -97,14 +119,14 @@ The way AI-powered apps are built is rapidly changing:
 
 An entirely new ecosystem of techniques, tools, and tool vendors is forming around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
 
-Engineers are asking themselves:
+<!-- Engineers are asking themselves:
 
 - Are there any good open-source LLMs?
 - What is my moat if I rely on OpenAI APIs?
 - Is *Prompt Engineering* some kind of sick joke?
 - How can I gather and use feedback from users?
 - Should I be able to code a Transformer from scratch?
-- How exactly am I supposed to test these damn things?
+- How exactly am I supposed to test these damn things? -->
 
 ## What
 
