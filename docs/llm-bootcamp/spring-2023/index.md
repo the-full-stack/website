@@ -40,20 +40,20 @@ title: LLM Bootcamp - Spring 2023
 
 <div class="grid-2" markdown>
 <div markdown>
-### [**Learn to Spell: Prompt Engineering and Other Magic**](prompt-engineering/)
+### <a href="prompt-engineering/">**Learn to Spell: Prompt Engineering**</a>
 
 <a href="prompt-engineering" class="video-card">
 ![Prompt Engineering Lecture Cover](prompt-engineering/cover.jpg)
 </a>
 <ul>
-  <li> High-level intuition: prompting as casting magic spells
+  <li> High-level intuitions for prompting
   <li> Tips and tricks for effective prompting: decomposition/chain-of-thought, self-criticism, ensembling
   <li> Gotchas: "few-shot learning" and tokenization
 </ul>
 </div>
 
 <div markdown>
-### [**LLMOps: Deployment and Learning in Production**](llmops/)
+### <a href="llmops/">**LLMOps**</a>
 <a href="llmops" class="video-card">
   ![LLMOps Lecture Cover](llmops/cover.jpg)
 </a>
