@@ -31,26 +31,6 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
     white-space: nowrap;
     min-width: 5rem;
   }
-
-  .emoji-bullets {
-    list-style-type: none; /* Remove default bullet points */
-    padding: 0; /* Remove default padding */
-  }
-
-  .emoji-bullets li {
-    position: relative; /* Create a positioning context for the emoji */
-    margin-bottom: 0.5rem; /* Add some space between list items */
-    padding-left: 0.5em
-  }
-
-  .emoji-bullets li::marker {
-  content: ''; /* Remove the default marker */
-  }
-
-  .emoji-bullets .emoji {
-    position: absolute; /* Position the emoji relative to the li element */
-    left: -1.5em; /* Move the emoji to the left of the list item */
-  }
 </style>
 
 # LLM Bootcamp
@@ -60,9 +40,8 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
   <div class="grid-2 items-center">
     <ul>
       <li>Learn <strong>best practices and tools</strong> for building LLM-powered apps</li>
-      <li>Lectures released via YouTube from <strong>May 22 - June 16</strong></li>
-      <li>Join the <strong>project cohort</strong> and get feedback on your work</li>
-      <li>Get <strong>cloud credits</strong> from OpenAI and others to help you build and run your LLM app</li>
+      <li>Cover the full stack <strong>from prompt engineering to user-centered design</strong>
+      <li>Get <strong>up to speed on the state-of-the-art</strong></li>
     </ul>
     <div class="flex items-center justify-center">
       <img alt="Venn diagram showing that FSDL is at the intersection of a course, a hackathon, and a conference." src="/images/fsdl-2023-overview.png" width="480px">
@@ -93,59 +72,25 @@ An entirely new ecosystem of techniques, tools, and tool vendors is forming arou
 
 ## What
 
-We're releasing the lecture materials from our
-[in-person LLM bootcamp](./april-2023/)
-for free, for everyone!
-We'll be posting them on
-[our YouTube channel](https://youtube.com/c/@FullStackDeepLearning)
-over the coming weeks.
+We put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you make the transition to building LLM apps with confidence.
+We ran that program as an in-person bootcamp in San Francisco on April 21-22.
 
-We'd like to use this opportunity to bring
-together people who are interested in building LLM-powered apps.
-And while there are lots of in-person one-day hackathons,
-there are fewer opportunities to work on projects
-online and over the course of multiple days or weeks.
+Now, we're releasing
+[the materials for free](spring-2023/),
+for everyone!
 
-So if you're interested in building an LLM app and
-getting feedback from experts,
-join our [project cohort](#register)!
-You'll get:
+They include lectures that cover
 
-- Immediate access to the lecture videos when the course starts
-- Compute credits, including $50 for the OpenAI API, to help you get your app off the ground
-- Developer access to ChatGPT plugins
-- Access to a private Discord, weekly Q&A sessions, and office hours
+  - intuition and techniques for [prompt engineering](spring-2023/prompt-engineering/)
+  - emerging practices in [LLMOps](spring-2023/llmops/)
+  - [user experience design](spring-2023/ux-for-luis) for language user interfaces
 
-We think the best software is built by teams,
-so we're encouraging cohort members to form groups to work on their projects.
-If you already have a team of three or more,
-[fill out this form](https://fsdl.me/llmbc-online-teams)
-for a 10% discount on registration!
+and [more](spring-2023/)!
 
 !!! question "What do I need to know already?"
     The lectures aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
 
     Experience with at least one of machine learning, frontend, or backend will be very helpful.
-
-    If you want to participate in the project cohort,
-    you should either be comfortable with building the stack your project requires
-    or willing to contribute your specific skills to a team.
-
-## When
-
-| Date           | Lecture Release                    | Q&A Session     | Project              |
-|----------------|------------------------------------|-----------------|----------------------|
-| **2023.05.22** | Launch an LLM App in an Hour       | Course Overview | -                    |
-| **2023.05.24** | LLM Foundations                    | -               | -                    |
-| **2023.05.25** | Learn to Spell: Prompt Engineering | -               | Proposal due         |
-| **2023.05.29** | Augmented LMs: Retrieval           | LLM Foundations | Feedback on proposal |
-| **2023.05.31** | Augmented LMs: Tools               | -               | -                    |
-| **2023.06.02** | askFSDL Project Overview           | -               | -                    |
-| **2023.06.05** | UX for LUIs                        | Augmented LMs   | -                    |
-| **2023.06.07** | LLMOps                             | -               | -                    |
-| **2023.06.09** | What's Next?                       | -               | Submit project       |
-| **2023.06.12** | -                                  | What's Next?    | Feedback on project  |
-| **2023.06.16** | -                                  | -               | Top projects present |
 
 ## Who
 
@@ -181,53 +126,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
   </div>
 </div>
 
-## Register
+##
 
-<div class="pricing">
-  <div class="tier">
-    <div class="tier--header">On-Your-Own</div>
-    <div class="tier--price">
-      $0.00
-    </div>
-    <div class="tier--priceCaption" style="visibility: hidden;">
-    <!-- hidden but present to align the two tiers -->
-      <div><a href="https://fsdl.me/llmbc-online-academics">50% discount for students and post-docs</a></div>
-    <!-- hidden but present to align the two tiers -->
-      <div><a href="https://fsdl.me/llmbc-online-teams">10% discount for teams of three or more</a></div>
-    </div>
-    <ul class="tier--features emoji-bullets">
-      <li><span class="emoji">📹</span> Lecture videos released on YouTube</li>
-    </ul>
-    <div style="margin-top: auto;">
-      <a href="http://eepurl.com/dxYwXj" style="width: 100%" class="md-button">Sign Up for Mailing List</a>
-    </div>
-
-  </div>
-  <div class="tier">
-    <div class="tier--header">Project Cohort</div>
-    <div class="tier--price">
-      <span>$495</span>
-    </div>
-    <div class="tier--priceCaption">
-      <div><a href="https://fsdl.me/llmbc-online-academics">50% discount for students and post-docs</a></div>
-      <div><a href="https://fsdl.me/llmbc-online-teams">10% discount for teams of three or more</a></div>
-    </div>
-    <ul class="tier--features emoji-bullets">
-      <li><span class="emoji"> 🎨 </span>Build a portfolio project and get feedback
-      <li><span class="emoji"> 🏆 </span>Top projects featured on FSDL website and YouTube channel
-      <li><span class="emoji"> 📹 </span>Immediate access to lecture videos
-      <li><span class="emoji"> ❓ </span>Weekly Q&A, live Monday am Pacific & recorded
-      <li><span class="emoji"> 🧑‍🏫 </span>Video conference office hours
-      <li><span class="emoji"> 💲 </span>Cloud credits and ChatGPT plugin access
-      <li><span class="emoji"> 🌐 </span>Private Discord forum with instructors and fellow builders
-      <li><span class="emoji"> 🔜 </span>Starts May 22nd, 2023
-    </ul>
-    <div style="margin-top: auto">
-      <a href="https://fsdl.me/llmbc-online-register" style="width: 100%" class="md-button">Register</a>
-    </div>
-  </div>
-</div>
-
-If you have any questions about the bootcamp, contact
+If you have any questions about the bootcamp materials, contact
 [`admin @ fullstackdeeplearning.com`](mailto:admin@fullstackdeeplearning.com).
-We cannot honor requests for additional discounts.
