@@ -3,7 +3,7 @@ hide:
   - navigation
 description: TODO
 embed_image: https://fullstackdeeplearning.com/llm-bootcamp/april-2023/opengraph.png
-title: Full Stack LLM Bootcamp - Spring 2023
+title: LLM Bootcamp - Spring 2023
 ---
 
 <style>
@@ -86,7 +86,7 @@ title: Full Stack LLM Bootcamp - Spring 2023
   }
 </style>
 
-# Full Stack LLM Bootcamp - Spring 2023
+# LLM Bootcamp - Spring 2023
 
 We have put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you answer these questions and make the transition to building.
 
