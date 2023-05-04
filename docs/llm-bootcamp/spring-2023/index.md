@@ -166,3 +166,71 @@ title: LLM Bootcamp - Spring 2023
     <div><strong>Reza Shabani</strong> trains LLMs at repl.it.</div>
   </div>
 </div>
+
+## Sponsors
+
+We are deeply grateful to all of the sponsors who helped make this event happen.
+
+### Direct Sponsors
+
+<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <div class="logo" markdown>
+    <a href="https://openai.com"><img src="/images/logo-openai.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of OpenAI"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://wandb.com"><img src="/images/logo-wandb.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Weights & Biases"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://aws.amazon.com"><img src="/images/logo-aws.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Amazon Web Services"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://bloombergbeta.com"><img src="/images/logo-bloomberg.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Bloomberg Beta"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://gantry.io"><img src="/images/logo-gantry.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Gantry"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://volition.co"><img src="/images/logo-volition.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Volition"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://anyscale.com"><img src="/images/logo-anyscale.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Anyscale"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://twelvelabs.io"><img src="/images/logo-twelvelabs.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Twelve Labs"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://pinecone.io"><img src="/images/logo-pinecone.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Pinecone"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://you.com"><img src="/images/logo-you.com.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of you.com"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://banana.dev"><img src="/images/logo-banana.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Banana"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://distyl.ai"><img src="/images/logo-distyl.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Distyl AI"></a>
+  </div>
+</div>
+
+### Compute Credit Sponsors
+
+<div style="display:grid;grid-template-columns: 30% 30% 30%; row-gap: 2rem; column-gap:3%;">
+  <div class="logo" markdown>
+    <a href="https://openai.com"><img src="/images/logo-openai.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of OpenAI"></a>
+  </div>
+  <div class="logo" markdown>
+    <a href="https://modal.com"><img src="/images/logo-modal.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Modal"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://replicate.com"><img src="/images/logo-replicate.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Replicate"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://banana.dev"><img src="/images/logo-banana.jpg" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of banana.dev"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://lambdalabs.com/cloud"><img src="/images/logo-lambdalabs.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of LambdaLabs"></a>
+    </div>
+  <div class="logo" markdown>
+    <a href="https://repl.it"><img src="/images/logo-replit.png" class="logo--image" height="160px" width="160px" loading="lazy" alt="Logo of Replit"></a>
+    </div>
+</div>
