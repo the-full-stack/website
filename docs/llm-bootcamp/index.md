@@ -56,7 +56,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
 # LLM Bootcamp
 
 <div class="admonition abstract">
-  <p class="admonition-title">🚀 Announcing FSDL Online LLM Bootcamp 🚀</p>
+  <p class="admonition-title">🚀 Full Stack LLM Bootcamp 🚀</p>
   <div class="grid-2 items-center">
     <ul>
       <li>Learn <strong>best practices and tools</strong> for building LLM-powered apps</li>
@@ -69,9 +69,15 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
     </div>
   </div>
   <div class="flex justify-center mt-8 mb-2">
-    <a href="#register" class="md-button">Register Now!</a>
+    <a href="spring-2023" class="md-button">Access the materials!</a>
   </div>
 </div>
+
+
+<div class="flex items-center justify-center">
+  <img alt="Image of the instructors and attendees at the 2023 FSDL LLM Bootcamp" src="/images/llmbc-2023-audience.jpg" width="100%">
+</div>
+
 
 ## Why
 
