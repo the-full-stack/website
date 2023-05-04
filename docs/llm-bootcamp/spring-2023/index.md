@@ -97,7 +97,7 @@ title: LLM Bootcamp - Spring 2023
 ![](launch-an-llm-app-in-one-hour/cover.jpg)
 </a>
   <ul>
-    <li> Why is now the right time to get into AI?
+    <li> Why is now the right time to build?
     <li> Techniques and tools for the tinkering and discovery phase: ChatGPT, LangChain, Colab
     <li> A simple stack for quickly launching augmented LLM applications
   </ul>
