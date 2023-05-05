@@ -75,7 +75,18 @@ extra:
 
 nav:
   - Home: index.md
-  - "LLM Bootcamp": "llm-bootcamp/index.md"
+  - "LLM Bootcamp":
+      - llm-bootcamp/index.md
+      - "Spring 2023":
+          - llm-bootcamp/spring-2023/index.md
+          - llm-bootcamp/spring-2023/prompt-engineering/index.md
+          - llm-bootcamp/spring-2023/llmops/index.md
+          - llm-bootcamp/spring-2023/ux-for-luis/index.md
+          - llm-bootcamp/spring-2023/augmented-language-models/index.md
+          - llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/index.md
+          - llm-bootcamp/spring-2023/llm-foundations/index.md
+          - llm-bootcamp/spring-2023/askfsdl-walkthrough/index.md
+          - llm-bootcamp/spring-2023/whats-next/index.md
   - Deep Learning Course:
       - course/index.md
       - "FSDL 2022":
