@@ -8,8 +8,12 @@ title: LLM Bootcamp - Spring 2023
 
 <style>
 
-  a.video-card:hover {
-    filter: brightness(.5);
+  a.video-card>img {
+    filter: drop-shadow(0 0 0.1rem #1c1c1c);
+    border-radius: 0.1rem;
+  }
+  a.video-card:hover>img {
+    filter: brightness(.85) drop-shadow(0 0 0.1rem #1c1c1c);
   }
 
   .logo--image {
@@ -35,9 +39,6 @@ title: LLM Bootcamp - Spring 2023
 - [🗿 LLM Foundations](#llm-foundations)
 - [👷‍♂️ askFSDL Walkthrough](#askfsdl-walkthrough)
 -->
-
-## Lectures
-
 <div class="grid-2" markdown>
 <div markdown>
 ### <a href="prompt-engineering/">**Learn to Spell: Prompt Engineering**</a>
@@ -126,7 +127,7 @@ title: LLM Bootcamp - Spring 2023
 </a>
   <ul markdown>
   - Walkthrough of a [GitHub repo](https://fsdl.me/askfsdl-github) for sourced Q&A with LLMs
-  - Try the bot out [in our Discord](https://fsdl.me/join-discord-askfsdl)
+  - Try it out via a [bot in our Discord](https://fsdl.me/join-discord-askfsdl)
   - Python project tooling, ETL/data processing, deployment on Modal, and monitoring with Gantry
   </ul>
 </div>
