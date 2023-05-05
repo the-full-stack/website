@@ -154,7 +154,7 @@ Please enjoy, and [email](mailto:team@fullstackdeeplearning.com) or [tweet](http
   </div>
   <div class="person">
     <img src="/images/speaker-reza-shabani.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Reza Shabani">
-    <div><strong>Reza Shabani</strong> trains LLMs at repl.it.</div>
+    <div><strong>Reza Shabani</strong> is Head of AI at Replit.</div>
   </div>
 </div>
 
