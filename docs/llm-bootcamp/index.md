@@ -52,40 +52,31 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
   </div>
 </div>
 
-
-<div class="flex items-center justify-center">
-  <img alt="Image of the instructors and attendees at the 2023 FSDL LLM Bootcamp" src="/images/llmbc-2023-audience.jpg" width="100%">
-</div>
-
-
 ## Why
 
-We are at the cusp of a technology unlock of a magnitude not seen since the early days of the Internet.
-Rapid AI progress is fulfilling the old promise of Language User Interfaces (*LUI*s), which will revolutionize software just as GUIs did in the 90s.
-
-The way AI-powered apps are built is rapidly changing:
+The way AI-powered apps are built has changed:
 
 - Before LLMs, an idea would bottleneck on training models from scratch, and then it'd bottleneck again on scalable deployment.
-- Now an MVP based on pretrained, promptable LLM models and APIs can be configured and serving users in an hour.
+- Now, a compelling MVP based on pretrained LLM models and APIs can be configured and serving users in an hour.
 
-An entirely new ecosystem of techniques, tools, and tool vendors is forming around LLMs and LUIs. Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
+An entirely new ecosystem of techniques, tools, and tool vendors is forming around LLMs.
+Even ML veterans are scrambling to orient themselves to what is now possible and figure out the most productive techniques and tools.
 
 ## What
 
-We put together a two-day program based on emerging best practices in the LLM community and the latest research results to help you make the transition to building LLM apps with confidence.
-We ran that program as an in-person bootcamp in San Francisco on April 21-22.
+We put together a two-day program based on emerging **best practices** and the **latest research results** to help you make the transition to building LLM apps with confidence.
 
-Now, we're releasing
-[the materials for free](spring-2023/),
-for everyone!
+We ran that program as an in-person bootcamp in San Francisco in April 2023.
+Now, we're releasing [the recorded lectures](spring-2023/), for free!
 
-They include lectures that cover
-
-  - intuition and techniques for [prompt engineering](spring-2023/prompt-engineering/)
-  - emerging practices in [LLMOps](spring-2023/llmops/)
-  - [user experience design](spring-2023/ux-for-luis) for language user interfaces
-
-and [more](spring-2023/)!
+- [✨ Learn to Spell: Prompt Engineering and Other Magic](spring-2023/prompt-engineering/)
+- [🏎️ LLMOps: Deployment and Learning in Production](spring-2023/llmops/)
+- [🤷 UX for Language User Interfaces](spring-2023/ux-for-luis/)
+- [🔨 Augmented Language Models](spring-2023/augmented-llms/)
+- [🚀 Launch an LLM App in One Hour](spring-2023/launch-an-llm-app/)
+- [🔮 What's Next?](spring-2023/whats-next/)
+- [🗿 LLM Foundations](spring-2023/llm-foundations/)
+- [👷‍♂️ askFSDL Walkthrough](spring-2023/askfsdl-walkthrough/)
 
 !!! question "What do I need to know already?"
     The lectures aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
@@ -93,6 +84,11 @@ and [more](spring-2023/)!
     Experience with at least one of machine learning, frontend, or backend will be very helpful.
 
 ## Who
+
+
+<div class="flex items-center justify-center">
+  <img alt="Image of the instructors and attendees at the 2023 FSDL LLM Bootcamp" src="/images/llmbc-2023-audience.jpg" width="100%">
+</div>
 
 We are <a href="https://fullstackdeeplearning.com">Full Stack Deep Learning</a>.
 We're a team of UC Berkeley PhD alumni with years of industry experience who are passionate about teaching people how to make deep neural networks work in the real world.

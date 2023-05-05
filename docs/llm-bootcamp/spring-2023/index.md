@@ -25,20 +25,10 @@ title: LLM Bootcamp - Spring 2023
 
 # LLM Bootcamp - Spring 2023
 
-<!--**Our goal is to get you 100% caught up to state-of-the-art and ready to build and deploy LLM apps, no matter what your level of experience with machine learning is.**-->
+**Our goal is to get you 100% caught up to state-of-the-art and ready to build and deploy LLM apps, no matter what your level of experience with machine learning is.**
 
-<!--
-**Lectures**
+Please enjoy, and [email](mailto:team@fullstackdeeplearning.com) or [tweet](https://twitter.com/full_stack_dl) us if you have any questions or feedback!
 
-- [✨ Learn to Spell: Prompt Engineering and Other Magic](#learn-to-spell-prompt-engineering)
-- [🏎️ LLMOps: Deployment and Learning in Production](#llmops-deployment-and-learning-in-production)
-- [🤷 UX for Language User Interfaces](#ux-for-language-user-interfaces)
-- [🔨 Augmented Language Models](#augmented-language-models)
-- [🚀 Launch an LLM App in One Hour](#launch-an-llm-app-in-one-hour)
-- [🔮 What's Next?](#whats-next)
-- [🗿 LLM Foundations](#llm-foundations)
-- [👷‍♂️ askFSDL Walkthrough](#askfsdl-walkthrough)
--->
 <div class="grid-2" markdown>
 <div markdown>
 ### <a href="prompt-engineering/">**Learn to Spell: Prompt Engineering**</a>
