@@ -11,3 +11,11 @@ description: Intuition and techniques for effective prompting
 Lecture by [Sergey Karayev](https://twitter.com/sergeykarayev).
 Published September 19, 2022.
 [Download slides](https://fsdl.me/2022-lecture-07-slides).
+
+## What is prompt engineering?
+
+## Prompts are magic spells
+
+## Common gotchas in prompt engineering
+
+## The emerging playbook for prompt engineering
