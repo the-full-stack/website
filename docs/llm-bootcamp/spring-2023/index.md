@@ -25,9 +25,12 @@ title: LLM Bootcamp - Spring 2023
 
 # LLM Bootcamp - Spring 2023
 
-**Our goal is to get you 100% caught up to state-of-the-art and ready to build and deploy LLM apps, no matter what your level of experience with machine learning is.**
+!!! question "What are the pre-requisites for this bootcamp?"
+    Our goal is to get you 100% caught up to state-of-the-art and ready to build and deploy LLM apps, no matter what your level of experience with machine learning is.
 
-Please enjoy, and [email](mailto:team@fullstackdeeplearning.com) or [tweet](https://twitter.com/full_stack_dl) us if you have any questions or feedback!
+    Please enjoy, and [email](mailto:team@fullstackdeeplearning.com) us, [tweet](https://twitter.com/full_stack_dl) us, or post in [our Discord](https://fsdl.me/join-discord) if you have any questions or feedback!
+
+## Lectures
 
 <div class="grid-2" markdown>
 <div markdown>
@@ -139,22 +142,25 @@ Please enjoy, and [email](mailto:team@fullstackdeeplearning.com) or [tweet](http
 
 ## Invited Talks
 
+??? info "We'll post the invited talks soon!"
+    Join the [mailing list](https://fsdl.me/email-signup) to be notified when they're available.
+
 <div class="grid-2">
   <div class="person">
     <img src="/images/speaker-peter-welinder.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Peter Welinder">
-    <div><strong>Peter Welinder</strong> is VP of Product and Partnerships at OpenAI.</div>
-  </div>
-  <div class="person">
-    <img src="/images/speaker-harrison-chase.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
-    <div><strong>Harrison Chase</strong> is the creator of LangChain.</div>
-  </div>
-  <div class="person">
-    <img src="/images/speaker-richard-socher.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Richard Socher">
-    <div><strong>Richard Socher</strong> is the co-founder and CEO of you.com.</div>
+    <div><strong>Peter Welinder</strong>, VP of Product and Partnerships at OpenAI, spoke about his career and the future of OpenAI.</div>
   </div>
   <div class="person">
     <img src="/images/speaker-reza-shabani.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Reza Shabani">
-    <div><strong>Reza Shabani</strong> is Head of AI at Replit.</div>
+    <div><strong>Reza Shabani</strong>, Head of AI at Replit, spoke about training LLMs from scratch.</div>
+  </div>
+  <div class="person">
+    <img src="/images/speaker-harrison-chase.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
+    <div><strong>Harrison Chase</strong>, the creator of LangChain, spoke about LLM-powered agents.</div>
+  </div>
+  <div class="person">
+    <img src="/images/speaker-richard-socher.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Richard Socher">
+    <div><strong>Richard Socher</strong>, the co-founder and CEO of you.com, talked about his past in NLP research and the future of search and language models.</div>
   </div>
 </div>
 
