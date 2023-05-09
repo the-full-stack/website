@@ -48,7 +48,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
     </div>
   </div>
   <div class="flex justify-center mt-8 mb-2">
-    <a href="spring-2023" class="md-button">Access the materials!</a>
+    <a href="spring-2023" class="md-button md-button--primary">Access the materials!</a>
   </div>
 </div>
 
