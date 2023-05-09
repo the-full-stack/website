@@ -71,7 +71,7 @@ extra:
     - icon: fontawesome/brands/youtube
       link: https://www.youtube.com/c/TheFullStack
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/the-full-stack/posts/
+      link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
   analytics:
     provider: google
     property: UA-118687450-1
