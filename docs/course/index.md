@@ -9,12 +9,11 @@ hide:
 The **Full Stack Deep Learning** course started in 2018, as a three-day bootcamp hosted on Berkeley campus.
 Since then, we've hosted several in-person bootcamps, online courses, and official university courses.
 
-## Most recent
+!!! note "Looking for the most recent FSDL materials?"
+    You can find them [here](./2022/index.md).
 
-The most recent materials are from our [Summer 2022](./2022/index.md) online course.
-
-## Older
-
+## Past Iterations
+- [FSDL 2022 (Online)](./2022/index.md): A fully online course, taught via YouTube, Crowdcast, and Discord.
 - [FSDL 2021 (Online)](../spring2021/index.md): Contemporaneous with the Berkeley course, we taught an online cohort course.
 - [FSDL 2021 (Berkeley)](https://bit.ly/berkeleyfsdl): Taught as a UC Berkeley undergrad course CS194-080 in Spring 2021
 - [FSDL 2020 (UW)](https://bit.ly/uwfsdl): Taught as University of Washington Professional Master's Program course CSEP 590C in Spring 2020
