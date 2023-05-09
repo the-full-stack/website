@@ -1,12 +1,17 @@
-{% extends "base.html" %} {% block extrahead %} {% set title = config.site_name
-%} {% if page and page.meta and page.meta.title %} {% set title = title ~ " - "
-~ page.meta.title %} {% elif page and page.title and not page.is_homepage %} {%
-set title = title ~ " - " ~ page.title %} {% endif %} {% set description =
-page.meta.description if page and page.meta and page.meta.description else
-config.site_description %} {% set embed_image = page.meta.embed_image if page
-and page.meta and page.meta.embed_image else config.site_image %} {% set
-embed_image_alt = page.meta.embed_image_alt if page and page.meta and
-page.meta.embed_image_alt else config.site_image_alt %}
+{% extends "base.html" %}
+
+{% block extrahead %}
+{% set title = config.site_name %}
+{% if page and page.meta and page.meta.title %}
+{% set title = title ~ " - " ~ page.meta.title %}
+{% elif page and page.title and not page.is_homepage %}
+{% set title = title ~ " - " ~ page.title %}
+{% endif %}
+{% set description = page.meta.description if page and page.meta and page.meta.description else config.site_description
+%}
+{% set embed_image = page.meta.embed_image if page and page.meta and page.meta.embed_image else config.site_image %}
+{% set embed_image_alt = page.meta.embed_image_alt if page and page.meta and page.meta.embed_image_alt else
+config.site_image_alt %}
 
 <meta property="og:title" content="{{ title }}" />
 <meta property="og:description" content="{{ description }}" />
@@ -27,7 +32,10 @@ page.meta.embed_image_alt else config.site_image_alt %}
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 
-{% endblock %} {% block announce %} Follow us on
+{% endblock %}
+
+{% block announce %}
+Follow us on
 <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
   <span class="twemoji twitter" style="color: #1da1f2">
     <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
@@ -59,7 +67,11 @@ and
 and for other emoji and icon purposes.
 Check them out here: https://github.com/twitter/twemoji
 -->
-{% endblock %} {% block content %} {{ super() }}
+{% endblock %}
+
+{% block content %}
+
+{{ super() }}
 
 <div id="emailModal">
   <div>
@@ -82,7 +94,11 @@ Check them out here: https://github.com/twitter/twemoji
     </p>
   </div>
 </div>
-{% endblock %} {% block scripts %} {{ super() }}
+{% endblock %}
+
+{% block scripts %}
+
+{{ super() }}
 <script>
   document.addEventListener("DOMContentLoaded", function () {
     function validateEmail(email) {
