@@ -1,5 +1,6 @@
 ---
 description: Why and how you can start building LLM apps right now
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/cover.jpg
 ---
 
 # Launch an LLM App in One Hour

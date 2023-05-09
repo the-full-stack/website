@@ -1,5 +1,6 @@
 ---
 description: ML fundamentals, the Transformer architecture, and notable LLMs
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/llm-foundations/cover.jpg
 ---
 
 # LLM Foundations

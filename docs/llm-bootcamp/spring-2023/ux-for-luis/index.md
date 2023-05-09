@@ -1,5 +1,6 @@
 ---
 description: Principles, patterns, and case studies in user-centered design for LUIs
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/ux-for-luis/cover.jpg
 ---
 
 # UX for Language User Interfaces

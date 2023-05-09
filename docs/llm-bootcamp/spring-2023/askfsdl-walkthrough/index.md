@@ -1,5 +1,6 @@
 ---
 description: Walkthrough of the askFSDL Discord bot project
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/askfsdl-walkthrough/cover.jpg
 ---
 
 # Project Walkthrough: askFSDL

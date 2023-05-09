@@ -1,5 +1,6 @@
 ---
 description: Operationalizing Large Language Models
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/llmops/cover.jpg
 ---
 
 # LLMOps

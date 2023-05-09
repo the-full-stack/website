@@ -1,5 +1,6 @@
 ---
 description: Intuition and techniques for effective prompting
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/prompt-engineering/cover.jpg
 ---
 
 # Learn to Spell: Prompt Engineering

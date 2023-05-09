@@ -1,5 +1,6 @@
 ---
 description: What's next for LLMs and AI?
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/whats-next/cover.jpg
 ---
 
 # What's Next?

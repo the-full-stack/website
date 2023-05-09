@@ -1,5 +1,6 @@
 ---
 description: Augmenting Language Models with external knowledge and tools
+embed_image: https://fullstackdeeplearning.com/llm-bootcamp/spring-2023/augmented-language-models/cover.jpg
 ---
 
 # Augmented Language Models
