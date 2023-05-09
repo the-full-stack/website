@@ -10,6 +10,16 @@ To deploy, push `main` branch to github and it will deploy via github action, or
 
 ## Processing lecture notes
 
+### 2023
+
+```bash
+cd lecture-notes-creator
+pipenv install
+# then run the 00-process-lectures.ipynb notebook in the pipenv environment
+```
+
+### 2022
+
 Download Google Doc as `input.docx`, then run:
 
 ```
