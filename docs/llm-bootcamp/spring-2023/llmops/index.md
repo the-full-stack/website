@@ -11,3 +11,5 @@ description: Operationalizing Large Language Models
 Lecture by [Josh Tobin](https://twitter.com/josh_tobin_).
 Published May 9, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-07).
+
+--8<-- "llm-bootcamp/spring-2023/llmops/chapter_summaries.md"

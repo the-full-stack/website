@@ -11,3 +11,5 @@ description: Augmenting Language Models with external knowledge and tools
 Lecture by [Josh Tobin](https://twitter.com/josh_tobin_).
 Published May 9, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-04).
+
+--8<-- "llm-bootcamp/spring-2023/augmented-language-models/chapter_summaries.md"

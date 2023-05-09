@@ -11,3 +11,5 @@ description: What's next for LLMs and AI?
 Lecture by [Charles Frye](https://twitter.com/charles_irl) and [Sergey Karayev](https://twitter.com/sergeykarayev).
 Published May 9, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-08).
+
+--8<-- "llm-bootcamp/spring-2023/whats-next/chapter_summaries.md"

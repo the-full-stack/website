@@ -14,3 +14,5 @@ Published May 9, 2023.
 View the [project repository](https://github.com/full-stack-deep-learning/ask-fsdl).
 
 Interact with the bot [on our Discord](https://fsdl.me/join-discord-askfsdl).
+
+--8<-- "llm-bootcamp/spring-2023/askfsdl-walkthrough/chapter_summaries.md"

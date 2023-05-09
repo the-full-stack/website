@@ -11,3 +11,5 @@ description: Why and how you can start building LLM apps right now
 Lecture by [Charles Frye](https://twitter.com/charles_irl).
 Published May 9, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-01).
+
+--8<-- "llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/chapter_summaries.md"

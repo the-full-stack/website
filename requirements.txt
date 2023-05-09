@@ -1,5 +1,4 @@
 mkdocs
 mkdocs-material
 mkdocs-blogging-plugin
-mkdocs-macros-plugin
 mkdocs-section-index

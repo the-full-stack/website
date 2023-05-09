@@ -11,3 +11,5 @@ description: Principles, patterns, and case studies in user-centered design for 
 Lecture by [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl).
 Published May 9, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-06).
+
+--8<-- "llm-bootcamp/spring-2023/ux-for-luis/chapter_summaries.md"

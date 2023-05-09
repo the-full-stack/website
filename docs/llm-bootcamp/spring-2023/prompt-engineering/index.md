@@ -12,10 +12,4 @@ Lecture by [Charles Frye](https://twitter.com/charles_irl).
 Published May 9, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-03).
 
-## What is prompt engineering?
-
-## Prompts are magic spells
-
-## Common gotchas in prompt engineering
-
-## The emerging playbook for prompt engineering
+--8<-- "llm-bootcamp/spring-2023/prompt-engineering/chapter_summaries.md"

@@ -11,3 +11,5 @@ description: ML fundamentals, the Transformer architecture, and notable LLMs
 Lecture by [Sergey Karayev](https://twitter.com/sergeykarayev).
 Published May 19, 2023.
 [Download slides](https://fsdl.me/2023-llmbc-slides-02).
+
+--8<-- "llm-bootcamp/spring-2023/llm-foundations/chapter_summaries.md"
