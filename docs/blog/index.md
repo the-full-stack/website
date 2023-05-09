@@ -4,7 +4,7 @@ hide:
     - navigation
 ---
 
-# FSDL Blog
+# The Full Stack Blog
 
 !!! info "Call for posts!"
     We're just getting started with blogging, as we

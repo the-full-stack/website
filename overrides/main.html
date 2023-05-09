@@ -81,7 +81,10 @@ Check them out here: https://github.com/twitter/twemoji
             <button id="submitEmail" class="md-button md-button--primary" >Submit</button>
         </p>
         <p>
-            <small>Our emails are short, relevant, and pragmatic. We typically send at most one email a week.</small>
+            <small>Our weekly emails are short, relevant, and pragmatic.</small>
+        </p>
+        <p>
+            <small><a href="javascript:void;">I'm already a subscriber.</a></small>
         </p>
     </div>
 </div>
@@ -102,7 +105,7 @@ document.addEventListener('DOMContentLoaded', function () {
         document.getElementById('submitEmail').addEventListener('click', function () {
             var email = document.getElementById('emailInput').value;
             if (validateEmail(email)) {
-                Cookies.set('email', email, { expires: 30 });
+                Cookies.set('email', email, { expires: 365 });
                 document.getElementById('emailModal').style.display = 'none';
             } else {
                 alert('Please enter a valid email.');

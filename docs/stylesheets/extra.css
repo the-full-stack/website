@@ -281,6 +281,10 @@ h2 {
   margin-bottom: 0;
 }
 
+#emailModal a {
+  color: #D47C2B;
+}
+
 #emailInput {
   color: #111;
   width: 100%;

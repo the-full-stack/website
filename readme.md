@@ -1,4 +1,4 @@
-# FSDL Website
+# The Full Stack Website
 
 This website came online in January 2021.
 
@@ -14,5 +14,5 @@ Download Google Doc as `input.docx`, then run:
 
 ```
 pandoc --extract-media=. input.docx -o output.md
-cat output.md | sed 's/^#/##/' | sed 's/^ *> //g' | sed s'/{.underline}//g' | sed 's/\[\[/[/g' | sed 's/\]\]/]/g' | sed 's/{width=.*}//g' | sed 's/{width=.*"$//' | sed 's/^height=.*"}//' > output.md 
+cat output.md | sed 's/^#/##/' | sed 's/^ *> //g' | sed s'/{.underline}//g' | sed 's/\[\[/[/g' | sed 's/\]\]/]/g' | sed 's/{width=.*}//g' | sed 's/{width=.*"$//' | sed 's/^height=.*"}//' > output.md
 ```

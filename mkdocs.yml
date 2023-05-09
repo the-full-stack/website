@@ -1,15 +1,15 @@
-repo_url: https://github.com/full-stack-deep-learning/website
-repo_name: FSDL Website
+repo_url: https://github.com/the-full-stack/website
+repo_name: The Full Stack Website
 edit_uri: edit/main/docs
 
-site_name: Full Stack Deep Learning
-site_url: https://fullstackdeeplearning.com
-site_description: Community and courses for people building AI-powered products.
-site_author: Full Stack Deep Learning
+site_name: The Full Stack
+site_url: https://thefullstack.com
+site_description: News, community, and courses for people building AI-powered products.
+site_author: The Full Stack
 site_image: https://staging.fullstackdeeplearning.com/images/fsdl_og_image.jpg
-site_image_alt: Image explaining what Full Stack Deep learning covers.
+site_image_alt: Image explaining what The Full Stack covers.
 
-copyright: Full Stack Deep Learning, 2023
+copyright: The Full Stack, 2023
 
 theme:
   custom_dir: overrides
@@ -67,9 +67,9 @@ extra:
     - icon: fontawesome/brands/twitter
       link: https://twitter.com/full_stack_dl
     - icon: fontawesome/brands/youtube
-      link: https://www.youtube.com/c/FullStackDeepLearning
+      link: https://www.youtube.com/c/TheFullStack
     - icon: fontawesome/brands/linkedin
-      link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
+      link: https://www.linkedin.com/company/the-full-stack/posts/
   analytics:
     provider: google
     property: UA-118687450-1
@@ -88,7 +88,7 @@ nav:
           - llm-bootcamp/spring-2023/ux-for-luis/index.md
           - llm-bootcamp/spring-2023/llmops/index.md
           - llm-bootcamp/spring-2023/whats-next/index.md
-  - Deep Learning Course:
+  - "Deep Learning Course":
       - course/index.md
       - "FSDL 2022":
           - course/2022/index.md

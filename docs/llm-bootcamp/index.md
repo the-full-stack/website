@@ -33,7 +33,7 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
   }
 </style>
 
-# LLM Bootcamp
+# Full Stack LLM Bootcamp
 
 <div class="admonition abstract">
   <p class="admonition-title">🚀 Full Stack LLM Bootcamp 🚀</p>
@@ -69,14 +69,14 @@ We put together a two-day program based on emerging **best practices** and the *
 We ran that program as an in-person bootcamp in San Francisco in April 2023.
 Now, we're releasing [the recorded lectures](spring-2023/), for free!
 
-- [✨ Learn to Spell: Prompt Engineering and Other Magic](spring-2023/prompt-engineering/)
-- [🏎️ LLMOps: Deployment and Learning in Production](spring-2023/llmops/)
-- [🤷 UX for Language User Interfaces](spring-2023/ux-for-luis/)
-- [🔨 Augmented Language Models](spring-2023/augmented-llms/)
-- [🚀 Launch an LLM App in One Hour](spring-2023/launch-an-llm-app/)
-- [🔮 What's Next?](spring-2023/whats-next/)
-- [🗿 LLM Foundations](spring-2023/llm-foundations/)
-- [👷‍♂️ askFSDL Walkthrough](spring-2023/askfsdl-walkthrough/)
+- ✨ [Learn to Spell: Prompt Engineering and Other Magic](spring-2023/prompt-engineering/)
+- 🏎️ [LLMOps: Deployment and Learning in Production](spring-2023/llmops/)
+- 🤷 [UX for Language User Interfaces](spring-2023/ux-for-luis/)
+- 🔨 [Augmented Language Models](spring-2023/augmented-llms/)
+- 🚀 [Launch an LLM App in One Hour](spring-2023/launch-an-llm-app/)
+- 🔮 [What's Next?](spring-2023/whats-next/)
+- 🗿 [LLM Foundations](spring-2023/llm-foundations/)
+- 👷‍♂️ [askFSDL Walkthrough](spring-2023/askfsdl-walkthrough/)
 
 !!! question "What do I need to know already?"
     The lectures aim to get anyone with experience programming in Python ready to start building applications that use LLMs.
