@@ -6,8 +6,15 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("emailModal").style.display = "none";
     });
 
-    document.getElementById("emailForm").addEventListener("submit", function () {
+    document.getElementById("emailForm").addEventListener("submit", function (event) {
       event.preventDefault();
+
+      var captchaResponse = grecaptcha.getResponse();
+      if(captchaResponse.length === 0) {
+        // The captcha is not yet completed
+        alert('Please verify that you are not a 🤖 before submitting');
+        return;
+      }
 
       var email = document.getElementById("emailInput").value;
       Cookies.set("email", email, { expires: 365 });
@@ -18,11 +25,11 @@ document.addEventListener("DOMContentLoaded", function () {
         method: "POST",
         headers: {
           "Content-Type": "application/json",
-          Accept: "application/json",
+          "Accept": "application/json",
         },
         body: JSON.stringify({
           "email": email,
-          "g-recaptcha-response": grecaptcha.getResponse(),
+          "g-recaptcha-response": captchaResponse,
         }),
       }).then(function (response) {
         console.log(response);
