@@ -1,87 +1,108 @@
 {% extends "main.html" %}
-
 {% block extrahead %}
 <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
-<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css">
+<link
+  rel="stylesheet"
+  href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
+/>
 
 <script>
-    function csvToArray(str, delimiter = ",") {
-        // From https://sebhastian.com/javascript-csv-to-array/
-        const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-        const rows = str.slice(str.indexOf("\n") + 1).split("\n");
-        const arr = rows.map(function (row) {
-            const values = row.split(delimiter);
-            const el = headers.reduce(function (object, header, index) {
-                object[header] = values[index];
-                return object;
-            }, {});
-            return el;
-        });
-        return arr;
-    }
+  function csvToArray(str, delimiter = ",") {
+    // From https://sebhastian.com/javascript-csv-to-array/
+    const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
+    const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+    const arr = rows.map(function (row) {
+      const values = row.split(delimiter);
+      const el = headers.reduce(function (object, header, index) {
+        object[header] = values[index];
+        return object;
+      }, {});
+      return el;
+    });
+    return arr;
+  }
 
-    (function () {
-        fetch("./cloud-gpus.csv").then((res) => res.text()).then((text) => {
-            const data = csvToArray(text);
-            const cloud = new Handsontable(document.getElementById('cloud-gpus-table'), {
-                data: data,
-                licenseKey: "non-commercial-and-evaluation",
-                colHeaders: Object.keys(data[0]),
-                dropdownMenu: true,
-                multiColumnSorting: true,
-                filters: true,
-                width: 'auto',
-                height: 'auto',
-                hiddenColumns: true,
-                manualColumnResize: true,
-                readOnly: true,
-            });
-        });
-    })();
+  (function () {
+    fetch("./cloud-gpus.csv")
+      .then((res) => res.text())
+      .then((text) => {
+        const data = csvToArray(text);
+        const cloud = new Handsontable(
+          document.getElementById("cloud-gpus-table"),
+          {
+            data: data,
+            licenseKey: "non-commercial-and-evaluation",
+            colHeaders: Object.keys(data[0]),
+            dropdownMenu: true,
+            multiColumnSorting: true,
+            filters: true,
+            width: "auto",
+            height: "auto",
+            hiddenColumns: true,
+            manualColumnResize: true,
+            readOnly: true,
+          }
+        );
+      });
+  })();
 
-    (function () {
-        fetch("./serverless-gpus.csv").then((res) => res.text()).then((text) => {
-            const data = csvToArray(text);
-            const serverless = new Handsontable(document.getElementById('serverless-gpus-table'), {
-                data: data,
-                licenseKey: "non-commercial-and-evaluation",
-                colHeaders: Object.keys(data[0]),
-                dropdownMenu: true,
-                multiColumnSorting: true,
-                filters: true,
-                width: 'auto',
-                height: 'auto',
-                hiddenColumns: true,
-                manualColumnResize: true,
-                readOnly: true,
-            });
-        });
-    })();
+  (function () {
+    fetch("./serverless-gpus.csv")
+      .then((res) => res.text())
+      .then((text) => {
+        const data = csvToArray(text);
+        const serverless = new Handsontable(
+          document.getElementById("serverless-gpus-table"),
+          {
+            data: data,
+            licenseKey: "non-commercial-and-evaluation",
+            colHeaders: Object.keys(data[0]),
+            dropdownMenu: true,
+            multiColumnSorting: true,
+            filters: true,
+            width: "auto",
+            height: "auto",
+            hiddenColumns: true,
+            manualColumnResize: true,
+            readOnly: true,
+          }
+        );
+      });
+  })();
 </script>
 
-<style>
-    .handsontable .htDimmed {
-        color: #000;
-    }
-    .handsontable {
-    z-index: 0;
-    }
-</style>
-
-<meta property="og:title" content="Cloud GPUs Comparison Table">
-<meta property="og:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
-<meta property="og:type" content="website">
-<meta property="og:url" content="{{ page.canonical_url }}">
-<meta property="og:image" content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg">
-<meta property="og:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
+<meta property="og:title" content="Cloud GPUs Comparison Table" />
+<meta
+  property="og:description"
+  content="Detailed comparison table of cloud GPU providers for deep learning."
+/>
+<meta property="og:type" content="website" />
+<meta property="og:url" content="{{ page.canonical_url }}" />
+<meta
+  property="og:image"
+  content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg"
+/>
+<meta
+  property="og:image:alt"
+  content="Screenshot of comparison table of cloud GPU providers for deep learning."
+/>
 <meta property="og:image:type" content="image/jpg" />
 <meta property="og:image:width" content="1200" />
 <meta property="og:image:height" content="630" />
 
-<meta name="twitter:card" content="summary_large_image">
-<meta name="twitter:site" content="full_stack_dl">
-<meta name="twitter:title" content="Cloud GPUs Comparison Table">
-<meta name="twitter:description" content="Detailed comparison table of cloud GPU providers for deep learning.">
-<meta name="twitter:image" content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg">
-<meta name="twitter:image:alt" content="Screenshot of comparison table of cloud GPU providers for deep learning.">
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="Cloud GPUs Comparison Table" />
+<meta
+  name="twitter:description"
+  content="Detailed comparison table of cloud GPU providers for deep learning."
+/>
+<meta
+  name="twitter:image"
+  content="https://fullstackdeeplearning.com/cloud-gpus/opengraph.jpg"
+/>
+<meta
+  name="twitter:image:alt"
+  content="Screenshot of comparison table of cloud GPU providers for deep learning."
+/>
 {% endblock %}
