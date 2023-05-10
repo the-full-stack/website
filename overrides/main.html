@@ -30,8 +30,8 @@ config.site_image_alt %}
 <meta name="twitter:image" content="{{ embed_image }}" />
 <meta name="twitter:image:alt" content="{{ embed_image_alt }}" />
 
-<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-<script src="https://www.google.com/recaptcha/api.js" async></script>
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js" async defer></script>
+<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 {% endblock %}
 
 {% block announce %}
@@ -76,13 +76,12 @@ Check them out here: https://github.com/twitter/twemoji
   <div>
     <h2>This course is <strong>free</strong> for subscribers.</h2>
     <p>
-      Enter your email below, and if you're not already subscribed, we'll be glad to add you!
-      You won't see this pop-up for a year after subscribing.
+      Enter your email to login if you're already a subscriber, or to subscribe if you're not.
     </p>
     <p>
       <form id="emailForm">
         <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
-        <div class="g-recaptcha" data-sitekey="6LcYcvclAAAAAGXipwIiAdtRaT0MmAL2WGckSJn7"></div>
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
         <button type="submit" id="submitEmail" class="md-button md-button--primary">
           Submit
         </button>
