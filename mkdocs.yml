@@ -3,7 +3,7 @@ repo_name: The Full Stack Website
 edit_uri: edit/main/docs
 
 site_name: The Full Stack
-site_url: https://thefullstack.com
+site_url: https://fullstackdeeplearning.com
 site_description: News, community, and courses for people building AI-powered products.
 site_author: The Full Stack
 site_image: https://staging.fullstackdeeplearning.com/images/opengraph.png
@@ -38,6 +38,8 @@ theme:
     repo: fontawesome/brands/git-alt
 extra_css:
   - stylesheets/extra.css
+extra_javascript:
+  - javascripts/email_modal.js
 # edit_uri: ""
 
 markdown_extensions:

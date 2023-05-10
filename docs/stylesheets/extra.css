@@ -189,6 +189,14 @@ h2 {
   font-size: large;
 }
 
+.flex {
+  display: flex;
+}
+
+.justify-between {
+  justify-content: space-between;
+}
+
 .grid-2 {
   display: grid;
   grid-template-columns: repeat(1, 1fr);
@@ -271,6 +279,7 @@ h2 {
   padding: 30px;
   border: 1px solid #888;
   width: 67%;
+  max-width: 960px;
 }
 
 #emailModal p, #emailModal h2 {
@@ -281,26 +290,15 @@ h2 {
   margin-bottom: 0;
 }
 
-#emailModal a {
-  color: #D47C2B;
-}
-
 #emailInput {
   color: #111;
   width: 100%;
   padding: 12px 20px;
-  margin: 8px 0 16px;
-  display: inline-block;
+  margin-bottom: 1rem;
   border: 1px solid #ccc;
-  box-sizing: border-box;
 }
 
 #submitEmail {
   width: 100%;
-  /* background-color: #4CAF50;
-  color: white;
-  padding: 14px 20px;
-  margin: 8px 0;
-  border: none;
-  cursor: pointer; */
+  margin-bottom: 1rem;
 }

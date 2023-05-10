@@ -2,7 +2,7 @@
 hide:
   - navigation
 description: Best practices and tools for building LLM-powered apps
-embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
+embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.png
 ---
 
 <style>

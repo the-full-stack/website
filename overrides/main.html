@@ -31,7 +31,7 @@ config.site_image_alt %}
 <meta name="twitter:image:alt" content="{{ embed_image_alt }}" />
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-
+<script src="https://www.google.com/recaptcha/api.js" async></script>
 {% endblock %}
 
 {% block announce %}
@@ -70,66 +70,31 @@ Check them out here: https://github.com/twitter/twemoji
 {% endblock %}
 
 {% block content %}
-
 {{ super() }}
 
 <div id="emailModal">
   <div>
     <h2>This course is <strong>free</strong> for subscribers.</h2>
     <p>
-      Enter your email below, and if you're not already subscribed, we'll add
-      you to our list of over 25K Full Stack Learners!
+      Enter your email below, and if you're not already subscribed, we'll be glad to add you!
+      You won't see this pop-up for a year after subscribing.
     </p>
     <p>
-      <input type="email" id="emailInput" placeholder="Email" />
-      <button id="submitEmail" class="md-button md-button--primary">
-        Submit
-      </button>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Submit
+        </button>
+        <div class="g-recaptcha" data-sitekey="6LcYcvclAAAAAGXipwIiAdtRaT0MmAL2WGckSJn7"></div>
+      </form>
     </p>
-    <p>
-      <small>Our weekly emails are short, relevant, and pragmatic.</small>
-    </p>
-    <p>
-      <small><a href="javascript:void;">I'm already a subscriber.</a></small>
-    </p>
+    <small><p class="flex justify-between">
+      <span>
+        Our weekly emails are short, relevant, and pragmatic.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I'll enter my email later</a>
+    </p></small>
   </div>
 </div>
-{% endblock %}
 
-{% block scripts %}
-
-{{ super() }}
-<script>
-  document.addEventListener("DOMContentLoaded", function () {
-    function validateEmail(email) {
-      var re =
-        /^(([^<>()[\]\\.,;:\s@"]+(\.[^<>()[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
-      return re.test(String(email).toLowerCase());
-    }
-
-    function showModal() {
-      document.getElementById("emailModal").style.display = "block";
-
-      document
-        .getElementById("submitEmail")
-        .addEventListener("click", function () {
-          var email = document.getElementById("emailInput").value;
-          if (validateEmail(email)) {
-            Cookies.set("email", email, { expires: 365 });
-            document.getElementById("emailModal").style.display = "none";
-          } else {
-            alert("Please enter a valid email.");
-          }
-        });
-    }
-
-    var urlPath = window.location.pathname;
-    if (
-      urlPath.startsWith("/llm-bootcamp/spring-2023") &&
-      !Cookies.get("email")
-    ) {
-      showModal();
-    }
-  });
-</script>
 {% endblock %}
