@@ -9,13 +9,6 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("emailForm").addEventListener("submit", function (event) {
       event.preventDefault();
 
-      var captchaResponse = grecaptcha.getResponse();
-      if(captchaResponse.length === 0) {
-        // The captcha is not yet completed
-        alert('Please verify that you are not a 🤖 before submitting');
-        return;
-      }
-
       var email = document.getElementById("emailInput").value;
       Cookies.set("email", email, { expires: 365 });
 
@@ -32,7 +25,7 @@ document.addEventListener("DOMContentLoaded", function () {
           "g-recaptcha-response": captchaResponse,
         }),
       }).then(function (response) {
-        console.log(response);
+        // console.log(response);
       }).catch(function (error) {
         console.error(error);
       });
