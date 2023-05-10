@@ -6,27 +6,6 @@ embed_image: https://fullstackdeeplearning.com/llm-bootcamp/opengraph.png
 title: LLM Bootcamp - Spring 2023
 ---
 
-<style>
-
-  a.video-card>img {
-    filter: drop-shadow(0 0 0.1rem #1c1c1c);
-    border-radius: 0.1rem;
-    aspect-ratio: 16 / 9;
-    width: 100%;
-    object-fit: cover;
-  }
-
-  a.video-card:hover>img {
-    filter: brightness(.85) drop-shadow(0 0 0.1rem #1c1c1c);
-  }
-
-  .logo--image {
-    border-radius: 50%;
-    border: 4px solid #4350af;
-  }
-
-</style>
-
 # LLM Bootcamp - Spring 2023
 
 !!! question "What are the pre-requisites for this bootcamp?"

@@ -5,34 +5,6 @@ description: Best practices and tools for building LLM-powered apps
 embed_image: https://staging.fullstackdeeplearning.com/llm-bootcamp/opengraph.png
 ---
 
-<style>
-  .admonition.abstract p, .admonition.abstract ul {
-    font-size: large;
-  }
-  [dir=ltr] .md-typeset .admonition.abstract .admonition-title {
-    padding-left: 0.6rem;
-    text-align: center;
-  }
-  .admonition.abstract .admonition-title::before {
-    display: none;
-  }
-  .md-typeset .admonition.abstract>:last-child {
-    margin-bottom: 1.25rem;
-  }
-
-  .md-typeset table:not([class]) {
-    font-size: inherit;
-    line-height: inherit;
-  }
-  .md-typeset table:not([class]) td {
-    vertical-align: top;
-  }
-  .md-typeset table:not([class]) th {
-    white-space: nowrap;
-    min-width: 5rem;
-  }
-</style>
-
 # Full Stack LLM Bootcamp
 
 <div class="admonition abstract">
