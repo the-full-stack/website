@@ -1,11 +1,13 @@
 # Synchronous Online Course
 
-For those of you who signed up, in addition to the lecture and lab materials released publicly, there are some major extras:
+We offered a paid cohort experience with the following additions to the lecture and lab materials released publicly:
 
 - Slack workspace for learners, instructors, and teaching assistants
 - Weekly graded assignment
 - Capstone project reviewed by peers and staff
 - Certificate of completion
+
+Check out the original [announcement page](https://fsdl-spring-21.landen.co/).
 
 ## How do I know if I am in this course?
 
