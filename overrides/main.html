@@ -31,6 +31,20 @@ config.site_image_alt %}
 <meta name="twitter:image:alt" content="{{ embed_image_alt }}">
 {% endblock %}
 
+<!-- TODO: Remove around 5/15/23 after making the change in mkdocs.yml -->
+{% block analytics %}
+{{ super() }}
+<!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+{% endblock %}
+
 {% block announce %}
 Follow us on
 <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">

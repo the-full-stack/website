@@ -72,6 +72,7 @@ extra:
   analytics:
     provider: google
     property: UA-118687450-1
+    # property: G-WQ93TYN7GT  # TODO: around 5/15/23, remove
 
 nav:
   - Home: index.md
