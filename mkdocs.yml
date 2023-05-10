@@ -63,6 +63,7 @@ plugins:
       template: overrides/custom-blog.html
       features:
         tags: {}
+  - macros
   - search
   - section-index # Make top-level nav sections that contain an index.md clickable
 
