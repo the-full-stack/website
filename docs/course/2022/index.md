@@ -1,11 +1,11 @@
 ---
-title: Course 2022
+title: FSDL 2022
 description: Full Stack Deep Learning course covers the full stack for building ML-powered products.
 hide:
   - toc
 ---
 
-# Full Stack Deep Learning - Course 2022
+# Full Stack Deep Learning - 2022 Course
 
 !!! info "Course Completed"
 
@@ -175,7 +175,3 @@ This course was only possible with the support of our amazing TAs (in alphabetic
 [lec8]: lecture-8-teams-and-pm/index.md
 [lec9]: lecture-9-ethics/index.md
 [proj]: project-showcase/index.md
-
-## Original Announcement Page
-
-[Original announcement page](./announcement.md)
