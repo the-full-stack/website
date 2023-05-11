@@ -126,7 +126,8 @@ title: LLM Bootcamp - Spring 2023
 ## Invited Talks
 
 ??? info "We'll post the invited talks soon!"
-    Join the [mailing list](https://fsdl.me/email-signup) to be notified when they're available.
+    We will be sure to email our subscribers as soon as these videos are available.
+    If you have not yet subscribed, you can do so [here](https://fsdl.me/email-signup).
 
 <div class="grid-2">
   <div class="person">
