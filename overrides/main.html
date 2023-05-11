@@ -30,6 +30,17 @@ config.site_image_alt %}
 <meta name="twitter:image" content="{{ embed_image }}" />
 <meta name="twitter:image:alt" content="{{ embed_image_alt }}" />
 
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      // No need to configure DSN here, it is already configured in the loader script
+      // You can add any additional configuration here
+      sampleRate: 0.5,
+    });
+  });
+</script>
+
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
 <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
 {% endblock %}
