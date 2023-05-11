@@ -29,8 +29,8 @@ document.addEventListener("DOMContentLoaded", function () {
       var email = document.getElementById("emailInput").value;
       Cookies.set(EMAIL_ADDRESS_COOKIE, email, { expires: 365 });
 
-      var turnstileResponseElement = document.getElementsByName('cf-turnstile-resonse')[0];
-      var turnstileResponse = (turnstileResponseElement !== undefined) ? turnstileResponseElement.value : null;
+      // var turnstileResponseElement = document.getElementsByName('cf-turnstile-resonse')[0];
+      // var turnstileResponse = (turnstileResponseElement !== undefined) ? turnstileResponseElement.value : null;
 
       fetch("https://submit-form.com/ozySmLmG", {
         method: "POST",
@@ -40,7 +40,7 @@ document.addEventListener("DOMContentLoaded", function () {
         },
         body: JSON.stringify({
           "email": email,
-          "cf-turnstile-response": turnstileResponse,
+          // "cf-turnstile-response": turnstileResponse,
         }),
       }).then(function (response) {
         // console.log(response);

@@ -34,15 +34,13 @@ config.site_image_alt %}
 <script>
   Sentry.onLoad(function() {
     Sentry.init({
-      // No need to configure DSN here, it is already configured in the loader script
-      // You can add any additional configuration here
-      sampleRate: 0.5,
+      sampleRate: 1,
     });
   });
 </script>
 
 <script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
-<script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
 {% endblock %}
 
 {% block announce %}
