@@ -21,6 +21,15 @@
   flex-wrap: wrap;
 }
 
+.gap-x-4 {
+  column-gap: 2rem;
+}
+
+.gap-x-8 {
+  column-gap: 4rem;
+}
+
+
 .items-center {
   align-items: center;
 }
@@ -29,8 +38,60 @@
   justify-content: center;
 }
 
+.m-auto {
+  margin: auto;
+}
+
+.m-0 {
+  margin: 0px;
+}
+
 .mb-2 {
   margin-bottom: 1rem;
+}
+
+.mb-4 {
+  margin-bottom: 2rem;
+}
+
+.mb-8 {
+  margin-bottom: 4rem;
+}
+
+.mt-4 {
+  margin-top: 2rem;
+}
+
+.mx-4 {
+  margin-left: 2rem;
+  margin-right: 2rem;
+}
+
+.mx-8 {
+  margin-left: 4rem;
+  margin-right: 4rem;
+}
+
+.pb-2 {
+  padding-bottom: 1rem;
+}
+
+.pt-2 {
+  padding-top: 1rem;
+}
+
+.pt-4 {
+  padding-top: 2rem;
+}
+
+.px-4 {
+  padding-left: 2rem;
+  padding-right: 2rem;
+}
+
+.py-4 {
+  padding-top: 2rem;
+  padding-bottom: 2rem;
 }
 
 .font-large {
@@ -78,38 +139,6 @@
   font-size: 1.25rem;
   font-weight: 500;
   margin-bottom: 0.5rem;
-}
-
-/*
-  dark mode
-*/
-
-.dark-bg {
-  background-color: #4051b5;
-  color: white;
-  padding: 1.5rem;
-}
-
-.dark-bg .md-button {
-  margin-top: 0.5rem;
-  margin-right: 0.5rem;
-  color: var(--md-primary-bg-color);
-}
-
-.dark-bg .md-button--primary {
-  background-color: var(--md-primary-bg-color);
-  color: #d47c2b;
-  border-color: #d47c2b;
-  border-width: 1px;
-  border-radius: 0.5rem;
-  padding: 0.75rem 1.5rem;
-}
-
-.dark-bg .md-button:focus,
-.dark-bg .md-button:hover {
-  background-color: #d47c2b;
-  color: var(--md-default-bg-color);
-  border-color: #d47c2b;
 }
 
 /*
@@ -390,11 +419,42 @@ h2 {
 }
 
 .announce .md-button--primary {
-  background-color: var(--md-primary-bg-color);
-  color: #d47c2b;
-  border-color: var(--md-primary-bg-color);
+  background-color: var(--md-accent-fg-color);
+  color: var(--md-primary-bg-color);
+  border-color: var(--md-accent-fg-color);
+  border-radius: 0.5rem;
 }
 
 .disabled-button {
   pointer-events: none;
+}
+
+.primary-swapped-bg-fg {
+  background-color: var(--md-primary-fg-color);
+  color: var(--md-primary-bg-color)
+}
+
+.primary-swapped-bg-fg a {
+  color: var(--md-accent-fg-color)
+}
+
+/* swap order of elements on desktop */
+.swap-last {
+  order: 9999;
+}
+
+@media (min-width: 768px) {
+  .swap-last {
+    order: -9999;
+  }
+}
+
+.swap-first {
+  order: -9999;
+}
+
+@media (min-width: 768px) {
+  .swap-first {
+    order: 9999;
+  }
 }
