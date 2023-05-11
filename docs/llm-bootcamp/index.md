@@ -44,7 +44,7 @@ Now, we're releasing [the recorded lectures](spring-2023/), for free!
 - ✨ [Learn to Spell: Prompt Engineering and Other Magic](spring-2023/prompt-engineering/)
 - 🏎️ [LLMOps: Deployment and Learning in Production](spring-2023/llmops/)
 - 🤷 [UX for Language User Interfaces](spring-2023/ux-for-luis/)
-- 🔨 [Augmented Language Models](spring-2023/augmented-lms/)
+- 🔨 [Augmented Language Models](spring-2023/augmented-language-models/)
 - 🚀 [Launch an LLM App in One Hour](spring-2023/launch-an-llm-app-in-one-hour/)
 - 🔮 [What's Next?](spring-2023/whats-next/)
 - 🗿 [LLM Foundations](spring-2023/llm-foundations/)
