@@ -3,8 +3,8 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("emailModal").style.display = "block";
 
     document.getElementById("emailModalCloseLink").addEventListener("click", function () {
-      var inOneMinute = new Date(new Date().getTime() + 1 * 60 * 1000);
-      Cookies.set("email", "later", { expires: inOneMinute });
+      var inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
+      Cookies.set("email", "later", { expires: inTwelveHours });
       document.getElementById("emailModal").style.display = "none";
     });
 
