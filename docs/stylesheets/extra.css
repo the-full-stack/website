@@ -420,11 +420,15 @@ h2 {
   }
 }
 
-.announce .md-button--primary {
-  background-color: var(--md-accent-fg-color);
+.primary-swapped-bg-fg .md-button--primary {
+  background-color: #D17A28;
   color: var(--md-primary-bg-color);
-  border-color: var(--md-accent-fg-color);
+  border-color: #D17A28;
   border-radius: 0.5rem;
+}
+
+.primary-swapped-bg-fg .md-button--primary:hover {
+  color: var(--md-primary-bg-color)
 }
 
 .disabled-button {
@@ -437,7 +441,7 @@ h2 {
 }
 
 .primary-swapped-bg-fg a {
-  color: var(--md-accent-fg-color)
+  color: var(--md-primary-bg-color)
 }
 
 /* swap order of elements on desktop */
