@@ -27,6 +27,7 @@ hide:
   <div class="announce grid-2 items-center primary-swapped-bg-fg pb-2 m-0">
     <img src="images/pancakes.svg" style="max-height: 12rem; auto;" draggable="false" class="swap-first m-auto">
     <div class="mb-8 mx-4 swap-last">
+      <h1></h1>
       <h2><strong>{{ config.site_description }}</strong></h2>
       <p><br></p>
       <a href="/llm-bootcamp" class="md-button md-button--primary">
