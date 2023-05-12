@@ -1,11 +1,8 @@
 {% extends "main.html" %}
-{% block extrahead %}
+{% block libs %}
+{{ super() }}
+<link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
-<link
-  rel="stylesheet"
-  href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css"
-/>
-
 <script>
   function csvToArray(str, delimiter = ",") {
     // From https://sebhastian.com/javascript-csv-to-array/
@@ -70,7 +67,10 @@
       });
   })();
 </script>
+{% endblock %}
 
+
+{% block extrahead %}
 <meta property="og:title" content="Cloud GPUs Comparison Table" />
 <meta
   property="og:description"

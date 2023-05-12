@@ -78,8 +78,7 @@ extra:
     - icon: fontawesome/brands/linkedin
       link: https://www.linkedin.com/company/full-stack-deep-learning/posts/
   analytics:
-    provider: google
-    property: G-WQ93TYN7GT
+    provider: custom
 
 nav:
   - Home: index.md
