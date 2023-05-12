@@ -17,7 +17,7 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("emailModal").style.display = "none";
 
       var numTimes = parseInt(Cookies.get(LATER_INTENT_COOKIE) || 0, 10);
-      if (numTimes > 0) {
+      if (numTimes > 1) {
         Cookies.set(LATER_INTENT_COOKIE, numTimes + 1, { expires: 365 });
       } else {
         var inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
@@ -51,6 +51,14 @@ document.addEventListener("DOMContentLoaded", function () {
       }).catch(function (error) {
         console.error(error);
       });
+
+      // Send Google Analytics GA4 event for email address submission in the Spring 2023 LLM Bootcamp modal.
+      if (typeof gtag !== "undefined") {
+        gtag('event', 'email_address_submission', {
+          'event_category': 'engagement',
+          'event_label': 'Spring 2023 LLM Bootcamp',
+        });
+      }
     });
   }
 
