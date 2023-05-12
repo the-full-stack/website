@@ -6,7 +6,7 @@ Show a modal asking for an email address to see the content, unless the user has
 */
 document.addEventListener("DOMContentLoaded", function () {
   const EMAIL_ADDRESS_COOKIE = "emailAddress";
-  const LATER_INTENT_COOKIE = "laterIntent";
+  const ALREADY_SUBSCRIBER_COOKIE = "laterIntent";
   const MAILING_LIST_COOKIE = "mailingList";
 
   function showModal() {
@@ -16,12 +16,11 @@ document.addEventListener("DOMContentLoaded", function () {
     document.getElementById("emailModalCloseLink").addEventListener("click", function () {
       document.getElementById("emailModal").style.display = "none";
 
-      var numTimes = parseInt(Cookies.get(LATER_INTENT_COOKIE) || 0, 10);
-      if (numTimes > 1) {
-        Cookies.set(LATER_INTENT_COOKIE, numTimes + 1, { expires: 365 });
+      var numTimes = parseInt(Cookies.get(ALREADY_SUBSCRIBER_COOKIE) || 0, 10);
+      if (numTimes > 0) {
+        Cookies.set(ALREADY_SUBSCRIBER_COOKIE, numTimes + 1, { expires: 365 });
       } else {
-        var inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
-        Cookies.set(LATER_INTENT_COOKIE, numTimes + 1, { expires: inTwelveHours });
+        Cookies.set(ALREADY_SUBSCRIBER_COOKIE, numTimes + 1, { expires: 1 });
       }
     });
 
@@ -78,7 +77,7 @@ document.addEventListener("DOMContentLoaded", function () {
 
   if (
     url.pathname.startsWith("/llm-bootcamp/spring-2023") &&
-    !(Cookies.get(EMAIL_ADDRESS_COOKIE) || Cookies.get(LATER_INTENT_COOKIE) || Cookies.get(MAILING_LIST_COOKIE))
+    !(Cookies.get(EMAIL_ADDRESS_COOKIE) || Cookies.get(ALREADY_SUBSCRIBER_COOKIE) || Cookies.get(MAILING_LIST_COOKIE))
   ) {
       showModal();
     }
