@@ -6,7 +6,7 @@ hide:
 ---
 
 <div class="author" markdown>
-By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated February 1, 2023.
+By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated May 12, 2023.
 </div>
 
 Training and running neural networks often requires hardware acceleration,
@@ -45,6 +45,7 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 - Serverless GPUs are a newer technology, so there are fewer players, the details change quickly, and you can expect bugs/growing pains. Stay frosty!
 - If you know a bit about your anticipated traffic patterns, you can use [this tool](https://paylesstoaws.com/) to compare prices for AWS A100 GPU machines and Banana's serverless equivalent. Note that is is made by the developers of [Banana](https://banana.dev/), so may be biased.
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv).
+- You can find pricing pages for the providers here: [Banana](https://banana.dev#pricing), [Baseten](https://docs.baseten.co/settings/pricing), [DeepInfra](https://deepinfra.com/pricing), [Modal](https://modal.com/pricing), [Replicate](https://replicate.com/pricing)
 
 <div id="serverless-gpus-table"></div>
 
