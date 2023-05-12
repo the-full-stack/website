@@ -17,8 +17,12 @@ document.addEventListener("DOMContentLoaded", function () {
       document.getElementById("emailModal").style.display = "none";
 
       var numTimes = parseInt(Cookies.get(LATER_INTENT_COOKIE) || 0, 10);
-      var inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
-      Cookies.set(LATER_INTENT_COOKIE, numTimes + 1, { expires: inTwelveHours });
+      if (numTimes > 0) {
+        Cookies.set(LATER_INTENT_COOKIE, numTimes + 1, { expires: 365 });
+      } else {
+        var inTwelveHours = new Date(new Date().getTime() + 12 * 60 * 60 * 1000);
+        Cookies.set(LATER_INTENT_COOKIE, numTimes + 1, { expires: inTwelveHours });
+      }
     });
 
     // Submitting the form sets a 1-year cookie with the email address, and then submits the form to FormSpark.
