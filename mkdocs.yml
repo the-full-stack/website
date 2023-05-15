@@ -40,8 +40,6 @@ theme:
     repo: fontawesome/brands/git-alt
 extra_css:
   - stylesheets/extra.css
-extra_javascript:
-  - javascripts/email_modal.js
 # edit_uri: ""
 
 markdown_extensions:
