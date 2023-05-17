@@ -41,12 +41,12 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 ### Notes
 
 - We use the classic definition of "serverless", courtesy of [the original AWS announcement on serverless computing](https://www.jeremydaly.com/not-so-serverless-neptune/): no server management, flexible scaling, high availability, and no idle capacity. We only include services that fit this criterion in our options below.
-- Direct price comparisons are trickier for serverless offerings: cold boot time and autoscaling logic substantially impact cost-of-traffic.
+- Direct price comparisons are trickier for serverless offerings: cold boot time and autoscaling logic can substantially impact cost-of-traffic. Also, some providers only charge for time spent responding to requests, while others charge for other time you're using their machines, like booting or between requests (see the `Idle time charged?` column below).
 - Some of the providers allow configuration of CPU and RAM resources. We have selected reasonable defaults, generally comparable to the fixed offerings of other providers.
-- Serverless GPUs are a newer technology, so there are fewer players, the details change quickly, and you can expect bugs/growing pains. Stay frosty!
 - If you know a bit about your anticipated traffic patterns, you can use [this tool](https://paylesstoaws.com/) to compare prices for AWS A100 GPU machines and Banana's serverless equivalent. Note that is is made by the developers of [Banana](https://banana.dev/), so may be biased.
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv).
-- You can find pricing pages for the providers here: [Banana](https://banana.dev#pricing), [Baseten](https://docs.baseten.co/settings/pricing), [DeepInfra](https://deepinfra.com/pricing), [Modal](https://modal.com/pricing), [Replicate](https://replicate.com/pricing)
+- You can find pricing pages for the providers here: [Banana](https://banana.dev#pricing), [Baseten](https://docs.baseten.co/settings/pricing), [Modal](https://modal.com/pricing), [Replicate](https://replicate.com/pricing)
+- Serverless GPUs are a newer technology, so there are fewer players, the details change quickly, and you can expect bugs/growing pains. Stay frosty!
 
 <div id="serverless-gpus-table"></div>
 
