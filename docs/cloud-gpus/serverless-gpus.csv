@@ -3,6 +3,7 @@ Banana,A100 (40 GB),Ampere,1,40,16,256,7.48,7.48,Yes
 Baseten,T4 (16GB),Turing,1,16,4,16,1.07,1.07,Yes
 Baseten,A10G (24GB),Ampere,1,24,4,16,2.01,2.01,Yes
 Baseten,V100 (16GB),Volta,1,16,8,61,6.10,6.10,Yes
+Baseten,A100 (80GB),Ampere,1,80,12,144,10.25,10.25,Yes
 Modal,T4 (16GB),Turing,1,16,2,16,1.17,1.17,No
 Modal,A10G (24GB),Ampere,1,24,4,16,1.87,1.87,No
 Modal,A100 (20 GB),Ampere,1,20,4,16,3.07,3.07,No
