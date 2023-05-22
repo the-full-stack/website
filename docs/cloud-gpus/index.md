@@ -6,7 +6,7 @@ hide:
 ---
 
 <div class="author" markdown>
-By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated May 12, 2023.
+By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated May 21, 2023.
 </div>
 
 Training and running neural networks often requires hardware acceleration,
