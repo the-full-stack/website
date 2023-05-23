@@ -1,12 +1,16 @@
 Vendor,GPU Type,GPU Arch,GPUs,GPU RAM,vCPUs,RAM,Per-Hour,Per-GPU,Idle time charged?
 Banana,A100 (40 GB),Ampere,1,40,16,256,7.48,7.48,Yes
-Baseten,T4 (16GB),Turing,1,16,4,16,1.07,1.07,Yes
-Baseten,A10G (24GB),Ampere,1,24,4,16,2.01,2.01,Yes
-Baseten,V100 (16GB),Volta,1,16,8,61,6.10,6.10,Yes
-Baseten,A100 (80GB),Ampere,1,80,12,144,10.25,10.25,Yes
-Modal,T4 (16GB),Turing,1,16,2,16,1.17,1.17,No
-Modal,A10G (24GB),Ampere,1,24,4,16,1.87,1.87,No
+Baseten,T4 (16 GB),Turing,1,16,4,16,1.07,1.07,Yes
+Baseten,A10G (24 GB),Ampere,1,24,4,16,2.01,2.01,Yes
+Baseten,V100 (16 GB),Volta,1,16,8,61,6.10,6.10,Yes
+Baseten,A100 (80 GB),Ampere,1,80,12,144,10.25,10.25,Yes
+Modal,T4 (16 GB),Turing,1,16,2,16,1.17,1.17,No
+Modal,A10G (24 GB),Ampere,1,24,4,16,1.87,1.87,No
 Modal,A100 (20 GB),Ampere,1,20,4,16,3.07,3.07,No
 Modal,A100 (40 GB),Ampere,1,40,8,40,5.45,5.45,No
-Replicate,T4 (16GB),Turing,1,16,4,8,1.98,1.98,No
-Replicate,A100 (40GB),Ampere,1,40,10,72,8.28,8.28,No
+Replicate,T4 (16 GB),Turing,1,16,4,8,1.98,1.98,No
+Replicate,A100 (40 GB),Ampere,1,40,10,72,8.28,8.28,No
+RunPod,A4000 (16 GB),Ampere,1,16,6,23,0.72,0.72,Yes
+RunPod,A5000 (24 GB),Ampere,1,24,8,29,0.90,0.90,Yes
+RunPod,A6000 (48 GB),Ampere,1,48,16,58,1.44,1.44,Yes
+RunPod,A100 (80 GB),Ampere,1,80,14,125,3.60,3.60,Yes
