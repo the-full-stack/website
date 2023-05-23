@@ -11,7 +11,6 @@ Modal,A100 (40 GB),Ampere,1,40,8,40,5.45,5.45,No
 Replicate,T4 (16 GB),Turing,1,16,4,8,1.98,1.98,No
 Replicate,A100 (40 GB),Ampere,1,40,10,72,8.28,8.28,No
 RunPod,A4000 (16 GB),Ampere,1,16,6,23,0.72,0.72,Yes
-RunPod,A5000 (24 GB),Ampere,1,24,8,29,0.9,0.9,Yes
-RunPod,4090 (24 GB),Ada Lovelace,1,24,16,83,1.37,1.37,Yes
+RunPod,A5000 (24 GB),Ampere,1,24,8,29,0.90,0.90,Yes
 RunPod,A6000 (48 GB),Ampere,1,48,16,58,1.44,1.44,Yes
-RunPod,A100 (80 GB),Ampere,1,80,14,125,3.6,3.6,Yes
+RunPod,A100 (80 GB),Ampere,1,80,14,125,3.60,3.60,Yes
