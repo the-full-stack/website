@@ -42,6 +42,35 @@ Azure,T4 (16 GB),Turing,4,64,64,440,4.35,1.09,1.73,NC64as T4 v3
 Azure,K80 (12 GB),Kepler,1,12,6,56,0.90,0.90,0.09,NC6
 Azure,K80 (12 GB),Kepler,2,24,12,112,1.80,0.90,0.18,NC12
 Azure,K80 (12 GB),Kepler,4,48,24,224,3.60,0.90,0.36,NC24
+Cudo Compute,A4000 (16 GB),Ampere,1,16,2,4,0.30,0.29,,
+Cudo Compute,A4000 (16 GB),Ampere,1,16,2,4,0.32,0.30,,
+Cudo Compute,A5000 (24 GB),Ampere,1,24,2,4,0.53,0.52,,
+Cudo Compute,A5000 (24 GB),Ampere,1,24,2,4,0.57,0.55,,
+Cudo Compute,A6000 (48 GB),Ampere,1,48,2,4,0.79,0.78,,
+Cudo Compute,A4000 (16 GB),Ampere,1,16,4,8,0.30,0.29,,
+Cudo Compute,A4000 (16 GB),Ampere,1,16,4,8,0.32,0.30,,
+Cudo Compute,A5000 (24 GB),Ampere,1,24,4,8,0.53,0.55,,
+Cudo Compute,A5000 (24 GB),Ampere,1,24,4,8,0.57,0.58,,
+Cudo Compute,A6000 (48 GB),Ampere,1,48,4,8,0.79,0.81,,
+Cudo Compute,A4000 (16 GB),Ampere,2,32,8,16,0.65,0.29,,
+Cudo Compute,A4000 (16 GB),Ampere,2,32,8,16,0.67,0.30,,
+Cudo Compute,A5000 (24 GB),Ampere,2,48,8,16,1.11,0.55,,
+Cudo Compute,A5000 (24 GB),Ampere,2,48,8,16,1.17,0.58,,
+Cudo Compute,A6000 (48 GB),Ampere,2,96,8,16,1.63,0.81,,
+Cudo Compute,A4000 (16 GB),Ampere,2,32,16,32,0.74,0.30,,
+Cudo Compute,A4000 (16 GB),Ampere,2,32,16,32,0.72,0.29,,
+Cudo Compute,A5000 (24 GB),Ampere,2,48,16,32,1.18,0.55,,
+Cudo Compute,A5000 (24 GB),Ampere,2,48,16,32,1.24,0.58,,
+Cudo Compute,A6000 (48 GB),Ampere,2,96,16,32,1.70,0.81,,
+Cudo Compute,A4000 (16 GB),Ampere,4,64,32,64,1.44,0.29,,
+Cudo Compute,A4000 (16 GB),Ampere,4,64,32,64,1.49,0.30,,
+Cudo Compute,A5000 (24 GB),Ampere,4,96,32,64,2.36,0.55,,
+Cudo Compute,A5000 (24 GB),Ampere,4,96,32,64,2.49,0.58,,
+Cudo Compute,A6000 (48 GB),Ampere,4,192,32,64,3.40,0.81,,
+Cudo Compute,A4000 (16 GB),Ampere,8,64,64,128,2.89,0.29,,
+Cudo Compute,A4000 (16 GB),Ampere,8,64,64,128,2.99,0.30,,
+Cudo Compute,A5000 (24 GB),Ampere,8,192,64,128,4.73,0.52,,
+Cudo Compute,A6000 (48 GB),Ampere,8,384,64,128,6.81,0.78,,
 Datacrunch,A100 (80 GB),Ampere,1,80,22,120,1.85,1.85,,1A100.22V
 Datacrunch,A100 (80 GB),Ampere,2,160,44,240,3.70,1.85,,2A100.44V
 Datacrunch,A100 (80 GB),Ampere,4,320,88,480,7.40,1.85,,4A100.88V
