@@ -125,27 +125,46 @@ title: LLM Bootcamp - Spring 2023
 
 ## Invited Talks
 
-??? info "We'll post the invited talks soon!"
-    We will be sure to email our subscribers as soon as these videos are available.
-    If you have not yet subscribed, you can do so [here](https://fsdl.me/email-signup).
+<div class="grid-2" markdown>
 
-<div class="grid-2">
-  <div class="person">
-    <img src="/images/speaker-peter-welinder.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Peter Welinder">
-    <div><strong>Peter Welinder</strong>, VP of Product and Partnerships at OpenAI, spoke about his career and the future of OpenAI.</div>
-  </div>
-  <div class="person">
-    <img src="/images/speaker-reza-shabani.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Reza Shabani">
-    <div><strong>Reza Shabani</strong>, Head of AI at Replit, spoke about training LLMs from scratch.</div>
-  </div>
-  <div class="person">
-    <img src="/images/speaker-harrison-chase.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Harrison Chase">
-    <div><strong>Harrison Chase</strong>, the creator of LangChain, spoke about LLM-powered agents.</div>
-  </div>
-  <div class="person">
-    <img src="/images/speaker-richard-socher.jpg" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Richard Socher">
-    <div><strong>Richard Socher</strong>, the co-founder and CEO of you.com, talked about his past in NLP research and the future of search and language models.</div>
-  </div>
+<div markdown>
+### <a href="shabani-train-your-own/">**Reza Shabani: How To Train Your Own LLM**</a>
+<a href="shabani-train-your-own" class="video-card">
+![Shabani Train Your Own Talk cover](shabani-train-your-own/cover.jpg)
+</a>
+<ul>
+  <li> The "Modern LLM Stack": Databricks, Hugging Face, MosaicML, and more
+  <li> The importance of knowing your data and designing preprocessing carefully
+  <li> The features of a good LLM engineer
+  <li> By <a href="https://twitter.com/npew">Reza Shabani</a>, who trained <a href="https://repl.it">Replit</a>'s code completion model, Ghostwriter.
+</ul>
+</div>
+
+<div markdown>
+### <a href="chase-agents/">**Harrison Chase: Agents**</a>
+<a href="welinder-fireside-chat" class="video-card">
+![Chase Agents Talk cover](chase-agents/cover.jpg)
+</a>
+<ul>
+  <li> The "agent" design pattern: tool use, memory, reflection, and goals
+  <li> Challenges facing agents in production: controlling tool use, parsing outputs, handling large contexts, and more
+  <li> Exciting research projects with agents: AutoGPT, BabyAGI, CAMEL, and Generative Agents
+  <li> By <a href="https://twitter.com/hwchase17">Harrison Chase</a>, co-creator of <a href="https://twitter.com/langchainai">LangChain</a>
+</ul>
+</div>
+
+<div markdown>
+### <a href="welinder-fireside-chat/">**Fireside Chat with Peter Welinder**</a>
+<a href="welinder-fireside-chat" class="video-card">
+![Welinder Chat cover](welinder-fireside-chat/cover.jpg)
+</a>
+<ul>
+  <li> With <a href="https://twitter.com/npew">Peter Welinder</a>, VP of Product & Partnerships at OpenAI
+  <li> How OpenAI converged on LLMs
+  <li> Learnings and surprises from releasing ChatGPT
+</ul>
+</div>
+
 </div>
 
 ## Sponsors
