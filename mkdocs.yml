@@ -94,6 +94,9 @@ nav:
           - llm-bootcamp/spring-2023/ux-for-luis/index.md
           - llm-bootcamp/spring-2023/llmops/index.md
           - llm-bootcamp/spring-2023/whats-next/index.md
+          # - llm-bootcamp/spring-2023/shabani-train-your-own/index.md
+          # - llm-bootcamp/spring-2023/chase-agents/index.md
+          # - llm-bootcamp/spring-2023/welinder-fireside-chat/index.md
   - "Deep Learning Course":
       - course/index.md
       - "FSDL 2022":
