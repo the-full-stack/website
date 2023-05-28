@@ -77,27 +77,27 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
 
 <div class="grid-2">
   <div class="person">
-    <a href="https://charlesfrye.github.io/about/" target="_blank">
+    <a href="https://twitter.com/charles_irl" target="_blank">
       <img src="/images/charles.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Charles Frye">
     </a>
-    <div><a href="https://charlesfrye.github.io/about/" target="_blank"><strong>Charles Frye</strong></a> 
+    <div><a href="https://twitter.com/charles_irl" target="_blank"><strong>Charles Frye</strong></a> 
       educates people in AI. He has worked on AI/ML tooling with Weights & Biases and Gantry since getting a PhD in Theoretical Neuroscience at UC Berkeley.</div>
   </div>
   <div class="person">
-    <a href="https://sergeykarayev.com/" target="_blank">
+    <a href="https://twitter.com/sergeykarayev" target="_blank">
       <img src="/images/sergey.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Sergey Karayev">
     </a>
     <div>
-      <a href="https://sergeykarayev.com/" target="_blank"><strong>Sergey Karayev</strong></a> 
+      <a href="https://twitter.com/sergeykarayev" target="_blank"><strong>Sergey Karayev</strong></a> 
       builds AI-powered products as Co-founder of Volition. He co-founded Gradescope after getting a PhD in AI at UC Berkeley.
     </div>
   </div>
   <div class="person">
-    <a href="http://josh-tobin.com/" target="_blank">
+    <a href="[http://josh-tobin.com/](https://twitter.com/josh_tobin_)" target="_blank">
       <img src="/images/josh.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Josh Tobin">
     </a>
     <div>
-      <a href="http://josh-tobin.com/" target="_blank">
+      <a href="https://twitter.com/josh_tobin_" target="_blank">
         <strong>Josh Tobin</strong> 
       </a>
        builds tooling for AI products as Co-founder and CEO of Gantry. He worked as a Research Scientist at OpenAI and received a PhD in AI at UC Berkeley.
