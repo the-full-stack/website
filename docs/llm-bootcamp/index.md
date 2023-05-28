@@ -93,7 +93,7 @@ Since 2018, we have taught in-person bootcamps, online multi-week cohorts, and o
     </div>
   </div>
   <div class="person">
-    <a href="[http://josh-tobin.com/](https://twitter.com/josh_tobin_)" target="_blank">
+    <a href="https://twitter.com/josh_tobin_" target="_blank">
       <img src="/images/josh.png" class="person--image" height="160px" width="160px" loading="lazy" alt="Photo of Josh Tobin">
     </a>
     <div>
