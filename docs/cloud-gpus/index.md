@@ -28,8 +28,12 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 
 ### Notes
 
-- GCP does not have GPU "instances" in the same way that AWS and Azure do. Instead, any suitable machine can be connected to a configuration of GPUs. We have selected machines that are roughly equivalent to AWS options.
-- Regions were set to be the west or central parts of the United States. GPU availability depends on the region.
+- The table below does not include all possible configurations for all providers, as providers differ in their configuration strategy.
+  - Nost providers, including AWS, Azure, and Lambda, provide instances with pre-set configurations.
+  - On GCP, any suitable machine can be connected to a configuration of GPUs.
+  - On other providers, like Oblivus Cloud, Cudo Compute, and RunPod, users have precise control over the resources they request. Note that RunPod's Community Cloud, Oblivus, and Cudo are all "open clouds", meaning compute is provided by third parties. 
+  - For providers without pre-set instance configurations, we have selected configurations that are roughly equivalent to AWS's options. Generally, these configurations are good for workloads that require heavy inter-GPU communication.
+- Where possible, regions were set to be the west or central parts of the United States. GPU availability depends on the region.
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv).
 
 <center>*All prices are in $/hr.*</center>
