@@ -2,4 +2,5 @@
 2. Set up a Python environment. If you're using pyenv-virtualenv, you can just run `make venv`.
 3. `make it-all` to generate summaries for all lectures in `bootcamp-lectures.json`.
 
+Run `make` by itself to see all available commands.
 See the `Makefile` and `app.py` for details.
