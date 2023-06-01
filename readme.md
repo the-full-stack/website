@@ -12,11 +12,7 @@ To deploy, push `main` branch to github and it will deploy via github action, or
 
 ### 2023
 
-```bash
-cd lecture-notes-creator
-pipenv install
-# then run the 00-process-lectures.ipynb notebook in the pipenv environment
-```
+See the README file in [`lecture-notes-creator`](https://github.com/the-full-stack/website/tree/main/lecture-notes-creator) for instructions.
 
 ### 2022
 
