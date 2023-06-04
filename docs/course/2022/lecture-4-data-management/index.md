@@ -82,7 +82,7 @@ Parquet is a table format that is fast, compact, and widely used.
 The **object storage** is an API over the filesystem. Its fundamental
 unit is an object, usually in a binary format (an image, a sound file, a
 text file, etc.). We can build versioning or redundancy into the object
-storage service. It is not as fast as the local filesystem, but it can b
+storage service. It is not as fast as the local filesystem, but it can be
 fast enough within the cloud.
 
 ### Databases
