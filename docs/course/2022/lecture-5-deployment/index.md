@@ -614,7 +614,7 @@ between models and therefore send some traffic to each.
 4.  **Deploy pipelines of models**: Finally, you may want to have entire
 pipeline flows that ensure the delivery of a model.
 
-Building these capabilities in a reasonably challenging infrastructure
+Building these capabilities is a reasonably challenging infrastructure
 problem that is beyond the scope of this course. In short, managed
 services are a good option for this that we'll now discuss!
 
