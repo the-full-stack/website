@@ -272,7 +272,7 @@ The results of this model are incredible! You can even generate images and merge
 
 Other models of interest are Parti and StableDiffusion.
 
-* Google published [Parti](https://parti.research.google/) soon after DALL-E 2. Parti uses a VQGAN model instead of a diffusion model, where the image is represented as a sequence of high-dimensional tokens).
+* Google published [Parti](https://parti.research.google/) soon after DALL-E 2. Parti uses a VQGAN model instead of a diffusion model, where the image is represented as a sequence of high-dimensional tokens.
 * [StableDiffusion](https://stability.ai/blog/stable-diffusion-public-release) has been released publicly, so definitely [check it out](https://github.com/CompVis/latent-diffusion)! It uses a “latent diffusion” model, which diffuses the image in a low-dimensional latent space and decodes the image back into a pixel space.
 
 ![alt_text](media/image-31.png "image_tooltip")
