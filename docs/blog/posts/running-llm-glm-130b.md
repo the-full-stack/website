@@ -132,6 +132,7 @@ reduce the total inference-time VRAM load down to 88 GB --
 > Aside: That means we can't go serverless
 because serverless GPU inference services
 ([banana](https://banana.dev),
+([Beam](https://beam.cloud),
 [Replicate](https://replicate.com),
 [Modal](https://modal.com))
 operate at the single card level.
