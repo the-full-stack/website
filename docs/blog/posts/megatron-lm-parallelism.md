@@ -1,5 +1,5 @@
 ---
-title: "Breaking down paralleism in Megatron-LM"
+title: "Breaking down parallelism in Megatron-LM"
 description: "Notes from my breaking down Megatron-LM's implementation of parallelism."
 author: "xariusrke"
 hide:
