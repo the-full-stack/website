@@ -9,8 +9,8 @@ import torch.distributed as dist
 
 class f(torch.autograd.Function):
     @staticmethod
-    def forward(ctx, input, weight, bias):
-        return F.linear(input, weight, bias)
+    def forward(ctx, input):
+        return input
 
     @staticmethod
     def backward(ctx, grad_output):
@@ -56,7 +56,8 @@ class ColumnParallelLinear(torch.nn.Module):
         ))
 
     def forward(self, input):
-        output_parallel = f.apply(input, self.weight, self.bias)
+        input_parallel = f.apply(input)
+        output_parallel = F.linear(input_parallel, self.weight, self.bias)
         outputs = g.apply(output_parallel)
         return outputs
 
@@ -66,17 +67,21 @@ def compute_non_parallel_output(model, input):
 
     weights = [torch.empty_like(model.weight) for _ in range(world_size)]
     torch.distributed.all_gather(weights, model.weight)
-    weights = torch.cat(weights, dim=0).contiguous()
+    weights = torch.cat(weights, dim=0)
+    # detach from the original computational graph, so this will become a leaf node
+    # because autograd backpropogate to leaf nodes only
+    weights = weights.detach()
     weights.requires_grad = True
 
     biases = [torch.empty_like(model.bias) for _ in range(world_size)]
     torch.distributed.all_gather(biases, model.bias)
-    biases = torch.cat(biases, dim=0).contiguous()
+    biases = torch.cat(biases, dim=0)
+    biases = biases.detach()
     biases.requires_grad = True
 
     non_parallel_output = F.linear(input, weights, biases)
 
-    return non_parallel_output
+    return non_parallel_output, weights, biases
 
 
 def run_parallel(rank, world_size, input_size, output_size, input):
@@ -90,10 +95,17 @@ def run_parallel(rank, world_size, input_size, output_size, input):
 
     model = ColumnParallelLinear(input_size, output_size, world_size)
     parallel_output = model(input)
-    non_parallel_output = compute_non_parallel_output(model, input)
+    parallel_loss = parallel_output.sum(dim=-1)
+    parallel_loss.backward()
 
-    print(f"rank: {rank}, output.shape: {parallel_output.shape}, non_parallel_output.shape: {non_parallel_output.shape}")
-    print(f"Is output correct? {torch.allclose(parallel_output, non_parallel_output, rtol=1e-3)}")
+    non_parallel_output, master_weights, master_biases = compute_non_parallel_output(model, input)
+    non_parallel_loss = non_parallel_output.sum(dim=-1)
+    non_parallel_loss.backward()
+
+    print(f"rank={rank}, output.shape: {parallel_output.shape}, non_parallel_output.shape: {non_parallel_output.shape}")
+    print(f"Is the forward pass correct? {torch.allclose(parallel_output, non_parallel_output, rtol=1e-3)}")
+    print(f"rank={rank}, is the backward pass correct? {torch.allclose(model.weight.grad, master_weights.grad[rank], rtol=1e-3)}")
+
     torch.distributed.destroy_process_group()
 
 
