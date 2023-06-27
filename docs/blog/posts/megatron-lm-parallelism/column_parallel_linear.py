@@ -41,7 +41,7 @@ class g(torch.autograd.Function):
 
 
 class ColumnParallelLinear(torch.nn.Module):
-    def __init__(self, input_size: int, output_size: int, world_size: int):
+    def __init__(self, input_size, output_size, world_size):
         super().__init__()
         self.input_size = input_size
         self.output_size = output_size
@@ -62,29 +62,12 @@ class ColumnParallelLinear(torch.nn.Module):
         return outputs
 
 
-def compute_non_parallel_output(model, input):
-    world_size = torch.distributed.get_world_size()
-
-    weights = [torch.empty_like(model.weight) for _ in range(world_size)]
-    torch.distributed.all_gather(weights, model.weight)
-    weights = torch.cat(weights, dim=0)
-    # detach from the original computational graph, so this will become a leaf node
-    # because autograd backpropogate to leaf nodes only
-    weights = weights.detach()
-    weights.requires_grad = True
-
-    biases = [torch.empty_like(model.bias) for _ in range(world_size)]
-    torch.distributed.all_gather(biases, model.bias)
-    biases = torch.cat(biases, dim=0)
-    biases = biases.detach()
-    biases.requires_grad = True
-
-    non_parallel_output = F.linear(input, weights, biases)
-
-    return non_parallel_output, weights, biases
-
-
-def run_parallel(rank, world_size, input_size, output_size, input):
+def run_parallel(
+    rank, world_size,
+    input_size, output_size,
+    input, weight, bias, non_parallel_output,
+    weight_grad, bias_grad
+):
     os.environ['MASTER_ADDR'] = 'localhost'
     os.environ['MASTER_PORT'] = '12359'
     torch.distributed.init_process_group(
@@ -94,17 +77,21 @@ def run_parallel(rank, world_size, input_size, output_size, input):
     )
 
     model = ColumnParallelLinear(input_size, output_size, world_size)
+
+    # Partition the weights and biases and assign to the model
+    weight_partition_size = weight.shape[0] // world_size
+    bias_partition_size = bias.shape[0] // world_size
+
+    model.weight.data = weight[rank*weight_partition_size:(rank+1)*weight_partition_size].requires_grad_(True)
+    model.bias.data = bias[rank*bias_partition_size:(rank+1)*bias_partition_size].requires_grad_(True)
+
     parallel_output = model(input)
-    parallel_loss = parallel_output.sum(dim=-1)
-    parallel_loss.backward()
+    parallel_output.sum(dim=-1).backward()
 
-    non_parallel_output, master_weights, master_biases = compute_non_parallel_output(model, input)
-    non_parallel_loss = non_parallel_output.sum(dim=-1)
-    non_parallel_loss.backward()
-
-    print(f"rank={rank}, output.shape: {parallel_output.shape}, non_parallel_output.shape: {non_parallel_output.shape}")
-    print(f"Is the forward pass correct? {torch.allclose(parallel_output, non_parallel_output, rtol=1e-3)}")
-    print(f"rank={rank}, is the backward pass correct? {torch.allclose(model.weight.grad, master_weights.grad[rank], rtol=1e-3)}")
+    print(f"rank={rank}, parallel_output.shape: {parallel_output.shape}, non_parallel_output.shape: {non_parallel_output.shape}")
+    print(f"rank={rank}, is the forward correct? {torch.allclose(parallel_output, non_parallel_output, rtol=1e-3)}")
+    print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model.weight.grad, weight_grad[rank], rtol=1e-3)}")
+    print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model.bias.grad, bias_grad[rank], rtol=1e-3)}")
 
     torch.distributed.destroy_process_group()
 
@@ -113,11 +100,32 @@ if __name__ == "__main__":
     world_size = 4
     input_size = 16
     output_size = 12
+
+    torch.random.manual_seed(69)
+
     input = torch.randn(input_size, requires_grad=False)
+    weight = torch.randn(output_size, input_size, requires_grad=True)
+    bias = torch.randn(output_size, requires_grad=True)
+
+    non_parallel_output = F.linear(input, weight, bias)
+    non_parallel_output.sum(dim=-1).backward()
+
+    # because we detach the weight and bias from the computational graph
+    # so have to make a copy of the gradients
+    weight_grad = weight.grad.clone()
+    bias_grad = bias.grad.clone()
 
     processes = []
     for rank in range(world_size):
-        p = Process(target=run_parallel, args=(rank, world_size, input_size, output_size, input))
+        p = Process(target=run_parallel, args=(
+            rank, world_size,
+            input_size, output_size,
+            # because pytorch does not support sending tensors that
+            # require gradient through inter-process communication
+            # so we gotta detach them from the computational graph
+            input, weight.detach(), bias.detach(), non_parallel_output.detach(),
+            weight_grad, bias_grad
+        ))
         p.start()
 
     for p in processes:
