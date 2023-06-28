@@ -130,11 +130,11 @@ reduce the total inference-time VRAM load down to 88 GB --
 [just a hair too big for one card](https://github.com/THUDM/GLM-130B/issues/60).
 
 > Aside: That means we can't go serverless
-because serverless GPU inference services
-([banana](https://banana.dev),
-([Beam](https://beam.cloud),
-[Replicate](https://replicate.com),
-[Modal](https://modal.com))
+because most serverless GPU inference services
+(like [banana](https://banana.dev),
+[Beam](https://beam.cloud),
+and
+[Replicate](https://replicate.com))
 operate at the single card level.
 I predict that we'll see a huge unlock of LLM-powered tech
 once the models can fit in 80 GB VRAM
