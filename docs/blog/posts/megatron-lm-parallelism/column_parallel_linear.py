@@ -82,10 +82,10 @@ def run_parallel(
     weight_partition_size = weight.shape[0] // world_size
     bias_partition_size = bias.shape[0] // world_size
 
-    model.weight.data = weight[rank*weight_partition_size:(rank+1)*weight_partition_size].requires_grad_(True)
-    model.bias.data = bias[rank*bias_partition_size:(rank+1)*bias_partition_size].requires_grad_(True)
+    model.weight.data = weight[rank*weight_partition_size:(rank+1)*weight_partition_size].detach().requires_grad_(True)
+    model.bias.data = bias[rank*bias_partition_size:(rank+1)*bias_partition_size].detach().requires_grad_(True)
 
-    parallel_output = model(input)
+    parallel_output = model(input.detach().requires_grad_(False))
     parallel_output.sum(dim=-1).backward()
 
     print(f"rank={rank}, parallel_output.shape: {parallel_output.shape}, non_parallel_output.shape: {non_parallel_output.shape}")
