@@ -42,6 +42,13 @@ Azure,T4 (16 GB),Turing,4,64,64,440,4.35,1.09,1.73,NC64as T4 v3
 Azure,K80 (12 GB),Kepler,1,12,6,56,0.90,0.90,0.09,NC6
 Azure,K80 (12 GB),Kepler,2,24,12,112,1.80,0.90,0.18,NC12
 Azure,K80 (12 GB),Kepler,4,48,24,224,3.60,0.90,0.36,NC24
+Cirrascale Cloud Services,A100 (80 GB),Ampere,8,80,128,1000,26.03,3.25,,
+Cirrascale Cloud Services,A100 (80 GB),Ampere,4,80,96,1000,13.70,3.43,,
+Cirrascale Cloud Services,A100 (40 GB),Ampere,8,40,128,1000,22.96,5.74,,
+Cirrascale Cloud Services,A6000 (48 GB),Ampere,8,48,128,512,8.97,1.12,,
+Cirrascale Cloud Services,A5000 (24 GB),Ampere,8,24,40,256,4.11,0.51,,
+Cirrascale Cloud Services,A4000 (16 GB),Ampere,8,16,40,256,2.74,0.34,,
+Cirrascale Cloud Services,H100 (80 GB),Hopper,8,80,192,2000,34.25,4.28,,
 Cudo Compute,A4000 (16 GB),Ampere,1,16,2,4,0.30,0.29,,
 Cudo Compute,A4000 (16 GB),Ampere,1,16,2,4,0.32,0.30,,
 Cudo Compute,A5000 (24 GB),Ampere,1,24,2,4,0.53,0.52,,
