@@ -31,6 +31,7 @@ Please [file an issue](https://github.com/full-stack-deep-learning/website/issue
 ### Notes
 
 The table below does not include all possible configurations for all providers, as providers differ in their configuration strategy.
+
 - Most providers, including AWS, Azure, and Lambda, provide instances with pre-set configurations.
 - On GCP, any suitable machine can be connected to a configuration of GPUs.
 - On other providers, like Oblivus Cloud, Cudo Compute, and RunPod, users have precise control over the resources they request. Note that RunPod's Community Cloud, Oblivus, and Cudo are all "open clouds", meaning compute is provided by third parties. 
