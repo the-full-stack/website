@@ -12,6 +12,23 @@ Since then, we've hosted several in-person bootcamps, online courses, and offici
 !!! note "Looking for the most recent FSDL materials?"
     You can find them [here](./2022/index.md).
 
+## Testimonials
+
+<div class="testimonials">
+  <a href="https://twitter.com/borisdayma/status/1281281082604871681">
+    <img style="border: 1px solid gray;" src="/images/testimonial-00.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+  <a href="https://twitter.com/chipro/status/1156416625400172544">
+    <img style="border: 1px solid gray;" src="/images/testimonial-01.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+  <a href="https://twitter.com/carranzadanielh/status/1329521631216144385">
+    <img style="border: 1px solid gray;" src="/images/testimonial-02.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+  <a href="https://twitter.com/blissfulchar/status/1281413848205889537">
+    <img style="border: 1px solid gray;" src="/images/testimonial-03.jpg" width="640px" loading="lazy" alt="Tweet praising the FSDL course">
+  </a>
+</div>
+
 ## Past Iterations
 - [FSDL 2022 (Online)](./2022/index.md): A fully online course, taught via YouTube, Crowdcast, and Discord.
 - [FSDL 2021 (Online)](../spring2021/index.md): Contemporaneous with the Berkeley course, we taught an online cohort course.
