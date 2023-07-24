@@ -65,6 +65,8 @@ plugins:
       template: overrides/custom-blog.html
       features:
         tags: {}
+      time_format: '%Y-%m-%d'
+      meta_time_format: '%Y-%m-%d'
   - macros
   - search
   - section-index # Make top-level nav sections that contain an index.md clickable
