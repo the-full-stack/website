@@ -10,6 +10,7 @@ tags:
   - code
   - notebook
 embed_image: https://i.imgur.com/W3mhy9f.png
+time: "2023-07-25"
 ---
 <div class="author" markdown>
 By [Charles Frye](https://twitter.com/charles_irl).
