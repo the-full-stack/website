@@ -26,6 +26,7 @@ for several long {white,chalk}boarding sessions on RWKV
 and to
 [Igor Vasiljevic](https://twitter.com/vslevic),
 [Faris Hijazi](https://twitter.com/theeFaris),
+[Rogério Chaves](https://twitter.com/_rchaves_),
 and
 [Ben Field](https://twitter.com/benfieldddd)
 for helpful comments on drafts.
