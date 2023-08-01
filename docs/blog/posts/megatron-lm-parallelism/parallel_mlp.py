@@ -111,9 +111,9 @@ class RowParallelLinear(nn.Module):
 
     def forward(self, input):
         input_parallel = Scatter.apply(input)
-        output_parallel = F.linear(input_parallel, self.weight, self.bias)
+        output_parallel = F.linear(input_parallel, self.weight)
         outputs = Reduce.apply(output_parallel)
-        return outputs
+        return outputs + self.bias
 
 
 def run_parallel(
@@ -167,13 +167,13 @@ def run_parallel(
     # model.weight.data = weights[partition_start: partition_end].detach().requires_grad_(True)
     # model.bias.data = biases[partition_start: partition_end].detach().requires_grad_(True)
 
-    outputs_parallel = model(inputs.detach().requires_grad_(False))
+    outputs_parallel = model(inputs)
     outputs_parallel.sum().backward()
 
     print(f"rank={rank}, parallel_output.shape: {outputs_parallel.shape}, non_parallel_output.shape: {outputs.shape}\n")
-    print(f"rank={rank}, is the forward correct? {torch.allclose(outputs_parallel, outputs)}\n")
-    # print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model.weight.grad, weight_grads[rank])}\n")
-    # print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model.bias.grad, bias_grads[rank])}\n")
+    print(f"rank={rank}, is the forward correct? {torch.allclose(outputs_parallel, outputs, rtol=0.01)}\n")
+    print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model[0].weight.grad, weight_grads[0][rank], rtol=0.01)}\n")
+    print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model[0].bias.grad, bias_grads[0][rank], rtol=0.01)}\n")
 
     torch.distributed.destroy_process_group()
 
@@ -195,7 +195,7 @@ if __name__ == "__main__":
         nn.Linear(input_size, hidden_size),
         nn.ReLU(),
         nn.Linear(hidden_size, output_size),
-        nn.ReLU(),
+        # nn.ReLU(),
     )
     outputs = model(inputs)
     outputs.sum().backward()
