@@ -189,7 +189,7 @@ if __name__ == "__main__":
     batch_size, input_size, output_size = 10, 16, 12
     hidden_size = output_size * 4
 
-    inputs = torch.randn(2, input_size, requires_grad=False)
+    inputs = torch.randn(batch_size, input_size, requires_grad=False)
 
     model = nn.Sequential(
         nn.Linear(input_size, hidden_size),
