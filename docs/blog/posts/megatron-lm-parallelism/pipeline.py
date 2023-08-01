@@ -229,7 +229,7 @@ if __name__ == "__main__":
 
     forward_timeline = forward_timeline
     backward_timeline = backward_timeline
-    batch = torch.arange(0, N_MICROBATCHES, dtype=torch.float32, requires_grad=True)
+    batch = torch.arange(0, N_MICROBATCHES, dtype=torch.float32)
     microbatches = [x.unsqueeze(0) for x in batch.unbind()]
     partitions = [nn.Sequential(AddOne(partition_idx=x, is_logging=True)) for x in range(N_PARTITIONS)]
     devices = [torch.device("cpu") for _ in range(N_PARTITIONS)]
@@ -272,8 +272,6 @@ if __name__ == "__main__":
     for x in non_parallel_outputs:
         loss = loss_func(x)
         loss.backward()
-
-    assert batch.grad is not None
 
     for partition in partitions:
         for param in partition.parameters():
