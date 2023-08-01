@@ -173,7 +173,6 @@ def run_parallel(
         elif layer_idx == 2:
             partition_size = weight_grads[grad_idx].shape[1] // world_size
             grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=1)
-            # bias_chunks = torch.split(bias_grads[grad_idx], partition_size, dim=0)
 
         print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model[layer_idx].weight.grad, grad_chunks[rank], rtol=0.01)}\n")
         if layer_idx == 0:
@@ -191,11 +190,6 @@ if __name__ == "__main__":
     hidden_size = output_size * 4
 
     inputs = torch.randn(2, input_size, requires_grad=False)
-    # weights = torch.randn(output_size, input_size, requires_grad=True)
-    # biases = torch.randn(output_size, requires_grad=True)
-
-    # outputs = torch.matmul(inputs, weights.T) + biases
-    # outputs = F.linear(inputs, weights, biases)
 
     model = nn.Sequential(
         nn.Linear(input_size, hidden_size),
