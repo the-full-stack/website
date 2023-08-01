@@ -133,17 +133,12 @@ def run_parallel(
     torch.use_deterministic_algorithms(True)
     torch.random.manual_seed(rank)
 
-    # model = ColumnParallelLinear(input_size, output_size, world_size)
     hidden_size = output_size * 4
     model = nn.Sequential(
         ColumnParallelLinear(input_size, hidden_size, world_size),
         nn.ReLU(),
         RowParallelLinear(hidden_size, output_size),
     )
-
-    # Partition the weights and biases and assign to the model
-    # model[2].weight.data = weights[2][partition_start: partition_end].detach().requires_grad_(True)
-    # model[2].bias.data = biases[2][partition_start: partition_end].detach().requires_grad_(True)
 
     def load_data(model, layer_idx, idx):
         if layer_idx == 0:
@@ -163,9 +158,6 @@ def run_parallel(
 
     model = load_data(model, layer_idx=0, idx=0)
     model = load_data(model, layer_idx=2, idx=1)
-
-    # model.weight.data = weights[partition_start: partition_end].detach().requires_grad_(True)
-    # model.bias.data = biases[partition_start: partition_end].detach().requires_grad_(True)
 
     outputs_parallel = model(inputs)
     outputs_parallel.sum().backward()
@@ -196,17 +188,11 @@ if __name__ == "__main__":
     hidden_size = output_size * 4
 
     inputs = torch.randn(2, input_size, requires_grad=False)
-    # weights = torch.randn(output_size, input_size, requires_grad=True)
-    # biases = torch.randn(output_size, requires_grad=True)
-
-    # outputs = torch.matmul(inputs, weights.T) + biases
-    # outputs = F.linear(inputs, weights, biases)
 
     model = nn.Sequential(
         nn.Linear(input_size, hidden_size),
         nn.ReLU(),
         nn.Linear(hidden_size, output_size),
-        # nn.ReLU(),
     )
     outputs = model(inputs)
     outputs.sum().backward()
@@ -225,8 +211,6 @@ if __name__ == "__main__":
         model[2].bias.grad.detach().requires_grad_(False)
 
     ]
-    # weight_grads = weights.grad.detach().requires_grad_(False)
-    # bias_grads = biases.grad.detach().requires_grad_(False)
 
     for rank in range(world_size):
         p = Process(target=run_parallel, args=(
