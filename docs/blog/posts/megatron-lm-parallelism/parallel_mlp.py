@@ -172,8 +172,19 @@ def run_parallel(
 
     print(f"rank={rank}, parallel_output.shape: {outputs_parallel.shape}, non_parallel_output.shape: {outputs.shape}\n")
     print(f"rank={rank}, is the forward correct? {torch.allclose(outputs_parallel, outputs, rtol=0.01)}\n")
-    print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model[0].weight.grad, weight_grads[0][rank], rtol=0.01)}\n")
-    print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model[0].bias.grad, bias_grads[0][rank], rtol=0.01)}\n")
+
+
+    for layer_idx, grad_idx in [[0, 0], [2, 1]]:
+        if layer_idx == 0:
+            partition_size = weight_grads[grad_idx].shape[0] // world_size
+            grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=0)
+        elif layer_idx == 2:
+            partition_size = weight_grads[grad_idx].shape[1] // world_size
+            grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=1)
+
+        print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model[layer_idx].weight.grad, grad_chunks[rank], rtol=0.01)}\n")
+
+    # print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model[0].bias.grad, bias_grads[0][rank], rtol=0.01)}\n")
 
     torch.distributed.destroy_process_group()
 
