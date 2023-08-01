@@ -165,18 +165,21 @@ def run_parallel(
     print(f"rank={rank}, parallel_output.shape: {outputs_parallel.shape}, non_parallel_output.shape: {outputs.shape}\n")
     print(f"rank={rank}, is the forward correct? {torch.allclose(outputs_parallel, outputs, rtol=0.01)}\n")
 
-
     for layer_idx, grad_idx in [[0, 0], [2, 1]]:
         if layer_idx == 0:
             partition_size = weight_grads[grad_idx].shape[0] // world_size
             grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=0)
+            bias_chunks = torch.split(bias_grads[grad_idx], partition_size, dim=0)
         elif layer_idx == 2:
             partition_size = weight_grads[grad_idx].shape[1] // world_size
             grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=1)
+            # bias_chunks = torch.split(bias_grads[grad_idx], partition_size, dim=0)
 
         print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(model[layer_idx].weight.grad, grad_chunks[rank], rtol=0.01)}\n")
-
-    # print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model[0].bias.grad, bias_grads[0][rank], rtol=0.01)}\n")
+        if layer_idx == 0:
+            print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model[layer_idx].bias.grad, bias_chunks[rank], rtol=0.01)}\n")
+        else:
+            print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(model[layer_idx].bias.grad, bias_grads[grad_idx], rtol=0.01)}\n")
 
     torch.distributed.destroy_process_group()
 
@@ -188,6 +191,11 @@ if __name__ == "__main__":
     hidden_size = output_size * 4
 
     inputs = torch.randn(2, input_size, requires_grad=False)
+    # weights = torch.randn(output_size, input_size, requires_grad=True)
+    # biases = torch.randn(output_size, requires_grad=True)
+
+    # outputs = torch.matmul(inputs, weights.T) + biases
+    # outputs = F.linear(inputs, weights, biases)
 
     model = nn.Sequential(
         nn.Linear(input_size, hidden_size),
