@@ -76,8 +76,9 @@ class Reduce(torch.autograd.Function):
 
 
 class ColumnParallelLinear(torch.nn.Module):
-    def __init__(self, input_size, output_size, world_size):
+    def __init__(self, input_size, output_size):
         super().__init__()
+        world_size = torch.distributed.get_world_size()
         self.input_size = input_size
         self.output_size = output_size
         self.output_size_per_partition = output_size // world_size
@@ -110,6 +111,7 @@ class RowParallelLinear(nn.Module):
         self.bias = nn.Parameter(torch.randn(output_size))
 
     def forward(self, input):
+        dist.barrier()
         input_parallel = Scatter.apply(input)
         output_parallel = F.linear(input_parallel, self.weight)
         outputs = Reduce.apply(output_parallel)
@@ -135,7 +137,7 @@ def run_parallel(
 
     hidden_size = output_size * 4
     model = nn.Sequential(
-        ColumnParallelLinear(input_size, hidden_size, world_size),
+        ColumnParallelLinear(input_size, hidden_size),
         nn.ReLU(),
         RowParallelLinear(hidden_size, output_size),
     )

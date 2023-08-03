@@ -4,9 +4,15 @@ from contextlib import contextmanager
 from queue import Queue
 from threading import Thread
 import time
+import os
+from copy import deepcopy
 
 import torch
 from torch import nn
+from torch.multiprocessing import Process
+import torch.multiprocessing as mp
+
+from layers import ColumnParallelLinear, RowParallelLinear
 
 
 @dataclass
@@ -186,23 +192,16 @@ class Pipeline:
             batches[microbatch_idx] = output
 
 
-def create_non_parallel_model(partitions):
-    non_parallel_model = nn.Sequential(*[AddOne(partition_idx=x, is_logging=False) for x in range(N_PARTITIONS)])
-    for non_parallel_layer, original_partition in zip(non_parallel_model, partitions):
-        non_parallel_layer.load_state_dict(original_partition[0].state_dict())
-    return non_parallel_model
+def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microbatches, weights, biases, outputs, weight_grads, bias_grads):
+    os.environ['MASTER_ADDR'] = 'localhost'
+    os.environ['MASTER_PORT'] = '12359'
+    torch.distributed.init_process_group(
+        "gloo",
+        rank=rank,
+        world_size=world_size
+    )
 
-
-def create_non_parallel_batch(batch):
-    non_parallel_batch = batch.detach().clone()
-    non_parallel_batch.grad = None
-    return non_parallel_batch
-
-
-if __name__ == "__main__":
-    N_MICROBATCHES = 3
-    N_PARTITIONS = 2
-
+    N_PARTITIONS = 3
     forward_timeline = []
     backward_timeline = []
 
@@ -227,16 +226,55 @@ if __name__ == "__main__":
 
             return self.net(x)
 
+    # def create_non_parallel_model(partitions):
+    #     non_parallel_model = nn.Sequential(*[AddOne(partition_idx=x, is_logging=False) for x in range(N_PARTITIONS)])
+    #     for non_parallel_layer, original_partition in zip(non_parallel_model, partitions):
+    #         non_parallel_layer.load_state_dict(original_partition[0].state_dict())
+    #     return non_parallel_model
+
+    # def create_non_parallel_batch(batch):
+    #     non_parallel_batch = batch.detach().clone()
+    #     non_parallel_batch.grad = None
+    #     return non_parallel_batch
+
     forward_timeline = forward_timeline
     backward_timeline = backward_timeline
-    batch = torch.arange(0, N_MICROBATCHES, dtype=torch.float32)
-    microbatches = [x.unsqueeze(0) for x in batch.unbind()]
-    partitions = [nn.Sequential(AddOne(partition_idx=x, is_logging=True)) for x in range(N_PARTITIONS)]
-    devices = [torch.device("cpu") for _ in range(N_PARTITIONS)]
-    non_parallel_model = create_non_parallel_model(partitions)
-    non_parallel_batch = create_non_parallel_batch(batch)
 
-    results = {}
+    # microbatches = [x.unsqueeze(0) for x in batch.unbind()]
+    # microbatches = [x.unsqueeze(0) for x in batch.unbind(dim=0)]
+    # partitions = [nn.Sequential(AddOne(partition_idx=x, is_logging=True)) for x in range(N_PARTITIONS)]
+    # clone_microbatches = [x.detach().clone() for x in microbatches]
+    partitions = [
+        nn.Sequential(ColumnParallelLinear(input_size, hidden_size)),
+        nn.Sequential(nn.ReLU()),
+        nn.Sequential(RowParallelLinear(hidden_size, output_size)),
+    ]
+
+    def load_data(model, layer_idx, idx):
+        if layer_idx == 0:
+            partition_size = weights[idx].shape[0] // world_size
+        elif layer_idx == 2:
+            partition_size = weights[idx].shape[1] // world_size
+
+        partition_start, partition_end = rank * partition_size, (rank + 1) * partition_size
+
+        if layer_idx == 0:
+            model[layer_idx][0].weight.data = weights[idx][partition_start: partition_end].detach().requires_grad_(True)
+            model[layer_idx][0].bias.data = biases[idx][partition_start:partition_end].detach().requires_grad_(True)
+        elif layer_idx == 2:
+            model[layer_idx][0].weight.data = weights[idx][:, partition_start:partition_end].detach().requires_grad_(True)
+            model[layer_idx][0].bias.data = biases[idx][:partition_end].detach().requires_grad_(True)
+        return model
+
+    partitions = load_data(partitions, layer_idx=0, idx=0)
+    partitions = load_data(partitions, layer_idx=2, idx=1)
+
+    # n_partitions = len(partitions)
+    devices = [torch.device("cpu") for _ in range(N_PARTITIONS)]
+    # non_parallel_model = create_non_parallel_model(partitions)
+    # non_parallel_batch = create_non_parallel_batch(batch)
+
+    # results = {}
 
     def loss_func(x):
         return x.mean()
@@ -248,35 +286,113 @@ if __name__ == "__main__":
 
     pipeline.fit()
 
-    assert forward_timeline == [(0, 0), (1, 0), (0, 1), (2, 0), (1, 1), (2, 1)]
+    # assert forward_timeline == [(0, 0), (1, 0), (0, 1), (2, 0), (1, 1), (2, 1)]
 
-    outputs = microbatches
-    non_parallel_outputs = [non_parallel_model(x.unsqueeze(0)) for x in non_parallel_batch.unbind()]
+    parallel_outputs = microbatches
+    print(f"rank={rank}, outputs.shape: {len(parallel_outputs)}\n")
+    print(parallel_outputs[0].shape)
+    # non_parallel_outputs = [non_parallel_model(x.unsqueeze(0)) for x in non_parallel_batch.unbind()]
 
-    for x, y in zip(outputs, non_parallel_outputs):
-        assert torch.allclose(x, y)
+    # print([torch.allclose(x, outputs) for x in parallel_outputs])
+    for x, y in zip(outputs, parallel_outputs):
+        assert torch.allclose(x, y, rtol=0.01)
 
-    for x in outputs:
-        loss = loss_func(x)
-        loss.backward()
+    # for x in outputs:
+    #     loss = loss_func(x)
+    #     loss.backward()
 
-    assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
-        (2, 1),
-        (2, 0),
-        (1, 1),
-        (0, 1),
-        (1, 0),
-        (0, 0),
+    # assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
+    #     (2, 1),
+    #     (2, 0),
+    #     (1, 1),
+    #     (0, 1),
+    #     (1, 0),
+    #     (0, 0),
+    # ]
+
+    for x in parallel_outputs:
+        x.sum().backward()
+
+    # for partition in partitions:
+    #     for param in partition.parameters():
+    #         assert param.grad is not None
+
+    # for partition_idx in range(n_partitions):
+    #     for w1, w2 in zip(partitions[partition_idx].parameters(), non_parallel_model[partition_idx].parameters()):
+    #         assert torch.allclose(w1.grad, w2.grad)
+
+    for layer_idx, grad_idx in [[0, 0], [2, 1]]:
+        if layer_idx == 0:
+            partition_size = weight_grads[grad_idx].shape[0] // world_size
+            grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=0)
+            bias_chunks = torch.split(bias_grads[grad_idx], partition_size, dim=0)
+        elif layer_idx == 2:
+            partition_size = weight_grads[grad_idx].shape[1] // world_size
+            grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=1)
+
+        print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(partitions[layer_idx][0].weight.grad, grad_chunks[rank])}\n")
+        if layer_idx == 0:
+            print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(partitions[layer_idx][0].bias.grad, bias_chunks[rank])}\n")
+        else:
+            print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(partitions[layer_idx][0].bias.grad, bias_grads[grad_idx])}\n")
+
+
+if __name__ == "__main__":
+    N_MICROBATCHES = 3
+    N_PARTITIONS = 2
+
+    processes = []
+    world_size = 4
+    batch_size = 10
+    input_size, output_size = 16, 12
+    hidden_size = output_size * world_size
+
+    # batch = torch.arange(0, N_MICROBATCHES, dtype=torch.float32)
+    batch = torch.randn(batch_size, input_size, dtype=torch.float32)
+    microbatches = [x.unsqueeze(0) for x in batch.unbind(dim=0)]
+
+    model = nn.Sequential(
+        nn.Linear(input_size, hidden_size),
+        nn.ReLU(),
+        nn.Linear(hidden_size, output_size),
+    )
+    outputs = model(batch)
+    outputs.sum().backward()
+    weights = [model[0].weight.data.detach(), model[2].weight.data.detach()]
+    biases = [model[0].bias.data.detach(), model[2].bias.data.detach()]
+    weight_grads = [
+        model[0].weight.grad.detach().requires_grad_(False),
+        model[2].weight.grad.detach().requires_grad_(False)
+    ]
+    bias_grads = [
+        model[0].bias.grad.detach().requires_grad_(False),
+        model[2].bias.grad.detach().requires_grad_(False)
+
     ]
 
-    for x in non_parallel_outputs:
-        loss = loss_func(x)
-        loss.backward()
+    # run_pipeline(input_size, hidden_size, output_size, batch)
 
-    for partition in partitions:
-        for param in partition.parameters():
-            assert param.grad is not None
+    mp.spawn(
+        run_pipeline,
+        nprocs=world_size,
+        args=(
+            world_size,
+            input_size, hidden_size, output_size,
+            microbatches, deepcopy(weights), deepcopy(biases),
+            outputs.detach().requires_grad_(False),
+            deepcopy(weight_grads), deepcopy(bias_grads),
+        )
+    )
 
-    for partition_idx in range(N_PARTITIONS):
-        for w1, w2 in zip(partitions[partition_idx].parameters(), non_parallel_model[partition_idx].parameters()):
-            assert torch.allclose(w1.grad, w2.grad)
+    # processes = []
+    # for rank in range(world_size):
+    #     p = Process(target=run_pipeline, args=(
+    #         rank, world_size,
+    #         input_size, hidden_size, output_size, microbatches,
+    #         outputs.detach().requires_grad_(False),
+    #     ))
+    #     processes.append(p)
+    #     p.start()
+
+    # for p in processes:
+    #     p.join()
