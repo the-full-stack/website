@@ -205,13 +205,13 @@ def test_pipeline():
     #     non_parallel_batch.grad = None
     #     return non_parallel_batch
 
+    def loss_func(x):
+        return x.mean()
+
     batch = torch.arange(0, N_MICROBATCHES, dtype=torch.float32, requires_grad=True)
     microbatches = [x.unsqueeze(0) for x in batch.unbind()]
     partitions = [nn.Sequential(AddOne(partition_idx=x, is_logging=True)) for x in range(N_PARTITIONS)]
     devices = [torch.device("cpu") for _ in range(N_PARTITIONS)]
-
-    def loss_func(x):
-        return x.mean()
 
     # non_parallel_model = create_non_parallel_model(partitions)
     # non_parallel_batch = create_non_parallel_batch(batch)
