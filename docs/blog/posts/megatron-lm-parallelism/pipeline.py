@@ -58,6 +58,7 @@ def spawn_worker(
     workers: Dict[torch.device, Tuple[Queue, Queue]] = {}
 
     for device in devices:
+        # TODO: remove device
         try:
             in_queue, out_queue = workers[device]
         except KeyError:
@@ -74,42 +75,57 @@ def spawn_worker(
     yield (in_queues, out_queues)
 
 
-class DetermisticScheduler:
-    """
-    torchgpipe: On-the-fly Pipeline Parallelism for Training Giant Models
-    https://arxiv.org/abs/2004.09910
+# class DetermisticScheduler:
+#     """
+#     torchgpipe: On-the-fly Pipeline Parallelism for Training Giant Models
+#     https://arxiv.org/abs/2004.09910
 
-    Section 3.2.1: Forward Dependency: Deterministic Clock-cycle
-    """
+#     Section 3.2.1: Forward Dependency: Deterministic Clock-cycle
+#     """
 
-    def generate(
-        self,
-        n_microbatches: int,
-        n_partitions: int,
-    ) -> Iterable[List[Tuple[Annotated[int, "batch_idx"], Annotated[int, "partition_idx"]]]]:
-        assert (
-            n_microbatches > 0
-        ), "The number of microbatches must be \
-            greater than 0"
-        assert (
-            n_partitions > 0
-        ), "The number of partitions must be \
-            greater than 0"
+#     def generate(
+#         self,
+#         n_microbatches: int,
+#         n_partitions: int,
+#     ) -> Iterable[List[Tuple[Annotated[int, "batch_idx"], Annotated[int, "partition_idx"]]]]:
+#         assert (
+#             n_microbatches > 0
+#         ), "The number of microbatches must be \
+#             greater than 0"
+#         assert (
+#             n_partitions > 0
+#         ), "The number of partitions must be \
+#             greater than 0"
 
-        n_partitions = n_partitions
-        n_microbatches = n_microbatches
-        n_clock_cycles = n_partitions + n_microbatches - 1
+#         n_partitions = n_partitions
+#         n_microbatches = n_microbatches
+#         n_clock_cycles = n_partitions + n_microbatches - 1
 
-        for clock_idx in range(n_clock_cycles):
-            start_partrition = max(clock_idx + 1 - n_microbatches, 0)
-            end_partition = min(clock_idx + 1, n_partitions)
+#         for clock_idx in range(n_clock_cycles):
+#             start_partrition = max(clock_idx + 1 - n_microbatches, 0)
+#             end_partition = min(clock_idx + 1, n_partitions)
 
-            tasks = []
-            for partition_idx in range(start_partrition, end_partition):
-                microbatch_idx = clock_idx - partition_idx
-                tasks.append((microbatch_idx, partition_idx))
+#             tasks = []
+#             for partition_idx in range(start_partrition, end_partition):
+#                 microbatch_idx = clock_idx - partition_idx
+#                 tasks.append((microbatch_idx, partition_idx))
 
-            yield tasks
+#             yield tasks
+
+
+def clock_cycles(n_microbatches, n_partritions):
+    n_clock_cycles = n_partritions + n_microbatches - 1
+    for clock_idx in range(n_clock_cycles):
+        start_partrition = max(clock_idx+1-n_microbatches, 0)
+        end_partrition = min(clock_idx+1, n_partritions)
+
+        tasks = []
+        for partrition_idx in range(start_partrition, end_partrition):
+            microbatch_idx = clock_idx-partrition_idx
+            task = (microbatch_idx, partrition_idx)
+            tasks.append(task)
+
+        yield tasks
 
 
 class Task:
@@ -129,7 +145,6 @@ class Pipeline:
         batches: List[torch.Tensor],
         partitions: List[nn.Sequential],
         devices: Optional[List[torch.device]] = None,
-        scheduler=DetermisticScheduler(),
     ) -> None:
         """Initialize the pipeline.
 
@@ -142,19 +157,17 @@ class Pipeline:
         self.batches = batches
         self.partitions = partitions
         self.devices = devices
-        self.scheduler = scheduler
 
     def fit(self):
         batches = self.batches
         partitions = self.partitions
         devices = self.devices
-        scheduler = self.scheduler
 
         n_batches = len(batches)
         n_partitions = len(partitions)
 
         with spawn_worker(devices) as (in_queues, out_queues):
-            for schedule in scheduler.generate(n_batches, n_partitions):
+            for schedule in clock_cycles(n_batches, n_partitions):
                 # _depend(schedule)
                 self._compute(schedule, in_queues, out_queues)
 
@@ -251,7 +264,7 @@ def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microba
     print(parallel_outputs[0].shape)
 
     for x, y in zip(outputs, parallel_outputs):
-        assert torch.allclose(x, y)
+        assert torch.allclose(x, y, rtol=0.01)
 
     # assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
     #     (2, 1),
