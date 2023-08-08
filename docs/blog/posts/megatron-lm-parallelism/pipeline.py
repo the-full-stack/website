@@ -20,17 +20,12 @@ def wait_and_execute(device: torch.device, in_queue: Queue, out_queue: Queue):
     while True:
         task = in_queue.get()
 
-        if task.is_done is True:
-            break
-
         try:
-            output = task.compute()
+            output = task()
         except Exception:
-            # out_queue.put(QueueOutput(task=task, output=None))
             out_queue.put(output)
             continue
 
-        # out_queue.put(QueueOutput(task=task, output=output))
         out_queue.put(output)
 
 
@@ -82,15 +77,6 @@ def clock_cycles(n_microbatches, n_partritions):
             tasks.append(task)
 
         yield tasks
-
-
-class Task:
-    def __init__(self, compute: Callable[[], torch.Tensor], is_done: bool = False):
-        self._compute = compute
-        self.is_done = is_done
-
-    def compute(self) -> torch.Tensor:
-        return self._compute()
 
 
 class Pipeline:
@@ -147,11 +133,9 @@ class Pipeline:
             def compute(batch, partrition):
                 def wrapper():
                     return partrition(batch)
-
                 return wrapper
 
-            task = Task(compute=compute(batch, partrition))
-            in_queues[partition_idx].put(task)
+            in_queues[partition_idx].put(compute(batch, partrition))
 
         for microbatch_idx, partition_idx in schedule:
             output = out_queues[partition_idx].get()
