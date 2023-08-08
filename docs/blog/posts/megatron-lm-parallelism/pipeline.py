@@ -15,13 +15,6 @@ from layers import ColumnParallelLinear, RowParallelLinear
 from utils import load_param
 
 
-@dataclass
-class QueueOutput:
-    task: Callable
-    output: Any
-    is_done: bool = False
-
-
 def wait_and_execute(device: torch.device, in_queue: Queue, out_queue: Queue):
     """Wait for a task and execute it."""
     while True:
@@ -33,10 +26,12 @@ def wait_and_execute(device: torch.device, in_queue: Queue, out_queue: Queue):
         try:
             output = task.compute()
         except Exception:
-            out_queue.put(QueueOutput(task=task, output=None, is_done=False))
+            # out_queue.put(QueueOutput(task=task, output=None))
+            out_queue.put(output)
             continue
 
-        out_queue.put(QueueOutput(task=task, output=output, is_done=True))
+        # out_queue.put(QueueOutput(task=task, output=output))
+        out_queue.put(output)
 
 
 @contextmanager
@@ -159,8 +154,7 @@ class Pipeline:
             in_queues[partition_idx].put(task)
 
         for microbatch_idx, partition_idx in schedule:
-            queue_output = out_queues[partition_idx].get()
-            task, output = queue_output.task, queue_output.output
+            output = out_queues[partition_idx].get()
 
             # put the output back to the batch
             batches[microbatch_idx] = output
