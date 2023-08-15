@@ -4,14 +4,14 @@
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.css" />
 <script src="https://cdn.jsdelivr.net/npm/handsontable/dist/handsontable.full.min.js"></script>
 <script>
-  function csvToArray(str, delimiter = ",") {
+  function csvToArray(str, colNumeric=[], delimiter=",") {
     // From https://sebhastian.com/javascript-csv-to-array/
     const headers = str.slice(0, str.indexOf("\n")).split(delimiter);
-    const rows = str.slice(str.indexOf("\n") + 1).split("\n");
+    const rows = str.slice(str.indexOf("\n") + 1).trimEnd().split("\n");
     const arr = rows.map(function (row) {
       const values = row.trim().split(delimiter);
       const el = headers.reduce(function (object, header, index) {
-        object[header] = values[index];
+        object[header] = colNumeric.includes(index) && values[index] ? Number(values[index]) : values[index];
         return object;
       }, {});
       return el;
@@ -23,7 +23,7 @@
     fetch("./cloud-gpus.csv")
       .then((res) => res.text())
       .then((text) => {
-        const data = csvToArray(text);
+        const data = csvToArray(text, [3,4,5,6,7,8,9]);
         const cloud = new Handsontable(
           document.getElementById("cloud-gpus-table"),
           {
@@ -37,7 +37,7 @@
             height: "auto",
             hiddenColumns: true,
             manualColumnResize: true,
-            readOnly: true,
+            readOnly: true
           }
         );
       });
@@ -47,7 +47,7 @@
     fetch("./serverless-gpus.csv")
       .then((res) => res.text())
       .then((text) => {
-        const data = csvToArray(text);
+        const data = csvToArray(text, [3,4,5,6,7,8]);
         const serverless = new Handsontable(
           document.getElementById("serverless-gpus-table"),
           {
@@ -61,7 +61,7 @@
             height: "auto",
             hiddenColumns: true,
             manualColumnResize: true,
-            readOnly: true,
+            readOnly: true
           }
         );
       });
