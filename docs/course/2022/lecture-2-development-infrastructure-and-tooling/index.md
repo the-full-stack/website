@@ -401,8 +401,8 @@ If we [combine the cost metrics with performance
 metrics](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/benchmark-analysis.ipynb),
 we find that **the most expensive per hour chips are not the most
 expensive per experiment!** Case in point: running the same Transformers
-experiment on 4 V100s costs \$1750 over 72 hours, whereas the same
-experiment on 4 A100s costs \$250 over only 8 hours. Think carefully
+experiment on 4 V100s costs $1750 over 72 hours, whereas the same
+experiment on 4 A100s costs $250 over only 8 hours. Think carefully
 about cost and performance based on the model you're trying to train.
 
 Some helpful heuristics here are:
@@ -416,9 +416,9 @@ providers.
 
 For **on-prem** use cases, you can build your own pretty easily or opt
 for a pre-built computer from a company like NVIDIA. You can build a
-good, quiet PC with 128 GB RAM and 2 RTX 3909s for about \$7000 and set
+good, quiet PC with 128 GB RAM and 2 RTX 3090s for about $7000 and set
 it up in a day. Going beyond this can start to get far more expensive
-and complicated. Lambda Labs offers a \$60,000 machine with 8 A100s
+and complicated. Lambda Labs offers a $60,000 machine with 8 A100s
 (super fast!). Tim Dettmers offers a great (slightly outdated)
 perspective on building a machine
 [here](https://timdettmers.com/2020/09/07/which-gpu-for-deep-learning/).
