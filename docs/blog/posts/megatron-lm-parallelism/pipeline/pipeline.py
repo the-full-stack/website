@@ -59,15 +59,7 @@ class Pipeline:
         self,
         batches: List[torch.Tensor],
         partitions: List[nn.Sequential],
-    ) -> None:
-        """Initialize the pipeline.
-
-        Args:
-            batches (List[Batch]): A list of micro-batches.
-            partitions (List[nn.Sequential]): A partitioned model.
-            devices (Optional[List[torch.device]], optional): A list of devices. Defaults to None.
-            scheduler (BaseScheduler, optional): _description_. Defaults to DetermisticScheduler().
-        """
+    ):
         self.batches = batches
         self.partitions = partitions
 
@@ -84,12 +76,9 @@ class Pipeline:
 
     def _compute(self, schedule: List[Tuple[int, int]], in_queue: Queue, out_queue: Queue):
         """Compute the partitions."""
-        batches = self.batches
-        partitions = self.partitions
-
         for microbatch_idx, partition_idx in schedule:
-            batch = batches[microbatch_idx]
-            partrition = partitions[partition_idx]
+            batch = self.batches[microbatch_idx]
+            partrition = self.partitions[partition_idx]
 
             def compute(batch, partrition):
                 def wrapper():
@@ -97,18 +86,11 @@ class Pipeline:
                 return wrapper
 
             in_queue.put(compute(batch, partrition))
-            print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, putted")
 
         for microbatch_idx, partition_idx in schedule:
-            if microbatch_idx == 2 and partition_idx == 0:
-                print("debug")
-
-            print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, wait to get")
             output = out_queue.get()
-            print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, got")
-
-            # put the output back to the batch
-            batches[microbatch_idx] = output
+            # put the output back to input list
+            self.batches[microbatch_idx] = output
 
 
 def test_pipeline():
@@ -225,8 +207,6 @@ def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microba
     pipeline.fit()
 
     parallel_outputs = microbatches
-    print(f"rank={rank}, outputs.shape: {len(parallel_outputs)}\n")
-    print(parallel_outputs[0].shape)
 
     for x, y in zip(outputs, parallel_outputs):
         assert torch.allclose(x, y, rtol=0.01)
@@ -243,11 +223,11 @@ def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microba
             partition_size = weight_grads[grad_idx].shape[1] // world_size
             grad_chunks = torch.split(weight_grads[grad_idx], partition_size, dim=1)
 
-        print(f"rank={rank}, is the gradient of the weight correct? {torch.allclose(partitions[layer_idx][0].weight.grad, grad_chunks[rank])}\n")
+        assert torch.allclose(partitions[layer_idx][0].weight.grad, grad_chunks[rank])
         if layer_idx == 0:
-            print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(partitions[layer_idx][0].bias.grad, bias_chunks[rank])}\n")
+            assert torch.allclose(partitions[layer_idx][0].bias.grad, bias_chunks[rank])
         else:
-            print(f"rank={rank}, is the gradient of the bias correct? {torch.allclose(partitions[layer_idx][0].bias.grad, bias_grads[grad_idx])}\n")
+            assert torch.allclose(partitions[layer_idx][0].bias.grad, bias_grads[grad_idx])
 
 
 def test_tensor_parallelism_with_pipeline():
