@@ -1,5 +1,4 @@
-from typing import Iterable, List, Tuple, Annotated, Optional, Generator, Dict, Callable, Any
-from dataclasses import dataclass
+from typing import List, Tuple
 from contextlib import contextmanager
 from queue import Queue
 from threading import Thread
@@ -16,7 +15,7 @@ from layers import ColumnParallelLinear, RowParallelLinear
 from utils import load_param
 
 
-def wait_and_execute(device: torch.device, in_queue: Queue, out_queue: Queue):
+def wait_and_execute(in_queue: Queue, out_queue: Queue):
     """Wait for a task and execute it."""
     while True:
         # print(f"thread {thread_id} is waiting for a task")
@@ -37,61 +36,20 @@ def wait_and_execute(device: torch.device, in_queue: Queue, out_queue: Queue):
 
 @contextmanager
 def spawn_worker(
-    devices: List[torch.device],
-) -> Generator[
-    Tuple[
-        Annotated[List[Queue], "A list of tasks to be executed"],
-        Annotated[List[Queue], "A list of tasks has been executed"],
-    ],
-    None,
-    None,
-]:
-    """Spawn new worker threads."""
+    n_workers: int,
+):
     in_queues: List[Queue] = []
     out_queues: List[Queue] = []
 
-    workers: Dict[torch.device, Tuple[Queue, Queue]] = {}
+    in_queue = Queue()
+    out_queue = Queue()
 
-    for device in devices:
-        # TODO: remove device
-        try:
-            in_queue, out_queue = workers[device]
-        except KeyError:
-            in_queue = Queue()
-            out_queue = Queue()
-            workers[device] = (in_queue, out_queue)
+    thread = Thread(target=wait_and_execute, args=(in_queue, out_queue), daemon=True)
+    thread.start()
 
-            thread = Thread(target=wait_and_execute, args=(device, in_queue, out_queue), daemon=True)
-            thread.start()
-
+    for _ in range(n_workers):
         in_queues.append(in_queue)
         out_queues.append(out_queue)
-
-    # CASE 2: Works
-    # in_queue = Queue()
-    # out_queue = Queue()
-
-    # thread = Thread(target=wait_and_execute, args=("", in_queue, out_queue), daemon=True)
-    # thread.start()
-
-    # for device in devices:
-    #     # TODO: remove device
-
-    #     in_queues.append(in_queue)
-    #     out_queues.append(out_queue)
-
-
-    # # CASE 3
-    # for id, device in enumerate(devices):
-    #     in_queue = Queue()
-    #     out_queue = Queue()
-    #     workers[device] = (in_queue, out_queue)
-
-    #     thread = Thread(target=wait_and_execute, args=(device, in_queue, out_queue, id), daemon=True)
-    #     thread.start()
-
-    #     in_queues.append(in_queue)
-    #     out_queues.append(out_queue)
 
     yield (in_queues, out_queues)
 
@@ -118,7 +76,6 @@ class Pipeline:
         self,
         batches: List[torch.Tensor],
         partitions: List[nn.Sequential],
-        devices: Optional[List[torch.device]] = None,
     ) -> None:
         """Initialize the pipeline.
 
@@ -130,28 +87,18 @@ class Pipeline:
         """
         self.batches = batches
         self.partitions = partitions
-        self.devices = devices
 
     def fit(self):
         batches = self.batches
         partitions = self.partitions
-        devices = self.devices
 
         n_batches = len(batches)
         n_partitions = len(partitions)
+        n_workers = len(batches)
 
-        with spawn_worker(devices) as (in_queues, out_queues):
+        with spawn_worker(n_workers) as (in_queues, out_queues):
             for schedule in clock_cycles(n_batches, n_partitions):
-                # _depend(schedule)
                 self._compute(schedule, in_queues, out_queues)
-
-    # def _depend(self, schedule: List[Tuple[int, int]]):
-    #     """Enforce the dependency between batches and partitions."""
-    #     batches = batches
-
-    #     for microbatch_idx, partition_idx in schedule:
-    #         if microbatch_idx != 0:
-    #             create_backward_dependency(batches[microbatch_idx - 1], batches[microbatch_idx])
 
     def _compute(self, schedule: List[Tuple[int, int]], in_queues: List[Queue], out_queues: List[Queue]):
         """Compute the partitions."""
@@ -231,12 +178,11 @@ def test_pipeline():
     batch = torch.arange(0, N_MICROBATCHES, dtype=torch.float32, requires_grad=True)
     microbatches = [x.unsqueeze(0) for x in batch.unbind()]
     partitions = [nn.Sequential(AddOne(partition_idx=x, is_logging=True)) for x in range(N_PARTITIONS)]
-    devices = [torch.device("cpu") for _ in range(N_PARTITIONS)]
 
     non_parallel_model = create_non_parallel_model(partitions)
     non_parallel_batch = create_non_parallel_batch(batch)
 
-    pipeline = Pipeline(microbatches, partitions, devices)
+    pipeline = Pipeline(microbatches, partitions)
 
     assert pipeline.batches == microbatches
     assert pipeline.partitions == partitions
@@ -296,8 +242,7 @@ def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microba
     ]
 
     partitions = load_param(rank, world_size, weights, biases, partitions)
-    devices = [torch.device("cpu") for _ in range(len(partitions))]
-    pipeline = Pipeline(microbatches, partitions, devices)
+    pipeline = Pipeline(microbatches, partitions)
 
     assert pipeline.batches == microbatches
     assert pipeline.partitions == partitions
