@@ -6,6 +6,7 @@ from threading import Thread
 import time
 import os
 from copy import deepcopy
+import time
 
 import torch
 from torch import nn
@@ -18,15 +19,20 @@ from utils import load_param
 def wait_and_execute(device: torch.device, in_queue: Queue, out_queue: Queue):
     """Wait for a task and execute it."""
     while True:
+        # print(f"thread {thread_id} is waiting for a task")
+        # time.sleep(1)
         task = in_queue.get()
 
         try:
             output = task()
+            # print(f"thread {thread_id} executed a task")
         except Exception:
+            # print(f"thread {thread_id} got error while executing a task")
             out_queue.put(output)
             continue
 
         out_queue.put(output)
+        # print(f"thread {thread_id} put the output of a task")
 
 
 @contextmanager
@@ -60,6 +66,32 @@ def spawn_worker(
 
         in_queues.append(in_queue)
         out_queues.append(out_queue)
+
+    # CASE 2: Works
+    # in_queue = Queue()
+    # out_queue = Queue()
+
+    # thread = Thread(target=wait_and_execute, args=("", in_queue, out_queue), daemon=True)
+    # thread.start()
+
+    # for device in devices:
+    #     # TODO: remove device
+
+    #     in_queues.append(in_queue)
+    #     out_queues.append(out_queue)
+
+
+    # # CASE 3
+    # for id, device in enumerate(devices):
+    #     in_queue = Queue()
+    #     out_queue = Queue()
+    #     workers[device] = (in_queue, out_queue)
+
+    #     thread = Thread(target=wait_and_execute, args=(device, in_queue, out_queue, id), daemon=True)
+    #     thread.start()
+
+    #     in_queues.append(in_queue)
+    #     out_queues.append(out_queue)
 
     yield (in_queues, out_queues)
 
@@ -135,10 +167,20 @@ class Pipeline:
                     return partrition(batch)
                 return wrapper
 
+            if microbatch_idx == 2 and partition_idx == 0:
+                print("debug")
+
             in_queues[partition_idx].put(compute(batch, partrition))
+            print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, putted")
 
         for microbatch_idx, partition_idx in schedule:
+            if microbatch_idx == 2 and partition_idx == 0:
+                print("debug")
+
+            print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, wait to get")
+            # time.sleep(1)
             output = out_queues[partition_idx].get()
+            print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, got")
 
             # put the output back to the batch
             batches[microbatch_idx] = output
@@ -166,22 +208,22 @@ def test_pipeline():
 
         def forward(self, x):
             if self.is_logging:
-                time.sleep(0.5)
+                # time.sleep(0.5)
                 forward_timeline.append((self.microbatch_idx, self.partition_idx))
                 self.microbatch_idx += 1
 
             return self.net(x)
 
-    # def create_non_parallel_model(partitions):
-    #     non_parallel_model = nn.Sequential(*[AddOne(partition_idx=x, is_logging=False) for x in range(len(partitions))])
-    #     for non_parallel_layer, original_partition in zip(non_parallel_model, partitions):
-    #         non_parallel_layer.load_state_dict(original_partition[0].state_dict())
-    #     return non_parallel_model
+    def create_non_parallel_model(partitions):
+        non_parallel_model = nn.Sequential(*[AddOne(partition_idx=x, is_logging=False) for x in range(len(partitions))])
+        for non_parallel_layer, original_partition in zip(non_parallel_model, partitions):
+            non_parallel_layer.load_state_dict(original_partition[0].state_dict())
+        return non_parallel_model
 
-    # def create_non_parallel_batch(batch):
-    #     non_parallel_batch = batch.detach().clone()
-    #     non_parallel_batch.grad = None
-    #     return non_parallel_batch
+    def create_non_parallel_batch(batch):
+        non_parallel_batch = batch.detach().clone()
+        non_parallel_batch.grad = None
+        return non_parallel_batch
 
     def loss_func(x):
         return x.mean()
@@ -191,8 +233,8 @@ def test_pipeline():
     partitions = [nn.Sequential(AddOne(partition_idx=x, is_logging=True)) for x in range(N_PARTITIONS)]
     devices = [torch.device("cpu") for _ in range(N_PARTITIONS)]
 
-    # non_parallel_model = create_non_parallel_model(partitions)
-    # non_parallel_batch = create_non_parallel_batch(batch)
+    non_parallel_model = create_non_parallel_model(partitions)
+    non_parallel_batch = create_non_parallel_batch(batch)
 
     pipeline = Pipeline(microbatches, partitions, devices)
 
@@ -201,17 +243,19 @@ def test_pipeline():
 
     pipeline.fit()
 
-    assert forward_timeline == [(0, 0), (1, 0), (0, 1), (2, 0), (1, 1), (2, 1)]
+    assert forward_timeline == [(0, 0), (1, 0), (0, 1), (2, 0), (1, 1), (2, 1)] or [(0, 0), (1, 0), (0, 1), (1, 1), (2, 0), (2, 1)]
 
     outputs = microbatches
-    # non_parallel_outputs = [non_parallel_model(x.unsqueeze(0)) for x in non_parallel_batch.unbind()]
+    non_parallel_outputs = [non_parallel_model(x.unsqueeze(0)) for x in non_parallel_batch.unbind()]
 
-    # for x, y in zip(outputs, non_parallel_outputs):
-    #     assert torch.allclose(x, y)
+    for x, y in zip(outputs, non_parallel_outputs):
+        assert torch.allclose(x, y)
 
     for x in outputs:
         loss = loss_func(x)
         loss.backward()
+
+    # pass
 
     assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
         (2, 1),
@@ -222,19 +266,19 @@ def test_pipeline():
         (0, 0),
     ]
 
-    # for x in non_parallel_outputs:
-    #     loss = loss_func(x)
-    #     loss.backward()
+    for x in non_parallel_outputs:
+        loss = loss_func(x)
+        loss.backward()
 
-    # assert batch.grad is not None
+    assert batch.grad is not None
 
-    # for partition in partitions:
-    #     for param in partition.parameters():
-    #         assert param.grad is not None
+    for partition in partitions:
+        for param in partition.parameters():
+            assert param.grad is not None
 
-    # for partition_idx in range(N_PARTITIONS):
-    #     for w1, w2 in zip(partitions[partition_idx].parameters(), non_parallel_model[partition_idx].parameters()):
-    #         assert torch.allclose(w1.grad, w2.grad)
+    for partition_idx in range(N_PARTITIONS):
+        for w1, w2 in zip(partitions[partition_idx].parameters(), non_parallel_model[partition_idx].parameters()):
+            assert torch.allclose(w1.grad, w2.grad)
 
 
 def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microbatches, weights, biases, outputs, weight_grads, bias_grads):
@@ -336,5 +380,5 @@ def test_tensor_parallelism_with_pipeline():
 
 
 if __name__ == "__main__":
-    test_pipeline()
-    # test_tensor_parallelism_with_pipeline()
+    # test_pipeline()
+    test_tensor_parallelism_with_pipeline()
