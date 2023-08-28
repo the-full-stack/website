@@ -2,10 +2,8 @@ from typing import List, Tuple
 from contextlib import contextmanager
 from queue import Queue
 from threading import Thread
-import time
 import os
 from copy import deepcopy
-import time
 
 import torch
 from torch import nn
@@ -18,40 +16,25 @@ from utils import load_param
 def wait_and_execute(in_queue: Queue, out_queue: Queue):
     """Wait for a task and execute it."""
     while True:
-        # print(f"thread {thread_id} is waiting for a task")
-        # time.sleep(1)
         task = in_queue.get()
 
         try:
             output = task()
-            # print(f"thread {thread_id} executed a task")
         except Exception:
-            # print(f"thread {thread_id} got error while executing a task")
-            out_queue.put(output)
-            continue
+            raise Exception("task failed")
 
         out_queue.put(output)
-        # print(f"thread {thread_id} put the output of a task")
 
 
 @contextmanager
-def spawn_worker(
-    n_workers: int,
-):
-    in_queues: List[Queue] = []
-    out_queues: List[Queue] = []
-
+def spawn_worker():
     in_queue = Queue()
     out_queue = Queue()
 
     thread = Thread(target=wait_and_execute, args=(in_queue, out_queue), daemon=True)
     thread.start()
 
-    for _ in range(n_workers):
-        in_queues.append(in_queue)
-        out_queues.append(out_queue)
-
-    yield (in_queues, out_queues)
+    yield (in_queue, out_queue)
 
 
 def clock_cycles(n_microbatches, n_partritions):
@@ -94,13 +77,12 @@ class Pipeline:
 
         n_batches = len(batches)
         n_partitions = len(partitions)
-        n_workers = len(batches)
 
-        with spawn_worker(n_workers) as (in_queues, out_queues):
+        with spawn_worker() as (in_queue, out_queue):
             for schedule in clock_cycles(n_batches, n_partitions):
-                self._compute(schedule, in_queues, out_queues)
+                self._compute(schedule, in_queue, out_queue)
 
-    def _compute(self, schedule: List[Tuple[int, int]], in_queues: List[Queue], out_queues: List[Queue]):
+    def _compute(self, schedule: List[Tuple[int, int]], in_queue: Queue, out_queue: Queue):
         """Compute the partitions."""
         batches = self.batches
         partitions = self.partitions
@@ -114,10 +96,7 @@ class Pipeline:
                     return partrition(batch)
                 return wrapper
 
-            if microbatch_idx == 2 and partition_idx == 0:
-                print("debug")
-
-            in_queues[partition_idx].put(compute(batch, partrition))
+            in_queue.put(compute(batch, partrition))
             print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, putted")
 
         for microbatch_idx, partition_idx in schedule:
@@ -125,8 +104,7 @@ class Pipeline:
                 print("debug")
 
             print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, wait to get")
-            # time.sleep(1)
-            output = out_queues[partition_idx].get()
+            output = out_queue.get()
             print(f"microbatch_idx={microbatch_idx}, partition_idx={partition_idx}, got")
 
             # put the output back to the batch
@@ -155,7 +133,6 @@ def test_pipeline():
 
         def forward(self, x):
             if self.is_logging:
-                # time.sleep(0.5)
                 forward_timeline.append((self.microbatch_idx, self.partition_idx))
                 self.microbatch_idx += 1
 
@@ -200,8 +177,6 @@ def test_pipeline():
     for x in outputs:
         loss = loss_func(x)
         loss.backward()
-
-    # pass
 
     assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
         (2, 1),
