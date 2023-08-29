@@ -9,8 +9,9 @@ import torch
 from torch import nn
 import torch.multiprocessing as mp
 
-from layers import ColumnParallelLinear, RowParallelLinear
 from utils import load_param
+
+from minitron.linear import ColumnParallelLinear, RowParallelLinear
 
 
 def wait_and_execute(in_queue: Queue, out_queue: Queue):
@@ -280,5 +281,5 @@ def test_tensor_parallelism_with_pipeline():
 
 
 if __name__ == "__main__":
-    # test_pipeline()
-    test_tensor_parallelism_with_pipeline()
+    test_pipeline()
+    # test_tensor_parallelism_with_pipeline()
