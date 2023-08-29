@@ -8,6 +8,7 @@ from copy import deepcopy
 import torch
 from torch import nn
 import torch.multiprocessing as mp
+import torch.distributed as dist
 
 from utils import load_param
 
@@ -188,7 +189,7 @@ def test_pipeline():
 def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microbatches, weights, biases, outputs, weight_grads, bias_grads):
     os.environ['MASTER_ADDR'] = 'localhost'
     os.environ['MASTER_PORT'] = '12359'
-    torch.distributed.init_process_group(
+    dist.init_process_group(
         "gloo",
         rank=rank,
         world_size=world_size
@@ -273,13 +274,13 @@ def test_tensor_parallelism_with_pipeline():
         args=(
             world_size,
             input_size, hidden_size, output_size,
-            microbatches, deepcopy(weights), deepcopy(biases),
+            microbatches, weights, biases,
             outputs.detach().requires_grad_(False),
-            deepcopy(weight_grads), deepcopy(bias_grads),
+            weight_grads, bias_grads,
         )
     )
 
 
 if __name__ == "__main__":
-    test_pipeline()
-    # test_tensor_parallelism_with_pipeline()
+    # test_pipeline()
+    test_tensor_parallelism_with_pipeline()
