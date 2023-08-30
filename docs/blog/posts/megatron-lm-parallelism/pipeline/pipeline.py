@@ -162,6 +162,10 @@ def test_pipeline():
         loss = loss_func(x)
         loss.backward()
 
+    # NOTE: In the third clock cycle, two partitions are active:
+    # (1, 0) and (0, 1). We log them based on
+    # which one finishes first, so sometimes
+    # one partition finishes before the other
     assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
         (2, 1),
         (2, 0),
@@ -249,8 +253,8 @@ def test_tensor_parallelism_with_pipeline():
     outputs.sum().backward()
 
     def extract_params(model):
-        weights = [model[0].weight.data.detach(), model[2].weight.data.detach()]
-        biases = [model[0].bias.data.detach(), model[2].bias.data.detach()]
+        weights = [deepcopy(model[0].weight.data.detach()), deepcopy(model[2].weight.data.detach())]
+        biases = [deepcopy(model[0].bias.data.detach()), deepcopy(model[2].bias.data.detach())]
         return weights, biases
 
     def extract_grads(model):
