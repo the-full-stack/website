@@ -37,12 +37,12 @@
 
 ![Chapter 3 Cover Image](chapter_3.jpg)
 
-- Introduced radio user interface, allowing users to create interfaces in pure Python
-- Radio UI is flexible, supported by Hugging Face, and rapidly adopting machine learning features
-- Examples of radio UI use include Alpaca, Flamingo, and Dolly mini
-- Radio UI is easy to set up, portable, flexible, and comes with an API with OpenAPI spec
+- Introduced Gradio user interface, allowing users to create interfaces in pure Python
+- Gradio UI is flexible, supported by Hugging Face, and rapidly adopting machine learning features
+- Examples of Gradio UI use include Alpaca, Flamingo, and Dolly mini
+- Gradio UI is easy to set up, portable, flexible, and comes with an API with OpenAPI spec
 - Discord bot integrated with Python library Discord.py; alternative library Interactions.py is also available
-- Radio UI is built on FastAPI for asynchronous Python web service
+- Gradio UI is built on FastAPI for asynchronous Python web service
 - Application mainly runs on the model's infrastructure in containers, serving traffic as needed
 
 ### Embeddings & ETL
