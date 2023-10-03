@@ -3,7 +3,6 @@ from contextlib import contextmanager
 from queue import Queue
 from threading import Thread
 import os
-from copy import deepcopy
 
 import torch
 from torch import nn
@@ -162,10 +161,6 @@ def test_pipeline():
         loss = loss_func(x)
         loss.backward()
 
-    # NOTE: In the third clock cycle, two partitions are active:
-    # (1, 0) and (0, 1). We log them based on
-    # which one finishes first, so sometimes
-    # one partition finishes before the other
     assert backward_timeline == [(2, 1), (2, 0), (1, 1), (1, 0), (0, 1), (0, 0)] or backward_timeline == [
         (2, 1),
         (2, 0),
@@ -190,7 +185,7 @@ def test_pipeline():
             assert torch.allclose(w1.grad, w2.grad)
 
 
-def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microbatches, weights, biases, outputs, weight_grads, bias_grads):
+def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microbatches, params, outputs):
     os.environ['MASTER_ADDR'] = 'localhost'
     os.environ['MASTER_PORT'] = '12359'
     dist.init_process_group(
@@ -204,7 +199,26 @@ def run_pipeline(rank, world_size, input_size, hidden_size, output_size, microba
         nn.Sequential(RowParallelLinear(hidden_size, output_size)),
     ]
 
-    partitions = load_param(rank, world_size, weights, biases, partitions)
+    # partitions = load_param(rank, world_size, weights, biases, partitions)
+
+    def load_params(rank, world_size, params, partitions):
+    for partition in partitions:
+        for module_name, module in partition.named_modules():
+            if isinstance(module, torch.nn.Linear):
+                # Calculate the size of the partition
+                weight_size = params[module_name]['weights'].shape[0] // world_size
+                bias_size = params[module_name]['biases'].shape[0] // world_size
+
+                # Calculate the start and end indices for the partition
+                start_idx = rank * weight_size
+                end_idx = start_idx + weight_size
+
+                # Load the weights and biases for this partition
+                module.weight.data = params[module_name]['weights'][start_idx:end_idx]
+                module.bias.data = params[module_name]['biases'][start_idx:end_idx]
+
+    return partitions
+
     pipeline = Pipeline(microbatches, partitions)
 
     assert pipeline.batches == microbatches
@@ -244,33 +258,58 @@ def test_tensor_parallelism_with_pipeline():
     batch = torch.randn(batch_size, input_size, dtype=torch.float32)
     microbatches = [x.unsqueeze(0) for x in batch.unbind(dim=0)]
 
-    model = nn.Sequential(
-        nn.Linear(input_size, hidden_size),
-        nn.ReLU(),
-        nn.Linear(hidden_size, output_size),
-    )
+    # model = nn.Sequential(
+    #     nn.Linear(input_size, hidden_size),
+    #     nn.ReLU(),
+    #     nn.Linear(hidden_size, output_size),
+    # )
+    class ToyMLP(nn.Module):
+        def __init__(self, input_size, hidden_size, output_size) -> None:
+            super().__init__()
+            self.dense_h_to_4h = nn.Linear(input_size, hidden_size)
+            self.relu = nn.ReLU()
+            self.dense_4h_to_h = nn.Linear(hidden_size, output_size)
+
+        def forward(self, x):
+            return self.dense_4h_to_h(self.relu(self.dense_h_to_4h(x)))
+
+    model = ToyMLP(input_size, hidden_size, output_size)
+
     outputs = model(batch)
     outputs.sum().backward()
 
-    def extract_params(model):
-        weights = [deepcopy(model[0].weight.data.detach()), deepcopy(model[2].weight.data.detach())]
-        biases = [deepcopy(model[0].bias.data.detach()), deepcopy(model[2].bias.data.detach())]
-        return weights, biases
+    # def extract_params(model):
+    #     weights = [model.dense_h_to_4h.weight.data.detach(), model.dense_4h_to_h.weight.data.detach()]
+    #     biases = [model.dense_h_to_4h.bias.data.detach(), model.dense_4h_to_h.bias.data.detach()]
+    #     return weights, biases
 
-    def extract_grads(model):
-        weight_grads = [
-            model[0].weight.grad.detach().requires_grad_(False),
-            model[2].weight.grad.detach().requires_grad_(False)
-        ]
-        bias_grads = [
-            model[0].bias.grad.detach().requires_grad_(False),
-            model[2].bias.grad.detach().requires_grad_(False)
+    # def extract_grads(model):
+    #     weight_grads = [
+    #         model.dense_h_to_4h.weight.grad.detach().requires_grad_(False),
+    #         model.dense_4h_to_h.weight.grad.detach().requires_grad_(False)
+    #     ]
+    #     bias_grads = [
+    #         model.dense_h_to_4h.bias.grad.detach().requires_grad_(False),
+    #         model.dense_4h_to_h.bias.grad.detach().requires_grad_(False)
 
-        ]
-        return weight_grads, bias_grads
+    #     ]
+    #     return weight_grads, bias_grads
 
-    weights, biases = extract_params(model)
-    weight_grads, bias_grads = extract_grads(model)
+    def extract_params_and_grads(model):
+        params_and_grads_dict = {}
+
+        for module_name, module in model.named_modules():
+            if isinstance(module, torch.nn.Linear):
+                params_and_grads_dict[module_name] = {
+                    'weights': module.weight.data.detach(),
+                    'biases': module.bias.data.detach(),
+                    'weight_grads': module.weight.grad.detach().requires_grad_(False) if module.weight.grad is not None else None,
+                    'bias_grads': module.bias.grad.detach().requires_grad_(False) if module.bias.grad is not None else None
+                }
+
+        return params_and_grads_dict
+
+    params = extract_params_and_grads(model)
 
     mp.spawn(
         run_pipeline,
@@ -278,13 +317,13 @@ def test_tensor_parallelism_with_pipeline():
         args=(
             world_size,
             input_size, hidden_size, output_size,
-            microbatches, weights, biases,
+            microbatches, params,
             outputs.detach().requires_grad_(False),
-            weight_grads, bias_grads,
+            # weight_grads, bias_grads,
         )
     )
 
 
 if __name__ == "__main__":
-    test_pipeline()
-    # test_tensor_parallelism_with_pipeline()
+    # test_pipeline()
+    test_tensor_parallelism_with_pipeline()
