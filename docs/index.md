@@ -1,7 +1,7 @@
 ---
 hide:
-- navigation
-- toc
+  - navigation
+  - toc
 ---
 
 <style>
@@ -31,8 +31,8 @@ hide:
       <h1> </h1>
       <h2><strong>{{ config.site_description }}</strong></h2>
       <p><br></p>
-      <a href="/llm-bootcamp" class="md-button md-button--primary">
-        Free LLM Bootcamp Available Now!
+      <a href="https://www.scale.bythebay.io/llm-workshop" class="md-button md-button--primary">
+        Sign up for our latest course!
       </a>
     </div>
   </div>
