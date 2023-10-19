@@ -142,8 +142,8 @@ Lambda,A6000 (48 GB),Ampere,4,192,56,400,3.20,0.80,,
 Lambda,Quadro RTX 6000 (24 GB),Turing,1,24,92,448,4.40,4.40,,
 Lambda,H100 (80 GB),Hopper,1,80,26,200,1.99,1.99,,
 Lambda,V100 (16 GB),Volta,8,128,92,448,4.40,0.55,,
-Latitude.sh,H100 (80GB),Hopper,4,320,128,768,11.96,2.99,,g3.large.x86
-Latitude.sh,H100 (80GB),Hopper,8,640,128,1536,22.42,2.80,,g3.xlarge.x86
+Latitude.sh,H100 (80 GB),Hopper,4,320,128,768,11.96,2.99,,g3.large.x86
+Latitude.sh,H100 (80 GB),Hopper,8,640,128,1536,22.42,2.80,,g3.xlarge.x86
 Oblivus Cloud,A100 (80 GB),Ampere,1,80,4,16,2.55,2.55,,
 Oblivus Cloud,A100 (80 GB),Ampere,2,160,8,32,5.10,2.55,,
 Oblivus Cloud,A100 (80 GB),Ampere,4,320,16,64,10.20,2.55,,
@@ -182,6 +182,11 @@ OVHcloud,V100 (16 GB),Volta,4,64,36,180,7.89,1.97,,t1-180
 OVHcloud,V100 (32 GB),Volta,1,32,14,45,2.19,2.19,,t2-45
 OVHcloud,V100 (32 GB),Volta,2,64,28,90,4.38,2.19,,t2-90
 OVHcloud,V100 (32 GB),Volta,4,128,56,180,8.76,2.19,,t2-180
+Oracle Cloud,A10,Ampere,1,24,15,240,2.00,2.00,,VM.GPU.A10.1
+Oracle Cloud,A10,Ampere,2,48,30,480,4.00,2.00,,VM.GPU.A10.2
+Oracle Cloud,A100 (40 GB),Ampere,8,320,64,2048,24.4,3.05,,BM.GPU.A4.8
+Oracle Cloud,A100 (80 GB),Ampere,8,640,128,2048,32.00,4.00,,BM.GPU.A100-v2.8
+Oracle Cloud,H100 (80 GB),Hopper,8,640,,,80.00,10.00,,BM.GPU.H100.8
 Paperspace,V100 (16 GB),Volta,1,16,8,30,2.30,2.30,,
 Paperspace,V100 (32 GB),Volta,1,32,8,30,2.30,2.30,,
 Paperspace,V100 (32 GB),Volta,2,64,16,60,4.60,2.30,,
