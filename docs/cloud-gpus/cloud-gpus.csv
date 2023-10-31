@@ -1,4 +1,14 @@
 Cloud,GPU Type,GPU Arch,GPUs,GPU RAM,vCPUs,RAM,On-demand,Per-GPU,Spot,Name
+Baseten,T4 (16 GB),Turing,1,16,4,16,0.63,0.64,,
+Baseten,V100 (16 GB),Volta,1,16,16,61,3.67,3.67,,
+Baseten,A10G (24 GB),Ampere,1,24,8,32,1.45,1.45,,
+Baseten,A10G (24 GB),Ampere,2,48,24,96,3.40,1.70,,
+Baseten,A10G (24 GB),Ampere,4,96,48,192,6.81,1.70,,
+Baseten,A10G (24 GB),Ampere,8,192,192,768,19.55,2.44,,
+Baseten,A100 (80 GB),Ampere,1,80,12,144,6.12,6.12,,
+Baseten,A100 (80 GB),Ampere,2,160,24,288,12.29,6.15,,
+Baseten,A100 (80 GB),Ampere,4,320,48,576,24.58,6.15,,
+Baseten,A100 (80 GB),Ampere,8,640,96,1152,49.15,6.14,,
 AWS,A100 (80 GB),Ampere,8,640,96,1152,40.97,5.12,,p4de.24xlarge
 AWS,A100 (40 GB),Ampere,8,320,96,1152,32.77,4.10,9.83,p4d.24xlarge
 AWS,V100 (16 GB),Volta,1,16,8,61,3.06,3.06,0.92,p3.2xlarge
