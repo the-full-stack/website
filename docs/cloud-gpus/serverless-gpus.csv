@@ -1,9 +1,15 @@
 Vendor,GPU Type,GPU Arch,GPUs,GPU RAM,vCPUs,RAM,Per-Hour,Per-GPU
 Banana,A100 (40 GB),Ampere,1,40,16,256,7.48,7.48
-Baseten,T4 (16 GB),Turing,1,16,4,16,1.07,1.07
-Baseten,A10G (24 GB),Ampere,1,24,4,16,2.01,2.01
-Baseten,V100 (16 GB),Volta,1,16,8,61,6.10,6.10
-Baseten,A100 (80 GB),Ampere,1,80,12,144,10.25,10.25
+Baseten,T4 (16 GB),Turing,1,16,4,16,0.63,0.64,
+Baseten,V100 (16 GB),Volta,1,16,16,61,3.67,3.67,
+Baseten,A10G (24 GB),Ampere,1,24,8,32,1.45,1.45,
+Baseten,A10G (24 GB),Ampere,2,48,24,96,3.40,1.70,
+Baseten,A10G (24 GB),Ampere,4,96,48,192,6.81,1.70,
+Baseten,A10G (24 GB),Ampere,8,192,192,768,19.55,2.44,
+Baseten,A100 (80 GB),Ampere,1,80,12,144,6.12,6.12,
+Baseten,A100 (80 GB),Ampere,2,160,24,288,12.29,6.15,
+Baseten,A100 (80 GB),Ampere,4,320,48,576,24.58,6.15,
+Baseten,A100 (80 GB),Ampere,8,640,96,1152,49.15,6.14,
 Beam,A10G (24 GB),Ampere,1,24,4,16,2.11,2.11
 Beam,T4 (16 GB),Turing,1,16,4,16,1.55,1.55
 Modal,T4 (16 GB),Turing,1,16,2,16,1.17,1.17
