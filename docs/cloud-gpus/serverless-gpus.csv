@@ -12,12 +12,12 @@ Modal,A100 (20 GB),Ampere,1,20,4,16,3.07,3.07
 Modal,A100 (40 GB),Ampere,1,40,8,40,5.45,5.45
 Modal,A100 (40 GB),Ampere,2,40,16,80,10.92,5.45
 Modal,A100 (40 GB),Ampere,4,40,32,160,21.83,5.45
-Replicate,T4 (16 GB),Turing,1,16,4,8,1.98,1.98
-Replicate,A40,Ampere,1,48,4,16,4.68,4.68
-Replicate,A40,Ampere,1,48,10,72,5.76,5.76
-Replicate,A100 (40 GB),Ampere,1,40,10,72,8.28,8.28
-Replicate,A100 (80 GB),Ampere,1,80,10,144,11.52,11.52
-Replicate,A40,Ampere,8,384,48,680,16.95,2.12
+Replicate,T4 (16 GB),Turing,1,16,4,8,0.81,0.81
+Replicate,A40,Ampere,1,48,4,16,2.07,2.07
+Replicate,A40,Ampere,1,48,10,72,2.61,2.61
+Replicate,A100 (40 GB),Ampere,1,40,10,72,4.14,4.14
+Replicate,A100 (80 GB),Ampere,1,80,10,144,5.04,5.04
+Replicate,A40,Ampere,8,384,48,680,20.88,2.61
 RunPod,A4000 (16 GB),Ampere,1,16,6,23,0.72,0.72
 RunPod,A5000 (24 GB),Ampere,1,24,8,29,0.90,0.90
 RunPod,A6000 (48 GB),Ampere,1,48,16,58,1.44,1.44
