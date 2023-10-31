@@ -1,5 +1,5 @@
 Vendor,GPU Type,GPU Arch,GPUs,GPU RAM,vCPUs,RAM,Per-Hour,Per-GPU
-Banana,A100 (40 GB),Ampere,1,40,16,256,7.48,7.48
+Banana,A5000 (24 GB),Ampere,1,24,4,64,2.32,2.32
 Baseten,T4 (16 GB),Turing,1,16,4,16,0.63,0.64
 Baseten,V100 (16 GB),Volta,1,16,16,61,3.67,3.67
 Baseten,A10G (24 GB),Ampere,1,24,8,32,1.45,1.45
