@@ -34,7 +34,7 @@ The table below does not include all possible configurations for all providers, 
 
 - Most providers, including AWS, Azure, and Lambda, provide instances with pre-set configurations.
 - On GCP, any suitable machine can be connected to a configuration of GPUs.
-- On other providers, like Oblivus Cloud, Cudo Compute, and RunPod, users have precise control over the resources they request. Note that RunPod's Community Cloud, Oblivus, and Cudo are all "open clouds", meaning compute is provided by third parties. 
+- On other providers, like Oblivus Cloud, Cudo Compute, and RunPod, users have precise control over the resources they request. Note that RunPod's Community Cloud, Oblivus, and Cudo are all "open clouds", meaning compute is provided by third parties.
 - For providers without pre-set instance configurations, we have selected configurations that are roughly equivalent to AWS's options. Generally, these configurations are good for workloads that require heavy inter-GPU communication.
 - Where possible, regions were set to be the west or central parts of the United States. GPU availability depends on the region.
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/cloud-gpus.csv).
@@ -50,11 +50,14 @@ The table below does not include all possible configurations for all providers, 
 
 We use the classic definition of "serverless", courtesy of [the original AWS announcement on serverless computing](https://www.jeremydaly.com/not-so-serverless-neptune/): no server management, flexible scaling, high availability, and no idle capacity. We only include services that fit this criterion in our options below.
 
-- Direct price comparisons are trickier for serverless offerings: cold boot time and autoscaling logic can substantially impact cost-of-traffic. Also, some providers only charge for time spent responding to requests, while others charge for other time you're using their machines, like booting or between requests (see the `Idle time charged?` column below).
+Furthermore, we only include services that provide serverless GPUs,
+which can be used to run custom workloads,
+not just inference in particular models as a service.
+
+- Direct price comparisons are trickier for serverless offerings: cold boot time and autoscaling logic can substantially impact cost-of-traffic.
 - Some of the providers allow configuration of CPU and RAM resources. We have selected reasonable defaults, generally comparable to the fixed offerings of other providers.
-- If you know a bit about your anticipated traffic patterns, you can use [this tool](https://paylesstoaws.com/) to compare prices for AWS A100 GPU machines and Banana's serverless equivalent. Note that is is made by the developers of [Banana](https://banana.dev/), so may be biased.
 - You can find pricing pages for the providers here: [Banana](https://banana.dev#pricing), [Baseten](https://docs.baseten.co/settings/pricing), [Beam](https://beam.cloud/pricing), [Modal](https://modal.com/pricing), [Replicate](https://replicate.com/pricing), [RunPod](https://www.runpod.io/serverless-gpu)
-- Serverless GPUs are a newer technology, so there are fewer players, the details change quickly, and you can expect bugs/growing pains. Stay frosty!
+- Serverless GPUs are a newer technology, so the details change quickly and you can expect bugs/growing pains. Stay frosty!
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv).
 
 <center>*All prices are in $/hr.*</center>
