@@ -6,7 +6,7 @@ hide:
 ---
 
 <div class="author" markdown>
-By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated July 3, 2023.
+By [Sergey Karayev](https://twitter.com/sergeykarayev) and [Charles Frye](https://twitter.com/charles_irl). Updated October 30, 2023.
 </div>
 
 [Discussion of this page on Hacker News](https://news.ycombinator.com/item?id=36025099), May 21, 2023.
