@@ -8,7 +8,7 @@ tags:
   - tags
   - describe
   - content
-time: "yyyy-mm-dd" # update this when published
+time: "1970-01-01" # update this when published
 exclude_from_blog: true # remove this after copying the template or to "publish"
 ---
 <div class="author" markdown>
