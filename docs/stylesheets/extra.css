@@ -301,6 +301,11 @@
   z-index: 0;
 }
 
+
+/*
+email subscription modal
+*/
+
 #emailModal {
   display: none;
   position: fixed;
@@ -313,13 +318,13 @@
   background-color: rgba(0, 0, 0, 0.5);
 }
 
-/*
-  email subscription modal
-*/
-
-#emailModal > div {
+#emailModal div, #emailModal input {
+  /* Override dark/light theming */
   background-color: #fefefe;
   color: #111;
+}
+
+#emailModal > div {
   margin: 15% auto;
   padding: 30px;
   border: 1px solid #888;
@@ -337,7 +342,6 @@
 }
 
 #emailInput {
-  color: #111;
   width: 100%;
   padding: 12px 20px;
   margin-bottom: 1rem;

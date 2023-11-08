@@ -18,7 +18,7 @@
 
 ![Chapter 1 Cover Image](chapter_1.jpg)
 
-- Building an application on top of LMS requires choosing which model to use; the best model depends on trade-offs, such as quality, speed, cost, tunability, and data security.
+- Building an application on top of LLMs requires choosing which model to use; the best model depends on trade-offs, such as quality, speed, cost, tunability, and data security.
 - For most use cases, GPT4 is a good starting point.
 - Proprietary models, like GPT4 and Anthropic, are usually higher quality, but open source models offer more customization and better data security.
 - Consider licensing when choosing an open source model: permissive licenses (e.g., Apache 2.0) offer more freedom, whereas restricted licenses limit commercial use.

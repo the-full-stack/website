@@ -306,7 +306,7 @@ data and build intuition/expertise in the data.
 **Memorization is the simplest form of learning**. Deep neural networks
 are very good at memorizing data, so checking whether your model can
 memorize a very small fraction of the full data set is a great smoke
-test for training. If a model can\'t memorize, then something is clearly
+test for training. If a model can't memorize, then something is clearly
 very wrong!
 
 Only really gross issues with training will show up with this test. For
@@ -389,8 +389,8 @@ As you examine these failures, you can aggregate types of failures into
 named suites. For example in a self-driving car use case, you could have
 a "night time" suite and a "reflection" suite. **Building these test
 suites can be considered the machine learning version of regression
-testing**, where you take bugs that you\'ve observed in production and
-add them to your test suite to make sure that they don\'t come up again.
+testing**, where you take bugs that you've observed in production and
+add them to your test suite to make sure that they don't come up again.
 
 ![](./media/image8.png)
 
