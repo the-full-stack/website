@@ -39,7 +39,7 @@ An ML powered application for streamlining the process of creating chapter marke
 A full-stack ML-powered website that utilizes users’ webcam feeds to answer open-ended questions requiring outside knowledge.
 
 **Team**: [Andrew Hinh](https://www.linkedin.com/in/andrew-hinh/)</br>
-[Live Demo](https://admire.herokuapp.com/).
+[Live Demo](https://admirer-bq70.onrender.com).
 
 ## Green-Screen Image Composition-Transfer
 
