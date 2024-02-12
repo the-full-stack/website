@@ -12,6 +12,15 @@ Baseten,A100 (80 GB),Ampere,4,320,48,576,24.58,6.15
 Baseten,A100 (80 GB),Ampere,8,640,96,1152,49.15,6.14
 Beam,A10G (24 GB),Ampere,1,24,4,16,2.11,2.11
 Beam,T4 (16 GB),Turing,1,16,4,16,1.55,1.55
+Covalent,T4 (16 GB),Turing,1,16,64,256,0.64,0.64
+Covalent,V100 (16 GB),Volta,1,16,8,61,3.67,3.67
+Covalent,A4000 (16 GB),Ampere,1,16,6,24,0.70,0.70
+Covalent,A5000 (24 GB),Ampere,1,24,8,30,0.90,0.90
+Covalent,A6000 (48 GB),Ampere,1,48,16,59.5,1.46,1.46
+Covalent,A10G (24 GB),Ampere,1,24,64,256,1.21,1.21
+Covalent,A100 (80 GB),Ampere,1,80,32,120,4.59,4.59
+Covalent,L40 (48 GB),Lovelace,1,48,32,59.5,2.22,2.22
+Covalent,H100 (80 GB),Hopper,1,80,32,180,5.85,5.85
 Modal,T4 (16 GB),Turing,1,16,2,16,1.17,1.17
 Modal,A10G (24 GB),Ampere,1,24,4,16,1.87,1.87
 Modal,A100 (20 GB),Ampere,1,20,4,16,3.07,3.07
