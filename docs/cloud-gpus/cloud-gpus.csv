@@ -154,6 +154,22 @@ Latitude.sh,H100 (80 GB),Hopper,1,80,128,192,4.40,4.40,,g3.small.x86
 Latitude.sh,H100 (80 GB),Hopper,4,320,128,768,17.60,4.40,,g3.medium.x86
 Latitude.sh,A100 (80 GB),Ampere,8,640,128,1536,23.20,2.90,,g3.large.x86
 Latitude.sh,H100 (80 GB),Hopper,8,640,128,1536,32.20,4.03,,g3.xlarge.x86
+NovoNimbus,H100 HGX (80GB),Hopper,1,80,12,125,4.78,4.78,,
+NovoNimbus,H100 HGX (80GB),Hopper,2,160,24,250,9.56,4.78,,
+NovoNimbus,H100 HGX (80GB),Hopper,4,320,48,500,19.12,4.78,,
+NovoNimbus,H100 HGX (80GB),Hopper,8,640,96,1000,38.24,4.78,,
+NovoNimbus,H100 PCIe (80GB),Hopper,1,80,12,125,4.29,4.29,,
+NovoNimbus,H100 PCIe (80GB),Hopper,2,160,24,250,8.58,4.29,,
+NovoNimbus,H100 PCIe (80GB),Hopper,4,320,48,500,17.16,4.29,,
+NovoNimbus,H100 PCIe (80GB),Hopper,8,640,96,1000,34.32,4.29,,
+NovoNimbus,A100 (80 GB),Ampere,1,80,12,125,2.73,2.73,,
+NovoNimbus,A100 (80 GB),Ampere,2,160,24,250,5.46,2.73,,
+NovoNimbus,A100 (80 GB),Ampere,4,320,48,500,10.92,2.73,,
+NovoNimbus,A100 (80 GB),Ampere,8,640,96,1000,21.84,2.73,,
+NovoNimbus,RTX A6000 (48 GB),Ampere,1,48,12,125,0.89,0.89,,
+NovoNimbus,RTX A6000 (48 GB),Ampere,2,96,24,250,1.78,0.89,,
+NovoNimbus,RTX A6000 (48 GB),Ampere,4,192,48,500,3.56,0.89,,
+NovoNimbus,RTX A6000 (48 GB),Ampere,8,384,96,1000,7.12,0.89,,
 Oblivus Cloud,A100 (80 GB),Ampere,1,80,4,16,2.55,2.55,,
 Oblivus Cloud,A100 (80 GB),Ampere,2,160,8,32,5.10,2.55,,
 Oblivus Cloud,A100 (80 GB),Ampere,4,320,16,64,10.20,2.55,,
