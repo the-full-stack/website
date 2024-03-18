@@ -64,3 +64,7 @@ RunPod,A100 (80 GB),Ampere,1,80,14,125,3.60,3.60
 Inferless,A100 (80 GB),Ampere,1,80,20,200,5.36,5.36
 Inferless,A10 (24 GB),Ampere,1,24,7,30,1.22,1.22
 Inferless,T4 (16 GB),Turing,1,16,3,20,0.66,0.66
+Mystic AI,Nvidia T4,Turing,1,16GB,0,0,$0.4,$0.4
+Mystic AI,Nvidia A100,Ampere,1,40GB,0,0,$3,$3
+Mystic AI,Nvidia A100,Ampere,1,80GB,0,0,$4,$4
+Mystic AI,Nvidia L4,Lovelace,1,24GB,0,0,$0.75,$0.75
