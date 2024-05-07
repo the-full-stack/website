@@ -56,7 +56,7 @@ not just inference in particular models as a service.
 
 - Direct price comparisons are trickier for serverless offerings: cold boot time and autoscaling logic can substantially impact cost-of-traffic.
 - Some of the providers allow configuration of CPU and RAM resources. We have selected reasonable defaults, generally comparable to the fixed offerings of other providers.
-- You can find pricing pages for the providers here: [Banana](https://banana.dev#pricing), [Baseten](https://docs.baseten.co/settings/pricing), [Beam](https://beam.cloud/pricing), [Covalent](https://www.covalent.xyz/), [Modal](https://modal.com/pricing), [Replicate](https://replicate.com/pricing), [RunPod](https://www.runpod.io/serverless-gpu)
+- You can find pricing pages for the providers here: [Banana](https://banana.dev#pricing), [Baseten](https://docs.baseten.co/settings/pricing), [Beam](https://beam.cloud/pricing), [Covalent](https://www.covalent.xyz/), [Modal](https://modal.com/pricing), [OVHcloud](https://www.ovhcloud.com/en/public-cloud/prices/#11264), [Replicate](https://replicate.com/pricing), [RunPod](https://www.runpod.io/serverless-gpu)
 - Serverless GPUs are a newer technology, so the details change quickly and you can expect bugs/growing pains. Stay frosty!
 - Raw data can be found in a [csv on GitHub](https://github.com/full-stack-deep-learning/website/blob/main/docs/cloud-gpus/serverless-gpus.csv).
 

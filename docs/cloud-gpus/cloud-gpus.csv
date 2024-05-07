@@ -204,12 +204,18 @@ Oblivus Cloud,RTX5000 (16 GB),Turing,4,64,16,64,3.04,0.76,,
 Oblivus Cloud,RTX4000 (8 GB),Turing,1,8,4,16,0.41,0.27,,
 Oblivus Cloud,RTX4000 (8 GB),Turing,2,16,8,32,0.82,0.27,,
 Oblivus Cloud,RTX4000 (8 GB),Turing,4,32,16,64,1.64,0.27,,
-OVHcloud,V100 (16 GB),Volta,1,16,8,45,1.97,1.97,,t1-45
-OVHcloud,V100 (16 GB),Volta,2,32,18,90,3.94,1.97,,t1-90
-OVHcloud,V100 (16 GB),Volta,4,64,36,180,7.89,1.97,,t1-180
-OVHcloud,V100 (32 GB),Volta,1,32,14,45,2.19,2.19,,t2-45
-OVHcloud,V100 (32 GB),Volta,2,64,28,90,4.38,2.19,,t2-90
-OVHcloud,V100 (32 GB),Volta,4,128,56,180,8.76,2.19,,t2-180
+OVHcloud,V100 (16 GB),Volta,1,16,8,45,0.77,0.77,,t1-le-45
+OVHcloud,V100 (16 GB),Volta,2,32,18,90,1.55,0.77,,t1-le-90
+OVHcloud,V100 (16 GB),Volta,4,64,36,180,3.1,0.77,,t1-le-180
+OVHcloud,V100 (32 GB),Volta,1,32,14,45,0.88,0.88,,t2-le-45
+OVHcloud,V100 (32 GB),Volta,2,64,28,90,1.76,0.88,,t2-le-90
+OVHcloud,V100 (32 GB),Volta,4,128,56,180,3.53,0.88,,t2-le-180
+OVHcloud,L4 (24 GB),Lovelace,1,24,22,90,1,1,,l4-90
+OVHcloud,L4 (24 GB),Lovelace,2,48,45,180,2,1,,l4-180
+OVHcloud,L4 (24 GB),Lovelace,4,96,90,360,4,1,,l4-360
+OVHcloud,H100 (80 GB),Hopper,1,80,30,380,2.99,2.99,,h100-380
+OVHcloud,H100 (80 GB),Hopper,2,160,60,760,5.98,2.99,,h100-760
+OVHcloud,H100 (80 GB),Hopper,4,320,120,1520,11.97,2.99,,h100-1520
 Oracle Cloud,A10,Ampere,1,24,15,240,2.00,2.00,,VM.GPU.A10.1
 Oracle Cloud,A10,Ampere,2,48,30,480,4.00,2.00,,VM.GPU.A10.2
 Oracle Cloud,A100 (40 GB),Ampere,8,320,64,2048,24.4,3.05,,BM.GPU.A4.8
