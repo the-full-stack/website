@@ -142,7 +142,7 @@ title: LLM Bootcamp - Spring 2023
 
 <div markdown>
 ### <a href="chase-agents/">**Harrison Chase: Agents**</a>
-<a href="welinder-fireside-chat" class="video-card">
+<a href="chase-agents" class="video-card">
 ![Chase Agents Talk cover](chase-agents/cover.jpg)
 </a>
 <ul>
