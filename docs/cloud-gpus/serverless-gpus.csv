@@ -51,6 +51,9 @@ Modal,A100 (20 GB),Ampere,1,20,4,16,3.07,3.07
 Modal,A100 (40 GB),Ampere,1,40,8,40,5.45,5.45
 Modal,A100 (40 GB),Ampere,2,40,16,80,10.92,5.45
 Modal,A100 (40 GB),Ampere,4,40,32,160,21.83,5.45
+OVHcloud,V100 (32 GB),Volta,1,32,13,40,1.01,1.01
+OVHcloud,L4 (24 GB),Lovelace,1,24,20,80,0.91,0.91
+OVHcloud,H100 (80 GB),Hopper,1,80,28,350,3.39,3.39
 Replicate,T4 (16 GB),Turing,1,16,4,8,0.81,0.81
 Replicate,A40,Ampere,1,48,4,16,2.07,2.07
 Replicate,A40,Ampere,1,48,10,72,2.61,2.61
