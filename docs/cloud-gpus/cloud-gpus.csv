@@ -181,38 +181,30 @@ NovoNimbus,RTX A6000 (48 GB),Ampere,1,48,12,125,0.89,0.89,,
 NovoNimbus,RTX A6000 (48 GB),Ampere,2,96,24,250,1.78,0.89,,
 NovoNimbus,RTX A6000 (48 GB),Ampere,4,192,48,500,3.56,0.89,,
 NovoNimbus,RTX A6000 (48 GB),Ampere,8,384,96,1000,7.12,0.89,,
-Oblivus Cloud,A100 (80 GB),Ampere,1,80,4,16,2.55,2.55,,
-Oblivus Cloud,A100 (80 GB),Ampere,2,160,8,32,5.10,2.55,,
-Oblivus Cloud,A100 (80 GB),Ampere,4,320,16,64,10.20,2.55,,
-Oblivus Cloud,A100 (80 GB),Ampere,8,640,32,128,20.40,2.55,,
-Oblivus Cloud,A100 (40 GB),Ampere,1,40,4,16,2.39,2.39,,
-Oblivus Cloud,A100 (40 GB),Ampere,2,80,8,32,4.78,2.39,,
-Oblivus Cloud,A100 (40 GB),Ampere,4,160,16,64,9.56,2.39,,
-Oblivus Cloud,A100 (40 GB),Ampere,8,320,32,128,19.12,2.39,,
-Oblivus Cloud,A40 (48 GB),Ampere,1,48,4,16,1.54,1.54,,
-Oblivus Cloud,A40 (48 GB),Ampere,2,96,8,32,3.08,1.54,,
-Oblivus Cloud,A40 (48 GB),Ampere,4,192,16,64,6.16,1.54,,
-Oblivus Cloud,A40 (48 GB),Ampere,8,384,32,128,12.32,1.54,,
-Oblivus Cloud,V100 (16 GB),Volta,1,16,4,16,0.65,0.65,,
-Oblivus Cloud,V100 (16 GB),Volta,2,32,8,32,1.30,0.65,,
-Oblivus Cloud,V100 (16 GB),Volta,4,64,16,64,2.60,0.65,,
-Oblivus Cloud,A6000 (48 GB),Ampere,1,48,4,16,1.54,1.54,,
-Oblivus Cloud,A6000 (48 GB),Ampere,2,96,8,32,3.08,1.54,,
-Oblivus Cloud,A6000 (48 GB),Ampere,4,192,16,64,6.16,1.54,,
-Oblivus Cloud,A6000 (48 GB),Ampere,8,384,32,128,12.32,1.54,,
-Oblivus Cloud,A5000 (24 GB),Ampere,1,24,4,16,0.98,0.98,,
-Oblivus Cloud,A5000 (24 GB),Ampere,2,48,8,32,1.96,0.98,,
-Oblivus Cloud,A5000 (24 GB),Ampere,4,96,16,64,3.92,0.98,,
-Oblivus Cloud,A5000 (24 GB),Ampere,8,192,32,128,7.84,0.98,,
-Oblivus Cloud,A4000 (16 GB),Ampere,1,16,4,16,0.81,0.81,,
-Oblivus Cloud,A4000 (16 GB),Ampere,2,32,8,32,1.62,0.81,,
-Oblivus Cloud,A4000 (16 GB),Ampere,4,64,16,64,3.24,0.81,,
-Oblivus Cloud,RTX5000 (16 GB),Turing,1,16,4,16,0.76,0.76,,
-Oblivus Cloud,RTX5000 (16 GB),Turing,2,32,8,32,1.52,0.76,,
-Oblivus Cloud,RTX5000 (16 GB),Turing,4,64,16,64,3.04,0.76,,
-Oblivus Cloud,RTX4000 (8 GB),Turing,1,8,4,16,0.41,0.27,,
-Oblivus Cloud,RTX4000 (8 GB),Turing,2,16,8,32,0.82,0.27,,
-Oblivus Cloud,RTX4000 (8 GB),Turing,4,32,16,64,1.64,0.27,,
+Oblivus Cloud,H100 (80 GB),Hopper,1,80,28,180,3.9,3.9,, H100_PCIE_80GB_x1
+Oblivus Cloud,H100 (80 GB),Hopper,2,160,60,360,7.8,3.9,, H100_PCIE_80GB_x2
+Oblivus Cloud,H100 (80 GB),Hopper,4,320,124,720,15.6,3.9,, H100_PCIE_80GB_x4
+Oblivus Cloud,H100 (80 GB),Hopper,8,640,252,1440,31.2,3.9,, H100_PCIE_80GB_x8
+Oblivus Cloud,A100 (80 GB),Ampere,1,80,28,120,2.5,2.5,, A100_PCIE_80GB_x1
+Oblivus Cloud,A100 (80 GB),Ampere,2,160,60,240,5,2.5,, A100_PCIE_80GB_x2
+Oblivus Cloud,A100 (80 GB),Ampere,4,320,124,480,10,2.5,, A100_PCIE_80GB_x4
+Oblivus Cloud,A100 (80 GB),Ampere,8,640,252,1440,20,2.5,, A100_PCIE_80GB_x8
+Oblivus Cloud,L40 (48 GB),Lovelace,1,48,28,58,1.39,1.39,, L40_x1
+Oblivus Cloud,L40 (48 GB),Lovelace,2,96,60,116,2.78,1.39,, L40_x2
+Oblivus Cloud,L40 (48 GB),Lovelace,4,192,124,232,5.56,1.39,, L40_x4
+Oblivus Cloud,L40 (48 GB),Lovelace,8,384,252,464,11.12,1.39,, L40_x8
+Oblivus Cloud,A6000 (48 GB),Ampere,1,48,28,58,1,1,, RTX_A6000_x1
+Oblivus Cloud,A6000 (48 GB),Ampere,2,96,60,116,2,1,, RTX_A6000_x2
+Oblivus Cloud,A6000 (48 GB),Ampere,4,192,124,232,4,1,, RTX_A6000_x4
+Oblivus Cloud,A6000 (48 GB),Ampere,8,384,252,464,8,1,, RTX_A6000_x8
+Oblivus Cloud,A5000 (24 GB),Ampere,1,24,8,30,0.65,0.65,, RTX_A5000_x1
+Oblivus Cloud,A5000 (24 GB),Ampere,2,48,16,60,1.3,0.65,, RTX_A5000_x2
+Oblivus Cloud,A5000 (24 GB),Ampere,4,96,32,120,2.6,0.65,, RTX_A5000_x4
+Oblivus Cloud,A5000 (24 GB),Ampere,8,192,64,240,5.2,0.65,, RTX_A5000_x8
+Oblivus Cloud,A4000 (16 GB),Ampere,1,16,6,24,0.45,0.45,, RTX_A4000_x1
+Oblivus Cloud,A4000 (16 GB),Ampere,2,32,12,48,0.9,0.45,, RTX_A4000_x2
+Oblivus Cloud,A4000 (16 GB),Ampere,4,64,24,96,1.8,0.45,, RTX_A4000_x4
+Oblivus Cloud,A4000 (16 GB),Ampere,8,128,48,192,3.6,0.45,, RTX_A4000_x8
 OVHcloud,V100 (16 GB),Volta,1,16,8,45,0.77,0.77,,t1-le-45
 OVHcloud,V100 (16 GB),Volta,2,32,18,90,1.55,0.77,,t1-le-90
 OVHcloud,V100 (16 GB),Volta,4,64,36,180,3.1,0.77,,t1-le-180
