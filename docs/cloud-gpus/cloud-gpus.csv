@@ -165,6 +165,7 @@ Latitude.sh,H100 (80 GB),Hopper,1,80,128,192,4.40,4.40,,g3.small.x86
 Latitude.sh,H100 (80 GB),Hopper,4,320,128,768,17.60,4.40,,g3.medium.x86
 Latitude.sh,A100 (80 GB),Ampere,8,640,128,1536,23.20,2.90,,g3.large.x86
 Latitude.sh,H100 (80 GB),Hopper,8,640,128,1536,32.20,4.03,,g3.xlarge.x86
+NeevCloud,H100 (80 GB), Hopper,8,640,128,1536,1.69,1.69,,
 NovoNimbus,H100 HGX (80GB),Hopper,1,80,12,125,4.78,4.78,,
 NovoNimbus,H100 HGX (80GB),Hopper,2,160,24,250,9.56,4.78,,
 NovoNimbus,H100 HGX (80GB),Hopper,4,320,48,500,19.12,4.78,,
