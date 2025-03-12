@@ -103,6 +103,12 @@ Exoscale,A40 (48 GB),Ampere,1,48,12,56,2.13,2.13,,GPU3 SMALL
 Exoscale,A40 (48 GB),Ampere,2,96,24,120,4.27,2.14,,GPU3 MEDIUM
 Exoscale,A40 (48 GB),Ampere,4,192,48,224,8.53,2.13,,GPU3 LARGE
 Exoscale,A40 (48 GB),Ampere,8,384,96,448,17.07,2.13,,GPU3 HUGE
+Exoscale,A5000 (24 GB),Ampere,1,24,12,56,1.34,1.34,,A5000 SMALL
+Exoscale,A5000 (24 GB),Ampere,2,24,24,112,2.47,1.34,,A5000 MEDIUM
+Exoscale,A5000 (24 GB),Ampere,4,24,48,224,4.55,1.34,,A5000 LARGE
+Exoscale,3080ti (12 GB),Ampere,1,12,12,56,0.92,0.92,,3080ti SMALL
+Exoscale,3080ti (12 GB),Ampere,2,12,24,112,1.71,0.92,,3080ti MEDIUM
+Exoscale,3080ti (12 GB),Ampere,4,12,48,224,3.14,0.92,,3080ti LARGE
 FluidStack,A100 (80 GB),Ampere,1,80,48,256,2.21,2.21,,
 FluidStack,A100 (80 GB),Ampere,2,80,96,512,4.42,2.21,,
 FluidStack,A100 (80 GB),Ampere,4,80,192,768,8.84,2.21,,
