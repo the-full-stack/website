@@ -1,0 +1,3675 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="Building ML for good while building good ML">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/course/2022/lecture-9-ethics/">
+      
+      
+        <link rel="prev" href="../lecture-8-teams-and-pm/">
+      
+      
+        <link rel="next" href="../project-showcase/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 9: Ethics - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 9: Ethics" />
+<meta property="og:description" content="Building ML for good while building good ML" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/course/2022/lecture-9-ethics/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 9: Ethics" />
+<meta name="twitter:description" content="Building ML for good while building good ML" />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-9-ethics" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 9: Ethics
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-and-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Overview and Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Themes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Themes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trade-Offs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#humility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Humility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-orientation-undergirds-each-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Orientation Undergirds Each Theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tech-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Tech Ethics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Tech Ethics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tech-industrys-ethical-crisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Industry's Ethical Crisis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracking-carbon-emissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracking Carbon Emissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deceptive-design-and-dark-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deceptive Design and Dark Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ml-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - ML Ethics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - ML Ethics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-just-tech-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Not Just Tech Ethics?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-ethical-questions-in-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Ethical Questions in ML
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Ethical Questions in ML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-the-model-fair" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is The Model "Fair"?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-matters-for-model-fairness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation Matters for Model Fairness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-system-accountable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is The System Accountable?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-owns-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who Owns The Data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-this-be-built-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      Should This Be Built At All?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-can-we-learn-from-medical-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Can We Learn from Medical ML
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ai-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - AI Ethics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - AI Ethics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai-snake-oils" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Snake Oils
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontiers-ai-rights-and-x-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontiers: AI Rights and X-Risk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-to-be-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - What Is To Be Done?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../spring2021/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview-and-context" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Overview and Context
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-themes" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Themes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Themes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alignment" class="md-nav__link">
+    <span class="md-ellipsis">
+      Alignment
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#trade-offs" class="md-nav__link">
+    <span class="md-ellipsis">
+      Trade-Offs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#humility" class="md-nav__link">
+    <span class="md-ellipsis">
+      Humility
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#user-orientation-undergirds-each-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      User Orientation Undergirds Each Theme
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-tech-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Tech Ethics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Tech Ethics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tech-industrys-ethical-crisis" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tech Industry's Ethical Crisis
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tracking-carbon-emissions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tracking Carbon Emissions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deceptive-design-and-dark-patterns" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deceptive Design and Dark Patterns
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-ml-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - ML Ethics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - ML Ethics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-not-just-tech-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Not Just Tech Ethics?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#common-ethical-questions-in-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Ethical Questions in ML
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Common Ethical Questions in ML">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#is-the-model-fair" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is The Model "Fair"?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#representation-matters-for-model-fairness" class="md-nav__link">
+    <span class="md-ellipsis">
+      Representation Matters for Model Fairness
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#is-the-system-accountable" class="md-nav__link">
+    <span class="md-ellipsis">
+      Is The System Accountable?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#who-owns-the-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Who Owns The Data?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#should-this-be-built-at-all" class="md-nav__link">
+    <span class="md-ellipsis">
+      Should This Be Built At All?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-can-we-learn-from-medical-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Can We Learn from Medical ML
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-ai-ethics" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - AI Ethics
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - AI Ethics">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#ai-snake-oils" class="md-nav__link">
+    <span class="md-ellipsis">
+      AI Snake Oils
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#frontiers-ai-rights-and-x-risk" class="md-nav__link">
+    <span class="md-ellipsis">
+      Frontiers: AI Rights and X-Risk
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-what-is-to-be-done" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - What Is To Be Done?
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-9-ethics">Lecture 9: Ethics</h1>
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/7FQpbYTqjAA?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>Lecture by <a href="https://twitter.com/charles_irl">Charles Frye</a>.
+Notes by <a href="https://twitter.com/le_james94">James Le</a> and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.<br />
+Published October 03, 2022.
+<a href="https://fsdl.me/2022-lecture-09-slides">Download slides</a>.</p>
+<p>In this final lecture of FSDL 2022, we'll talk about ethics. After going
+through the context of what we mean by ethics, we'll go through three
+different areas where ethics come up:</p>
+<ol>
+<li>
+<p><strong>Tech Ethics</strong>: ethics that anybody who works in the tech industry
+broadly needs to think about.</p>
+</li>
+<li>
+<p><strong>ML Ethics</strong>: what ethics has specifically meant for the ML
+industry.</p>
+</li>
+<li>
+<p><strong>AI Ethics</strong>: what ethics might mean in the future where true AGI
+exists.</p>
+</li>
+</ol>
+<h2 id="1-overview-and-context">1 - Overview and Context</h2>
+<p>All ethics lectures are wrong, but some are useful. They are more useful
+if we admit and state what our assumptions or biases are. We'll also
+talk about three general themes that come up often when ethical concerns
+are raised in tech/ML: alignment, trade-offs, and humility.</p>
+<p><img alt="" src="media/image17.png" /></p>
+<p>In this lecture, we'll approach ethics on the basis of <strong>concrete
+cases</strong> - specific instances where people have raised concerns. We'll
+talk about <strong>cases where people have taken actions that have led to
+claims and counter-claims of ethical or unethical behavior</strong> - such as
+the use of automated weapons, the use of ML systems to make decisions
+like sentencing and bail, and the use of ML algorithms to generate art.
+In each case when criticism has been raised, part of that criticism has
+been that the technology is unethical.</p>
+<p>Approaching ethics in this way allows us to answer the question of "What
+is ethics?" by way of Ludwig Wittgenstein's quote: "<em>The meaning of a
+word is its use in the language</em>." We'll focus on times when people have
+used the word "ethics" to describe what they like or dislike about a
+specific technology.</p>
+<p>If you want to try it out for yourself, you should check out the game
+"<a href="https://soup.gua-le-ni.com/">Something Something Soup
+Something</a>." In this browser
+game, you are presented with a bunch of dishes and have to decide
+whether they are soup or not soup, as well as whether they can be served
+to somebody who ordered soup. By playing a game like this, you'll
+discover (1) how difficult it is to come up with a concrete definition
+of soup and (2) how poorly your working definition of soup fits with any
+given soup theory.</p>
+<p>Because of this case-based approach, we won't be talking about ethical
+schools or "trolley" problems. Rather than considering <a href="https://www.currentaffairs.org/2017/11/the-trolley-problem-will-tell-you-nothing-useful-about-morality">these
+hypothetical
+scenarios</a>,
+we'll talk about concrete and specific examples from the past decade of
+work in our field and adjacent fields.</p>
+<p><img alt="" src="media/image19.png" /></p>
+<p>If you want another point of view that emphasizes the trolley problems,
+you should check out <a href="https://fullstackdeeplearning.com/spring2021/lecture-9/">Sergey's lecture from the last edition of the
+course from
+2021</a>.
+It presented similar ideas from a different perspective and came to the
+same conclusion and some different conclusions.</p>
+<p>A useful theme from that lecture that we should all have in mind when we
+ponder ethical dilemmas is "What Is Water?" - which came up from <a href="https://www.youtube.com/watch?v=PhhC_N6Bm_s">a
+famous commencement speech by David Foster
+Wallace</a>. If
+we aren't thoughtful and paying attention, things that are very
+important can become background, assumptions, and invisible to us.</p>
+<p>The approach of <strong>relying on prominent cases risks replicating social
+biases</strong>. Some ethical claims are amplified and travel more because
+people (who are involved) have more resources and are better connected.
+Using these forms of case-based reasoning (where you explain your
+beliefs in concrete detail) can <strong>hide the principles that are actually
+in operation</strong>, making them disappear like water.</p>
+<p>But in the end, <strong>so much of ethics is deeply personal</strong> that we can't
+expect to have a perfect approach. We can just do the best we can and
+hopefully become better every day.</p>
+<h2 id="2-themes">2 - Themes</h2>
+<p>We'll see three themes repeatedly coming up throughout this lecture:</p>
+<ol>
+<li>
+<p><strong>Alignment</strong>: a conflict between what we want and what we get.</p>
+</li>
+<li>
+<p><strong>Trade-Offs</strong>: a conflict between what we want and what others
+want.</p>
+</li>
+<li>
+<p><strong>Humility</strong>: a response when we don't know what we want or how to
+get it.</p>
+</li>
+</ol>
+<h3 id="alignment">Alignment</h3>
+<p>The problem of <strong>alignment</strong> (where what we want and what we get differ)
+come up over and over again. A primary driver of this is called the
+<strong>proxy problem</strong> - in which we often optimize or maximize some proxies
+for the thing that we really care about. If the alignment (or loosely
+the correlation between that proxy and the thing we care about) is poor
+enough, then by trying to maximize that proxy, we can end up hurting the
+thing we originally cared about.</p>
+<p><img alt="" src="media/image16.png" /></p>
+<p>There was <a href="https://arxiv.org/abs/2102.03896">a recent
+paper</a> that did a
+mathematical analysis of this idea. You can see these kinds of proxy
+problems everywhere once you look for them.</p>
+<ul>
+<li>
+<p>On the top right, we have a train and validation loss chart from one
+of the training runs for the FSDL text recognizer. The thing we
+can optimize is the training loss. That's what we can use to
+calculate gradients and improve the parameters of our network. But
+the thing we really care about is the performance of the network
+on data points that it has not seen (like the validation set, the
+test set, or data in production). If we optimize our training loss
+too much, we can actually cause our validation loss to go up.</p>
+</li>
+<li>
+<p>Similarly, there was <a href="https://openreview.net/forum?id=qrGKGZZvH0">an interesting
+paper</a>
+suggesting that increasing your accuracy on classification tasks
+can actually result in a decrease in the utility of your
+embeddings in downstream tasks.</p>
+</li>
+<li>
+<p>You can find these proxy problems outside of ML as well. <a href="https://skeptics.stackexchange.com/questions/22375/did-a-soviet-nail-factory-produce-useless-nails-to-improve-metrics">This
+thread</a>
+reveals an example where a factory that was making chemical
+machines (rather than creating a machine that was cheaper and
+better) chose not to adopt producing that machine because their
+output was measured in weight. So the thing that the planners
+actually cared about, economic efficiency and output, was not
+optimized because it was too difficult to measure.</p>
+</li>
+</ul>
+<p>One reason why these kinds of proxy problems arise so frequently is due
+to issues of information. <strong>The information that we are able to measure
+is not the information that we want</strong>. At a higher level, we often don't
+know what it is that we truly needed. We may want the validation loss,
+but what we need is the loss in production or really the value our users
+will derive from this model.</p>
+<h3 id="trade-offs">Trade-Offs</h3>
+<p>Even when we know what we want or what we need, we are likely to run
+into the second problem - <strong>the tradeoff between stakeholders</strong>. It is
+sometimes said that the need to negotiate tradeoffs is one of the
+reasons why engineers do not like thinking about some of these problems
+around ethics. That's not quite right because we do accept tradeoffs as
+a key component of engineering.</p>
+<ul>
+<li>
+<p>In <a href="https://www.oreilly.com/library/view/fundamentals-of-software/9781492043447/">this O'Reilly book on the fundamentals of software
+architecture</a>,
+the first thing they state at the beginning is that <strong>everything
+in software architecture is a tradeoff.</strong></p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/orlybooks/comments/50meb5/it_depends/">This satirical O'Reilly
+book</a>
+says that every programming question has the answer: "It depends."</p>
+</li>
+</ul>
+<p><img alt="" src="media/image20.png" /></p>
+<p>The famous chart above compares the different convolutional networks on
+the basis of their accuracy and the number of operations to run them.
+Thinking about these tradeoffs between speed and correctness is exactly
+the thing we have to do all the time in our job as engineers.</p>
+<p>We can select the <strong>Pareto Front</strong> for the metrics we care about. A way
+to remember what a Pareto front is <a href="https://twitter.com/josh_wills/status/198093512149958656?lang=en">this definition of a data scientist
+from Josh
+Wills</a>:
+"Person who is better at statistics than any software engineer and
+better at software engineering than any statistician." The Pareto Front
+in the chart above includes the models that are more accurate than those
+with fewer FLOPs and use fewer FLOPs than those that are more accurate.</p>
+<p>A reason why engineers may dislike thinking about these problems is that
+<strong>it's hard to identify and quantify these tradeoffs</strong>. These are indeed
+proxy problems. Even further, once measured, where on that front do we
+fall? As engineers, we may develop expertise in knowing whether we want
+high accuracy or low latency, but we are not as comfortable deciding how
+many current orphans we want to trade for what amount of future health.
+This raises questions both in terms of measurement and decision-making
+that are outside of our expertise.</p>
+<h3 id="humility">Humility</h3>
+<p>The appropriate response is <strong>humility</strong> because most engineers do not
+explicitly train in these skills. Many engineers and managers in tech,
+in fact, constitutionally prefer optimizing single metrics that are not
+proxies. Therefore, when encountering a different kind of problem, it's
+important to bring a humble mindset, ask for help from experts, and
+recognize that the help you get might not be immediately obvious to what
+you are used to.</p>
+<p>Additionally, when intervening due to an ethical concern, it's important
+to remember this humility. It's easy to think that when you are on the
+good side, this humility is not necessary. But even trying to be helpful
+is a delicate and dangerous undertaking. We want to make sure that as we
+resolve ethical concerns, we come up with solutions that are not just
+parts of the problem.</p>
+<h3 id="user-orientation-undergirds-each-theme">User Orientation Undergirds Each Theme</h3>
+<p>We can resolve all of these via <strong>user orientation</strong>.</p>
+<ol>
+<li>
+<p>By getting feedback from users, we maintain <strong>alignment</strong> between
+our system and our users.</p>
+</li>
+<li>
+<p>When making <strong>tradeoffs</strong>, we should resolve them in consultation
+with users.</p>
+</li>
+<li>
+<p><strong>Humility</strong> means we actually listen to our users because we
+recognize we don't have the answers to all the questions.</p>
+</li>
+</ol>
+<h2 id="3-tech-ethics">3 - Tech Ethics</h2>
+<p>The tech industry can't afford to ignore ethics as public trust in tech
+declines. We need to learn from other nearby industries that have done a
+better job on professional ethics. We'll also touch on some contemporary
+topics.</p>
+<h3 id="tech-industrys-ethical-crisis">Tech Industry's Ethical Crisis</h3>
+<p>Throughout the past decade, the tech industry has been plagued by
+scandal - whether that's how tech companies interface with national
+governments at the largest scale or how tech systems are being used or
+manipulated by people who create disinformation or fake social media
+accounts that hack the YouTube recommendation system.</p>
+<p>As a result, distrust in tech companies has risen markedly in the last
+ten years. <a href="https://pac.org/public-affairs-pulse-survey-2021">This Public Affairs Pulse
+survey</a>
+shows that in 2013, the tech industry was one of the industries with
+less trustworthiness on average. In 2021, it has rubbed elbows with
+famously more distrusted industries such as energy and pharmaceuticals.</p>
+<p><img alt="" src="media/image10.png" /></p>
+<p>Politicians care quite a bit about public opinion polls. In the last few
+years, the fraction of people who believe that large tech companies
+should be more regulated has gone up a substantial amount. <a href="https://news.gallup.com/poll/329666/views-big-tech-worsen-public-wants-regulation.aspx">Comparing
+it to 10 years ago, it's astronomically
+higher</a>.
+So there will be a substantial impact on the tech industry due to this
+loss of public trust.</p>
+<p>We can learn from nearby fields: from the culture of professional ethics
+in engineering in Canada (by wearing <a href="https://en.wikipedia.org/wiki/Iron_Ring">the Iron
+Ring</a>) to ethical
+standards for human subjects research (<a href="https://en.wikipedia.org/wiki/Nuremberg_Code">Nuremberg
+Code</a>, <a href="https://en.wikipedia.org/wiki/National_Research_Act">1973
+National Research
+Act</a>).
+We are at the point where we need a professional code of ethics for
+software. Hopefully, many codes of ethics developed in different
+communities can compete with each other and merge into something that
+most of us can agree on. That can be incorporated into our education for
+new members of our field.</p>
+<p>Let's talk about two particular ethical concerns that arise in tech in
+general: carbon emissions and dark/user-hostile design patterns.</p>
+<h3 id="tracking-carbon-emissions">Tracking Carbon Emissions</h3>
+<p>Because carbon emissions scale with cost, you only need to worry about
+them when the costs of what you are working on are very large. Then you
+won't be alone in making these decisions and can move a bit more
+deliberately to make these choices more thoughtfully.</p>
+<p>Anthropogenic climate change from carbon emissions raises ethical
+concerns - tradeoffs between the present and future generations. The
+other view is that this is an issue that arises from a classic alignment
+problem: many organizations are trying to maximize their profit, which
+is based on prices for goods that don't include externalities (such as
+environmental damage caused by carbon emissions, leading to increased
+temperatures and lactic change).</p>
+<p><img alt="" src="media/image8.png" /></p>
+<p>The primary dimension along which we have to worry about carbon
+emissions is in <strong>compute jobs that require power</strong>. That power can
+result in carbon emissions. <a href="https://aclanthology.org/P19-1355/">This
+paper</a> walks through
+how much carbon dioxide was emitted using typical US-based cloud
+infrastructure.</p>
+<ul>
+<li>
+<p>The top headline shows that training a large Transformer model with
+neural architecture search produces as much carbon dioxide as five
+cars create during their lifetimes.</p>
+</li>
+<li>
+<p>It's important to remember that power is not free. On US-based cloud
+infrastructure, \$10 of cloud spent is roughly equal to \$1 of air
+travel costs. That's on the basis of something like the numbers
+and the chart indicating air travel across the US from New York to
+San Francisco.</p>
+</li>
+<li>
+<p>Just changing cloud regions can actually reduce your emissions quite
+a bit. There's <a href="https://www.youtube.com/watch?v=ftWlj4FBHTg">a factor of
+50x</a>
+from regions with the most to least carbon-intensive power
+generation.</p>
+</li>
+</ul>
+<p>The interest in this problem has led to new tools.
+<a href="https://codecarbon.io/">Codecarbon.io</a> allows you to
+track power consumption and reduce carbon emissions from your computing.
+<a href="https://mlco2.github.io/impact/">ML CO2 Impact</a> is
+oriented directly towards machine learning.</p>
+<h3 id="deceptive-design-and-dark-patterns">Deceptive Design and Dark Patterns</h3>
+<p>The other ethical concern in tech is <strong>deceptive design</strong>. An
+unfortunate amount of deception is tolerated in some areas of software.
+As seen below, on the left is a nearly complete history of the way
+Google displays ads in its search engine results. It started off very
+clearly colored and separated out with bright colors from the rest of
+the results. Then about ten years ago, that colored background was
+removed and replaced with a tiny little colored snippet that said "Ad."
+Now, as of 2020, that small bit is no longer even colored. It is just
+bolded. This makes it difficult for users to know which content is being
+served to them because somebody paid for it (versus content served up
+organically).</p>
+<p><img alt="" src="media/image15.png" /></p>
+<p>A number of <strong>dark patterns</strong> of deceptive design have emerged over the
+last ten years. You can read about them on the website called
+<a href="https://www.deceptive.design/">deceptive.design</a>. There's
+also a Twitter account called
+<a href="https://twitter.com/darkpatterns">\@darkpatterns</a> that
+shares examples found in the wild.</p>
+<p>A practice in the tech industry that's on a very shaky ethical /legal
+ground is <strong>growth hacking</strong>. This entails a set of techniques for
+achieving rapid growth in user base or revenue for a product and has all
+the connotations you might expect from the name - with examples
+including LinkedIn and Hotmail.</p>
+<p><img alt="" src="media/image14.png" /></p>
+<p><strong>ML can actually make this problem worse if we optimize short-term
+metrics</strong>. These growth hacks and deceptive designs can often drive user
+and revenue growth in the short term but worsen user experience and draw
+down on goodwill towards the brand in a way that can erode the long-term
+value of customers. When we incorporate ML into the design of our
+products with A/B testing, we have to watch out to make sure that the
+metrics that we are optimizing do not encourage this kind of deception.</p>
+<p>These arise inside another alignment problem. One broadly-accepted
+justification for the private ownership of the means of production is
+that private enterprise delivers broad social value aligned by price
+signals and market focus. But these private enterprises optimize metrics
+that are, at best, a proxy for social value. There's the possibility of
+an alignment problem where <strong>companies pursuing and maximizing their
+market capitalization can lead to net negative production of value</strong>. If
+you spend time at the intersection of funding, leadership, and
+technology, you will encounter it.</p>
+<p><img alt="" src="media/image12.png" /></p>
+<p>In the short term, you can <strong>push for longer-term thinking within your
+organization</strong> to allow for better alignment between metrics and goals
+and between goals and utility. You can also learn to recognize
+user-hostile designs and <strong>advocate for user-centered design instead</strong>.</p>
+<p>To wrap up this section on tech ethics:</p>
+<ol>
+<li>
+<p>The tech industry should learn from other disciplines if it wants to
+avoid a trust crisis.</p>
+</li>
+<li>
+<p>We can start by educating ourselves about common deceptive or
+user-hostile practices in our industry.</p>
+</li>
+</ol>
+<h2 id="4-ml-ethics">4 - ML Ethics</h2>
+<p>The ethical concerns raised about ML have gone beyond just the ethical
+questions about other kinds of technology. We'll talk about common
+ethical questions in ML and lessons learned from Medical ML.</p>
+<h3 id="why-not-just-tech-ethics">Why Not Just Tech Ethics?</h3>
+<p>ML touches human lives more intimately than other technologies. Many ML
+methods, especially deep neural networks, make human-legible data into
+computer-legible data. Humans are more sensitive to errors and have more
+opinions about visual and text data than they do about the type of data
+manipulated by computers. As a result, there are more stakeholders with
+more concerns that need to be traded off in ML applications.</p>
+<p>Broadly speaking, ML involves being wrong pretty much all the time. Our
+models are statistical and include "randomness." Randomness is almost
+always an admission of ignorance. As we admit a certain degree of
+ignorance in our models, our models will be wrong and misunderstand
+situations that they are put into. It can be upsetting and even harmful
+to be misunderstood by our models.</p>
+<p>Against this backlash of greater interest or higher stakes, a number of
+common types of ethical concerns have coalesced in the last couple of
+years. There are somewhat established camps of answers to these
+questions, so you should at least know where you stand on the four core
+questions:</p>
+<ol>
+<li>
+<p>Is the model "fair"?</p>
+</li>
+<li>
+<p>Is the system accountable?</p>
+</li>
+<li>
+<p>Who owns the data?</p>
+</li>
+<li>
+<p>Should the system be built at all?</p>
+</li>
+</ol>
+<h3 id="common-ethical-questions-in-ml">Common Ethical Questions in ML</h3>
+<h4 id="is-the-model-fair">Is The Model "Fair"?</h4>
+<p>The classic case on this comes from criminal justice with <a href="https://en.wikipedia.org/wiki/COMPAS_(software)">the COMPAS
+system</a>
+for predicting whether a defendant will be arrested again before trial.
+If they are arrested again, that suggests they committed a crime during
+that time. This assesses a certain degree of risk for additional harm
+while the justice system decides what to do about a previous arrest and
+potential crime.</p>
+<p>The operationalization here was a 10-point re-arrest probability based
+on past data about this person, and they set a goal from the very
+beginning to be less biased than human judges. They operationalize that
+by calibrating these arrest probabilities across subgroups. Racial bias
+is a primary concern in the US criminal justice system, so they took
+care to make sure that these probabilities of re-arrest were calibrated
+for all racial groups.</p>
+<p><img alt="" src="media/image2.png" /></p>
+<p>The system was deployed and used all around the US. It's proprietary and
+difficult to analyze. But using the Freedom of Information Act and
+coalescing together a bunch of records, <a href="https://www.propublica.org/article/machine-bias-risk-assessments-in-criminal-sentencing">people at ProPublica were able
+to run their own analysis of this
+algorithm</a>.
+They determined that the model was not more or less wrong for one racial
+group or another. It tended to have more false positives for Black
+defendants and more false negatives for White defendants. So despite the
+creators of COMPAS taking into account bias from the beginning, they
+still ended up with an algorithm with this undesirable property of being
+more likely to falsely accuse Black defendants than White defendants.</p>
+<p>It turned out that some quick algebra revealed that some form of
+race-based bias is inevitable in this setting, as indicated <a href="https://arxiv.org/abs/1610.07524">in this
+paper</a>. There are a large
+number of fairness definitions that are mutually incompatible. <a href="https://www.youtube.com/watch?v=jIXIuYdnyyk&amp;ab_channel=ArvindNarayanan">This
+tutorial by Arvind
+Narayanan</a>
+is an excellent one to display them.</p>
+<p>It is noteworthy that <strong>the impact of "unfairness" is not fixed</strong>. The
+story is often presented as "no matter what, the journalists would have
+found something to complain about." But note that equalizing false
+positive rates and positive predictive value across groups would lead to
+a higher false negative rate for Black defendants relative to White
+defendants. In the context of American politics, that's not going to
+lead to complaints from the same people.</p>
+<p><img alt="" src="media/image6.png" /></p>
+<p>This is the story about the necessity of confronting the tradeoffs that
+will inevitably come up. Researchers at Google made <a href="https://research.google.com/bigpicture/attacking-discrimination-in-ml/">a nice little
+tool</a>
+where you can think through and make these tradeoffs for yourself. It's
+helpful for building intuition on these fairness metrics and what it
+means to pick one over the other.</p>
+<p>Events in this controversy kicked off a flurry of research on fairness.
+<a href="https://facctconference.org/">The Fairness, Accountability, and Transparency
+conference</a> has been held for
+several years. There has been a ton of work on both <strong>algorithmic-level
+approaches</strong> on measuring and incorporating fairness metrics into
+training and <strong>qualitative work</strong> on designing systems that are more
+transparent and accountable.</p>
+<p>In the case of COMPAS, <strong>re-arrest is not the same as recidivism</strong>.
+Being rearrested requires that a police officer believes you committed a
+crime. Police officers are subject to their own biases and patterns of
+policing, which result in a far higher fraction of crimes being caught
+for some groups than for others. Our real goal, in terms of fairness and
+criminal justice, might be around reducing those kinds of unfair impacts
+and using past rearrest data that have these issues.</p>
+<h4 id="representation-matters-for-model-fairness">Representation Matters for Model Fairness</h4>
+<p><img alt="" src="media/image18.png" /></p>
+<p>Unfortunately, it is easy to make ML-powered tech that fails for
+minoritized groups. For example, off-the-shelf computer vision tools
+often fail on darker sins (as illustrated in <a href="https://www.ted.com/talks/joy_buolamwini_how_i_m_fighting_bias_in_algorithms">this talk by Joy
+Buolamwini</a>).
+This is not a new issue in technology, just a more salient one with ML.</p>
+<p>There has been a good amount of progress on this in the last five years.
+An example is <a href="https://modelcards.withgoogle.com/about">Google's Model
+Cards</a> which show
+how well a model will perform on human subgroups of interest.
+HuggingFace has good integrations for creating these kinds of model
+cards.</p>
+<p>When you invite people for talks or hire people to join your
+organizations, you should work to reduce the bias of that discovery
+process by diversifying your network. Some good resources include
+<a href="https://blackinai.github.io/#/">Black in AI</a>, <a href="https://www.diversifytech.co/job-board/">Diversify
+Tech Job Board</a>,
+<a href="https://www.widsconference.org/">Women in Data Science</a>,
+and the <a href="https://anchor.fm/ucla-acm-ai">You Belong in AI
+podcast</a>. You can make
+professional connections via them to improve the representation of
+minoritized groups in the engineering, design, and product management
+process.</p>
+<h4 id="is-the-system-accountable">Is The System Accountable?</h4>
+<p>At a broader level than fairness, we should expect "accountability" from
+ML systems. Some societies and states, including the EU, consider "<a href="https://arxiv.org/abs/1606.08813">the
+right to an explanation</a>"
+in the face of important judgments to be a part of human rights.</p>
+<p>In the GDPR act, there is <a href="https://www.consumerfinance.gov/rules-policy/regulations/1002/interp-9/#9-b-1-Interp-1">a section that enshrines
+accountability</a>.
+This isn't quite a totally new requirement; credit denials in the US
+have been required to be explained since 1974. People have a right to
+know what and why into making decisions for them!</p>
+<p>If you want to impose this "accountability" on a deep neural network and
+understand its selections, there are a number of methods that use the
+input-output gradient to explain the model. You can see a list of
+several methods in order of increasing performance below (from <a href="https://arxiv.org/abs/1810.03292">this
+paper</a>). These approaches
+don't quite have strong theoretical underpinnings or a holistic
+explanation, and are not that robust as a result. A lot of these methods
+act primarily as edge detectors. The paper shows how even randomizing
+layers in a model does not materially change the interpretability output
+of GradCAM methods.</p>
+<p><img alt="" src="media/image11.png" /></p>
+<p>As a result, introspecting DNNs effectively requires reverse engineering
+the system to really understand what is going on, largely thanks to
+efforts like <a href="https://distil.pub/">Distil</a> and
+<a href="https://transformer-circuits.pub/">Transfomer Circuits</a>.</p>
+<p>Due to these technical challenges, machine learning systems are prone to
+unaccountability that impacts most those least able to understand and
+influence their outputs. Books such as <a href="https://www.amazon.com/Automating-Inequality-High-Tech-Profile-Police/dp/1250074312">Automating
+Inequality</a>
+describe the impacts of these systems. In such a context, you should
+seek to question the purpose of model, involve those impacted by the
+decisions (either through direct human inputs or through other means),
+and ensure that equal attention is paid to benefits and harms of
+automation.</p>
+<h4 id="who-owns-the-data">Who Owns The Data?</h4>
+<p><strong>Humans justifiably feel ownership of the data they creat</strong>e, which is
+subsequently used to train machine learning models. Large datasets used
+to train models like GPT-3 are created by mining this data without the
+explicit involvement of those who create the data. Many people are not
+aware that this is both possible and legal. As technology has changed,
+what can be done with data has changed.</p>
+<p><a href="https://haveibeentrained.com/">You can even verify if your data has been used to train models
+on</a>. Some of these images
+are potentially <a href="https://arstechnica.com/information-technology/2022/09/artist-finds-private-medical-record-photos-in-popular-ai-training-data-set/">obtained
+illegally</a>,
+as a result of sensitive data being posted openly without the recorded
+consent of the originator.</p>
+<p><img alt="" src="media/image5.png" /></p>
+<p>Each of these controversies around image generation and illegal data has
+opened up a new frontier in <strong>data governance</strong>. Focus will be placed on
+ensuring new ML systems are sensitive to personal and professional
+concerns of those who generate the data ML systems are trained on.
+<a href="https://uk.linkedin.com/in/emostaque">Emad Mostaque</a>, CEO
+of <a href="https://stability.ai/">Stability AI</a>, has gone so far
+as to offer future opt out systems from systems similar to Stable
+Diffusion.</p>
+<p>Here are some practical tips: <a href="https://huggingface.co/docs/datasets/dataset_card">Dataset
+cards</a>
+can be helpful in providing documentation in a similar fashion to model
+cards. There are also ethics lists, like <a href="https://deon.drivendata.org/examples/">the deon ethic
+checklist</a> that
+helps design proper systems. Deon also has a helpful list of failure
+cases.</p>
+<h4 id="should-this-be-built-at-all">Should This Be Built At All?</h4>
+<p>The undercurrent behind this conversation is the justifiable question of
+whether some of these systems should be built at all, let alone in an
+ethical way.</p>
+<p><strong>ML-powered weaponry</strong> is the canonical example here, which is already
+in use. The definition of these systems are blurry, as both systems old
+and new have had various autonomous capacities. This is difficult to get
+a sense of due to the secrecy associated with weapon systems.</p>
+<p>Some have argued that "autonomous weapons" have existed for hundreds of
+years, but even this does not mean that they are ethical. Mines are good
+examples of these systems. Movements like t<a href="https://www.stopkillerrobots.org/about-us/">he Campaign Against Killer
+Robots</a> are
+trying to prevent the cycle we entered with mines - where we invented
+them, when we realized the incredible harm, and why we are trying to ban
+them. Why invent these at all?</p>
+<p>Let's wrap up this entire section with some closing questions that you
+should always have a thoughtful answer to as you build a machine
+learning system.</p>
+<ol>
+<li>
+<p><strong>Is the model "fair"?</strong> Fairness is possible, but requires
+trade-offs.</p>
+</li>
+<li>
+<p><strong>Is the system accountable?</strong> Accountability is easier than
+interpretability.</p>
+</li>
+<li>
+<p><strong>Who owns the data?</strong> Answer this upfront. Changes are on the way.</p>
+</li>
+<li>
+<p><strong>Should the system be built at all?</strong> Repeatedly ask this and use
+it to narrow scope.</p>
+</li>
+</ol>
+<h3 id="what-can-we-learn-from-medical-ml">What Can We Learn from Medical ML</h3>
+<p><em>Note: The FSDL team would like to thank <a href="https://scholar.google.com/citations?user=pwLadpcAAAAJ">Dr. Amir Ashraf
+Ganjouei</a>
+for his feedback on this section.</em></p>
+<p>Interestingly, medicine can teach us a lot about how to apply machine
+learning in a responsible way. Fundamentally, this has led to a mismatch
+between how medicine works and how machine learning systems are built
+today.</p>
+<p>Let's start with a startling fact: <strong>the machine learning response to
+COVID-19 was an abject failure</strong>. In contrast, the biomedical response
+was a major triumph. For example, the vaccines were developed with
+tremendous speed and precision.</p>
+<p><img alt="" src="media/image9.png" /></p>
+<p>Machine learning did not acquit itself well with the COVID-19 problem.
+Two reviews (<a href="https://www.nature.com/articles/s42256-021-00307-0">Roberts et al.,
+2021</a>
+and <a href="https://www.bmj.com/content/369/bmj.m1328">Wynants et al.,
+2020-2022</a>)
+found that nearly all machine learning models were insufficiently
+documented, had little to no external validation, and did not follow
+model development best practices. A full 25% of the papers used a
+dataset incorrect for the task, which simply highlighted the difference
+between children and adults, not pneumonia and COVID.</p>
+<p>Medicine has a strong culture of ethics that professionals are
+integrated into from the point they start training. Medical
+professionals take the Hippocratic oath of practicing two things: either
+help or do not harm the patient. In contrast, the foremost belief
+associated with software development tends to be the infamous "Move fast
+and break things." While this approach works for harmless software like
+web apps, <strong>it has serious implications for medicine and other more
+critical sectors</strong>. Consider the example of a retinal implant that was
+simply deprecated by developers and left hundreds without sight <a href="https://www.statnews.com/2022/08/10/implant-recipients-shouldnt-be-left-in-the-dark-when-device-company-moves-on/">in
+this Statnews
+article</a>.</p>
+<p><img alt="" src="media/image4.png" /></p>
+<p><strong>Researchers are drawing inspiration from medicine to develop similar
+standards for ML</strong>.</p>
+<ul>
+<li>
+<p>For example, clinical trial standards have been extended to ML.
+These standards were developed through extensive surveys,
+conferences, and consensus building (detailed in
+<a href="https://www.nature.com/articles/s41591-020-1037-7">these</a>
+<a href="https://www.nature.com/articles/s41591-020-1034-x">papers</a>).</p>
+</li>
+<li>
+<p>Progress is being made in understanding how this problem presents.
+<a href="https://jamanetwork.com/journals/jamanetworkopen/fullarticle/2796833">A recent
+study</a>
+found that while clinical activities are generally performed at a
+high compliance level, statistical and data issues tend to suffer
+low compliance.</p>
+</li>
+<li>
+<p>New approaches are developing <a href="https://www.thelancet.com/journals/landig/article/PIIS2589-7500(22)00003-6/fulltext">entire "auditing"
+procedures</a>
+that exquisitely identify the activities required to effectively
+develop models.</p>
+</li>
+</ul>
+<p>Like medicine, machine learning is intimately intertwined with people's
+lives. The most important question to ask is "Should this system be
+built at all?". Always ask yourselves this and understand the
+implications!</p>
+<h2 id="5-ai-ethics">5 - AI Ethics</h2>
+<p>AI ethics are a frontier in both the technology and the ethics worlds.
+False claims and hype are the most pressing concerns, but other risks
+could present themselves soon.</p>
+<h3 id="ai-snake-oils">AI Snake Oils</h3>
+<p><strong>False claims outpace the performance of AI</strong>. This poses a serious
+threat to adoption and satisfaction with AI systems long term.</p>
+<ul>
+<li>
+<p>For example, if you call something "AutoPilot", people might truly
+assume it is fully autonomous, as happened in the below case of a
+Tesla user. This goes back to our discussion about how AI systems
+are more like funky dogs than truly human intelligent systems.</p>
+</li>
+<li>
+<p>Another example of this is <a href="https://www.ibm.com/ibm/history/ibm100/us/en/icons/watson/">IBM's Watson
+system</a>,
+which went from tackling the future of healthcare to being sold
+off for parts.</p>
+</li>
+</ul>
+<p><img alt="" src="media/image13.png" /></p>
+<p>These false claims tend to be amplified in the media. But this isn't
+confined to traditional media. Even Geoff Hinton, a godfather of modern
+machine learning, has been <a href="https://www.youtube.com/watch?v=2HMPRXstSvQ">a little too aggressive in his forecasts
+for AI
+performance</a>!</p>
+<p>You can call this <strong>"AI Snake Oil"</strong> as Arvind Narayanan does in <a href="https://aisnakeoil.substack.com/">his
+Substack</a> and
+<a href="https://www.cs.princeton.edu/~arvindn/talks/MIT-STS-AI-snakeoil.pdf">talk</a>.</p>
+<p>Let's separate out where true progress has been made versus where
+progress is likely to be overstated. On some level, AI perception has
+seen tremendous progress, AI judgment has seen moderate progress, and AI
+prediction of social outcomes has seen not nearly as much progress.</p>
+<p><img alt="" src="media/image3.png" /></p>
+<h3 id="frontiers-ai-rights-and-x-risk">Frontiers: AI Rights and X-Risk</h3>
+<p>There's obvious rationale that should artificial sentient beings exist,
+tremendous ethical implications would be raised. Few people believe that
+we are truly on the precipice of sentient beings, but there is
+disagreement on how close we are.</p>
+<p><img alt="" src="media/image1.png" /></p>
+<p>There's a different set of concerns around how to regard self-improving
+intelligent beings, for which there is already evidence. Large Language
+Models have been show to be able to improve themselves in a range of
+studies
+(<a href="https://openreview.net/forum?id=92gvk82DE-">here</a> and
+<a href="https://arxiv.org/abs/2207.14502v1">here</a>).</p>
+<p>Failing to pursue this technology would lead to <a href="https://nickbostrom.com/astronomical/waste">a huge opportunity
+cost</a> (as
+argued by Nick Bostrom)! There truly is a great opportunity in having
+such systems help us sold major problems and lead better lives. The key
+though, is that such technology should be developed in the <strong>safest way
+possible,</strong> not the fastest way.</p>
+<p><a href="https://www.lesswrong.com/tag/paperclip-maximizer">The paperclip
+problem</a>
+shows how the potential for misalignment between AI systems and humans
+could dramatically reduce human utility and even compromise our
+interests. Imagine a system designed to manufacture paperclips... could
+actually develop the intelligence to alter elements of society to favor
+paper clips?! This thought experiments illustrates how self-learning
+systems could truly change our world for the worse in a misaligned way.</p>
+<p>These ideas around existential risk are most associated with <a href="https://www.eaglobal.org/">the
+Effective Altruism community</a>.
+Check out resources like <a href="https://www.givingwhatwecan.org/donate/organizations">Giving What We
+Can</a>
+and <a href="https://80000hours.org/">80,000 Hours</a> if you're
+interested!</p>
+<h2 id="6-what-is-to-be-done">6 - What Is To Be Done?</h2>
+<p>This course can't end on a dour a note as existential risk. What can be
+done to mitigate these consequences and participate in developing truly
+ethical AI?</p>
+<ol>
+<li>
+<p>The first step is <strong>to educate yourself on the topic</strong>. There are
+many great books that give lengthy, useful treatment to this
+topic. We recommend <a href="https://www.amazon.com/Automating-Inequality-High-Tech-Profile-Police/dp/1250074312">Automating
+Inequality</a>,
+<a href="https://www.amazon.com/Weapons-Math-Destruction-Increases-Inequality/dp/0553418815">Weapons of Math
+Destruction</a>,
+and <a href="https://www.amazon.com/Alignment-Problem-Machine-Learning-Values/dp/0393635821">The Alignment
+Problem</a>.</p>
+</li>
+<li>
+<p>After reading this, <strong>consider how to prioritize your actions</strong>.
+What do you want to impact? When do you want to do that? Place
+them in this two-by-two to get a sense of where their importance
+is.</p>
+</li>
+</ol>
+<p><img alt="" src="media/image7.png" /></p>
+<p><strong>Ethics cannot be purely negative</strong>. We do good, and we want to
+<em>prevent</em> bad! Focus on the good you can do and be mindful of the harm
+you can prevent.</p>
+<p>Leading organizations like
+<a href="https://www.deepmind.com/about/operating-principles">DeepMind</a>
+and <a href="https://openai.com/charter/">OpenAI</a> are leading from
+the front. Fundamentally, building ML well aligns with building ML for
+good. All the leading organizations emphasize effective <em>and</em>
+responsible best practices for building ML powered practices. Keep all
+this in mind as you make the world a better place with your AI-powered
+products!</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

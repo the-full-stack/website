@@ -1,0 +1,3009 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="News, community, and courses for people building AI-powered products.">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/spring2021/lecture-6/">
+      
+      
+        <link rel="prev" href="../lecture-5/">
+      
+      
+        <link rel="next" href="../lab-5/">
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 6: MLOps Infrastructure & Tooling - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 6: MLOps Infrastructure &amp; Tooling" />
+<meta property="og:description" content="News, community, and courses for people building AI-powered products." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/spring2021/lecture-6/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 6: MLOps Infrastructure &amp; Tooling" />
+<meta name="twitter:description" content="News, community, and courses for people building AI-powered products." />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-6-mlops-infrastructure-tooling" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 6: MLOps Infrastructure &amp; Tooling
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/2022/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dream-vs-reality-for-ml-practitioners" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Dream vs. Reality for ML Practitioners
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-three-buckets-of-tooling-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Three Buckets of Tooling Landscape
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-software-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Software Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-compute-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Compute Hardware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Compute Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-prem-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-Prem Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Resource Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-frameworks-and-distributed-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Frameworks and Distributed Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 - Frameworks and Distributed Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deep-learning-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Learning Frameworks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Parallelism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Parallelism
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-experiment-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Experiment Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-hyperparameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 - Hyperparameter Tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-all-in-one-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 - “All-In-One” Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-dream-vs-reality-for-ml-practitioners" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Dream vs. Reality for ML Practitioners
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-three-buckets-of-tooling-landscape" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Three Buckets of Tooling Landscape
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-software-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Software Engineering
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-compute-hardware" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Compute Hardware
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Compute Hardware">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-basics" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU Basics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cloud-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cloud Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#on-prem-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      On-Prem Options
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-resource-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Resource Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-frameworks-and-distributed-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Frameworks and Distributed Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 - Frameworks and Distributed Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deep-learning-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Learning Frameworks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distributed-training" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distributed Training
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distributed Training">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Parallelism
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-parallelism" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Parallelism
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-experiment-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Experiment Management
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-hyperparameter-tuning" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 - Hyperparameter Tuning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-all-in-one-solutions" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 - “All-In-One” Solutions
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-6-mlops-infrastructure-tooling">Lecture 6: MLOps Infrastructure &amp; Tooling</h1>
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/760Mc_b3_N0" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="slides">Slides</h2>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/cAFXYLKpENUWjl" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+<p><a href="https://drive.google.com/file/d/1uX5VsrTmKPyDUaVLnQnYhqRstJ4D20uz/view?usp=sharing">Download slides as PDF</a></p>
+<h2 id="notes">Notes</h2>
+<p><em>Lecture by <a href="https://sergeykarayev.com">Sergey Karayev</a>.
+Notes transcribed by <a href="https://twitter.com/le_james94">James Le</a>
+and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.</em></p>
+<h3 id="1-dream-vs-reality-for-ml-practitioners">1 - Dream vs. Reality for ML Practitioners</h3>
+<p>The <strong>dream</strong> of ML practitioners is that we are provided the data, and somehow we build an optimal machine learning prediction system available as a scalable API or an edge deployment. That deployment then generates more data for us, which can be used to improve our system.</p>
+<p>The <strong>reality</strong> is that you will have to:</p>
+<ul>
+<li>Aggregate, process, clean, label, and version the data</li>
+<li>Write and debug model code</li>
+<li>Provision compute</li>
+<li>Run many experiments and review the results</li>
+<li>Discover that you did something wrong or maybe try a different architecture -&gt; Write more code and provision more compute</li>
+<li>Deploy the model when you are happy</li>
+<li>Monitor the predictions that the model makes on production data so that you can gather some good examples and feed them back to the initial data flywheel loop</li>
+</ul>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling1.png" /></p>
+<p>For example, the slide above is from <a href="https://www.youtube.com/watch?v=oBklltKXtDE">Andrej Karpathy’s talk</a> at PyTorch Devcon 2019 discussing Tesla’s self-driving system. Their dream is to build a system that goes from the data gathered through their training, evaluation, and inference processes and gets deployed on the cars. As people drive, more data will be collected and added back to the training set. As this process repeats, Tesla’s ML engineers can all go on vacation :)</p>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling2.png" /></p>
+<p>The picture above (from the famous Google paper “<a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf">Machine Learning: The High-Interest Credit Card of Technical Debt</a>”) shows that <strong>the ML code portion in a real-world ML system is a lot smaller than the infrastructure needed for its support</strong>. As ML projects move from small-scale research experiments to large-scale industry deployments, your organization most likely will require a massive amount of infrastructure to support large inferences, distributed training, data processing pipelines, reproducible experiments, model monitoring, etc.</p>
+<h3 id="2-three-buckets-of-tooling-landscape">2 - Three Buckets of Tooling Landscape</h3>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling3.png" /></p>
+<p>We can break down the landscape of all this necessary infrastructure into three buckets: data, training/evaluation, and deployment.</p>
+<ul>
+<li>The <strong>data</strong> bucket includes the data sources, data lakes/warehouses, data processing, data exploration, data versioning, and data labeling.</li>
+<li>The <strong>training/evaluation</strong> bucket includes compute sources, resource management, software engineering, frameworks and distributed training libraries, experiment management, and hyper-parameter tuning.</li>
+<li>The <strong>deployment</strong> bucket includes continuous integration and testing, edge deployment, web deployment, monitoring, and feature store.</li>
+</ul>
+<p>There are also several vendors offering “all-in-one” MLOps solutions that cover all three buckets. This lecture focuses on the training/evaluation bucket.</p>
+<h3 id="3-software-engineering">3 - Software Engineering</h3>
+<p>When it comes to writing deep learning code, <strong>Python is the clear programming language of choice</strong>. As a general-purpose language, Python is easy to learn and easily accessible, enabling you to find skilled developers on a faster basis. It has various scientific libraries for data wrangling and machine learning (Pandas, NumPy, Scikit-Learn, etc.). Regardless of whether your engineering colleagues write code in a lower-level language like C, C++, or Java, it is generally neat to join different components with a Python wrapper.</p>
+<p><strong>When choosing your IDEs, there are many options out there</strong> (Vim, Emacs, Sublime Text, Jupyter, VS Code, PyCharm, Atom, etc.). Each of these has its uses in any application, and you’re better to switch between them to remain agile without relying heavily on shortcuts and packages. It also helps teams work better if they can jump into different IDEs and comment/collaborate with other colleagues. In particular, <a href="https://code.visualstudio.com/">Visual Studio Code</a> makes for a very nice Python experience, where you have access to built-in git staging and diffing, peek at documentation, linter code as you write, and open projects remotely.</p>
+<p><a href="http://jupyter.org/">Jupyter Notebooks</a> have rapidly grown in popularity among data scientists to become the standard for quick prototyping and exploratory analysis. For example, <a href="https://medium.com/netflix-techblog/notebook-innovation-591ee3221233">Netflix based all of their machine learning workflows on them</a>, effectively building a whole notebook infrastructure to leverage them as a unifying layer for scheduling workflows. Jeremy Howard develops his fast.ai codebase entirely with notebooks and introduces a project called <a href="https://github.com/fastai/nbdev">nbdev</a> that shows people how to develop well-tested code in a notebook environment.</p>
+<p>However, <strong>there are many problems with using notebooks as a last resort when working in teams that aim to build machine/deep learning products</strong>. <a href="https://towardsdatascience.com/5-reasons-why-jupyter-notebooks-suck-4dc201e27086">Alexander Mueller's blog post</a> outlines the five reasons why they suck:</p>
+<ul>
+<li>It is challenging to enable <strong>good code versioning</strong> because notebooks are big JSON files that cannot be merged automatically.</li>
+<li><strong>Notebook “IDE” is primitive</strong>, as they have no integration, no lifting, and no code-style correction. Data scientists are not software engineers, and thus, tools that govern their code quality and help improve it are very important.</li>
+<li>It is very hard to structure code reasonably, put code into functions, and <strong>develop tests</strong> while working in notebooks. You better develop Python scripts based on test-driven development principles as soon as you want to reproduce some experiments and run notebooks frequently.</li>
+<li>Notebooks have <strong>out-of-order execution artifacts</strong>, meaning that you can easily destroy your current working state when jumping between cells of notebooks.</li>
+<li>It is also difficult to <strong>run long or distributed tasks</strong>. If you want to handle big datasets, better pull your code out of notebooks, start a Python folder, create fixtures, write tests, and then deploy your application to a cluster.</li>
+</ul>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling4.png" /></p>
+<p>Recently, a new application framework called <a href="https://streamlit.io/">Streamlit</a> was introduced. The creators of the framework wanted machine learning engineers to be able to create beautiful apps without needing a tools team; in other words, these internal tools should arise as a natural byproduct of the machine learning workflow. According to <a href="https://towardsdatascience.com/coding-ml-tools-like-you-code-ml-models-ddba3357eace">the launch blog post</a>, here are the core principles of Streamlit:</p>
+<ul>
+<li><strong>Embrace Python scripting</strong>: Streamlit apps are just scripts that run from top to bottom. There’s no hidden state. You can factor your code with function calls. If you know how to write Python scripts, you can write Streamlit apps.</li>
+<li><strong>Treat widgets as variables</strong>: There are no callbacks in Streamlit. Every interaction simply reruns the script from top to bottom. This approach leads to a clean codebase.</li>
+<li><strong>Reuse data and computation</strong>: Streamlit introduces a cache primitive that behaves like a persistent, immutable-by-default data store that lets Streamlit apps safely and effortlessly reuse information.</li>
+</ul>
+<p>Right now, Streamlit is building features that enable sharing machine learning projects to be as easy as pushing a web app to Heroku.</p>
+<p>We recommend using <strong>conda</strong> to set up your Python and CUDA environments and <strong>pip-tools</strong> to separate mutually compatible versions of all requirements <a href="https://github.com/full-stack-deep-learning/conda-piptools">for our lab</a>.</p>
+<h3 id="4-compute-hardware">4 - Compute Hardware</h3>
+<p>We can break down the compute needs into an early-stage development step and a late-stage training/evaluation step.</p>
+<ul>
+<li>During the <strong>development</strong> stage, we write code, debug models, and look at the results. It’d be nice to be able to compile and train models via an intuitive GUI quickly.</li>
+<li>During the <strong>training/evaluation</strong> stage, we design model architecture, search for hyper-parameters, and train large models. It’d be nice to launch experiments and review results easily.</li>
+</ul>
+<p>Compute matters with each passing year due to the fact that the results came out of deep learning are using more and more compute (check out <a href="https://openai.com/blog/ai-and-compute/">this 2018 report from OpenAI</a>). Looking at recent Transformer models, while <a href="https://arxiv.org/abs/2005.14165">OpenAI’s GPT-3</a> has not been fully commercialized yet, Google already released the <a href="https://arxiv.org/pdf/2101.03961">Switch Transformer</a> with orders of magnitude larger in the number of parameters.</p>
+<p><em>So should you get your own hardware, go straight to the cloud, or use on-premise options?</em></p>
+<h4 id="gpu-basics">GPU Basics</h4>
+<p>This is basically an NVIDIA game, as they are the only provider of good deep learning GPUs. However, Google’s TPUs are the fastest, which is available only on GCP.</p>
+<p>There is a new NVIDIA architecture every year: Kepler -&gt; Pascal -&gt; Volta -&gt; Turing -&gt; Ampere. NVIDIA often released the server version of the cards first, then the “enthusiast” version, and finally the consumer version. If you use these cards for business purposes, then you suppose to use the server version.</p>
+<p>GPUs have a different amount of RAM. You can only compute on the data that is on the GPU memory. <strong>The more data you can fit on the GPU, the larger your batches are, the faster your training goes</strong>.</p>
+<p>For deep learning, you use 32-bit precision. In fact, starting with the Volta architecture, NVIDIA developed <strong>tensor cores</strong> that are specifically designed for deep learning operations (mixed-precision between 32 and 16 bit). Tensor Cores reduce the used cycles needed for calculating multiply and addition operations and the reliance on repetitive shared memory access, thus saving additional cycles for memory access. This is very useful for the convolutional/Transformer models that are prevalent nowadays.</p>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling5.png" /></p>
+<p>Let’s go through different GPU architectures:</p>
+<ul>
+<li><strong><a href="https://en.wikipedia.org/wiki/Kepler_(microarchitecture)">Kepler</a>/<a href="https://en.wikipedia.org/wiki/Maxwell_(microarchitecture)">Maxwell</a></strong>: They are 2-4x slower than the Pascal/Volta ones below. You should not buy these old guards (K80).</li>
+<li><strong><a href="https://www.nvidia.com/en-us/data-center/pascal-gpu-architecture/">Pascal</a>: They are in the 1080 Ti cards from 2017, which are still useful if bought used (especially for recurrent neural networks). P100 is the equivalent cloud offering.</strong></li>
+<li><strong><a href="https://www.nvidia.com/en-us/data-center/volta-gpu-architecture/">Volta</a>/<a href="https://www.nvidia.com/en-us/geforce/turing/">Turing</a>: These are the preferred choices over the Kepler and Pascal because of their support for 16-bit mixed-precision via tensor cores. Hardware options are 2080 Ti and Titan RTX, while the cloud option is V100.</strong></li>
+<li><strong><a href="https://www.nvidia.com/en-us/data-center/nvidia-ampere-gpu-architecture/">Ampere</a>: This architecture is available in the latest hardware (3090) and cloud (A100) offerings. They have the most tensor cores, leading to at least 30% speedup over Turing.</strong></li>
+</ul>
+<p>You can check out <a href="https://lambdalabs.com/blog/nvidia-a100-vs-v100-benchmarks/">this recent GPU benchmark</a> from Lambda Labs and consult Tim Dettmers’ advice on <a href="https://timdettmers.com/2020/09/07/which-gpu-for-deep-learning/">which GPUs to get</a>.</p>
+<h4 id="cloud-options">Cloud Options</h4>
+<p>Amazon Web Services, Google Cloud Platform, and Microsoft Azure are the cloud heavyweights with largely similar functions and prices. There are also startups like <a href="https://lambdalabs.com/service/gpu-cloud">Lambda Labs</a> and <a href="https://www.coreweave.com/pricing">Corewave</a> that provide cloud GPUs.</p>
+<h4 id="on-prem-options">On-Prem Options</h4>
+<p>You can either <strong>build your own</strong> or <strong>buy pre-built devices</strong> from vendors like Lambda Labs, NVIDIA, Supermicro, Cirrascale, etc.</p>
+<h4 id="recommendations">Recommendations</h4>
+<p>Even though the cloud is expensive, it’s hard to make on-prem devices scale past a certain point. Furthermore, dev-ops things are easier to be done in the cloud than to be set up by yourself. And if your machine dies or requires maintenance, that will be a constant headache if you are responsible for managing it.</p>
+<p>Here are our recommendations for three profiles:</p>
+<ul>
+<li><strong>Hobbyists: Build your own machine (maybe a 4x Turing or a 2x Ampere PC) during development. Either use the same PC or use cloud instances during training/evaluation.</strong></li>
+<li><strong>Startups: Buy a sizeable Lambda Labs machine for every ML scientist during development. Buy more shared server machines or use cloud instances during training/evaluation.</strong></li>
+<li><strong>Larger companies: Buy an even more powerful machine for every ML scientist during development. Use cloud with fast instances with proper provisioning and handling of failures during training/evaluation.</strong></li>
+</ul>
+<h3 id="5-resource-management">5 - Resource Management</h3>
+<p>With all the resources we have discussed (compute, dependencies, etc.), our challenge turns to manage them across the specific use cases we may have. Across all the resources, our goal is always to be able to easily experiment with the necessary resources to achieve the desired application of ML for our product.</p>
+<p>For this challenge of allocating resources to experimenting users, there are some common solutions:</p>
+<ol>
+<li><strong>Script a solution ourselves</strong>: In theory, this is the simplest solution. We can check if a resource is free and then lock it if a particular user is using it or wants to.</li>
+<li><strong>SLURM</strong>: If we don't want to write the script entirely ourselves, standard cluster job schedulers like <a href="https://slurm.schedmd.com/documentation.html">SLURM</a> can help us. The workflow is as follows: First, a script defines a job’s requirements. Then, the SLURM queue runner analyzes this and then executes the jobs on the correct resource.</li>
+<li><strong>Docker/Kubernetes</strong>: The above approach might still be too manual for your needs, in which case you can turn to Docker/Kubernetes. <a href="https://www.docker.com/">Docker</a> packages the dependency stack into a lighter-than-VM package called a container (that excludes the OS). <a href="https://kubernetes.io/">Kubernetes</a> lets us run these Docker containers on a cluster. In particular, <a href="https://www.kubeflow.org/">Kubeflow</a> is an OSS project started by Google that allows you to spawn/manage Jupyter notebooks and manage multi-step workflows. It also has lots of plug-ins for extra processes like hyperparameter tuning and model deployment. However, Kubeflow can be a challenge to setup.</li>
+<li><strong>Custom ML software</strong>: There’s a lot of novel work and all-in-one solutions being developed to provision compute resources for ML development efficiently. Platforms like <a href="https://aws.amazon.com/sagemaker/">AWS Sagemaker</a>, <a href="https://gradient.paperspace.com/">Paperspace Gradient</a>, and <a href="https://determined.ai/">Determined AI</a> are advancing. Newer startups like <a href="https://www.anyscale.com/">Anyscale</a> and <a href="https://www.grid.ai/">Grid.AI</a> (creators of PyTorch Lightning) are also tackling this. Their vision is around allowing you to seamlessly go from training models on your computer to running lots of training jobs in the cloud with a simple set of SDK commands.</li>
+</ol>
+<h3 id="6-frameworks-and-distributed-training">6 - Frameworks and Distributed Training</h3>
+<h4 id="deep-learning-frameworks">Deep Learning Frameworks</h4>
+<p>If you’ve built a deep learning model in the last few years, you’ve probably used a deep learning framework. Frameworks like TensorFlow have crucially shaped the development of the deep learning revolution. The reality is that deep learning frameworks have existed for a while. Projects like <a href="https://pypi.org/project/Theano/">Theano</a> and <a href="http://torch.ch/">Torch</a> have been around for 10+ years. In contemporary use, there are three main frameworks we’ll focus on - <a href="https://www.tensorflow.org/">TensorFlow</a>, <a href="https://keras.io/">Keras</a>, and <a href="https://pytorch.org/">PyTorch</a>. We evaluate frameworks based on their utility for <strong>production</strong> and <strong>development</strong>.</p>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling6.png" /></p>
+<p>When TensorFlow came out in 2015, it was billed heavily as a production-optimized DL framework with an underlying static optimized graph that could be deployed across compute environments. However, TF 1.0 had a pretty unpleasant development experience; in addition to developing your models, you had to consider the underlying execution graph you were describing. This kind of “meta-development” posed a challenge for newcomers. The Keras project solved many of these issues by offering a simpler way to define models, and eventually became a part of TensorFlow. PyTorch, when it was introduced in 2017, offered a polar opposite to TensorFlow. It made development super easy by consisting almost exclusively of simple Python commands, but was not designed to be fast at scale.</p>
+<p>Using TF/Keras or PyTorch is the current recommended way to build deep learning models unless you have a powerful reason not to. Essentially, both have converged to pretty similar points that balance development and production. TensorFlow adopted eager execution by default and became a lot easier to develop quickly in. PyTorch subsumed Caffe2 and became much faster as a result, specifically by adding the ability to compile speedier model artifacts. Nowadays, PyTorch has a lot of momentum, likely due to its ease of development. Newer projects like <a href="https://www.fast.ai/">fast.ai</a> and <a href="https://www.pytorchlightning.ai/">PyTorch Lighting</a> add best practices and additional functionality to PyTorch, making it even more popular. According to <a href="https://thegradient.pub/state-of-ml-frameworks-2019-pytorch-dominates-research-tensorflow-dominates-industry/">this 2018 article on The Gradient</a>, more than 80% of submissions are in PyTorch in academic projects.</p>
+<p>All these frameworks may seem like excessive quibbling, especially since PyTorch and TensorFlow have converged in important ways. <em>Why do we even require such extensive frameworks?</em></p>
+<p>It’s theoretically possible to define entire models and their required matrix math (e.g., a CNN) in NumPy, the classic Python numerical computing library. However, we quickly run into two challenges: back-propagating errors through our model and running the code on GPUs, which are powerful computation accelerators. For these issues to be addressed, we need frameworks to help us with <strong><a href="https://towardsdatascience.com/automatic-differentiation-explained-b4ba8e60c2ad">auto-differentiation</a></strong>, an efficient way of computing the gradients, and <strong>software compatibility with GPUs</strong>, specifically interfacing with CUDA. Frameworks allow us to abstract the work required to achieve both features, while also layering in valuable abstractions for all the latest layer designs, optimizers, losses, and much more. As you can imagine, the abstractions offered by frameworks save us valuable time on getting our model to run and allow us to focus on optimizing our model.</p>
+<p>New projects like <a href="https://github.com/google/jax">JAX</a> and <a href="https://huggingface.co/">HuggingFace</a> offer different or simpler abstractions. JAX focuses primarily on fast numerical computation with autodiff and GPUs across machine learning use cases (not just deep learning). HuggingFace abstracts entire model architectures in the NLP realm. Instead of loading individual layers, HuggingFace lets you load the entirety of a contemporary mode (along with weights)l like BERT, tremendously speeding up development time. HuggingFace works on both PyTorch and TensorFlow.</p>
+<h4 id="distributed-training">Distributed Training</h4>
+<p>Distributed training is a hot topic as the datasets and the models we train become too large to work on a single GPU. It’s increasingly a must-do. The important thing to note is that <strong>distributed training is a process to conduct a single model training process</strong>; don’t confuse it with training multiple models on different GPUs. There are two approaches to distributed training: data parallelism and model parallelism.</p>
+<h5 id="data-parallelism">Data Parallelism</h5>
+<p>Data parallelism is quite simple but powerful. If we have a batch size of X samples, which is too large for one GPU, we can split the X samples evenly across N GPUs. Each GPU calculates the gradients and passes them to a central node (either a GPU or a CPU), where the gradients are averaged and backpropagated through the distributed GPUs. This paradigm generally results in a linear speed-up time (e.g., two distributed GPUs results in a ~2X speed-up in training time). In modern frameworks like PyTorch, PyTorch Lightning, and even in schedulers like SLURM, data-parallel training can be achieved simply by specifying the number of GPUs or calling a data parallelism-enabling object (e.g., <em>torch.nn.DataParallel</em>). Other tools like <a href="https://github.com/horovod/horovod">Horovod</a> (from Uber) use non-framework-specific ways of enabling data parallelism (e.g., MPI, a standard multiprocessing framework). <a href="https://github.com/ray-project/ray">Ray</a>, the original open-source project from the Anyscale team, was designed to enable general distributed computing applications in Python and can be similarly applied to data-parallel distributed training.</p>
+<h5 id="model-parallelism">Model Parallelism</h5>
+<p>Model parallelism is a lot more complicated. If you can’t fit your entire model’s weights on a single GPU, you can split the weights across GPUs and pass data through each to train the weights. This usually adds a lot of complexity and should be avoided unless absolutely necessary. A better solution is to pony up for the best GPU available, either locally or in the cloud. You can also use gradient checkpointing, a clever trick wherein you write some gradients to disk as you compute them and load them only as you need them for updates.  New work is coming out to make this easier (e.g., research and framework maturity).</p>
+<h3 id="7-experiment-management">7 - Experiment Management</h3>
+<p>As you run numerous experiments to refine your model, it’s easy to lose track of code, hyperparameters, and artifacts. Model iteration can lead to lots of complexity and messiness. For example, you could be monitoring the learning rate’s impact on your model’s performance metric. <em>With multiple model runs, how will you monitor the impact of the hyperparameter?</em></p>
+<p>A low-tech way would be to manually track the results of all model runs in a spreadsheet. Without great attention to detail, this can quickly spiral into a messy or incomplete artifact. Dedicated experiment management platforms are a remedy to this issue. Let’s cover a few of the most common ones:</p>
+<ul>
+<li><a href="https://www.tensorflow.org/tensorboard">TensorBoard</a>: This is the default experiment tracking platform that comes with TensorFlow. As a pro, it’s easy to get started with. On the flip side, it’s not very good for tracking and comparing multiple experiments. It’s also not the best solution to store past work.</li>
+<li><a href="https://mlflow.org/">MLFlow</a>: An OSS project from Databricks, MLFlow is a complete platform for the ML lifecycle. They have great experiment and model run management at the core of their platform. Another open-source project, <a href="https://keepsake.ai/">Keepsake</a>, recently came out focused solely on experiment tracking.</li>
+<li>Paid platforms (<a href="https://www.comet.ml/">Comet.ml</a>, <a href="https://wandb.ai/">Weights and Biases</a>, <a href="https://neptune.ai/">Neptune</a>): Finally, outside vendors offer deep, thorough experiment management platforms, with tools like code diffs, report writing, data visualization, and model registering features. In our labs, we will use Weights and Biases.</li>
+</ul>
+<h3 id="8-hyperparameter-tuning">8 - Hyperparameter Tuning</h3>
+<p>To finalize models, we need to ensure that we have the optimal hyperparameters. Since hyperparameter optimization (as this process is called) can be a particularly compute-intensive process, it’s useful to have software that can help. Using specific software can help us kill underperforming model runs with bad hyperparameters early (to save on cost) or help us intelligently sweep ranges of hyperparameter values. Luckily, there’s an increasing number of software providers that do precisely this:</p>
+<ul>
+<li><a href="https://sigopt.com/">SigOpt</a> offers an API focused exclusively on efficient, iterative hyperparameter optimization. Specify a range of values, get SigOpt’s recommended hyperparameter settings, run the model and return the results to SigOpt, and repeat the process until you’ve found the best parameters for your model.</li>
+<li>Rather than an API, <a href="https://docs.ray.io/en/master/tune/index.html">Ray Tune</a> offers a local software (part of the broader Ray ecosystem) that integrates hyperparameter optimization with compute resource allocation. Jobs are scheduled with specific hyperparameters according to state-of-the-art methods, and underperforming jobs are automatically killed.</li>
+<li>Weights and Biases also has this feature! With a YAML file specification, we can specify a hyperparameter optimization job and perform a “<a href="https://wandb.ai/site/sweeps">sweep</a>,” during which W&amp;B sends parameter settings to individual “agents” (our machines) and compares performance.</li>
+</ul>
+<h3 id="9-all-in-one-solutions">9 - “All-In-One” Solutions</h3>
+<p>Some platforms integrate all the aspects of the applied ML stack we’ve discussed (experiment tracking, optimization, training, etc.) and wrap them into a single experience. To support the “lifecycle,” these platforms typically include:</p>
+<ul>
+<li>Labeling and data querying services</li>
+<li>Model training, especially though job scaling and scheduling</li>
+<li>Experiment tracking and model versioning</li>
+<li>Development environments, typically through notebook-style interfaces</li>
+<li>Model deployment (e.g., via REST APIs) and monitoring</li>
+</ul>
+<p>One of the earliest examples of such a system is Facebook’s <a href="https://engineering.fb.com/2016/05/09/core-data/introducing-fblearner-flow-facebook-s-ai-backbone/">FBLearner</a> (2016), which encompassed data and feature storage, training, inference, and continuous learning based on user interactions with the model’s outputs. You can imagine how powerful having one hub for all this activity can be for ML application and development speed. As a result, cloud vendors (Google, AWS, Azure) have developed similar all-in-one platforms, like <a href="https://cloud.google.com/ai-platform">Google Cloud AI Platform</a> and <a href="https://aws.amazon.com/sagemaker/">AWS SageMaker</a>. Startups like <a href="https://gradient.paperspace.com/">Paperspace Gradient</a>, <a href="https://neptune.ai/">Neptune</a>, and <a href="https://www.floydhub.com/">FloydHub</a> also offer all-in-one platforms focused on deep learning. <a href="https://github.com/determined-ai/determined">Determined AI</a>, which focuses exclusively on the model development and training part of the lifecycle, is the rare open-source platform in this space. <a href="https://www.dominodatalab.com/">Domino Data Lab</a> is a traditional ML-focused startup with an extensive feature set worth looking at. It’s natural to expect more MLOps (as this kind of tooling and infra is referred to) companies and vendors to build out their feature set and become platform-oriented; Weights and Biases is a good example of this.</p>
+<p>In conclusion, take a look at the below table to compare a select number of MLOps platform vendors. Pricing is quite variable.</p>
+<p><img src="/spring2021/lecture-6-notes-media/Infra-Tooling7.png" /></p>
+<p><em>Staying up to date across all the tooling can be a real challenge, but check out FSDL’s Tooling Tuesdays on <a href="https://twitter.com/full_stack_dl">Twitter</a> as a starting point!</em></p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

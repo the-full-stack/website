@@ -1,0 +1,3681 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="News, community, and courses for people building AI-powered products.">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/spring2021/lecture-13/">
+      
+      
+        <link rel="prev" href="../lecture-12/">
+      
+      
+        <link rel="next" href="../panel/">
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 13: ML Teams and Startups - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 13: ML Teams and Startups" />
+<meta property="og:description" content="News, community, and courses for people building AI-powered products." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/spring2021/lecture-13/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 13: ML Teams and Startups" />
+<meta name="twitter:description" content="News, community, and courses for people building AI-powered products." />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-13-ml-teams-and-startups" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 13: ML Teams and Startups
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/2022/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ml-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - ML Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 - ML Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Roles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills Required
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skills Required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-ml-organizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - ML Organizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - ML Organizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organization-archetypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization Archetypes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization Archetypes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archetype-1-nascent-and-ad-hoc-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 1 - Nascent and Ad-hoc ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-2-research-and-development-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 2 - Research and Development ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-3-product-embedded-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 3 - Product-Embedded ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-4-independent-ml-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 4 - Independent ML Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-5-ml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 5 - ML-First
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team-structure-design-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Structure Design Choices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-managing-ml-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Managing ML Teams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Managing ML Teams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#managing-ml-teams-is-challenging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing ML Teams Is Challenging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-manage-ml-teams-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Manage ML Teams Better
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How To Manage ML Teams Better">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-probabilistically" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan Probabilistically
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-a-portfolio-of-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Have A Portfolio Of Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measure-inputs-not-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measure Inputs, Not Results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-researchers-and-engineers-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Have Researchers and Engineers Work Together
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-end-to-end-pipelines-together-quickly-to-demonstrate-quick-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get End-to-end Pipelines Together Quickly to Demonstrate Quick Wins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#educate-leadership-on-ml-timeline-uncertainty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educate Leadership on ML Timeline Uncertainty
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-hiringgetting-hired" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Hiring/Getting Hired
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Hiring/Getting Hired">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-ai-talent-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      The AI Talent Gap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sourcing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interviewing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interviewing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-a-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding A Job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-ml-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - ML Roles
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 - ML Roles">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#common-roles" class="md-nav__link">
+    <span class="md-ellipsis">
+      Common Roles
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#skills-required" class="md-nav__link">
+    <span class="md-ellipsis">
+      Skills Required
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Skills Required">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#2-ml-organizations" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - ML Organizations
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - ML Organizations">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#organization-archetypes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Organization Archetypes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Organization Archetypes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#archetype-1-nascent-and-ad-hoc-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 1 - Nascent and Ad-hoc ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-2-research-and-development-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 2 - Research and Development ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-3-product-embedded-ml" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 3 - Product-Embedded ML
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-4-independent-ml-division" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 4 - Independent ML Division
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#archetype-5-ml-first" class="md-nav__link">
+    <span class="md-ellipsis">
+      Archetype 5 - ML-First
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#team-structure-design-choices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Team Structure Design Choices
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-managing-ml-teams" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Managing ML Teams
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Managing ML Teams">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#managing-ml-teams-is-challenging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managing ML Teams Is Challenging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-manage-ml-teams-better" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Manage ML Teams Better
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="How To Manage ML Teams Better">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#plan-probabilistically" class="md-nav__link">
+    <span class="md-ellipsis">
+      Plan Probabilistically
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-a-portfolio-of-approaches" class="md-nav__link">
+    <span class="md-ellipsis">
+      Have A Portfolio Of Approaches
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#measure-inputs-not-results" class="md-nav__link">
+    <span class="md-ellipsis">
+      Measure Inputs, Not Results
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#have-researchers-and-engineers-work-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Have Researchers and Engineers Work Together
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#get-end-to-end-pipelines-together-quickly-to-demonstrate-quick-wins" class="md-nav__link">
+    <span class="md-ellipsis">
+      Get End-to-end Pipelines Together Quickly to Demonstrate Quick Wins
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#educate-leadership-on-ml-timeline-uncertainty" class="md-nav__link">
+    <span class="md-ellipsis">
+      Educate Leadership on ML Timeline Uncertainty
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-hiringgetting-hired" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Hiring/Getting Hired
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Hiring/Getting Hired">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-ai-talent-gap" class="md-nav__link">
+    <span class="md-ellipsis">
+      The AI Talent Gap
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sourcing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sourcing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#interviewing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Interviewing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#finding-a-job" class="md-nav__link">
+    <span class="md-ellipsis">
+      Finding A Job
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-13-ml-teams-and-startups">Lecture 13: ML Teams and Startups</h1>
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/8daKeuaWgjk" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="slides">Slides</h2>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/kIWXObtE01kAI2" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen></iframe>
+
+<p><a href="https://drive.google.com/file/d/1s4s8H56T2jCa6-kRKbp2rRLD95n1WGJb/view?usp=sharing">Download slides as PDF</a></p>
+<h2 id="notes">Notes</h2>
+<p><a href="/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - Machine-Learning-Teams.pdf">Download notes as PDF</a></p>
+<p><em>Lecture by <a href="http://josh-tobin.com">Josh Tobin</a>.
+Notes transcribed by <a href="https://twitter.com/le_james94">James Le</a>
+and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.</em></p>
+<p>Over the past few years, machine learning (ML) has grown tremendously.
+But as young as ML is as a discipline, the craft of managing an ML team
+is even younger. Many of today’s ML managers were thrust into management
+roles out of necessity or because they were the best individual
+contributors, and many come from purely academic backgrounds. At some
+companies, engineering or product leaders are tasked with building new
+ML functions without real ML experience.</p>
+<p>Running any technical team is hard:</p>
+<ul>
+<li>
+<p>You have to hire great people.</p>
+</li>
+<li>
+<p>You need to manage and develop them.</p>
+</li>
+<li>
+<p>You need to manage your team’s output and make sure your vectors are
+aligned.</p>
+</li>
+<li>
+<p>You would want to make good long-term technical choices and manage
+technical debt.</p>
+</li>
+<li>
+<p>You also must manage expectations from leadership.</p>
+</li>
+</ul>
+<p>Running an ML team is even harder:</p>
+<ul>
+<li>
+<p>ML talents are expensive and scarce.</p>
+</li>
+<li>
+<p>ML teams have a diverse set of roles.</p>
+</li>
+<li>
+<p>ML projects have unclear timelines and high uncertainty.</p>
+</li>
+<li>
+<p>ML is also the “<a href="https://papers.nips.cc/paper/5656-hidden-technical-debt-in-machine-learning-systems.pdf"><u>high-interest credit card of technical
+debt</u></a>."</p>
+</li>
+<li>
+<p>Leadership often doesn’t understand ML.</p>
+</li>
+</ul>
+<p>The goals of this lecture are two-fold: (1) to give you insight into how
+to think about building and managing ML teams (as a leader); and (2) to
+help you get a job in ML (as a newcomer).</p>
+<p><img src="/spring2021/lecture-13-notes-media/image6.png" /></p>
+<h3 id="1-ml-roles">1 - ML Roles</h3>
+<h4 id="common-roles">Common Roles</h4>
+<p>Let’s take a look at the most common ML roles and the skills they
+require:</p>
+<ul>
+<li>
+<p>The <strong>ML Product Manager</strong> works with the ML team, other business
+functions, the end-users, and the data owners. This person designs
+documentation, creates wireframes, and comes up with the plan to
+prioritize and execute ML projects.</p>
+</li>
+<li>
+<p>The <strong>DevOps Engineer</strong> deploys and monitors production systems.
+This person handles the infrastructure that runs the deployed ML
+product using platforms like AWS or GCP.</p>
+</li>
+<li>
+<p>The <strong>Data Engineer</strong> builds data pipelines, aggregates and collects
+data from storage, and monitors data behavior. This person works
+with distributed systems using tools such as Hadoop, Kafka,
+Airflow.</p>
+</li>
+<li>
+<p>The <strong>ML Engineer</strong> trains and deploys prediction models. This
+person uses tools like TensorFlow and Docker to work with
+prediction systems running on real data in production.</p>
+</li>
+<li>
+<p>The <strong>ML Researcher</strong> trains prediction models, often those that are
+forward-looking or not production-critical. This person uses
+libraries like TensorFlow and PyTorch on notebook environments to
+build models and reports describing their experiments.</p>
+</li>
+<li>
+<p>The <strong>Data Scientist</strong> is a blanket term used to describe all of the
+roles above. In some organizations, this role entails answering
+business questions via analytics. He/she can work with
+wide-ranging tools from SQL and Excel to Pandas and Scikit-Learn.</p>
+</li>
+</ul>
+<h2 id="skills-required">Skills Required</h2>
+<p><img src="/spring2021/lecture-13-notes-media/image1.png" /></p>
+<p>So what skills are needed for these roles? The chart above displays a
+nice visual, where the horizontal axis is the level of ML expertise and
+the size of the bubble is the level of communication and technical
+writing (the bigger, the better).</p>
+<ul>
+<li>
+<p>The <strong>ML DevOps</strong> is primarily a software engineering role, which
+often comes from a standard software engineering pipeline.</p>
+</li>
+<li>
+<p>The <strong>Data Engineer</strong> belongs to the software engineering team that
+works actively with ML teams.</p>
+</li>
+<li>
+<p>The <strong>ML Engineer</strong> requires a rare mix of ML and Software
+Engineering skills. This person is either an engineer with
+significant self-teaching OR a science/engineering Ph.D. who works
+as a traditional software engineer after graduate school.</p>
+</li>
+<li>
+<p>The <strong>ML Researcher</strong> is an ML expert who usually has an MS or Ph.D.
+degree in Computer Science or Statistics or finishes an industrial
+fellowship program.</p>
+</li>
+<li>
+<p>The <strong>ML Product Manager</strong> is just like a traditional Product
+Manager, but with a deep knowledge of the ML development process
+and mindset.</p>
+</li>
+<li>
+<p>The <strong>Data Scientist</strong> role constitutes a wide range of backgrounds
+from undergraduate to Ph.D. students.</p>
+</li>
+</ul>
+<h3 id="2-ml-organizations">2 - ML Organizations</h3>
+<h4 id="organization-archetypes">Organization Archetypes</h4>
+<p>There exists not yet a consensus on the right way to structure an ML
+team. Still, a few best practices are contingent upon different
+organization archetypes and their ML maturity level. First, let’s see
+what the different ML organization archetypes are.</p>
+<h5 id="archetype-1-nascent-and-ad-hoc-ml">Archetype 1 - Nascent and Ad-hoc ML</h5>
+<ul>
+<li>
+<p>These are organizations where no one is doing ML, or ML is done on
+an ad-hoc basis. Obviously, there is little ML expertise in-house.</p>
+</li>
+<li>
+<p>They are either small-to-medium businesses or less
+technology-forward large companies in industries like education or
+logistics.</p>
+</li>
+<li>
+<p>There is often low-hanging fruit for ML.</p>
+</li>
+<li>
+<p>But there is little support for ML projects, and it’s challenging to
+hire and retain good talent.</p>
+</li>
+</ul>
+<h5 id="archetype-2-research-and-development-ml">Archetype 2 - Research and Development ML</h5>
+<ul>
+<li>
+<p>These are organizations in which ML efforts are centered in the R&amp;D
+arm of the organization. They often hire ML researchers and
+doctorate students with experience publishing papers.</p>
+</li>
+<li>
+<p>They are larger companies in sectors such as oil and gas,
+manufacturing, or telecommunications.</p>
+</li>
+<li>
+<p>They can hire experienced researchers and work on long-term business
+priorities to get big wins.</p>
+</li>
+<li>
+<p>However, it is very difficult to get quality data. Most often, this
+type of research work rarely translates into actual business
+value, so usually, the amount of investment remains small.</p>
+</li>
+</ul>
+<h5 id="archetype-3-product-embedded-ml">Archetype 3 - Product-Embedded ML</h5>
+<ul>
+<li>
+<p>These are organizations where certain product teams or business
+units have ML expertise alongside their software or analytics
+talent. These ML individuals report up to the team’s
+engineering/tech lead.</p>
+</li>
+<li>
+<p>They are either software companies or financial services companies.</p>
+</li>
+<li>
+<p>ML improvements are likely to lead to business value. Furthermore,
+there is a tight feedback cycle between idea iteration and product
+improvement.</p>
+</li>
+<li>
+<p>Unfortunately, it is still very hard to hire and develop top talent,
+and access to data and compute resources can lag. There are also
+potential conflicts between ML project cycles and engineering
+management, so long-term ML projects can be hard to justify.</p>
+</li>
+</ul>
+<h5 id="archetype-4-independent-ml-division">Archetype 4 - Independent ML Division</h5>
+<ul>
+<li>
+<p>These are organizations in which the ML division reports directly to
+senior leadership. The ML Product Managers work with Researchers
+and Engineers to build ML into client-facing products. They can
+sometimes publish long-term research.</p>
+</li>
+<li>
+<p>They are often large financial services companies.</p>
+</li>
+<li>
+<p>Talent density allows them to hire and train top practitioners.
+Senior leaders can marshal data and compute resources. This gives
+the organizations to invest in tooling, practices, and culture
+around ML development.</p>
+</li>
+<li>
+<p>A disadvantage is that model handoffs to different business lines
+can be challenging since users need the buy-in to ML benefits and
+get educated on the model use. Also, feedback cycles can be slow.</p>
+</li>
+</ul>
+<h5 id="archetype-5-ml-first">Archetype 5 - ML-First</h5>
+<ul>
+<li>
+<p>These are organizations in which the CEO invests in ML, and there
+are experts across the business focusing on quick wins. The ML
+division works on challenging and long-term projects.</p>
+</li>
+<li>
+<p>They are large tech companies and ML-focused startups.</p>
+</li>
+<li>
+<p>They have the best data access (data thinking permeates the
+organization), the most attractive recruiting funnel (challenging
+ML problems tends to attract top talent), and the easiest
+deployment procedure (product teams understand ML well enough).</p>
+</li>
+<li>
+<p>This type of organization archetype is hard to implement in practice
+since it is culturally difficult to embed ML thinking everywhere.</p>
+</li>
+</ul>
+<h4 id="team-structure-design-choices">Team Structure Design Choices</h4>
+<p>Depending on the above archetype that your organization resembles, you
+can make the appropriate design choices, which broadly speaking follow
+these three categories:</p>
+<ol>
+<li>
+<p><strong>Software Engineer vs. Research</strong>: To what extent is the ML team
+responsible for building or integrating with software? How
+important are Software Engineering skills on the team?</p>
+</li>
+<li>
+<p><strong>Data Ownership</strong>: How much control does the ML team have over data
+collection, warehousing, labeling, and pipelining?</p>
+</li>
+<li>
+<p><strong>Model Ownership</strong>: Is the ML team responsible for deploying models
+into production? Who maintains the deployed models?</p>
+</li>
+</ol>
+<p>Below are our design suggestions:</p>
+<p>If your organization focuses on <strong>ML R&amp;D</strong>:</p>
+<ul>
+<li>
+<p>Research is most definitely prioritized over Software Engineering
+skills. Because of this, there would potentially be a lack of
+collaboration between these two groups.</p>
+</li>
+<li>
+<p>ML team has no control over the data and typically will not have
+data engineers to support them.</p>
+</li>
+<li>
+<p>ML models are rarely deployed into production.</p>
+</li>
+</ul>
+<p>If your organization has <strong>ML embedded into the product</strong>:</p>
+<ul>
+<li>
+<p>Software Engineering skills will be prioritized over Research
+skills. Often, the researchers would need strong engineering
+skills since everyone would be expected to product-ionize his/her
+models.</p>
+</li>
+<li>
+<p>ML teams generally do not own data production and data management.
+They will need to work with data engineers to build data
+pipelines.</p>
+</li>
+<li>
+<p>ML engineers totally own the models that they deploy into
+production.</p>
+</li>
+</ul>
+<p>If your organization has <strong>an independent ML division</strong>:</p>
+<ul>
+<li>
+<p>Each team has a potent mix of engineering and research skills;
+therefore, they work closely together within teams.</p>
+</li>
+<li>
+<p>ML team has a voice in data governance discussions, as well as a
+robust data engineering function.</p>
+</li>
+<li>
+<p>ML team hands-off models to users but is still responsible for
+maintaining them.</p>
+</li>
+</ul>
+<p>If your organization is <strong>ML-First</strong>:</p>
+<ul>
+<li>
+<p>Different teams are more or less research-oriented, but in general,
+research teams collaborate closely with engineering teams.</p>
+</li>
+<li>
+<p>ML team often owns the company-wide data infrastructure.</p>
+</li>
+<li>
+<p>ML team hands the models to users, who are responsible for operating
+and maintaining them.</p>
+</li>
+</ul>
+<p>The picture below neatly sums up these suggestions:</p>
+<p><img src="/spring2021/lecture-13-notes-media/image3.png" /></p>
+<h3 id="3-managing-ml-teams">3 - Managing ML Teams</h3>
+<h4 id="managing-ml-teams-is-challenging">Managing ML Teams Is Challenging</h4>
+<p>The process of actually managing an ML team is quite challenging for
+four reasons:</p>
+<ol>
+<li>
+<p><strong>Engineering Estimation:</strong> It’s hard to know how easy or hard an ML
+project is in advance. As you explore the data and experiment with
+different models, there is enormous scope for new learnings about
+the problem that materially impact the timeline. Furthermore,
+knowing what methods will work is often impossible. This makes it
+hard to say upfront how long or how much work may go into an ML
+project.</p>
+</li>
+<li>
+<p><strong>Nonlinear Progress:</strong> As the chart below from a <a href="https://medium.com/@l2k/why-are-machine-learning-projects-so-hard-to-manage-8e9b9cf49641"><u>blog
+post</u></a>
+by Lukas Biewald (CEO of Weights and Biases) shows, progress on ML
+projects is unpredictable over time, even when the effort expended
+grows considerably. It’s very common for projects to stall for
+extended periods of time.</p>
+</li>
+</ol>
+<p><img src="/spring2021/lecture-13-notes-media/image4.png" /></p>
+<ol>
+<li>
+<p><strong>Cultural gaps:</strong> The relative culture of engineering and research
+professionals is very different. Research tends to favor novel,
+creative ideas, while engineering prefers tried and true methods
+that work. As a result, ML teams often experience a clash of
+cultures, which can turn toxic if not appropriately managed. A
+core challenge of running ML teams is addressing the cultural
+barriers between ML and software engineering so that teams can
+harmoniously experiment and deliver ML products.</p>
+</li>
+<li>
+<p><strong>Leadership Deficits</strong>: It’s common to see a lack of detailed
+understanding of ML at senior levels of management in many
+companies. As a result, expressing feasibility and setting the
+right expectations for ML projects, especially high-priority ones,
+can be hard.</p>
+</li>
+</ol>
+<h4 id="how-to-manage-ml-teams-better">How To Manage ML Teams Better</h4>
+<p>Managing ML teams is hardly a solved problem, but you can take steps to
+improve the process.</p>
+<h5 id="plan-probabilistically">Plan Probabilistically</h5>
+<p>Many engineering projects are managed in a waterfall fashion, with the
+sequential tasks defined up front clearly. Instead of forcing this
+method of engineering management on difficult ML projects, try assigning
+a likelihood of success to different tasks to better capture the
+experimental process inherent to ML engineering. As these tasks progress
+or stall, rapidly re-evaluate your task ordering to better match what is
+working. Having this sense of both (1) <strong>how likely a task is to
+succeed</strong> and (2) <strong>how important it is</strong> makes project planning
+considerably more realistic.</p>
+<blockquote>
+<p><img src="/spring2021/lecture-13-notes-media/image2.png" /></p>
+</blockquote>
+<h5 id="have-a-portfolio-of-approaches">Have A Portfolio Of Approaches</h5>
+<p>Embrace multiple ideas and approaches to solve crucial research
+challenges that gate production ML. Don’t make your plan dependent on
+one approach working!</p>
+<h5 id="measure-inputs-not-results">Measure Inputs, Not Results</h5>
+<p>As you work through several approaches in your portfolio, do not overly
+emphasize whose ideas ultimately work as a reflection of contribution
+quality. This can negatively impact team members’ creativity, as they
+focus more on trying to find only what they currently think could work,
+rather than experimenting in a high-quality fashion (which is ultimately
+what leads to ML success).</p>
+<h5 id="have-researchers-and-engineers-work-together">Have Researchers and Engineers Work Together</h5>
+<p>The collaboration between engineering and research is essential for
+quality ML products to get into production. Emphasize collaboration
+across the groups and professionals!</p>
+<h5 id="get-end-to-end-pipelines-together-quickly-to-demonstrate-quick-wins">Get End-to-end Pipelines Together Quickly to Demonstrate Quick Wins</h5>
+<p>Taking this approach makes it more likely that your ML project will
+succeed in the long term. It allows you to demonstrate progress to your
+leadership more effectively and clearly.</p>
+<h5 id="educate-leadership-on-ml-timeline-uncertainty">Educate Leadership on ML Timeline Uncertainty</h5>
+<p>This can be hard, as leadership is ultimately accountable for addressing
+blind spots and understanding timeline risk. There are things you can
+do, however, to help improve leadership’s knowledge about ML timelines.
+Avoid building hype around narrow progress metrics material only to the
+ML team (e.g., “<em>We improved F1 score by 0.2 and have achieved awesome
+performance!</em>”). Instead, be realistic, communicate risk, and emphasize
+real product impact (e.g., “Our model improvements should increase the
+number of conversions by 10%, though we must continue to validate its
+performance on additional demographic factors.) Sharing resources like
+this a16z
+<a href="https://a16z.com/2016/06/10/ai-deep-learning-machines/"><u>primer</u></a>
+and this class from Prof. <a href="https://executive.berkeley.edu/programs/artificial-intelligence"><u>Pieter
+Abbeel</u></a>
+can increase awareness of your company’s leadership.</p>
+<h3 id="4-hiringgetting-hired">4 - Hiring/Getting Hired</h3>
+<h4 id="the-ai-talent-gap">The AI Talent Gap</h4>
+<p>With the novelty of ML systems, it’s fair to say that not many people
+have built real ML systems. Estimates vary from as few as 10,000
+(Element AI) to as many as 200-300,000 people (Tencent). Whatever way
+you slice the numbers (contained in this <a href="https://moscow25.medium.com/the-ai-talent-shortage-704d8cf0c4cc"><u>blog
+post</u></a>),
+the reality is that there is not much-experienced talent in the AI/ML
+field, especially compared to the number of trained software developers
+in the US (3.6M) or in the world (18.2M).</p>
+<h4 id="sourcing">Sourcing</h4>
+<p>Because of this shallow talent pool and the skyrocketing demand, hiring
+for ML positions is pretty hard. Typical ML roles come in the following
+structure:</p>
+<ul>
+<li>
+<p>ML Adjacent roles: ML product manager, DevOps, Data Engineer</p>
+</li>
+<li>
+<p>Core ML Roles: ML Engineer, ML Research/ML Scientist</p>
+</li>
+<li>
+<p>Business analytics roles: Data Scientist</p>
+</li>
+</ul>
+<p>For ML adjacent roles, traditional ML knowledge is less important, as
+demonstrated interest, conversational understanding, and experience can
+help these professionals play an impactful role on ML teams. Let’s focus
+on how to hire for <strong>the core ML roles</strong>.</p>
+<p>While there’s no perfect way to <strong>hire ML engineers</strong>, there’s
+definitely a wrong way to hire them, with extensive job descriptions
+that demand only the best qualifications. Certainly, there are many good
+examples of this bad practice floating around.</p>
+<ul>
+<li>
+<p>Rather than this unrealistic process, <strong>consider hiring for software
+engineering skills, an interest in ML, and a desire to learn</strong>.
+You can always train people in the art and science of ML,
+especially when they come with strong software engineering
+fundamentals.</p>
+</li>
+<li>
+<p>Another option is to consider adding <strong>junior talent</strong>, as many
+recent grads come out with good ML knowledge nowadays.</p>
+</li>
+<li>
+<p>Finally, and most importantly, <strong>be more specific</strong> about what you
+need the position and professional to do. It’s impossible to find
+one person that can do everything from full-fledged DevOps to
+algorithm development.</p>
+</li>
+</ul>
+<p>To <strong>hire ML researchers</strong>, here are our tips:</p>
+<ul>
+<li>
+<p>Evaluate the quality of publications, over the quantity, with an eye
+towards the originality of the ideas, the execution, etc.</p>
+</li>
+<li>
+<p>Prioritize researchers that focus on important problems instead of
+trendy problems.</p>
+</li>
+<li>
+<p>Experience outside academia is also a positive, as these researchers
+may be able to transition to industry more effectively.</p>
+</li>
+<li>
+<p>Finally, keep an open mind about research talent and consider
+talented people without PhDs or from adjacent fields like physics,
+statistics, etc.</p>
+</li>
+</ul>
+<p>To find quality candidates for these roles, some ideas for <strong>sourcing</strong>
+are:</p>
+<ul>
+<li>
+<p>To experiment with standard job recruiting avenues like LinkedIn,
+Hired, recruiters, on-campus-recruiting, etc.</p>
+</li>
+<li>
+<p>To monitor arXiv and top conferences and flag first authors of
+papers you like.</p>
+</li>
+<li>
+<p>To look for good implementations of papers you like.</p>
+</li>
+<li>
+<p>To attend ML research conferences (NeurIPS, ICML, etc.)</p>
+</li>
+</ul>
+<p>As you seek to recruit, stay on top of what professionals want and make
+an effort to position your company accordingly. ML practitioners want to
+be empowered to do great work with interesting data. Building a culture
+of learning and impact can help recruit the best talent to your team.
+Additionally, sell sell sell! Talent needs to know how good your team is
+and how meaningful the mission can be.</p>
+<p><img src="/spring2021/lecture-13-notes-media/image5.png" /></p>
+<h4 id="interviewing">Interviewing</h4>
+<p>As you interview candidates for ML roles, try to <strong>validate your
+hypotheses of their strengths while testing a minimum bar on weaker
+aspects</strong>. For example, make sure ML researchers can think creatively
+about new ML problems while ensuring they meet a baseline for code
+quality. It’s essential to test both ML knowledge and software
+engineering skill for all industry professionals, though the relative
+strengths can vary.</p>
+<p>The actual ML interview process is much less well-defined than software
+engineering interviews, though it is modeled off of it. Some helpful
+inclusions are projects or exercises that test the ability to work with
+ML-specific code, like take-home ML projects.</p>
+<p><img src="/spring2021/lecture-13-notes-media/image7.png" /></p>
+<h4 id="finding-a-job">Finding A Job</h4>
+<p>To find an ML job, you can take a look at the following sources:</p>
+<ul>
+<li>
+<p>Standard sources such as LinkedIn, recruiters, on-campus recruiting,
+etc.</p>
+</li>
+<li>
+<p>ML research conferences (NeurIPS, ICLR, ICML).</p>
+</li>
+<li>
+<p>Apply directly (remember, there’s a talent gap!).</p>
+</li>
+</ul>
+<p>Standing out for competitive roles can be tricky! Here are some tips in
+increasing order of impressiveness that you can apply to differentiate
+yourself:</p>
+<ol>
+<li>
+<p>Build software engineering skills (e.g., at a well-known software
+company).</p>
+</li>
+<li>
+<p>Exhibit ML interest (e.g., conference attendance, online courses
+certificates, etc.).</p>
+</li>
+<li>
+<p>Show you have a broad knowledge of ML (e.g., write blog posts
+synthesizing a research area).</p>
+</li>
+<li>
+<p>Demonstrate ability to get ML projects done (e.g., create side
+projects, re-implement papers).</p>
+</li>
+<li>
+<p>Prove you can think creatively in ML (e.g., win Kaggle competitions,
+publish papers).</p>
+</li>
+</ol>
+<p>As you prepare for interviews, prepare for both the traditional ML
+theoretical topics and the general software engineering interview (e.g.,
+read <a href="https://www.amazon.com/Cracking-Coding-Interview-Programming-Questions/dp/0984782850"><u>Cracking the Coding
+Interview</u></a>).</p>
+<h3 id="5-conclusion">5 - Conclusion</h3>
+<p>Being a new and evolving discipline for most traditional organizations,
+forming ML teams is full of known and unknown challenges. Here are the
+final few take-homes:</p>
+<ul>
+<li>
+<p>There are <strong>many different skills</strong> involved in production ML, so
+there are opportunities for many people to contribute.</p>
+</li>
+<li>
+<p>ML teams are becoming more standalone and more
+<strong>interdisciplinary</strong>.</p>
+</li>
+<li>
+<p>Managing ML teams is complex. There is no silver bullet, but
+shifting toward <strong>probabilistic planning</strong> can help.</p>
+</li>
+<li>
+<p><strong>ML talent is scarce</strong>. As a manager, be specific about what skills
+are must-have in the ML job descriptions. As a job seeker, it can
+be brutally challenging to break in as an outsider, so use
+projects as a signal to build awareness.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

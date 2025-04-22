@@ -1,0 +1,3947 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="A step-by-step explanation of the RWKV architecture via typed PyTorch code.">
+      
+      
+        <meta name="author" content="Charles Frye">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/">
+      
+      
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>RWKV, Explained - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - RWKV, Explained" />
+<meta property="og:description" content="A step-by-step explanation of the RWKV architecture via typed PyTorch code." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/blog/posts/rwkv-explainer/" />
+<meta property="og:image" content="https://i.imgur.com/W3mhy9f.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - RWKV, Explained" />
+<meta name="twitter:description" content="A step-by-step explanation of the RWKV architecture via typed PyTorch code." />
+<meta name="twitter:image" content="https://i.imgur.com/W3mhy9f.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#why-does-rwkv-matter" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              RWKV, Explained
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" hidden>
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../course/2022/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../course/2022/announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../spring2021/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+                
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#why-does-rwkv-matter" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why does RWKV matter?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#why-read-this-post" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why read this post?
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#setup" class="md-nav__link">
+    <span class="md-ellipsis">
+      Setup
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Setup">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#dependencies-and-utilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependencies and Utilities
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#configuring-torch" class="md-nav__link">
+    <span class="md-ellipsis">
+      Configuring Torch
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#downloading-and-setting-up-weights" class="md-nav__link">
+    <span class="md-ellipsis">
+      Downloading and Setting Up Weights
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-external-interface-strings-and-tokens" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the External Interface: Strings and Tokens
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining the External Interface: Strings and Tokens">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tokenizer-the-string-token-and-token-string-interface" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tokenizer: the string-token and token-string interface
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#autoregressivelm-a-token-token-interface-for-language-modeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      AutoregressiveLM: a token-token interface for language modeling
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-the-internal-interface-embeddings-and-unembedding" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining the Internal Interface: Embeddings and Unembedding
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining the Internal Interface: Embeddings and Unembedding">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#tokenembedding-from-token-identifiers-to-dense-tensors" class="md-nav__link">
+    <span class="md-ellipsis">
+      TokenEmbedding: From token identifiers to dense tensors
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unembedding-from-dense-vectors-to-token-probabilities" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unembedding: from dense vectors to token probabilities
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#a-marwkv-model-zero-layer-rwkv" class="md-nav__link">
+    <span class="md-ellipsis">
+      A "marwkv" model: zero-layer RWKV
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#defining-internal-computation-and-propagation-gated-mlp-and-attention" class="md-nav__link">
+    <span class="md-ellipsis">
+      Defining Internal Computation and Propagation: Gated MLP and Attention
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Defining Internal Computation and Propagation: Gated MLP and Attention">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-gated-mlp" class="md-nav__link">
+    <span class="md-ellipsis">
+      The Gated MLP
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-attention-block" class="md-nav__link">
+    <span class="md-ellipsis">
+      The "Attention" Block
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="The &#34;Attention&#34; Block">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#the-secret-sauce-wkvmemory" class="md-nav__link">
+    <span class="md-ellipsis">
+      The secret sauce: WKVMemory
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#the-rest-of-the-attentionblock" class="md-nav__link">
+    <span class="md-ellipsis">
+      The rest of the AttentionBlock
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#putting-it-all-together" class="md-nav__link">
+    <span class="md-ellipsis">
+      Putting it all together
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#running-a-real-model-rwkv-4-430m" class="md-nav__link">
+    <span class="md-ellipsis">
+      Running a "real" model: RWKV-4 430M
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#acknowledgements" class="md-nav__link">
+    <span class="md-ellipsis">
+      Acknowledgements
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+  
+
+
+
+  
+  
+
+
+  <h1>RWKV, Explained</h1>
+
+<div class="author">
+<p>By <a href="https://twitter.com/charles_irl">Charles Frye</a>.</p>
+</div>
+<p><img src="https://i.imgur.com/W3mhy9f.png"></p>
+<h2 id="why-does-rwkv-matter">Why does RWKV matter?</h2>
+<p>At time of writing in July 2023, the best models of language are all
+<a href="https://jalammar.github.io/illustrated-transformer/">Transformers</a>.</p>
+<p>Their language modeling capabilities are so strong that they can be used
+for a variety of cognitive tasks, from <a href="https://arxiv.org/abs/2212.01681">agent
+simulation</a> to <a href="https://arxiv.org/abs/2305.17126">writing and debugging
+code</a>.</p>
+<p>If you joined the world of neural networks <a href="https://twitter.com/charles_irl/status/1676639200131825664">within the last two
+years</a>, you
+could be forgiven for assuming that Transformers are an obvious type of
+model for language, possibly going back to the beginnings of neural
+networks <a href="https://www.cs.cmu.edu/~./epxing/Class/10715/reading/McCulloch.and.Pitts.pdf">in the
+1940s</a>.</p>
+<p>They are not.</p>
+<p>Arguably the most natural model for language is the <em>recurrent neural
+network</em>, or RNN, which is <a href="https://colah.github.io/posts/2015-09-NN-Types-FP/#deep-learning-functional-programming">basically "just" a
+map-reduce</a>.
+That is, we do a <code>for</code> loop over the input, building up a result
+step-by-step.</p>
+<p>As many Python programmers <a href="https://medium.com/codex/say-goodbye-to-loops-in-python-and-welcome-vectorization-e4df66615a52">learn early
+on</a>,
+<code>for</code> loops can be unbearably slow, and the trick to speed them up is
+<em>vectorization</em>. That is, by hand or compiler, we rewrite the program to
+operate on an entire sequence at once, instead of step-by-step.</p>
+<p>Like vectorized programs, Transformers being trained operate on entire
+sequences at once and so are more easily parallelizable -- and so that
+training has been executed at the <a href="https://twitter.com/charles_irl/status/1678815432487366656">molar
+scale</a>
+normally reserved for chemists, not programmers.</p>
+<p>However, that benefit does not transfer to inference time, when we use
+the Transformer to generate new sequences of text -- whether to chat
+with a user or to drive a robot.</p>
+<p>Instead, the choices that made the Transformer easy to parallelize make
+inference expensive -- each time the model creates a new word, it must
+in essence re-read the whole sentence up to that point, plus the new
+word, before it can proceed with another.</p>
+<p>Clever caching can convert (re-)computation to memory storage, but the
+price must be paid.</p>
+<p>But could it be different? Can we come up with an architecture that has
+Transformers' non-negotiable parallelization at train time but without
+the price at inference time?</p>
+<p>Many alternative architectures have been proposed since the Transformer,
+from <a href="https://arxiv.org/abs/2006.04768">more efficient attention layers</a>
+to <a href="https://arxiv.org/abs/2302.10866">reworked convolutional networks</a>.</p>
+<p>These alternatives generally show promising results up to a certain
+scale, say 1B parameters and 20B tokens, or &gt;50x less than less than
+the current maximum scale for commercially available language models at
+time of writing (70B parameters, 2T tokens).</p>
+<p>However, they have a reputation for falling off the scaling laws at some
+point shortly after.</p>
+<p>The Receptance-Weighted Key-Value architecture, RWKV, has stayed on the
+scaling laws up to 14B parameters and 331B training tokens, which makes
+it, at time of writing, the largest-scale publicly-known non-Transformer
+generative language model. See <a href="https://arxiv.org/abs/2305.13048">the
+paper</a> for details.</p>
+<p>Through just some quick algebraic manipulation of exponentials, RWKV's
+computations can be written in either of two ways: "time-parallel mode"
+or "RNN mode".</p>
+<p>Essentially, these exponentials look a bit like the softmax
+normalization in Transformer attention (<code>exp(w * k) v / exp(w * k)</code>) in
+time-parallel mode but look like a multiplicative decay in a memory
+(<code>exp(-tw)</code>) in RNN mode. Alternatively, they look a bit like an
+unrolled loop and its vectorized form.</p>
+<p>So, with RWKV, we get to have our cakes and eat them too: parallelizable
+training AND efficient inference AND Transformer-level language modeling
+quality.</p>
+<p><b> Efficient, RNN-style inference means it's possible to run an <code>int8</code>
+14B parameter RWKV model on sequences of <em>any</em> length with a constant
+memory requirement of 3GB VRAM.</b> This opens up opportunities for
+language model-powered cognitive features in tightly-constrained edge
+environments with streaming inputs, like robotics, even if RWKV turns
+out, like other Transformer alternatives, to fall off the scaling laws
+eventually.</p>
+<p>This blog post walks through how RWKV's RNN-style inference works, based
+on the thesis that unvectorized code is easier to understand and gets
+you most of the way to understanding the whole system.</p>
+<h2 id="why-read-this-post">Why read this post?</h2>
+<p>There are other write-ups on RWKV, so why read this one?</p>
+<p>It's a matter of taste!</p>
+<ul>
+<li>
+<p>The <a href="https://arxiv.org/abs/2305.13048">RWKV paper</a>, uses equations
+    to explain the architecture, and this post uses Python code. The
+    code is woven into the explanatory text, <a href="https://www.youtube.com/watch?v=C8kDPmb_IKU">literate programming
+    style</a>. If you'd like
+    to execute and edit that code while reading, check out the Google
+    Colab version <a href="https://tfs.ai/rwkv-explainer-colab">here</a>. It's also
+    aimed at experts, and this post starts from the beginning on
+    autoregressive language modeling.</p>
+</li>
+<li>
+<p>The (excellent) <a href="https://johanwind.github.io/2023/03/23/rwkv_details.html">blog post on RWKV by contributor Johan
+    Wind</a> on
+    which this post is based also interweaves code with text and is
+    aimed at a broad audience, but it is written in numpy. That makes a
+    lot of the state-handling explicit and is great if you're familiar
+    with that library, but the code looks quite different from an
+    implementation in PyTorch, which is more typically used to implement
+    neural networks like RWKV.</p>
+</li>
+<li>
+<p>The <a href="https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py">reference PyTorch
+    implementation</a>
+    is written for concision (single-letter variable names, minimal
+    comments) and robustness (numerical tricks). The implementation in
+    this post is written to be understood and sacrifices performance for
+    clarity, e.g. including runtime type checking, but produces
+    identical results.</p>
+</li>
+</ul>
+<p>One last note on style and audience: this is most definitely a tutorial!</p>
+<p><strong>If you're already friendly with Transformers and in a hurry, feel free
+to skip down to the "zero-layer RWKV" section.</strong></p>
+<h2 id="setup">Setup</h2>
+<p>Since we're writing real code that runs in <a href="https://tfs.ai/rwkv-explainer-colab">an executable Colab
+notebook</a>, not pseudocode, we've
+got to do a bit of setup.</p>
+<h3 id="dependencies-and-utilities">Dependencies and Utilities</h3>
+<p>There's nothing too interesting here -- we'll talk about the libraries
+as they come up.</p>
+<div class="highlight"><pre><span></span><code><span class="c1"># Colab comes with lots of packages already -- see https://research.google.com/colaboratory/local-runtimes.html</span>
+<span class="c1"># install a package for handling text input to the model</span>
+<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">qqq</span> <span class="n">tokenizers</span><span class="o">==</span><span class="mf">0.13.3</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="c1"># install packages for runtime typechecking of arrays, more on this later!</span>
+<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">qqq</span> <span class="n">beartype</span><span class="o">==</span><span class="mf">0.14.1</span> <span class="n">jaxtyping</span><span class="o">==</span><span class="mf">0.2.20</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+<span class="c1"># install a neat little package for visualizing PyTorch graphs</span>
+<span class="o">%</span><span class="n">pip</span> <span class="n">install</span> <span class="o">-</span><span class="n">qqq</span> <span class="n">torchview</span><span class="o">==</span><span class="mf">0.2.6</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+
+<span class="c1"># bring in some utilities from a GitHub gist</span>
+<span class="err">!</span><span class="n">wget</span> <span class="o">--</span><span class="n">quiet</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">tfs</span><span class="o">.</span><span class="n">ai</span><span class="o">/</span><span class="n">rwkv</span><span class="o">-</span><span class="n">explainer</span><span class="o">-</span><span class="n">utils</span> <span class="o">-</span><span class="n">O</span> <span class="n">utils</span><span class="o">.</span><span class="n">py</span>
+
+<span class="kn">import</span><span class="w"> </span><span class="nn">utils</span>  <span class="c1"># useful stuff that distracts from the main points about RWKV and LMs</span>
+<span class="kn">from</span><span class="w"> </span><span class="nn">utils</span><span class="w"> </span><span class="kn">import</span> <span class="n">LoadingMixin</span><span class="p">,</span> <span class="n">display_graph</span><span class="p">,</span> <span class="n">make_graph</span><span class="p">,</span> <span class="n">prep_weights</span>
+</code></pre></div>
+<h3 id="configuring-torch">Configuring Torch</h3>
+<p>We'll implement RWKV in PyTorch, a popular Python wrapper around fast
+tensor math and automatic differentiation in C++.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">import</span><span class="w"> </span><span class="nn">torch</span>
+</code></pre></div>
+<p>But we're just talking about RWKV during inference, not training, so we
+don't need the differentiation.</p>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">autograd</span><span class="o">.</span><span class="n">set_grad_enabled</span><span class="p">(</span><span class="kc">False</span><span class="p">);</span>
+</code></pre></div>
+<p>We use double-precision (64 bit) floating point numbers in our tensor
+math, accepting a big slow-down so that we can totally ignore numerical
+stability in favor of clarity.</p>
+<p>This is a tutorial, so our brains are the rate-limiting component, not
+the machines!</p>
+<div class="highlight"><pre><span></span><code><span class="n">torch</span><span class="o">.</span><span class="n">set_default_dtype</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">float64</span><span class="p">)</span>
+</code></pre></div>
+<h3 id="downloading-and-setting-up-weights">Downloading and Setting Up Weights</h3>
+<p>Like other neural networks, a trained RWKV model is defined in terms of
+a large number of floating point numbers, called the "weights" or
+"parameters" of the model.</p>
+<p>We want our outputs to 1) look like real language and 2) be comparable
+to <a href="https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py">the reference
+implementation</a>,
+so we pull down those trained weights for the 430M parameter RWKV-4
+model.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">pathlib</span><span class="w"> </span><span class="kn">import</span> <span class="n">Path</span>
+
+<span class="n">weights_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;RWKV-4-Pile-430M-20220808-8066.pth&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">weights_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">huggingface</span><span class="o">.</span><span class="n">co</span><span class="o">/</span><span class="n">BlinkDL</span><span class="o">/</span><span class="n">rwkv</span><span class="o">-</span><span class="mi">4</span><span class="o">-</span><span class="n">pile</span><span class="o">-</span><span class="mi">430</span><span class="n">m</span><span class="o">/</span><span class="n">resolve</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="p">{</span><span class="n">weights_path</span><span class="o">.</span><span class="n">name</span><span class="p">}</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;Loading </span><span class="si">{</span><span class="n">weights_path</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+<span class="n">weights</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">load</span><span class="p">(</span><span class="n">weights_path</span><span class="p">,</span> <span class="n">map_location</span><span class="o">=</span><span class="s2">&quot;cpu&quot;</span><span class="p">)</span>
+
+<span class="n">weights</span> <span class="o">=</span> <span class="n">prep_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Loading RWKV-4-Pile-430M-20220808-8066.pth
+</code></pre>
+<h2 id="defining-the-external-interface-strings-and-tokens">Defining the External Interface: Strings and Tokens</h2>
+<p>We're going to work "backwards" from the model's external interface to
+its internals.</p>
+<p>So we'll spend a bit of time up front on language modeling in general.</p>
+<p>If the phrase "Like a Transformer LM, an RWKVLM is an autoregressive
+probabilistic model of sequences of linear embeddings from a vocabulary
+of tokens" makes sense to you, you can skim this section and the next.
+Jump back in at the "zero-layer RWKV" section.</p>
+<p>If not, let's make it make sense!</p>
+<h3 id="tokenizer-the-string-token-and-token-string-interface">Tokenizer: the string-token and token-string interface</h3>
+<p>For our model, a <em>language</em> is a collection of sequences of <em>tokens</em>
+from a <em>vocabulary</em> -- you might think of the tokens as letters from the
+alphabet "vocabulary" forming sentences in the English language, or
+bytes forming valid strings.</p>
+<p>It's be great if our tokens <a href="https://arxiv.org/abs/2105.13626">were just the bytes in
+strings</a>, so we could just use strings
+as the interface between the world of language and our model, but the
+tokens for the most capable language models, including this version of
+RWKV, aren't quite so simple -- they are collections of letters that
+appear together frequently.</p>
+<p>So to define our tokens, we need to construct a <code>Tokenizer</code>, a sort of
+"baby language model" that works directly on bytes/letters and feeds its
+outputs to the "real language model".</p>
+<p>In the cell below, we pull down the <code>Tokenizer</code> that goes with RWKV-4
+430M.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">tokenizers</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tokenizer</span>
+
+<span class="n">tokenizer_path</span> <span class="o">=</span> <span class="n">Path</span><span class="p">(</span><span class="s2">&quot;20B_tokenizer.json&quot;</span><span class="p">)</span>
+
+<span class="k">if</span> <span class="ow">not</span> <span class="n">tokenizer_path</span><span class="o">.</span><span class="n">exists</span><span class="p">():</span>
+    <span class="err">!</span><span class="n">wget</span> <span class="o">-</span><span class="n">q</span> <span class="n">https</span><span class="p">:</span><span class="o">//</span><span class="n">raw</span><span class="o">.</span><span class="n">githubusercontent</span><span class="o">.</span><span class="n">com</span><span class="o">/</span><span class="n">BlinkDL</span><span class="o">/</span><span class="n">ChatRWKV</span><span class="o">/</span><span class="n">main</span><span class="o">/</span><span class="p">{</span><span class="n">tokenizer_path</span><span class="o">.</span><span class="n">name</span><span class="p">}</span> <span class="mi">1</span><span class="o">&gt;</span> <span class="o">/</span><span class="n">dev</span><span class="o">/</span><span class="n">null</span>
+
+<span class="n">tokenizer</span> <span class="o">=</span> <span class="n">Tokenizer</span><span class="o">.</span><span class="n">from_file</span><span class="p">(</span><span class="nb">str</span><span class="p">(</span><span class="n">tokenizer_path</span><span class="p">))</span>
+</code></pre></div>
+<p>The tokenizer can encode and decode <code>str</code>ings as sequences of <code>int</code>egers
+identifying tokens in our vocabulary.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">collections.abc</span><span class="w"> </span><span class="kn">import</span> <span class="n">Callable</span>
+
+<span class="n">tokenizer</span><span class="o">.</span><span class="n">token_to_id</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="nb">str</span><span class="p">],</span> <span class="nb">int</span><span class="p">]</span>
+</code></pre></div>
+<p>That last line is a <a href="https://realpython.com/lessons/type-hinting/">type
+annotation</a> -- by itself
+it doesn't do anything other than document something. In this case, it's
+saying that <code>.token_to_id</code> is</p>
+<ul>
+<li>a <code>Callable</code> method</li>
+<li>that takes in <code>[]</code> a <code>str</code>ing</li>
+<li>and returns an <code>int</code>eger.</li>
+</ul>
+<p>Like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nb">id</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">token_to_id</span><span class="p">(</span><span class="s2">&quot;Drosophila&quot;</span><span class="p">)</span>
+
+<span class="nb">id</span>
+</code></pre></div>
+<pre><code>37815
+</code></pre>
+<p>We can also convert back to a string with our <code>Tokenizer</code></p>
+<div class="highlight"><pre><span></span><code><span class="nb">print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">id_to_token</span><span class="p">(</span><span class="nb">id</span><span class="p">))</span>
+</code></pre></div>
+<pre><code>Drosophila
+</code></pre>
+<p>So the <code>Tokenizer</code> handles both ends of the outermost interface for our
+model: it translates between the strings that humans (and traditional
+software!) like and our token identifiers.</p>
+<p>The vocabulary always has a specific, finite size.</p>
+<p>For us, it's ~50,000:</p>
+<div class="highlight"><pre><span></span><code><span class="n">N_VOCAB</span> <span class="o">=</span> <span class="mi">50_277</span>
+
+<span class="n">token_id</span> <span class="o">=</span> <span class="n">N_VOCAB</span> <span class="o">+</span> <span class="mi">10</span>
+<span class="k">if</span> <span class="mi">0</span> <span class="o">&lt;=</span> <span class="n">token_id</span> <span class="o">&lt;</span> <span class="n">N_VOCAB</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">id_to_token</span><span class="p">(</span><span class="n">N_VOCAB</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;index </span><span class="si">{</span><span class="n">token_id</span><span class="si">}</span><span class="s2"> is in vocab&quot;</span><span class="p">)</span>
+<span class="k">else</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">id_to_token</span><span class="p">(</span><span class="n">N_VOCAB</span><span class="p">)</span> <span class="ow">is</span> <span class="kc">None</span>
+    <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;index </span><span class="si">{</span><span class="n">token_id</span><span class="si">}</span><span class="s2"> is not in vocab&quot;</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>index 50287 is not in vocab
+</code></pre>
+<p>So we can identify a token identifier with just a single integer.</p>
+<p>That's not a great way to represent data for a neural network, so we'll
+need to do another transformation before we're ready to hand things off.</p>
+<p>Why is an integer not a great input?</p>
+<p>Neural networks are <a href="https://www.youtube.com/watch?v=MDL384gsAk0&amp;list=PLD80i8An1OEGZ2tYimemzwC3xqkU0jKUg&amp;index=4">trained using
+calculus</a>,
+so they need something smoother, like <code>float</code>s.</p>
+<p>And they work best when there are a lot of numbers, aka on an array or
+<code>Tensor</code> with large dimensions.</p>
+<p>So let's convert our token-identifying integers into <code>Tensor</code>s full of
+<code>float</code>s.</p>
+<p>PyTorch gives us the tools we need to dynamically manipulate <code>Tensor</code>s
+in Python using fast compiled C++ code. Great!</p>
+<p>Unfortunately, providing good types for dynamic tensors is hard (for the
+curious: you need type-level arithmetic, variadic generics, and more).</p>
+<p>So there isn't great support built into the Python type system or into
+PyTorch itself.</p>
+<p>So let's pull in a typing library, <code>jaxtyping</code>, to get some nice
+<code>Tensor</code> types.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">jaxtyping</span><span class="w"> </span><span class="kn">import</span> <span class="n">Float64</span>
+
+<span class="n">Float</span> <span class="o">=</span> <span class="n">Float64</span>  <span class="c1"># convenient type synonym, good for easily switching float types later</span>
+</code></pre></div>
+<p>Because our vocabulary is a fixed size, there's a neat, if somewhat
+wasteful, way to represent the token id <code>ii</code> as a <code>Tensor</code>: make a big
+<code>Tensor</code> with <code>0</code>s everywhere except in the index <code>ii</code>, which is <code>1</code>.</p>
+<p>This is called a <code>One</code>-<code>Hot</code> representation, and it is a kind of
+"sparse" tensor -- one that's mostly zeros.</p>
+<div class="highlight"><pre><span></span><code><span class="n">OneHot</span> <span class="o">=</span> <span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vocabSize=</span><span class="si">{</span><span class="n">N_VOCAB</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+
+<span class="n">OneHot</span>
+</code></pre></div>
+<pre><code>jaxtyping.Float64[Tensor, 'vocabSize=50277']
+</code></pre>
+<p>Notice that our type includes some nice metadata, documenting its size
+and what that size means.</p>
+<p>We're going to need <code>OneHot</code>s a lot, so let's define a function to
+create them:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">to_onehot</span><span class="p">(</span><span class="n">k</span><span class="p">:</span> <span class="nb">int</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">OneHot</span><span class="p">:</span>
+    <span class="n">out</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_VOCAB</span><span class="p">)</span>
+    <span class="n">out</span><span class="p">[</span><span class="n">k</span><span class="p">]</span> <span class="o">=</span> <span class="mf">1.</span>
+    <span class="k">return</span> <span class="n">out</span>
+
+<span class="n">to_onehot</span><span class="p">(</span><span class="mi">1</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>tensor([0., 1., 0.,  ..., 0., 0., 0.])
+</code></pre>
+<p>That type annotation is nice documentation of the intended interface for
+this function.</p>
+<p>But the <a href="https://twitter.com/bernhardsson/status/1682162391574880256?s=20">best documentation is automatically
+checked</a>
+so that it stays in sync with the code it documents.</p>
+<p>So let's bring in a runtime type checker! That way you know you can
+trust the type signatures you're reading.</p>
+<p>We'll use <code>beartype</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">beartype</span><span class="w"> </span><span class="kn">import</span> <span class="n">beartype</span><span class="p">,</span> <span class="n">roar</span>
+
+<span class="n">to_onehot</span> <span class="o">=</span> <span class="n">beartype</span><span class="p">(</span><span class="n">to_onehot</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">to_onehot</span><span class="p">(</span><span class="s2">&quot;hey&quot;</span><span class="p">))</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;the code in this blog post is wrong!&quot;</span>
+<span class="k">except</span> <span class="n">roar</span><span class="o">.</span><span class="n">BeartypeCallHintException</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="s2">&quot;🐻 rawr! that input type is not allowed&quot;</span><span class="p">)</span>
+
+<span class="k">try</span><span class="p">:</span>
+    <span class="nb">print</span><span class="p">(</span><span class="n">to_onehot</span><span class="p">(</span><span class="n">N_VOCAB</span> <span class="o">-</span> <span class="mi">1</span><span class="p">))</span>
+<span class="k">except</span> <span class="n">roar</span><span class="o">.</span><span class="n">BeartypeCallHintException</span><span class="p">:</span>
+    <span class="k">assert</span> <span class="kc">False</span><span class="p">,</span> <span class="s2">&quot;the code in this blog post is wrong!&quot;</span>
+</code></pre></div>
+<pre><code>🐻 rawr! that input type is not allowed
+tensor([0., 0., 0.,  ..., 0., 0., 1.])
+</code></pre>
+<p>In some places, we'll use <code>int</code>s as the <code>Id</code>entifiers of our <code>Token</code>s.
+In others, we'll use the <code>OneHot</code> tensor.</p>
+<p>So we define a type that is either an <code>int</code> or (<code>|</code>) a <code>TokenId</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">TokenId</span> <span class="o">=</span> <span class="nb">int</span> <span class="o">|</span> <span class="n">OneHot</span>
+
+<span class="n">TokenId</span>
+</code></pre></div>
+<pre><code>int | jaxtyping.Float64[Tensor, 'vocabSize=50277']
+</code></pre>
+<h3 id="autoregressivelm-a-token-token-interface-for-language-modeling"><code>AutoregressiveLM</code>: a token-token interface for language modeling</h3>
+<p>Now that we can convert from strings to tokens, we have the inputs to
+our language model.</p>
+<p>To understand the output of our language model, we need to be a bit more
+precise about what it does.</p>
+<p>Language models are probabilistic. They can make <em>inferences</em> about
+sequences of tokens. For example, they can predict which word is missing
+from a sequence or which word might come next if it were to continue.</p>
+<p>That means our model deals in chance or plausibility, not deterministic
+outcomes. We will output <code>Probabilities</code>.</p>
+<p>An <em>autoregressive language model</em> uses the beginning of a sequence to
+predict the <code>Next</code> <code>Token</code> in the sequence.</p>
+<p>RWKVLM is an autoregressive language model, so it will output
+<code>NextTokenProbabilities</code> -- a tensor with a probability for each element
+of the vocab, representing the model's estimate of the chance that token
+comes next in the sequence.</p>
+<div class="highlight"><pre><span></span><code><span class="n">NextTokenProbabilities</span> <span class="o">=</span> <span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;vocabSize=</span><span class="si">{</span><span class="n">N_VOCAB</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+
+<span class="n">NextTokenProbabilities</span>
+</code></pre></div>
+<pre><code>jaxtyping.Float64[Tensor, 'vocabSize=50277']
+</code></pre>
+<p>With these in hand, we can define the behavior of an <code>Autoregressive</code>
+<code>L</code>anguage <code>M</code>odel:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AutoregressiveLM</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;An LM that can continue a sequence by generating one token at a time.&quot;&quot;&quot;</span>
+
+    <span class="nd">@beartype</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">generate</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">sequence</span><span class="p">:</span> <span class="nb">str</span><span class="o">=</span><span class="s2">&quot;&quot;</span><span class="p">,</span> <span class="n">N</span><span class="p">:</span> <span class="nb">int</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">1.0</span><span class="p">,</span> <span class="n">top_p</span><span class="o">=</span><span class="mf">1.0</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NextTokenProbabilities</span><span class="p">:</span>
+<span class="w">        </span><span class="sd">&quot;&quot;&quot;Generates N additional tokens that might follow the provided sequence.&quot;&quot;&quot;</span>
+
+        <span class="n">token_ids</span> <span class="o">=</span> <span class="n">tokenizer</span><span class="o">.</span><span class="n">encode</span><span class="p">(</span><span class="n">sequence</span><span class="p">)</span><span class="o">.</span><span class="n">ids</span>
+
+        <span class="k">if</span> <span class="ow">not</span> <span class="p">(</span><span class="n">sequence_length</span> <span class="o">:=</span> <span class="nb">len</span><span class="p">(</span><span class="n">token_ids</span><span class="p">)):</span>  <span class="c1"># handle empty sequence</span>
+            <span class="n">probs</span><span class="p">:</span> <span class="n">NextTokenProbabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span><span class="mi">0</span><span class="p">)</span>  <span class="c1"># 0 is a special token id, marks a boundary</span>
+
+        <span class="k">for</span> <span class="n">ii</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">sequence_length</span> <span class="o">+</span> <span class="n">N</span><span class="p">):</span>
+            <span class="k">if</span> <span class="n">ii</span> <span class="o">&lt;</span> <span class="n">sequence_length</span><span class="p">:</span>  <span class="c1"># at first, tokens come from the sequence</span>
+                <span class="n">token</span> <span class="o">=</span> <span class="n">token_ids</span><span class="p">[</span><span class="n">ii</span><span class="p">]</span>
+            <span class="k">else</span><span class="p">:</span>  <span class="c1"># then after that, we&#39;re generating new tokens</span>
+                <span class="n">token</span> <span class="o">=</span> <span class="n">utils</span><span class="o">.</span><span class="n">sample</span><span class="p">(</span><span class="n">probs</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="n">temperature</span><span class="p">,</span> <span class="n">top_p</span><span class="o">=</span><span class="n">top_p</span><span class="p">)</span>
+
+            <span class="c1"># we get the probabilities for the next token by calling the model on the current token</span>
+            <span class="n">probs</span><span class="p">:</span> <span class="n">NextTokenProbabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+
+            <span class="c1"># and print the sequence as we go</span>
+            <span class="n">utils</span><span class="o">.</span><span class="n">streaming_print</span><span class="p">(</span><span class="n">tokenizer</span><span class="o">.</span><span class="n">decode</span><span class="p">([</span><span class="n">token</span><span class="p">]))</span>
+
+        <span class="k">return</span> <span class="n">probs</span>
+</code></pre></div>
+<p><small> The <code>temperature</code> and <code>top_p</code> parameters are included so that we
+can match the typical generation interface for models like OpenAI's
+GPT-4 and Anthropic's Claude, but the details don't matter to us today,
+so we've abstracted them behind the <code>utils.sample</code> function. </small></p>
+<p>At the core, we're just doing in Python what we said in English above:
+predicting the next token in a sequence repeatedly, based on what we've
+seen so far, by calling the model (<code>self</code>) on the latest <code>token</code>.</p>
+<p>You might wonder how our model knows about the past of the sequence,
+since we're just calling it with the current <code>token</code>.</p>
+<p>The key is that we're inheriting from <code>torch.nn.Module</code> here.</p>
+<p>A <code>Module</code> is like a function, in that its main purpose is to be called,
+but it is also like an object, in that it is also able to hold onto
+state from iteration to iteration.</p>
+<p>That state is where we'll hold onto the parameters of the model. It's
+also where we'll hold onto information about past tokens we've seen.</p>
+<p>But, you might object, we skipped defining what happens when the model
+is called!</p>
+<p>That's true, but we can just define it now -- for a <code>Module</code>, that's
+done via the <code>forward</code> method:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@beartype</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="n">TokenId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NextTokenProbabilities</span><span class="p">:</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">to_onehot</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">token</span>
+
+    <span class="c1"># use that onehot to retrieve the token&#39;s dense vector representation, or &quot;embedding&quot;</span>
+    <span class="n">embedded_token</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>  <span class="c1"># yes, DNN people really do say &quot;embedding&quot; this much</span>
+
+    <span class="c1"># apply the &quot;meat&quot; of the model to enrich the embedding (with sequence context plus knowledge from the weights)</span>
+    <span class="n">sequence_embedding</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">(</span><span class="n">embedded_token</span><span class="p">)</span>
+
+    <span class="c1"># use that to assign probabilities to each possible next token</span>
+    <span class="n">probs</span><span class="p">:</span> <span class="n">NextTokenProbabilities</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unembedding</span><span class="p">(</span><span class="n">sequence_embedding</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">probs</span>
+
+
+<span class="c1"># attach forward to our AutoregressiveLM class</span>
+<span class="n">AutoregressiveLM</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">forward</span>
+</code></pre></div>
+<p>This is a neat little pattern that Python supports but which you rarely
+see outside of a notebook environment: defining methods after the class
+has been defined.</p>
+<p>We'll do this throughout the post so that we can split implementations
+into smaller pieces and focus on important details first.</p>
+<p>In the cell above, we've isolated just the <code>forward</code> method.</p>
+<p>Right now, it's pretty abstract: it calls some method called <code>embedding</code>
+that returns an <code>Embedding</code>, which it passes through a method called
+<code>blocks</code> that returns a new <code>Embedding</code>. That final piece is
+<code>unembed</code>ded to produce the <code>prob</code>abilities we need to fit the
+<code>AutoRegressiveLM</code> interface.</p>
+<p>At this high of a level, there's no difference between an
+<code>AutoregressiveLM</code> that uses Transformer-style blocks and one that uses
+RWKV-style blocks.</p>
+<p>Following our "inside-out" approach, we'll first define the <code>embedding</code>
+and <code>unembedding</code>, in the next section, before we dive into the
+RWKV-specific details.</p>
+<p>We'll close out this section, and our implementation of
+<code>AutoregressiveLM</code>, by defining how it's initialized:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">embedding_layer</span><span class="p">,</span> <span class="n">blocks</span><span class="p">,</span> <span class="n">unembedding_layer</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">AutoregressiveLM</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">:</span> <span class="n">TokenEmbedding</span> <span class="o">=</span> <span class="n">embedding_layer</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">:</span> <span class="n">Callable</span><span class="p">[[</span><span class="n">Embedding</span><span class="p">],</span> <span class="n">Embedding</span><span class="p">]</span> <span class="o">=</span> <span class="n">blocks</span>  <span class="c1"># RWKV will go here</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">unembedding</span><span class="p">:</span> <span class="n">Unembedding</span> <span class="o">=</span> <span class="n">unembedding_layer</span>
+
+<span class="n">AutoregressiveLM</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="fm">__init__</span>
+</code></pre></div>
+<h2 id="defining-the-internal-interface-embeddings-and-unembedding">Defining the Internal Interface: <code>Embedding</code>s and <code>Unembedding</code></h2>
+<p>Our autoregressive language model uses this <code>Embedding</code> type as its
+internal representation.</p>
+<p>Let's see how it is produced from our <code>TokenId</code>s and how it gets turned
+into <code>NextTokenProbabilities</code>.</p>
+<h3 id="tokenembedding-from-token-identifiers-to-dense-tensors"><code>TokenEmbedding</code>: From token identifiers to dense tensors</h3>
+<p>The inputs and outputs of neural networks are often sparse tensors, as
+we saw with the <code>OneHot</code>s above: most of the entries are zeros.</p>
+<p>But in their guts, neural networks are tensor calculus machines,
+applying dense tensors of floats to dense tensors of floats.</p>
+<p>So the "interface" inside of our network is a dense tensor -- and one
+much smaller than our vocabulary.</p>
+<p>The internals of our network will all "speak" dense tensor.</p>
+<p>There are many other names for these dense float tensors, but we'll
+stick with <code>Embedding</code> since that has taken off in the era of
+embedding-based vector search for LLMs, and we'll use <code>channel</code> to refer
+to an individual dimension, because <code>EmbeddingDimension</code> is a mouthful.</p>
+<p>Why are they called "embeddings"? Roughly, because they are created by
+taking a pointy object, like our collection of <code>OneHot</code> tensors that are
+all far away from each other (imagine 50,000 vertices on a big cube),
+and smushing them together into a smooth object. Vicki Boykis has a
+great write-up <a href="https://vickiboykis.com/what_are_embeddings/">here</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">N_EMBD</span> <span class="o">=</span> <span class="mi">1024</span>
+<span class="n">Embedding</span> <span class="o">=</span> <span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;channels=</span><span class="si">{</span><span class="n">N_EMBD</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+<span class="c1"># aka internal representation, aka hidden state, aka latents, aka &quot;residual stream&quot;</span>
+<span class="n">Embedding</span>
+</code></pre></div>
+<pre><code>jaxtyping.Float64[Tensor, 'channels=1024']
+</code></pre>
+<p>We build another <code>torch.nn.Module</code> to compute our <code>Embedding</code>s.</p>
+<p>It has two steps: first we compute the dense vector from our <code>OneHot</code>
+and then we normalize it, so that its length is always the same.</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@beartype</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">token</span><span class="p">:</span> <span class="n">TokenId</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embedding</span><span class="p">:</span>
+    <span class="n">token</span> <span class="o">=</span> <span class="n">to_onehot</span><span class="p">(</span><span class="n">token</span><span class="p">)</span> <span class="k">if</span> <span class="nb">isinstance</span><span class="p">(</span><span class="n">token</span><span class="p">,</span> <span class="nb">int</span><span class="p">)</span> <span class="k">else</span> <span class="n">token</span>
+    <span class="n">embedded_token</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span><span class="p">(</span><span class="n">token</span><span class="p">)</span>
+    <span class="n">normalized_embedded_token</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_emb</span><span class="p">(</span><span class="n">embedded_token</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">normalized_embedded_token</span>
+</code></pre></div>
+<p>We'll be normalizing our embeddings a lot. You might ask why.</p>
+<p>Like with many things in neural networks, the typical answer is "it
+helps with optimization" and the real answer is "the thing stops working
+if we don't".</p>
+<p>But how exactly do we do our normalization and how do we get that dense
+vector?</p>
+<p>PyTorch has built in <code>nn.Module</code>s for these operations, so we can just
+add them to our <code>TokenEmbedding</code> <code>Module</code> when it gets initialized.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">TokenEmbedding</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">embedding</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">N_VOCAB</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">normalize_emb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)</span>
+</code></pre></div>
+<p>Applying a <code>Linear</code> layer to a <code>OneHot</code> just pulls out one of the
+columns.</p>
+<p>The normalizer subtracts the mean and divides by the standard deviation,
+which makes the length of the <code>Embedding</code> 1, then multiplies by a number
+to set the length.</p>
+<p>That number, and the values in the <code>Linear</code> layer's columns, aren't
+based on the inputs. They are "learned parameters" of the model, learned
+during training.</p>
+<p>So we need to load the values from the <code>weights</code> that we downloaded
+during the setup -- which we do by adding a janky class from our
+<code>utils</code>, a <code>LoadingMixin</code></p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">TokenEmbedding</span><span class="p">(</span><span class="n">LoadingMixin</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A layer that converts token IDs into vectors our network&#39;s blocks can work with.&quot;&quot;&quot;</span>
+
+<span class="n">TokenEmbedding</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="fm">__init__</span>
+<span class="n">TokenEmbedding</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">forward</span>
+</code></pre></div>
+<p>which adds a <code>from_weights</code> method that we can use to create the class
+directly from our <code>weights</code>.</p>
+<p>Now we can initialize the <code>TokenEmbedding</code> with the correct weights and
+take a look at it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">embs</span> <span class="o">=</span> <span class="n">TokenEmbedding</span><span class="o">.</span><span class="n">from_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+
+<span class="n">embs</span>
+</code></pre></div>
+<pre><code>TokenEmbedding(
+  (embedding): Linear(in_features=50277, out_features=1024, bias=False)
+  (normalize_emb): LayerNorm((1024,), eps=1e-05, elementwise_affine=True)
+)
+</code></pre>
+<p>Hmm, that's kind of a lame visualization.</p>
+<p>It's nice for printing to terminal logs, but we're in a browser, so we
+can do better.</p>
+<p>Let's use the <a href="https://github.com/mert-kurttutan/torchview"><code>torchview</code>
+library</a> to get something
+cooler: a trace of all the pieces of our model, to a variety of levels
+of detail (<code>depth</code> in our tree of <code>Module</code>s).</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">TokenEmbedding</span><span class="p">(),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="n">to_onehot</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+</code></pre></div>
+<p><img alt="" src="img/fa6734b45f94b7dfe5911d6c58bc60ff845f1b0e.png" /></p>
+<p><img alt="" src="img/5ebf627acb63be744f0554436c85b7ec8ab11abd.png" /></p>
+<p><img alt="" src="img/63e1f7bf9192ab7540bbd4570a9769bb975c075d.png" /></p>
+<p>Read from top to bottom, these diagrams say:</p>
+<ol>
+<li>This module is called <code>TokenEmbedding</code> and takes in <code>50_277</code>
+    dimensional tensors and returns <code>1024</code> dimensional tensors.</li>
+<li>That <code>TokenEmbedding</code> is made up of a <code>Linear</code> module and a
+    <code>LayerNorm</code> module.</li>
+<li>The <code>Linear</code> module calls a function named <code>linear</code> amd the
+    <code>LayerNorm</code> module calls a function named <code>layer_norm</code>.</li>
+</ol>
+<h3 id="unembedding-from-dense-vectors-to-token-probabilities"><code>Unembedding</code>: from dense vectors to token probabilities</h3>
+<p>Once we're done processing with our network, we need to get back to a
+probability distribution over tokens, which we can finally turn into
+specific tokens and then strings.</p>
+<p>The <code>Unembedding</code> layer gets us from our <code>Embedding</code>s to
+<code>NextTokenProbabilities</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Unembedding</span><span class="p">(</span><span class="n">LoadingMixin</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A layer that converts our network&#39;s internal representation into a prediction.&quot;&quot;&quot;</span>
+
+    <span class="nd">@beartype</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">NextTokenProbabilities</span><span class="p">:</span>
+        <span class="n">normalized_embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">normalize_unemb</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="n">logits</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">unembedding</span><span class="p">(</span><span class="n">normalized_embedding</span><span class="p">)</span>  <span class="c1"># &quot;logits&quot; basically means &quot;unnormalized probabilities&quot;</span>
+
+        <span class="c1"># we convert them to probabilities with the softmax function</span>
+        <span class="n">probs</span><span class="p">:</span> <span class="n">NextTokenProbabilities</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">softmax</span><span class="p">(</span><span class="n">logits</span><span class="p">,</span> <span class="n">dim</span><span class="o">=-</span><span class="mi">1</span><span class="p">)</span>
+
+        <span class="k">return</span> <span class="n">probs</span>
+</code></pre></div>
+<p>For the <code>Unembedding</code>, we use the same <code>Module</code>s as the
+<code>TokenEmbedding</code>, but in reverse:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Unembedding</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">normalize_unemb</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">unembedding</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">in_features</span><span class="o">=</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">out_features</span><span class="o">=</span><span class="n">N_VOCAB</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">Unembedding</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="fm">__init__</span>
+
+<span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">3</span><span class="p">):</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">Unembedding</span><span class="p">(),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)))</span>
+</code></pre></div>
+<p><img alt="" src="img/5f0a02bf73199b43295db1c23f3cfa98f619dd63.png" /></p>
+<p><img alt="" src="img/daf4b2f07a5f6e547d0dfa5055a604ee3428304d.png" /></p>
+<p><img alt="" src="img/0842125a22448b6d132775d653a0efbe4c05bbe1.png" /></p>
+<p>And that's it for the <code>Unembedding</code> -- we just need to load in the
+weights.</p>
+<div class="highlight"><pre><span></span><code><span class="n">unembs</span> <span class="o">=</span> <span class="n">Unembedding</span><span class="o">.</span><span class="n">from_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">)</span>
+</code></pre></div>
+<p>Now we can translate from our model's <code>Embedding</code>s to the <code>Tokenizer</code>'s
+vocabulary and from there to strings for humans!</p>
+<h2 id="a-marwkv-model-zero-layer-rwkv">A "<code>marwkv</code>" model: zero-layer RWKV</h2>
+<p>The simplest RWKV model has no blocks in the middle -- just embedding
+and unembedding.</p>
+<p>It's equivalent (up to those pesky normalization layers) to the
+<a href="https://transformer-circuits.pub/2021/framework/index.html#zero-layer-transformers">zero-layer
+Transformer</a>.</p>
+<p>It's entirely linear -- all adds and multiplies -- so it's actually a
+type of logistic regression!</p>
+<p>And, because it has no way to track or store information over time, it
+predicts the next token from just the most recent token.</p>
+<p>A model that can only see the present value when generating the next is
+known as a <a href="https://en.wikipedia.org/wiki/Markov_chain"><em>Markov chain</em></a>.</p>
+<p>So, never ones to miss a good pun, we'll call it the maRWKV model.</p>
+<div class="highlight"><pre><span></span><code><span class="n">marwkv</span> <span class="o">=</span> <span class="n">AutoregressiveLM</span><span class="p">(</span>
+    <span class="n">embs</span><span class="p">,</span>
+    <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">(),</span>  <span class="c1"># do nothing</span>
+    <span class="n">unembs</span>
+<span class="p">)</span>
+
+
+<span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">4</span><span class="p">):</span>
+    <span class="n">viz_marwkv</span> <span class="o">=</span> <span class="n">AutoregressiveLM</span><span class="p">(</span><span class="n">TokenEmbedding</span><span class="p">(),</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">(),</span> <span class="n">Unembedding</span><span class="p">())</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">viz_marwkv</span><span class="p">,</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="n">to_onehot</span><span class="p">(</span><span class="mi">0</span><span class="p">)))</span>
+</code></pre></div>
+<p><img alt="" src="img/377d6e7cee56daf68c2ba0d17ff61d9a4553c4dc.png" /></p>
+<p><img alt="" src="img/e2d64b4037c2de0dea1d73ab2e376a6e58fa36ad.png" /></p>
+<p><img alt="" src="img/f4901781021d0298fc1b5ffbde9d4d7f91c92917.png" /></p>
+<p><img alt="" src="img/17655b35a236b4c2299b27959990ccae2718d496.png" /></p>
+<p>Let's see what happens when we run it.</p>
+<p>Let's take a nice long token from the vocab -- <code>Drosophila</code>, the <a href="https://en.wikipedia.org/wiki/Drosophila">genus
+of fruit flies</a>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">marwkv</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">&quot;Drosophila&quot;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">);</span>  <span class="c1"># temperature == 0 means just take the most likely token</span>
+</code></pre></div>
+<pre><code>Drosophila melan
+</code></pre>
+<p>Nice! That looks like the beginning of the rest of the scientific name
+of <em>Drosophila melanogaster</em>, the
+<a href="https://en.wiktionary.org/wiki/melanogaster#Latin">dark-bellied</a> fruit
+fly species used in genetic research.</p>
+<p>Let's keep going:</p>
+<div class="highlight"><pre><span></span><code><span class="n">marwkv</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="s2">&quot;Drosophila&quot;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">);</span>
+</code></pre></div>
+<pre><code>Drosophila melanospor
+</code></pre>
+<p>Oh dear! That's not <code>melanogaster</code>!</p>
+<p><code>melanospor</code> is the beginning of another frequently-used scientific
+name: <code>melanosporum</code>, the species name of the <a href="https://en.wikipedia.org/wiki/Tuber_melanosporum">French black
+truffle</a>.</p>
+<p>A Markov chain is like a game of telephone: each token is generated only
+with knowledge of the one immediately previous.</p>
+<p>This gives Markov language models a decidely "free-association" energy.</p>
+<p>And "Drosophila melanosporum" is the scientific nomenclature equivalent
+of "Harry Potter-y Barn" or "Saddam Hussein Obama".</p>
+<p>How can we do better?</p>
+<h2 id="defining-internal-computation-and-propagation-gated-mlp-and-attention">Defining Internal Computation and Propagation: Gated MLP and Attention</h2>
+<p>For better language generation, we need two things:</p>
+<ul>
+<li>More layers, so that we can do more complex processing on each token</li>
+<li>More context, so information is preserved from more than just the
+    previous token</li>
+</ul>
+<p>The RWKV blocks we add will do both!</p>
+<p>To fit multiple <code>RWKVBlock</code>s into our <code>AutoregressiveLM</code> interface,
+which expects just one <code>Module</code> (and one which maps <code>Embedding</code>s to
+<code>Embedding</code>s) in the middle, we'll combine them using
+<code>torch.nn.Sequential</code>.</p>
+<p>Really, we end up just calling them one after the other:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RWKV</span><span class="p">(</span><span class="n">LoadingMixin</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+
+    <span class="nd">@beartype</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embedding</span><span class="p">:</span>
+        <span class="k">for</span> <span class="n">ii</span><span class="p">,</span> <span class="n">block</span> <span class="ow">in</span> <span class="nb">enumerate</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">blocks</span><span class="p">):</span>
+            <span class="n">x</span> <span class="o">=</span> <span class="n">block</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="k">return</span> <span class="n">x</span>
+
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">rwkv_blocks</span><span class="p">:</span> <span class="nb">list</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">blocks</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Sequential</span><span class="p">(</span><span class="o">*</span><span class="n">rwkv_blocks</span><span class="p">)</span>
+</code></pre></div>
+<p>Before defining those <code>blocks</code>, let's get a clearer picture of just what
+is meant by "doing more complex processing" and "adding more context".</p>
+<p>This is best seen from an example, which we take from Figure 9 in the
+appendix of <a href="https://arxiv.org/abs/2305.13048">the RWKV paper</a>,
+reproduced below, which shows how the model produces the token <em>Paris</em>
+to continue the sequence <em>The Eiffel Tower is located in the city of</em>.</p>
+<p><small> For more on how this plot is made, see <a href="https://arxiv.org/abs/2202.05262">the original paper on
+"causal tracing"</a>.</small></p>
+<p><img alt="RWKV Figure on information
+propagation" src="img/89e15c22a51ff293908024a89c6a3a0c095f5ae8.png" /></p>
+<p>The horizonal axis is what we just added with the <code>RWKV</code> class's
+<code>blocks</code> -- as we move from left to right in the graph, a given token is
+being processed by more and more blocks.</p>
+<p>The vertical axis is "time", aka "sequence length" or the "sequence
+dimension". As we move from top to bottom, a token is being processed in
+the context of more and more tokens.</p>
+<p>Each time we apply our model to a token, all of the model's layers are
+applied -- we move through a row of the graph.</p>
+<p>The figure shows that the fact that Eiffel Tower is in the city of Paris
+arises in an early layer: observe the dark purple color in the row for
+the <em>el</em> token, beginning at layer 4/5 or so.</p>
+<p>Put another way, the <code>Embedding</code> for the <em>el</em> token has been "enriched"
+with additional information: that jumble of floating point numbers now
+expresses that the noun phrase this token is part of refers to an object
+in the city of Paris.</p>
+<p>Enriching tokens with information about the world from outside the
+sequence is done primarily by the MLP modules in a Transformer. In RWKV,
+that will be done by a similar module, a <code>GatedMLP</code>.</p>
+<p>Later tokens in the sequence, like <em>city</em>, do not have this information
+in them -- nor should they! Despite what some Francophiles might claim,
+not all cities are Paris.</p>
+<p>Instead, that information is first propagated deeper into the network:
+see the purple line moving from left to right.</p>
+<p>At some point, that information does need to be transferred to later
+tokens -- at the very least, it needs to make it to the final token in
+the sequence to get added to the <code>NextTokenProbabilities</code>.</p>
+<p>We can see that in roughly layer 20: follow the purple vertical line
+downwards from the <em>el</em> token to the <em>of</em> token. From there the
+information that the Eiffel Tower is in Paris propagated to the output.</p>
+<p>Routing information across time is the responsibility of the <code>Attention</code>
+modules of a Transformer. We'll give the same name to the module that
+achieves the same outcome in RWKV, even though it works quite a bit more
+like a memory: information is added to <em>all future embeddings</em>.</p>
+<p>Let's put that all together:</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">RWKVBlock</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;The core &quot;block&quot; in the RWKV architecture, which updates the embedding.&quot;&quot;&quot;</span>
+
+    <span class="nd">@beartype</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embedding</span><span class="p">:</span>
+        <span class="c1"># attention enriches embedding using sequence memory</span>
+        <span class="n">dx</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">attention</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ln1</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>  <span class="c1"># preserve inputs as much as possible</span>
+
+        <span class="c1"># gated MLP enriches embedding by doing computations</span>
+        <span class="n">dx</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">gated_mlp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">ln2</span><span class="p">(</span><span class="n">x</span><span class="p">))</span>
+        <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="n">x</span> <span class="o">+</span> <span class="n">dx</span>  <span class="c1"># again, preserve inputs</span>
+
+        <span class="k">return</span> <span class="n">x</span>
+</code></pre></div>
+<p>Okay, we slipped in a <code>l</code>ayer <code>n</code>ormalization, which is important but
+uninteresting.</p>
+<p>But what is an <code>Update</code>?</p>
+<p>It's just a synonym for <code>Embedding</code>!</p>
+<div class="highlight"><pre><span></span><code><span class="n">Update</span> <span class="o">=</span> <span class="n">Embedding</span>
+<span class="n">Update</span>
+</code></pre></div>
+<pre><code>jaxtyping.Float64[Tensor, 'channels=1024']
+</code></pre>
+<p>Again, we're using the type hints for documentation -- it helps us
+separate which <code>Tensor</code>s are used for what.</p>
+<p>Now, let's define how our <code>Block</code> gets initialized:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">RWKVBlock</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">ln1</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">attention</span> <span class="o">=</span> <span class="n">AttentionBlock</span><span class="p">()</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">ln2</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">LayerNorm</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">gated_mlp</span> <span class="o">=</span> <span class="n">GatedMLP</span><span class="p">()</span>
+
+
+<span class="n">RWKVBlock</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="fm">__init__</span>
+</code></pre></div>
+<p>The <code>LayerNorm</code>s we recognize.</p>
+<p>For the other layers, let's just put in placeholders, like we did for
+the RWKV blocks in the zero-layer model, so that we can visualize our
+architecture again and focus on the overall flow.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">GatedMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Placeholder&quot;&quot;&quot;</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">AttentionBlock</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Identity</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Placeholder&quot;&quot;&quot;</span>
+
+<span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">RWKVBlock</span><span class="p">(),</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">graph_dir</span><span class="o">=</span><span class="s2">&quot;TD&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="img/090197d0bef33ce11588804046ae9695eff37333.png" /></p>
+<p>Follow that arrow on the left -- it connects the input to the output
+with only additions.</p>
+<p>This is a <em>residual connection</em>, which is also a <a href="https://transformer-circuits.pub/2021/framework/index.html">very important feature
+of
+Transformers</a>.</p>
+<p>This residual connection is one reason why we could we could just rip
+out the entire middle of the network and still get reasonable outputs:
+each layer ends up just adjusting the output of the previous layer,
+rather than starting from scratch, so the inputs of the first block and
+the outputs of the last block are similar enough that the unembedding at
+the end can read either!</p>
+<p>It's also important, like our normalization layers, for stabilizing
+optimization.</p>
+<h3 id="the-gated-mlp">The Gated MLP</h3>
+<p>Alright, now let's dive into the implementation of the simpler of the
+two components in the block, the <code>GatedMLP</code>.</p>
+<p>The <code>MLP</code> part is pretty standard and looks like the same part of the
+Transformer but uses non-standard nomenclature -- the input layer's
+weights are called <code>key</code> weights and the output layer's weights are
+called <code>value</code> weights.</p>
+<p>The other two pieces, the <code>mixer</code>s and the <code>gating</code>, are less standard.</p>
+<p>We'll define them below.</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">sigmoid</span>
+
+
+<span class="k">class</span><span class="w"> </span><span class="nc">GatedMLP</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies an MLP (matrix, nonlinearity, matrix) with gated outputs.&quot;&quot;&quot;</span>
+
+    <span class="nd">@beartype</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Update</span><span class="p">:</span>
+        <span class="c1"># &quot;mix&quot; current input with the previous input</span>
+        <span class="n">mixed_x</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">mlp_mixer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># put that through an MLP</span>
+        <span class="n">mlp_outputs</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">nonlinearity</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">mixed_x</span><span class="p">)))</span>
+        <span class="c1"># non-standard nomenclature, probably because of this paper https://arxiv.org/abs/2012.14913</span>
+
+        <span class="c1"># &quot;mix&quot; the current input with the previous input again, with different weights</span>
+        <span class="n">mixed_x_receptance</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptance_mixer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+        <span class="c1"># use that to calculate how &quot;receptive&quot; each dimension of embedding is to new inputs</span>
+        <span class="n">receptance</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptance</span><span class="p">(</span><span class="n">mixed_x_receptance</span><span class="p">)</span>
+
+        <span class="c1"># convert that receptance to a 0-1 value with a sigmoid</span>
+        <span class="n">gating_values</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">receptance</span><span class="p">)</span>
+        <span class="c1"># then use those as &quot;gating&quot; by multiplying them</span>
+        <span class="n">dx</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="n">gating_values</span> <span class="o">*</span> <span class="n">mlp_outputs</span>
+
+        <span class="k">return</span> <span class="n">dx</span>
+</code></pre></div>
+<p>The <code>receptance</code>/<code>gating</code> is not present in the MLP portion of a
+Transformer. It's <a href="https://arxiv.org/abs/1412.3555">more of an RNN
+thing</a>.</p>
+<p>If you graph it, the <code>sigmoid</code> function is shaped like an elongated <em>s</em>,
+with the bottom left of the s at <code>(-inf, 0)</code> and the top-right at
+<code>(inf, 1)</code>. It turns the <code>receptances</code>, which can be any floating point
+number, into multiplicative <code>gating_values</code>, numbers that are between
+<code>0</code> and <code>1</code>.</p>
+<p>When the <code>gating_value</code> for a channel is close to <code>0</code>, the value of <code>dx</code>
+in that channel for the <code>GatedMLP</code> is also close to <code>0</code>. Effectively, we
+don't <code>Update</code> that channel of the <code>Embedding</code> with the MLP's output.</p>
+<p>Essentially, the <code>mlp_output</code> computation decides what <em>might</em> be
+returned, and the <code>receptance</code> decides <em>whether</em> it's returned.</p>
+<p>Now, let's talk <code>mixer</code>s.</p>
+<p>At multiple points in the RWKV architecture, information from the
+current embedding is mixed with information from the most recent
+embedding.</p>
+<p>This is important when inividual tokens in the language are not very
+meaningful, e.g. when you're working directly with bytes, rather than
+with <code>Tokenizer</code>s that have tokens like <code>Drosophila</code>.</p>
+<p>The mixers are probably not a critical feature of the architecture, but
+they're there and working through an implementation will help us
+practice handling state in PyTorch, so let's go for it!</p>
+<p>Here's the <code>forward</code> -- notice how we use the <code>last_x</code> value as part of
+our calculations and assign the <code>current_x</code> value to that variable
+before we finish.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">Mixer</span><span class="p">(</span><span class="n">LoadingMixin</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Returns a per-entry-weighted combination of current input and previous input.&quot;&quot;&quot;</span>
+
+    <span class="nd">@beartype</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">current_x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embedding</span><span class="p">:</span>
+        <span class="n">out</span> <span class="o">=</span>  <span class="n">mix_embeddings</span><span class="p">(</span><span class="n">current_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">last_x</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">weight</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">last_x</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="n">current_x</span>  <span class="c1"># store for later</span>
+        <span class="k">return</span> <span class="n">out</span>
+</code></pre></div>
+<p>The specific way these mixers combine embeddings is by a weighted
+combination.</p>
+<p>The weights are <em>per-channel</em>, i.e. different dimensions of the
+embedding get mixed differently.</p>
+<div class="highlight"><pre><span></span><code><span class="n">ChannelParameter</span> <span class="o">=</span> <span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;params=</span><span class="si">{</span><span class="n">N_EMBD</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>  <span class="c1"># one parameter for each embedding dimension</span>
+
+<span class="nd">@beartype</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">mix_embeddings</span><span class="p">(</span><span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">y</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">mixing_params</span><span class="p">:</span> <span class="n">ChannelParameter</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Embedding</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Mixes two embeddings with weights given by the mixing_params.&quot;&quot;&quot;</span>
+    <span class="k">return</span> <span class="n">x</span> <span class="o">*</span> <span class="n">mixing_params</span> <span class="o">+</span> <span class="n">y</span> <span class="o">*</span> <span class="p">(</span><span class="mi">1</span> <span class="o">-</span> <span class="n">mixing_params</span><span class="p">)</span>
+
+<span class="n">mix_embeddings</span>
+</code></pre></div>
+<pre><code>&lt;function __main__.mix_embeddings(x: jaxtyping.Float64[Tensor, 'channels=1024'], y: jaxtyping.Float64[Tensor, 'channels=1024'], mixing_params: jaxtyping.Float64[Tensor, 'params=1024']) -&gt; jaxtyping.Float64[Tensor, 'channels=1024']&gt;
+</code></pre>
+<p>Now, let's write an <code>init</code> for the <code>Mixer</code> class.</p>
+<p>Handling the weights is easy enough -- we've had parameters in many of
+our <code>Module</code>s, but they've been handled for us by PyTorch, like in
+<code>Linear</code> and <code>LayerNorm</code>.</p>
+<p>We just need to explicitly assign a <code>torch.nn.Parameter</code> to store our
+mixing weights.</p>
+<p>But what about the <code>last_x</code>? It's not exactly a <code>Parameter</code>, but we
+still need to store it.</p>
+<p>We can use <code>register_buffer</code> to store extra, non-<code>Parameter</code> information
+in our <code>torch.nn.Module</code> -- it's very similar to creating a <code>Parameter</code>,
+but interacts differently with gradients during training.</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">Mixer</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">weight</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">))</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s2">&quot;last_x&quot;</span><span class="p">,</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>  <span class="c1"># persistent=False means &quot;don&#39;t save to disk&quot;</span>
+
+<span class="n">Mixer</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="fm">__init__</span>
+
+<span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">Mixer</span><span class="p">(),</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="img/b327530f46508ee27503ffa06e7dc2435a29ae8a.png" /></p>
+<p><img alt="" src="img/8f14dc779f290a6cc97beda8392327f0b8d80863.png" /></p>
+<p>Note that the buffers and parameters don't show up in the graph! It only
+shows the tensors we input or produce, not the ones we store.</p>
+<p>Now, we can round out our <code>GatedMLP</code> implementation with an <code>init</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">MLP_HIDDEN_DIM</span> <span class="o">=</span> <span class="mi">4096</span>  <span class="c1"># note: 4 x N_EMBD</span>
+
+<span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+    <span class="nb">super</span><span class="p">(</span><span class="n">GatedMLP</span><span class="p">,</span> <span class="bp">self</span><span class="p">)</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+    <span class="c1"># again, non-standard terminology of RWKV: &quot;key&quot; is first layer of MLP, &quot;value&quot; is second</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">MLP_HIDDEN_DIM</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">nonlinearity</span> <span class="o">=</span> <span class="n">SquaredReLU</span><span class="p">()</span>  <span class="c1"># non-standard nonlinearity</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">MLP_HIDDEN_DIM</span><span class="p">,</span> <span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+    <span class="bp">self</span><span class="o">.</span><span class="n">mlp_mixer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptance_mixer</span> <span class="o">=</span> <span class="n">Mixer</span><span class="p">(),</span> <span class="n">Mixer</span><span class="p">()</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">receptance</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+<span class="n">GatedMLP</span><span class="o">.</span><span class="fm">__init__</span> <span class="o">=</span> <span class="fm">__init__</span>
+</code></pre></div>
+<p>Oh, one more thing, the <code>nonlinearity</code> in the middle of the MLP is
+non-standard too.</p>
+<p>It's the usual <code>ReLU</code> layer, but with the output <code>Squared</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="n">Latents</span> <span class="o">=</span> <span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;latents=</span><span class="si">{</span><span class="n">MLP_HIDDEN_DIM</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>
+
+<span class="k">class</span><span class="w"> </span><span class="nc">SquaredReLU</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Latents</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Latents</span><span class="p">:</span>
+        <span class="k">return</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">functional</span><span class="o">.</span><span class="n">relu</span><span class="p">(</span><span class="n">x</span><span class="p">)</span> <span class="o">**</span> <span class="mi">2</span>
+
+<span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">SquaredReLU</span><span class="p">(),</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">MLP_HIDDEN_DIM</span><span class="p">),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="img/dc5cae73a49390baea914410ac601fba6038b95f.png" /></p>
+<p><img alt="" src="img/fc7fa3a34c4b2b68d0cefb55a2ac0956d5c7c935.png" /></p>
+<p>That's a complete implementation, so we can take a look at the graph.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">GatedMLP</span><span class="p">(),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)))</span>
+</code></pre></div>
+<p><img alt="" src="img/38185678f17b5e42ec596a71aa65bd50bf897484.png" /></p>
+<p><img alt="" src="img/59c97af75e352855e20e733ffdd54375cee4b25a.png" /></p>
+<p>We can see the two mixers on the far left.</p>
+<p>The one on the top feeds into a linear-nonlinear-linear cascade --
+that's the <code>MLP</code>.</p>
+<p>The one on the bottom feeds into a sigmoid before being multiplied --
+that's the <code>Gated</code> part.</p>
+<h3 id="the-attention-block">The "Attention" Block</h3>
+<p>With that warm-up done, let's tackle the harder of the two pieces: the
+"attention" block that handles information routing over time.</p>
+<p>For this one, let's start with the <code>__init__</code>.</p>
+<p>We've got a bunch of <code>Linear</code> layers, which again go by the names <code>key</code>
+and <code>value</code> and <code>receptance</code>, plus one more to determine our final
+<code>output</code>.</p>
+<p>We've also got matching <code>Mixer</code>s for the <code>key</code>s, <code>value</code>s, and
+<code>receptance</code>s.</p>
+<p>The only really new piece is the <code>WKVMemory</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">AttentionBlock</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># linear operations</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">value</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">receptance</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">output</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Linear</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">,</span> <span class="n">N_EMBD</span><span class="p">,</span> <span class="n">bias</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+
+        <span class="c1"># mixers</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">key_mixer</span><span class="p">,</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_mixer</span> <span class="o">=</span> <span class="n">Mixer</span><span class="p">(),</span> <span class="n">Mixer</span><span class="p">()</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">receptance_mixer</span> <span class="o">=</span> <span class="n">Mixer</span><span class="p">()</span>
+
+        <span class="c1"># memory</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">:</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span> <span class="o">=</span> <span class="n">WKVMemory</span><span class="p">()</span>
+</code></pre></div>
+<h4 id="the-secret-sauce-wkvmemory">The secret sauce: <code>WKVMemory</code></h4>
+<p>But it's a big piece!</p>
+<p>The memory is the heart of the architecture, and it's both very
+different from any component of a Transformer and fairly complicated.</p>
+<p>But, as a wise model once said, <a href="https://arxiv.org/abs/2211.01910">"let's work this out in a step-by-step
+way to be sure we have the right
+answer"</a>.</p>
+<p>We'll start with the components, which we define in the <code>init</code>.</p>
+<p>As with the mixers, we have some parameters that operate on channels and
+we have some persistent state to track.</p>
+<div class="highlight"><pre><span></span><code><span class="k">class</span><span class="w"> </span><span class="nc">WKVMemory</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Module</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;A memory module whose contents exponentially decay over time, at a different rate per channel.&quot;&quot;&quot;</span>
+    <span class="k">def</span><span class="w"> </span><span class="fm">__init__</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+        <span class="nb">super</span><span class="p">()</span><span class="o">.</span><span class="fm">__init__</span><span class="p">()</span>
+
+        <span class="c1"># learned memory parameters -- one value for each dimension in the embeddings</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_gain</span><span class="p">:</span> <span class="n">ChannelParameter</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">))</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">log_decay</span><span class="p">:</span> <span class="n">ChannelParameter</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">nn</span><span class="o">.</span><span class="n">Parameter</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">))</span>
+
+        <span class="c1"># state buffers to track information across a sequence</span>
+        <span class="n">contents</span><span class="p">,</span> <span class="n">normalizer</span> <span class="o">=</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s2">&quot;contents&quot;</span><span class="p">,</span> <span class="n">contents</span><span class="p">,</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+        <span class="bp">self</span><span class="o">.</span><span class="n">register_buffer</span><span class="p">(</span><span class="s2">&quot;normalizer&quot;</span><span class="p">,</span> <span class="n">normalizer</span><span class="p">,</span> <span class="n">persistent</span><span class="o">=</span><span class="kc">False</span><span class="p">)</span>
+</code></pre></div>
+<p>The names for these parameters, <code>gain</code> and <code>decay</code>, come from signal
+processing.</p>
+<p>A <code>gain</code> is used to attenuate or amplify a signal. We'll use it only on
+the current embedding, so our memory can treat it specially, relative to
+the stored information.</p>
+<p>A <code>decay</code> parameter determines the rate at which a signal attenuates
+over time. We'll use it on the information stored in the memory so that
+it goes away over time -- fading towards <code>0</code>.</p>
+<p>The memory has two pieces of state to track:</p>
+<ul>
+<li>
+<p>the <code>contents</code> track the information observed so far, accumulating
+    over time</p>
+</li>
+<li>
+<p>they're unnormalized, so we also track a <code>normalizer</code> for those
+    <code>contents</code>.</p>
+</li>
+</ul>
+<p>The final "state of" or "information in" the memory is their ratio,
+<code>contents / normalizer</code>.</p>
+<p>As part of a forwards pass, we update both, so our "memory" is some kind
+of average across time of what we've seen so far.</p>
+<p>Here's what that looks like:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">typing</span><span class="w"> </span><span class="kn">import</span> <span class="n">Tuple</span>
+
+<span class="n">ScalingWeight</span> <span class="o">=</span> <span class="n">Float</span><span class="p">[</span><span class="n">torch</span><span class="o">.</span><span class="n">Tensor</span><span class="p">,</span> <span class="sa">f</span><span class="s2">&quot;positiveEntries=</span><span class="si">{</span><span class="n">N_EMBD</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">]</span>  <span class="c1"># positive number, one per channel</span>
+
+<span class="nd">@beartype</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">update</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">importances</span><span class="p">:</span> <span class="n">ScalingWeight</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Tuple</span><span class="p">[</span><span class="n">Update</span><span class="p">,</span> <span class="n">Update</span><span class="p">]:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Updates the memory by incrementing time and mixing in the weighted input values.&quot;&quot;&quot;</span>
+    <span class="c1"># decay the information currently in memory by one step</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">step</span><span class="p">()</span>
+
+    <span class="c1"># compute new information to add to the memory</span>
+    <span class="n">contents_update</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="n">importances</span> <span class="o">*</span> <span class="n">values</span>  <span class="c1"># scale each value by the matching importance weight</span>
+    <span class="n">normalizer_update</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="n">importances</span>  <span class="c1"># keep track of the weights so we can normalize across steps</span>
+
+    <span class="c1"># and then add the new information to the memory</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">contents</span> <span class="o">+=</span> <span class="n">contents_update</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="o">+=</span> <span class="n">normalizer_update</span> <span class="c1"># -- including updating the normalizer!</span>
+
+    <span class="c1"># and return it</span>
+    <span class="k">return</span> <span class="n">contents_update</span><span class="p">,</span> <span class="n">normalizer_update</span>
+
+
+<span class="n">WKVMemory</span><span class="o">.</span><span class="n">update</span> <span class="o">=</span> <span class="n">update</span>
+</code></pre></div>
+<p>Without the decay step, the ratio of <code>contents</code> and <code>normalizer</code> would
+be just a <em>weighted average</em> of past values.</p>
+<p>That is, for each channel, we're accumulating (<code>+=</code>) the weighted
+<code>values</code> into the <code>content</code> and the <code>weights</code> into <code>normalizer</code>, and
+<code>contents/normalizer</code> is their ratio: the weighted average.</p>
+<p>But once we include the decay <code>step</code>, each channel in the memory becomes
+an <em>exponential moving</em> weighted average:</p>
+<div class="highlight"><pre><span></span><code><span class="kn">from</span><span class="w"> </span><span class="nn">torch</span><span class="w"> </span><span class="kn">import</span> <span class="n">exp</span>
+
+
+<span class="k">def</span><span class="w"> </span><span class="nf">step</span><span class="p">(</span><span class="bp">self</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Pushes the information currently in the memory towards zero.&quot;&quot;&quot;</span>
+    <span class="n">decay_rate</span><span class="p">:</span> <span class="n">ScalingWeight</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_decay</span><span class="p">)</span>  <span class="c1"># exp ensures that decay rate is positive</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">contents</span> <span class="o">*=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">decay_rate</span><span class="p">)</span>  <span class="c1"># decay_rate &gt; 0, so exp(-decay_rate) &lt; 1</span>
+    <span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="o">*=</span> <span class="n">exp</span><span class="p">(</span><span class="o">-</span><span class="n">decay_rate</span><span class="p">)</span>  <span class="c1"># so each .step shrinks the contents and normalizer towards 0</span>
+
+
+<span class="n">WKVMemory</span><span class="o">.</span><span class="n">step</span> <span class="o">=</span> <span class="n">step</span>
+</code></pre></div>
+<p>That is, we repeatedly multiply the <code>contents</code> (and their <code>normalizer</code>!)
+with a number between 0 and 1, determined by our <code>decay_rate</code>.</p>
+<p>If a channel had an infinitely large <code>decay_rate</code>, its state would just
+be the most recent <code>value</code> in that channel.</p>
+<p>Channels with very large decay rates are common early in the network.</p>
+<p>If it had a <code>decay_rate</code> of 0, the channel would go back to being a
+weighted average.</p>
+<p>That allows for longer-term integration of information, and channels
+with very low decay rates are common later in the network.</p>
+<p>Now let's look at the full <code>forward</code> pass for the memory.</p>
+<p>It's almost as simple as</p>
+<ul>
+<li>update the memory</li>
+<li>return the memory's state, aka <code>contents / normalizer</code></li>
+</ul>
+<p>but there's one small complication -- the <code>gain</code>, which gets applied to
+just the most recent value.</p>
+<p>The <code>gain</code> ensures that the most recent value is treated differently
+than all past values.</p>
+<p>Here's what that looks like:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@beartype</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">values</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">,</span> <span class="n">importances</span><span class="p">:</span> <span class="n">ScalingWeight</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Update</span><span class="p">:</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies the RWKV &quot;time-mixing block&quot; forward pass, in the &quot;RNN Cell&quot; style.</span>
+
+<span class="sd">    For details, see https://arxiv.org/abs/2305.13048, Appendix B, Eqn. 19-22 and Fig. 7.&quot;&quot;&quot;</span>
+    <span class="c1"># first, we update the memory and return what we just added</span>
+    <span class="n">latest_contents</span><span class="p">,</span> <span class="n">latest_normalizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">update</span><span class="p">(</span><span class="n">importances</span><span class="p">,</span> <span class="n">values</span><span class="p">)</span>
+
+    <span class="c1"># then, we adjust the representation of the latest information</span>
+    <span class="n">latest_contents</span><span class="p">,</span> <span class="n">latest_normalizer</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">apply_gain</span><span class="p">(</span><span class="n">latest_contents</span><span class="p">,</span> <span class="n">latest_normalizer</span><span class="p">)</span>
+
+    <span class="c1"># before adding it in and dividing, to get the final thing we report as output</span>
+    <span class="n">out</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">contents</span> <span class="o">+</span> <span class="n">latest_contents</span><span class="p">)</span> <span class="o">/</span>           \
+                  <span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">normalizer</span> <span class="o">+</span> <span class="n">latest_normalizer</span><span class="p">)</span>
+
+    <span class="k">return</span>  <span class="n">out</span>
+
+
+<span class="n">WKVMemory</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">forward</span>
+</code></pre></div>
+<p>By the way, this is where we hit the numerical instability that requires
+us to use <code>float64</code> in this implementation. We are taking exponents
+(dangerous) and dividing them (doubly dangerous).</p>
+<p>The official implementation uses several tricks to remove this
+instability and allow the use of lower precision floats, but they add a
+lot of complexity to code that's already pretty tough to follow.</p>
+<p>To finish out our implementation of <code>WKVMemory</code>, let's add the <code>gain</code>:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">apply_gain</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">latest_contents</span><span class="p">,</span> <span class="n">latest_normalizer</span><span class="p">):</span>
+<span class="w">    </span><span class="sd">&quot;&quot;&quot;Applies the channelwise gain to the latest contents and normalizer.&quot;&quot;&quot;</span>
+    <span class="n">gain</span> <span class="o">=</span> <span class="n">exp</span><span class="p">(</span><span class="bp">self</span><span class="o">.</span><span class="n">log_gain</span><span class="p">)</span> <span class="o">-</span> <span class="mi">1</span>  <span class="c1"># -1 &lt; gain &lt; inf</span>
+
+    <span class="n">boosted_contents</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">latest_contents</span>
+    <span class="n">boosted_normalizer</span> <span class="o">=</span> <span class="n">gain</span> <span class="o">*</span> <span class="n">latest_normalizer</span>
+
+    <span class="k">return</span> <span class="n">boosted_contents</span><span class="p">,</span> <span class="n">boosted_normalizer</span>
+
+
+<span class="n">WKVMemory</span><span class="o">.</span><span class="n">apply_gain</span> <span class="o">=</span> <span class="n">apply_gain</span>
+</code></pre></div>
+<p>When the gain parameter for a channel is at its lowest value, <code>-1</code>,
+applying it removes the update we added. That channel is always "one
+step behind" and its output only reflects the past -- useful for
+spreading information across tokens.</p>
+<p><small>This way of writing it is another source of numerical instability
+in this implementation: we add and then subtract, which is unfortunately
+not quite the same as doing nothing when floats are involved.</small></p>
+<p>When the gain for a channel is very large, the output of the memory is
+always the same as the input value in that channel -- much like having a
+very large <code>decay_rate</code>.</p>
+<p>When the gain for the channel is close to <code>0</code>, the current value is
+treated the same as past values.</p>
+<p>The graph representation isn't particularly helpful for the <code>WKVMemory</code>,
+because this <code>Module</code> doesn't have any sub-modules.</p>
+<p>But if you look closely, you can see the memory updates. They're the
+<code>add_</code> operations -- <code>_</code> means "in-place" in PyTorch.</p>
+<div class="highlight"><pre><span></span><code><span class="k">for</span> <span class="n">depth</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="mi">2</span><span class="p">):</span>
+    <span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">WKVMemory</span><span class="p">(),</span> <span class="n">depth</span><span class="o">=</span><span class="n">depth</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="p">(</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">))))</span>
+</code></pre></div>
+<p><img alt="" src="img/b074750a75354cf2d0f95a3917d393c004f55682.png" /></p>
+<p><img alt="" src="img/e5c2258eab4b31c059aede7377eb225c982948e6.png" /></p>
+<h4 id="the-rest-of-the-attentionblock">The rest of the <code>AttentionBlock</code></h4>
+<p>Let's see how the memory gets incorporated into the <code>AttentionBlock</code>.</p>
+<p>In short, we</p>
+<ul>
+<li>calculate the <code>keys</code> and <code>values</code>, after running the <code>Mixer</code>s,</li>
+<li>use the <code>exp</code>onentiated <code>keys</code> as weights to store the <code>values</code> in
+    the <code>memory</code>,</li>
+<li>calculate <code>gating</code> for our memory's output based on <code>receptance</code>s,
+    and finally</li>
+<li>use one more <code>Linear</code> layer to calculate our final <code>Update</code>.</li>
+</ul>
+<p>Which looks like this:</p>
+<div class="highlight"><pre><span></span><code><span class="nd">@beartype</span>
+<span class="k">def</span><span class="w"> </span><span class="nf">forward</span><span class="p">(</span><span class="bp">self</span><span class="p">,</span> <span class="n">x</span><span class="p">:</span> <span class="n">Embedding</span><span class="p">)</span> <span class="o">-&gt;</span> <span class="n">Update</span><span class="p">:</span>
+    <span class="c1"># as with the MLP, do mixers before anything else</span>
+    <span class="n">mixed_keys</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key_mixer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">keys</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">key</span><span class="p">(</span><span class="n">mixed_keys</span><span class="p">)</span>
+
+    <span class="n">mixed_values</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value_mixer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">values</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">value</span><span class="p">(</span><span class="n">mixed_values</span><span class="p">)</span>
+
+    <span class="c1"># wkv: apply &quot;w&quot;eighted decay to merge</span>
+    <span class="c1">#      current info (&quot;k&quot;eys and &quot;v&quot;alues) with past</span>
+    <span class="n">wkv</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">memory</span><span class="p">(</span><span class="n">values</span><span class="p">,</span> <span class="n">exp</span><span class="p">(</span><span class="n">keys</span><span class="p">))</span>
+
+    <span class="c1"># decide how &quot;r&quot;eceptive each channel is to inputs</span>
+    <span class="n">mixed_receptances</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptance_mixer</span><span class="p">(</span><span class="n">x</span><span class="p">)</span>
+    <span class="n">receptances</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">receptance</span><span class="p">(</span><span class="n">mixed_receptances</span><span class="p">)</span>
+    <span class="n">gating_values</span> <span class="o">=</span> <span class="n">sigmoid</span><span class="p">(</span><span class="n">receptances</span><span class="p">)</span>
+
+    <span class="c1"># rwkv: use the &quot;r&quot;eceptances to gate the output of the &quot;wkv&quot; memory</span>
+    <span class="n">rwkv</span><span class="p">:</span> <span class="n">Embedding</span> <span class="o">=</span> <span class="n">gating_values</span> <span class="o">*</span> <span class="n">wkv</span>
+
+    <span class="c1"># and then do one final linear transform before returning it</span>
+    <span class="n">dx</span><span class="p">:</span> <span class="n">Update</span> <span class="o">=</span> <span class="bp">self</span><span class="o">.</span><span class="n">output</span><span class="p">(</span><span class="n">rwkv</span><span class="p">)</span>
+
+    <span class="k">return</span> <span class="n">dx</span>
+
+<span class="n">AttentionBlock</span><span class="o">.</span><span class="n">forward</span> <span class="o">=</span> <span class="n">forward</span>
+</code></pre></div>
+<p>The graph view, below, is a helpful summary of the flow in this block.</p>
+<p>The three <code>Mixer</code>s-with-<code>Linear</code>-transformations appear first.</p>
+<p>One is used via <code>sigmoid</code>-then-<code>mul</code> to gate the rest -- that'd be the
+<code>receptances</code>.</p>
+<p>The other two are used in the <code>WKVMemory</code> -- but the <code>keys</code> are first
+<code>exp</code>onentiated into importance weights.</p>
+<div class="highlight"><pre><span></span><code><span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">AttentionBlock</span><span class="p">(),</span> <span class="n">depth</span><span class="o">=</span><span class="mi">1</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">graph_dir</span><span class="o">=</span><span class="s2">&quot;TD&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="img/13db266f25269be3131be803e0f5c63bbe1f58af.png" /></p>
+<p>Notice that there are no "queries" -- there's nothing we compare to the
+<code>keys</code> to decide which <code>values</code> are important.</p>
+<p>That makes this very different from Transformer attention, which looks a
+lot more like a lookup from a key-value store -- so much so that you can
+implement it <a href="https://colab.research.google.com/drive/1QC3XgiuTaryc4hipKcJG6aYeXZ0hVqtT?usp=sharing">in
+Redis</a>,
+a popular key-value database.</p>
+<p>Instead, determining what is relevant as we proceed through the
+sequence, aka deciding what's worth our attention, is split into
+deciding <em>what to store in memory right now</em> and <em>what from our memory
+is relevant right now</em>.</p>
+<ol>
+<li>We decide what to store in our memory by calculating <code>values</code> and
+    assigning them importances via the (<code>exp</code>onentiated) <code>keys</code>.</li>
+<li>We decide what's relevant right now by using the <code>receptances</code> to
+    filter the <code>wkv</code> memory.</li>
+</ol>
+<p>Hence <code>rwkv</code>.</p>
+<p><b>This is the core of what makes RWKV's inference easier on the RAM
+than Transformer inference: we explicitly store information from the
+past, rather than looking the information up from the past every time we
+need it!</b></p>
+<p>It also makes the memory a bottleneck, which is one reason why you might
+suspect that a model like RWKV might not be as capable as a Transformer
+of the same size.</p>
+<p>That <a href="https://arxiv.org/abs/2305.13048">hasn't been the case up to 14B
+parameters</a>, but scale can reveal
+hidden issues!</p>
+<p>That said, 14B parameters is big enough to get some pretty useful
+behavior out of a language model, so with RWKV, efficient-inference LMs
+have already secured a spot in the language modeling tech stack!</p>
+<h2 id="putting-it-all-together">Putting it all together</h2>
+<p>Let's see what the graph view looks like for an entire <code>RWKVBlock</code>.</p>
+<div class="highlight"><pre><span></span><code><span class="n">display_graph</span><span class="p">(</span><span class="n">make_graph</span><span class="p">(</span><span class="n">RWKVBlock</span><span class="p">(),</span> <span class="n">depth</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">input_data</span><span class="o">=</span><span class="n">torch</span><span class="o">.</span><span class="n">zeros</span><span class="p">(</span><span class="n">N_EMBD</span><span class="p">),</span> <span class="n">graph_dir</span><span class="o">=</span><span class="s2">&quot;TD&quot;</span><span class="p">))</span>
+</code></pre></div>
+<p><img alt="" src="img/b7fc234233c4ea5ef176d42004baa5d583e38886.png" /></p>
+<p>What could be simpler?</p>
+<p>But in all seriousness: these graphs can be very helpful adjuncts to the
+code!</p>
+<p>To really grok this architecture, I recommend pulling one of the graphs
+up in a separate window and mapping it onto the matching module's code.</p>
+<p>Now, let's run a few layers and see if the added ability to store
+information about past tokens solves the <code>Drosophila melanosporum</code>
+problem.</p>
+<div class="highlight"><pre><span></span><code><span class="n">k</span> <span class="o">=</span> <span class="mi">2</span>
+<span class="n">short_rwkv</span> <span class="o">=</span> <span class="n">RWKV</span><span class="o">.</span><span class="n">from_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="p">[</span><span class="n">RWKVBlock</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">k</span><span class="p">)])</span>
+<span class="n">short_rwkvlm</span> <span class="o">=</span> <span class="n">AutoregressiveLM</span><span class="p">(</span><span class="n">embs</span><span class="p">,</span> <span class="n">short_rwkv</span><span class="p">,</span> <span class="n">unembs</span><span class="p">)</span>
+<span class="n">short_rwkvlm</span> <span class="o">=</span> <span class="n">short_rwkvlm</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">short_rwkvlm</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;Drosophila&quot;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">2</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Drosophila melanog
+</code></pre>
+<p>Success! We're starting to get the rest of "melanogaster", the expected
+following token.</p>
+<p>But we've got one more thing to handle: we've written how to add state
+to the memory and the mixers, but we haven't written any way to remove
+information, so our model will just accumulate information forever, and
+we'd need to reinitialize it if we wanted to start "fresh" on a new
+sequence.</p>
+<p>Let's add a quick helper to clear out state:</p>
+<div class="highlight"><pre><span></span><code><span class="k">def</span><span class="w"> </span><span class="nf">clear_buffers</span><span class="p">(</span><span class="n">module</span><span class="p">,</span> <span class="n">verbose</span><span class="o">=</span><span class="kc">False</span><span class="p">):</span>
+    <span class="k">for</span> <span class="n">name</span><span class="p">,</span> <span class="n">buffer</span> <span class="ow">in</span> <span class="n">module</span><span class="o">.</span><span class="n">named_buffers</span><span class="p">():</span>
+        <span class="k">if</span> <span class="n">verbose</span><span class="p">:</span>
+            <span class="nb">print</span><span class="p">(</span><span class="sa">f</span><span class="s2">&quot;clearing buffer </span><span class="si">{</span><span class="n">name</span><span class="si">}</span><span class="s2">&quot;</span><span class="p">)</span>
+        <span class="n">buffer</span><span class="o">.</span><span class="n">zero_</span><span class="p">()</span>
+
+
+<span class="n">AutoregressiveLM</span><span class="o">.</span><span class="n">clear_buffers</span> <span class="o">=</span> <span class="n">clear_buffers</span>
+<span class="n">RWKV</span><span class="o">.</span><span class="n">clear_buffers</span> <span class="o">=</span> <span class="n">clear_buffers</span>
+<span class="n">RWKVBlock</span><span class="o">.</span><span class="n">clear_buffers</span> <span class="o">=</span> <span class="n">clear_buffers</span>
+</code></pre></div>
+<h2 id="running-a-real-model-rwkv-4-430m">Running a "real" model: RWKV-4 430M</h2>
+<p>Okay, so we can run a toy model with a few layers and get three tokens
+in a row to make sense.</p>
+<p>That's cool, but what about the entire RWKV-4 430M model whose weights
+we've been using?</p>
+<p>Let's close our examination of RWKV inference with that!</p>
+<p>First we initialize it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">N_LAYER</span> <span class="o">=</span> <span class="mi">24</span>
+<span class="n">rwkv_blocks</span> <span class="o">=</span> <span class="p">[</span><span class="n">RWKVBlock</span><span class="p">()</span> <span class="k">for</span> <span class="n">_</span> <span class="ow">in</span> <span class="nb">range</span><span class="p">(</span><span class="n">N_LAYER</span><span class="p">)]</span>
+
+<span class="n">rwkv</span> <span class="o">=</span> <span class="n">RWKV</span><span class="o">.</span><span class="n">from_weights</span><span class="p">(</span><span class="n">weights</span><span class="p">,</span> <span class="n">rwkv_blocks</span><span class="p">)</span>
+
+<span class="n">rwkv4</span> <span class="o">=</span> <span class="n">AutoregressiveLM</span><span class="p">(</span><span class="n">embs</span><span class="p">,</span> <span class="n">rwkv</span><span class="p">,</span> <span class="n">unembs</span><span class="p">)</span>
+<span class="n">rwkv4</span> <span class="o">=</span> <span class="n">rwkv4</span><span class="o">.</span><span class="n">eval</span><span class="p">()</span>
+</code></pre></div>
+<p>And then we run it:</p>
+<div class="highlight"><pre><span></span><code><span class="n">rwkv4</span><span class="o">.</span><span class="n">clear_buffers</span><span class="p">()</span>
+
+<span class="n">out</span> <span class="o">=</span> <span class="n">rwkv4</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">sequence</span><span class="o">=</span><span class="s2">&quot;Drosophila&quot;</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">8</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">)</span>
+</code></pre></div>
+<pre><code>Drosophila* and *Drosophila melanogaster*
+</code></pre>
+<p>Interestingly, it starts adding some Markdown formatting -- scientific
+names are usually written <em>Like this</em>, which is formatted in Markdown
+<code>*Like this*</code>.</p>
+<p>Lastly, let's confirm that the model can generate reasonable text.</p>
+<p>More than that, let's check that it outputs <em>the same text</em> as <a href="https://github.com/BlinkDL/ChatRWKV/blob/main/RWKV_in_150_lines.py">the
+official
+reference</a>!</p>
+<p>This is the main test I used to check that my implementation was really
+equivalent.</p>
+<div class="highlight"><pre><span></span><code><span class="n">rwkv4</span><span class="o">.</span><span class="n">clear_buffers</span><span class="p">()</span>
+
+<span class="n">sequence</span> <span class="o">=</span> <span class="s2">&quot;&quot;&quot;</span>
+<span class="s2">In a shocking finding, scientist discovered a herd of dragons living in a remote, previously unexplored valley, in Tibet. &quot;&quot;&quot;</span> <span class="o">+</span> \
+<span class="s2">&quot;Even more surprising to the researchers was the fact that the dragons spoke perfect Chinese.&quot;</span>
+
+<span class="n">rwkv4</span><span class="o">.</span><span class="n">generate</span><span class="p">(</span><span class="n">sequence</span><span class="p">,</span> <span class="n">N</span><span class="o">=</span><span class="mi">20</span><span class="p">,</span> <span class="n">temperature</span><span class="o">=</span><span class="mf">0.0</span><span class="p">);</span>
+</code></pre></div>
+<pre><code>In a shocking finding, scientist discovered a herd of dragons living in a remote, previously unexplored valley, in Tibet. Even more surprising to the researchers was the fact that the dragons spoke perfect Chinese.
+
+The dragons were discovered by a team of researchers from the University of California, Berkeley, who
+</code></pre>
+<p><a href="https://dailycal.org/2019/10/14/go-bears-rallying-cry-or-meme">Go
+Bears</a>.</p>
+<h2 id="acknowledgements">Acknowledgements</h2>
+<p>Thanks to
+<a href="https://twitter.com/r_zarcone">Ryan Zarcone</a>
+for several long {white,chalk}boarding sessions on RWKV
+and to
+<a href="https://twitter.com/vslevic">Igor Vasiljevic</a>,
+<a href="https://twitter.com/theeFaris">Faris Hijazi</a>,
+<a href="https://twitter.com/_rchaves_">Rogério Chaves</a>,
+and
+<a href="https://twitter.com/benfieldddd">Ben Field</a>
+for helpful comments on drafts.</p>
+<p>Also, many thanks to the RWKV team,
+in particular
+<a href="https://johanwind.github.io">Johan Wind</a>,
+whose
+<a href="https://johanwind.github.io/2023/03/23/rwkv_details.html">blog post</a>
+implementing RWKV in numpy was an invaluable resource
+and provided the initial scaffolding for the code in this post.</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+  
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

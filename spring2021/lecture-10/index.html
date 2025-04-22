@@ -1,0 +1,3918 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="News, community, and courses for people building AI-powered products.">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/spring2021/lecture-10/">
+      
+      
+        <link rel="prev" href="../lab-7/">
+      
+      
+        <link rel="next" href="../lab-8/">
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 10: Testing & Explainability - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 10: Testing &amp; Explainability" />
+<meta property="og:description" content="News, community, and courses for people building AI-powered products." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/spring2021/lecture-10/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 10: Testing &amp; Explainability" />
+<meta name="twitter:description" content="News, community, and courses for people building AI-powered products." />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-10-testing-explainability" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 10: Testing &amp; Explainability
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/2022/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-whats-wrong-with-black-box-predictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - What’s Wrong With Black-Box Predictions?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-software-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Software Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Software Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-in-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing In Production
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-and-continuous-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration and Continuous Delivery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-testing-machine-learning-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Testing Machine Learning Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Testing Machine Learning Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionality-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functionality Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shadow Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      A/B Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labeling-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labeling Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expectation-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expectation Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges-and-recommendations-operationalizing-ml-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges and Recommendations Operationalizing ML Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-explainable-and-interpretable-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Explainable and Interpretable AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Explainable and Interpretable AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-interpretable-family-of-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use An Interpretable Family of Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distill-a-complex-to-an-interpretable-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distill A Complex To An Interpretable One
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understand-the-contribution-of-features-to-the-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understand The Contribution of Features To The Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understand-the-contribution-of-training-data-points-to-the-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understand The Contribution of Training Data Points To The Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-you-need-explainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do You Need "Explainability"?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caveats-for-explainable-and-interpretable-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats For Explainable and Interpretable AI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-whats-wrong-with-black-box-predictions" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - What’s Wrong With Black-Box Predictions?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-software-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Software Testing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Software Testing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#types-of-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#best-practices" class="md-nav__link">
+    <span class="md-ellipsis">
+      Best Practices
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#testing-in-production" class="md-nav__link">
+    <span class="md-ellipsis">
+      Testing In Production
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#continuous-integration-and-continuous-delivery" class="md-nav__link">
+    <span class="md-ellipsis">
+      Continuous Integration and Continuous Delivery
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-testing-machine-learning-systems" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Testing Machine Learning Systems
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Testing Machine Learning Systems">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#infrastructure-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Infrastructure Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#training-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Training Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#functionality-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Functionality Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#evaluation-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Evaluation Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#shadow-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Shadow Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#ab-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      A/B Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#labeling-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Labeling Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#expectation-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Expectation Tests
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#challenges-and-recommendations-operationalizing-ml-tests" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges and Recommendations Operationalizing ML Tests
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-explainable-and-interpretable-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Explainable and Interpretable AI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Explainable and Interpretable AI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#definitions" class="md-nav__link">
+    <span class="md-ellipsis">
+      Definitions
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#use-an-interpretable-family-of-models" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use An Interpretable Family of Models
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distill-a-complex-to-an-interpretable-one" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distill A Complex To An Interpretable One
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understand-the-contribution-of-features-to-the-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understand The Contribution of Features To The Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#understand-the-contribution-of-training-data-points-to-the-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Understand The Contribution of Training Data Points To The Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#do-you-need-explainability" class="md-nav__link">
+    <span class="md-ellipsis">
+      Do You Need "Explainability"?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caveats-for-explainable-and-interpretable-ai" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caveats For Explainable and Interpretable AI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-resources" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Resources
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-10-testing-explainability">Lecture 10: Testing &amp; Explainability</h1>
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/K42wdqpZymw" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="slides">Slides</h2>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/pPv1Ww1ao3IrJZ" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+<p><a href="https://drive.google.com/file/d/170GyCKwpoKcX8PfJ-1WCLqlr9iDmmuGM/view?usp=sharing">Download slides as PDF</a></p>
+<h2 id="notes">Notes</h2>
+<p><a href="/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - ML Testing and Explainability.pdf">Download notes as PDF</a></p>
+<p><em>Lecture by <a href="http://josh-tobin.com">Josh Tobin</a>.
+Notes transcribed by <a href="https://twitter.com/le_james94">James Le</a>
+and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.</em></p>
+<h3 id="1-whats-wrong-with-black-box-predictions">1 - What’s Wrong With Black-Box Predictions?</h3>
+<p>What does it mean when we have a good test set performance?</p>
+<p><em>If the test data and production data come from the </em><em>same
+distribution</em><em>, then </em><em>in expectation</em><em>, the performance </em><em>of your
+model</em><em> on </em><em>your evaluation metrics</em><em> will be the same.</em></p>
+<p>Let’s unpack the bolded assumptions:</p>
+<ul>
+<li>
+<p><strong>In the real world, the production distribution does not always
+match the offline distribution</strong>. You could have data drift, data
+shift, or even malicious users trying to attack your model.</p>
+</li>
+<li>
+<p><strong>Expected performance does not tell the whole story</strong>. For
+instance, if you are working on long-tail data distribution, then
+the sample of data that you use to evaluate the model offline
+might not tell you much about the tail of that distribution -
+meaning that your test set score can be misleading. On top of
+that, if you evaluate your model with a single metric across your
+entire dataset, that does not mean your model is actually
+performing well against all the slices of data that might be
+important.</p>
+</li>
+<li>
+<p><strong>The performance of your model is not equal to the performance of
+your machine learning system</strong>. There are other things (that can
+go wrong with the ML system) that do not have anything to do with
+the model.</p>
+</li>
+<li>
+<p>Finally, the test set performance only tells you about the metrics
+that you are evaluating<strong>. In the real world, you are probably not
+optimizing the exact metrics you care about deep down.</strong></p>
+</li>
+</ul>
+<p>How bad is this problem? This is a quote from a former ML engineer at an
+autonomous vehicle company: “<em>I think the single biggest thing holding
+back the autonomous vehicle industry today is that, even if we had a car
+that worked, no one would know, because no one is confident that they
+know how to evaluate it properly.</em>” We believe that there is a similar
+sentiment to lesser degrees in other fields of machine learning, where
+<strong>the</strong> <strong>evaluation is the biggest bottleneck</strong>.</p>
+<p>The goal of this lecture is to introduce concepts and methods to help
+you, your team, and your users:</p>
+<ol>
+<li>
+<p>Understand at a deeper level how well your model is performing.</p>
+</li>
+<li>
+<p>Become more confident in your model’s ability to perform well in
+production.</p>
+</li>
+<li>
+<p>Understand the model’s <strong>performance envelope</strong> (where you should
+expect it to perform well and where not).</p>
+</li>
+</ol>
+<h3 id="2-software-testing">2 - Software Testing</h3>
+<h4 id="types-of-tests">Types of Tests</h4>
+<p>There are three basic types of software tests:</p>
+<ol>
+<li>
+<p><strong>Unit tests</strong> that test the functionality of a single piece of code
+(an assertion on a single function or a single class) in
+isolation.</p>
+</li>
+<li>
+<p><strong>Integration tests</strong> that test how two or more units perform when
+used together (e.g., test if a model works well with a
+pre-processing function).</p>
+</li>
+<li>
+<p><strong>End-to-end tests</strong> that test how the entire software system
+performs when all units are put together (e.g., test on realistic
+inputs from a real user).</p>
+</li>
+</ol>
+<p>Testing is a broad field, so you will likely encounter various other
+kinds of tests as well.</p>
+<h4 id="best-practices">Best Practices</h4>
+<p>Here are a couple of “uncontroversial” testing best practices:</p>
+<ul>
+<li>
+<p><strong>Automate your tests:</strong> You have tests that run by themselves
+(typically via a CI/CD system) without a user committing an
+action. There should be no ambiguity on whether your system
+performs up to standard on the tests that are being run.</p>
+</li>
+<li>
+<p><strong>Make sure your tests are reliable, run fast, and go through the
+same code review process as the rest of your code:</strong> The number of
+tests grows in proportion to the size of your codebase. If your
+tests are unreliable, then people will start ignoring them. If
+your tests are slow, then you won’t want to run them frequently
+during development. If your tests do not undergo the code review
+process, they will have bugs, and it’s better not to have them at
+all.</p>
+</li>
+<li>
+<p><strong>Enforce that tests must pass before merging into the main
+branch:</strong> This is a good norm for teams with more than one person.
+This is a forcing function to make sure that everyone is committed
+to writing good tests and can also be helpful for regulatory
+concerns.</p>
+</li>
+<li>
+<p><strong>When you find new production bugs, convert them to tests:</strong> This
+ensures that someone does not accidentally reintroduce those bugs
+in the future.</p>
+</li>
+<li>
+<p><strong>Follow the testing pyramid:</strong> <a href="https://testing.googleblog.com/2015/04/just-say-no-to-more-end-to-end-tests.html"><u>Introduced by
+Google</u></a>,
+it says that you should write a lot more unit tests than
+integration tests and a lot more integration tests than end-to-end
+tests. Compared to end-to-end tests, unit tests are faster, more
+reliable, and better at isolating failures. The rule of thumb that
+Google recommends (as a rough split) is 70% unit tests, 20%
+integration tests, and 10% end-to-end tests.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-10-notes-media/image6.png" /></p>
+<p>Next up, let’s discuss a few “controversial” testing best practices:</p>
+<ul>
+<li>
+<p><strong><a href="https://martinfowler.com/bliki/UnitTest.html"><u>Solitary
+tests</u></a>:</strong> The
+distinction between a solitary test and a sociable test is that -
+solitary testing does not rely on real data from other units,
+while sociable testing makes the implicit assumption that other
+modules are working.</p>
+</li>
+<li>
+<p><strong><a href="https://martinfowler.com/bliki/TestCoverage.html"><u>Test
+coverage</u></a>:</strong>
+You get a test coverage score for your codebase, which tells you
+what percentage of lines of code in your codebase is called by at
+least one test. Test coverage gives you a single metric that
+quantifies the quality of your testing suite. However, test
+coverage does not measure the right things (in particular, test
+quality).</p>
+</li>
+<li>
+<p><strong><a href="https://martinfowler.com/bliki/TestDrivenDevelopment.html"><u>Test-driven
+development</u></a>:</strong>
+In principle, you want to create your tests before you write your
+code. These tests serve as the specification of how the code
+functions. There are not many people who religiously stick to this
+methodology of development, but TDD is a valuable tool
+nonetheless.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-10-notes-media/image16.png" /></p>
+<h4 id="testing-in-production">Testing In Production</h4>
+<p>The traditional view is that the goal of testing is to prevent shipping
+bugs into production. Therefore, by definition, you must do your testing
+offline before your system goes into production. However, there are two
+caveats:</p>
+<ol>
+<li>
+<p>Informal surveys reveal that the percentage of bugs found by
+automated tests is surprisingly low.</p>
+</li>
+<li>
+<p>On top of that, modern service-oriented distributed systems (which
+are deployed in most software engineering organizations nowadays)
+are particularly hard to test. The interactions between the
+components can get tricky.</p>
+</li>
+</ol>
+<p>Here is our philosophy for testing in production: <em>Bugs are inevitable,
+so you might as well set up the system so that users can help you find
+them.</em></p>
+<p><img src="/spring2021/lecture-10-notes-media/image4.png" /></p>
+<p>There are a few strategies to test in production:</p>
+<ol>
+<li>
+<p><strong>Canary deployment</strong>: Do not roll out the new software version to
+all the users right away. Instead, just roll it out to a small
+percentage of your users and separately monitor that group’s
+behavior.</p>
+</li>
+<li>
+<p><strong>A/B testing:</strong> You can run a more principled statistical test if
+you have particular metrics that you care about: one for the old
+version of the code that is currently running and another for the
+new version that you are trying to test.</p>
+</li>
+<li>
+<p><strong>Real user monitoring:</strong> Rather than looking at aggregate metrics
+(i.e., click-through rate), try to follow the journey that an
+actual user takes through your application and build a sense of
+how users experience the changes.</p>
+</li>
+<li>
+<p><strong>Exploratory testing:</strong> Testing in production is not something that
+you want to automate fully. It should involve a bit of exploration
+(individual users or granular metrics).</p>
+</li>
+</ol>
+<h4 id="continuous-integration-and-continuous-delivery">Continuous Integration and Continuous Delivery</h4>
+<p><strong>CI/CD platforms automate the tests</strong> that you run by hooking into your
+code repo. When you trigger some actions to take place (pushing new
+code, merging new code into a branch, submitting a pull request), CI/CD
+platforms kick off a job that is responsible for packaging your code,
+running all your tests, producing a report that tells you how well your
+code performs on your tests, and gatekeeping whether your new code can
+make it to the next stage. Tactically, you can define these jobs as
+commands in a Docker container and store the results for later review.</p>
+<p>SaaS solutions for continuous integration include
+<a href="https://circleci.com/"><u>CircleCI</u></a> and <a href="https://travis-ci.org/"><u>Travis
+CI</u></a>. Most of them do not have GPUs
+available. If you are just getting started, the default recommendation
+is <a href="https://github.com/features/actions"><u>GitHub Actions</u></a>, which
+is super easy to integrate.</p>
+<p><img src="/spring2021/lecture-10-notes-media/image5.png" /></p>
+<p><a href="https://www.jenkins.io/"><u>Jenkins</u></a> and
+<a href="https://buildkite.com/"><u>Buildkite</u></a> are manual options for
+running continuous integration on your own hardware, in the cloud, or
+something in between. There is a lot more flexibility about the types of
+jobs you can run through the systems (meaning you can use your GPUs).
+The tradeoff is that they are harder to set up.</p>
+<h3 id="3-testing-machine-learning-systems">3 - Testing Machine Learning Systems</h3>
+<p>There are several <strong>core differences</strong> between traditional software
+systems and ML systems that add complexity to testing ML systems:</p>
+<ul>
+<li>
+<p>Software consists of only code, but ML combines code and data.</p>
+</li>
+<li>
+<p>Software is written by humans to solve a problem, while ML is
+compiled by optimizers to satisfy a proxy metric.</p>
+</li>
+<li>
+<p>Software is prone to loud failures, while ML is prone to silent
+failures.</p>
+</li>
+<li>
+<p>Software tends to be relatively static (in principle), while ML is
+constantly changing.</p>
+</li>
+</ul>
+<p>Due to such differences, here are <strong>common mistakes</strong> that teams make
+while testing ML systems:</p>
+<ul>
+<li>
+<p>Think the ML system is just a model and only test that model.</p>
+</li>
+<li>
+<p>Not test the data.</p>
+</li>
+<li>
+<p>Not build a granular enough understanding of the performance of the
+model before deploying it.</p>
+</li>
+<li>
+<p>Not measure the relationship between model performance metrics and
+business metrics.</p>
+</li>
+<li>
+<p>Rely too much on automated testing.</p>
+</li>
+<li>
+<p>Think offline testing is enough, and therefore, not monitor or test
+in production.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-10-notes-media/image17.png" /></p>
+<p>Above is the diagram of how you can think of your entire production ML
+system that straddles across the offline and online environments:</p>
+<ul>
+<li>
+<p>Sitting in the middle is your <strong>ML model</strong> - an artifact created by
+your training process, which takes in an input and produces an
+output.</p>
+</li>
+<li>
+<p>The <strong>training system</strong> takes code and data as inputs and produces
+the trained model as the output.</p>
+</li>
+<li>
+<p>The <strong>prediction system</strong> takes in and pre-processes the raw data,
+loads the trained ML model, loads the model weights, calls
+<em>model.predict()</em> on the data, post-processes the outputs, and
+returns the predictions.</p>
+</li>
+<li>
+<p>Once you deploy your prediction system to the online environment,
+the <strong>serving system</strong> takes in requests from users, scales up and
+down to meet the traffic demands, and produces predictions back to
+those users.</p>
+</li>
+<li>
+<p>The whole ML system closes the loop by collecting <strong>production
+data</strong> (both the predictions that the model produces and
+additional feedback from users, business metrics, or labelers) and
+sending them back to the offline environment.</p>
+</li>
+<li>
+<p>The <strong>labeling system</strong> takes the raw data seen in production, helps
+you get inputs from labelers, and provides labels for that data.</p>
+</li>
+<li>
+<p>The <strong>storage and pre-processing system</strong> stores and pre-processes
+the labeled data before passing it back to the training system.</p>
+</li>
+</ul>
+<p>One way to think about how to test ML systems the right way is to
+<strong>think about the tests that you can run for each system component and
+across the border of these components.</strong></p>
+<h4 id="infrastructure-tests">Infrastructure Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image19.png" /></p>
+<p><strong>Infrastructure tests are unit tests for your training system</strong>. They
+help you avoid bugs in the training pipeline. You can unit test your
+training code like any other code. Another common practice is to add
+single-batch or single-epoch tests that check performance after an
+abbreviated training run on a tiny dataset, which catches obvious
+regressions to your training code. Tactically, you should run
+infrastructure tests frequently during the development process.</p>
+<h4 id="training-tests">Training Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image13.png" /></p>
+<p><strong>Training tests are integration tests between your data system and your
+training system.</strong> They make sure that training jobs are reproducible.</p>
+<ul>
+<li>
+<p>You can pull a fixed dataset and run a full or abbreviated training
+run on it. Then, you want to check and ensure that the model
+performance on the newly trained model remains consistent with the
+reference performance.</p>
+</li>
+<li>
+<p>Another option is to <strong>pull a sliding window of data</strong> (maybe a new
+window for every few days) and run training tests on that window.</p>
+</li>
+<li>
+<p>Tactically, you should run training tests periodically, ideally
+nightly for frequently changing codebase.</p>
+</li>
+</ul>
+<h4 id="functionality-tests">Functionality Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image15.png" /></p>
+<p><strong>Functionality tests are unit tests for your prediction system</strong>. They
+help you avoid regressions in code that makes up your prediction
+infrastructure.</p>
+<ul>
+<li>
+<p>You can unit test your prediction code like any other code.</p>
+</li>
+<li>
+<p>Specifically for the ML system, you can <strong>load a pre-trained model
+and test its predictions on a few key examples</strong>.</p>
+</li>
+<li>
+<p>Tactically, you should run functionality tests frequently during the
+development process.</p>
+</li>
+</ul>
+<h4 id="evaluation-tests">Evaluation Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image11.png" /></p>
+<p><strong>Evaluation tests are integration tests between your training system
+and your prediction system.</strong> They make sure that a newly trained model
+is ready to go into production. These make up the bulk of what’s unique
+about testing ML systems.</p>
+<ul>
+<li>
+<p>At a high level, you want to evaluate your model on all of the
+<strong>metrics</strong>, <strong>datasets</strong>, and <strong>slices</strong> that you care about.</p>
+</li>
+<li>
+<p>Then, you want to compare the new model to the old and baseline
+models.</p>
+</li>
+<li>
+<p>Finally, you want to understand the <strong>performance envelope</strong> of the
+new model.</p>
+</li>
+<li>
+<p>Operationally, you should run evaluation tests whenever you have a
+new candidate model considered for production.</p>
+</li>
+</ul>
+<p>It is important to note that evaluation tests are more than just the
+validation score. They look at <strong>all the metrics that you care about</strong>:</p>
+<ul>
+<li>
+<p><strong>Model metrics</strong>: precision, recall, accuracy, L2, etc.</p>
+</li>
+<li>
+<p><strong>Behavioral metrics</strong>: The goal of behavioral tests is to ensure
+the model has the invariances we expect. There are three types of
+behavioral tests: (1) <em>invariance tests</em> to assert that the change
+in inputs shouldn’t affect outputs, (2) <em>directional tests</em> to
+assert that the change in inputs should affect outputs, and (3)
+<em>minimum functionality tests</em> to ensure that certain inputs and
+outputs should always produce a given result. Behavioral testing
+metrics are primarily used in NLP applications and proposed in the
+<a href="https://arxiv.org/abs/2005.04118"><u>Beyond Accuracy paper by Ribeiro et
+al. (2020)</u></a>.</p>
+</li>
+<li>
+<p><strong>Robustness metrics</strong>: The goal of robustness tests is to
+understand the model’s performance envelope (i.e., where you
+should expect the model to fail). You can examine feature
+importance, sensitivity to staleness, sensitivity to data drift,
+and correlation between model performance and business metrics. In
+general, robustness tests are still under-rated.</p>
+</li>
+<li>
+<p><strong>Privacy and fairness metrics</strong>: The goal of privacy and fairness
+tests is to distinguish whether your model might be biased against
+specific classes. Helpful resources are Google’s <a href="https://ai.googleblog.com/2019/12/fairness-indicators-scalable.html"><u>Fairness
+Indicators</u></a>
+and <a href="https://fairware.cs.umass.edu/papers/Verma.pdf"><u>the Fairness Definitions Explained paper by Verma and
+Rubin (2018)</u></a>.</p>
+</li>
+<li>
+<p><strong>Simulation metrics</strong>: The goal of simulation tests is to
+understand how the model performance could affect the rest of the
+system. These are useful when your model affects the real world
+(for systems such as autonomous vehicles, robotics, recommendation
+systems, etc.). Simulation tests are hard to do well because they
+require a model of how the world works and a dataset of different
+scenarios.</p>
+</li>
+</ul>
+<p>Instead of simply evaluating the aforementioned metrics on your entire
+dataset in aggregate, you should also evaluate these metrics <strong>on
+multiple slices of data</strong>. A slice is a mapping of your data to a
+specific category. A natural question that arises is how to pick those
+slices. Tools like
+<a href="https://pair-code.github.io/what-if-tool/"><u>What-If</u></a> and
+<a href="https://arxiv.org/abs/1807.06068"><u>SliceFinder</u></a> help surface the
+slices where the model performance might be of particular interest.</p>
+<p>Finally, evaluation tests help you <strong>maintain evaluation datasets for
+all of the distinct data distributions you need to measure.</strong> Your main
+validation or test set should mirror your production distribution as
+closely as possible as a matter of principle. When should you add new
+evaluation datasets?</p>
+<ul>
+<li>
+<p>When you collect datasets to specify specific edge cases.</p>
+</li>
+<li>
+<p>When you run your production model on multiple data modalities.</p>
+</li>
+<li>
+<p>When you augment your training set with data not found in production
+(synthetic data).</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-10-notes-media/image7.png" /></p>
+<p>The report produced by the evaluation system entails the metrics broken
+down against each of the data slices. How can you decide whether the
+evaluation passes or fails?</p>
+<p>At a high level, you want to compare the new model to <strong>the previous
+model</strong> and <strong>another fixed older model</strong>. Tactically, you can (1) set
+thresholds on the differences between the new and the old models for
+most metrics, (2) set thresholds on the differences between data slices,
+and (3) set thresholds against the fixed older model to prevent slower
+performance “leaks.”</p>
+<h4 id="shadow-tests">Shadow Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image8.png" /></p>
+<p><strong>Shadow tests are integration tests between your prediction system and
+your serving system</strong>. They help you catch production bugs before those
+bugs meet users. In many settings, models (which are built in frameworks
+such as sklearn, Pytorch, TensorFlow, etc.) are developed in isolation
+from the existing software system. For example, a model to flag
+inappropriate tweets may be developed in TensorFlow on a static set of
+data, not directly in the streaming environment of the broader software
+architecture. Because the prediction system and the serving system are
+developed in different settings with different assumptions and
+environments, there are many opportunities for bugs to creep in. These
+bugs can be tricky to catch prior to integration, so shadow tests can
+help identify them beforehand.</p>
+<p>Firstly, shadow tests help you <strong>detect bugs in the production
+deployment</strong>. In the code path you're using to build the production
+model, maybe there's some bug there. You want to make sure that you
+catch that before users see that bug.</p>
+<p>Secondly, shadow tests also help you <strong>detect inconsistencies between
+the offline model and the online model</strong>. There’s a translation step in
+the training pipeline in many companies - going from the offline trained
+model to the online production model (the model itself, the
+preprocessing pipeline, etc.). A common bug source in production ML
+systems happens because of the inconsistencies cropping up in that
+translation step. A good health check ensures that your actual
+production model is producing the exact predictions on a fixed set of
+data as the model you have running on your laptop.</p>
+<p>Thirdly, shadow tests help you <strong>detect issues that don't appear on the
+data you have offline but appear on production data</strong>.</p>
+<p>How do we design shadow tests? These can require a significant amount of
+infrastructure, as they are dependent on actual model integration
+opportunities being available.</p>
+<ul>
+<li>
+<p>Typical shadow tests involve <strong>testing the performance of a
+candidate model on real data without returning or acting on the
+output</strong>. For example, a company may integrate and run a new model
+alongside the previous model without returning the output to the
+user.</p>
+</li>
+<li>
+<p><strong>Analyzing the consistency of the predictions between the two
+models</strong> can help spot important differences before they impact
+production performance.</p>
+</li>
+<li>
+<p>Another option is to gather production data, save it offline, and
+<strong>test the model’s performance on the fresh data offline</strong>.</p>
+</li>
+</ul>
+<p>Overall, evaluating the distribution of model predictions in offline vs.
+online settings, candidate vs. production, or any similar setting of a
+model update before deploying a new model can help you avoid bugs.</p>
+<h4 id="ab-tests">A/B Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image10.png" /></p>
+<p>Shadow tests evaluate the prediction performance of a model as part of
+the broader software architecture, but not <strong>the impact on users</strong>.
+<strong>A/B tests fill this role</strong>. A/B tests are a common practice in
+software engineering, especially in web systems. A/B testing is defined
+as “a randomized experimentation process wherein two or more versions of
+a variable (web page, page element, etc.) are shown to different
+segments of website visitors at the same time to determine which version
+leaves the maximum impact and drive business metrics.”[1]</p>
+<p><img src="/spring2021/lecture-10-notes-media/image1.png" /></p>
+<p>In model evaluation, A/B tests determine the impact of different model
+predictions on user and business metrics. One common way of A/B testing
+models is <strong>to “canary” data</strong> or return predictions on a small portion
+of the data (i.e., 1% or 10%) to the relevant users. The remaining data
+acts as a control and functions under existing system behavior (i.e., an
+old model or even no model). Evaluating the difference in metrics
+between the two groups can determine the relative impact of your model.
+This simple baseline can work well. <strong>Adding more statistically
+principled splits</strong>, which is common in A/B testing, can be a good idea.</p>
+<h4 id="labeling-tests">Labeling Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image14.png" /></p>
+<p>Machine learning models operate in a GIGO paradigm: garbage in, garbage
+out. <strong>To prevent poor quality labels from cropping up and corrupting
+the model, you need to unit test the labeling systems and procedures.</strong></p>
+<ul>
+<li>
+<p>You should start by training, certifying, and evaluating individual
+labelers, who each play a crucial role in the quality of the
+labels.</p>
+</li>
+<li>
+<p>A simple and common label quality test is <strong>to spot check labels as
+they come in</strong> by opening up 100 or 1000 labels from a batch and
+evaluating them yourself to understand their quality. Using a
+performant model’s guidance, you can make this process more
+efficient and only look at labels where the model and the labeler
+disagree.</p>
+</li>
+<li>
+<p>Another test can be to <strong>aggregate labels of multiple labels and
+measure agreement across labels</strong>. The higher the agreement, the
+better quality the labels are.</p>
+</li>
+<li>
+<p>Using metrics of agreement, you can assign “trust scores” to
+labelers based on their performance relative to other labelers and
+weigh the labels accordingly.</p>
+</li>
+</ul>
+<h4 id="expectation-tests">Expectation Tests</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image12.png" /></p>
+<p><strong>Expectation tests address the data preprocessing and storage system</strong>.
+Essentially, they are unit tests for your data. They are designed to
+catch data quality issues and bad data before they make their way into
+the pipeline.</p>
+<p><strong>The typical way that expectation tests operate is rule- or
+threshold-based</strong>. At each step of the data processing pipeline, the
+output should conform to a specific format that matches a rule or
+specific format. If the rule or threshold does not pass, then that stage
+of the expectation test and the data pipeline’s related step fails. Such
+tests are frequently run with batch data pipeline jobs. <a href="https://greatexpectations.io/"><u>Great
+Expectations</u></a> is an open-source
+library gaining popularity for running expectation tests. The library
+allows you to set hard rules for the kinds of values or behaviors (i.e.,
+statistics) you expect from your data.</p>
+<p><strong>How do you set the rules and thresholds for expectation tests?</strong> Most
+expectation tests are set manually. A more sophisticated option is to
+profile a high-quality sample of your data and set thresholds
+accordingly. In practice, to avoid false alarms from overly sensitive
+tests, a combination of both approaches is needed.</p>
+<h4 id="challenges-and-recommendations-operationalizing-ml-tests">Challenges and Recommendations Operationalizing ML Tests</h4>
+<p>Running tests is an excellent idea in theory but can pose many practical
+challenges for data science and ML teams.</p>
+<ul>
+<li>
+<p>The first challenge is often <strong>organizational</strong>. In contrast to
+software engineering teams for whom testing is table stakes, data
+science teams often struggle to implement testing and code review
+norms.</p>
+</li>
+<li>
+<p>The second challenge is <strong>infrastructural.</strong> Most CI/CD platforms
+don’t support GPUs, data integrations, or other required elements
+of testing ML systems effectively or efficiently.</p>
+</li>
+<li>
+<p>The third challenge is <strong>tooling</strong>, which has not yet been
+standardized for operations like comparing model performance and
+slicing datasets.</p>
+</li>
+<li>
+<p>Finally, <strong>decision-making</strong> for ML test performance is hard. What
+is “good enough” test performance is often highly contextual,
+which is a challenge that varies across ML systems and teams.</p>
+</li>
+</ul>
+<p>Let’s boil all these lessons for testing down into <strong>a clear set of
+recommendations</strong> specific to ML systems:</p>
+<ol>
+<li>
+<p>Test each part of the ML system, not just the model. You build the
+machine that builds the model, not just the model!</p>
+</li>
+<li>
+<p>Test code, data, and model performance, not just code.</p>
+</li>
+<li>
+<p>Testing model performance is an art, not a science. There is a
+considerable amount of intuition that guides testing ML systems.</p>
+</li>
+<li>
+<p>Thus, the <em>fundamental</em> goal of testing model performance is to
+<strong>build a granular understanding</strong> of how well your model performs
+and where you don’t expect it to perform well. Using this
+intuition derived from testing, you can make better decisions
+about productionizing your model effectively.</p>
+</li>
+<li>
+<p>Build up to this gradually! You don’t need to do everything detailed
+in this lecture, and certainly not all at once. Start with:</p>
+<ol>
+<li>
+<p>Infrastructure tests</p>
+</li>
+<li>
+<p>Evaluation tests</p>
+</li>
+<li>
+<p>Expectation tests</p>
+</li>
+</ol>
+</li>
+</ol>
+<h3 id="4-explainable-and-interpretable-ai">4 - Explainable and Interpretable AI</h3>
+<h4 id="definitions">Definitions</h4>
+<p>What do explainable and interpretable AI, buzzwords you’ve undoubtedly
+heard before, actually mean? Let’s start by outlining some more
+fundamental terms about the problem space:</p>
+<ul>
+<li>
+<p><strong>Domain predictability</strong>: the degree to which it is possible to
+detect data outside the model’s domain of competence.</p>
+</li>
+<li>
+<p><strong>Interpretability</strong>: the degree to which a human can consistently
+predict the model’s result (<a href="https://beenkim.github.io/papers/KIM2016NIPS_MMD.pdf"><u>Kim et al.,
+2016</u></a>).</p>
+</li>
+<li>
+<p><strong>Explainability</strong>: the degree to which a human can understand the
+cause of a decision (<a href="https://arxiv.org/abs/1706.07269"><u>Miller,
+2017</u></a>).</p>
+</li>
+</ul>
+<p>We’ll walk through four different methods of making models interpretable
+and explainable:</p>
+<ol>
+<li>
+<p>Use an interpretable family of models.</p>
+</li>
+<li>
+<p>Distill the complex model to an interpretable one.</p>
+</li>
+<li>
+<p>Understand the contribution of features to the prediction.</p>
+</li>
+<li>
+<p>Understand the contribution of training data points to the
+prediction.</p>
+</li>
+</ol>
+<h4 id="use-an-interpretable-family-of-models">Use An Interpretable Family of Models</h4>
+<p>Examples of interpretable families of models are <strong>simple, familiar
+models like linear regression, logistic regression, generalized linear
+models, and decision trees</strong>. If you understand the math of these
+models, it’s pretty easy to understand why a model made the decision it
+did. Because of the reasonably elementary math, these models are
+interpretable and explainable. However, they are not very powerful.</p>
+<p>Another class of models that are interpretable is <strong>attention models</strong>.
+Examining where a model is “looking” helps us anticipate a model’s
+prediction, thus making them interpretable. However, attention maps are
+not particularly explainable. They do not produce <em>complete</em>
+explanations for a model’s output, just a directional explanation.
+Furthermore, attention maps are not reliable explanations. Attention
+maps tell us only where a model is looking, not why it is looking there.
+Frequently, models focus exclusively on an image’s salient region
+without an underlying reasoning that relates to the task at hand. In the
+sample below, the attention model is “looking” at the salient region for
+classification, which has a very different meaning in each context.</p>
+<p><img src="/spring2021/lecture-10-notes-media/image3.png" /></p>
+<p>The conflation of attention with explanation is a critical pitfall to
+avoid.</p>
+<h4 id="distill-a-complex-to-an-interpretable-one">Distill A Complex To An Interpretable One</h4>
+<p>Instead of restricting models to only interpretable families, we can fit
+a more complex model and interpret its decision using another model from
+an interpretable family. The trick is to train this additional model,
+referred to as <strong>a surrogate model</strong>, on the raw data and the complex
+model’s predictions. The surrogate model’s corresponding interpretation
+can be used as a proxy for understanding the complex model.</p>
+<p>This technique is quite simple and fairly general to apply. In practice,
+however, two concerns manifest.</p>
+<ol>
+<li>
+<p>If the surrogate itself performs well on the predictions, why not
+try to directly apply it rather than the more complex model?</p>
+</li>
+<li>
+<p>If it doesn’t perform well, how do we know that it genuinely
+represents the complex model’s behavior?</p>
+</li>
+</ol>
+<p><img src="/spring2021/lecture-10-notes-media/image9.png" /></p>
+<p>Another category of surrogate models is <a href="https://christophm.github.io/interpretable-ml-book/lime.html"><u>local surrogate
+models</u></a>
+<strong>(LIME)</strong>. Rather than apply the surrogate model in a global context on
+all the data, LIME models focus on a single point to generate an
+explanation for. A perturbation is applied to the point, resulting in a
+local neighborhood of perturbed data points. On top of these perturbed
+data points, a surrogate model is trained to map the points to the
+original predictions from the complex model. If the surrogate model
+classifies similarly to the complex model, the surrogate can be
+considered a proxy for interpretation purposes. This method is used
+widely, as it works for all data types (including images and text).
+However, defining the right perturbations and ensuring the stability of
+the explanations is challenging.</p>
+<h4 id="understand-the-contribution-of-features-to-the-prediction">Understand The Contribution of Features To The Prediction</h4>
+<p>Better understanding each feature’s role in making a prediction is
+another option for interpretable and explainable ML. <strong>Data
+visualization</strong> is one such option, with plots like <a href="https://christophm.github.io/interpretable-ml-book/pdp.html"><u>partial
+dependence
+plots</u></a>
+and <a href="https://christophm.github.io/interpretable-ml-book/ice.html"><u>individual conditional
+expectation</u></a>
+plots.</p>
+<p><img src="/spring2021/lecture-10-notes-media/image2.png" /></p>
+<p>A numerical method is <strong>permutation feature importance</strong>, which selects
+a feature, randomizes its order in the dataset, and sees how that
+affects performance. While this method is very easy and widely used, it
+doesn’t work for high-dimensional data or cases where there is feature
+interdependence.</p>
+<p>A more principled approach to explaining the contribution of individual
+features is <strong>SHAP</strong> (<a href="https://christophm.github.io/interpretable-ml-book/shap.html"><u>Shapley Additive
+Explanations</u></a>).
+At a high level, SHAP scores test how much changes in a single feature
+impact the output of a classifier when controlling for the values of the
+other features. This is a reliable method to apply, as it works on a
+variety of data and is mathematically principled. However, it can be
+tricky to implement and doesn’t provide explanations.</p>
+<p><strong>Gradient-based saliency maps</strong> are a popular method for explanations
+and interpretations. This intuitive method selects an input, performs a
+forward pass, computes the gradient with respect to the pixels, and
+visualizes the gradients. Essentially, how much does a unit change in
+the value of the input’s pixels affect the prediction of the model? This
+is a straightforward and common method. Similar to the challenge with
+attention, the explanations may not be correct, and the overall method
+is fragile and sensitive to small changes.</p>
+<h4 id="understand-the-contribution-of-training-data-points-to-the-prediction">Understand The Contribution of Training Data Points To The Prediction</h4>
+<p><img src="/spring2021/lecture-10-notes-media/image18.png" /></p>
+<p>Instead of focusing on features and their explicit relevance to the
+prediction, we can also take a hard look at the training data points
+themselves.</p>
+<ul>
+<li>
+<p><strong>Prototypes and criticisms</strong> are one such approach, though it is
+less applicable to deep learning. In this method, prototypes are
+clusters of data that explain much of the variance in the model.
+Criticisms are data points not explained by the prototypes.</p>
+</li>
+<li>
+<p>Another approach is to look specifically at “<strong>influential
+instances</strong>” or data points that cause major changes in the
+model’s predictions when removed from the data set.</p>
+</li>
+</ul>
+<h4 id="do-you-need-explainability">Do You Need "Explainability"?</h4>
+<p>A good question to ask yourself whether or not “explainable AI” is a
+real need for your applications. There are a couple of cases where this
+question can be useful:</p>
+<ol>
+<li>
+<p><strong>Regulators demand it.</strong> In this case, there’s not much you can do
+besides produce some kind of explainable model. However, it can be
+helpful to <strong>ask for clarification</strong> on what explainability is
+judged as.</p>
+</li>
+<li>
+<p><strong>Users demand it.</strong> In some cases, users themselves may want trust
+or explainability in the system. Investigate the necessity for the
+explainability and trust to come directly from the model itself.
+<strong>Can good product design inspire trust more effectively?</strong> For
+example, allowing doctors to simply override models can reduce the
+immediate need for explainability. A big associated concern is how
+often users interact with the model. Infrequent interactions
+likely require explainable AI, as humans do not get a chance to
+build their feel for the system. More frequent interactions allow
+for the simpler objective of interpretability.</p>
+</li>
+<li>
+<p><strong>Deployment demands it.</strong> Sometimes, ML stakeholders may demand
+explainability as a component of ensuring confidence in ML system
+deployment. In this context, explainability is the wrong
+objective; <strong>domain predictability is the real aim</strong>. Rather than
+full-on explainability, interpretability can be helpful for
+deployment, especially visualizations for debugging.</p>
+</li>
+</ol>
+<p><strong>At present, true explainability for deep learning models is not
+possible</strong>.</p>
+<ul>
+<li>
+<p>Current explanation methods are not faithful to the original model
+performance; it can be easy to cherry-pick specific examples that
+can overstate explainability.</p>
+</li>
+<li>
+<p>Furthermore, these methods tend to be unreliable and highly
+sensitive to the input.</p>
+</li>
+<li>
+<p>Finally, as described in the attention section, the full explanation
+is often not available to modern explainability methods.</p>
+</li>
+</ul>
+<p>Because of these reasons, explainability is not practically feasible for
+deep learning models (as of 2021). Read <a href="https://arxiv.org/pdf/1811.10154.pdf"><u>Cynthia Rudin’s 2019
+paper</u></a> for more detail.</p>
+<h4 id="caveats-for-explainable-and-interpretable-ai">Caveats For Explainable and Interpretable AI</h4>
+<ul>
+<li>
+<p><em>If you genuinely need to explain your model’s predictions, use an
+interpretable model family (read more
+<a href="https://arxiv.org/abs/1806.10574"><u>here</u></a>).</em></p>
+</li>
+<li>
+<p><em>Don’t try to force-fit deep learning explainability methods; they
+produce cool results but are not reliable enough for production
+use cases.</em></p>
+</li>
+<li>
+<p><em>Specific interpretability methods like LIME and SHAP are
+instrumental in helping users reach interpretability thresholds
+faster.</em></p>
+</li>
+<li>
+<p><em>Finally, the visualization for interpretability can be pretty
+useful for debugging.</em></p>
+</li>
+</ul>
+<h3 id="5-resources">5 - Resources</h3>
+<ul>
+<li>
+<p><a href="https://static.googleusercontent.com/media/research.google.com/en//pubs/archive/%20aad9f93b86b7addfea4c419b9100c6cdd26cacea.pdf"><u>ML Test Score
+Paper</u></a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2005.04118"><u>Behavioral testing paper</u></a></p>
+</li>
+<li>
+<p><a href="https://www.jeremyjordan.me/testing-ml/"><u>Jeremy Jordan’s effective
+testing</u></a></p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2101.04840"><u>Robustness Gym</u></a></p>
+</li>
+<li>
+<p><a href="https://madewithml.com/courses/applied-ml/testing/"><u>Made with ML’s guide to
+testing</u></a></p>
+</li>
+<li>
+<p><a href="https://eugeneyan.com/writing/%20practical-guide-to-maintaining-machine-learning/"><u>Eugene Yan’s practical guide to maintaining machine
+learning</u></a></p>
+</li>
+<li>
+<p><a href="https://stanford-cs329s.github.io/syllabus.html"><u>Chip Huyen’s CS329 lecture on evaluating
+models</u></a></p>
+</li>
+<li>
+<p><a href="https://christophm.github.io/interpretable-ml-book/"><u>Interpretable ML
+Book</u></a></p>
+</li>
+</ul>
+<p>[1] https://vwo.com/ab-testing-2/</p>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

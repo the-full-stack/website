@@ -1,0 +1,3750 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="News, community, and courses for people building AI-powered products.">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/spring2021/lecture-12/">
+      
+      
+        <link rel="prev" href="../lab-9/">
+      
+      
+        <link rel="next" href="../lecture-13/">
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 12: Research Directions - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 12: Research Directions" />
+<meta property="og:description" content="News, community, and courses for people building AI-powered products." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/spring2021/lecture-12/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 12: Research Directions" />
+<meta name="twitter:description" content="News, community, and courses for people building AI-powered products." />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-12-research-directions" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 12: Research Directions
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/2022/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unsupervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Unsupervised Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 - Unsupervised Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deep-semi-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Semi-Supervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-unsupervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Unsupervised Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deep Unsupervised Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpt-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPT-2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bert" class="md-nav__link">
+    <span class="md-ellipsis">
+      BERT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsupervised-learning-in-vision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unsupervised Learning In Vision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Reinforcement Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Successes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#covariantai" class="md-nav__link">
+    <span class="md-ellipsis">
+      CovariantAI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unsupervised-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Unsupervised Reinforcement Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-meta-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Meta Reinforcement Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Meta Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      RL^2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-few-shot-imitation-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Few-Shot Imitation Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - Few-Shot Imitation Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learn-more_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Domain Randomization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 - Domain Randomization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-realistic-simulated-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Realistic Simulated Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Confusion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Randomization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-deep-learning-for-science-and-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Deep Learning For Science and Engineering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 - Deep Learning For Science and Engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alphafold" class="md-nav__link">
+    <span class="md-ellipsis">
+      AlphaFold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learn-more_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-overarching-research-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 - Overarching Research Theme
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-how-to-keep-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 - How To Keep Up
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-unsupervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Unsupervised Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="1 - Unsupervised Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#deep-semi-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Semi-Supervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#deep-unsupervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Deep Unsupervised Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Deep Unsupervised Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpt-2" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPT-2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#bert" class="md-nav__link">
+    <span class="md-ellipsis">
+      BERT
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#unsupervised-learning-in-vision" class="md-nav__link">
+    <span class="md-ellipsis">
+      Unsupervised Learning In Vision
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Reinforcement Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#challenges" class="md-nav__link">
+    <span class="md-ellipsis">
+      Challenges
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#successes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Successes
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#covariantai" class="md-nav__link">
+    <span class="md-ellipsis">
+      CovariantAI
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-unsupervised-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Unsupervised Reinforcement Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-meta-reinforcement-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Meta Reinforcement Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Meta Reinforcement Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rl2" class="md-nav__link">
+    <span class="md-ellipsis">
+      RL^2
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learn-more" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-few-shot-imitation-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Few-Shot Imitation Learning
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - Few-Shot Imitation Learning">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#learn-more_1" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Domain Randomization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="6 - Domain Randomization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#use-realistic-simulated-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Use Realistic Simulated Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-confusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Confusion
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#domain-randomization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Domain Randomization
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-deep-learning-for-science-and-engineering" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Deep Learning For Science and Engineering
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 - Deep Learning For Science and Engineering">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#alphafold" class="md-nav__link">
+    <span class="md-ellipsis">
+      AlphaFold
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#learn-more_2" class="md-nav__link">
+    <span class="md-ellipsis">
+      Learn More
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-overarching-research-theme" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 - Overarching Research Theme
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-how-to-keep-up" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 - How To Keep Up
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-12-research-directions">Lecture 12: Research Directions</h1>
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/APZ0ZUcmlsU" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="slides">Slides</h2>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/d3v2mJS7eTYLte" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" style="border:1px solid #CCC; border-width:1px; margin-bottom:5px; max-width: 100%;" allowfullscreen> </iframe>
+
+<p><a href="https://drive.google.com/file/d/11YkGzlqcruLTo9Koe-wy_JtH76cK7CJ9/view?usp=sharing">Download slides as PDF</a></p>
+<h2 id="notes">Notes</h2>
+<p><a href="/spring2021/lecture-notes-pdfs/FSDL Spring 2021 - Research Directions.pdf">Download notes as PDF</a></p>
+<p><em>Lecture by <a href="https://people.eecs.berkeley.edu/~pabbeel/">Pieter Abbeel</a>.
+Notes transcribed by <a href="https://twitter.com/le_james94">James Le</a>
+and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.</em></p>
+<p>Of all disciplines, <strong>deep learning is probably the one where research
+and practice are closest together</strong>. Often, something gets invented in
+research and is put into production in less than a year. Therefore, it’s
+good to be aware of research trends that you might want to incorporate
+in projects you are working on.</p>
+<p>Because the number of ML and AI papers increases exponentially, there’s
+no way that you can read every paper. Thus, you need other methods to
+keep up with research. This lecture provides a sampling of research
+directions, the overall research theme running across these samples, and
+advice on keeping up with the relentless flood of new research.</p>
+<h3 id="1-unsupervised-learning">1 - Unsupervised Learning</h3>
+<p>Deep supervised learning, the default way of doing ML, works! But it
+requires so much annotated data. Can we get around it by learning with
+fewer labels? The answer is yes! And there are two major approaches:
+deep semi-supervised learning and deep unsupervised learning.</p>
+<h4 id="deep-semi-supervised-learning">Deep Semi-Supervised Learning</h4>
+<p><strong>Semi-supervised</strong> means half supervised, half unsupervised. Assuming a
+classification problem where each data point belongs to one of the
+classes, we attempt to come up with an intuition to complete the
+labeling for the unlabeled data points. One way to formalize this is:
+<em>If anything is close to a labeled example, then it will assume that
+label.</em> Thus, we can propagate the labels out from where they are given
+to the neighboring data points.</p>
+<p><em>How can we generalize the approach above to image classification?</em></p>
+<p><img src="/spring2021/lecture-12-notes-media/image2.png" /></p>
+<p><a href="https://arxiv.org/abs/1911.04252"><u>Xie et al. (2020)</u></a> proposes
+<strong>Noisy Student Training</strong>:</p>
+<ul>
+<li>
+<p>First, they train a teacher model with labeled data.</p>
+</li>
+<li>
+<p>Then, they infer pseudo-labels on the unlabeled data. These are not
+ real labels, but those that they get from using the trained
+ teacher model.</p>
+</li>
+<li>
+<p>Even though these labels are not perfect (because they train on a
+ small amount of labeled data), they can still see where they are
+ <strong>more confident about those pseudo labels</strong> and inject those into
+ their training set as additional labeled data.</p>
+</li>
+<li>
+<p>When they retrain, they use dropout, data augmentation, and
+ stochastic depth to <strong>inject noise</strong> into the training process.
+ This enables the student model to be more robust and
+ generalizable.</p>
+</li>
+</ul>
+<h4 id="deep-unsupervised-learning">Deep Unsupervised Learning</h4>
+<p>Deep semi-supervised learning assumes that the labels in the supervised
+dataset are still valid for the unsupervised dataset. There’s a limit to
+the applicability because we assume that <strong>the unlabeled data is roughly
+from the same distribution as the labeled data</strong>.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image13.png" /></p>
+<p>With deep unsupervised learning, we can transfer the learning with
+<strong>multi-headed networks</strong>.</p>
+<ul>
+<li>
+<p>First, we train a neural network. Then, we have two tasks and give
+ the network two heads - one for task 1 and another for task 2.</p>
+</li>
+<li>
+<p>Most parameters live in the shared trunk of the network’s body.
+ Thus, when you train for task 1 and task 2, most of the learnings
+ are shared. Only a little bit gets specialized to task 1 versus
+ task 2.</p>
+</li>
+</ul>
+<p>The <strong>key hypothesis</strong> here is that: For task 1 (which is unsupervised),
+if the neural network is smart enough to do things like predicting the
+next word in a sentence, generating realistic images, or translating
+images from one scale to another; then that same neural network is ready
+to do deep supervised learning from a very small dataset for task 2
+(what we care about).</p>
+<h5 id="gpt-2">GPT-2</h5>
+<p>For instance, task 1 could be predicting the next word in a sentence,
+while task 2 could be predicting the sentiment in a corpus. OpenAI’s
+<a href="https://openai.com/blog/better-language-models/"><u>GPT-2</u></a> is the
+landmark result for next-word prediction where deep unsupervised
+learning could work. The results were so realistic, and there was a lot
+of press coverage. OpenAI deemed it to be too dangerous to be released
+at the time.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image7.png" /></p>
+<p>Furthermore, GPT-2 can tackle complex common sense reasoning and
+question answering tasks for various benchmarks. The table below
+displays those benchmarks where GPT-2 was evaluated on. The details of
+the tasks do not really matter. What’s more interesting is that: This is
+the first time a model, trained unsupervised on a lot of text to predict
+the next token and fine-tuned to specific supervised tasks, <strong>beats
+prior methods that might have been more specialized to each of these
+supervised tasks</strong>.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image22.png" /></p>
+<p>Another fascinating insight is that as we grow the number of model
+parameters, the performance goes up consistently. This means <strong>with
+unsupervised learning, we can incorporate much more data for larger
+models</strong>. This research funding inspired OpenAI to fundraise $1B for
+future projects to essentially have more compute available to train
+larger models because it seems like doing that will lead to better
+results. So far, that has been true
+(<a href="https://openai.com/blog/openai-api/"><u>GPT-3</u></a> performs better
+than GPT-2).</p>
+<h5 id="bert">BERT</h5>
+<p><a href="https://arxiv.org/abs/1810.04805"><u>BERT</u></a> is Google’s approach
+that came out around the same time as GPT-2. While GPT-2 predicts the
+next word or token, BERT predicts a word or token that was removed. In
+this task, the neural network looks at the entire corpus as it fills
+things back in, which often helps in later tasks (as the neural network
+has already been unsupervised-train on the entire text).</p>
+<p><img src="/spring2021/lecture-12-notes-media/image1.png" /></p>
+<p>The table below displays BERT’s performance on the <a href="https://gluebenchmark.com/"><u>GLUE
+benchmark</u></a>. The takeaway message is not
+so much in the details of these supervised tasks; but the fact that
+these tasks have a relatively small amount of labeled data compared to
+the unsupervised training that happens ahead of time. As BERT
+outperformed all SOTA methods, <strong>it revolutionized how natural language
+processing should be done.</strong></p>
+<p><img src="/spring2021/lecture-12-notes-media/image4.png" /></p>
+<p>BERT is one of the biggest updates that Google has made since RankBrain
+in 2015 and has proven successful in comprehending the intent of the
+searcher behind a search query.</p>
+<h4 id="unsupervised-learning-in-vision">Unsupervised Learning In Vision</h4>
+<p>Can we do the same thing for vision tasks? Let’s explore a few of them.</p>
+<ul>
+<li>
+<p><strong>Predict A Missing Patch:</strong> A patch is high-dimensional, so the
+ number of possibilities in that patch is very high (much larger
+ than the number of words in English, for instance). Therefore,
+ it’s challenging to predict precisely and make that work as well
+ as in languages.</p>
+</li>
+<li>
+<p><strong>Solve Jigsaw Puzzles:</strong> If the network can do this, it understands
+ something about images of the world. The trunk of the network
+ should hopefully be reusable.</p>
+</li>
+<li>
+<p><strong>Predict Rotation:</strong> Here, you collect random images and predict
+ what degree has been rotated. Existing methods work immensely well
+ for such a task.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-12-notes-media/image3.png" /></p>
+<p>A technique that stood out in recent times is <strong>contrastive learning</strong>,
+which includes two variants -
+<a href="https://arxiv.org/abs/2002.05709"><u>SimCLR</u></a> (Chen et al., 2020)
+and <a href="https://arxiv.org/abs/1911.05722"><u>MoCo</u></a> (He et al., 2019).
+Here’s how you train your model with contrastive learning:</p>
+<ul>
+<li>
+<p>Imagine that you download two images of a dog and a cat from the
+ Internet, and you don’t have labels yet.</p>
+</li>
+<li>
+<p>You duplicate the dog image and make two versions of it (a greyscale
+ version and a cropped version).</p>
+</li>
+<li>
+<p>For these two dog versions, the neural network should bring them
+ together while pushing the cat image far away.</p>
+</li>
+</ul>
+<p>You then fine-tune with a simple linear classifier on top of training
+completely unsupervised. This means that you must get the right features
+extracted from the images during training. The results of contrastive
+learning methods confirm that the higher the number of model parameters,
+the better the accuracy.</p>
+<h3 id="2-reinforcement-learning">2 - Reinforcement Learning</h3>
+<p><a href="https://mitpress.mit.edu/books/reinforcement-learning"><u>Reinforcement
+learning</u></a>
+(RL) has not been practical yet but nevertheless has shown promising
+results. In RL, the AI is an agent, more so than just a pattern
+recognizer. The agent acts in an environment where it is goal-oriented.
+It wants to achieve something during the process, which is represented
+by a reward function.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image11.png" /></p>
+<h4 id="challenges">Challenges</h4>
+<p>Compared to unsupervised learning, RL brings about a host of additional
+challenges:</p>
+<ul>
+<li>
+<p><strong>Credit assignment:</strong> When the RL agent sees something, it has to
+ take action. But it is not told whether the action was good or bad
+ right away.</p>
+</li>
+<li>
+<p><strong>Stability:</strong> Because the RL agent learns by trial and error, it
+ can destabilize and make big mistakes. Thus, it needs to be clever
+ in updating itself not to destroy things along the way.</p>
+</li>
+<li>
+<p><strong>Exploration:</strong> The RL agent has to try things that have not been
+ done before.</p>
+</li>
+</ul>
+<p>Despite these challenges, some great RL successes have happened.</p>
+<h4 id="successes">Successes</h4>
+<p>DeepMind has shown that neural networks can learn to play <strong>the Atari
+game</strong> back in 2013. Under the hood is the <a href="https://www.nature.com/articles/nature14236"><u>Deep
+Q-Network</u></a>
+architecture, which was trained from its own trial-and-error, looking at
+the score in the game to internalize what actions might be good or bad.</p>
+<p><strong>The game of Go</strong> was cracked by DeepMind - showing that the computer
+can play better than the best human player
+(<a href="https://www.nature.com/articles/nature16961"><u>AlphaGo</u></a>,
+<a href="https://www.nature.com/articles/nature24270"><u>AlphaGoZero</u></a>, and
+<a href="https://arxiv.org/abs/1712.01815"><u>AlphaZero</u></a>).</p>
+<p>RL also works for the <strong>robot locomotion</strong> task. You don’t have to
+design the controller yourself. You just implement the RL algorithm
+(<a href="https://arxiv.org/abs/1502.05477"><u>TRPO</u></a>,
+<a href="https://arxiv.org/abs/1506.02438"><u>GAE</u></a>,
+<a href="https://arxiv.org/abs/1509.02971"><u>DDPG</u></a>,
+<a href="https://arxiv.org/abs/1707.06347"><u>PPO</u></a>, and more) and let the
+agent train itself, which is a general approach to have AI systems
+acquire new skills. In fact, the robot can acquire such a variety of
+skills, as demonstrated in this
+<a href="https://xbpeng.github.io/projects/DeepMimic/index.html"><u>DeepMimic</u></a>
+work.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image6.png" /></p>
+<p>You can also accomplish the above for non-human-like characters in
+<strong>dynamic animation</strong> tasks. This is going to change how you can design
+video games or animated movies. Instead of designing the keyframes for
+every step along the way in your video or your game, you can train an
+agent to go from point A to point B directly.</p>
+<p>RL has been shown to work on <strong>real robots</strong>.</p>
+<ul>
+<li>
+<p><a href="https://engineering.berkeley.edu/brett/"><u>BRETT</u></a> (Berkeley
+ Robot for the Elimination of Tedious Tasks) could learn to put
+ blocks into matching openings in under an hour using a neural
+ network trained from scratch. This technique has been used for
+ <a href="https://rll.berkeley.edu/drl_tensegrity/"><u>NASA SuperBall</u></a>
+ robots for space exploration ideas.</p>
+</li>
+<li>
+<p>A similar idea was applied to <strong>robotic manipulation</strong> <a href="https://openai.com/blog/solving-rubiks-cube/"><u>solving
+ Rubik’s cube</u></a>,
+ done at OpenAI in 2019. The in-hand manipulation is a very
+ difficult robotic control problem that was mastered with RL.</p>
+</li>
+</ul>
+<h4 id="covariantai">CovariantAI</h4>
+<p><img src="/spring2021/lecture-12-notes-media/image9.jpg" /></p>
+<p>The fact that RL worked so well actually inspired Pieter and his former
+students (Tianhao Zhang, Rocky Duan, and Peter Chen) to start a company
+called <a href="https://covariant.ai/"><u>Covariant</u></a> in 2017. Their goal is
+to bring these advances from the lab into the real world. An example is
+<a href="https://www.nytimes.com/2020/01/29/technology/warehouse-robot.html"><u>autonomous order
+picking</u></a>.</p>
+<h3 id="3-unsupervised-reinforcement-learning">3 - Unsupervised Reinforcement Learning</h3>
+<p>RL achieved mastery on many simulated domains. But we must ask the
+question: <strong>How fast is the learning itself?</strong> <a href="http://cbmm.mit.edu/sites/default/files/publications/Tsividis%20et%20al%20-%20Human%20Learning%20in%20Atari.pdf"><u>Tsividis et al.,
+2017</u></a>
+shows that a human can learn in about 15 minutes to perform better than
+Double DQN (a SOTA approach at the time of the study) learned after 115
+hours.</p>
+<p><em>How can we bridge this learning gap?</em></p>
+<p>Based on the 2018 <a href="https://arxiv.org/abs/1801.00690"><u>DeepMind Control
+Suite</u></a>, pixel-based learning needs
+50M more training steps than state-based learning to solve the same
+tasks. Maybe we can develop an unsupervised learning approach to turn
+pixel-level representations (which are not that informative) into a new
+representation that is much more similar to the underlying state.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image5.png" /></p>
+<p><a href="https://arxiv.org/abs/2004.04136"><u>CURL</u></a> brings together
+contrastive learning and RL.</p>
+<ul>
+<li>
+<p>In RL, there’s typically a replay buffer where we store the past
+ experiences. We load observations from there and feed them into an
+ encoder neural network. The network has two heads: an actor to
+ estimate the best action to take next and a critic to estimate how
+ good that action would be.</p>
+</li>
+<li>
+<p>CURL adds an extra head at the bottom, which includes augmented
+ observations, and does contrastive learning on that. Similar
+ configurations of the robot are brought closer together, while
+ different ones are separated.</p>
+</li>
+</ul>
+<p>The results confirm that CURL can match existing SOTA approaches that
+learn from states and from pixels. However, it struggles in hard
+environments, with insufficient labeled images being the root cause.</p>
+<h3 id="4-meta-reinforcement-learning">4 - Meta Reinforcement Learning</h3>
+<p>The majority of fully general RL algorithms work well for any
+environments that can be mathematically defined. However, environments
+encountered in the real world are a tiny subset of all environments that
+could be defined. Maybe the learning takes such a long time because the
+algorithms are too general. If they are a bit <strong>more specialized</strong> in
+things they will encounter, perhaps the learning is faster.</p>
+<p><em>Can we develop a fast RL algorithm to take advantage of this?</em></p>
+<p>In traditional RL research, human experts develop the RL algorithm.
+However, there are still no RL algorithms nearly as good as humans after
+many years. Can we learn a better RL algorithm? Or even learn a better
+entire agent?</p>
+<h4 id="rl2">RL^2</h4>
+<p><img src="/spring2021/lecture-12-notes-media/image14.png" /></p>
+<p><strong>RL^2</strong> (<a href="https://arxiv.org/abs/1611.02779"><u>Duan et al., 2016</u></a>)
+is a meta-RL framework proposed to tackle this issue:</p>
+<ul>
+<li>
+<p>Imagine that we have multiple meta-training environments (A, B, and
+ so on).</p>
+</li>
+<li>
+<p>We also have a meta-RL algorithm that learns the RL algorithm and
+ outputs a “fast” RL agent (from having interacted with these
+ environments).</p>
+</li>
+<li>
+<p>In the future, our agent will be in an environment F that is related
+ to A, B, and so on.</p>
+</li>
+</ul>
+<p>Formally speaking, RL^2 maximizes the expected reward on the training
+Markov Decision Process (MDP) but can generalize to testing MDP. The RL
+agent is represented as a Recurrent Neural Network (RNN), a generic
+computation architecture where:</p>
+<ul>
+<li>
+<p>Different weights in the RNN mean different RL algorithms and
+ priors.</p>
+</li>
+<li>
+<p>Different activations in the RNN mean different current policies.</p>
+</li>
+<li>
+<p>The meta-trained objective can be optimized with an existing “slow”
+ RL algorithm.</p>
+</li>
+<li>
+<p>The resulting RNN is ready to be dropped in a new environment.</p>
+</li>
+</ul>
+<p>RL^2 was evaluated on a classic <strong>Multi-Armed Bandit</strong> setting and
+performed better than provably (asymptotically) optimal RL algorithms
+invented by humans like Gittings Index, UCB1, and Thompson Sampling.
+Another task that RL^2 was evaluated on is <strong>visual navigation</strong>, where
+the agent explores a maze and finds a specified target as quickly as
+possible. Although this setting is maze-specific, we can scale up RL^2
+to other large-scale games and robotic environments and use it to learn
+in a new environment quickly.</p>
+<h4 id="learn-more">Learn More</h4>
+<ul>
+<li>
+<p>Schmidhuber. <a href="http://www.idsia.ch/~juergen/diploma.html"><u>Evolutionary principles in self-referential
+ learning</u></a>. (1987)</p>
+</li>
+<li>
+<p>Wiering, Schmidhuber. <a href="https://people.idsia.ch/~juergen/icmllevineira/icmllevineira.html"><u>Solving POMDPs with Levin search and
+ EIRA</u></a>. (1996)</p>
+</li>
+<li>
+<p>Schmidhuber, Zhao, Wiering. <a href="https://link.springer.com/article/10.1023/A:1007383707642"><u>Shifting inductive bias with
+ success-story algorithm, adaptive Levin search, and incremental
+ self-improvement</u></a>.
+ (MLJ 1997)</p>
+</li>
+<li>
+<p>Schmidhuber, Zhao, Schraudolph. <a href="https://link.springer.com/chapter/10.1007/978-1-4615-5529-2_12"><u>Reinforcement learning with
+ self-modifying
+ policies</u></a> (1998)</p>
+</li>
+<li>
+<p>Zhao, Schmidhuber. <a href="https://ieeexplore.ieee.org/document/6278758"><u>Solving a complex prisoner’s dilemma with
+ self-modifying
+ policies</u></a>. (1998)</p>
+</li>
+<li>
+<p>Schmidhuber. <a href="ftp://ftp.idsia.ch/pub/juergen/xinbook.pdf"><u>A general method for incremental self-improvement
+ and multiagent
+ learning</u></a>. (1999)</p>
+</li>
+<li>
+<p>Singh, Lewis, Barto. <a href="https://escholarship.org/uc/item/2v29r0b6"><u>Where do rewards come
+ from?</u></a> (2009)</p>
+</li>
+<li>
+<p>Singh, Lewis, Barto. <a href="https://ieeexplore.ieee.org/document/5471106"><u>Intrinsically Motivated Reinforcement
+ Learning: An Evolutionary
+ Perspective</u></a> (2010)</p>
+</li>
+<li>
+<p>Niekum, Spector, Barto. <a href="https://www.aaai.org/ocs/index.php/AAAI/AAAI10/paper/viewFile/1595/2319"><u>Evolution of reward functions for
+ reinforcement
+ learning</u></a> (2011)</p>
+</li>
+<li>
+<p>Wang et al., (2016). <a href="https://arxiv.org/abs/1611.05763"><u>Learning to Reinforcement
+ Learn</u></a></p>
+</li>
+<li>
+<p>Finn et al., (2017). <a href="https://arxiv.org/abs/1703.03400?spm=smwp.content.content.1.1533427200036hOtrcXw"><u>Model-Agnostic
+ Meta-Learning</u></a>
+ (MAML)</p>
+</li>
+<li>
+<p>Mishra, Rohinenjad et al., (2017). <a href="https://arxiv.org/abs/1707.03141"><u>Simple Neural AttentIve
+ Meta-Learner</u></a></p>
+</li>
+<li>
+<p>Frans et al., (2017). <a href="https://arxiv.org/abs/1710.09767"><u>Meta-Learning Shared
+ Hierarchies</u></a></p>
+</li>
+</ul>
+<h3 id="5-few-shot-imitation-learning">5 - Few-Shot Imitation Learning</h3>
+<p>People often complement RL with <strong>imitation learning</strong>, which is
+basically supervised learning where the output is an action for an
+agent. This gives you more signal than traditional RL since for every
+input, you consistently have a corresponding output. As the diagram
+below shows, the imitation learning algorithm learns a policy in a
+supervised manner from many demonstrations and outputs the correct
+action based on the environment.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image16.png" /></p>
+<p>The challenge for imitation learning is <strong>to collect enough
+demonstrations to train an algorithm</strong>, which is time-consuming. To make
+the collection of demonstrations more efficient, we can apply multi-task
+meta-learning. Many demonstrations for different tasks can be learned by
+an algorithm, whose output is fed to a one-shot imitator that picks the
+correct action based on a single demonstration. This process is referred
+to as <strong>one-shot imitation learning</strong> (<a href="https://arxiv.org/abs/1703.07326"><u>Duan et al.,
+2017</u></a>), as displayed below.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image20.png" /></p>
+<p>Conveniently, one-shot imitators are trained using traditional network
+architectures. A combination of CNNs, RNNs, and MLPs perform the heavy
+visual processing to understand the relevant actions in training demos
+and recommend the right action for the current frame of an inference
+demo. One example of this in action is <a href="http://www.roboticsproceedings.org/rss14/p09.pdf"><u>block
+stacking</u></a>.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image18.png" /></p>
+<h4 id="learn-more_1">Learn More</h4>
+<ul>
+<li>
+<p>Abbeel et al., (2008). <a href="https://ai.stanford.edu/~ang/papers/icml08-LearningForControlFromMultipleDemonstrations.pdf"><u>Learning For Control From Multiple
+ Demonstrations</u></a></p>
+</li>
+<li>
+<p>Kolter, Ng. <a href="http://citeseerx.ist.psu.edu/viewdoc/download?doi=10.1.1.975.1072&amp;rep=rep1&amp;type=pdf"><u>The Stanford LittleDog: A Learning And Rapid
+ Replanning Approach To Quadrupled
+ Locomotion</u></a> (2008)</p>
+</li>
+<li>
+<p>Ziebart et al., (2008). <a href="https://www.aaai.org/Papers/AAAI/2008/AAAI08-227.pdf"><u>Maximum Entropy Inverse Reinforcement
+ Learning</u></a></p>
+</li>
+<li>
+<p>Schulman et al., (2013). <a href="https://dl.acm.org/doi/10.1177/0278364914528132"><u>Motion Planning with Sequential Convex
+ Optimization and Convex Collision
+ Checking</u></a></p>
+</li>
+<li>
+<p>Finn, Levine. <a href="https://arxiv.org/abs/1610.00696"><u>Deep Visual Foresight for Planning Robot
+ Motion</u></a> (2016)</p>
+</li>
+</ul>
+<h3 id="6-domain-randomization">6 - Domain Randomization</h3>
+<p>Simulated data collection is a logical substitute for expensive real
+data collection. It is less expensive, more scalable, and less dangerous
+(e.g., in the case of robots) to capture at scale. Given this logic,
+<em>how can we make sure simulated data best matches real-world
+conditions?</em></p>
+<h4 id="use-realistic-simulated-data">Use Realistic Simulated Data</h4>
+<p><img src="/spring2021/lecture-12-notes-media/image10.png" /></p>
+<p>One approach is to make the simulator you use for training models as
+realistic as possible. Two variants of doing this are <strong>to carefully
+match the simulation to the world</strong> (<a href="https://arxiv.org/abs/1609.03759"><u>James and John,
+2016</u></a>; <a href="https://arxiv.org/abs/1608.02239"><u>Johns, Leutenegger, and
+Division, 2016</u></a>; <a href="https://arxiv.org/abs/1709.06670"><u>Mahler et
+al., 2017</u></a>; <a href="https://hal.archives-ouvertes.fr/hal-01137021/document"><u>Koenemann et al.,
+2015</u></a>) and
+<strong>augment simulated data with real data</strong> (<a href="https://arxiv.org/abs/1608.02192"><u>Richter et al.,
+2016</u></a>; <a href="https://arxiv.org/abs/1709.07857"><u>Bousmalis et al.,
+2017</u></a>). While this option is
+logically appealing, it can be hard and slow to do in practice.</p>
+<h4 id="domain-confusion">Domain Confusion</h4>
+<p><img src="/spring2021/lecture-12-notes-media/image12.png" /></p>
+<p>Another option is <strong>domain confusion</strong> (<a href="https://arxiv.org/abs/1412.3474"><u>Tzeng et al.,
+2014</u></a>; <a href="https://arxiv.org/abs/1610.04286"><u>Rusu et al.,
+2016</u></a>).</p>
+<ul>
+<li>
+<p>In this approach, suppose you train a model on real and simulated
+ data at the same time.</p>
+</li>
+<li>
+<p>After completing training, a discriminator network examines the
+ original network at some layer to understand if the original
+ network is learning something about the real world.</p>
+</li>
+<li>
+<p>If you can fool the discriminator with the output of the layer, the
+ original network has completely integrated its understanding of
+ real and simulated data.</p>
+</li>
+<li>
+<p>In effect, there is no difference between simulated and real data to
+ the original network, and the layers following the examined layer
+ can be trained fully on simulated data.</p>
+</li>
+</ul>
+<h4 id="domain-randomization">Domain Randomization</h4>
+<p><img src="/spring2021/lecture-12-notes-media/image17.png" /></p>
+<p>Finally, a simpler approach called <strong>domain randomization</strong> (<a href="https://arxiv.org/abs/1703.06907"><u>Tobin
+et al., 2017</u></a>; <a href="https://arxiv.org/abs/1611.04201"><u>Sadeghi and
+Levine, 2016</u></a>) has taken off of
+late. In this approach, rather than making simulated data fully
+realistic, the priority is to generate as much variation in the
+simulated data as possible. For example, in the below tabletop scenes,
+the dramatic variety of the scenes (e.g., background colors of green and
+purple) can help the model generalize well to the real world, even
+though the real world looks nothing like these scenes. This approach has
+shown promise in <a href="https://arxiv.org/abs/1611.04201"><u>drone flight</u></a>
+and <a href="https://arxiv.org/abs/1703.06907"><u>pose estimation</u></a>. The
+simple logic of more data leading to better performance in real-world
+settings is powerfully illustrated by domain randomization and obviates
+the need for existing variation methods like pre-training on ImageNet.</p>
+<h3 id="7-deep-learning-for-science-and-engineering">7 - Deep Learning For Science and Engineering</h3>
+<h4 id="alphafold">AlphaFold</h4>
+<p>In other areas of this lecture, we’ve been focusing on research areas of
+machine learning where humans already perform well (i.e., pose
+estimation or grasping). In science and engineering applications, we
+enter the realm of machine learning performing tasks humans cannot. The
+most famous result is
+<a href="https://deepmind.com/blog/article/alphafold-a-solution-to-a-50-year-old-grand-challenge-in-biology"><u>AlphaFold</u></a>,
+a Deepmind-created system that solved protein folding, an important
+biological challenge. In the CASP challenge, AlphaFold 2 far outpaced
+all other results in performance. AlphaFold is quite complicated, as it
+maps an input protein sequence to similar protein sequences and
+subsequently decides the folding structure based on the evolutionary
+history of complementary amino acids.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image8.png" /></p>
+<p>Other examples of DL systems solving science and engineering challenges
+are in <a href="https://arxiv.org/pdf/1907.10515.pdf"><u>circuit design</u></a>,
+<a href="https://analyticsindiamag.com/gans-deep-learning-physics-atomic-material-science-john-hopkins/"><u>high-energy
+physics</u></a>,
+and <a href="https://arxiv.org/abs/1912.01412"><u>symbolic mathematics</u></a>.</p>
+<h4 id="learn-more_2">Learn More</h4>
+<ul>
+<li>
+<p><a href="https://www.nature.com/articles/s41586-019-1923-7"><u>AlphaFold: Improved protein structure prediction using
+ potentials from deep
+ learning</u></a>.
+ Deepmind (Senior et al.)</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/1907.10515"><u>BagNet: Berkeley Analog Generator with Layout Optimizer Boosted
+ with Deep Neural
+ Networks</u></a>. K.
+ Hakhamaneshi, N. Werblun, P. Abbeel, V. Stojanovic. IEEE/ACM
+ International Conference on Computer-Aided Design (ICAD),
+ Westminster, Colorado, November 2019.</p>
+</li>
+<li>
+<p><a href="https://www.biorxiv.org/content/10.1101/676825v1"><u>Evaluating Protein Transfer Learning with
+ TAPE</u></a>. R.
+ Rao, N. Bhattacharya, N. Thomas, Y, Duan, X. Chen, J. Canny, P.
+ Abbeel, Y. Song.</p>
+</li>
+<li>
+<p><a href="https://drive.google.com/file/d/1f1iiXKzxNbNz5lL5x2ob9xGYLHNHhxeU/view"><u>Opening the black box: the anatomy of a deep learning atomistic
+ potential</u></a>.
+ Justin Smith</p>
+</li>
+<li>
+<p><a href="https://docs.google.com/presentation/d/1zGoxOMWmid25hgtSgVkQYu1-GP9PT3EQ2_tzOlQZcF4/edit#slide=id.p1"><u>Exploring Machine Learning Applications to Enable
+ Next-Generation
+ Chemistry</u></a>.
+ Jennifer Wei (Google).</p>
+</li>
+<li>
+<p><a href="https://drive.google.com/file/d/1op6Q6OuVZvJ4VbtLkemi3oJWtSBx5FCc/view"><u>GANs for
+ HEP</u></a>.
+ Ben Nachman</p>
+</li>
+<li>
+<p><a href="https://openreview.net/pdf?id=S1eZYeHFDS"><u>Deep Learning for Symbolic
+ Mathematics</u></a>. G.
+ Lample and F. Charton.</p>
+</li>
+<li>
+<p><a href="https://arxiv.org/abs/2003.11755"><u>A Survey of Deep Learning for Scientific
+ Discovery</u></a>. Maithra Raghu,
+ Eric Schmidt.</p>
+</li>
+</ul>
+<h3 id="8-overarching-research-theme">8 - Overarching Research Theme</h3>
+<p>As compute scales to support incredible numbers of FLOPs, more science
+and engineering challenges will be solved with deep learning systems.
+There has been exponential growth in the amount of compute used to
+generate the most impressive research results like GPT-3.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image21.png" /></p>
+<p>As compute and data become more available, we open a new problem
+territory that we can refer to as <strong>deep learning to learn</strong>. More
+specifically, throughout history, the constraint on solving problems has
+been human ingenuity. This is a particularly challenging realm to
+contribute novel results to because we’re competing against the combined
+intellectual might available throughout history. Is our present
+ingenuity truly greater than that of others 20-30 years ago, let alone
+200-300? Probably not. However, our ability to bring new tools like
+compute and data most certainly is. Therefore, spending as much time in
+this new problem territory, <strong>where data and compute help solve
+problems</strong>, is likely to generate exciting and novel results more
+frequently in the long run.</p>
+<p><img src="/spring2021/lecture-12-notes-media/image19.png" /></p>
+<h3 id="9-how-to-keep-up">9 - How To Keep Up</h3>
+<p>“<em>Give a man a fish and you feed him for a day, teach a man to fish and
+you feed him for a lifetime</em>” (Lao Tzu)</p>
+<p>Here are some tips on how to keep up with ML research:</p>
+<ul>
+<li>
+<p>(Mostly) don’t read (most) papers. There are just too many!</p>
+</li>
+<li>
+<p>When you do want to keep up, use the following:</p>
+<ul>
+<li>
+<p>Tutorials at conferences: these capture the essence of important
+ concepts in a practical, distilled way</p>
+</li>
+<li>
+<p>Graduate courses and seminars</p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/c/YannicKilcher"><u>Yannic Kilcher YouTube
+ channel</u></a></p>
+</li>
+<li>
+<p><a href="https://www.youtube.com/channel/UCbfYPyITQ-7l4upoX8nvctg"><u>Two Minutes Paper
+ Channel</u></a></p>
+</li>
+<li>
+<p><a href="https://www.deeplearning.ai/the-batch/"><u>The Batch by Andrew
+ Ng</u></a></p>
+</li>
+<li>
+<p><a href="https://jack-clark.net/"><u>Import AI by Jack Clark</u></a></p>
+</li>
+</ul>
+</li>
+<li>
+<p>If you DO decide to read papers,</p>
+<ul>
+<li>
+<p>Follow a principled process for reading papers</p>
+</li>
+<li>
+<p>Use <a href="http://www.arxiv-sanity.com/"><u>Arxiv Sanity</u></a></p>
+</li>
+<li>
+<p>Twitter</p>
+</li>
+<li>
+<p>AI/DL Facebook Group</p>
+</li>
+<li>
+<p><a href="https://www.reddit.com/r/MachineLearning/"><u>ML Subreddit</u></a></p>
+</li>
+<li>
+<p>Start a reading group: read papers together with friends -
+ either everyone reads then discusses, or one or two people
+ read and give tutorials to others.</p>
+</li>
+</ul>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-12-notes-media/image15.png" /></p>
+<p>Finally, <strong>should you do a Ph.D. or not?</strong></p>
+<ul>
+<li>
+<p>You don’t have to do a Ph.D. to work in AI!</p>
+</li>
+<li>
+<p>However, if you REALLY want to become one of the world’s experts in
+ a topic you care about, then a Ph.D. is a technically deep and
+ demanding path to get there. Crudely speaking, a Ph.D. enables you
+ to develop new tools and techniques rather than using existing
+ tools and techniques.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

@@ -1,0 +1,3803 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to turn an ML model into an ML-powered product">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/course/2022/lecture-5-deployment/">
+      
+      
+        <link rel="prev" href="../lab-6-data-annotation/">
+      
+      
+        <link rel="next" href="../lab-7-web-deployment/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 5: Deployment - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 5: Deployment" />
+<meta property="og:description" content="How to turn an ML model into an ML-powered product" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/course/2022/lecture-5-deployment/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 5: Deployment" />
+<meta name="twitter:description" content="How to turn an ML model into an ML-powered product" />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-5-deployment" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 5: Deployment
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-build-a-prototype-to-interact-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Build a Prototype To Interact With
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-separate-your-model-from-your-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Separate Your Model From Your UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Separate Your Model From Your UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-batch-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 - Batch Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-model-as-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 - Model-as-Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 - Model-as-Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constraining-model-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constraining Model Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-or-no-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU or no GPU?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-distillation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Distillation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-the-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharing the GPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libraries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Horizontal Scaling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Horizontal Scaling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serverless
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-rollouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Rollouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managed Options
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 - Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-move-to-the-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Move to the Edge?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Move to the Edge?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 - Frameworks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 - Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mindsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 - Mindsets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 - Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../spring2021/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#introduction" class="md-nav__link">
+    <span class="md-ellipsis">
+      Introduction
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#1-build-a-prototype-to-interact-with" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Build a Prototype To Interact With
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-separate-your-model-from-your-ui" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Separate Your Model From Your UI
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Separate Your Model From Your UI">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#21-batch-prediction" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.1 - Batch Prediction
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#22-model-as-service" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.2 - Model-as-Service
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2.2 - Model-as-Service">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#rest-apis" class="md-nav__link">
+    <span class="md-ellipsis">
+      REST APIs
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dependency-management" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dependency Management
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Dependency Management">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#constraining-model-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Constraining Model Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#containers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Containers
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#performance-optimization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Performance Optimization
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Performance Optimization">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#gpu-or-no-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      GPU or no GPU?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#concurrency" class="md-nav__link">
+    <span class="md-ellipsis">
+      Concurrency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-distillation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Distillation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#quantization" class="md-nav__link">
+    <span class="md-ellipsis">
+      Quantization
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#caching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Caching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#batching" class="md-nav__link">
+    <span class="md-ellipsis">
+      Batching
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sharing-the-gpu" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sharing the GPU
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#libraries" class="md-nav__link">
+    <span class="md-ellipsis">
+      Libraries
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#horizontal-scaling" class="md-nav__link">
+    <span class="md-ellipsis">
+      Horizontal Scaling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Horizontal Scaling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#container-orchestration" class="md-nav__link">
+    <span class="md-ellipsis">
+      Container Orchestration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#serverless" class="md-nav__link">
+    <span class="md-ellipsis">
+      Serverless
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-rollouts" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Rollouts
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#managed-options" class="md-nav__link">
+    <span class="md-ellipsis">
+      Managed Options
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#23-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      2.3 - Takeaways
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-move-to-the-edge" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Move to the Edge?
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Move to the Edge?">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#31-frameworks" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.1 - Frameworks
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#32-efficiency" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.2 - Efficiency
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#33-mindsets" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.3 - Mindsets
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#34-conclusion" class="md-nav__link">
+    <span class="md-ellipsis">
+      3.4 - Conclusion
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-5-deployment">Lecture 5: Deployment</h1>
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/W3hKjXg7fXM?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>Lecture by <a href="https://twitter.com/josh_tobin_">Josh Tobin</a>.<br />
+Notes by <a href="https://twitter.com/le_james94">James Le</a> and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.<br />
+Published September 5, 2022.
+<a href="https://fsdl.me/2022-lecture-05-slides">Download slides</a>.</p>
+<h2 id="introduction">Introduction</h2>
+<p><img alt="" src="media/image21.png" /></p>
+<p>Deploying models is a critical part of making your models good, to begin
+with. When you only evaluate the model offline, it's easy to miss the
+more subtle flaws that the model has, where it doesn't actually solve
+the problem that your users need it to solve. Oftentimes, when we deploy
+a model for the first time, only then do we really see whether that
+model is actually doing a good job or not. Unfortunately, for many data
+scientists and ML engineers, model deployment is an afterthought
+relative to other techniques we have covered.</p>
+<p>Much like other parts of the ML lifecycle, we'll focus on deploying a
+minimum viable model as early as possible, which entails <strong>keeping it
+simple and adding complexity later</strong>. Here is the process that this
+lecture covers:</p>
+<ul>
+<li>
+<p>Build a prototype</p>
+</li>
+<li>
+<p>Separate your model and UI</p>
+</li>
+<li>
+<p>Learn the tricks to scale</p>
+</li>
+<li>
+<p>Consider moving your model to the edge when you really need to go
+fast</p>
+</li>
+</ul>
+<h2 id="1-build-a-prototype-to-interact-with">1 - Build a Prototype To Interact With</h2>
+<p>There are many great tools for building model prototypes.
+<a href="https://huggingface.co/">HuggingFace</a> has some tools
+built into its playground. They have also recently acquired a startup
+called <a href="https://gradio.app/">Gradio</a>, which makes it easy
+to wrap a small UI around the model.
+<a href="https://streamlit.io/">Streamlit</a> is another good option
+with a bit more flexibility.</p>
+<p><img alt="" src="media/image19.png" /></p>
+<p>Here are some best practices for prototype deployment:</p>
+<ol>
+<li>
+<p><strong>Have a basic UI</strong>: The goal at this stage is to play around with
+the model and collect feedback from other folks. Gradio and
+Streamlit are your friends here - often as easy as adding a couple
+of lines of code to create a simple interface for the model.</p>
+</li>
+<li>
+<p><strong>Put it behind a web URL</strong>: An URL is easier to share. Furthermore,
+you will start thinking about the tradeoffs you'll be making when
+dealing with more complex deployment schemes. There are cloud
+versions of <a href="https://streamlit.io/cloud">Streamlit</a>
+and <a href="https://huggingface.co/">HuggingFace</a> for this.</p>
+</li>
+<li>
+<p><strong>Do not stress it too much</strong>: You should not take more than a day
+to build a prototype.</p>
+</li>
+</ol>
+<p>A model prototype won't be your end solution to deploy. Firstly, a
+prototype has limited frontend flexibility, so eventually, you want to
+be able to build a fully custom UI for the model. Secondly, a prototype
+does not scale to many concurrent requests. Once you start having users,
+you'll hit the scaling limits quickly.</p>
+<p><img alt="" src="media/image18.png" /></p>
+<p>Above is an abstract diagram of how your application might look. The
+<strong>client</strong> is your user's device that interacts with your application.
+This device can be a browser, a vehicle, or a mobile phone. This device
+calls over a network to a <strong>server</strong>. The server talks to a <strong>database</strong>
+(where data is stored), used to power the application.</p>
+<p><img alt="" src="media/image6.png" /></p>
+<p>There are different ways of structuring your application to fit an ML
+model inside. The prototype approach mentioned in the beginning fits
+into the <strong>model-in-service</strong> approach - where your hosted web server
+has a packaged version of the model sitting inside it. This pattern has
+pros and cons.</p>
+<p>The biggest pro is that if you are doing something complex, you get to
+reuse your existing infrastructure. It does not require you as a model
+developer to set up new things from scratch.</p>
+<p>However, there is a number of pronounced cons:</p>
+<ol>
+<li>
+<p><strong>Your web server may be written in a different language</strong>, so
+getting your model into that language can be difficult.</p>
+</li>
+<li>
+<p><strong>Models may change more frequently than server code</strong> (especially
+early in the lifecycle of building your model). If you have a
+well-established application and a nascent model, you do not want
+to redeploy the entire application every time that you make an
+update to the model (sometimes multiple updates per day).</p>
+</li>
+<li>
+<p>If you have a large model to run inference on, you'll have to load
+that model on your web server. <strong>Large models can eat into the
+resources for your web server</strong>. That might affect the user
+experience for people using that web server, even if they are not
+interacting with the model.</p>
+</li>
+<li>
+<p><strong>Server hardware is generally not optimized for ML workloads</strong>. In
+particular, you rarely will have a GPU on these devices.</p>
+</li>
+<li>
+<p><strong>Your model and application may have different scaling
+properties</strong>, so you might want to be able to scale them
+differently.</p>
+</li>
+</ol>
+<h2 id="2-separate-your-model-from-your-ui">2 - Separate Your Model From Your UI</h2>
+<h3 id="21-batch-prediction">2.1 - Batch Prediction</h3>
+<p><img alt="" src="media/image8.png" /></p>
+<p>The first pattern to pull your model from your UI is called <strong>batch
+prediction</strong>. You get new data in and run your model on each data point.
+Then, you save the results of each model inference into a database. This
+can work well under some circumstances. For example, if there are not a
+lot of potential inputs to the model, you can re-run your model on some
+frequency (every hour, every day, or every week). You can have
+reasonably fresh predictions to return to those users that are stored in
+your database. Examples of these problems include the early stages of
+building recommender systems and internal-facing tools like marketing
+automation.</p>
+<p>To run models on a schedule, you can leverage the data processing and
+workflow tools mentioned in our previous lecture on data management. You
+need to re-run data processing, load the model, run predictions, and
+store those predictions in your database. This is exactly a <strong>Directed
+Acyclic Graph workflow of data operations</strong> that tools like
+<a href="https://dagster.io/">Dagster</a>,
+<a href="https://airflow.apache.org/">Airflow</a>, or
+<a href="https://www.prefect.io/">Prefect</a> are designed to solve.
+It's worth noting that there are also tools like
+<a href="https://metaflow.org/">Metaflow</a> that are designed more
+for ML or data science use cases that might be potentially even an
+easier way to get started.</p>
+<p>Let's visit the pros and cons of this batch prediction pattern. Starting
+with the pros:</p>
+<ol>
+<li>
+<p>Batch prediction is <strong>simple to implement</strong> since it reuses existing
+batch processing tools that you may already be using for training
+your model.</p>
+</li>
+<li>
+<p>It <strong>scales very easily</strong> because databases have been engineered for
+decades for such a purpose.</p>
+</li>
+<li>
+<p>Even though it looks like a simple pattern, it has been <strong>used in
+production by large-scale production systems for years</strong>. This is
+a tried-and-true pattern you can run and be confident that it'll
+work well.</p>
+</li>
+<li>
+<p>It is <strong>fast to retrieve the prediction</strong> since the database is
+designed for the end application to interact with.</p>
+</li>
+</ol>
+<p>Switching to the cons:</p>
+<ol>
+<li>
+<p>Batch prediction <strong>doesn't scale to complex input types</strong>. For
+instance, if the universe of inputs is too large to enumerate
+every single time you need to update your predictions, this won't
+work.</p>
+</li>
+<li>
+<p><strong>Users won't be getting the most up-to-date predictions from your
+model</strong>. If the feature that goes into your model changes every
+hour, minute, or subsecond, but you only run your batch prediction
+job every day, the predictions your users see might be slightly
+stale.</p>
+</li>
+<li>
+<p><strong>Models frequently become "stale."</strong> If your batch jobs fail for
+some reason, it can be hard to detect these problems.</p>
+</li>
+</ol>
+<h3 id="22-model-as-service">2.2 - Model-as-Service</h3>
+<p>The second pattern is called <strong>model-as-service</strong>: we run the model
+online as its own service. The service is going to interact with the
+backend or the client itself by making requests to the model service and
+receiving responses back.</p>
+<p><img alt="" src="media/image16.png" /></p>
+<p>The pros of this pattern are:</p>
+<ol>
+<li>
+<p><strong>Dependability</strong> - model bugs are less likely to crash the web
+application.</p>
+</li>
+<li>
+<p><strong>Scalability</strong> - you can choose optimal hardware for the model and
+scale it appropriately.</p>
+</li>
+<li>
+<p><strong>Flexibility</strong> - you can easily reuse a model across multiple
+applications.</p>
+</li>
+</ol>
+<p>The cons of this pattern are:</p>
+<ol>
+<li>
+<p>Since this is a separate service, you add a network call when your
+server or client interacts with the model. That can <strong>add
+latency</strong> to your application.</p>
+</li>
+<li>
+<p>It also <strong>adds infrastructural complexity</strong> because you are on the
+hook for hosting and managing a separate service.</p>
+</li>
+</ol>
+<p>Even with these cons, <strong>the model-as-service pattern is still a sweet
+spot for most ML-powered products</strong> since you really need to be able to
+scale independently of the application in most complex use cases. We'll
+walk through the basic components of building your model service -
+including REST APIs, dependency management, performance optimization,
+horizontal scaling, rollout, and managed options.</p>
+<h4 id="rest-apis">REST APIs</h4>
+<p><strong>Rest APIs</strong> serve predictions in response to canonically-formatted
+HTTP requests. There are other alternative protocols to interact with a
+service that you host on your infrastructures, such as
+<a href="https://grpc.io/">GRPC</a> (used in TensorFlow Serving) and
+<a href="https://graphql.org/">GraphQL</a> (common in web development
+but not terribly relevant to model services).</p>
+<p><img alt="" src="media/image3.png" /></p>
+<p>Unfortunately, there is currently no standard for formatting requests
+and responses for REST API calls.</p>
+<ol>
+<li>
+<p><a href="https://cloud.google.com/">Google Cloud</a> expects a
+batch of inputs structured as a list called "instances" (with keys
+and values).</p>
+</li>
+<li>
+<p><a href="https://azure.microsoft.com/en-us/">Azure</a> expects a
+list of things called "data", where the data structure itself
+depends on what your model architecture is.</p>
+</li>
+<li>
+<p><a href="https://aws.amazon.com/sagemaker/">AWS Sagemaker</a>
+expects instances that are formatted differently than they are in
+Google Cloud.</p>
+</li>
+</ol>
+<p>Our aspiration for the future is to move toward <strong>a standard interface
+for making REST API calls for ML services</strong>. Since the types of data
+that you might send to these services are constrained, we should be able
+to develop a standard as an industry.</p>
+<h4 id="dependency-management">Dependency Management</h4>
+<p>Model predictions depend on <strong>code</strong>, <strong>model weights</strong>, and
+<strong>dependencies</strong>. In order for your model to make a correct prediction,
+all of these dependencies need to be present on your web server.
+Unfortunately, dependencies are a notorious cause of trouble as it is
+hard to ensure consistency between your development environment and your
+server. It is also hard to update since even changing a TensorFlow
+version can change your model.</p>
+<p>At a high level, there are two strategies for managing dependencies:</p>
+<ol>
+<li>
+<p><strong>Constrain the dependencies for your model</strong> by saving your model
+in an agnostic format that can be run anywhere.</p>
+</li>
+<li>
+<p><strong>Use containers</strong> to constrain the entire inference program.</p>
+</li>
+</ol>
+<p><img alt="" src="media/image11.png" /></p>
+<h5 id="constraining-model-dependencies">Constraining Model Dependencies</h5>
+<p>The primary way to constrain the dependencies of just your model is
+through a library called <a href="https://onnx.ai/">ONNX</a> - the
+Open Neural Network Exchange. The goal of ONNX is to be <strong>an
+interoperability standard for ML models</strong>. The promise is that you can
+define a neural network in any language and run it consistently
+anywhere. The reality is that since the underlying libraries used to
+build these models change quickly, there are often bugs in the
+translation layer, which creates even more problems to solve for you.
+Additionally, ONNX doesn't deal with non-library code such as feature
+transformations.</p>
+<h5 id="containers">Containers</h5>
+<p>To understand how to manage dependencies with containers, we need to
+understand <a href="https://medium.freecodecamp.org/a-beginner-friendly-introduction-to-containers-vms-and-docker-79a9e3e119b">the differences between Docker and Virtual
+Machines</a>,
+how Docker images are built via Docker files and constructed via layers,
+the ecosystem around Docker, and specific wrappers around Docker that
+you can use for ML.</p>
+<p><img alt="" src="media/image10.png" /></p>
+<p>In a <strong>virtual machine</strong>, you package up the entire operating system
+(OS) as well as the libraries and applications that are built on top of
+that OS. A virtual machine tends to be very heavyweight because the OS
+itself has a lot of code and is expensive to run. A <strong>container</strong> such
+as Docker removes that need by packaging the libraries and applications
+together. A Docker engine that runs on top of your OS knows how to
+virtualize the OS and run the libraries/applications.</p>
+<p>By virtue of being <strong>lightweight</strong>, Docker is used differently than how
+Virtual Machines were used. A common pattern is to spin up <a href="https://www.docker.com/what-container">a new
+Docker container</a>
+for every discrete task. For example, a web application might have four
+containers: a web server, a database, a job queue, and a worker. These
+containers are run together as part of an orchestration system.</p>
+<p><img alt="" src="media/image15.png" /></p>
+<p>Docker containers are created from <a href="https://docs.docker.com/engine/reference/builder/">Docker
+files</a>.
+Each Docker file runs a sequence of steps to define the environment
+where you will run your code. Docker also allows you to build, store,
+and pull Docker containers from a Docker Hub that is hosted on some
+other servers or your cloud. You can experiment with a code environment
+that is on your local machine but will be identical to the environment
+you deploy on your server.</p>
+<p>Docker is separated into <a href="https://docs.docker.com/engine/docker-overview">three different
+components</a>:</p>
+<ol>
+<li>
+<p>The <strong>client</strong> is where you'll be running on your laptop to build an
+image from a Dockerfile that you define locally using some
+commands.</p>
+</li>
+<li>
+<p>These commands are executed by a <strong>Docker Host</strong>, which can run on
+either your laptop or your server (with more storage or more
+performance).</p>
+</li>
+<li>
+<p>That Docker Host talks to a <strong>registry</strong> - which is where all the
+containers you might want to access are stored.</p>
+</li>
+</ol>
+<p><img alt="" src="media/image1.png" /></p>
+<p>With this separation of concerns, you are not limited by the amount of
+compute and storage you have on your laptop to build, pull, and run
+Docker images. You are also not limited by what you have access to on
+your Docker Host to decide which images to run.</p>
+<p>In fact, there is a powerful ecosystem of Docker images that are
+available on different public Docker Hubs. You can easily find these
+images, modify them, and contribute them back to the Hubs. It's easy to
+store private images in the same place as well. Because of this
+community and the lightweight nature of Docker, it has become
+<a href="https://www.docker.com/what-container#/package_software">incredibly popular in recent
+years</a>
+and is ubiquitous at this point.</p>
+<p>There is a bit of a learning curve to Docker. For ML, there are a few
+open-source packages designed to simplify this:
+<a href="https://github.com/replicate/cog">Cog</a>,
+<a href="https://github.com/bentoml/BentoML">BentoML</a>, and
+<a href="https://github.com/trussworks">Truss</a>. They are built by
+different model hosting providers that are designed to work well with
+their model hosting service but also just package your model and all of
+its dependencies in a standard Docker container format.</p>
+<p><img alt="" src="media/image12.png" /></p>
+<p>These packages have <strong>two primary components</strong>: The first one is a
+standard way of defining your prediction service. The second one is a
+YAML file that defines the other dependencies and package versions that
+will go into the Docker container running on your laptop or remotely.</p>
+<p>If you want to have the advantages of using Docker for making your ML
+models reproducible but do not want to go through the learning curve of
+learning Docker, it's worth checking out these three libraries.</p>
+<h4 id="performance-optimization">Performance Optimization</h4>
+<div class="admonition info">
+<p class="admonition-title">What about performance <em>monitoring</em>?</p>
+<p>In this section, we focus on ways to improve the performance of your
+models, but we spend less time on how exactly that performance is monitored,
+which is a challenge in its own right.</p>
+<p>Luckily, one of the
+<a href="../project-showcase/">student projects</a> for the 2022 cohort,
+<a href="../project-showcase/#full-stack-stable-diffusion">Full Stack Stable Diffusion</a>,
+took up that challenge and combined
+<a href="https://developer.nvidia.com/nvidia-triton-inference-server">NVIDIA's Triton Inference Server</a>,
+the <a href="https://en.wikipedia.org/wiki/Prometheus_(software)">Prometheus monitoring tool</a>,
+and
+the <a href="https://en.wikipedia.org/wiki/Grafana">Grafana analytics dashboarding tool</a>
+to monitor a robust, scalable, and observable deployment of Stable Diffusion models.</p>
+<p>Check out the repo on GitHub
+<a href="https://github.com/okanlv/fsdl-full-stack-stable-diffusion-2022">here</a>
+if you want to see a worked example of a fully-monitored DL-powered application.</p>
+</div>
+<p>To make model inference on your machine more efficient, we need to
+discuss GPU, concurrency, model distillation, quantization, caching,
+batching, sharing the GPU, and libraries that automate these tasks for
+you.</p>
+<h5 id="gpu-or-no-gpu">GPU or no GPU?</h5>
+<p>There are some advantages to hosting your model on a GPU:</p>
+<ol>
+<li>
+<p>It's probably the same hardware you train your model on, to begin
+with. That can eliminate any lost-in-translation issues.</p>
+</li>
+<li>
+<p>As your model gets big and your techniques get advanced, your
+traffic gets large. GPUs provide high throughput to deal with
+that.</p>
+</li>
+</ol>
+<p>However, GPUs introduce a lot of complexity:</p>
+<ol>
+<li>
+<p>They are more complex to set up.</p>
+</li>
+<li>
+<p>They are more expensive.</p>
+</li>
+</ol>
+<p>As a result, <strong>just because your model is trained on a GPU does not mean
+that you need to actually host it on a GPU in order for it to work</strong>. In
+the early version of your model, hosting it on a CPU should suffice. In
+fact, it's possible to get high throughput from CPU inference at a low
+cost by using some other techniques.</p>
+<h5 id="concurrency">Concurrency</h5>
+<p>With <strong>concurrency</strong>, multiple copies of the model run in parallel on
+different CPUs or cores on a single host machine. To do this, you need
+to be careful about thread tuning. There's <a href="https://www.youtube.com/watch?v=Nw77sEAn_Js">a great Roblox
+presentation</a>
+on how they scaled BERT to serve a billion daily requests, just using
+CPUs.</p>
+<h5 id="model-distillation">Model Distillation</h5>
+<p>With <strong>model distillation</strong>, once you have a large model that you've
+trained, you can train a smaller model that imitates the behavior of
+your larger one. This entails taking the knowledge that your larger
+model learned and compressing that knowledge into a much smaller model
+that you may not have trained to the same degree of performance from
+scratch. There are several model distillation techniques pointed out in
+<a href="https://heartbeat.comet.ml/research-guide-model-distillation-techniques-for-deep-learning-4a100801c0eb">this blog
+post</a>.
+They can be finicky to do by yourself and are infrequently used in
+practice. An exception is distilled versions of popular models (such as
+<a href="https://huggingface.co/docs/transformers/model_doc/distilbert">DistilBERT</a>).</p>
+<h5 id="quantization">Quantization</h5>
+<p>With <strong>quantization</strong>, you execute some or potentially all of the
+operations in your model in a lower fidelity representation of the
+numbers that you are doing the math. These representations can be 16-bit
+floating point numbers or 8-bit integers. This introduces some tradeoffs
+with accuracy, but it's worth making these tradeoffs because the
+accuracy you lose is limited relative to the performance you gain.</p>
+<p>The recommended path is to use built-in quantization methods in
+<a href="https://pytorch.org/blog/introduction-to-quantization-on-pytorch/">PyTorch</a>
+and TensorFlow. More specifically, <a href="https://huggingface.co/docs/optimum">HuggingFace
+Optimum</a> is a good
+choice if you have already been using HuggingFace's pre-trained models.
+You can also run <strong>quantization-aware training</strong>, which often results in
+higher accuracy.</p>
+<p><img alt="" src="media/image5.png" /></p>
+<h5 id="caching">Caching</h5>
+<p>With <strong>caching</strong>, you realize that for some ML models, some inputs are
+more common than others. Instead of always calling the model every time
+a user makes a request, let's store the common requests in a cache.
+Then, let's check that cache before running an expensive operation.
+Caching techniques can get fancy, but the basic way of doing this is to
+use <a href="https://docs.python.org/3/library/functools.html">functools library in
+Python</a>.</p>
+<p><img alt="" src="media/image2.png" /></p>
+<h5 id="batching">Batching</h5>
+<p>With <strong>batching</strong>, you take advantage of the fact that ML models often
+achieve a higher throughput when doing prediction in parallel,
+especially in a GPU. To accomplish this, you need to gather predictions
+until you have a batch, run those predictions, and return them to your
+user. You want to tune the batch size that deals optimally with the
+latency-throughput tradeoff. You also need to have a way to shortcut the
+process if latency becomes too long. Batching is complicated to
+implement, so you probably do not want to implement this yourself.</p>
+<h5 id="sharing-the-gpu">Sharing the GPU</h5>
+<p>Your model may not take up all of the GPU memory with your inference
+batch size. <strong>Why don't you run multiple models on the same GPU?</strong> This
+is a place where you want to use a model serving solution that supports
+GPU sharing out of the box.</p>
+<h5 id="libraries">Libraries</h5>
+<p>There are offerings from TensorFlow, PyTorch, and third-party tools from
+NVIDIA and Anyscale. NVIDIA's choice is probably the most powerful but
+can be difficult to get started with. Starting with Anyscale's <a href="https://docs.ray.io/en/latest/serve/index.html">Ray
+Serve</a> may
+be an easier way to get started.</p>
+<p><img alt="" src="media/image20.png" /></p>
+<h4 id="horizontal-scaling">Horizontal Scaling</h4>
+<p>If you're going to scale up to a large number of users interacting with
+your model, it's not going to be enough to get the most efficiency out
+of one server. At some point, you'll need to scale horizontally to have
+traffic going to multiple copies of your model running on different
+servers. This is called <strong>horizontal scaling</strong>. This technique involves
+taking traffic that would usually go to a single machine and splits
+across multiple machines.</p>
+<p>Each machine has a copy of the service, and a tool called a load
+balancer distributes traffic to each machine. In practice, there are two
+ways to do this: with either <strong>container orchestration</strong> (e.g.
+Kubernetes) or <strong>serverless</strong> (e.g. AWS Lambda).</p>
+<h5 id="container-orchestration">Container Orchestration</h5>
+<p>In container orchestration, we use
+<a href="https://kubernetes.io/">Kubernetes</a> to help manage
+containerized applications (in Docker containers, for example) and run
+them across machines.</p>
+<p><img alt="" src="media/image14.png" /></p>
+<p>Kubernetes is quite interesting, but it's probably overkilled to learn
+too much about it if your only goal is to deploy machine learning
+models. There are a number of frameworks that make it easiest to deploy
+ML models with Kubernetes, including
+<a href="https://www.kubeflow.org/">Kubeflow</a>,
+<a href="https://www.seldon.io/">Seldon</a>, etc.</p>
+<h5 id="serverless">Serverless</h5>
+<p>If Kubernetes isn't the path for you (e.g. you don't want to have to
+worry about infrastructure at all), serverless is another option for
+deploying models. In this paradigm, app code and dependencies are
+packaged into .zip files or Docker containers with a single entry point
+function, which is a single function (e.g. <em>model.predict()</em>) that will
+be run repeatedly. This package is then deployed to a service like <a href="https://aws.amazon.com/lambda/">AWS
+Lambda</a>, which almost
+totally manages the infrastructure required to run the code based on the
+input. Scaling to thousands of requests and across multiple machines is
+taken care of by these services. In return, you pay for the compute time
+that you consume.</p>
+<p>Since model services tend to run discretely and not continuously (like a
+web server), serverless is a great fit for machine learning deployment.</p>
+<p><img alt="" src="media/image7.png" /></p>
+<p><strong>Start with serverless!</strong> It's well worth the time saved in managing
+infrastructure and dealing with associated challenges. There are still
+some problems you should be aware of though.</p>
+<ol>
+<li>
+<p>First, the size of the actual deployment package that can be sent to
+a serverless service tends to be limited, which makes large models
+impossible to run.</p>
+</li>
+<li>
+<p>Second, there is also a cold start problem. If there is no traffic
+being sent to the service in question, the service will "wind
+down" to zero compute use, at which point it takes time to start
+again. This lag in starting up upon the first request to the
+serverless service is known as the "cold start" time. This can
+take seconds or even minutes.</p>
+</li>
+<li>
+<p>Third, it can be hard to actually build solid software engineering
+concepts, like pipelines, with serverless. Pipelines enable rapid
+iteration, while serverless offerings often do not have the tools
+to support rapid, automated changes to code of the kind pipelines
+are designed to do.</p>
+</li>
+<li>
+<p>Fourth, state management and deployment tooling are related
+challenges here.</p>
+</li>
+<li>
+<p>Finally, most serverless functions are CPU only and have limited
+execution time. If you need GPUs for inference, serverless might
+not be for you quite yet. There are, however, new offerings like
+<a href="https://www.banana.dev/">Banana</a> and
+<a href="https://www.pipeline.ai/">Pipeline</a> that are
+seeking to solve this problem of serverless GPU inference!</p>
+</li>
+</ol>
+<h4 id="model-rollouts">Model Rollouts</h4>
+<p>If serving is how you turn a model into something that can respond to
+requests, rollouts are how you manage and update these services. To be
+able to make updates effectively, you should be able to do the
+following:</p>
+<ol>
+<li>
+<p><strong>Roll out gradually</strong>: You may want to incrementally send traffic
+to a new model rather than the entirety.</p>
+</li>
+<li>
+<p><strong>Roll back instantly</strong>: You may want to immediately pull back a
+model that is performing poorly.</p>
+</li>
+<li>
+<p><strong>Split traffic between versions</strong>: You may want to test differences
+between models and therefore send some traffic to each.</p>
+</li>
+<li>
+<p><strong>Deploy pipelines of models</strong>: Finally, you may want to have entire
+pipeline flows that ensure the delivery of a model.</p>
+</li>
+</ol>
+<p>Building these capabilities is a reasonably challenging infrastructure
+problem that is beyond the scope of this course. In short, managed
+services are a good option for this that we'll now discuss!</p>
+<h4 id="managed-options">Managed Options</h4>
+<p>All of the major cloud providers offer their managed service options for
+model deployment. There are a number of startups offering solutions as
+well, like BentoML or Banana.</p>
+<p><img alt="" src="media/image9.png" /></p>
+<p>The most popular managed service is <a href="https://aws.amazon.com/sagemaker/">AWS
+Sagemaker</a>. Working with
+Sagemaker is easier if your model is already in a common format like a
+Huggingface class or a SciKit-Learn model. Sagemaker has convenient
+wrappers for such scenarios. Sagemaker once had a reputation for being a
+difficult service to work with, but this is much less the case for the
+clear-cut use case of model inference. Sagemaker, however, does have
+real drawbacks around ease of use for custom models and around cost. In
+fact, Sagemaker instances tend to be 50-100% more expensive than EC2.</p>
+<h3 id="23-takeaways">2.3 - Takeaways</h3>
+<p>To summarize this section, remember the following:</p>
+<ol>
+<li>
+<p>You <em>probably</em> don't need GPU inference, which is hard to access and
+maintain. Scaling CPUs horizontally or using serverless can
+compensate.</p>
+</li>
+<li>
+<p>Serverless is probably the way to go!</p>
+</li>
+<li>
+<p>Sagemaker is a great way to get started for the AWS user, but it can
+get quite expensive.</p>
+</li>
+<li>
+<p>Don't try to do your own GPU inference; use existing tools like
+TFServing or Triton to save time.</p>
+</li>
+<li>
+<p>Watch out for new startups focused on GPU inference.</p>
+</li>
+</ol>
+<h2 id="3-move-to-the-edge">3 - Move to the Edge?</h2>
+<p>Let's now consider the case of moving models out of web service and all
+the way to the "edge", or wholly on-device. Some reasons you may need to
+consider this include a lack of reliable internet access for users or
+strict data security requirements.</p>
+<p>If such hard and fast requirements aren't in place, you'll need to take
+into account the tradeoff between accuracy and latency and how this can
+affect the end-user experience. Put simply, <strong>if you have exhausted all
+options to reduce model prediction time (a component of latency),
+consider edge deployment</strong>.</p>
+<p><img alt="" src="media/image4.png" /></p>
+<p>Edge deployment adds considerable complexity, so it should be considered
+carefully before being selected as an option. In edge prediction, model
+weights are directly loaded on our client device after being sent via a
+server (shown above), and the model is loaded and interacted with
+directly on the device.</p>
+<p>This approach has compelling pros and cons:</p>
+<ol>
+<li>
+<p>Some pros to particularly call out are the latency advantages that
+come without the need for a network and the ability to scale for
+"free," or the simple fact that you don't need to worry about the
+challenges of running a web service if all inference is done
+locally.</p>
+</li>
+<li>
+<p>Some specific cons to call out are the often limited hardware and
+software resources available to run machine learning models on
+edge, as well as the challenge of updating models since users
+control this process more than you do as the model author.</p>
+</li>
+</ol>
+<h3 id="31-frameworks">3.1 - Frameworks</h3>
+<p>Picking the right framework to do edge deployment depends both on how
+you train your model and what the target device you want to deploy it on
+is.</p>
+<ul>
+<li>
+<p><a href="https://developer.nvidia.com/tensorrt">TensorRT</a>: If
+you're deploying to NVIDIA, this is the choice to go with.</p>
+</li>
+<li>
+<p><a href="https://developers.google.com/ml-kit">MLKit</a> and
+<a href="https://developer.apple.com/documentation/coreml">CoreML</a><strong>:</strong>
+For phone-based deployment on either Android <strong>or</strong> iPhone, go
+with MLKit for the former and CoreML for the latter.</p>
+</li>
+<li>
+<p><a href="https://pytorch.org/mobile">PyTorch Mobile</a><strong>:</strong> For
+compatibility with both iOS and Android, use PyTorch Mobile.</p>
+</li>
+<li>
+<p><a href="https://www.tensorflow.org/lite">TFLite</a>: A great
+choice for using TensorFlow in a variety of settings, not just on
+a phone or a common device.</p>
+</li>
+<li>
+<p><a href="https://www.tensorflow.org/js">TensorFlow JS</a><strong>:</strong>
+The preferred framework for deploying machine learning in the
+browser.</p>
+</li>
+<li>
+<p><a href="https://tvm.apache.org/">Apache TVM</a>: A library
+agnostic, target device agnostic option. This is the choice for
+anyone trying to deploy to as diverse a number of settings as
+possible.</p>
+</li>
+</ul>
+<p>Keep paying attention to this space! There are a lot of startups like
+<a href="https://mlir.llvm.org/">MLIR</a>,
+<a href="https://octoml.ai/">OctoML</a>,
+<a href="https://www.tinyml.org/">TinyML</a>, and
+<a href="https://www.modular.com/">Modular</a> that are aiming to
+solve some of these problems.</p>
+<h3 id="32-efficiency">3.2 - Efficiency</h3>
+<p>No software can help run edge-deployed models that are simply too large;
+<strong>model efficiency</strong> is important for edge deployment! We previously
+discussed quantization and distillation as options for model efficiency.
+However, there are also network architectures specifically designed to
+work better in edge settings like
+<a href="https://medium.com/@yu4u/why-mobilenet-and-its-variants-e-g-shufflenet-are-fast-1c7048b9618d">MobileNets</a>.
+MobileNets replace the more expensive computations typical of server-run
+models with simpler computations and achieve acceptable performance
+oftentimes.</p>
+<p><img alt="" src="media/image17.png" /></p>
+<p>MobileNets are a great tool for model deployments and are a great case
+study in model efficiency. Another similarly great case study is
+<a href="https://medium.com/huggingface/distilbert-8cf3380435b5">DistillBERT</a>.</p>
+<p><img alt="" src="media/image13.png" /></p>
+<h3 id="33-mindsets">3.3 - Mindsets</h3>
+<p>As we wrap up this lecture, keep in mind the following mindsets as you
+consider edge deployment:</p>
+<ol>
+<li>
+<p><strong>Start with the edge requirement, not the architecture choice</strong>.
+It's easy to pick a high-performing model architecture, only to
+then find it impossible to run on the edge device. Avoid this
+scenario at all costs! Tricks like quantization can account for up
+to 10x improvement, but not much more.</p>
+</li>
+<li>
+<p><strong>Once you have a model that works on the edge, you can iterate
+locally without too much additional re-deployment.</strong> In this case,
+make sure to add metrics around the model size and edge
+performance to your experiment tracking.</p>
+</li>
+<li>
+<p><strong>Treat tuning the model as an additional risk and test
+accordingly.</strong> With the immaturity of edge deployment frameworks,
+it's crucial to be especially careful when testing your model on
+the exact hardware you'll be deploying on.</p>
+</li>
+<li>
+<p><strong>Make sure to have fallbacks!</strong> Models are finicky and prone to
+unpredictable behavior. In edge cases, it's especially important
+to have easily available fallback options for models that aren't
+working.</p>
+</li>
+</ol>
+<h3 id="34-conclusion">3.4 - Conclusion</h3>
+<p>To summarize this section:</p>
+<ol>
+<li>
+<p>Web deployment is easier, so use edge deployment only if you need
+to.</p>
+</li>
+<li>
+<p>Choose your framework to match the available hardware and
+corresponding mobile frameworks, or try Apache TVM to be more
+flexible.</p>
+</li>
+<li>
+<p>Start considering hardware constraints at the beginning of the
+project and choose architectures accordingly.</p>
+</li>
+</ol>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

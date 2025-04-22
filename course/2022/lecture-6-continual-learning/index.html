@@ -1,0 +1,3714 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="How to continuously improve models in production">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/course/2022/lecture-6-continual-learning/">
+      
+      
+        <link rel="prev" href="../lab-7-web-deployment/">
+      
+      
+        <link rel="next" href="../lab-8-model-monitoring/">
+      
+      
+      <link rel="icon" href="../../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 6: Continual Learning - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 6: Continual Learning" />
+<meta property="og:description" content="How to continuously improve models in production" />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/course/2022/lecture-6-continual-learning/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 6: Continual Learning" />
+<meta name="twitter:description" content="How to continuously improve models in production" />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-6-continual-learning" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 6: Continual Learning
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-to-think-about-continual-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - How to Think About Continual Learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-periodic-retraining" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Periodic Retraining
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-iterating-on-your-retraining-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Iterating On Your Retraining Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Iterating On Your Retraining Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-metrics-to-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Metrics to Monitor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Metrics to Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outcomes-and-feedback-from-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outcomes and Feedback From Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution Drift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distribution Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-measure-distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Measure Distribution Drift?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Distribution Drift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-measure-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Measure It?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-metrics-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Metrics To Use?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-high-dimensional-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dealing with High-Dimensional Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cons-of-looking-at-distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cons of Looking at Distribution Drift
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-tell-if-those-metrics-are-bad" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Tell If Those Metrics are "Bad"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-for-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools for Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-retraining-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Retraining Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - Retraining Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retraining-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retraining Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-formation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Formation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offline-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-continual-improvement-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - The Continual Improvement Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" >
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../../spring2021/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../spring2021/panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#1-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Overview
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#2-how-to-think-about-continual-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - How to Think About Continual Learning
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#3-periodic-retraining" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Periodic Retraining
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#4-iterating-on-your-retraining-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Iterating On Your Retraining Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Iterating On Your Retraining Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#what-metrics-to-monitor" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Metrics to Monitor
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="What Metrics to Monitor">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#outcomes-and-feedback-from-users" class="md-nav__link">
+    <span class="md-ellipsis">
+      Outcomes and Feedback From Users
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#model-performance-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Model Performance Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#proxy-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      Proxy Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-quality" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Quality
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Distribution Drift
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Distribution Drift">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#why-measure-distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Why Measure Distribution Drift?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#types-of-distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Types of Distribution Drift
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-measure-it" class="md-nav__link">
+    <span class="md-ellipsis">
+      How to Measure It?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-metrics-to-use" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Metrics To Use?
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dealing-with-high-dimensional-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dealing with High-Dimensional Data
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#cons-of-looking-at-distribution-drift" class="md-nav__link">
+    <span class="md-ellipsis">
+      Cons of Looking at Distribution Drift
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#system-metrics" class="md-nav__link">
+    <span class="md-ellipsis">
+      System Metrics
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#practical-recommendations" class="md-nav__link">
+    <span class="md-ellipsis">
+      Practical Recommendations
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#how-to-tell-if-those-metrics-are-bad" class="md-nav__link">
+    <span class="md-ellipsis">
+      How To Tell If Those Metrics are "Bad"
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#tools-for-monitoring" class="md-nav__link">
+    <span class="md-ellipsis">
+      Tools for Monitoring
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#5-retraining-strategy" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Retraining Strategy
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="5 - Retraining Strategy">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#logging" class="md-nav__link">
+    <span class="md-ellipsis">
+      Logging
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#curation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Curation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#retraining-triggers" class="md-nav__link">
+    <span class="md-ellipsis">
+      Retraining Triggers
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dataset-formation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Dataset Formation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#offline-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Offline Testing
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#online-testing" class="md-nav__link">
+    <span class="md-ellipsis">
+      Online Testing
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#6-the-continual-improvement-workflow" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - The Continual Improvement Workflow
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#7-takeaways" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Takeaways
+    </span>
+  </a>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-6-continual-learning">Lecture 6: Continual Learning</h1>
+<div align="center">
+<iframe width="720" height="405" src="https://www.youtube-nocookie.com/embed/nra0Tt3a-Oc?list=PL1T8fO7ArWleMMI8KPJ_5D5XSlovTW_Ur" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+</div>
+
+<p>Lecture by <a href="https://twitter.com/josh_tobin_">Josh Tobin</a>.
+Notes by <a href="https://twitter.com/le_james94">James Le</a> and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.<br />
+Published September 12, 2022.
+<a href="https://fsdl.me/2022-lecture-06-slides">Download slides</a>.</p>
+<h2 id="1-overview">1 - Overview</h2>
+<p>The core justification for continual learning is that, unlike in
+academia, we never deal with static data distributions in the real
+world. The implication is that: <strong>if you want to use ML in production
+and build ML-powered products, you need to think about your goal of
+building a continual learning system, not just a static model</strong>.</p>
+<p>Recalling the data flywheel that we've described in this class before:
+as you get more users, those users bring more data. You can use the data
+to make a better model. A better model helps you attract even more users
+and build a better model over time. Andrej Karpathy described the most
+optimistic version of it as "<a href="https://www.youtube.com/watch?v=hx7BXih7zx8">Operation
+Vacation</a>" -
+if we make our continual learning system good enough, it'll get better
+on its own over time, and ML engineers can just go on vacation.</p>
+<p><img alt="" src="media/image6.png" /></p>
+<p>The reality is quite different. Initially, we gather, clean, and label
+some data. We train a model on that data. Then we evaluate the model and
+loop back to training the model to improve it based on our evaluations.
+Finally, we get a minimum viable model and deploy it into production.</p>
+<p><img alt="" src="media/image1.png" /></p>
+<p>The problem begins after we deploy the model: we generally don't have a
+great way of measuring how our models are actually performing in
+production. Often, we just spot-check some predictions to see if they
+are doing what they are supposed to do. If it seems to work, then it's
+great. We move on to work on other things.</p>
+<p><img alt="" src="media/image8.png" /></p>
+<p>Unfortunately, the ML engineer is probably not the one who discovers the
+problems, to begin with. Some business user or product manager gets
+complaints from users about a dipping metric, which leads to an
+investigation. This already costs the company money because the product
+and business teams must investigate the problem.</p>
+<p><img alt="" src="media/image12.png" /></p>
+<p>Eventually, they point back to the ML engineer and the model he is
+responsible for. At this point, we are stuck on doing ad-hoc analyses
+because we don't know what caused the model failure. Eventually, we can
+run a bunch of SQL queries and paste together some Jupyter notebooks to
+figure out what the problem is. If we are lucky, we can run an A/B test.
+If the test looks good, we'll deploy it into production. Then, we are
+back to where we started - <strong>not getting ongoing feedback about how the
+model is doing in production</strong>.</p>
+<p>The upshot is that <strong>continual learning is the least well-understood
+part of the production ML lifecycle</strong>. Very few companies are doing this
+in production today. This lecture focuses on how to improve different
+steps of the continual learning process, pointers to learn about each
+step, and recommendations for doing it pragmatically and adopting it
+gradually.</p>
+<h2 id="2-how-to-think-about-continual-learning">2 - How to Think About Continual Learning</h2>
+<p>Our opinionated view about continual learning is <strong>training a sequence
+of models that can adapt to a continuous stream of data that comes into
+production.</strong> You can think about continual learning as an outer loop in
+your training process. On one end of the loop is your application, which
+consists of a model and some other code that users interact with that
+application by submitting requests, getting predictions back, and
+submitting feedback about how well the model did at providing that
+prediction.</p>
+<p>The continual learning loop starts with <strong>logging</strong>, which is how we get
+all the data into the loop. Then we have <strong>data curation</strong>, <strong>triggers</strong>
+for the retraining process, <strong>dataset formation</strong> to pick the data to
+retrain on, the <strong>training</strong> process itself, and <strong>offline testing</strong> to
+validate whether the retrained model is good enough to go into
+production. After the model is deployed, we have <strong>online testing</strong>, and
+that brings the next version of the model into production, where we can
+start the loop all over.</p>
+<p>Each of these stages passes the output to the next step. Output is
+defined by a set of rules. These rules combine to form our <strong>retraining
+strategy</strong>. Let's discuss what the retraining strategy looks like for
+each stage:</p>
+<p><img alt="" src="media/image7.png" /></p>
+<p>At the <strong>logging</strong> stage, the key question answered by the retraining
+strategy is <strong>what data should we store</strong>? At the end of this stage, we
+have an "infinite stream" of potentially unlabeled data coming from
+production and can be used for downstream analysis.</p>
+<p><img alt="" src="media/image3.png" /></p>
+<p>At the <strong>curation</strong> stage, the key rules we need to define are <strong>what
+data from that infinite stream will we prioritize for labeling and
+potential retraining?</strong> At the end of this stage, we have a reservoir of
+candidate training points that have labels and are fully ready to be fed
+back into a training process.</p>
+<p><img alt="" src="media/image5.png" /></p>
+<p>At the <strong>retraining trigger</strong> stage, the key question is <strong>when should
+we retrain?</strong> The output of this stage is a signal to kick off a
+retraining job.</p>
+<p><img alt="" src="media/image2.png" /></p>
+<p>At the <strong>dataset formation</strong> stage, the key rules we need to define are
+<strong>from this entire reservoir of data, what specific subset of that data
+are we using to train on for this particular training job?</strong> The output
+of this stage is a view into that reservoir or training data that
+specifies the exact data points to be used for the training job.</p>
+<p><img alt="" src="media/image22.png" /></p>
+<p>At the <strong>offline testing</strong> stage, the key rule we need to define is
+<strong>what "good enough" looks like for all stakeholders.</strong> The output of
+this stage is equivalent to a "pull request" report card for your model
+with a clear sign-off process. Once you are signed off, the new model
+will roll out into production.</p>
+<p><img alt="" src="media/image21.png" /></p>
+<p>Finally, at the <strong>deployment and online testing</strong> stage, the key rule to
+define is <strong>how do we know if this deployment was successful?</strong> The
+output of this stage is a signal to roll this model out fully to all of
+your users.</p>
+<p>In an idealized world, from an ML engineer's perspective, once the model
+is deployed, the first version of the model is to not retrain the model
+directly. Instead, we want the model to sit on top of the retraining
+strategy and try to improve that strategy over time. Rather than
+training models daily, we look at metrics about how well the strategy is
+working and how well it's solving the task of improving our model over
+time in response to changes in the world. The input that we provide is
+by tuning the strategy to do a better job of solving that task.</p>
+<p>For most ML engineers, our jobs don't feel like that at a high level.
+<strong>Our retraining strategy is just retraining models whenever we feel
+like it</strong>. We can get good results from ad-hoc retraining, but when you
+start getting consistent results and no one is actively working on the
+model day to day anymore, then it's worth starting to add some
+automation. Alternatively, if you find yourself needing to retrain the
+model more than once a week (or even more frequently than that) to deal
+with changing results in the real world, then it's worth investing in
+automation just to save yourself.</p>
+<h2 id="3-periodic-retraining">3 - Periodic Retraining</h2>
+<p>The first baseline retraining strategy that you should consider after
+you move on from ad-hoc is just <strong>periodic retraining</strong>:</p>
+<ol>
+<li>
+<p>At the logging stage, we simply log everything.</p>
+</li>
+<li>
+<p>At the curation stage, we sample uniformly at random from the data
+that we've logged up until we get the maximum number of data
+points that we are able to handle. Then we label them using some
+automated tools.</p>
+</li>
+<li>
+<p>Our retraining trigger will just be periodic.</p>
+</li>
+<li>
+<p>We train once a week, but we do it on the last month's data, for
+example.</p>
+</li>
+<li>
+<p>Then we compute the test set accuracy after each training, set a
+threshold on that, or more likely manual review the results each
+time, and spot-check some of the predictions.</p>
+</li>
+<li>
+<p>When we deploy the model, we do spot evaluations of that deployed
+model on a few individual predictions to make sure things look
+healthy.</p>
+</li>
+</ol>
+<p><img alt="" src="media/image17.png" /></p>
+<p>Periodic retraining won't work in every circumstance. There are several
+failure modes:</p>
+<ol>
+<li>
+<p>The first category is that you have more data than you can log or
+label. If you have a <strong>high volume</strong> of data, you might need to be
+more careful about what data to sample and enrich, particularly if
+that data comes from <strong>a long-tail distribution</strong> - where you have
+edge cases that your model needs to perform well on, but those
+edge cases might not be caught by just doing standard uniform
+sampling. Or if that data is expensive to label like in a
+<strong>human-in-the-loop</strong> scenario - where you need custom labeling
+rules or labeling is a part of the product. In either of those
+cases, you need to be more careful about what subset of your data
+you log and enrich to be used down the road.</p>
+</li>
+<li>
+<p>The second category has to do with <strong>managing the cost of
+retraining</strong>. If your model is expensive to retrain, retraining it
+periodically is not going to be the most cost-efficient way to go,
+especially if you do it on a rolling window of data every single
+time. You will leave a lot of performance on the table by not
+retraining more frequently. You can partially solve this by
+increasing the retraining frequency, but this will increase the
+costs even further.</p>
+</li>
+<li>
+<p>The final failure mode is situations where you have <strong>a high cost of
+bad predictions</strong>. Every time you retrain your model, it
+introduces risk, which comes from the fact that the data you're
+training the model on might be bad in some way. It might be
+corrupted, might have been attacked by an adversary, or might not
+be representative anymore of all the cases that your model needs
+to perform well on. The more frequently you retrain and the more
+sensitive you are to model failures, the more thoughtful you need
+to be about careful model evaluation such that you are not unduly
+taking on too much risk from frequent retraining.</p>
+</li>
+</ol>
+<h2 id="4-iterating-on-your-retraining-strategy">4 - Iterating On Your Retraining Strategy</h2>
+<p>The main takeaway from this section is that <strong>we will use monitoring and
+observability to determine what changes we want to make to our
+retraining strategy</strong>.</p>
+<ol>
+<li>
+<p>We'll do that by monitoring just the metrics that actually that
+matter and using all other metrics for debugging.</p>
+</li>
+<li>
+<p>When we debug an issue with our model, that will lead to potentially
+retraining our model. But more broadly than that, we can think of
+it as a change to the retraining strategy - changing our
+retraining triggers, our offline tests, our sampling strategies,
+the metrics for observability, etc.</p>
+</li>
+<li>
+<p>As we get more confident in our monitoring, we can introduce more
+automation to our system.</p>
+</li>
+</ol>
+<p>There are no real standards or best practices on model monitoring yet.
+The main principles we'll follow are: (1) We'll focus on monitoring what
+matters and what breaks empirically; and (2) We'll compute other signals
+too but use them for observability and debugging.</p>
+<p><img alt="" src="media/image13.png" /></p>
+<p>What does it mean to monitor a model in production? We think about it
+as: You have some metric to assess the model quality (i.e, accuracy) and
+a time series of how that metric changes over time. The question you try
+to answer is: <strong>Is this bad or okay?</strong> Do you need to pay attention to
+this degradation or not?</p>
+<p>The questions we'll need to answer are:</p>
+<ol>
+<li>
+<p>What metrics should we be looking at when we are monitoring?</p>
+</li>
+<li>
+<p>How can we tell if those metrics are bad and warrant an
+intervention?</p>
+</li>
+<li>
+<p>What are the tools that help us with this process?</p>
+</li>
+</ol>
+<h3 id="what-metrics-to-monitor">What Metrics to Monitor</h3>
+<p>Choosing the right metric to monitor is probably the most important part
+of this process. Below you can find different types of metrics ranked in
+order of how valuable they are.</p>
+<p><img alt="" src="media/image11.png" /></p>
+<h4 id="outcomes-and-feedback-from-users">Outcomes and Feedback From Users</h4>
+<p>The most valuable one to look at is <strong>outcome data or feedback from your
+users</strong>. Unfortunately, there are no one-size-fits-all ways to do this
+because it depends a lot on the specifics of the product you are
+building. This is more of a product management question of how to design
+your product in a way that you can capture feedback from your users as
+part of the product experience.</p>
+<h4 id="model-performance-metrics">Model Performance Metrics</h4>
+<p>The next most valuable signal to look at is <strong>model performance
+metrics</strong>. These are offline metrics such as accuracy. This is less
+useful than user feedback because of loss mismatch. A common experience
+many ML practitioners have is that improving model performance leads to
+the same or worse outcome. There's very little excuse for not doing
+this. To some degree, you can label some production data each day by
+setting up an on-call rotation or throwing a labeling party. These
+practices will give you some sense of how your model performance trends
+over time.</p>
+<p><img alt="" src="media/image10.png" /></p>
+<h4 id="proxy-metrics">Proxy Metrics</h4>
+<p>The next best thing to look at is <strong>proxy metrics</strong>, which are
+correlated with bad model performance. These are mostly domain-specific.
+For example, if you are building text generation with a language model,
+two examples would be repetitive and toxic outputs. If you are building
+a recommendation system, an example would be the share of personalized
+responses. <strong>Edge cases</strong> can be good proxy metrics. If there are
+certain problems you know that you have with your model, if those
+increase in prevalence, that might mean your model is not doing very
+well.</p>
+<p>There's an academic direction that aims at being able to take any metric
+you care about and approximate it on previously unseen data. How well do
+we think our model is doing on this new data? Which would make these
+proxy metrics a lot more practically useful? There are a number of
+different approaches here: from training an auxiliary model to predict
+how well your main model might do on this offline data, to using
+heuristics and human-in-the-loop methods.</p>
+<p><img alt="" src="media/image20.png" /></p>
+<p>An unfortunate result from this literature is that it's not possible to
+have a single method you use in all circumstances to approximate how
+your model is doing on out-of-distribution data. Let's say you are
+looking at the input data to predict how the model will perform on those
+input points. Then the label distribution changes. As a result, you
+won't be able to take into account that change in your approximate
+metric.</p>
+<h4 id="data-quality">Data Quality</h4>
+<p>The next signal to look at is <strong>data quality.</strong> <a href="https://lakefs.io/data-quality-testing/">Data quality
+testing</a> is a set
+of rules you apply to measure the quality of your data. This deals with
+questions such as: How well does a piece of information reflect reality?
+Does it fulfill your expectations of what's comprehensive? Is your
+information available when you need it? Some common examples include
+checking whether the data has the right schema, the data is in the
+expected range, and the number of records is not anomalous.</p>
+<p><img alt="" src="media/image19.png" /></p>
+<p>This is useful because data problems tend to be the most common issue
+with ML models in practice. In <a href="https://www.usenix.org/conference/opml20/presentation/papasian">a Google
+report</a>
+which covered 15 years of different pipeline outages with a particular
+ML model, most of the outages that happened with that model were
+distributed systems problems, commonly data problems.</p>
+<h4 id="distribution-drift">Distribution Drift</h4>
+<h5 id="why-measure-distribution-drift">Why Measure Distribution Drift?</h5>
+<p>Your model's performance is only guaranteed on <strong>data sampled from the
+same distribution</strong> as it was trained on. This can have a huge impact in
+practice. A recent example includes changes in model behavior during the
+pandemic. A bug in the retraining pipeline caused the recommendations
+not to be updated for new users, leading to millions of dollars in
+revenue lost.</p>
+<h5 id="types-of-distribution-drift">Types of Distribution Drift</h5>
+<p>Distribution drift manifests itself in different ways in the wild:</p>
+<ol>
+<li>
+<p><strong>Instantaneous drift</strong> happens when a model is deployed in a new
+domain, a bug is introduced in the pre-processing pipeline, or a
+big external shift like COVID occurs.</p>
+</li>
+<li>
+<p><strong>Gradual drift</strong> happens when users\' preferences change or new
+concepts get introduced to the corpus over time.</p>
+</li>
+<li>
+<p><strong>Periodic drift</strong> happens when users' preferences are seasonal or
+people in different time zones use your model differently.</p>
+</li>
+<li>
+<p><strong>Temporary drift</strong> happens when a malicious user attacks your
+model, a new user tries your product and churns, or someone uses
+your product in an unintended way.</p>
+</li>
+</ol>
+<h5 id="how-to-measure-it">How to Measure It?</h5>
+<p>How to tell if your distribution is drifted?</p>
+<ol>
+<li>
+<p>Your first <strong>select a window of "good" data to serve as a
+reference</strong>. To select that reference, you can use a fixed window
+of production data you believe to be healthy. <a href="https://arxiv.org/abs/1908.04240">Some
+papers</a> advocate
+for using a sliding window of production data. In practice, most
+of the time you probably should use your validation data as the
+reference.</p>
+</li>
+<li>
+<p>Once you have that reference data, you <strong>select a new window of
+production data to measure your distribution distance on</strong>. This
+is not a super principled approach and tends to be
+problem-dependent. A pragmatic solution is to pick one or several
+window sizes with a reasonable amount of data and slide them.</p>
+</li>
+<li>
+<p>Finally, once you have your reference window and production window,
+you <strong>compare the windows using a distribution distance metric</strong>.</p>
+</li>
+</ol>
+<h5 id="what-metrics-to-use">What Metrics To Use?</h5>
+<p>Let's start by considering the one-dimensional case, where you have a
+particular feature that is one-dimensional and can compute a density of
+that feature on your reference/production windows. You want some metric
+that approximates the distance between these two distributions.</p>
+<p><img alt="" src="media/image9.png" /></p>
+<p>There are a few options here:</p>
+<ol>
+<li>
+<p>The commonly recommended ones are the KL divergence and the KS test.
+But they are actually bad choices.</p>
+</li>
+<li>
+<p>Sometimes-better options would be (1) infinity norm or 1-norm of the
+diff between probabilities for each category, and (2)
+Earth-mover's distance (a more statistically principled approach).</p>
+</li>
+</ol>
+<p>Check out <a href="https://gantry.io/blog/youre-probably-monitoring-your-models-wrong/">this Gantry blog
+post</a>
+to learn more about why the commonly recommended metrics are not so good
+and the other ones are better.</p>
+<h5 id="dealing-with-high-dimensional-data">Dealing with High-Dimensional Data</h5>
+<p>In the real world for most models, we have potentially many input
+features or even unstructured data that is very high-dimensional. How do
+we deal with detecting distribution drift in those cases?</p>
+<ol>
+<li>
+<p>You can measure <strong>drift on all of the features independently</strong>: If
+you have a lot of features, you will hit <a href="https://multithreaded.stitchfix.com/blog/2015/10/15/multiple-hypothesis-testing/">the multiple hypothesis
+testing
+problem</a>.
+Furthermore, this doesn't capture cross-correlation.</p>
+</li>
+<li>
+<p>You can measure <strong>drift on only the important features</strong>: Generally
+speaking, it's a lot more useful to measure drift on the outputs
+of the model than the inputs. You can also <a href="https://christophm.github.io/interpretable-ml-book/feature-importance.html">rank the importance
+of your input
+features</a>
+and measure drift on the most important ones.</p>
+</li>
+<li>
+<p>You can look at <strong>metrics that natively compute or approximate the
+distribution distance between high-dimensional distributions</strong>:
+The two that are worth checking out are <a href="https://jmlr.csail.mit.edu/papers/v13/gretton12a.html">maximum mean
+discrepancy</a>
+and <a href="https://arxiv.org/abs/1904.05877">approximate Earth-mover's
+distance</a>. The
+caveat here is that they are pretty hard to interpret.</p>
+</li>
+</ol>
+<p><img alt="" src="media/image14.png" /></p>
+<p>A more principled way to measure distribution drift for high-dimensional
+inputs to the model is to use <strong>projections</strong>. The idea of a projection
+is that:</p>
+<ol>
+<li>
+<p>You first take some high-dimensional input to the model and run that
+through a function.</p>
+</li>
+<li>
+<p>Each data point your model makes a prediction on gets tagged by this
+projection function. The goal of this projection function is to
+reduce the dimensionality of that input.</p>
+</li>
+<li>
+<p>Once you've reduced the dimensionality, you can do drift detection
+on that lower-dimensional representation of the high-dimensional
+data.</p>
+</li>
+</ol>
+<p>This approach works for any kind of data, no matter what the
+dimensionality is or what the data type is. It's also highly flexible.
+There are different types of projections that can be useful:
+<strong>analytical projections</strong> (e.g., mean pixel value, length of sentence,
+or any other function), <strong>random projections</strong> (e.g., linear), and
+<strong>statistical projections</strong> (e.g., autoencoder or other density models,
+T-SNE).</p>
+<h5 id="cons-of-looking-at-distribution-drift">Cons of Looking at Distribution Drift</h5>
+<p><img alt="" src="media/image18.png" /></p>
+<p><strong>Models are designed to be robust to some degree of distribution
+drift</strong>. The figure on the left above shows a toy example to demonstrate
+this point. We have a classifier that's trained to predict two classes.
+We've induced a synthetic distribution shift to shift the red points on
+the top left to bottom. These two distributions are extremely different,
+but the model performs equally well on the training data and the
+production data. In other words, knowing the distribution shift doesn't
+tell you how the model has reacted to that shift.</p>
+<p>The figure on the right is a research project that used data generated
+from a physics simulator to solve problems on real-world robots. The
+training data was highly out of distribution (low-fidelity, random
+images). However, by training on this set of training data, the model
+was able to generalize to real-world scenarios on the test data.</p>
+<p>Beyond the theoretical limitations of measuring distribution drift, this
+is just hard to do in practice. You have to window size correctly. You
+have to keep all this data around. You need to choose metrics. You need
+to define projections to make your data lower-dimensional.</p>
+<h4 id="system-metrics">System Metrics</h4>
+<p>The last thing to consider looking at is your standard <strong>system
+metrics</strong> such as CPU utilization, GPU memory usage, etc. These don't
+tell you anything about how your model is actually performing, but they
+can tell you when something is going wrong.</p>
+<h4 id="practical-recommendations">Practical Recommendations</h4>
+<p>We also want to look at how hard it is to compute the aforementioned
+stages in practice. As seen below, the Y-axis shows the <strong>value</strong> of
+each signal and the X-axis shows the <strong>feasibility</strong> of measuring each
+signal.</p>
+<ol>
+<li>
+<p>Measuring outcomes or feedback has pretty wide variability in terms
+of how feasible it is to do, as it depends on how your product is
+set up.</p>
+</li>
+<li>
+<p>Measuring model performance tends to be the least feasible thing to
+do because it involves collecting some labels.</p>
+</li>
+<li>
+<p>Proxy metrics are easier to compute because they don't involve
+labels.</p>
+</li>
+<li>
+<p>System metrics and data quality metrics are highly feasible because
+you have off-the-shelf tools for them.</p>
+</li>
+</ol>
+<p><img alt="" src="media/image15.png" /></p>
+<p>Here are our practical recommendations:</p>
+<ol>
+<li>
+<p>Basic data quality checks are zero-regret, especially if you are
+retraining your model.</p>
+</li>
+<li>
+<p>Get some way to measure feedback, model performance, or proxy
+metrics, even if it's hacky or not scalable.</p>
+</li>
+<li>
+<p>If your model produces low-dimensional outputs, monitoring those for
+distribution shifts is also a good idea.</p>
+</li>
+<li>
+<p>As you evolve your system, practice the <strong>observability</strong> mindset.</p>
+</li>
+</ol>
+<p>While you can think of monitoring as measuring the known unknowns (e.g.,
+setting alerts on a few key metrics), <a href="https://www.honeycomb.io/blog/observability-a-manifesto/">observability is measuring
+unknown
+unknowns</a>
+(e.g., having the power to ask arbitrary questions about your system
+when it breaks). An observability mindset means two implications:</p>
+<ol>
+<li>
+<p>You should keep around the context or raw data that makes up the
+metrics that you are computing since you want to be able to drill
+all the way down to potentially the data points themselves that
+make up the degraded metric.</p>
+</li>
+<li>
+<p>You can go crazy with measurement by defining a lot of different
+metrics. You shouldn't necessarily set alerts on each of those
+since you don't want too many alerts. Drift is a great example
+since it is useful for debugging but less so for monitoring.</p>
+</li>
+</ol>
+<p>Finally, it's important to <strong>go beyond aggregate metrics</strong>. If your
+model is 99% accurate in aggregate but only 50% accurate for your most
+important user, is it still "good"? The way to deal with this is by
+flagging important subgroups or cohorts of data and alerting on
+important metrics across them. Some examples are categories you don't
+want to be biased against, "important" categories of users, and
+categories you might expect to perform differently on (languages,
+regions, etc.).</p>
+<h3 id="how-to-tell-if-those-metrics-are-bad">How To Tell If Those Metrics are "Bad"</h3>
+<p>We don't recommend statistical tests (e.g., KS-Test) because they try to
+return a p-value for the likelihood that the data distributions are not
+the same. When you have a lot of data, you will get very small p-values
+for small shifts. This is not what we actually care about since models
+are robust to a small number of distribution shifts.</p>
+<p>Better options than statistical tests include fixed rules, specific
+ranges, predicted ranges, and unsupervised detection of new patterns.
+<a href="https://blog.anomalo.com/dynamic-data-testing-f831435dba90?gi=fb4db0e2ecb4">This article on dynamic data
+testing</a>
+has the details.</p>
+<p><img alt="" src="media/image16.png" /></p>
+<h3 id="tools-for-monitoring">Tools for Monitoring</h3>
+<p>The first category is <strong>system monitoring</strong> tools, a premature category
+with different companies in it
+(<a href="https://www.datadoghq.com/">Datadog</a>,
+<a href="https://www.honeycomb.io/">Honeycomb</a>, <a href="https://newrelic.com/">New
+Relic</a>, <a href="https://aws.amazon.com/cloudwatch/">Amazon
+CloudWatch</a>, etc.).
+They help you detect problems with any software system, not just ML
+models. They provide functionality for setting alarms when things go
+wrong. Most cloud providers have decent monitoring solutions, but if you
+want something better, you can look at monitoring-specific tools to
+monitor anything.</p>
+<p>This raises the question of whether we should just use these system
+monitoring tools to monitor ML metrics as well. <a href="https://www.shreya-shankar.com/rethinking-ml-monitoring-3/">This blog
+post</a>
+explains that it's feasible but highly painful due to many technical
+reasons. Thus, it's better to use ML-specific tools.</p>
+<p>Two popular open-source monitoring tools are
+<a href="https://github.com/evidentlyai">EvidentlyAI</a> and
+<a href="https://github.com/whylabs/whylogs">whylogs</a>.</p>
+<ul>
+<li>
+<p>Both are similar in that you provide them with samples of data and
+they produce a nice report that tells you where their distribution
+shifts are.</p>
+</li>
+<li>
+<p>The big limitation of both is that they don't solve the data
+infrastructure and the scale problem. You still need to be able to
+get all that data into a place where you can analyze it with these
+tools.</p>
+</li>
+<li>
+<p>The main difference between them is that whylogs is more focused on
+gathering data from the edge by aggregating the data into
+statistical profiles at inference time. You don't need to
+transport all the data from your inference devices back to your
+cloud.</p>
+</li>
+</ul>
+<p><img alt="" src="media/image4.png" /></p>
+<p>Lastly, there are a bunch of different SaaS vendors for ML monitoring
+and observability: <a href="https://gantry.io/">Gantry</a>,
+<a href="https://www.aporia.com/">Aporia</a>,
+<a href="https://superwise.ai/">Superwise</a>,
+<a href="https://arize.com/">Arize</a>,
+<a href="https://www.fiddler.ai/">Fiddler</a>,
+<a href="https://arthur.ai/">Arthur</a>, etc.</p>
+<h2 id="5-retraining-strategy">5 - Retraining Strategy</h2>
+<p>We’ve talked about monitoring and observability, which allow you to identify issues with your continual learning system. Now, we’ll talk about how we will fix the various stages of the continual learning process based on what we learn from monitoring and observability.</p>
+<h3 id="logging">Logging</h3>
+<p>The first stage of the continual learning loop is <strong>logging</strong>. As a reminder, the goal of logging is to get data from your model to a place where you can analyze it. The key question to answer here is: “<strong>what data should I actually log?</strong>”</p>
+<p>For most of us, the best answer is just to log all of the data. Storage is cheap. It's better to have data than not to have it. There are, however, some situations where you can't do that. For example, if you have too much traffic going through your model to the point where it's too expensive to log all of it, or if you have data privacy concerns, or if you're running your model at the edge, you simply may not be able to log all your data. </p>
+<p>In these situations, there are two approaches that you can take. The first approach is <strong>profiling</strong>. With profiling, rather than sending all the data back to your cloud and then using that to monitor, you instead compute <strong>statistical profiles</strong> of your data on the edge that describe the data distribution that you're seeing. This is great from a data security perspective because it doesn't require you to send all the data back home. It minimizes your storage cost. Finally, you don't miss things that happen in the tails, which is an issue for the next approach. That'll describe the place to use. This approach is best used for security-critical applications. Computing statistical profiles is a pretty interesting topic in computer science and data summarization that is worth checking out if you’re interested in this approach. </p>
+<p><img alt="alt_text" src="media/image22.png" title="image_tooltip" /></p>
+<p>The other approach is <strong>sampling</strong>. With sampling, you'll just take certain data points and send those back to your monitoring and logging system. The advantage of sampling is that it has minimal impact on your inference resources. You don't have to actually spend the computational budget to compute profiles. You also get to have access to the raw data for debugging and retraining, albeit a smaller amount. This is the approach we recommend for any other kind of application.</p>
+<h3 id="curation">Curation</h3>
+<p>The next step in the continual learning loop is <strong>curation</strong>. The goal of curation is to take the infinite stream of production data, which is potentially unlabeled, and turn it into a finite reservoir of enriched data suitable for training. Here, we must answer, “<strong>what data should be enriched?</strong>”</p>
+<p>You could <strong>sample and enrich data randomly</strong>, but that may not prove helpful to your model. Importantly, you miss rare classes or events. A better approach can be to perform <strong>stratified subsampling</strong>, wherein you sample specific proportions of individuals from various subpopulations (e.g. race). The most advanced strategy for picking data to enrich is to <strong>curate data points</strong> that are somehow interesting for the purpose of improving your model. </p>
+<p>There are a few different ways of doing this: <strong>user-driven curation loops</strong> via feedback loops, <strong>manual curation</strong> via error analysis, and <strong>automatic curation</strong> via active learning. </p>
+<p>User-driven curation is a great approach that is easy to implement, assuming you have a clear way of gathering user feedback. If your user churns, clicks thumbs down, or performs some other similar activity on the model’s output, you have an easy way of understanding data that could be enriched for future training jobs.</p>
+<p><img alt="alt_text" src="media/image23.png" title="image_tooltip" /></p>
+<p>If you don't have user feedback, or if you need even more ways of gathering interesting data from your system, the second most effective way is by doing <strong>manual error analysis</strong>. In this approach, we look at the errors that our model is making, reason about the different types of failure modes that we're seeing, and try to write functions or rules that help capture these error modes. We'll use those functions to gather more data that might represent those error cases. Some examples of these function-based approaches are <strong>similarity-based curation</strong>, which uses nearest neighbors, and <strong>projection-based curation</strong>, wherein we train a new function or model to recognize key data points.</p>
+<p>The last way to curate data is to do so automatically using a class of algorithms called <strong><a href="https://lilianweng.github.io/posts/2022-02-20-active-learning/">active learning</a></strong>. The way active learning works is that, given a large amount of unlabeled data, we will try to determine which data points would improve model performance the most (if you were to label those data points next and train on them). These algorithms define <strong>a sampling strategy</strong>, rank all of your unlabeled examples using <strong>a scoring function</strong> that defines the sampling strategy, and mark the data points with the highest scores for future labeling. </p>
+<p>There are a number of different scoring function approaches that are shown below.</p>
+<ol>
+<li><strong>Most uncertain</strong>: sample low-confidence and high-entropy predictions or predictions that an ensemble disagrees on.</li>
+<li><strong>Highest predicted loss</strong>: train a separate model that predicts loss on unlabeled points, then sample the highest predicted loss.</li>
+<li><strong>Most different from labels</strong>: train a model to distinguish labeled and unlabeled data, then sample the easiest to distinguish.</li>
+<li><strong>Most representative</strong>: choose points such that no data is too far away from anything we sampled.</li>
+<li><strong>Big impact on training</strong>: choose points such that the expected gradient is large or points where the model changes its mind the most about its prediction during training.</li>
+</ol>
+<p>Uncertainty scoring tends to be the most commonly used method since it is simple and easy to implement. </p>
+<p>You might have noticed that there's a lot of similarity between some of the ways that we do data curation and the way that we do monitoring. That's no coincidence--<strong>monitoring and data curation are two sides of the same coin!</strong> They're both interested in solving the problem of finding data points where the model may not be performing well or where we're uncertain about how the model is performing on those data points.</p>
+<p><img alt="alt_text" src="media/image24.png" title="image_tooltip" /></p>
+<p>Some examples of people practically applying data curation are OpenAI’s DALL-E 2, which uses <a href="https://openai.com/blog/dall-e-2-pre-training-mitigations/">active learning and manual curation</a>, Tesla, which uses <a href="https://www.youtube.com/watch?v=hx7BXih7zx8">feedback loops and manual curation</a>, and Cruise, which uses feedback loops.</p>
+<p>Some tools that help with data curation are <a href="https://scale.com/nucleus">Scale Nucleus</a>, <a href="https://www.aquariumlearning.com/">Aquarium</a>, and <a href="https://gantry.io/">Gantry</a>. </p>
+<p>To summarize then, here are our final set of recommendations for applying data curation.</p>
+<ol>
+<li>Random sampling is a fine starting point. If you want to avoid bias or have rare classes, do stratified sampling instead.</li>
+<li>If you have a feedback loop, then user-driven curation is a no-brainer. If not, confidence-based active learning is easy to implement.</li>
+<li>As your model performance increases, you’ll have to look harder for challenging training points. Manual techniques are unavoidable and should be embraced. Know your data!</li>
+</ol>
+<h3 id="retraining-triggers">Retraining Triggers</h3>
+<p>After we've curated our infinite stream of unlabeled data down to a reservoir of labeled data that's ready to potentially train on, the next thing that we'll need to decide is “<strong>what trigger are we gonna use to retrain?</strong>”</p>
+<p>The main takeaway here is that moving to automated retraining is <strong>not</strong> always necessary. In many cases, just manually retraining is good enough. It can save you time and lead to better model performance. It's worth understanding when it makes sense to actually make the harder move to automated retraining.</p>
+<p>The main prerequisite for moving to automated retraining is being able to reproduce model performance when retraining in a fairly automated fashion. If you're able to do that and you are not really working on the model actively, it's probably worth implementing some automated retraining. As a rule of thumb, if you’re retraining the model more than once a month, automated retraining may make sense.</p>
+<p>When it's time to move to automated training, the main recommendation is to just keep it simple and <strong>retrain periodically</strong>, e.g. once a week. The main question though is, how do you pick the right training schedule? The recommendation here is to:</p>
+<ol>
+<li>Apply measurement to figure out a reasonable retraining schedule.</li>
+<li>Plot your model performance and degradation over time.</li>
+<li>Compare how retraining the model at various intervals would have resulted in improvements to its performance.</li>
+</ol>
+<p>As seen below, the area between the curves represents the opportunity cost, so always remember to balance the upside of retraining with the operational costs of retraining.</p>
+<p><img alt="alt_text" src="media/image25.png" title="image_tooltip" /></p>
+<p>This is a great area for future academic research! More specifically, we can look at ways to automate determining the optimal retraining strategy based on performance decay, sensitivity to performance, operational costs, and retraining costs.</p>
+<p>An additional option for retraining, rather than time-based intervals, is <strong>performance triggers</strong> (e.g. retrain when the model accuracy dips below 90%). This helps react more quickly to unexpected changes and is more cost-optimal, but requires very good instrumentation to process these signals along with operational complexity.</p>
+<p>An idea that probably won't be relevant but is worth thinking about is <strong>online learning</strong>. In this paradigm, you train on every single data point as it comes in. It's not very commonly used in practice. </p>
+<p>A version of this idea that is used fairly frequently in practice is <strong>online adaptation</strong>. This method operates not at the level of retraining the whole model itself but rather on the level of adapting the policy that sits on top of the model. What is a policy you ask? A policy is the set of rules that takes the raw prediction that the model made, like the score or the raw output of the model, and turns it into the output the user sees. In online adaptation, we use algorithms like multi-armed bandits to tune these policies. If your data changes very frequently, it is worth looking into this method.</p>
+<h3 id="dataset-formation">Dataset Formation</h3>
+<p>Imagine we've fired off a trigger to start a new training job. The next question we need to answer is, among all of the labeled data in our reservoir of data, <strong>what specific data points should we train on for this particular new training job?</strong></p>
+<p>We have four options here. Most of the time in deep learning, we'll just use the first option and <strong>train on all the data that we have available</strong> to us. Remember to keep your data version controlled and your curation rules consistent.</p>
+<p><img alt="alt_text" src="media/image26.png" title="image_tooltip" /></p>
+<p>If you have too much data to do that, you can use recency as a heuristic for a second option and <strong>train on only a sliding window of the most recent data</strong> (if recency is important) or <strong>sample a smaller portion</strong> (if recency isn’t). In the latter case, compare the aggregate statistics between the old and new windows to ensure there aren’t any bugs. It’s also important in both cases to compare the old and new datasets as they may not be related in straightforward ways. </p>
+<p><img alt="alt_text" src="media/image27.png" title="image_tooltip" /></p>
+<p>A useful third option is <strong>online batch selection</strong>, which can be used when recency doesn’t quite matter. In this method, we leverage label-aware selection functions to choose which items in mini-batches to train on. </p>
+<p><img alt="alt_text" src="media/image28.png" title="image_tooltip" /></p>
+<p>A more difficult fourth option that isn’t quite recommended is <strong>continual fine-tuning</strong>. Rather than retraining from scratch every single time, you train your existing model on just new data. The reason why you might wanna do this primarily is because it's much more cost-effective. The paper below shares some findings from GrubHub, where they found a 45x cost improvement by doing this technique relative to sliding windows.</p>
+<p><img alt="alt_text" src="media/image29.png" title="image_tooltip" /></p>
+<p>The big challenge here is that unless you're very careful, it's easy for the model to forget what it learned in the past. The upshot is that you need to have mature evaluation practices to be very careful that your model is performing well on all the types of data that it needs to perform well on.</p>
+<h3 id="offline-testing">Offline Testing</h3>
+<p>After the previous steps, we now have a new candidate model that we think is ready to go into production. The next step is to test that model. The goal of this stage is to produce a report that our team can sign off on that answers the question of whether this new model is good enough or whether it's better than the old model. The key question here is, “<strong>what should go into that report?</strong>”</p>
+<p>This is a place where there's not a whole lot of standardization, but the recommendation we have here is to compare your current model with the previous version of the model on all of the metrics that you care about, all of the subsets of data that you've flagged are important, and all the edge cases you’ve defined. Remember to adjust the comparison to account for any sampling bias.</p>
+<p>Below is a sample comparison report. Note how the validation set is broken out into concrete subgroups. Note also how there are specific validation sets assigned to common error cases.</p>
+<p><img alt="alt_text" src="media/image30.png" title="image_tooltip" /></p>
+<p>In continual learning, evaluation sets are dynamically refined just as much as training sets are. Here are some guidelines for how to manage evaluation sets in a continual learning system:</p>
+<ol>
+<li>As you curate new data, add some of it to your evaluation sets. For example, if you change how you do sampling, add that newly sampled data to your evaluation set. Or if you encounter a new edge case, create a test case for it.</li>
+<li>Corollary 1: you should version control your evaluation sets as well.</li>
+<li>Corollary 2: if your data changes quickly, always hold out the most recent data for evaluation.</li>
+</ol>
+<p>Once you have the testing basics in place, a more advanced option that you can look into here is <strong>expectation testing</strong>. Expectation tests work by taking pairs of examples where you know the relationship between the two. These tests help a lot with understanding the generalizability of models.</p>
+<p><img alt="alt_text" src="media/image31.png" title="image_tooltip" /></p>
+<p>Just like how data curation is highly analogous to monitoring, so is offline testing. We want to observe our metrics, not just in aggregate but also across all of our important subsets of data and across all of our edge cases. One difference between these two is that <strong>you will have different metrics available in offline testing and online testing</strong>. For example, you’re much more likely to have labels offline. Online, you’re much more likely to have feedback. We look forward to more research that can predict online metrics from offline ones.</p>
+<h3 id="online-testing">Online Testing</h3>
+<p>Much of this we covered in the last lecture, so we’ll keep it brief! Use shadow mode and A/B tests, roll out models gradually, and roll back models if you see issues during rollout. </p>
+<h2 id="6-the-continual-improvement-workflow">6 - The Continual Improvement Workflow</h2>
+<p>To tie it all together, we’ll conclude with an example. Monitoring and continual learning are two sides of the same coin. We should be using the signals that we monitor to very directly change our retraining strategy. This section describes the future state that comes as a result of investing in the steps laid out previously. </p>
+<p>Start with a place to store and version your strategy. The components of your continual learning strategy should include the following:</p>
+<ul>
+<li>Inputs, predictions, user feedback, and labels.</li>
+<li>Metric definitions for monitoring, observability, and offline testing.</li>
+<li>Projection definitions for monitoring and manual data curation.</li>
+<li>Subgroups and cohorts of interest for monitoring and offline testing.</li>
+<li>Data curation logic.</li>
+<li>Datasets for training and evaluation.</li>
+<li>Model comparison reports.</li>
+</ul>
+<p>Walk through this example to understand how changes to the retraining strategy occur as issues surface in our machine learning system.</p>
+<p><img alt="alt_text" src="media/image32.png" title="image_tooltip" /></p>
+<h2 id="7-takeaways">7 - Takeaways</h2>
+<p>To summarize, continual learning is a nascent, poorly understood topic that is worth continuing to pay attention to. Watch this space! In this lecture, we focused on all the steps and techniques that allow you to use retraining effectively. As MLEs, leverage monitoring to strategically improve your model. Always start simple, and get better!</p>
+
+
+
+
+
+
+
+  
+  
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../../..", "features": ["navigation.tabs"], "search": "../../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>

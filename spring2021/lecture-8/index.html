@@ -1,0 +1,3785 @@
+
+<!doctype html>
+<html lang="en" class="no-js">
+  <head>
+    
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width,initial-scale=1">
+      
+        <meta name="description" content="News, community, and courses for people building AI-powered products.">
+      
+      
+        <meta name="author" content="The Full Stack">
+      
+      
+        <link rel="canonical" href="https://fullstackdeeplearning.com/spring2021/lecture-8/">
+      
+      
+        <link rel="prev" href="../lecture-7/">
+      
+      
+        <link rel="next" href="../lab-6/">
+      
+      
+      <link rel="icon" href="../../images/favicon.png">
+      <meta name="generator" content="mkdocs-1.6.1, mkdocs-material-9.6.12">
+    
+    
+      
+        <title>Lecture 8: Data Management - The Full Stack</title>
+      
+    
+    
+      <link rel="stylesheet" href="../../assets/stylesheets/main.2afb09e1.min.css">
+      
+        
+        <link rel="stylesheet" href="../../assets/stylesheets/palette.06af60db.min.css">
+      
+      
+
+
+    
+    
+
+      
+    
+<script src="https://cdn.jsdelivr.net/npm/js-cookie@3.0.1/dist/js.cookie.min.js"></script>
+<!-- <script src="https://challenges.cloudflare.com/turnstile/v0/api.js" async defer></script> -->
+
+    
+      
+    
+    
+      <link rel="stylesheet" href="../../stylesheets/extra.css">
+    
+    <script>__md_scope=new URL("../..",location),__md_hash=e=>[...e].reduce(((e,_)=>(e<<5)-e+_.charCodeAt(0)),0),__md_get=(e,_=localStorage,t=__md_scope)=>JSON.parse(_.getItem(t.pathname+"."+e)),__md_set=(e,_,t=localStorage,a=__md_scope)=>{try{t.setItem(a.pathname+"."+e,JSON.stringify(_))}catch(e){}}</script>
+    
+      
+  
+
+
+  <!-- Google tag (gtag.js) -->
+<script async src="https://www.googletagmanager.com/gtag/js?id=G-WQ93TYN7GT"></script>
+<script>
+  window.dataLayer = window.dataLayer || [];
+  function gtag(){dataLayer.push(arguments);}
+  gtag('js', new Date());
+
+  gtag('config', 'G-WQ93TYN7GT');
+</script>
+
+<!-- Sentry -->
+<script src="https://js.sentry-cdn.com/f535e934f1a647e99c863aa22bfd7e32.min.js" crossorigin="anonymous"></script>
+<script>
+  Sentry.onLoad(function() {
+    Sentry.init({
+      sampleRate: 1,
+    });
+  });
+</script>
+
+<!-- Heap Analytics -->
+<script type="text/javascript">
+  window.heap=window.heap||[],heap.load=function(e,t){window.heap.appid=e,window.heap.config=t=t||{};var r=document.createElement("script");r.type="text/javascript",r.async=!0,r.src="https://cdn.heapanalytics.com/js/heap-"+e+".js";var a=document.getElementsByTagName("script")[0];a.parentNode.insertBefore(r,a);for(var n=function(e){return function(){heap.push([e].concat(Array.prototype.slice.call(arguments,0)))}},p=["addEventProperties","addUserProperties","clearEventProperties","identify","resetIdentity","removeEventProperty","setEventProperties","track","unsetEventProperty"],o=0;o<p.length;o++)heap[p[o]]=n(p[o])};
+  heap.load("2003690319");
+</script>
+  
+    <script>"undefined"!=typeof __md_analytics&&__md_analytics()</script>
+  
+
+    
+    
+    
+
+
+
+
+
+
+
+
+
+
+<meta property="og:title" content="The Full Stack - Lecture 8: Data Management" />
+<meta property="og:description" content="News, community, and courses for people building AI-powered products." />
+<meta property="og:type" content="website" />
+<meta property="og:url" content="https://fullstackdeeplearning.com/spring2021/lecture-8/" />
+<meta property="og:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta property="og:image:alt" content="Image explaining what The Full Stack covers." />
+<meta property="og:image:type" content="image/jpg" />
+<meta property="og:image:width" content="1200" />
+<meta property="og:image:height" content="630" />
+
+<meta name="twitter:card" content="summary_large_image" />
+<meta name="twitter:site" content="full_stack_dl" />
+<meta name="twitter:title" content="The Full Stack - Lecture 8: Data Management" />
+<meta name="twitter:description" content="News, community, and courses for people building AI-powered products." />
+<meta name="twitter:image" content="https://staging.fullstackdeeplearning.com/images/opengraph.png" />
+<meta name="twitter:image:alt" content="Image explaining what The Full Stack covers." />
+
+  </head>
+  
+  
+    
+    
+      
+    
+    
+    
+    
+    <body dir="ltr" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange">
+  
+    
+    <input class="md-toggle" data-md-toggle="drawer" type="checkbox" id="__drawer" autocomplete="off">
+    <input class="md-toggle" data-md-toggle="search" type="checkbox" id="__search" autocomplete="off">
+    <label class="md-overlay" for="__drawer"></label>
+    <div data-md-component="skip">
+      
+        
+        <a href="#lecture-8-data-management" class="md-skip">
+          Skip to content
+        </a>
+      
+    </div>
+    <div data-md-component="announce">
+      
+        <aside class="md-banner">
+          <div class="md-banner__inner md-grid md-typeset">
+            
+            
+<!-- Follow us on
+<a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener">
+  <span class="twemoji twitter" style="color: #1da1f2">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512">
+      <path
+        d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253z"
+      ></path>
+    </svg>
+  </span>
+  <strong>Twitter</strong>
+</a>
+and
+
+<a
+  href="https://www.youtube.com/@The_Full_Stack?sub_confirmation=1"
+  target="_blank"
+  rel="noopener"
+>
+  <span class="twemoji youtube" style="color: #ff0000">
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512">
+      <path
+        d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305zm-317.51 213.508V175.185l142.739 81.205-142.739 81.201z"
+      ></path>
+    </svg>
+  </span>
+  <strong>YouTube</strong>
+</a> -->
+<a href="https://www.scale.bythebay.io/llm-workshop">Sign up for our latest in-person course!</a>
+
+<!-- We use the twemoji project for the pancake emoji symbol
+and for other emoji and icon purposes.
+Check them out here: https://github.com/twitter/twemoji
+-->
+
+          </div>
+          
+        </aside>
+      
+    </div>
+    
+    
+      
+
+<header class="md-header" data-md-component="header">
+  <nav class="md-header__inner md-grid" aria-label="Header">
+    <a href="../.." title="The Full Stack" class="md-header__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    <label class="md-header__button md-icon" for="__drawer">
+      
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M3 6h18v2H3zm0 5h18v2H3zm0 5h18v2H3z"/></svg>
+    </label>
+    <div class="md-header__title" data-md-component="header-title">
+      <div class="md-header__ellipsis">
+        <div class="md-header__topic">
+          <span class="md-ellipsis">
+            The Full Stack
+          </span>
+        </div>
+        <div class="md-header__topic" data-md-component="header-topic">
+          <span class="md-ellipsis">
+            
+              Lecture 8: Data Management
+            
+          </span>
+        </div>
+      </div>
+    </div>
+    
+      
+        <form class="md-header__option" data-md-component="palette">
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: light)" data-md-color-scheme="default" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to dark mode"  type="radio" name="__palette" id="__palette_0">
+    
+      <label class="md-header__button md-icon" title="Switch to dark mode" for="__palette_1" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 8a4 4 0 0 0-4 4 4 4 0 0 0 4 4 4 4 0 0 0 4-4 4 4 0 0 0-4-4m0 10a6 6 0 0 1-6-6 6 6 0 0 1 6-6 6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+    
+    
+    
+    <input class="md-option" data-md-color-media="(prefers-color-scheme: dark)" data-md-color-scheme="slate" data-md-color-primary="indigo" data-md-color-accent="orange"  aria-label="Switch to light mode"  type="radio" name="__palette" id="__palette_1">
+    
+      <label class="md-header__button md-icon" title="Switch to light mode" for="__palette_0" hidden>
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 18c-.89 0-1.74-.2-2.5-.55C11.56 16.5 13 14.42 13 12s-1.44-4.5-3.5-5.45C10.26 6.2 11.11 6 12 6a6 6 0 0 1 6 6 6 6 0 0 1-6 6m8-9.31V4h-4.69L12 .69 8.69 4H4v4.69L.69 12 4 15.31V20h4.69L12 23.31 15.31 20H20v-4.69L23.31 12z"/></svg>
+      </label>
+    
+  
+</form>
+      
+    
+    
+      <script>var palette=__md_get("__palette");if(palette&&palette.color){if("(prefers-color-scheme)"===palette.color.media){var media=matchMedia("(prefers-color-scheme: light)"),input=document.querySelector(media.matches?"[data-md-color-media='(prefers-color-scheme: light)']":"[data-md-color-media='(prefers-color-scheme: dark)']");palette.color.media=input.getAttribute("data-md-color-media"),palette.color.scheme=input.getAttribute("data-md-color-scheme"),palette.color.primary=input.getAttribute("data-md-color-primary"),palette.color.accent=input.getAttribute("data-md-color-accent")}for(var[key,value]of Object.entries(palette.color))document.body.setAttribute("data-md-color-"+key,value)}</script>
+    
+    
+    
+      
+      
+        <label class="md-header__button md-icon" for="__search">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        </label>
+        <div class="md-search" data-md-component="search" role="dialog">
+  <label class="md-search__overlay" for="__search"></label>
+  <div class="md-search__inner" role="search">
+    <form class="md-search__form" name="search">
+      <input type="text" class="md-search__input" name="query" aria-label="Search" placeholder="Search" autocapitalize="off" autocorrect="off" autocomplete="off" spellcheck="false" data-md-component="search-query" required>
+      <label class="md-search__icon md-icon" for="__search">
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M9.5 3A6.5 6.5 0 0 1 16 9.5c0 1.61-.59 3.09-1.56 4.23l.27.27h.79l5 5-1.5 1.5-5-5v-.79l-.27-.27A6.52 6.52 0 0 1 9.5 16 6.5 6.5 0 0 1 3 9.5 6.5 6.5 0 0 1 9.5 3m0 2C7 5 5 7 5 9.5S7 14 9.5 14 14 12 14 9.5 12 5 9.5 5"/></svg>
+        
+        <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M20 11v2H8l5.5 5.5-1.42 1.42L4.16 12l7.92-7.92L13.5 5.5 8 11z"/></svg>
+      </label>
+      <nav class="md-search__options" aria-label="Search">
+        
+        <button type="reset" class="md-search__icon md-icon" title="Clear" aria-label="Clear" tabindex="-1">
+          
+          <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M19 6.41 17.59 5 12 10.59 6.41 5 5 6.41 10.59 12 5 17.59 6.41 19 12 13.41 17.59 19 19 17.59 13.41 12z"/></svg>
+        </button>
+      </nav>
+      
+    </form>
+    <div class="md-search__output">
+      <div class="md-search__scrollwrap" tabindex="0" data-md-scrollfix>
+        <div class="md-search-result" data-md-component="search-result">
+          <div class="md-search-result__meta">
+            Initializing search
+          </div>
+          <ol class="md-search-result__list" role="presentation"></ol>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+      
+    
+    
+      <div class="md-header__source">
+        <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+      </div>
+    
+  </nav>
+  
+</header>
+    
+    <div class="md-container" data-md-component="container">
+      
+      
+        
+          
+            
+<nav class="md-tabs" aria-label="Tabs" data-md-component="tabs">
+  <div class="md-grid">
+    <ul class="md-tabs__list">
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../.." class="md-tabs__link">
+        
+  
+  
+    
+  
+  Home
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../llm-bootcamp/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  LLM Bootcamp
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+    
+  
+  
+    <li class="md-tabs__item md-tabs__item--active">
+      <a href="../../course/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Deep Learning Course
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../blog/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Blog
+
+      </a>
+    </li>
+  
+
+      
+        
+  
+  
+  
+  
+    <li class="md-tabs__item">
+      <a href="../../cloud-gpus/" class="md-tabs__link">
+        
+  
+  
+    
+  
+  Cloud GPUs
+
+      </a>
+    </li>
+  
+
+      
+    </ul>
+  </div>
+</nav>
+          
+        
+      
+      <main class="md-main" data-md-component="main">
+        <div class="md-main__inner md-grid">
+          
+            
+              
+              <div class="md-sidebar md-sidebar--primary" data-md-component="sidebar" data-md-type="navigation" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+
+  
+
+
+<nav class="md-nav md-nav--primary md-nav--lifted" aria-label="Navigation" data-md-level="0">
+  <label class="md-nav__title" for="__drawer">
+    <a href="../.." title="The Full Stack" class="md-nav__button md-logo" aria-label="The Full Stack" data-md-component="logo">
+      
+  <img src="../../images/favicon.png" alt="logo">
+
+    </a>
+    The Full Stack
+  </label>
+  
+    <div class="md-nav__source">
+      <a href="https://github.com/the-full-stack/website" title="Go to repository" class="md-source" data-md-component="source">
+  <div class="md-source__icon md-icon">
+    
+    <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M439.55 236.05 244 40.45a28.87 28.87 0 0 0-40.81 0l-40.66 40.63 51.52 51.52c27.06-9.14 52.68 16.77 43.39 43.68l49.66 49.66c34.23-11.8 61.18 31 35.47 56.69-26.49 26.49-70.21-2.87-56-37.34L240.22 199v121.85c25.3 12.54 22.26 41.85 9.08 55a34.34 34.34 0 0 1-48.55 0c-17.57-17.6-11.07-46.91 11.25-56v-123c-20.8-8.51-24.6-30.74-18.64-45L142.57 101 8.45 235.14a28.86 28.86 0 0 0 0 40.81l195.61 195.6a28.86 28.86 0 0 0 40.8 0l194.69-194.69a28.86 28.86 0 0 0 0-40.81"/></svg>
+  </div>
+  <div class="md-source__repository">
+    The Full Stack Website
+  </div>
+</a>
+    </div>
+  
+  <ul class="md-nav__list" data-md-scrollfix>
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../.." class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Home
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    LLM Bootcamp
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2" id="__nav_2_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_2_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2">
+            <span class="md-nav__icon md-icon"></span>
+            LLM Bootcamp
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_2_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../llm-bootcamp/spring-2023/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Spring 2023
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_2_1" id="__nav_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_2_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            Spring 2023
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/launch-an-llm-app-in-one-hour/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Launch an LLM App in One Hour
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llm-foundations/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLM Foundations
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/prompt-engineering/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Learn to Spell: Prompt Engineering
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/augmented-language-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Augmented Language Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/askfsdl-walkthrough/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Walkthrough: askFSDL
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/ux-for-luis/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    UX for Language User Interfaces
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/llmops/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    LLMOps
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/whats-next/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    What's Next?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/shabani-train-your-own/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Reza Shabani: How to train your own LLM
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/chase-agents/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Harrison Chase: Agents
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../llm-bootcamp/spring-2023/welinder-fireside-chat/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Fireside Chat with Peter Welinder
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+        
+        
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--section md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    Deep Learning Course
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3" id="__nav_3_label" tabindex="">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="1" aria-labelledby="__nav_3_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3">
+            <span class="md-nav__icon md-icon"></span>
+            Deep Learning Course
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_1" >
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../../course/2022/" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2022
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_1" id="__nav_3_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_1_label" aria-expanded="false">
+          <label class="md-nav__title" for="__nav_3_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2022
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-1-course-vision-and-when-to-use-ml/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: Course Vision and When to Use ML
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-0-overview/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab Overview
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-2-development-infrastructure-and-tooling/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2: Development Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-4-experiment-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-3-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-5-troubleshooting-and-testing/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Troubleshooting &amp; Testing
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-4-data-management/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Data Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-6-data-annotation/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Annotation
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-5-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-7-web-deployment/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-6-continual-learning/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: Continual Learning
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lab-8-model-monitoring/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Model Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-7-foundation-models/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Foundation Models
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-8-teams-and-pm/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: ML Teams and Project Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/lecture-9-ethics/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/project-showcase/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Project Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../course/2022/announcement/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Announcement
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2" checked>
+        
+          
+          <label class="md-nav__link" for="__nav_3_2" id="__nav_3_2_label" tabindex="0">
+            
+  
+  
+  <span class="md-ellipsis">
+    Older
+    
+  </span>
+  
+
+            <span class="md-nav__icon md-icon"></span>
+          </label>
+        
+        <nav class="md-nav" data-md-level="2" aria-labelledby="__nav_3_2_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2">
+            <span class="md-nav__icon md-icon"></span>
+            Older
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    
+    
+    
+    
+      
+      
+    
+    
+    <li class="md-nav__item md-nav__item--active md-nav__item--nested">
+      
+        
+        
+        <input class="md-nav__toggle md-toggle " type="checkbox" id="__nav_3_2_1" checked>
+        
+          
+          <div class="md-nav__link md-nav__container">
+            <a href="../" class="md-nav__link ">
+              
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021
+    
+  </span>
+  
+
+            </a>
+            
+              
+              <label class="md-nav__link " for="__nav_3_2_1" id="__nav_3_2_1_label" tabindex="0">
+                <span class="md-nav__icon md-icon"></span>
+              </label>
+            
+          </div>
+        
+        <nav class="md-nav" data-md-level="3" aria-labelledby="__nav_3_2_1_label" aria-expanded="true">
+          <label class="md-nav__title" for="__nav_3_2_1">
+            <span class="md-nav__icon md-icon"></span>
+            FSDL 2021
+          </label>
+          <ul class="md-nav__list" data-md-scrollfix>
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../synchronous/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Synchronous Online Course
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../projects/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Course Projects Showcase
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 1: DL Fundamentals
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 1: Setup and Introduction
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../notebook-1/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Notebook: Coding a neural net
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2a/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2A: CNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-2b/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 2B: Computer Vision
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-2/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 2: CNNs and Synthetic Data
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-3/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 3: RNNs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-4/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 4: Transformers
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 5: ML Projects
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 6: MLOps Infrastructure &amp; Tooling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-5/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 5: Experiment Management
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 7: Troubleshooting Deep Neural Networks
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+    
+  
+  
+  
+    <li class="md-nav__item md-nav__item--active">
+      
+      <input class="md-nav__toggle md-toggle" type="checkbox" id="__toc">
+      
+      
+        
+      
+      
+        <label class="md-nav__link md-nav__link--active" for="__toc">
+          
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+          <span class="md-nav__icon md-icon"></span>
+        </label>
+      
+      <a href="./" class="md-nav__link md-nav__link--active">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 8: Data Management
+    
+  </span>
+  
+
+      </a>
+      
+        
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-management-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Data Management Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Data Sources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Data Sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-flywheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flywheel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semi-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semi-Supervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-augmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Augmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthetic Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-data-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Data Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Data Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filesystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-and-dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL and DataFrames
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lakehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data “Lakehouse”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-goes-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Goes Where?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Data Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Data Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-feature-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Feature Store
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-data-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Data Exploration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-data-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Data Labeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 - Data Labeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sources-of-labor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources of Labor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-companies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Companies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-data-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 - Data Versioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-data-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 - Data Privacy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-6/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 6: Data Labeling
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 9: AI Ethics
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-7/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 7: Paragraph Recognition
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-10/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 10: Testing &amp; Explainability
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-8/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 8: Testing &amp; CI
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-11/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 11: Deployment &amp; Monitoring
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lab-9/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lab 9: Web Deployment
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-12/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 12: Research Directions
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../lecture-13/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Lecture 13: ML Teams and Startups
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../panel/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Panel Discussion: Do I need a PhD to work in ML?
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/berkeleyfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2021 (Berkeley)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://bit.ly/uwfsdl" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2020 (UW)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="https://fall2019.fullstackdeeplearning.com" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Online)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/march2019.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2019 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+              
+                
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="/august2018.html" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    FSDL 2018 (Bootcamp)
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+              
+            
+          </ul>
+        </nav>
+      
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../blog/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Blog
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+      
+      
+  
+  
+  
+  
+    <li class="md-nav__item">
+      <a href="../../cloud-gpus/" class="md-nav__link">
+        
+  
+  
+  <span class="md-ellipsis">
+    Cloud GPUs
+    
+  </span>
+  
+
+      </a>
+    </li>
+  
+
+    
+  </ul>
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+            
+              
+              <div class="md-sidebar md-sidebar--secondary" data-md-component="sidebar" data-md-type="toc" >
+                <div class="md-sidebar__scrollwrap">
+                  <div class="md-sidebar__inner">
+                    
+
+<nav class="md-nav md-nav--secondary" aria-label="Table of contents">
+  
+  
+  
+    
+  
+  
+    <label class="md-nav__title" for="__toc">
+      <span class="md-nav__icon md-icon"></span>
+      Table of contents
+    </label>
+    <ul class="md-nav__list" data-md-component="toc" data-md-scrollfix>
+      
+        <li class="md-nav__item">
+  <a href="#video" class="md-nav__link">
+    <span class="md-ellipsis">
+      Video
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#slides" class="md-nav__link">
+    <span class="md-ellipsis">
+      Slides
+    </span>
+  </a>
+  
+</li>
+      
+        <li class="md-nav__item">
+  <a href="#notes" class="md-nav__link">
+    <span class="md-ellipsis">
+      Notes
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="Notes">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#1-data-management-overview" class="md-nav__link">
+    <span class="md-ellipsis">
+      1 - Data Management Overview
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#2-data-sources" class="md-nav__link">
+    <span class="md-ellipsis">
+      2 - Data Sources
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="2 - Data Sources">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-flywheel" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Flywheel
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#semi-supervised-learning" class="md-nav__link">
+    <span class="md-ellipsis">
+      Semi-Supervised Learning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-augmentation" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Augmentation
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#synthetic-data" class="md-nav__link">
+    <span class="md-ellipsis">
+      Synthetic Data
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#3-data-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      3 - Data Storage
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="3 - Data Storage">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#filesystem" class="md-nav__link">
+    <span class="md-ellipsis">
+      Filesystem
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#object-storage" class="md-nav__link">
+    <span class="md-ellipsis">
+      Object Storage
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#database" class="md-nav__link">
+    <span class="md-ellipsis">
+      Database
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-warehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Warehouse
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#sql-and-dataframes" class="md-nav__link">
+    <span class="md-ellipsis">
+      SQL and DataFrames
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lake" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Lake
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#data-lakehouse" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data “Lakehouse”
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#what-goes-where" class="md-nav__link">
+    <span class="md-ellipsis">
+      What Goes Where?
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#4-data-processing" class="md-nav__link">
+    <span class="md-ellipsis">
+      4 - Data Processing
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="4 - Data Processing">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#data-dependencies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Data Dependencies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#mapreduce" class="md-nav__link">
+    <span class="md-ellipsis">
+      MapReduce
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#dag" class="md-nav__link">
+    <span class="md-ellipsis">
+      DAG
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#5-feature-store" class="md-nav__link">
+    <span class="md-ellipsis">
+      5 - Feature Store
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#6-data-exploration" class="md-nav__link">
+    <span class="md-ellipsis">
+      6 - Data Exploration
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#7-data-labeling" class="md-nav__link">
+    <span class="md-ellipsis">
+      7 - Data Labeling
+    </span>
+  </a>
+  
+    <nav class="md-nav" aria-label="7 - Data Labeling">
+      <ul class="md-nav__list">
+        
+          <li class="md-nav__item">
+  <a href="#sources-of-labor" class="md-nav__link">
+    <span class="md-ellipsis">
+      Sources of Labor
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#service-companies" class="md-nav__link">
+    <span class="md-ellipsis">
+      Service Companies
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#software" class="md-nav__link">
+    <span class="md-ellipsis">
+      Software
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#8-data-versioning" class="md-nav__link">
+    <span class="md-ellipsis">
+      8 - Data Versioning
+    </span>
+  </a>
+  
+</li>
+        
+          <li class="md-nav__item">
+  <a href="#9-data-privacy" class="md-nav__link">
+    <span class="md-ellipsis">
+      9 - Data Privacy
+    </span>
+  </a>
+  
+</li>
+        
+      </ul>
+    </nav>
+  
+</li>
+      
+    </ul>
+  
+</nav>
+                  </div>
+                </div>
+              </div>
+            
+          
+          
+            <div class="md-content" data-md-component="content">
+              <article class="md-content__inner md-typeset">
+                
+
+                  
+
+
+  
+  
+
+
+<h1 id="lecture-8-data-management">Lecture 8: Data Management</h1>
+<h2 id="video">Video</h2>
+<iframe width="560" height="315" src="https://www.youtube.com/embed/QlPiiyd8zQI" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+
+<h2 id="slides">Slides</h2>
+<iframe src="//www.slideshare.net/slideshow/embed_code/key/Ikym7b8XhthxW9" width="595" height="485" frameborder="0" marginwidth="0" marginheight="0" scrolling="no" allowfullscreen> </iframe>
+
+<p><a href="https://drive.google.com/file/d/1R4QnniBO61TJYBuwrmLhtuZnXULFkxu6/view?usp=sharing">Download slides as PDF</a></p>
+<h2 id="notes">Notes</h2>
+<p><em>Lecture by <a href="https://sergeykarayev.com">Sergey Karayev</a>.
+Notes transcribed by <a href="https://twitter.com/le_james94">James Le</a>
+and <a href="https://www.linkedin.com/in/vrachakonda/">Vishnu Rachakonda</a>.</em></p>
+<p>One of the best data science articles written in 2019 is “<a href="http://veekaybee.github.io/2019/02/13/data-science-is-different/"><u>Data
+science is different
+now</u></a>”
+by <a href="https://twitter.com/vboykis"><u>Vicki Boykis</u></a>. Part of the
+article is a collection of tweets from other data science and machine
+learning practitioners.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image3.png" /></p>
+<h3 id="1-data-management-overview">1 - Data Management Overview</h3>
+<p>When we think about what data management for deep learning entails,
+there might be many different data sources: images on S3, text files on
+a file system, logs spread across different machines, and maybe even
+records in a database. At some point, you need to get all of that data
+over to a local filesystem next to GPUs. The way you will get data over
+to that trainable format is different for every project and every
+company. For instance:</p>
+<ul>
+<li>
+<p>Maybe you train your images on ImageNet, and all the images are just
+S3 URLs. Then, all you have to do is download them over to the
+local filesystem.</p>
+</li>
+<li>
+<p>Maybe you have a bunch of text files that you crawled yourself
+somewhere. You want to use Spark to process them on a cluster and
+Pandas data frame to analyze/select subsets that will be used in
+the local filesystem.</p>
+</li>
+<li>
+<p>Maybe you collect logs and records from your database into a data
+lake/warehouse (like Snowflake). Then, you process that output and
+convert them into a trainable format.</p>
+</li>
+</ul>
+<p>There are countless possibilities that we are not going to cover
+completely in this lecture, but here are the <strong>key points</strong> to remember:</p>
+<ul>
+<li>
+<p><strong>Let the data flow through you</strong>: You should spend 10x as much time
+as you want to on exploring the dataset.</p>
+</li>
+<li>
+<p><strong>Data is the best way to improve your overall ML project
+performance</strong>: Instead of trying new architectures or kicking off
+the hyper-parameter search, adding more data and augmenting the
+existing dataset will often be the best bang to your buck.</p>
+</li>
+<li>
+<p><strong>Keep It Simple Stupid:</strong> We will discuss complex pipelines and new
+terms, but it’s important to not over-complicate things and make
+data management a rocket science.</p>
+</li>
+</ul>
+<h3 id="2-data-sources">2 - Data Sources</h3>
+<p>So, where do the training data come from? <strong>Most deep learning
+applications require lots of labeled data</strong> (with exceptions in
+applications of reinforcement learning, GANs, and GPT-3). There are
+publicly available datasets that can serve as a starting point, but
+there is no competitive advantage of using them. In fact, most companies
+usually spend a lot of money and time labeling their own data.</p>
+<h4 id="data-flywheel">Data Flywheel</h4>
+<p><img src="/spring2021/lecture-8-notes-media/image13.png" /></p>
+<p>Data flywheel is an exciting concept: if you can get your models in
+front of the users, you can build your products in a mechanism that your
+users contribute good data back to you and improve the model
+predictions. This can enable rapid improvement after you get that v1
+model out into the real world.</p>
+<h4 id="semi-supervised-learning">Semi-Supervised Learning</h4>
+<p>Semi-supervised learning is a relatively recent learning technique where
+the training data is autonomously (or automatically) labeled. It is
+still supervised learning, but the datasets do not need to be manually
+labeled by a human; but they can be labeled by finding and exploiting
+the relations (or correlations) between different input signals (that
+is, input coming from different sensor modalities).</p>
+<p>A natural advantage and consequence of semi-supervised learning are that
+this technique can be performed in an online fashion (given that data
+can be gathered and labeled without human intervention) more easily
+(with respect to, e.g., supervised learning), where models can be
+updated or trained entirely from scratch. Therefore, semi-supervised
+learning should also be well suited for changing environments, changing
+data, and, in general, changing requirements.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image12.png" /></p>
+<p>For a text example, you can predict the future words from the past
+words, predict the beginning of a sentence from the end of a sentence,
+or predict the middle word of a sentence from the words surrounding it.
+You can even examine whether two sentences occur in the same paragraph
+in the same corpus of your training data. These are different ways to
+formulate the problem, where you don’t need to label anything and simply
+use the data to supervise itself.</p>
+<p>This technique also applies to vision. Facebook AI recently released a
+model called
+<a href="https://ai.facebook.com/blog/seer-the-start-of-a-more-powerful-flexible-and-accessible-era-for-computer-vision"><u>SEER</u></a>
+trained on 1 billion random images from the Internet. Yet, SEER achieved
+state-of-the-art accuracy on the ImageNet top-1 prediction task.</p>
+<p>If you’re interested in learning more about semi-supervised learning,
+check out:</p>
+<ul>
+<li>
+<p>Lilian Weng's <a href="https://lilianweng.github.io/lil-log/2019/11/10/self-supervised-learning.html"><u>"Self-Supervised
+Learning"</u></a>
+post</p>
+</li>
+<li>
+<p>Facebook AI’s “<a href="https://ai.facebook.com/blog/self-supervised-learning-the-dark-matter-of-intelligence/"><u>Self-Supervised Learning: The Dark Matter Of
+Intelligence</u></a>”
+post</p>
+</li>
+<li>
+<p>Facebook AI’s <a href="https://vissl.ai/"><u>VISSL library</u></a> for the SEER
+algorithm</p>
+</li>
+</ul>
+<h4 id="data-augmentation">Data Augmentation</h4>
+<p>Recent advances in deep learning models have been largely attributed to
+the quantity and diversity of data gathered in recent years. Data
+augmentation is a strategy that enables practitioners to significantly
+increase the diversity of data available for training models without
+actually collecting new data. Data augmentation techniques such as
+cropping, padding, and horizontal flipping are commonly used to train
+large neural networks. In fact, they are mostly required for training
+computer vision models. Both
+<a href="https://machinelearningmastery.com/image-augmentation-deep-learning-keras/"><u>Keras</u></a>
+and
+<a href="https://towardsdatascience.com/data-augmentations-in-fastai-84979bbcefaa"><u>fast.ai</u></a>
+provide functions that do this.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image5.png" /></p>
+<p>Data augmentation also applies to other types of data.</p>
+<ul>
+<li>
+<p>For tabular data, you can delete some cells to simulate missing
+data.</p>
+</li>
+<li>
+<p>For text, there are no well-established techniques, but you can
+replace words with synonyms and change the order of things.</p>
+</li>
+<li>
+<p>For speech and video, you can change speed, insert a pause, mix
+different sequences, and more.</p>
+</li>
+</ul>
+<p>If you’re interested in learning more about data augmentation, check
+out:</p>
+<ul>
+<li>
+<p>Berkeley AI’s “<a href="http://bair.berkeley.edu/blog/2019/06/07/data_aug/"><u>1000x Faster Data
+Augmentation</u></a>”
+post</p>
+</li>
+<li>
+<p>Edward Ma’s “<a href="https://github.com/makcedward/nlpaug"><u>nlpaug</u></a>”
+repository</p>
+</li>
+</ul>
+<h4 id="synthetic-data">Synthetic Data</h4>
+<p>Related to the concept of data augmentation is synthetic data, an
+underrated idea that is almost always worth starting with. Synthetic
+data is data that’s generated programmatically. For example,
+photorealistic images of objects in arbitrary scenes can be rendered
+using video game engines or audio generated by a speech synthesis model
+from the known text. It’s not unlike traditional data augmentation,
+where crops, flips, rotations, and distortions are used to increase the
+variety of data that models have to learn from. Synthetically generated
+data takes those same concepts even further.</p>
+<p>Most of today’s synthetic data is visual. Tools and techniques developed
+to create photorealistic graphics in movies and computer games are
+repurposed to create the training data needed for machine learning. Not
+only can these rendering engines produce arbitrary numbers of images,
+but they can also produce annotations too. Bounding boxes, segmentation
+masks, depth maps, and any other metadata is output right alongside
+pictures, making it simple to build pipelines that produce their own
+data.</p>
+<p>Because samples are generated programmatically along with annotations,
+synthetic datasets are far cheaper to produce than traditional ones.
+That means we can create more data and iterate more often to produce
+better results. Need to add another class to your model? No problem.
+Need to add another key point to the annotation? Done. This is
+especially useful for applications in driving and robotics.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image6.jpg" /></p>
+<p>If you’re interested in learning more about synthetic data, check out:</p>
+<ul>
+<li>
+<p>Dropbox’s “<a href="https://dropbox.tech/machine-learning/creating-a-modern-ocr-pipeline-using-computer-vision-and-deep-learning"><u>Creating A Modern OCR Pipeline Using Computer Vision
+and Deep
+Learning</u></a>”
+post</p>
+</li>
+<li>
+<p>Andrew Moffat’s
+“<a href="https://github.com/amoffat/metabrite-receipt-tests"><u>metabrite-receipt-tests</u></a>”
+repository</p>
+</li>
+<li>
+<p>Microsoft’s <a href="https://microsoft.github.io/AirSim/"><u>AirSim</u></a>
+simulator</p>
+</li>
+<li>
+<p>OpenAI’s “<a href="https://openai.com/blog/ingredients-for-robotics-research/"><u>Ingredients For Robotics
+Research</u></a>”
+post</p>
+</li>
+</ul>
+<h3 id="3-data-storage">3 - Data Storage</h3>
+<p>Data storage requirements for AI vary widely according to the
+application and the source material. Datasets in intelligence, defense,
+medical, science, and geology frequently combine petabyte-scale storage
+volumes with individual file sizes in the gigabyte range. By contrast,
+data used in areas such as supply chain analytics and fraud detection
+are much smaller.</p>
+<p>There are four building blocks in a data storage system:</p>
+<ol>
+<li>
+<p>The filesystem</p>
+</li>
+<li>
+<p>The object storage</p>
+</li>
+<li>
+<p>The database</p>
+</li>
+<li>
+<p>The data lake or data warehouse</p>
+</li>
+</ol>
+<h5 id="filesystem">Filesystem</h5>
+<p>The filesystem is the foundational layer of storage.</p>
+<ul>
+<li>
+<p>Its fundamental unit is a “file” — which can be text or binary, is
+not versioned, and is easily overwritten.</p>
+</li>
+<li>
+<p>A file system can be as simple as a locally mounted disk containing
+all the files you need.</p>
+</li>
+<li>
+<p>More advanced options include networked filesystems
+(<a href="https://en.wikipedia.org/wiki/Network_File_System"><u>NFS</u></a>),
+which are accessible over the network by multiple machines, and
+distributed file systems
+(<a href="https://www.edureka.co/blog/apache-hadoop-hdfs-architecture/"><u>HDFS</u></a>)
+which are stored and accessed over multiple machines.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-8-notes-media/image15.png" /></p>
+<p>The plots above display <strong>hard-drive speeds</strong> for SATA hard drive, SATA
+SSD, and NVMe SSD.</p>
+<ul>
+<li>
+<p>The left plot shows the sustained throughput in MBps (how much
+information to copy a file): The latest iteration of hard drive
+technology (NVMe) is 6-10x more powerful than older iterations.</p>
+</li>
+<li>
+<p>The right plot shows the seek time in milliseconds (how long it
+takes to go to a file on disk): The NVMe is 25-30x faster than the
+old-school ones.</p>
+</li>
+</ul>
+<p>What <strong>format</strong> should we store data in?</p>
+<ul>
+<li>
+<p>For binary data (images, audios, videos), just files are enough. In
+Tensorflow, you have the TFRecord format to batch binary files,
+which does not seem to be necessary with the NVMe hard drives.</p>
+</li>
+<li>
+<p>For large tabular and text data, you have two choices:</p>
+<ul>
+<li>
+<p>HDF5 is powerful but bloated and declining.</p>
+</li>
+<li>
+<p>Parquet is widespread and recommended.</p>
+</li>
+<li>
+<p>Feather is an up-and-coming open-source option powered by Apache
+Arrow.</p>
+</li>
+</ul>
+</li>
+<li>
+<p>Both Tensorflow and PyTorch provide their native dataset class
+interfaces
+(<a href="https://www.tensorflow.org/guide/data"><u>tf.data</u></a> and
+<a href="https://pytorch.org/docs/stable/data.html"><u>PyTorch
+DataLoader</u></a>).</p>
+</li>
+</ul>
+<h4 id="object-storage">Object Storage</h4>
+<p>Object storage is an API over the filesystem that allows users to use a
+command on files (GET, PUT, DELETE) to a service without worrying where
+they are actually stored.</p>
+<ul>
+<li>
+<p>Its fundamental unit is an “object,”   which is usually binary
+(images, sound files…).</p>
+</li>
+<li>
+<p>Object storage can be built with data versioning and data redundancy
+into the API.</p>
+</li>
+<li>
+<p>It is not as fast as local files but fast enough within the cloud.</p>
+</li>
+</ul>
+<h4 id="database">Database</h4>
+<p>A database is a persistent, fast, scalable storage and retrieval of
+structured data.</p>
+<ul>
+<li>
+<p>Its fundamental unit is a “row” (unique IDs, references to other
+rows, values in columns).</p>
+</li>
+<li>
+<p>Databases are also known for <strong>online transaction processing</strong>
+(OLTP). The mental model here is that everything is actually in
+memory, but the software ensures that everything is logged to disk
+and never lost.</p>
+</li>
+<li>
+<p>Databases are not built for binary data, so you must store the
+references (i.e., S3 URLs) instead.</p>
+</li>
+</ul>
+<p>Here are our recommendations:</p>
+<ul>
+<li>
+<p><a href="https://www.postgresql.org/"><u>PostgreSQL</u></a> is the right choice
+most of the time, thanks to the support of unstructured JSON.</p>
+</li>
+<li>
+<p><a href="https://www.sqlite.org/"><u>SQLite</u></a> is perfectly good for small
+projects.</p>
+</li>
+<li>
+<p>“NoSQL” was a big craze in the 2010s (like
+<a href="https://www.mongodb.com/"><u>MongoDB</u></a>). However, they are not
+as fast as the relational database and also have consistency
+issues frequently.</p>
+</li>
+<li>
+<p><a href="https://redis.io/"><u>Redis</u></a> is handy when you need a simple
+key-value store.</p>
+</li>
+</ul>
+<h4 id="data-warehouse">Data Warehouse</h4>
+<p>A data warehouse is a structured aggregation of data for analysis, known
+as <strong>online analytical processing</strong> (OLAP).</p>
+<p><img src="/spring2021/lecture-8-notes-media/image1.jpg" /></p>
+<p>Another acronym that you might have heard of is ETL (<strong>Extract,
+Transform, Load</strong>). The idea here is to extract data from data sources,
+transform the data into a common schema, and load the schema into the
+data warehouse. You can load the subset from the warehouse that you need
+and generate reports or run analytical queries. Well-known enterprise
+options in the market are <a href="https://cloud.google.com/bigquery"><u>Google
+BigQuery</u></a>, <a href="https://aws.amazon.com/redshift/"><u>Amazon
+Redshift</u></a>, and
+<a href="https://www.snowflake.com/"><u>Snowflake</u></a>.</p>
+<h4 id="sql-and-dataframes">SQL and DataFrames</h4>
+<p>Most data solutions use <strong>SQL</strong> as the interface to the data, except for
+some (like Databricks) that use <strong>DataFrames</strong>. SQL is the standard
+interface for structured data. But in the Python ecosystem, Pandas is
+the main DataFrame. Our advice is to become fluent in both.</p>
+<h4 id="data-lake">Data Lake</h4>
+<p>A data lake is the unstructured aggregation of data from multiple
+sources (databases, logs, expensive data transformations). It operates
+under the concept of ELT (<strong>Extract, Load, Transform</strong>) by dumping
+everything in the lake and transforming the data for specific needs
+later.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image4.jpg" /></p>
+<h4 id="data-lakehouse">Data “Lakehouse”</h4>
+<p>The current trend in the field is to combine data warehouses and data
+lakes in the same suite. The <a href="https://databricks.com/product/data-lakehouse"><u>Databricks Lakehouse
+Platform</u></a> is both a
+warehouse and a lake, operated as an open-source project called
+<a href="https://delta.io/"><u>Delta Lake</u></a>. You can store both structured
+and unstructured data in the platform and use them for analytics
+workloads and machine learning engines.</p>
+<h4 id="what-goes-where">What Goes Where?</h4>
+<ul>
+<li>
+<p><strong>Binary data</strong> (images, sound files, compressed texts) are stored
+as <strong>objects</strong>.</p>
+</li>
+<li>
+<p><strong>Metadata</strong> (labels, user activity) is stored in a <strong>database</strong>.</p>
+</li>
+<li>
+<p>If we need features that are not obtainable from the database
+(<strong>logs</strong>), we would want to set up a <strong>data lake</strong> and a process
+to aggregate the data required.</p>
+</li>
+<li>
+<p>At <strong>training time</strong>, we need to copy the necessary data to the
+<strong>filesystem</strong> on a fast drive.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-8-notes-media/image11.jpg" /></p>
+<p>A lot is going on within the data management tooling and infrastructure.
+We recommend looking at a16z’s “<a href="https://a16z.com/2020/10/15/the-emerging-architectures-for-modern-data-infrastructure/"><u>Emerging Architectures For Modern
+Data
+Infrastructure</u></a>”
+article to get a broad look into this ecosystem.</p>
+<p>A highly recommended resource is Martin Kleppmann’s book “<a href="https://dataintensive.net/"><u>Designing
+Data-Intensive Applications</u></a>,”   which
+provides excellent coverage of tools and approaches to build reliable,
+scalable, and maintainable data storage systems.</p>
+<h3 id="4-data-processing">4 - Data Processing</h3>
+<h4 id="data-dependencies">Data Dependencies</h4>
+<p>Let’s look at a motivational example of training a photo popularity
+predictor every night. For each photo, the training data must include
+these components:</p>
+<ul>
+<li>
+<p><strong>Metadata</strong> (such as posting time, title, location) that is in the
+database.</p>
+</li>
+<li>
+<p>Some <strong>features</strong> of the user (such as how many times they logged in
+today) that need to be computed from logs.</p>
+</li>
+<li>
+<p><strong>Outputs</strong> of photo classifiers (such as content, style) that can
+be obtained after running the classifiers.</p>
+</li>
+</ul>
+<p>The idea is that we have different sources of data, and they have
+different dependencies. The big hurdle here is that some tasks can’t be
+started until other tasks are finished. Finishing a task should
+“kick-off” its dependencies.</p>
+<p>The simplest thing we can do is a “Makefile” to specify what action(s)
+depend on. But here are some limitations to this approach:</p>
+<ul>
+<li>
+<p>What if re-computation needs to depend on content, not on a date?</p>
+</li>
+<li>
+<p>What if the dependencies are not files but disparate programs and
+databases?</p>
+</li>
+<li>
+<p>What if the work needs to be spread over multiple machines?</p>
+</li>
+<li>
+<p>What if many dependency graphs are executing all at once, with
+shared dependencies?</p>
+</li>
+</ul>
+<h4 id="mapreduce">MapReduce</h4>
+<p><img src="/spring2021/lecture-8-notes-media/image10.jpg" /></p>
+<p>The old-school big data solutions to this are
+<a href="https://hadoop.apache.org/"><u>Hadoop</u></a> and <a href="https://spark.apache.org/"><u>Apache
+Spark</u></a>. These are MapReduce
+implementations, where you launch different tasks that each take a bit
+of the data (Map) and reduce their outputs into a single output
+(Reduce). Both Hadoop and Spark can run data processing operations and
+simple ML models on commodity hardware, with tricks to speed things up.</p>
+<p>In the modern environment, you can’t run an ML model (in PyTorch or
+TensorFlow) as part of running a Spark job (unless that model itself is
+programmed in Spark). That’s when you need a workflow management system
+like <a href="https://airflow.apache.org/"><u>Apache Airflow</u></a>.</p>
+<h4 id="dag">DAG</h4>
+<p>In Airflow, a workflow is defined as a collection of tasks with
+directional dependencies, basically <strong>a directed acyclic graph</strong> (DAG).
+Each node in the graph is a task, and the edges define dependencies
+among the tasks. Tasks belong to two categories: (1) operators that
+execute some operation and (2) sensors that check for the state of a
+process or a data structure.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image2.png" /></p>
+<p>The main components of Airflow include: (1) a metadata database that
+stores the state of tasks and workflows, (2) a scheduler that uses the
+DAGs definitions together with the state of tasks in the metadata
+database to decide what needs to be executed, and (3) an executor that
+determines which worker will execute each task.</p>
+<p>Besides Airflow, here are other notable solutions:</p>
+<ul>
+<li>
+<p><a href="https://beam.apache.org/"><u>Apache Beam</u></a>: The TensorFlow team
+uses Apache Beam to generate <a href="https://www.tensorflow.org/datasets/beam_datasets"><u>big
+datasets</u></a>
+and run those processing steps on Google Cloud Dataflow (a cloud
+orchestrator).</p>
+</li>
+<li>
+<p><a href="https://www.prefect.io/"><u>Prefect</u></a>: A similar idea to
+Airflow, Prefect is a Python framework that makes it easy to
+combine tasks into workflows, then deploy, schedule, and monitor
+their execution through the Prefect UI or API.</p>
+</li>
+<li>
+<p><a href="https://www.getdbt.com/"><u>dbt</u></a>: dbt provides this data
+processing ability in SQL (called “analytics engineering.”)</p>
+</li>
+<li>
+<p><a href="https://dagster.io/"><u>Dagster</u></a>: Dagster is another data
+orchestrator for ML, analytics, and ETL. You can test locally and
+run anywhere with a unified view of data pipelines and assets.</p>
+</li>
+</ul>
+<h3 id="5-feature-store">5 - Feature Store</h3>
+<p>Feature stores were first popularized by the ML team at Uber as part of
+their
+<a href="https://eng.uber.com/michelangelo-machine-learning-platform/"><u>Michelangelo</u></a>
+platform. Traditionally, ML systems are divided into two portions,
+offline processing and online processing.</p>
+<ul>
+<li>
+<p>For the initial work of modeling, data that is generally static,
+perhaps stored in a data lake. Using some preprocessing methods
+(usually in SQL or Spark), data, which could be logfiles,
+requests, etc., are converted into features used to develop and
+train the model. The end result of this process is a model trained
+on a static sample of the data. This is an <strong>offline process</strong>.</p>
+</li>
+<li>
+<p>In contrast, the process of performing inference (e.g., Uber’s need
+to return ride prices in real-time) often works with real-time
+data in an <strong>online process</strong> fashion. From a technology
+standpoint, whereas the offline use case might involve a data lake
+and Spark/SQL, the online processing use case involves
+technologies like Kafka and Cassandra that support speedier
+processing of creating or accessing the features required to
+perform inference.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-8-notes-media/image9.png" /></p>
+<p>This difference in how features need to be created and accessed is a
+natural place for bugs to crop up. Harmonization of the online and
+offline processes would reduce bugs, so the Uber team, amongst others,
+introduced the concept of features stores to do just that. Members of
+the Uber team developed <a href="http://tecton.ai/"><u>Tecton</u></a>, a feature
+store company, which is one option to implement this system. An
+open-source alternative is <a href="https://feast.dev/"><u>Feast</u></a>. To
+summarize, Tecton offers a handy definition of what a feature store is:
+“<em>an ML-specific data system that runs data pipelines that transform raw
+data into feature values, stores and manages the feature data itself,
+and serves feature data consistently for training and inference
+purposes.”</em></p>
+<p>A word of caution: <strong>don’t over-engineer your system</strong> according to what
+others are doing. It’s easy to wrap yourself up in adopting many tools
+and systems that aren’t as optimal as their publicity may make them
+seem. Work with the tools you have first! For an interesting example of
+this, look at how “<a href="https://adamdrake.com/command-line-tools-can-be-235x-faster-than-your-hadoop-cluster.html"><u>command-line tools can be 235x faster than your
+Hadoop
+cluster</u></a>”.</p>
+<h3 id="6-data-exploration">6 - Data Exploration</h3>
+<p>The objective of data exploration is to understand and visualize the
+nature of the data you’re modeling.</p>
+<ul>
+<li>
+<p><a href="https://pandas.pydata.org/"><u>Pandas</u></a> is the Python workhorse
+of data visualization. It’s highly recommended to be familiar with
+it.</p>
+</li>
+<li>
+<p><a href="https://dask.org/"><u>Dask</u></a> is an alternative that can speed up
+data processing for large datasets that Pandas cannot handle
+through parallelization.</p>
+</li>
+<li>
+<p>Similarly, <a href="https://rapids.ai/"><u>RAPIDS</u></a> speeds up large
+dataset processing, though it does through the use of GPUs.</p>
+</li>
+</ul>
+<h3 id="7-data-labeling">7 - Data Labeling</h3>
+<p>Effective data labeling is a core ingredient of production machine
+learning systems. Most data labeling platforms have a standard set of
+features: the ability to generate bounding boxes, segmentations, key
+points, class assignments, etc. The crucial objective is agreeing on
+what makes a good annotation and training annotators accordingly. To
+avoid annotator error cropping up, write clear guidelines that clarify
+rules for edge cases and high-quality annotations. One way to acquire
+the material needed to write such a guide is to start by annotating
+yourself. As you generate labels, ensure the quality of the annotations
+holds up across the annotator base. Some participants will be more
+reliable than others.</p>
+<p><img src="/spring2021/lecture-8-notes-media/image14.png" /></p>
+<p>To develop an annotator base, there are a few options.</p>
+<h4 id="sources-of-labor">Sources of Labor</h4>
+<ul>
+<li>
+<p>One option is to <strong>hire your own annotators</strong>, which can help with
+the speed and quality of annotations. This, however, can be
+expensive and difficult to scale.</p>
+</li>
+<li>
+<p>Another option is to <strong>crowdsource labels</strong> via a platform like
+Amazon Mechanical Turk, which is fast and cheap to set up, but for
+which the quality can be poorer.</p>
+</li>
+<li>
+<p>…or full-service <strong>data labeling companies</strong>.</p>
+</li>
+</ul>
+<h4 id="service-companies">Service Companies</h4>
+<p>There are entire service companies that focus on data labeling that you
+can hire. Hiring such a company makes a great deal of sense, considering
+the time, labor, and software investment needed to label well at scale.
+To figure out the best data labeling company, start by annotating some
+gold standard data yourself. Then, contact and evaluate several
+companies on their value and a sample labeling task. Some companies in
+this space are
+<a href="https://en.wikipedia.org/wiki/Figure_Eight_Inc."><u>FigureEight</u></a>,
+<a href="https://scale.com/"><u>Scale.ai</u></a>,
+<a href="https://labelbox.com/"><u>Labelbox</u></a>, and
+<a href="https://supervise.ly/"><u>Supervisely</u></a>.</p>
+<h4 id="software">Software</h4>
+<p>If the costs of a full-service data labeling company are prohibitive,
+pure-play labeling software can be an option.</p>
+<ul>
+<li>
+<p><a href="https://labelstud.io/"><u>Label Studio</u></a> is a friendly
+open-source platform for this. New concepts to make labeling more
+strategic and efficient are coming to the fore.</p>
+</li>
+<li>
+<p><a href="https://www.aquariumlearning.com/"><u>Aquarium</u></a> helps you
+explore your data extensively and map the appropriate labeling
+strategy for classes that may be less prevalent or performant.</p>
+</li>
+<li>
+<p><a href="https://snorkel.ai/"><u>Snorkel.ai</u></a> offers a platform that
+incorporates weak supervision, which automatically labels data
+points based on heuristics and human feedback.</p>
+</li>
+</ul>
+<p>In summary, if you can afford not to label, don’t; get a full-service
+company to take care of it. Failing that, try to use existing software
+and a part-time annotator base work (in lieu of a crowdsourced
+workforce).</p>
+<h3 id="8-data-versioning">8 - Data Versioning</h3>
+<p>Data versioning is important because machine learning models are part
+code and part data. If the data isn’t versioned, the system isn’t fully
+versioned! There are four levels to data versioning, which is similar to
+code versioning:</p>
+<p>Level 0: <strong>No versioning</strong>.</p>
+<ul>
+<li>
+<p>All data lives on a filesystem, in S3, and/or in a database.</p>
+</li>
+<li>
+<p>The problem arises most acutely in this paradigm, as deployed ML
+systems (whose code may be versioned) can quickly become divorced
+from their corresponding data.</p>
+</li>
+<li>
+<p>Furthermore, reverting to older versions will be challenging.</p>
+</li>
+</ul>
+<p>Level 1: <strong>Storing a snapshot of everything at training time</strong>.</p>
+<ul>
+<li>
+<p>This works and can help you revert, but it’s very hacky.</p>
+</li>
+<li>
+<p>Rather than doing this entire process manually, let’s try to version
+automatically.</p>
+</li>
+</ul>
+<p>Level 2: <strong>Versioned as a mix of assets and code</strong>.</p>
+<ul>
+<li>
+<p>You store the large files with unique IDs in S3, with corresponding
+reference JSON versioned with code.</p>
+</li>
+<li>
+<p>You should avoid storing the data directly in the repository, as the
+metadata itself can get pretty large. Using git-lfs lets you store
+them just as easily as code.</p>
+</li>
+<li>
+<p>The git signature + of the raw data file fully defines a model’s
+data and code.</p>
+</li>
+</ul>
+<p>Level 3: <strong>Specialized solutions for version data</strong>.</p>
+<ul>
+<li>
+<p>You should avoid them until you can identify their unique value add
+to your project.</p>
+</li>
+<li>
+<p>Some options here are <a href="https://dvc.org/"><u>DVC</u></a> are
+<a href="https://www.pachyderm.com/"><u>Pachyderm</u></a>. DVC has
+a Git-like workflow worth taking a closer look at.
+<a href="https://www.dolthub.com/"><u>Dolt</u></a> versions databases, if
+that’s your need.</p>
+</li>
+</ul>
+<p><img src="/spring2021/lecture-8-notes-media/image8.png" /></p>
+<h3 id="9-data-privacy">9 - Data Privacy</h3>
+<p><img src="/spring2021/lecture-8-notes-media/image7.png" /></p>
+<p>Increasingly, unfettered access to data for machine learning is less
+desirable and prevalent. This is especially true in regulated industries
+like healthcare and finance. To address such challenges, researchers are
+developing new data privacy techniques.</p>
+<ul>
+<li>
+<p><a href="https://blogs.nvidia.com/blog/2019/10/13/what-is-federated-learning/"><u>Federated
+learning</u></a>
+trains a global model on several local devices without ever
+acquiring global access to the data. Federated learning is still
+research-use only due to these issues: (1) sending model updates
+can be expensive, (2) the depth of anonymization is not clear,
+and (3) system heterogeneity when it comes to training is
+unacceptably high.</p>
+</li>
+<li>
+<p>Another research area is <a href="https://medium.com/georgian-impact-blog/a-brief-introduction-to-differential-privacy-eacf8722283b"><u>differential
+privacy</u></a>,
+which tries to aggregate data in ways that prevent identification.
+Finally, learning on encrypted data has potential. Most data
+privacy efforts are research-focused, as the tooling is not yet
+mature.</p>
+</li>
+</ul>
+
+
+
+
+
+
+
+
+
+  
+
+
+
+
+                
+
+<div id="emailModal">
+  <div>
+    <h2>We are excited to share this course with you for <strong>free</strong>.</h2>
+    <p>
+      We have more upcoming great content.
+      Subscribe to stay up to date as we release it.
+    </p>
+    <p>
+      <form id="emailForm">
+        <input name="email" type="email" id="emailInput" placeholder="Your Email" required />
+        <div class="cf-turnstile" data-sitekey="0x4AAAAAAAEktm15XKkJyc3Z" data-callback="javascriptCallback"></div>
+        <button type="submit" id="submitEmail" class="md-button md-button--primary">
+          Enter
+        </button>
+      </form>
+    </p>
+    <small><p class="flex flex-wrap justify-between">
+      <span>
+        We take your privacy and attention very seriously and will never spam you.
+      </span>
+      <a id="emailModalCloseLink" href="javascript:void(0)" class="">I am already a subscriber</a>
+    </p></small>
+  </div>
+</div>
+
+
+              </article>
+            </div>
+          
+          
+<script>var target=document.getElementById(location.hash.slice(1));target&&target.name&&(target.checked=target.name.startsWith("__tabbed_"))</script>
+        </div>
+        
+      </main>
+      
+        <footer class="md-footer">
+  
+  <div class="md-footer-meta md-typeset">
+    <div class="md-footer-meta__inner md-grid">
+      <div class="md-copyright">
+  
+    <div class="md-copyright__highlight">
+      The Full Stack, 2023
+    </div>
+  
+  
+    Made with
+    <a href="https://squidfunk.github.io/mkdocs-material/" target="_blank" rel="noopener">
+      Material for MkDocs
+    </a>
+  
+</div>
+      
+        <div class="md-social">
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://twitter.com/full_stack_dl" target="_blank" rel="noopener" title="twitter.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M459.37 151.716c.325 4.548.325 9.097.325 13.645 0 138.72-105.583 298.558-298.558 298.558-59.452 0-114.68-17.219-161.137-47.106 8.447.974 16.568 1.299 25.34 1.299 49.055 0 94.213-16.568 130.274-44.832-46.132-.975-84.792-31.188-98.112-72.772 6.498.974 12.995 1.624 19.818 1.624 9.421 0 18.843-1.3 27.614-3.573-48.081-9.747-84.143-51.98-84.143-102.985v-1.299c13.969 7.797 30.214 12.67 47.431 13.319-28.264-18.843-46.781-51.005-46.781-87.391 0-19.492 5.197-37.36 14.294-52.954 51.655 63.675 129.3 105.258 216.365 109.807-1.624-7.797-2.599-15.918-2.599-24.04 0-57.828 46.782-104.934 104.934-104.934 30.213 0 57.502 12.67 76.67 33.137 23.715-4.548 46.456-13.32 66.599-25.34-7.798 24.366-24.366 44.833-46.132 57.827 21.117-2.273 41.584-8.122 60.426-16.243-14.292 20.791-32.161 39.308-52.628 54.253"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.youtube.com/@The_Full_Stack" target="_blank" rel="noopener" title="www.youtube.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 576 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M549.655 124.083c-6.281-23.65-24.787-42.276-48.284-48.597C458.781 64 288 64 288 64S117.22 64 74.629 75.486c-23.497 6.322-42.003 24.947-48.284 48.597-11.412 42.867-11.412 132.305-11.412 132.305s0 89.438 11.412 132.305c6.281 23.65 24.787 41.5 48.284 47.821C117.22 448 288 448 288 448s170.78 0 213.371-11.486c23.497-6.321 42.003-24.171 48.284-47.821 11.412-42.867 11.412-132.305 11.412-132.305s0-89.438-11.412-132.305m-317.51 213.508V175.185l142.739 81.205z"/></svg>
+    </a>
+  
+    
+    
+    
+    
+      
+      
+    
+    <a href="https://www.linkedin.com/company/full-stack-deep-learning/posts/" target="_blank" rel="noopener" title="www.linkedin.com" class="md-social__link">
+      <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 448 512"><!--! Font Awesome Free 6.7.2 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2024 Fonticons, Inc.--><path d="M416 32H31.9C14.3 32 0 46.5 0 64.3v383.4C0 465.5 14.3 480 31.9 480H416c17.6 0 32-14.5 32-32.3V64.3c0-17.8-14.4-32.3-32-32.3M135.4 416H69V202.2h66.5V416zm-33.2-243c-21.3 0-38.5-17.3-38.5-38.5S80.9 96 102.2 96c21.2 0 38.5 17.3 38.5 38.5 0 21.3-17.2 38.5-38.5 38.5m282.1 243h-66.4V312c0-24.8-.5-56.7-34.5-56.7-34.6 0-39.9 27-39.9 54.9V416h-66.4V202.2h63.7v29.2h.9c8.9-16.8 30.6-34.5 62.9-34.5 67.2 0 79.7 44.3 79.7 101.9z"/></svg>
+    </a>
+  
+</div>
+      
+    </div>
+  </div>
+</footer>
+      
+    </div>
+    <div class="md-dialog" data-md-component="dialog">
+      <div class="md-dialog__inner md-typeset"></div>
+    </div>
+    
+    
+    
+      
+      <script id="__config" type="application/json">{"base": "../..", "features": ["navigation.tabs"], "search": "../../assets/javascripts/workers/search.f8cc74c7.min.js", "tags": null, "translations": {"clipboard.copied": "Copied to clipboard", "clipboard.copy": "Copy to clipboard", "search.result.more.one": "1 more on this page", "search.result.more.other": "# more on this page", "search.result.none": "No matching documents", "search.result.one": "1 matching document", "search.result.other": "# matching documents", "search.result.placeholder": "Type to start searching", "search.result.term.missing": "Missing", "select.version": "Select version"}, "version": null}</script>
+    
+    
+      <script src="../../assets/javascripts/bundle.c8b220af.min.js"></script>
+      
+        <script src="../../javascripts/email_modal.js"></script>
+      
+    
+  </body>
+</html>
