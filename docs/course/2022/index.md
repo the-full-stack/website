@@ -102,7 +102,7 @@ We spin up a data annotation server and learn
 just how messy data really is.
 _Published August 31, 2022._
 
-### [Lecture 5: Data Management][lec5]
+### [Lecture 5: Deployment][lec5]
 
 We do a lightning tour of all the ways models are deployed
 and do a deep dive on running models as web services.
