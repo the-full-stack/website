@@ -92,6 +92,11 @@ Dataoorts,A100 (80 GB),Ampere,8,80,200-240,1200-1600,4.40,0.55,,gc2.a100-80-8
 Dataoorts,H100 (80 GB),Hopper,1,80,20-26,150-200,0.69,0.69,,gc2.h100-80-1
 Dataoorts,H100 (80 GB),Hopper,8,80,188-208,1200-1600,5.52,0.69,,gc2.h100-80-8
 Dataoorts,GH200 (96 GB),Grace-Hopper,1,96,30-36,150-200,0.88,0.88,,gc2.gh200-96-1
+Denvr Dataworks,A100 (80 GB),Ampere,8,80,208,940,17.60,2.20,,
+Denvr Dataworks,A100 (40 GB),Ampere,8,40,120,940,16.40,2.05,,
+Denvr Dataworks,Gaudi2 (96 GB),Gaudi,8,96,208,1000,22.40,2,80,,
+Denvr Dataworks,H100 (80 GB),Hopper,8,80,208,1000,36.00,4.50,,
+FluidStack,H100 (80 GB),Hopper,8,80,384,1024,38.08,4.76,,
 Exoscale,P100 (16 GB),Pascal,1,16,12,56,1.17,1.17,,GPU SMALL
 Exoscale,P100 (16 GB),Pascal,2,32,24,90,1.71,0.86,,GPU MEDIUM
 Exoscale,P100 (16 GB),Pascal,4,64,48,120,2.54,0.64,,GPU LARGE
