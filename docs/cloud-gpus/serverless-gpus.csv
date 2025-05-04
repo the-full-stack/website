@@ -45,6 +45,9 @@ Covalent,H100 (80 GB),Hopper,1,80,32,180,5.85,5.85
 Covalent,H100 (80 GB),Hopper,2,160,64,360,11.70,5.85
 Covalent,H100 (80 GB),Hopper,4,320,126,720,23.40,5.85
 Covalent,H100 (80 GB),Hopper,8,640,252,1440,46.80,5.85
+Koyeb,A100 (80 GB),Ampere,1,80,15,180,2.70,2.70
+Koyeb,L4 (24 GB),Lovelace,1,24,15,44,1.00,1.00
+Koyeb,RTX 4000 SFF (20 GB),Lovelace,1,20,6,44,0.50,0.50
 Modal,T4 (16 GB),Turing,1,16,2,16,1.17,1.17
 Modal,A10G (24 GB),Ampere,1,24,4,16,1.87,1.87
 Modal,A100 (20 GB),Ampere,1,20,4,16,3.07,3.07
