@@ -231,6 +231,18 @@ OVHcloud,L4 (24 GB),Lovelace,4,96,90,360,4,1,,l4-360
 OVHcloud,H100 (80 GB),Hopper,1,80,30,380,2.99,2.99,,h100-380
 OVHcloud,H100 (80 GB),Hopper,2,160,60,760,5.98,2.99,,h100-760
 OVHcloud,H100 (80 GB),Hopper,4,320,120,1520,11.97,2.99,,h100-1520
+OVHcloud,L40S (48 GB),Lovelace,1,48,15,90,1.8,1.8,,l40s-90
+OVHcloud,L40S (48 GB),Lovelace,2,96,30,180,3.6,1.8,,l40s-180
+OVHcloud,L40S (48 GB),Lovelace,4,144,60,360,3.6,1.8,,l40s-360
+OVHcloud,A10 (24 GB),Ampere,1,24,30,45,2,2,,a10-45
+OVHcloud,A10 (24 GB),Ampere,2,48,60,90,4,4,,a10-90
+OVHcloud,A10 (24 GB),Ampere,4,192,120,180,4,4,,a10-180
+OVHcloud,RTX5000 (16 GB),Lovelace,1,16,4,28,0.6,0.6,,rtx5000-28
+OVHcloud,RTX5000 (16 GB),Lovelace,2,32,8,56,1.2,0.6,,rtx5000-56
+OVHcloud,RTX5000 (16 GB),Lovelace,4,64,16,112,1.8,0.6,,rtx5000-84
+OVHcloud,A100 (80 GB),Ampere,1,80,15,180,3.07,3.07,,a100-180
+OVHcloud,A100 (80 GB),Ampere,2,160,30,360,6.15,3.07,,a100-360
+OVHcloud,A100 (80 GB),Ampere,4,360,60,720,12.29,3.07,,a100-720
 Oracle Cloud,A10,Ampere,1,24,15,240,2.00,2.00,,VM.GPU.A10.1
 Oracle Cloud,A10,Ampere,2,48,30,480,4.00,2.00,,VM.GPU.A10.2
 Oracle Cloud,A100 (40 GB),Ampere,8,320,64,2048,24.4,3.05,,BM.GPU.A4.8
